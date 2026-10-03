@@ -1,0 +1,87 @@
+{
+ "generated_at": "2026-10-03T19:54:00+08:00",
+ "archive": "AIQuant-XAUUSD-Systems",
+ "asset_type": "research + trading systems source archive (asset archival, NOT a system upgrade)",
+ "instrument": "XAUUSD",
+ "broker_backend": "FXTM MT5",
+ "systems": [
+  {
+   "id": "V1",
+   "name": "Hermes Trader V1 (agentic M15 trading engine)",
+   "path": "V1/",
+   "status": "production / demo",
+   "role": "主交易决策引擎：OBSERVE->THINK->DECIDE->PLAN->TRIGGER->EXECUTE->MANAGE->REVIEW->MEMORY",
+   "magic": "V1 magic (see configs)",
+   "mode": "BROKER_DEMO (FXTM MT5 demo)",
+   "broker_server": "FXTM demo server",
+   "account_identifier": "[DESENSITIZED]",
+   "key_modules": [
+    "engine.py",
+    "trader_core.py",
+    "broker_mt5_demo.py",
+    "ledger.py",
+    "invariants.py",
+    "stop_authority.py",
+    "position.py",
+    "trigger.py",
+    "review.py",
+    "state_package.py"
+   ],
+   "subsystems": {
+    "truth_system": "V1/v1_upgrade/truth",
+    "risk_hardening": "V1/audit/v1_risk_hardening",
+    "arch_forensics": "V1/audit/v1_architecture_behavior_timeline",
+    "panel": "V1/panel",
+    "money_hunter": "V1/money_hunter",
+    "pre_reset_snapshot": "V1/pre_reset_snapshot"
+   },
+   "scheduler": "\\OpenClaw\\hermes-tick-collect"
+  },
+  {
+   "id": "V2",
+   "name": "Hermes Trader V2 (V2 Grand Architecture / Phase2 live evidence)",
+   "path": "V2/",
+   "status": "paper/demo forward run",
+   "role": "研究+前向 paper/demo 引擎：data_sources、strategy_factory、strategy_brain、strategy_registry、evolution、gpu_research、opportunity_hub、intelligence、pipeline、Phase2 live evidence shadow stream",
+   "magic": 90003,
+   "mode": "PAPER / BROKER_DEMO",
+   "broker_server": "FXTM demo server (fxtm_demo_01)",
+   "account_identifier": "[DESENSITIZED]",
+   "key_modules": [
+    "V2/src/agents",
+    "V2/src/data_sources",
+    "V2/src/execution",
+    "V2/src/ledger",
+    "V2/src/runtime",
+    "V2/V2_GRAND_ARCHITECTURE",
+    "V2/V2_EVOLUTION_PHASE3",
+    "V2/V2_HISTORICAL_STRATEGY_DECAY_LAB"
+   ],
+   "active_run": "V2-PAPER-20261001-205202-8b9e",
+   "scheduler": "\\OpenClaw\\hermes-v2-cycle (PT15M), \\OpenClaw\\hermes-v2-observer, \\OpenClaw\\hermes-v2-shadow-evidence"
+  },
+  {
+   "id": "V3",
+   "name": "Hermes Trader V3 (opportunity engine / alpha discovery)",
+   "path": "V3/",
+   "status": "research",
+   "role": "研究阶段：alpha discovery、opportunity engine、mechanism validation、tradability、long-history / cross-market / PIT 数据能力探测",
+   "magic": "n/a (research)",
+   "mode": "RESEARCH (no live execution)",
+   "broker_server": "n/a",
+   "account_identifier": "n/a",
+   "key_modules": [
+    "V3/src/alpha",
+    "V3/src/foundation",
+    "V3/src/strategy",
+    "V3/opportunity_engine",
+    "V3/research"
+   ],
+   "scheduler": "none observed"
+  }
+ ],
+ "isolation": "V1/V2/V3 相互隔离（不同 magic / 不同账户上下文 / 独立 run 状态）；本归档只读快照，不改变任何运行行为。",
+ "cross_cutting": {
+  "shared/": "research_engine, alpha_engine, alpha_registry, data_registry, architecture/docs, scripts, configs, environment, tools, benchmarks, tests"
+ }
+}

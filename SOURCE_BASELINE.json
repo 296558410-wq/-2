@@ -1,0 +1,71 @@
+{
+ "generated_at": "2026-10-03T19:54:00+08:00",
+ "note": "Read-only baseline captured BEFORE any archive action. No source file was modified.",
+ "source_root": "C:\\AIQuant",
+ "git": {
+  "source_git_root": "C:\\AIQuant",
+  "branch": "research/v2-grand-architecture-phase2",
+  "head_sha": "665bf2950302b57a5d8fa8bb539083c2df653286",
+  "head_subject": "fix(v2-grand-arch-phase2): exclude volatile shadow/ runtime state from SHA256SUMS",
+  "commit_count": 374,
+  "first_commit": "03bd487842a678f32b1ef8308fe8f6b91f801940",
+  "first_commit_date": "2026-09-04 13:28:38 +0800",
+  "last_commit_date": "2026-10-03 19:43:09 +0800",
+  "remotes": [],
+  "dirty_total": 682,
+  "dirty_modified": 51,
+  "dirty_deleted": 1,
+  "dirty_untracked": 630,
+  "status_porcelain_total": 682,
+  "dirty_interpretation": "dirty working tree is caused by PRODUCTION RUNTIME CHURN (run_state/, decisions/, observations/, state/, heartbeat, live shadow streams). It is NOT a code modification."
+ },
+ "systems": [
+  {
+   "system": "V1",
+   "path": "C:\\AIQuant\\research\\hermes\\trader_v1",
+   "branch": "research/v2-grand-architecture-phase2",
+   "head_sha": "665bf2950302b57a5d8fa8bb539083c2df653286",
+   "git_status": "dirty (runtime churn: run_state/*, audit/*.json, v1_upgrade/truth/evidence/*)",
+   "scheduler": "\\OpenClaw\\hermes-tick-collect (tick collect)",
+   "sha256_manifest": "n/a (no per-dir SHA256SUMS)"
+  },
+  {
+   "system": "V2",
+   "path": "C:\\AIQuant\\research\\hermes\\trader_v2",
+   "branch": "research/v2-grand-architecture-phase2",
+   "head_sha": "665bf2950302b57a5d8fa8bb539083c2df653286",
+   "git_status": "dirty (runtime churn: state/*, observations/*, V2_GRAND_ARCHITECTURE/shadow/*, PHASE2_LIVE_EVIDENCE/*.jsonl)",
+   "scheduler": "\\OpenClaw\\hermes-v2-cycle (PT15M) + \\OpenClaw\\hermes-v2-observer + \\OpenClaw\\hermes-v2-shadow-evidence",
+   "sha256_manifest": "research/hermes/trader_v2/V2_GRAND_ARCHITECTURE/SHA256SUMS.txt (present)",
+   "active_run": "V2-PAPER-20261001-205202-8b9e (RUNNING, execution_mode BROKER_DEMO)"
+  },
+  {
+   "system": "V3",
+   "path": "C:\\AIQuant\\research\\hermes\\trader_v3",
+   "branch": "research/v2-grand-architecture-phase2",
+   "head_sha": "665bf2950302b57a5d8fa8bb539083c2df653286",
+   "git_status": "dirty (runtime churn: state/*, research/v3_temporal_hold/*)",
+   "scheduler": "none observed for V3 (research phase)",
+   "sha256_manifest": "n/a"
+  }
+ ],
+ "running_tasks_not_stopped": [
+  {
+   "task": "\\OpenClaw\\hermes-tick-collect",
+   "role": "tick collection"
+  },
+  {
+   "task": "\\OpenClaw\\hermes-v2-cycle",
+   "role": "V2 direct scheduled cycle"
+  },
+  {
+   "task": "\\OpenClaw\\hermes-v2-observer",
+   "role": "V2 observer"
+  },
+  {
+   "task": "\\OpenClaw\\hermes-v2-shadow-evidence",
+   "role": "V2 shadow evidence stream (read-only)"
+  }
+ ],
+ "order_send": 0
+}
