@@ -1,0 +1,27 @@
+{
+ "schema": "v3_mechanism_validation_audit/1",
+ "ts_utc": "2026-09-25T11:43:03.321238+00:00",
+ "version": "MV-R1.0.0",
+ "input_opportunity_hash": "614822c367bffc74241fcbdce1add8124183f58ef45a564fe35da8009a246155+d6190a3a2b638b7a60cb4387676ad87b4d1c4a150e7eb2264cb1855bf200ac03",
+ "input_quality_hash": "2bd86dcf681e3d6f13324825cf0a8d630ac2e1c7162a4500ab0f3261fb281da2",
+ "input_hermes_hash": "2084d031c97c6c59d150bca8465df2ab3ab95b3037cc9cfa420e48d9e46c4188",
+ "input_hashes_full_length": 64,
+ "inputs_unchanged_after_run": true,
+ "registry_hash": "9dd16f2d293a066e1f842c68504d1ea1d48a514dcc231bc641c250eace4e32ec",
+ "mechanism_output_hash": "4e01d77e3866ed44e6dfac0b5273dc7e9f26186bbc5fa87f1285251c4d2adcf6",
+ "ledger_hash": {
+  "rows": 131,
+  "chain_ok": true,
+  "bad_seq": null
+ },
+ "data_sources": [
+  "R1 opportunity ledger (immutable)",
+  "quality ledger (immutable)",
+  "hermes quality reviews (immutable)",
+  "state parquet (read-only)"
+ ],
+ "timestamp_policy": "all features use bars <= detected_at; the post-event RESPONSE observation (3 bars) is descriptive and excluded from every decision",
+ "lookahead_status": "NO_LOOKAHEAD",
+ "negative_control_status": "FAIL",
+ "causality_policy": "same-bar external/XAU => CO_MOVEMENT only; TRANSMISSION is never asserted"
+}

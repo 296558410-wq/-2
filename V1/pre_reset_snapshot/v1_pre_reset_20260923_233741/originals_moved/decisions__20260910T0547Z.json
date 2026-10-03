@@ -1,0 +1,140 @@
+{
+ "cycle": "2026-09-10T05:47Z",
+ "symbol": "XAUUSD",
+ "decision_id": "DEC-2026-09-10T05:47Z",
+ "generated_utc": "2026-09-10T05:47:40Z",
+ "decision": "SHORT",
+ "confidence": 0.55,
+ "opportunity": "主动猎手: 现价 mid 4429.1 (quote_latest dashboard-live, spread 0.36bps, tick ~160/min, z1.55), 距有利做空区仅 ~5-12pt。有利区 = M15 60bar 高点 4434.23 与 H1 60bar 高点 4440.96 汇聚阻力 (叠加 H1 MA200 4425.77 已被上破后转支撑、round 4440)。今日价已自 03:00 低点 4389.75 强推 +39pt 破日间供给墙 4416-4424, M15 trend er0.444/RSI72 超买, 正测试 H1 区间上沿。D1 主空 (close 4400.49 < MA20 4464.19, llish5>hhish4, er0.147) + H4 纯区间 (er0.059) 背景下, 在结构高点 fade 为最优位置。现价 4429 追空无结构位、追多则贴 H1 上沿 4441 无空间 → 注册 4434-4439 fade 计划, 触价 zone_touch 自动成交。",
+ "opportunity_mechanism": "range_top_fade_h1_confluence_v1: 价格冲入 H1 60bar 高点 4440.96 + M15 60bar 高点 4434.23 汇聚阻力带, M15 RSI72 超买 + H1 pos~88% 区间上部; D1 弱势 (价距 MA20 -1.43%) 与 H4 纯区间构成 fade 顺风。若 4434-4439 受阻 (盘中拒绝/快速回落/量能衰减) → 回测 4424 供给转支撑并下探 4414/4405.5; 若站稳上破 4441 则结构失效 (SL 4443.5)。",
+ "mtf_agreement": "partial-bearish: D1 主空 (close 4400.49 < MA20 4464.19, RSI42.7, llish5>hhish4, range er0.147) + H4 纯区间偏弱 (er0.059, pos32.9, close 4401.31 ≈MA20 4400.64 <MA50 4413.14) = fade 顺向; H1 区间上沿 (live pos~88%, high60 4440.96, MA200 4425.77) 提供阻力; M15 短线强多 (er0.444, RSI72.2, breakout) = 唯一反向 → 待受阻确认。→ bias SHORT-lean 0.55。",
+ "answers_14": {
+  "1": "市场状态: XAUUSD 现价 mid 4429.1 (quote_latest dashboard-live, spread0.36bps, tick~160/min, z1.55 轻微偏高, quote_source quote_latest)。M15 last_close 4416.9 (05:15 bar), live 已冲至 4429 (+~29bps 破供给墙 4416-4424), MA20 4403.16/MA50 4406.69/MA200 4397.77 全在下, RSI72.2, pos70.6, high60 4434.23/low60 4375.19, er0.444 trend, exp_cont1.18; H1 close 4412.51 (75% 位置, 但 live pos~88% of 4341.45-4440.96), MA20 4403.83/MA50 4398.16 < MA200 4425.77, RSI55.7, er0.114 range; H4 range er0.059, close 4401.31 ≈MA20 4400.64 <MA50 4413.14, RSI47.0, pos32.9; D1 range 偏空 close 4400.49 <MA20 4464.19, RSI42.7, pos54.7, llish5>hhish4, er0.147。数据 ok: live_days4 / ticks619567 / gaps[] / context28d。",
+  "2": "一致性: partial→bearish。D1 主空 + H4 纯区间偏弱 = SHORT 同向; H1 贴区间上沿 (pos~88%, 阻力 4440.96) 支持 fade; M15 短线强多 (RSI72.2, breakout) = 唯一反向, 待其受阻。→ bias SHORT-lean 0.55。",
+  "3": "M15 变化: 自 05:30 bar 4416 → live 4429 (+~29bps) 强推, 破日间供给墙 4416-4424 与 H1 MA200 4425.77; 上方 M15 high60 4434.23 / H1 high60 4440.96 汇聚为下一阻力带; 下方 4424/4416-4419 转支撑, 再下 M15 均线簇 4406.69/4403.16/4397.77。",
+  "4": "机会: 现价 4429.1 距有利做空区 (4434.23-4440.96 汇聚阻力) 仅 ~5-12pt, 属'贴近边界即计划'。触发需: 价格上探 4434-4439 并出现盘中受阻 (拒绝K/快速回落)。现价直接追空无结构位、追多贴 H1 上沿无空间 → 注册 fade 待触发。离可交易 = 再涨 5-10pt 进入 4434-4439 即自动成交。",
+  "5": "机制: H1/D1 区间上沿 fade。价在 D1 弱势/H4 纯区间背景下冲入 M15 60bar 高点 4434.23 与 H1 60bar 高点 4440.96 汇聚阻力 (M15 RSI72 超买, 日内 +39pt 已透支); 受阻回落 → 回测 4424/4416 供给转支撑并下探 4414/4405.5; 上破 4441 则失效。",
+  "6": "触发条件[具体价]: {\"and\":[{\"zone_touch\":[4434.0,4439.0]},{\"spread_under_bps\":1.0}]} —— mid 进入 4434.0-4439.0 即触价自动成交 (不要求下一根收盘)。",
+  "7": "失效[具体价]: 未触发失效 = {\"price_cross_down\":4419.0} (冲高未达即回破 4419 下方 → 冲高机会已过, 计划作废); 触发后失效 = mid >= 4443.5 (SL, -1R)。",
+  "8": "预期收益R (entry_mid 4436.5, 1R=7.0pt): T1 4424.0 (-12.5pt=1.79R) x0.45 / T2 4414.0 (-22.5pt=3.21R) x0.35 / T3 4405.5 (-31.0pt=4.43R) x0.20; 加权 ≈2.82R; 契约口径 expected_R=T1=1.79R。",
+  "9": "预期损失R: -1.0R 有界 (SL 4443.5, entry_mid 4436.5, risk 7.0pt ≈ 15.8bps); 亏损不加仓不反手。",
+  "10": "成本数值: spread 0.38bps + slippage ~0.3bps ≈ 单边 0.68bps, 往返 1.36bps ≈ 0.60pt ≈ 0.086R (1R=7.0pt); demo 执行费由 engine 统计, 非障碍。",
+  "11": "净EV算式: EV_R = R×Pwin − 1×Ploss − cost = 1.79×0.45 − 0.55 − 0.086 = 0.8055 − 0.55 − 0.086 = +0.17R (>0, 通过)。",
+  "12": "再现: range-top fade 今日两度成功 —— 02:47 与 05:02 同带 4416-4422 成交 SHORT, T1 4406.5 各兑现 +11.84pt/USD; 本轮再现 = 将 fade 位上移至 M15/H1 60bar 高点汇聚区 4434-4439 (结构更高, R 更优)。",
+  "13": "决策: SHORT (bias SHORT-lean 0.55; FLAT 状态, broker 0 持仓, 可注册新计划)。理由: D1 主空 + H4 纯区间 + H1 区间上沿阻力 4440.96; 价冲入 4434-4439 汇聚阻力即 fade, 触价自动成交; SL 4443.5 有界 (1R 7pt); T1 4424 (1.79R); 净 EV +0.17R>0; 未触发破 4419 作废。",
+  "14": "理由: 现价4429冲入M15/H1 60bar高点汇聚阻力4434-4441 (M15 RSI72超买), D1主空+H4纯区间顺风; 注册4434-4439 fade zone_touch触价成交, SL4443.5(1R7pt), T1 4424=1.79R, 净EV+0.17R; 未触发破4419作废; 不追多(EV<0)。"
+ },
+ "plan": {
+  "plan_id": "TP-20260910T0547Z",
+  "utc_ts": "2026-09-10T05:47:40Z",
+  "decision_id_ref": "DEC-2026-09-10T05:47Z",
+  "market_state": {
+   "symbol": "XAUUSD",
+   "mid": 4429.1,
+   "m15": {
+    "close": 4416.9,
+    "er": 0.444,
+    "rsi14": 72.2,
+    "high60": 4434.23,
+    "low60": 4375.19,
+    "pos_in_range": 70.6
+   },
+   "h1": {
+    "close": 4412.51,
+    "high60": 4440.96,
+    "low60": 4341.45,
+    "ma200": 4425.77
+   },
+   "h4": {
+    "close": 4401.31,
+    "er": 0.059,
+    "ma20": 4400.64,
+    "ma50": 4413.14
+   },
+   "d1": {
+    "close": 4400.49,
+    "ma20": 4464.19,
+    "er": 0.147,
+    "rsi14": 42.7
+   }
+  },
+  "direction": "SHORT",
+  "opportunity_type": "range_reversal",
+  "mechanism_ref": "range_top_fade_h1_confluence_v1",
+  "entry_zone": {
+   "low": 4434.0,
+   "high": 4439.0
+  },
+  "entry_style": "market_on_trigger",
+  "trigger_condition": {
+   "and": [
+    {
+     "zone_touch": [
+      4434.0,
+      4439.0
+     ]
+    },
+    {
+     "spread_under_bps": 1.0
+    }
+   ]
+  },
+  "invalidation_condition": {
+   "price_cross_down": 4419.0
+  },
+  "stop_logic": {
+   "type": "structure",
+   "level_price": 4443.5,
+   "reason": "above H1 60bar high 4440.96 + M15 60bar high 4434.23 breakout confluence + ~2.5pt buffer; reclaim invalidates fade"
+  },
+  "target_logic": {
+   "type": "partial",
+   "levels": [
+    {
+     "price": 4424.0,
+     "frac": 0.45
+    },
+    {
+     "price": 4414.0,
+     "frac": 0.35
+    },
+    {
+     "price": 4405.5,
+     "frac": 0.2
+    }
+   ],
+   "reason": "4424 = broken supply retest/H1 MA200; 4414 = intraday structure; 4405.5 = prior breakdown level"
+  },
+  "expected_R": 1.79,
+  "expected_win_probability": 0.45,
+  "probability_source": "subjective",
+  "expected_loss": {
+   "units": "R",
+   "value": -1.0
+  },
+  "estimated_cost": {
+   "spread_bps": 0.38,
+   "slippage_bps": 0.3,
+   "total_roundtrip_bps": 1.36,
+   "cost_in_R": 0.086
+  },
+  "expected_net_EV": {
+   "value": 0.17,
+   "units": "R",
+   "note": "EV = R*Pwin - 1*Ploss - cost = 1.79*0.45 - 0.55 - 0.086 = +0.17R"
+  },
+  "maximum_holding_time": "M15*8",
+  "cancel_conditions": [
+   "计划超龄 M15*8 (2h) 未触发",
+   "价格破 4419.0 → 无效化作废"
+  ],
+  "risk_level": "medium",
+  "qty_lots": 0.01,
+  "partial_exit_plan": "T1 4424.0 平 45%, 余仓 SL 移至 entry_mid 保本后持有 T2/T3",
+  "reason": "D1主空+H4纯区间, 价冲入M15 4434.23/H1 4440.96 汇聚阻力(RSI72超买)即fade; zone_touch触价成交; SL4443.5有界7pt; T1 4424=1.79R; 净EV+0.17R。",
+  "model": "deepseek/deepseek-v4-flash",
+  "prompt_version": "hermes_trader_v1/m15_active_hunter"
+ },
+ "model": "deepseek/deepseek-v4-flash",
+ "data_quality_note": "data_quality ok (live_days=4, live_ticks=619567, gaps=[], context_days=28); parquet 落到 05:39 (mid 4418.75), 但 quote_latest.json 新鲜 (05:47:25Z, mid 4428.62 spread 0.17USD≈0.38bps, 连测 4 次稳定 4428.6-4429.0) → 以 quote 为准, 现价 4429.1; 判定为真实上破 (tick_rate 正常, spread 正常); 无持仓 (broker positions=0, FLAT) 故可注册新计划; candle_latest.json 停滞于 09-07, 忽略。"
+}

@@ -1,0 +1,101 @@
+{
+  "sample_id": "A_20260817",
+  "forecast_id": "R6_A_20260817",
+  "timestamp": "2026-08-17T12:00:00+00:00",
+  "observations": [
+    "Price 4398.7 inside swing-high level 4399.325, break INSIDE",
+    "Frozen label REJECTION, dwell 1 after long ROTATION run",
+    "H1 bar red with large upper wick, range_percentile 0.14",
+    "M1 M5 M15 H1 trend_20 positive; H4 trend_20 negative"
+  ],
+  "what_i_know": [
+    "L2 nearest level 4399.325 swing high, 40 touches",
+    "L3 L5 state REJECTION at t, event REJECTION",
+    "M1 range expanding, 7 consecutive up bars then stall",
+    "DXY 99.438 flat, VIX 14.94 low; both PROXY"
+  ],
+  "what_i_do_not_know": [
+    "H4 current bar close 4417 contradicts M1 4398, artifact",
+    "No NEWS MACRO_EVENTS GLD GC COT data, absent",
+    "Level break direction unknown, break_status INSIDE reclaim NONE",
+    "Analogs show REJECTION persists or rotates, mixed"
+  ],
+  "evidence": [
+    "H1 bar upper wick 5.77, closed below open",
+    "REJECTION label at swing-high level, price inside",
+    "M1 12:00 bar upper wick 0.79, lower 0.92",
+    "Level 4399.325 tested 40 times in 240 bars"
+  ],
+  "counter_evidence": [
+    "M1 M5 M15 H1 trend_20 all positive, momentum up",
+    "M1 sequence 7 consecutive up bars, range expanding",
+    "H4 trend_50 +156 long-term uptrend, if trusted",
+    "L4 candidate trend_continuation, displacement 0.68"
+  ],
+  "possible_mechanisms": [
+    {
+      "mechanism": "swing_high_rejection",
+      "status": "SUPPORTED",
+      "why": "REJECTION label plus H1 upper wick"
+    },
+    {
+      "mechanism": "trend_continuation",
+      "status": "POSSIBLE",
+      "why": "L4 candidate; price inside level"
+    },
+    {
+      "mechanism": "range_rotation",
+      "status": "POSSIBLE",
+      "why": "long ROTATION history before rejection"
+    },
+    {
+      "mechanism": "breakout_extension",
+      "status": "WEAK",
+      "why": "needs decisive level break, none yet"
+    }
+  ],
+  "primary_scenario": {
+    "scenario": "Rejection at 4399.3 holds, retrace to 4394-4396 zone",
+    "horizon": "1-4 hours",
+    "trigger": "Repeated upper-wick rejection, M1 close below 4397.5",
+    "invalidation": "Decisive close above 4405.6, level break"
+  },
+  "alternative_scenario": {
+    "scenario": "Trend continuation breaks 4405.6, extends toward 4411-4416",
+    "horizon": "4-12 hours",
+    "trigger": "M5 M15 close above 4405.6 with expansion",
+    "invalidation": "Rejection back below 4398 within 2 hours"
+  },
+  "expected_transition": "REJECTION to ROTATION or persistence, chop 4394-4405",
+  "direction_bias": "DOWN",
+  "time_horizon": "1-4 hours",
+  "evidence_strength": 0.35,
+  "confidence": 0.25,
+  "uncertainty": 0.75,
+  "confidence_reason": "Consistent rejection geometry but conflicting timeframes, no macro",
+  "uncertainty_reason": "H4 bar anomaly unresolved, level break status inside, absent news",
+  "invalidation": "M1-M15 close above 4405.6 decisively",
+  "change_my_mind": [
+    "M5 close above 4405.6 flips bias up",
+    "M1 close below 4394 confirms rejection path",
+    "H4 bar anomaly resolution changes higher-timeframe view",
+    "News or DXY move >0.5 alters read"
+  ],
+  "abstain": false,
+  "abstain_reason": "Coherent M1-H1 and state evidence; H4 anomaly isolated",
+  "questions": {
+    "Q1": "Price inside swing-high 4399.325; label REJECTION; H1 upper wick",
+    "Q2": "H4 bar validity; level break outcome; macro absent",
+    "Q3": "Rejection label, H1 M1 upper wicks, heavily-tested level",
+    "Q4": "Positive short-term trends, expansion, continuation candidate",
+    "Q5": "Trend continuation; only candidate, not asserted",
+    "Q6": "Decisive 4405.6 break up or 4394 break down",
+    "Q7": "false - coherent core, anomaly isolated and excluded"
+  },
+  "reasoning_trace": [
+    "State REJECTION at swing high, dwell 1",
+    "H1 M1 show upper-wick rejection near 4399-4404",
+    "H4 close 4417 contradicts M1; excluded as artifact",
+    "Bias down short-term, high uncertainty, low confidence"
+  ]
+}

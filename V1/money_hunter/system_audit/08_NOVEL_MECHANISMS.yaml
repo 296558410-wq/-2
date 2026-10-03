@@ -1,0 +1,39 @@
+# 08_NOVEL_MECHANISMS — 反直觉机制候选（5 个, 机制级; 2026-09-06）
+# 纪律: 不是指标; 每个给: 为何没测/需什么数据/可否零成本/杀死条件/为何可能赚钱
+candidates:
+  - id: NM-1
+    name: "毛量异常(事件窗 quote-volume 突变, 非 signed)作为 vol/成本路径的前瞻"
+    why_untested: "proxy 纪律使我们完全回避毛量; 但毛量*变化率*在固定事件窗(12-15UTC/开盘)的异常, 即使无方向, 可能领先 spread 恢复/vol 衰减路径"
+    data: 现有(DUKA 2010-2026 有 vol 列; FXTM tick volume)
+    cost: 零
+    kill: 毛量异常对后续 30m-4h vol/spread 无增量(控 RV/活动后) → 死
+    why_money: 若存活 → 风险/执行层输入(何时成本高/恢复慢), 服务等待-执行 EV
+  - id: NM-2
+    name: "大隔夜跳空后的日内成本-波动路径(风险层产品逻辑)"
+    why_untested: 跳空研究止于日收益反转(已杀); 跳空后的*日内成本路径*与跳空大小/方向的关系未系统刻画(有数据)"
+    data: 现有
+    cost: 零
+    kill: 路径无跨 regime 一致性(2011-2026) → 死
+    why_money: 风险规避/执行调度输入; 若与微结构记忆结合 → 明日开盘状态预测
+  - id: NM-3
+    name: "spread 恢复不对称的系统刻画(宽化快/恢复慢?)作为流动状态机"
+    why_untested: S3 只证 tick 级闪烁(1-5s); 分钟-小时尺度的恢复不对称未跨 regime 测
+    data: 现有
+    cost: 零
+    kill: 恢复速率无可预测结构(控 vol/活动) → 死
+    why_money: 若宽化后恢复慢可预测 → '别在宽化后 X 分钟内交易' 的执行 EV(需成本 < 节省)
+  - id: NM-4
+    name: "执行成本时变结构本身(测量对象, 非信号): demo/ECN 到位后测 spread/slippage/fill 的日-时-事件结构"
+    why_untested: 无通道
+    data: MT5 demo(免费, 待注册)
+    cost: 零(注册); 时间=1-2 周积累
+    kill: 时变幅度 < 0.5×均值 → 无执行对象价值
+    why_money: 若幅度大 → 任何未来信号的 EV 表都要按执行状态条件化; 执行产品/服务(非常规路线)的前提
+  - id: NM-5
+    name: "GC 期货 T&S signed flow(数据门后唯一未测信息层) — 占位(需 $25 或免费 demo trades)"
+    why_untested: 数据门
+    data: Databento GC($25) 或含 trades 的免费 demo 流
+    cost: $25(待批)或免费
+    kill: GC 流/深度对 XAUUSD 日内无可重复正净 EV → HF 信息门终审关闭
+    why_money: 黄金价格发现在 GC; 若任何 spot 不可见的信息在此可见, 这是唯一可能的 HF 入口
+ranking: NM-1/2/3 零成本可先行(风险/成本层), NM-4 依赖注册, NM-5 依赖数据门

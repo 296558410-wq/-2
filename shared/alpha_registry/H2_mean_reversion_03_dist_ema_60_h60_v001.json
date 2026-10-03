@@ -1,0 +1,75 @@
+{
+  "hypothesis": "短期极端偏离是否预测回归？",
+  "features": "dist_ema_60",
+  "parameters": {
+    "holding": 60,
+    "feature_params": {}
+  },
+  "dataset": "XAUUSD_M1_MT5-FXTM-Live_20260904_v001",
+  "train_period": "2026-05-26 03:43:00+00:00→2026-07-27 06:53:00+00:00",
+  "test_period": "2026-07-27 06:53:00+00:00→2026-09-04 11:22:00+00:00",
+  "OOS": {
+    "ic": 0.020420868913360975,
+    "p": 0.0
+  },
+  "FDR": {
+    "q": 0.0,
+    "reject": true
+  },
+  "WF": {
+    "folds_ic": [
+      0.0095,
+      0.0382,
+      0.0368,
+      -0.043,
+      0.0175
+    ],
+    "positive_frac": 0.8,
+    "n_folds": 5
+  },
+  "cost_stress": {
+    "1x": 2.6809,
+    "2x": 1.0871,
+    "3x": -0.5029,
+    "net_total": 0.15084446971045828,
+    "n_trades": 736,
+    "subperiod": {
+      "n_parts": 4,
+      "parts": [
+        {
+          "segment": 1,
+          "n": 24985,
+          "sharpe": 0.106,
+          "mean": 3.0208880399743273e-06
+        },
+        {
+          "segment": 2,
+          "n": 24985,
+          "sharpe": -0.125,
+          "mean": -3.3599416681287225e-06
+        },
+        {
+          "segment": 3,
+          "n": 24985,
+          "sharpe": 0.191,
+          "mean": 4.2716207131639195e-06
+        },
+        {
+          "segment": 4,
+          "n": 24986,
+          "sharpe": 0.087,
+          "mean": 2.013722367709178e-06
+        }
+      ],
+      "sharpe_positive_frac": 0.75,
+      "sharpe_min": -0.125,
+      "sharpe_max": 0.191,
+      "note": "子段 Sharpe 一致性低 → 结果可能依赖特定时期"
+    }
+  },
+  "subperiod": null,
+  "status": "EDGE_UNCERTAIN",
+  "git_commit": "c1d84d3",
+  "alpha_id": "H2_mean_reversion_03_dist_ema_60_h60_v001",
+  "created_at": "2026-09-04T11:58:35.337718+00:00"
+}

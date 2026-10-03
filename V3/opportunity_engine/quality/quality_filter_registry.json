@@ -1,0 +1,143 @@
+{
+ "version": "QF-R1.0.0",
+ "frozen_at_utc": "2026-09-25",
+ "novelty_definition": {
+  "question": "is the current state rare relative to recent history?",
+  "window": 240,
+  "min_periods": 60,
+  "window_unit": "bars",
+  "rule": "rarity = mean over the trailing window of (|primary_feature| >= |primary_feature at t0|); NOVELTY = 1 - rarity",
+  "labels": {
+   "HIGH": "rarity <= 0.02",
+   "MEDIUM": "rarity <= 0.10",
+   "LOW": "rarity > 0.10"
+  },
+  "primary_feature_by_type": {
+   "OPP_STATE_BREAK": "return_60m",
+   "OPP_STATE_TRANSITION": "vol_pct_240",
+   "OPP_CROSSMARKET_SHOCK": "external_z",
+   "OPP_CROSSMARKET_DIVERGENCE": "external_z",
+   "OPP_VOL_TRANSITION": "vol_ratio_5_30"
+  },
+  "no_future_data": true
+ },
+ "extremeness_definition": {
+  "question": "how far from normal is the state?",
+  "rule": "REUSES the R1 frozen thresholds verbatim; no retuning",
+  "labels": {
+   "HIGH": "abs(z)>=3 or vol_pct>=0.95 or abs(external_z)>=3",
+   "MEDIUM": "abs(z)>=2 or vol_pct>=0.90 or abs(external_z)>=2",
+   "LOW": "otherwise"
+  }
+ },
+ "persistence_definition": {
+  "question": "is this a state event or a single-bar spike?",
+  "rule": "BACKWARD ONLY: count consecutive preceding bars (including t0) whose vol_state equals the vol_state at t0",
+  "labels": {
+   "HIGH": ">=3 bars",
+   "MEDIUM": "2 bars",
+   "LOW": "1 bar"
+  },
+  "forward_persistence": "stored as post_event_persistence_observation ONLY (never used in the decision)",
+  "no_future_data": true
+ },
+ "crossmarket_definition": {
+  "question": "do independent markets confirm the state?",
+  "rule": "count of {DXY, VIX, UST10Y_PROXY} with abs(z) >= 2 in the same bar or the preceding 2 bars",
+  "labels": {
+   "HIGH": ">=2 confirm",
+   "MEDIUM": "1 confirm",
+   "NONE": "0 confirm"
+  },
+  "note": "NONE is not a rejection; a single-market opportunity may still be worth research"
+ },
+ "recurrence_definition": {
+  "rule": "number of strictly PRIOR opportunities of the same opportunity_type (asof, no future info)",
+  "labels": {
+   "HIGH": ">=20 prior",
+   "MEDIUM": "5..19 prior",
+   "LOW": "1..4 prior"
+  },
+  "forbidden_inputs": [
+   "future return",
+   "pnl",
+   "win rate",
+   "sharpe"
+  ]
+ },
+ "data_quality_definition": {
+  "inherit": "from the R1 opportunity record",
+  "semantic_dependency": "cross-market opportunities carry SEMANTIC_DEPENDENCY=UNKNOWN (XAUUSD bar semantics UNKNOWN; Yahoo bar semantics UNKNOWN; UST10Y is a PROXY)",
+  "never_upgrade_to_verified": true
+ },
+ "decision_matrix_ordered": [
+  {
+   "id": "R1",
+   "if": "data_quality == UNKNOWN",
+   "then": "QUALITY_INSUFFICIENT",
+   "why": "cannot judge, rather than not worth it"
+  },
+  {
+   "id": "R2",
+   "if": "recurrence == LOW",
+   "then": "QUALITY_INSUFFICIENT",
+   "why": "too rare to investigate yet"
+  },
+  {
+   "id": "R3",
+   "if": "extremeness == LOW and novelty == LOW",
+   "then": "QUALITY_REJECT",
+   "why": "ordinary repeated state"
+  },
+  {
+   "id": "R4",
+   "if": "persistence == LOW and extremeness == LOW",
+   "then": "QUALITY_REJECT",
+   "why": "single-bar noise without extremeness"
+  },
+  {
+   "id": "R5",
+   "if": "recurrence == HIGH and novelty == LOW",
+   "then": "QUALITY_REJECT",
+   "why": "very common state"
+  },
+  {
+   "id": "R6",
+   "if": "extremeness>=MEDIUM and novelty>=MEDIUM and persistence>=MEDIUM and recurrence>=MEDIUM",
+   "then": "QUALITY_PASS",
+   "why": "worth spending Hermes resources"
+  },
+  {
+   "id": "R7",
+   "if": "otherwise",
+   "then": "QUALITY_INSUFFICIENT",
+   "why": "unresolved combination"
+  }
+ ],
+ "no_black_box_total_score": true,
+ "forbidden_fields": [
+  "profit_score",
+  "win_probability",
+  "expected_profit",
+  "expected_return",
+  "sharpe",
+  "profit_factor",
+  "pnl",
+  "future_return",
+  "win_rate",
+  "forward_return",
+  "signal",
+  "order",
+  "position"
+ ],
+ "lifecycle_allowed_states": [
+  "OBSERVED",
+  "QUALITY_PASS",
+  "QUALITY_REJECT",
+  "QUALITY_INSUFFICIENT",
+  "INVESTIGATE",
+  "REJECT",
+  "INSUFFICIENT_EVIDENCE",
+  "CANDIDATE_RESEARCH"
+ ]
+}

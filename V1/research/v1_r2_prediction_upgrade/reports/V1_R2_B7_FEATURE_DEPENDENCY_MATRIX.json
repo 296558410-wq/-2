@@ -1,0 +1,59 @@
+{
+ "matrix": [
+  {
+   "A": "LEVEL",
+   "B": "BREAK",
+   "relationship": "DERIVED",
+   "evidence": "break groups all inside `if nl:` (R1 L205); LEVEL<->BREAK conjunction is entailed"
+  },
+  {
+   "A": "LEVEL",
+   "B": "TOUCH",
+   "relationship": "DERIVED",
+   "evidence": "touch_state is built from the nearest level object (R1 L180-194)"
+  },
+  {
+   "A": "BREAK",
+   "B": "TOUCH",
+   "relationship": "DERIVED",
+   "evidence": "4/6 break groups read level touch stats (touch_events_240, rec_ok/fail, fail_rate, pen_last, last_touch_i)"
+  },
+  {
+   "A": "MOMENTUM",
+   "B": "COUNTER",
+   "relationship": "PARTIALLY_DEPENDENT",
+   "evidence": "COUNTER_DECELERATION is `momentum==DECELERATING` (R2 L152) -> 1/5 counter groups is a restatement; other 4 are separate axes"
+  },
+  {
+   "A": "REGIME",
+   "B": "MOMENTUM",
+   "relationship": "PARTIALLY_DEPENDENT",
+   "evidence": "shared close+ATR20+vel4; regime adds atr_pctl/er10/slope5, momentum adds acc/rng_exp (R1 L151-166 vs L225-236)"
+  },
+  {
+   "A": "ABSORPTION",
+   "B": "BREAK",
+   "relationship": "PARTIALLY_DEPENDENT",
+   "evidence": "break group ABSORPTION reads absorption.state (R1 L214) - one-way input"
+  },
+  {
+   "A": "ABSORPTION",
+   "B": "COUNTER",
+   "relationship": "DERIVED",
+   "evidence": "COUNTER_ABSORPTION is a restatement of absorption.state (R2 L144)"
+  },
+  {
+   "A": "LIQUIDITY",
+   "B": "BREAK",
+   "relationship": "UNKNOWN",
+   "evidence": "engines_v2 emits no liquidity field; no liquidity input to break (not assessable)"
+  }
+ ],
+ "allowed_relationships": [
+  "INDEPENDENT",
+  "PARTIALLY_DEPENDENT",
+  "DERIVED",
+  "CONDITIONALLY_DEPENDENT",
+  "UNKNOWN"
+ ]
+}

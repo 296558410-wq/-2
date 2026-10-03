@@ -1,0 +1,74 @@
+# ============================================================
+# AIQuant-XAUUSD-Systems — archive .gitignore
+# Hard rule: NEVER commit real secrets, runtime data or binaries.
+# ============================================================
+
+# ---- secrets / credentials (NEVER) ----
+.env
+.env.*
+*.key
+*.pem
+*.p12
+*.pfx
+*.secret
+credentials*
+secrets*
+*.crt
+*.cer
+id_rsa*
+id_ed25519*
+
+# ---- python / virtualenv / caches ----
+__pycache__/
+*.pyc
+*.pyo
+.venv/
+venv/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+*.egg-info/
+
+# ---- runtime / volatile data (any depth where clearly runtime) ----
+data_cache/
+run_state/
+observations/
+*.jsonl
+*.log
+*.sqlite
+*.db
+*.parquet
+*.bak
+*.bak_*
+heartbeat.json
+heartbeat.md
+*_latest.json
+*_latest.md
+*_health.json
+*scheduler_state*.json
+
+# ---- runtime/state/cache/tmp/logs at archive root only
+# (NOTE: anchored with a leading slash so that source code such as
+#  V2/src/runtime/v2_scheduled_cycle.py is NOT ignored) ----
+/runtime/
+/state/
+/cache/
+/tmp/
+/logs/
+
+# ---- binaries / MT5 artifacts ----
+terminal64.exe
+*.ex5
+*.dll
+*.exe
+*.so
+*.pyd
+
+# ---- editor / OS ----
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+
+# ---- build scratch (assembler temp outputs) ----
+_build_temp/

@@ -1,0 +1,49 @@
+{
+ "generated_utc": "2026-10-02T03:50:20.941072+00:00",
+ "note": "a --dry-run is NOT zero-side-effect: it appends DECISION and may append reconciled CLOSE/PNL; it never sends an order and (in dry mode) never calls order_check",
+ "before": {
+  "sha256": "2001d238286c4d9131a57188ef59088d8a70092d51dae4972b7e4ea947c16721",
+  "lines": 619,
+  "last_seq": 619,
+  "last_event": "DECISION",
+  "utc": "2026-10-02T03:50:17.369244+00:00"
+ },
+ "after": {
+  "sha256": "b056bb576835752ba6372c810fea1c786b6e7cbeeff6d0a5c6c630ea8399ddad",
+  "lines": 620,
+  "last_seq": 620,
+  "last_event": "DECISION",
+  "utc": "2026-10-02T03:50:20.919070+00:00"
+ },
+ "cycle_exit": 0,
+ "cycle_action": "WAIT_RISK:MAX_DAILY_LOSS,MAX_CONSECUTIVE_LOSS",
+ "cycle_order_sent": false,
+ "cycle_risk_allow": false,
+ "cycle_risk_reasons": [
+  "MAX_DAILY_LOSS",
+  "MAX_CONSECUTIVE_LOSS"
+ ],
+ "cycle_risk_daily_loss": -25.409999999999997,
+ "cycle_risk_consecutive_losses": 3,
+ "cycle_data_age_seconds": 17.0,
+ "cycle_slippage_bps_used": 1.4464,
+ "new_event_count": 1,
+ "new_events": [
+  "DECISION"
+ ],
+ "new_orderish_events": [],
+ "new_events_detail": [
+  {
+   "seq": 620,
+   "ts_utc": "2026-10-02T03:50:20.843189+00:00",
+   "event": "DECISION",
+   "action": "WAIT_RISK:MAX_DAILY_LOSS,MAX_CONSECUTIVE_LOSS"
+  }
+ ],
+ "ledger_chain_after": {
+  "ok": true,
+  "entries": 620,
+  "bad": null
+ },
+ "verdict": "DRYRUN_OK_NO_ORDER_SIDE_EFFECT"
+}

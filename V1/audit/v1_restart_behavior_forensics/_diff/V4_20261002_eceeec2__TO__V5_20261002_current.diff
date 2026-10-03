@@ -1,0 +1,77 @@
+--- V4_20261002_eceeec2
++++ V5_20261002_current
+@@ -19,4 +19,5 @@
+ 
+ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
++sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), "truth"))
+ from gates import (Ledger, RiskGuard, DemoGate, MAGIC, COMMENT,           # noqa: E402
+                    rebuild_risk_state, data_age_seconds, last_realized_slippage_bps,
+@@ -359,8 +360,46 @@
+         else:
+             action = "ENTER"
++        # ---- Truth System: stable ids + immutable Decision Snapshot BEFORE any execution ----
++        _cycle_id = "V1C-" + NOW[:19].replace("-", "").replace(":", "")
++        _truth_ok = True
++        _decision_id = None
++        try:
++            import truth_lib as TR
++            _decision_id = TR.make_decision_id(_cycle_id, action)
++            _truth_ok = bool(TR.write_decision_snapshot({
++                "protocol_version": TR.TRUTH_VERSION, "schema_version": TR.SCHEMA_VERSION,
++                "cycle_id": _cycle_id, "decision_id": _decision_id,
++                "code_version": [(TR.sha_file(os.path.join(ROOT, "cycle.py")) or "")[:16],
++                                 (TR.sha_file(os.path.join(ROOT, "gates.py")) or "")[:16]],
++                "config_hash": (TR.sha_file(os.path.join(ROOT, "registry", "runtime_config.json")) or "")[:16],
++                "timestamp_utc": NOW, "server_time": int(getattr(_tick, "time", 0) or 0), "symbol": SYMBOL,
++                "market_snapshot": snap, "data_source": "MT5:" + str(env.get("DEMO_MT5_SERVER", "")),
++                "data_timestamp": (int(_m1[-2]["time"]) + 60) if (_m1 is not None and len(_m1) >= 2) else None,
++                "data_age": _age, "PIT_status": ("PIT_OK" if _age is not None else "UNKNOWN"),
++                "hermes_input_hash": TR.sha_obj(ls)[:16],
++                "hermes_output": {"signal": sig, "not_hermes_alpha": True},
++                "signal": sig,
++                "risk_state": {"daily_loss": rg.daily_loss, "consecutive_losses": rg.consecutive_losses,
++                               "kill_switch": rg.kill_switch, "unavailable": rg.unavailable},
++                "risk_reasons": reasons, "daily_loss": rg.daily_loss, "consecutive_loss": rg.consecutive_losses,
++                "position_state": {"account_positions": len(positions), "confirmed": _positions_ok},
++                "slippage_state": {"used": _slip, "source": "last_ORDER_SEND", "known": _slip is not None},
++                "dedup_state": {"key": _dedup, "sent_keys_recent": sorted(_already)[-5:]},
++                "kill_switch_state": {"on": rg.kill_switch, "reason": rg.kill_reason},
++                "decision": {"action": action, "signal_trade": bool(oi.get("trade"))},
++                "risk_inputs_ok": {"reconcile": _reconcile_ok, "positions": _positions_ok},
++            }))
++        except Exception as _te:  # noqa: BLE001
++            _truth_ok = False
++            res["truth_record_error"] = str(_te)[:150]
++        if _decision_id is None:
++            _decision_id = "V1D-UNAVAILABLE"
++        if (not _truth_ok) and action == "ENTER":
++            action = "WAIT_TRUTH:RECORD_FAILED"      # record failure => safe state: no new entry
++            res["truth_blocked"] = True
+         lg.append("DECISION", action=action, signal_source=src, signal=sig, order_intent=oi, live_state=ls,
+                    risk_allow=bool(allow), risk_reasons=reasons, snapshot=snap, atr=atr,
+                    account_positions=len(positions), account_login=ai.login, signal_type="BASELINE_CONTROL",
+-                   not_hermes_alpha=True)
++                   not_hermes_alpha=True, cycle_id=_cycle_id, decision_id=_decision_id, truth_record_ok=_truth_ok)
+         res.update({"action": action, "signal": sig, "order_intent": oi, "live_state": ls, "risk_allow": bool(allow),
+                      "risk_reasons": reasons, "snapshot": snap, "atr": atr, "account_positions": len(positions),
+@@ -368,5 +407,6 @@
+                      "data_age_seconds": _age, "slippage_bps_used": _slip,
+                      "kill_switch": rg.kill_switch, "kill_reason": rg.kill_reason, "dedup_key": _dedup,
+-                     "risk_unavailable": rg.unavailable,
++                     "risk_unavailable": rg.unavailable, "cycle_id": _cycle_id, "decision_id": _decision_id,
++                     "truth_record_ok": _truth_ok,
+                      "mapping_hash": mapping.get("mapping_hash", "")[:16]})
+         if action == "ENTER" and oi.get("trade"):
+@@ -431,4 +471,12 @@
+                                  "latency_ms": latency_ms, "slippage_bps": slip_bps,
+                                  "broker_comment": getattr(r, "comment", "")})
++        # ---- Truth System: per-cycle consistency checks + incident generation (never affects action) ----
++        try:
++            import truth_lib as _TR
++            _incs = _TR.cycle_consistency(mt5, lg, res, _cycle_id)
++            if _incs:
++                res["truth_incidents"] = _incs
++        except Exception as _ce:  # noqa: BLE001
++            res["truth_check_error"] = str(_ce)[:150]
+         mt5.shutdown()
+     except Exception as e:  # noqa: BLE001

@@ -1,0 +1,143 @@
+{
+ "schema": "v3_prereg_model_registry/1",
+ "preregistration_id": "V3-HFT-PREREG-001",
+ "generated_utc": "2026-09-22T06:25:00Z",
+ "status_note": "PREREGISTERED only. No model has been trained, run or validated.",
+ "ladder": [
+  "LEVEL-0",
+  "CAND-002",
+  "CAND-001",
+  "CAND-003"
+ ],
+ "promotion_ladder": [
+  "CANDIDATE",
+  "EXPERIMENTAL",
+  "OOS_SUPPORTED",
+  "EXECUTION_VALIDATED"
+ ],
+ "combination_tuning_round1": "FORBIDDEN",
+ "models": [
+  {
+   "model_id": "LEVEL-0",
+   "level": 0,
+   "name": "Cost-Only Baseline",
+   "role": "BASELINE",
+   "inputs": [
+    "decision_timestamp",
+    "bid",
+    "ask",
+    "historical_move_stats",
+    "cost_constants"
+   ],
+   "outputs": [
+    "cost_to_move",
+    "coverage",
+    "TRADABLE_BY_COST|BLOCKED_BY_COST"
+   ],
+   "decision_vocabulary": [
+    "REPORT_ONLY"
+   ],
+   "directional": false,
+   "trades": false,
+   "protocol": "protocol/LEVEL_0_COST_BASELINE.md",
+   "status": "PREREGISTERED",
+   "forbidden_inputs": [
+    "CAND-001 signal",
+    "CAND-003 decay",
+    "future markout",
+    "future realised PnL"
+   ]
+  },
+  {
+   "model_id": "CAND-002",
+   "level": 1,
+   "name": "Spread-State Execution",
+   "role": "SECONDARY",
+   "inputs": [
+    "bid",
+    "ask",
+    "mid",
+    "spread_usd",
+    "spread_bp",
+    "spread_change_200t",
+    "quote_arrival_1s",
+    "recent_return_1s",
+    "recent_volatility_50t"
+   ],
+   "outputs": [
+    "TRADEABLE",
+    "NOT_TRADEABLE",
+    "UNKNOWN"
+   ],
+   "decision_vocabulary": [
+    "TRADEABLE",
+    "NOT_TRADEABLE",
+    "UNKNOWN"
+   ],
+   "directional": false,
+   "trades": false,
+   "hypothesis": "H002 ECONOMIC_GATE_HYPOTHESIS",
+   "protocol": "protocol/CAND-002_PROTOCOL.md",
+   "status": "PREREGISTERED"
+  },
+  {
+   "model_id": "CAND-001",
+   "level": 2,
+   "name": "Execution-Aware L1 Markout Gate",
+   "role": "PRIMARY",
+   "inputs": [
+    "15 registered PREDICTIVE features (data/DATA_SCHEMA.md)"
+   ],
+   "outputs": [
+    "expected_gross_edge",
+    "expected_cost",
+    "expected_adverse_selection",
+    "net_edge",
+    "uncertainty",
+    "TAKE|WAIT"
+   ],
+   "decision_vocabulary": [
+    "TAKE",
+    "WAIT"
+   ],
+   "directional": true,
+   "trades": true,
+   "structure": "EXPECTED_GROSS_EDGE - EXPECTED_EXECUTION_COST - EXPECTED_ADVERSE_SELECTION = NET_EDGE",
+   "protocol": "protocol/CAND-001_PROTOCOL.md",
+   "status": "PREREGISTERED"
+  },
+  {
+   "model_id": "CAND-003",
+   "level": 3,
+   "name": "Adverse-Selection Conditional Exit",
+   "role": "EXPLORATORY",
+   "inputs": [
+    "state at each decision instant",
+    "position",
+    "elapsed time",
+    "exit cost estimate"
+   ],
+   "outputs": [
+    "EXPECTED_REMAINING_EDGE",
+    "HOLD|EXIT",
+    "failure class"
+   ],
+   "decision_vocabulary": [
+    "HOLD",
+    "EXIT"
+   ],
+   "directional": false,
+   "trades": false,
+   "structure": "EXIT iff E[remaining_edge] - EXIT_COST - MARGIN < 0 ; E(t)=E0*exp(-lambda t) [ASSUMPTION]",
+   "taxonomy": [
+    "ENTRY_WRONG",
+    "EDGE_DECAY",
+    "ADVERSE_SELECTION",
+    "COST_EROSION",
+    "UNCLASSIFIED"
+   ],
+   "protocol": "protocol/CAND-003_PROTOCOL.md",
+   "status": "PREREGISTERED"
+  }
+ ]
+}

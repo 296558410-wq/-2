@@ -1,0 +1,114 @@
+{
+  "forecast_id": "HERMES_A_R5_20260726_120000Z",
+  "timestamp": "2026-07-26 12:00:00+00:00",
+  "observations": [
+    "Context as_of 2026-07-26 12:00:00+00:00; symbol XAUUSD; context_version v1r3-r1.",
+    "Latest available L1 bar is M1 2026-07-24 21:59:00+00:00, close 4049.125; all timeframes report last close 4049.125. Price data ends ~38h before as_of (data gap).",
+    "L2 nearest level SWING_LOW_36869 at 4048.995 (side DN, origin SWING_LOW, age 6 bars, touch_count_240 54, distance 0.027 ATR), break_status INSIDE, reclaim_status NONE.",
+    "L3 frozen behavior label COMPRESSION; state_v2 COMPRESSION; event_at_t ACCEPTANCE.",
+    "L5 state history: TREND (dwells 2..8) then COMPRESSION (dwell 1); transitions_last_8 = [TREND->COMPRESSION]; ambiguity_rate_8 0.375.",
+    "L4 candidate mechanism: trend_continuation, supporting_evidence 'price inside level, 8-bar displacement -5.06', invalidation 'decisive break of the active level', data_quality DERIVED (note: candidates NOT asserted as fact).",
+    "L6 MTF agreement CONFLICT: trend_20 M1 -4.49, M5 -0.35, M15 -25.48, H1 +5.75, H4 -32.87; note: timeframes never merged into one direction.",
+    "L7 cross-market DXY/VIX/TNX UNKNOWN (STALE_OR_NOT_COVERED); GLD/GC/CFTC_COT/ETF_FLOWS/NEWS/MACRO_EVENTS absent; absent_rule: never fabricated.",
+    "Historical analogs (state evolution ONLY, no returns/PnL/labels): A19573, A25757, A31035 all t0 COMPRESSION; A19573/A25757 stay COMPRESSION/REJECTION; A31035 transitions to TREND by step 12.",
+    "M1 sequence_flags: consecutive_down 8, range_contracting true, range_expanding false; M5/M15 range_expanding true."
+  ],
+  "what_i_know": [
+    "I know only what the PIT context states; the most recent price structure is from 2026-07-24 21:59 UTC (close 4049.125).",
+    "Price sits essentially ON the swing-low level 4048.995 (0.027 ATR away) with break_status INSIDE and reclaim_status NONE.",
+    "Market regime just transitioned from a long TREND (dwell 2-8) into COMPRESSION (dwell 1) with an ACCEPTANCE event.",
+    "Recent microstructure is bearish-leaning: 8 consecutive down bars on M1, negative trend_20 on M1/M5/M15/H4, M1 contracting.",
+    "Exactly one candidate mechanism (trend_continuation) is provided, labelled DERIVED and explicitly NOT asserted as fact.",
+    "Cross-market and fundamental inputs are unavailable by rule; they are recorded as absent, never fabricated."
+  ],
+  "what_i_do_not_know": [
+    "What happened to price between 2026-07-24 21:59 UTC and as_of 2026-07-26 12:00 UTC (~38h gap) - largest unknown; the snapshot may be stale/unrepresentative of the current state.",
+    "Whether the 4048.995 swing low will be decisively broken, held, or reclaimed - no post-gap evidence.",
+    "The direction and quality of the compression resolution (COMPRESSION withholds direction by construction).",
+    "All fundamental/macro/news flows and cross-market states (DXY, VIX, TNX are PROXY/UNKNOWN; all other series absent).",
+    "Which mechanisms beyond the single DERIVED candidate might be active; L4 candidates are not exhaustive.",
+    "Future outcomes: historical analogs contain state evolution only, never returns or labels (no directional inference from them).",
+    "Full deeper context: trend_50 and long-horizon structure are only partially provided."
+  ],
+  "evidence": [
+    "Price closed at 4049.125, only 0.027 ATR above the swing-low level 4048.995 with break_status INSIDE - a breakdown is within a tick.",
+    "M1 shows 8 consecutive down bars with range contracting; L4 reports 8-bar displacement -5.06 (downward).",
+    "trend_20 negative on M1 (-4.49), M15 (-25.48), H4 (-32.87); H4 trend_20 strongly negative.",
+    "State history shows an extended TREND regime (dwell 2-8) that paused into COMPRESSION near the lows - consistent with a pause inside a downtrend.",
+    "L4 offers trend_continuation as the candidate (DERIVED), with invalidation only on a decisive break of the level."
+  ],
+  "counter_evidence": [
+    "H1 trend_20 is positive (+5.75) - one timeframe opposes the bearish read; MTF agreement is explicitly CONFLICT (timeframes not to be merged).",
+    "The level has been touched 54 times in 240 bars - a heavily-tested swing low may hold and produce a bounce (mean reversion) rather than a break.",
+    "Price data is ~38h stale relative to as_of; the structure could already have resolved, broken, or reversed.",
+    "COMPRESSION with an ACCEPTANCE event is indecisive by construction; ambiguity_rate_8 0.375 indicates mixed classification.",
+    "Historical analogs predominantly remain in COMPRESSION/REJECTION (A19573, A25757); only A31035 later trends, and analogs carry no return information."
+  ],
+  "possible_mechanisms": [
+    {
+      "mechanism": "trend_continuation",
+      "status": "POSSIBLE",
+      "why": "Offered as the single DERIVED candidate in L4 (price inside level, 8-bar displacement -5.06, invalidation = decisive break). Consistent with the data but NOT assertable: stale data gap and MTF conflict prevent confirmation, so status stays POSSIBLE, never SUPPORTED."
+    },
+    {
+      "mechanism": "mean_reversion_at_level",
+      "status": "POSSIBLE",
+      "why": "A 54-touch-in-240 swing low directly under price (0.027 ATR) is a candidate support/bounce zone; this is inferred from level statistics, not provided as a candidate, so it is only POSSIBLE."
+    },
+    {
+      "mechanism": "compression_expansion_direction_unknown",
+      "status": "UNKNOWN",
+      "why": "COMPRESSION by definition withholds direction; the resolution direction cannot be established from the current context and is genuinely unknown."
+    }
+  ],
+  "primary_scenario": {
+    "scenario": "Conditional bearish continuation / breakdown: IF the stale snapshot is representative, price continues the prior downtrend, breaks and accepts below the swing-low 4048.995, and COMPRESSION resolves into a downward TREND.",
+    "horizon": "H1-H4 (short-term, intraday to ~1 day) - conditional on fresh data confirming the snapshot",
+    "trigger": "Decisive break of 4048.995 (~1-2 ATR) with acceptance (close below the level) on M15/H1 after market data resumes",
+    "invalidation": "Reclaim of 4048.995 (reclaim_status -> RECLAIMED) or a close back above ~4053-4055; or arrival of fresh data showing price already far from this level"
+  },
+  "alternative_scenario": {
+    "scenario": "Conditional mean-reversion hold/bounce: the heavily-tested swing low at 4048.995 holds, the compression resolves upward, price reclaims the level and rises toward 4055-4060.",
+    "horizon": "H1-H4 (short-term)",
+    "trigger": "Rejection wick off 4048.995 with an H1 close above ~4053 and reclaim of the level",
+    "invalidation": "A close below 4048.995 (level lost)"
+  },
+  "expected_transition": "COMPRESSION -> TREND upon expansion, direction unresolved from current data; a genuine data gap and MTF CONFLICT prevent a directional assertion now.",
+  "direction_bias": "NO_DIRECTIONAL_EDGE",
+  "time_horizon": "H1-H4 (short-term, intraday to ~1 day)",
+  "evidence_strength": 0.3,
+  "confidence": 0.2,
+  "uncertainty": 0.8,
+  "confidence_reason": "The only support for a lean is stale microstructure (down displacement, negative trend_20 on 4 of 5 timeframes) sitting on a heavily-tested support. But the ~38h data gap before as_of, the explicit MTF CONFLICT, the single DERIVED candidate, and fully absent cross-market/fundamental inputs cap confidence at 0.2.",
+  "uncertainty_reason": "Uncertainty is 0.8 because: no price information exists between the last bar and as_of; compression direction is unknowable by construction; MTF agreement is CONFLICT; cross-market series are all UNKNOWN/absent; analogs carry no return information. The next actionable resolution depends on data that is not in this context.",
+  "invalidation": "The forecast is primarily invalidated by fresh data showing structure different from this stale snapshot (e.g., price already well above/below 4048.995 at as_of). For the conditional scenarios: reclaim of 4048.995 invalidates the breakdown read; a close below 4048.995 invalidates the bounce read.",
+  "change_my_mind": [
+    "Fresh price data covering 2026-07-24 22:00 UTC through as_of showing a clear, accepted break or a clear reclaim of 4048.995.",
+    "L2 reclaim_status changing from NONE to RECLAIMED on SWING_LOW_36869.",
+    "A decisive multi-timeframe agreement replacing the current MTF CONFLICT.",
+    "New cross-market data (DXY, VIX, TNX) or fundamentals confirming or contradicting the local structure.",
+    "A mechanism in L4 being promoted from candidate to SUPPORTED by evidence."
+  ],
+  "abstain": true,
+  "abstain_reason": "Context is insufficient to assert direction: (a) last price bar is ~38h before as_of with no indication the snapshot represents the current state; (b) MTF agreement is explicitly CONFLICT (H1 opposes all other timeframes); (c) only one DERIVED candidate mechanism exists and is not assertable; (d) all cross-market/fundamental series are UNKNOWN/absent. Under R5 discipline this is 'insufficient', so abstain=true and direction_bias=NO_DIRECTIONAL_EDGE; conditional scenarios above are informational only and not tradeable assertions.",
+  "questions": {
+    "Q1_what_do_i_know": "Only what the context states: as_of 2026-07-26 12:00Z; last price 4049.125 (2026-07-24 21:59Z) sitting 0.027 ATR above swing-low 4048.995 with break_status INSIDE and reclaim NONE; regime COMPRESSION/ACCEPTANCE with dwell 1 after an extended TREND; 8 consecutive down M1 bars and negative trend_20 on 4/5 timeframes; one DERIVED candidate (trend_continuation); MTF CONFLICT; cross-market absent.",
+    "Q2_what_do_i_not_know": "Everything between the last bar and as_of (~38h gap); whether 4048.995 holds/breaks/reclaims; compression resolution direction; all macro/news/cross-market states (DXY/VIX/TNX PROXY/UNKNOWN, rest absent); which other mechanisms may be active; any future outcomes (analogs are state-evolution only).",
+    "Q3_evidence_for_primary": "Price within a tick of a swing-low with break_status INSIDE; M1 8-bar down displacement and contracting range; negative trend_20 on M1/M5/M15/H4; extended TREND that paused into COMPRESSION near the lows; single DERIVED candidate trend_continuation (bearish continuation read).",
+    "Q4_evidence_against_primary": "H1 trend_20 is positive and MTF agreement is explicitly CONFLICT; the level is heavily tested (54 touches/240) and may bounce rather than break; price data is ~38h stale so the bearish structure may already be invalid; COMPRESSION/ACCEPTANCE is indecisive; analogs mostly stay in COMPRESSION.",
+    "Q5_mechanism_that_is_only_possible": "trend_continuation is only POSSIBLE (DERIVED candidate, not asserted); additionally mean_reversion_at_level is only POSSIBLE (inferred from level statistics, not in candidates); compression expansion direction is UNKNOWN. None of these are entitlements to assert a mechanism as fact.",
+    "Q6_what_would_change_my_mind": "Fresh price data across the gap showing a confirmed break or reclaim of 4048.995; reclaim_status flipping to RECLAIMED; MTF agreement resolving away from CONFLICT; new DXY/VIX/TNX or fundamental data; any L4 mechanism promoted to SUPPORTED.",
+    "Q7_should_i_abstain_now": "true - the data gap before as_of, explicit MTF CONFLICT, single non-assertable candidate, and fully absent cross-market/fundamental inputs make the context insufficient for a directional assertion under R5 discipline."
+  },
+  "reasoning_trace": [
+    "1. Read only the R5 prompt and the PIT context; no future data used.",
+    "2. Extracted observations strictly as stated; separated facts from derived/inferred labels.",
+    "3. Noted data gap: last L1 bar 2026-07-24 21:59Z vs as_of 2026-07-26 12:00Z (~38h).",
+    "4. Noted the level 4048.995 with INSIDE break status, reclaim NONE, and 54 touches.",
+    "5. Evaluated the sole L4 candidate (trend_continuation) - kept POSSIBLE, never SUPPORTED.",
+    "6. Checked MTF: CONFLICT (H1 +5.75 vs others negative); did not merge timeframes.",
+    "7. Checked counter-evidence actively: H1 positivity, level strength, staleness, compression ambiguity, analogs.",
+    "8. Cross-market all UNKNOWN/absent - recorded, not fabricated.",
+    "9. Concluded context insufficient -> abstain=true, direction_bias NO_DIRECTIONAL_EDGE, confidence 0.2, uncertainty 0.8; scenarios marked conditional/informational."
+  ]
+}

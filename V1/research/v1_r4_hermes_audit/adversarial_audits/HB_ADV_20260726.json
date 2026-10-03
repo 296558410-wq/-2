@@ -1,0 +1,106 @@
+{
+  "audit_id": "HB_ADV_20260726",
+  "timestamp": "2026-09-27T22:44:00+08:00",
+  "overall_verdict": "PARTIAL_AGREE",
+  "dimension_verdicts": {
+    "CURRENT_STATE": "AGREE",
+    "STRUCTURE": "AGREE",
+    "MECHANISM": "PARTIAL_AGREE",
+    "PRIMARY_SCENARIO": "PARTIAL_AGREE",
+    "ALTERNATIVE_SCENARIO": "AGREE",
+    "EXPECTED_TRANSITION": "PARTIAL_AGREE",
+    "DIRECTION": "DISAGREE",
+    "HORIZON": "INSUFFICIENT_EVIDENCE",
+    "CONFIDENCE": "PARTIAL_AGREE",
+    "INVALIDATION": "AGREE",
+    "ABSTENTION": "PARTIAL_AGREE"
+  },
+  "factual_errors": [],
+  "insufficient_evidence": [
+    "DOWN direction: the only system mechanism candidate (trend_continuation) has supporting evidence 'price inside level, 8-bar displacement -5.06' and does not specify direction; the DOWN lean rests on M1/M5/M15/H4 negative trend_20 and 7-8 consecutive down bars, while L6_MULTI_TIMEFRAME agreement is explicitly CONFLICT (H1 trend_20 +5.75, H4 trend_50 +4.84) — direction is asserted where the context is inconclusive.",
+    "Targets for the primary scenario (4040.5 'swing area', then 4022.755): 4040.5 is not a listed level in L2_PRICE_STRUCTURE; it is inferred from H4 bar lows (4039.685 on 07-23 12:00, 4040.235 on 07-23 16:00). Only 4022.755 is a real prior low (H4 07-24 00:00). The target chain is unverified.",
+    "'Decision is imminent' / squeeze-nearing-resolution: inferred from H4 range percentile 0.015, H1 0.07 and M5 range_expanding true, but no context datum measures timing of resolution; compression can persist (third scenario itself concedes this).",
+    "The bounce target band '4053.5-4057.7' is derived from recent highs (4055.795, 4057.735) but is presented with false precision; no level object supports the band.",
+    "Directional pressure claim 'M1/M5/M15/H4 trend_20 negative' omits that M5 trend_20 is only -0.35 (near flat) while M5 trend_50 is -16.48 — the near-term M5 momentum read is far weaker than the pressure narrative implies."
+  ],
+  "missed_counter_evidence": [
+    "Analog A31035 (similarity 1.0) shows COMPRESSION persisting through steps 4-8 and reaching TREND at step 12 — the only analog that exits to TREND — and Hermes-A never cites it; the forecast's analog argument (A19573/A25757 rejection) is cherry-picked.",
+    "The 54-touch unbroken level (break_status INSIDE, reclaim_status NONE) is the strongest structural fact in the dataset, yet the primary scenario requires breaking exactly this level; Hermes-A lists it as counter-evidence but still assigns the downside-break scenario the highest probability (0.42).",
+    "H1 shows consecutive_down 8 with trend_20 +5.75: the H1 21:00 bar closed at its low (lower_wick 0.0) inside a positive trend_20 window — a structural contradiction that suggests H1 basing/oversold conditions; Hermes-A notes the +5.75 but does not explore its implication that the down-leg may be exhausted.",
+    "State history: the long TREND dwell (entries 2-8) transitions to COMPRESSION at t; a re-extension to TREND is symmetric in direction, yet Hermes-A attaches the TREND exit path exclusively to downside.",
+    "All cross-market series UNKNOWN/absent (DXY, VIX, UST10Y_PROXY_TNX; GLD/GC/COT/ETF/NEWS/MACRO absent) means zero confirmation for a directional break — used as a note but not as a reason to withhold a direction bias."
+  ],
+  "mechanism_jumps": [
+    "'54 touches imply a dense order/stop cluster; a decisive break could trigger cascade' — leaps from touch count to microstructure (order flow/stop density); Hermes-A labels it 'DERIVED inference only' but still uses it in current_pressure.",
+    "Adopting the trend_continuation candidate as primary attaches a DOWN direction and continuation semantics to a candidate whose evidence is only 'price inside level, 8-bar displacement -5.06' — the mechanism itself says nothing about direction.",
+    "'M5 expanding intra-bar (percentile 0.64) suggesting a decision is imminent' — a candle-geometry observation converted into a timing mechanism.",
+    "COMPRESSION + ACCEPTANCE at t is read as 'bearish directional pressure pressing price onto the level' — the ACCEPTANCE sub-label semantics are never defined in the context, so mapping it to bearish pressure is an interpretive jump."
+  ],
+  "over_inference": [
+    "Precise probability split 0.42/0.33/0.15 cannot be derived from any context datum; it is judgment presented with numeric precision.",
+    "Invalidation rule 'level holding without a break for ~4 H4 bars' invents a specific threshold not present in the context.",
+    "'7 consecutive TREND bars on H4' flattens the L5 sequence (TREND dwell entries 2-8, then COMPRESSION dwell 1) into a simple count; dwell semantics are more nuanced than the summary implies.",
+    "Internal probability inconsistency: scenario weights sum DOWN 0.42 vs NOT-DOWN 0.48 (0.33 bounce + 0.15 extended compression), yet direction_bias is declared DOWN — the forecast's own numbers contradict its headline direction."
+  ],
+  "time_window_issues": [
+    "Last price bar is 2026-07-24 21:59 UTC but context as_of is 2026-07-26 12:00 UTC (~38h gap, a weekend for XAUUSD): the 'current' read is stale, and an INTRADAY forecast made from this snapshot may describe a market state that already resolved; Hermes-A flags the gap in counter_evidence/question A but proceeds with an INTRADAY horizon regardless.",
+    "M5 trend_50 (-16.48) vs M5 trend_20 (-0.35) and H1 trend_50 (-93.04) vs H1 trend_20 (+5.75) show window-dependent direction disagreement that is only partially surfaced; the pressure narrative cites trend_20s selectively.",
+    "The 240-bar touch window (touch_count_240) is a single fixed window; 'heavily-tested' is asserted without knowing whether the 54 touches cluster recently or long ago."
+  ],
+  "data_quality_issues": [
+    "Supporting evidence #2 treats 'Frozen state COMPRESSION with ACCEPTANCE event at t' as fact, but state_v2 is 'DERIVED (min-dwell lifecycle)' and event_at_t is 'DERIVED (mapped from frozen sub-labels)' — DERIVED labels presented as observed evidence.",
+    "The liquidity/stop-cluster claim uses a PROXY-style inference (touch count as proxy for order density) without direct order flow; the prompt's own rule says PROXY must never be upgraded to DIRECT.",
+    "L2 level (SWING_LOW_36869) is 'DERIVED (pivot swing levels, causal)' and the mechanism candidate is 'DERIVED' with an empty counter_evidence list — empty counter_evidence means unverified, not verified; Hermes-A leans on it as the system's candidate.",
+    "DXY/VIX/UST10Y all 'UNKNOWN (STALE_OR_NOT_COVERED)' — the forecast treats absence as neutral, but absence of confirmation data is a reason to downgrade directional confidence, not merely a caveat."
+  ],
+  "hindsight_flags": [],
+  "explanation_not_prediction_flags": [
+    "The primary scenario is conditional ('if decisive break then downside continuation') — the unconditional content is a restatement of the present (price pressing a level with bearish momentum); the falsifiable prediction is deferred entirely to the trigger.",
+    "current_pressure largely describes the current candle geometry (bodies 3.42/6.09/5.14, percentiles 0.015/0.07) rather than forecasting; the forecast component is only the break-condition."
+  ],
+  "kline_overreliance_flags": [
+    "Every supporting-evidence item is K-line/geometry-derived (level touches, percentiles, bodies, trend_20, displacement); with all cross-market series absent, the forecast is 100% single-asset price-shape reasoning.",
+    "'Cascade' and 'dense order/stop cluster' are microstructure claims built on nothing but candle touch counts."
+  ],
+  "mtf_conflict_ignored_flags": [
+    "L6 agreement is CONFLICT and Hermes-A acknowledges it, yet the DOWN bias is retained without a stated rule for why lower-TF momentum (M1/M5/M15/H4 trend_20 negative) outranks H1 trend_20 +5.75 / H4 trend_50 +4.84 — the conflict is cited, then effectively overridden.",
+    "The forecast never resolves the M5 contradiction (trend_20 -0.35 near flat vs M5 range_expanding with a 3.42 bearish body) that sits between the compression and the break narrative.",
+    "H1 range percentile 0.07 with range_contracting true (H1) vs range_expanding true (M5/M15) — volatility expansion/contraction itself conflicts across timeframes, and the 'decision imminent' narrative leans only on the expanding side."
+  ],
+  "evidence": [
+    {
+      "claim": "Direction bias DOWN with primary scenario confidence 0.42",
+      "contradicting_or_absent_evidence": "Hermes-A's own scenario weights sum DOWN 0.42 vs NOT-DOWN 0.48 (alternative 0.33 + third 0.15); L6 agreement CONFLICT (H1 trend_20 +5.75, H4 trend_50 +4.84 vs negative lower-TF trend_20); 2/3 analogs show REJECTION before TREND; all cross-market confirmation absent."
+    },
+    {
+      "claim": "Primary scenario: decisive break below 4048.995 extends to 4040.5 then 4022.755",
+      "contradicting_or_absent_evidence": "4048.995 is unbroken across 54 touches/240 bars (INSIDE, reclaim NONE) — the strongest defended structure in view; 4040.5 is not a listed level anywhere in the context; break is conditional and had not occurred as of the last bar."
+    },
+    {
+      "claim": "Rejection/bounce alternative matches analogs A19573/A25757",
+      "contradicting_or_absent_evidence": "Consistent with context: both analogs show REJECTION episodes out of COMPRESSION (steps 4/8). No contradiction found; but the analog set also contains A31035 (COMPRESSION->TREND at step 12), which the forecast omits."
+    },
+    {
+      "claim": "Frozen state COMPRESSION with ACCEPTANCE at t (supporting evidence #2)",
+      "contradicting_or_absent_evidence": "Label is consistent with L3/L5, but state_v2 and event_at_t are DERIVED (min-dwell lifecycle / mapped sub-labels), not observed; treating them as supporting evidence overstates their epistemic weight."
+    },
+    {
+      "claim": "INTRADAY horizon",
+      "contradicting_or_absent_evidence": "Last bar 2026-07-24 21:59 UTC vs as_of 2026-07-26 12:00 UTC (~38h, weekend); an intraday decision window cannot be forecast from a snapshot this old — the resolution may already have occurred."
+    },
+    {
+      "claim": "M1/M5/M15/H4 trend_20 negative = bearish pressure",
+      "contradicting_or_absent_evidence": "M5 trend_20 is only -0.35 (near flat) while M5 trend_50 is -16.48; H1 trend_20 +5.75 and H4 trend_50 +4.84 positive — the pressure narrative selects only the negative trend_20s and drops the conflicting windows it cites elsewhere."
+    }
+  ],
+  "strongest_objection": "Hermes-A declares direction_bias DOWN with the highest single-scenario weight (0.42) for a downside break of the very level that is the single strongest defended structure in the dataset (54 touches in 240 bars, unbroken, INSIDE), while its own probability split assigns MORE total weight (0.48) to non-downside outcomes, while MTF agreement is CONFLICT, 2/3 analogs print REJECTION before any TREND, all cross-market confirmation is absent, and the price snapshot is ~38h stale. The DOWN primary is the least-supported leg of the evidence, the direction label contradicts the forecast's own scenario probabilities, and the INTRADAY horizon is unenforceable on stale data; the forecast largely restates the present (price pressing a defended level) and defers its only real prediction to a trigger it cannot observe.",
+  "reasoning_trace": [
+    "Read the HERMES-B prompt and the PIT payload only; verified Hermes-A's quoted figures against the context: level 4048.995/54 touches/INSIDE/distance 0.027, H4 trend_20 -32.87, M15 -25.48, M1 -4.49, H1 trend_20 +5.75, H4 trend_50 +4.84, H1 trend_50 -93.04, M5 trend_20 -0.35, displacement -5.06, percentiles H4 0.015/H1 0.07/M5 0.64 — all match; no fabricated numbers found (factual_errors empty).",
+    "Checked each dimension against context: CURRENT_STATE and STRUCTURE match L3/L5/L2 exactly (AGREE); MECHANISM inherits the system candidate but attaches direction and cascade inferences beyond it (PARTIAL_AGREE).",
+    "Cross-checked scenario probabilities: 0.42 + 0.33 + 0.15 = 0.90 with NOT-DOWN (0.48) exceeding DOWN (0.42) — found the internal contradiction driving DIRECTION=DISAGREE and CONFIDENCE=PARTIAL_AGREE.",
+    "Identified the omitted analog A31035 (COMPRESSION->TREND at step 12) as cherry-picking in the analog argument (missed_counter_evidence).",
+    "Flagged the 38h weekend staleness as the dominant time-window problem, making INTRADAY unverifiable (HORIZON=INSUFFICIENT_EVIDENCE); noted Hermes-A's own awareness but its failure to change the horizon or abstain.",
+    "Checked for hindsight: all trace steps are PIT-consistent, no future information used (hindsight_flags empty).",
+    "Composed the audit JSON per the prompt schema with one verdict per dimension and evidence-backed objection lists; overall_verdict PARTIAL_AGREE — well-structured and hedged, but direction and probability weighting contradict the evidence."
+  ]
+}

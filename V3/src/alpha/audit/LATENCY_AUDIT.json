@@ -1,0 +1,55 @@
+{
+ "schema": "v3_alpha_postmortem_latency/1",
+ "generated_utc": "2026-09-21T20:23:19.978124+00:00",
+ "task": "V3-HFT-ALPHA-POSTMORTEM-001",
+ "latency_grid_ms": [
+  0,
+  50,
+  100,
+  250,
+  500,
+  1000
+ ],
+ "rows": {
+  "1000": {
+   "selected": "B0/MLP",
+   "net_edge_bp_by_latency_ms": {
+    "0": -1.0039224001910074,
+    "50": -0.9383798810876328,
+    "100": -0.8381022300436755,
+    "250": -0.8305213437077569,
+    "500": -0.8106691912537771,
+    "1000": -1.255618984678217
+   }
+  },
+  "30000": {
+   "selected": "B3/Ridge",
+   "net_edge_bp_by_latency_ms": {
+    "0": -0.8795297522767153,
+    "50": -0.8875657012404424,
+    "100": -0.8881941765002781,
+    "250": -0.674384761330321,
+    "500": -0.6903329774028951,
+    "1000": -0.7817829157876506
+   }
+  },
+  "300000": {
+   "selected": "B4/GBT",
+   "net_edge_bp_by_latency_ms": {
+    "0": -0.7705955515474876,
+    "50": -0.7694860096229501,
+    "100": -0.7686448114410787,
+    "250": -0.7687320056380793,
+    "500": -0.7686146583629352,
+    "1000": -0.7665020964374599
+   }
+  }
+ },
+ "positive_at_0ms": {
+  "1000": false,
+  "30000": false,
+  "300000": false
+ },
+ "verdict": "NOT_LATENCY_BOUND",
+ "verdict_note": "Net edge is already negative at 0 ms latency on every horizon (1s -1.004 bp, 30s -0.880 bp, 5min -0.771 bp). Latency is a secondary effect, not the binding constraint."
+}

@@ -1,0 +1,82 @@
+{
+  "schema": "replay_report/1",
+  "code_commit": "2b6a14d454ff6130661e21ef490d03169bab25e1",
+  "question": "Does the reference decision path reproduce production? On which cycles?",
+  "systems": {
+    "V1_OLD": {
+      "replay_status": "NOT_POSSIBLE",
+      "cycles": null,
+      "reason": "no Hermes input snapshots preserved (pre-reset state rotated to archive); class-E DATA_GAP. Cannot reproduce any V1_OLD decision."
+    },
+    "V1_NEW": {
+      "replay_status": "INPUT_HASH_ONLY",
+      "cycles": "403 ledger DECISION + 34 truth snapshots",
+      "reason": "hermes_input_hash + per-snapshot sha256 stored; input BODY not stored so output replay not performed; ledger replay_match field never populated (null). One 2026-09-14 cycle recorded replay MATCH (mechanical control-arm map)."
+    },
+    "V2_PAPER_SHADOW": {
+      "replay_status": "REPRODUCES_PRODUCTION",
+      "cycles": "120/120 shadow cycles reproduce production decision path (reference_rules)",
+      "reason": "shadow_evolution reference side == production decide_pure(source=reference_rules); three-way shadow over the same 120 PIT cycles: reference->production 120/120 = 100.0%, discovery picks_changed=0, order_send=0. Phase-3 pre/post code-change replay: ledger sha unchanged (9b8b51c5dc774454, 12 lines), outcome engine 360/360 OK, G3 provenance replay_mismatch=[] but overall verdict FAIL (one provenance_missing). NOTE: reproduction is of the DETERMINISTIC reference placeholder, not a live LLM agent (true_llm_agent = LLM_UNAVAILABLE 120/120, no endpoint)."
+    },
+    "V3_CALIBRATION": {
+      "replay_status": "NOT_EVALUABLE",
+      "cycles": null,
+      "reason": "calibration pilot; execution disabled."
+    }
+  },
+  "prior_replay_results": [
+    {
+      "system": "V1_OLD",
+      "sample": "109 trades",
+      "replay_status": "NOT_POSSIBLE",
+      "input_hash_saved": false,
+      "reason": "no Hermes input snapshots preserved (state rotated); v1_audit class-E DATA_GAP"
+    },
+    {
+      "system": "V1_NEW",
+      "sample": "403 ledger DECISION + 34 truth snapshots",
+      "replay_status": "INPUT_HASH_ONLY",
+      "input_hash_saved": true,
+      "output_replay_performed": false,
+      "reason": "hermes_input_hash + sha256 stored per truth snapshot; input BODY not stored -> output replay not performed this pass; ledger replay_match=null (field never populated)",
+      "prior_audit_note": "2026-09-14 cycle recorded replay MATCH (mechanical control-arm map, not_hermes_alpha)"
+    },
+    {
+      "system": "V2_PAPER",
+      "sample": "run V2-SHADOW-20260917-021627-f80e (2 cycles)",
+      "replay_status": "PARTIAL",
+      "input_hash_saved": true,
+      "output_replay_performed": true,
+      "reason": "replay_mismatch=[] but provenance_missing=DEC-ctx_4cd398fb0547.json; overall verdict FAIL",
+      "evidence": "trader_v2/research/V2_G3_VERDICT.json"
+    }
+  ],
+  "v2_g3_verdict": {
+    "run_id": "V2-SHADOW-20260917-021627-f80e",
+    "ts": "2026-09-17T04:17:43.568056+00:00",
+    "elapsed_hours": 2.02,
+    "cycles": 2,
+    "verdict": "FAIL",
+    "reason": "critical mismatch (replay/provenance/instrument)",
+    "stats": {
+      "run_id": "V2-SHADOW-20260917-021627-f80e",
+      "ts": "2026-09-17T04:17:43.568056+00:00",
+      "snapshots": 2,
+      "snapshot_ok": 1,
+      "replay_mismatch": [],
+      "provenance_missing": [
+        "DEC-ctx_4cd398fb0547.json",
+        "DEC-ctx_4cd398fb0547.json"
+      ],
+      "instrument_mismatch": [],
+      "timeline_replay_false": [],
+      "cycles": 2,
+      "WAIT": 1,
+      "TRADE": 0,
+      "REJECT": 0,
+      "exec_attempts": 0,
+      "blocked": null
+    }
+  },
+  "summary": "Reference decision path reproduces production on all 120 V2 shadow cycles (100%), but V2 is a deterministic reference placeholder with 0 executed trades. V1_OLD cannot be replayed (no inputs). V1_NEW is input-hash-only."
+}

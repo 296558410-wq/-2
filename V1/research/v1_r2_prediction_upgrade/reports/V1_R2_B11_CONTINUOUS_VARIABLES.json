@@ -1,0 +1,19 @@
+{
+ "continuous_variables": [
+  "penetration_ratio = distance_inside_level / ATR20 (continuous, never binarised first)",
+  "distance_to_level_atr = |close - level_price| / ATR20",
+  "bars_inside_level (running count inside the band episode)",
+  "max_excursion_inside_level (running max of penetration_ratio within the episode)",
+  "close_position_relative_to_level = (close - level_price) / ATR20",
+  "range_normalised_penetration = penetration_distance / (bar high - bar low)",
+  "atr_normalised_penetration = penetration_ratio"
+ ],
+ "penetration_vs_touch_tol": {
+  "formal_TOUCH_TOL_ATR": 0.25,
+  "formal_PENETRATION_ATR": 0.3,
+  "share_of_episodes_with_pen_max_below_tol": 0.0,
+  "min_pen_max": 0.3696
+ },
+ "is_discretisation_of_one_variable": true,
+ "reason": "pen_ratio = max(high-price, price-low)/ATR computed ONLY inside the touch band; a boundary on it is a threshold on one continuous geometric variable already conditional on TOUCH"
+}

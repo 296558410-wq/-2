@@ -1,0 +1,51 @@
+{
+  "audit_id": "HB_BLIND_20260720",
+  "timestamp": "2026-07-20T12:00:00Z",
+  "current_state": "XAUUSD ~4024-4025. Frozen label COMPRESSION (dwell 1), event ACCEPTANCE inside the active swing-low level at 4021.065. Intraday structure shows an upward drift and expanding range on M1/M5/M15 (consecutive up 6, range_expanding true), while the H4 timeframe remains in a strong downtrend and the H1 bar printed a large upper-wick rejection near 4040.",
+  "structure": "Price is trading ABOVE a heavily-tested swing low (SWING_LOW_36173 @ 4021.065, 33 touches in 240 bars, distance ~0.12 ATR, break_status INSIDE). Multi-timeframe agreement is CONFLICT: M1/M5/M15 trend_20 positive (+3.25/+7.95/+17.21), H1 mixed (trend_20 +6.21 vs trend_50 -10.12), H4 strongly negative (trend_20 -54.13, trend_50 -78.13). The compression is a coiling phase embedded in a larger higher-timeframe downtrend; nearest real resistance is the rejected 4040 area (H1 upper wick 15.39).",
+  "mechanism": "Only candidate supplied is trend_continuation (price inside level, 8-bar displacement 2.57) — treated as a candidate, not fact. Intraday momentum (expanding range, 6 consecutive up bars, defended swing low) supports a near-term upside continuation, but the dominant H4 downtrend and firming DXY argue the compression could equally resolve downward. Compression pre-expansion is direction-agnostic; no news/macro/UST10Y data is available to adjudicate the direction of the eventual expansion.",
+  "primary_scenario": {
+    "scenario": "Intraday upside continuation: compression resolves upward as price holds above the 4021 swing low and extends toward 4026-4030, testing the 4040 rejection zone; capped by H4 downtrend and DXY firmness.",
+    "confidence": 0.4,
+    "horizon": "INTRADAY",
+    "trigger": "Sustained close above 4026-4028 with the 4021.065 swing low defended; expanding range continues on M1/M5.",
+    "invalidation": "Decisive 4-hour or sustained close below 4021.065 swing low, or an immediate rejection that breaks intraday momentum."
+  },
+  "alternative_scenario": {
+    "scenario": "Downward resolution: the compression breaks lower as continuation of the dominant H4 downtrend, price loses the 4021.065 swing low and heads toward 4015 and the 3998-4006 H4 low region.",
+    "confidence": 0.35,
+    "horizon": "INTRADAY",
+    "trigger": "Close below 4021.065, reinforced by H1/H4 downside momentum and further DXY strength.",
+    "invalidation": "Price reclaims and holds above 4030 (past the rejected 4040 area), which would flip structure to higher-timeframe bullish."
+  },
+  "expected_transition": "COMPRESSION -> TREND or REJECTION within roughly 8-16 bars (per historical analogs A19210/A24698/A30701, state-only): compression persists briefly then expands. Direction of expansion is not specified by the analog and remains the key uncertainty; expansion (increased range/volatility) is the higher-probability near-term event regardless of direction.",
+  "direction": "UP",
+  "horizon": "INTRADAY",
+  "confidence": 0.4,
+  "counter_evidence": [
+    "H1 current bar shows a large upper wick (15.39) rejection near 4040.435, indicating selling into strength.",
+    "H4 remains in a strong downtrend (trend_20 -54.13, trend_50 -78.13); a compression inside a downtrend often resolves lower.",
+    "DXY firming (change_8 +0.025, change_32 +0.041) is mildly negative for gold.",
+    "Multi-timeframe agreement is CONFLICT (H1 trend_50 -10.12, H4 negative vs intraday positive); timeframes are never merged into one direction.",
+    "No NEWS/MACRO_EVENTS/CFTC_COT/ETF_FLOWS/UST10Y data available to confirm the direction of any breakout."
+  ],
+  "invalidation": "Decisive break of the active level (SWING_LOW_36173 @ 4021.065) — i.e. a sustained 4-hour close below it — invalidates the upside lean; a sustained close above 4030 invalidates the downside alternative. Without either, direction remains ambiguous.",
+  "data_quality_flags": [
+    "DIRECT: L1 price klines (RAW_GEOMETRY)",
+    "DERIVED: L2 swing levels, L3/L4/L5 frozen labels and lifecycle states, L4 mechanism candidates (candidate only, not asserted)",
+    "DERIVED: L6 multi-timeframe trends and CONFLICT agreement",
+    "PROXY: DXY and VIX via Yahoo 5m (instrument definition UNKNOWN); never upgraded to DIRECT",
+    "UNKNOWN: UST10Y (^TNX) unavailable (STALE_OR_NOT_COVERED)",
+    "UNKNOWN: NEWS, MACRO_EVENTS, CFTC_COT, ETF_FLOWS, GLD, GC absent; recorded as absent, not fabricated",
+    "Historical analogs are STATE EVOLUTION ONLY (no returns/PnL), used solely for compression-persistence context"
+  ],
+  "reasoning_trace": [
+    "1) Read L1: intraday M1/M5/M15 show upward drift, 6 consecutive up bars, range_expanding=true; current price ~4024-4025 just above the 4021.065 swing low.",
+    "2) Read L2: active level SWING_LOW_36173 @4021.065, 33 touches, break_status INSIDE — heavily defended, price holding above it.",
+    "3) Read L3/L5: COMPRESSION (dwell 1), ACCEPTANCE event; recent history alternates REJECTION/TREND then into COMPRESSION — coiled, awaiting expansion.",
+    "4) Read L6: MTF agreement CONFLICT; H4 trend strongly negative while intraday frames positive — no single clean direction.",
+    "5) Read L7: DXY mildly firm, VIX low/flat; UST10Y/news/macro absent — cross-market gives a slight headwind, no confirming catalyst.",
+    "6) Weighed primary (UP intraday: momentum + defended level) vs alternative (DOWN: H4 downtrend continuation + DXY); both plausible, so confidence kept low (0.40).",
+    "7) Direction set UP for the near-term intraday edge only, explicitly conditional on the 4021.065 level holding; honest low confidence due to CONFLICT and absent fundamental catalysts."
+  ]
+}

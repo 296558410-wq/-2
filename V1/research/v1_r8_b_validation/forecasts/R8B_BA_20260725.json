@@ -1,0 +1,104 @@
+{
+  "audit_id": "BA_20260725",
+  "timestamp": "2026-09-28T19:19:00+08:00",
+  "overall_verdict": "PARTIAL_AGREE",
+  "focus_verdicts": {
+    "OBSERVATION_DISCIPLINE": "PARTIAL_AGREE",
+    "MECHANISM_DISCIPLINE": "DISAGREE",
+    "COUNTER_EVIDENCE": "PARTIAL_AGREE",
+    "CONFIDENCE": "PARTIAL_AGREE",
+    "ABSTENTION": "PARTIAL_AGREE",
+    "INVALIDATION": "PARTIAL_AGREE"
+  },
+  "over_inference": [
+    {
+      "quote": "Two of three analogs hold COMPRESSION at step 4",
+      "issue": "Used to make RANGE the primary scenario, but the analog set is information-poor: n=3, similarity_method 'exact_state + dwell_bucket' with all similarities trivially 1.0, and context note says 'STATE EVOLUTION ONLY; no returns/PnL/labels ever included (§18/§72)'. A step-4 state distribution over 3 uninformative analogs is near-zero-evidence, yet it drives scenario selection."
+    },
+    {
+      "quote": "Dwell 1; compression early in lifecycle",
+      "issue": "Claims a lifecycle regularity ('early in lifecycle') with persistence implications, but the context shows only a single transition history (TREND dwell 2-8 then COMPRESSION dwell 1) and no base rates for compression persistence at dwell 1. 'Early' persistence is asserted, not derived."
+    },
+    {
+      "quote": "Contracting ranges M1/H1/H4 with compression state",
+      "issue": "Selective aggregation: M5 and M15 have range_expanding=true in the same context ('M5/M15 ranges expanding into the level' appears only in the counter list). The evidence list is built by picking the 3 contracting timeframes and dropping the 2 expanding ones, which inflates the 'coherent compression' reading."
+    },
+    {
+      "quote": "expected_transition: 'COMPRESSION persists, or resolves to REJECTION'",
+      "issue": "This restates the analog step-4/step-8 distribution (2/3 COMPRESSION at 4, 2/3 REJECTION at 8) as an expectation without quantifying that both branches come from the same trivial-similarity analog set; it is a recast of the weakest evidence, not an independent expectation."
+    }
+  ],
+  "mechanism_jump": [
+    {
+      "quote": "level_acceptance_compression: status SUPPORTED, why 'ACCEPTANCE event; INSIDE level; contracting ranges'",
+      "issue": "The context L4 lists only one mechanism candidate, trend_continuation, with an explicit note 'mechanism CANDIDATES only; NOT asserted as fact (§13)'. Hermes-A invents a new mechanism label (level_acceptance_compression) absent from L4, then grades it SUPPORTED on circular grounds: the supporting facts are the ACCEPTANCE state label and INSIDE level status that the frozen labeler itself produced, plus a selectively-chosen subset of timeframes. A mechanism whose support is the label that names it, and which sits beside listed counter-evidence ('M5/M15 ranges expanding into the level', 'M1 eight down bars'), cannot be SUPPORTED; at most POSSIBLE."
+    },
+    {
+      "quote": "trend_continuation_down: status POSSIBLE vs level_acceptance_compression: status SUPPORTED",
+      "issue": "Evidence ranking is reversed relative to the context. L4's only candidate is trend_continuation with supporting_evidence 'price inside level, 8-bar displacement -5.06' and counter_evidence []. Hermes-A downgrades the context's only mechanistic signal to POSSIBLE while promoting its own unlisted mechanism to SUPPORTED, despite the momentum facts (8 consecutive down bars on M1, M5/M15 closing at lows, expanding M5/M15) pointing at least as hard at continuation."
+    }
+  ],
+  "missing_counter_evidence": [
+    {
+      "quote": "context L5 ambiguity_rate_8: 0.375",
+      "issue": "The frozen labeler that produced COMPRESSION/ACCEPTANCE has a 37.5% 8-state ambiguity rate, and current_state/event are DERIVED ('DERIVED (frozen C1 ontology + min-dwell lifecycle)'). Hermes-A never weighs label ambiguity against its own SUPPORTED acceptance mechanism; a 37.5% ambiguous label cannot carry a SUPPORTED mechanism status."
+    },
+    {
+      "quote": "context L6: H1 trend_20 5.75; H4 trend_50 4.84",
+      "issue": "The forecast notes H1 trend_20 positive only in what_i_know, but never uses the longer-timeframe up-bias (H1 trend_20 +5.75, H4 trend_50 +4.84) as counter-evidence to its DIRECTIONAL-down alternative ('Break of 4048.995 extends downside'). A break could flush into a reclaim; the one-sided downside framing of the break scenario ignores the positive longer-TF readings it itself recorded."
+    },
+    {
+      "quote": "context L2 nearest_level touch_count_240: 54",
+      "issue": "54 touches per 240 bars is framed one-sidedly as strength ('heavily-tested swing low', and as support for swing_low_rejection). The well-worn-level reading (repeated testing degrades the level) is never considered as a counter to the RANGE primary scenario."
+    }
+  ],
+  "unjustified_confidence": [
+    {
+      "quote": "evidence_strength: 0.4, confidence: 0.42, uncertainty: 0.58",
+      "issue": "evidence_strength and confidence are nearly identical (0.40 vs 0.42) and are not semantically distinct in this forecast; the reason strings ('Coherent compression at tested level' vs 'Price exactly at decisive level; momentum-support tension') do not explain a separate meaning for each. Two numbers carrying one piece of information is a confidence-discipline miss."
+    },
+    {
+      "quote": "confidence_reason: 'Coherent compression at tested level; timeframe conflict tempers confidence'",
+      "issue": "The 'coherence' is established by the SUPPORTED acceptance mechanism, which is itself justified by the compression label (circular). The confidence rests on the same circular pillar flagged under mechanism_jump."
+    },
+    {
+      "quote": "primary_scenario RANGE chosen while 'M1 eight down bars', 'M5/M15 ranges expanding into the level' are listed as counter_evidence",
+      "issue": "The primary scenario is selected over a momentum-side counter that is arguably at least as strong (price is AT the level, 0.027 ATR away, after 8 down bars), with the deciding factor being the weakest evidence item (2/3 trivial analogs). 0.42 confidence is not obviously misplaced in magnitude, but its anchoring to RANGE is not justified by the evidence weighting shown."
+    }
+  ],
+  "observation_as_fact": [
+    {
+      "quote": "observations: 'State COMPRESSION, event ACCEPTANCE, dwell 1'",
+      "issue": "Presented as an observation, but context L3/L5 mark state_v2 and event_at_t as DERIVED ('DERIVED (min-dwell lifecycle)', 'DERIVED (mapped from frozen sub-labels)'); only frozen_behavior_label is OBSERVED. The derived label is stated as raw fact without attribution."
+    },
+    {
+      "quote": "observations: 'H4 range percentile 0.015; contracting flags true'",
+      "issue": "range_percentile and sequence flags are DERIVED computations, and 'contracting flags true' is partial: M5 and M15 have range_expanding=true in the same context. A partial derived reading is placed in observations while its contradicting half is relegated to counter_evidence."
+    }
+  ],
+  "strongest_objection": "MECHANISM_DISCIPLINE fails: Hermes-A asserts level_acceptance_compression as SUPPORTED on circular, label-derived grounds (ACCEPTANCE label + INSIDE status + a cherry-picked contracting subset) while simultaneously listing direct counter-evidence (M5/M15 expanding into the level, 8 consecutive down bars, price 0.027 ATR from a 54-touch level), and it demotes the context's ONLY L4 mechanism candidate (trend_continuation, counter_evidence []) to POSSIBLE. The SUPPORTED status is a narrative choice, not an evidence-weighted one, and it props up the RANGE primary scenario and the 0.42 confidence. If the statuses were honest (acceptance POSSIBLE, continuation at least POSSIBLE-to-SUPPORTED), the RANGE-over-DIRECTIONAL choice and its confidence would both need to come down.",
+  "evidence": [
+    "context L4: candidates [trend_continuation], supporting_evidence ['price inside level, 8-bar displacement -5.06'], counter_evidence [], note 'mechanism CANDIDATES only; NOT asserted as fact (§13)'",
+    "context L5: ambiguity_rate_8 0.375; quality_label 'DERIVED (frozen C1 ontology + min-dwell lifecycle)'",
+    "context L2: nearest_level 4048.995, level_side DN, touch_count_240 54, distance_atr 0.02718, break_status INSIDE",
+    "context L6: agreement 'CONFLICT'; H1 trend_20 5.75, H4 trend_50 4.84; M5 range_expanding true, M15 range_expanding true",
+    "context L1 M1: consecutive_down 8; M5/M15 last close 4049.125 equals bar low",
+    "context L7 historical_analog note: 'STATE EVOLUTION ONLY; no returns/PnL/labels ever included (§18/§72)'; similarity_method 'exact_state + dwell_bucket'",
+    "forecast: level_acceptance_compression SUPPORTED 'ACCEPTANCE event; INSIDE level; contracting ranges'; trend_continuation_down POSSIBLE; swing_low_rejection POSSIBLE",
+    "forecast: counter_evidence ['M1 eight down bars; bearish closes at lows', 'H4 trend_20 negative 32.87; continuation candidate present', 'M5/M15 ranges expanding into the level', 'Two of three analogs reach REJECTION by step 8']",
+    "forecast: primary invalidation 'Decisive break of 4048.995 or strong expansion'; bottom invalidation 'Close below 4048.995 flips to DIRECTIONAL down'; change_my_mind ['H1 close below 4048.995', 'Reclaim above 4054 with expanding range', 'M1 range percentiles sustain above 0.8']",
+    "forecast: time_horizon 'H4'; evidence_strength 0.4; confidence 0.42; uncertainty 0.58; abstain false with empty abstain_reason; Q7 'false; consistent context, low conviction'",
+    "forecast: alternative_scenario invalidation 'Rejection reclaims 4054 region' (no 4054 level exists in context; only defined level is 4048.995)"
+  ],
+  "reasoning_trace": [
+    "Read PIT context: XAUUSD, as_of 2026-07-24 21:59 UTC; only defined level is swing-low 4048.995 (INSIDE, 54 touches/240, 0.027 ATR away); state COMPRESSION/ACCEPTANCE dwell 1 after TREND dwell 8; L4 lists trend_continuation as the only mechanism candidate, explicitly not asserted; timeframe agreement CONFLICT; all cross-market series UNKNOWN; 3 trivial-similarity analogs (state-only).",
+    "Checked each observation in the forecast against context: '0.13 above swing-low' correct; 'M1 eight consecutive down bars' correct; 'M5/M15 close at lows' correct; 'contracting flags true' is partial because M5/M15 are range_expanding.",
+    "Tested mechanism statuses: SUPPORTED for level_acceptance_compression is circular (label supports label), contradicted by the forecast's own counter_evidence list, and the mechanism is absent from L4; the context's only candidate is ranked below it. Verdict DISAGREE on MECHANISM_DISCIPLINE.",
+    "Tested counter-evidence completeness: good list (down bars, expanding M5/M15, analogs to REJECTION) but misses label ambiguity 0.375, the H1/H4 longer-TF up-bias against a one-sided down-break story, and the well-worn-level reading of 54 touches.",
+    "Tested confidence: magnitude is defensible for a conflicted, data-poor setup, but evidence_strength 0.4 vs confidence 0.42 are not distinct, and the reason is anchored to the circular 'coherent compression'.",
+    "Tested abstention: abstain false with empty abstain_reason; primary (RANGE if holds) + alternative (DIRECTIONAL if breaks) partition the outcome space, so the forecast is weakly falsifiable; with NO_DIRECTIONAL_EDGE and 0.42 confidence, abstention with a reason was arguably the more honest call, but the low-confidence disclosure partially mitigates.",
+    "Tested invalidation: 'H1 close below 4048.995' is checkable, but time_horizon is H4 (timeframe mismatch), 'decisive break'/'strong expansion' are undefined, and 'reclaim 4054 region' references a level not present in the context.",
+    "Compiled instances per category with quotes; overall verdict PARTIAL_AGREE: the forecast is structurally disciplined (counter_evidence present, low confidence, no fabricated cross-market data) but fails mechanism discipline and carries several confidence/invalidation inconsistencies.",
+    "Wrote R8B_BA_20260725.json."
+  ]
+}

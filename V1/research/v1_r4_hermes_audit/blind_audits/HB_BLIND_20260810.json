@@ -1,0 +1,54 @@
+{
+ "audit_id": "HB_BLIND_20260810",
+ "timestamp": "2026-08-10T12:00:00Z",
+ "current_state": "COMPRESSION (VOL_CONTRACTION, dwell 8 bars, ambiguity_rate_8 0.125) with price sitting at the swing-low support 4331.265 (22 touches / 240 bars, break_status INSIDE, distance 0.025 ATR) inside a pullback of an H4 uptrend. Intraday H1 downtrend since the 08:00 high 4361.885; current closes ~4334.8-4335.3 (M1 4335.295, M5 4334.355, H1 4334.805) versus last completed H4 bar close 4335.535.",
+ "structure": "H4: strong uptrend intact (trend_20 +101.24, trend_50 +238.74; rally from ~4240 on Aug-06 to high 4361.885 Aug-10 08:00). Intraday: bearish - H1 4 consecutive down closes from 4361.885 to 4334.805, H1 trend_20 -5.98 (trend_50 +56.74), M15 trend_20 -16.69 with 8 consecutive down bars, M5 trend_20 -12.55, M1 trend_20 -3.07 (down-momentum fading). L6 agreement: CONFLICT (timeframes never merged, per section 15). Price is at swing-low 4331.265; H1 12:00 bar printed a 6.15 lower wick off low 4328.655 and M15 low 4329.285 briefly pierced the level then found bids. Note: H4 'current' bar OHLC (high 4351.435, low 4316.305, close 4345.185) is internally inconsistent with the H1/M15/M5/M1 12:00 bars (~4331-4335); treated with caution.",
+ "mechanism": "Pullback-within-uptrend meeting a well-established swing-low support after a sharp ~33-point H1 selloff; compression with volatility contraction at the level implies an imminent binary expansion. L4 candidates: exhaustion of the intraday down move (support holds, rejection up) versus trend_continuation of the down move (decisive break of 4331.265 / 4328.7 with expansion). No macro catalyst: DXY flat at 99.72 (change_32 +0.084, mild USD firming), VIX low/flat at 15.45, UST10Y UNKNOWN, news/macro absent. Historical analogs (state-evolution only, no direction): A34267 persists COMPRESSION (sideways), A35249 COMPRESSION -> REJECTION -> TREND, A36614 COMPRESSION -> TREND -> EXPANSION -> ACCEPTANCE - resolution into trend is common at this dwell, but direction is not supplied.",
+ "primary_scenario": {
+  "scenario": "Support holds and compression resolves upward: rejection off the 4331.265 swing-low zone, reclaim of 4340-4346, retest of the H4 high 4361.885 (H4 uptrend resumption).",
+  "confidence": 0.52,
+  "horizon": "SHORT_TERM",
+  "trigger": "M5/M15 reject off the 4328.7-4331.3 zone with range expansion up and reclaim of 4340; DXY stays flat or weak; VIX stays low.",
+  "invalidation": "Decisive, expanding-range close below 4328.7-4329.3 (swing-low zone) - then 4316.3 and 4312.9 open up and the H4 uptrend is threatened below 4312.9."
+ },
+ "alternative_scenario": {
+  "scenario": "Breakdown continuation: swing-low break with volatility expansion, pullback extends to 4316.3 / 4312.9 (H4 00:00 low); deeper correction of the H4 uptrend.",
+  "confidence": 0.38,
+  "horizon": "INTRADAY",
+  "trigger": "Close below 4328.7 with expanding range and sustained selling through the level (no lower-wick rejection); DXY strength extends.",
+  "invalidation": "Immediate reclaim of 4335-4340 without new lows; the level holds on further touches (multiple rejection wicks)."
+ },
+ "expected_transition": "COMPRESSION -> REJECTION (bid at support) -> TREND up (H4 uptrend resumption) under the primary; COMPRESSION -> REJECTION down / TREND down under the alternative. Volatility expansion is imminent after an 8-bar compression; the 12:00 H1 lower wick (6.15 off 4328.655) is the first evidence of rejection.",
+ "direction": "UP",
+ "horizon": "SHORT_TERM",
+ "confidence": 0.52,
+ "counter_evidence": [
+  "Intraday momentum is down: H1 4 consecutive down closes since the 08:00 high 4361.885; M15 8 consecutive down bars (consecutive_down 8); M5 trend_20 -12.55; H1 trend_20 -5.98.",
+  "M15 12:00 low 4329.285 and H1 12:00 low 4328.655 briefly pierced swing-low 4331.265 (reclaim_status NONE) - level integrity not yet confirmed.",
+  "L6 multi-timeframe agreement is explicitly CONFLICT; the H4 'current' bar OHLC is internally inconsistent with the lower-timeframe 12:00 bars (close 4345.185 vs ~4331-4335), a data-quality concern that caps confidence.",
+  "DXY change_32 +0.084 (mild USD firming) could pressure gold if it extends.",
+  "Analog A34267 shows compression persisting (sideways) - directional resolution is not guaranteed.",
+  "No news/macro/order-flow data (absent series) - direction is purely technical and headline risk cannot be assessed."
+ ],
+ "invalidation": "The UP view is invalidated by a decisive, expanding-range close below 4328.7-4329.3 (swing-low zone) confirming breakdown toward 4316.3 / 4312.9, and by any break below 4312.9 which threatens the H4 uptrend structure. The view is also invalidated if compression resolves downward with volatility expansion despite the support wick.",
+ "data_quality_flags": [
+  "L1 klines: RAW_GEOMETRY + DERIVED (geometry/derived fields, not raw observed) - usable.",
+  "L2 swing level 4331.265: DERIVED (causal pivot computation), 22 touches - well-established.",
+  "L3/L5 state: DERIVED (frozen C1 labeler + min-dwell lifecycle), ambiguity_rate_8 0.125 - label reliable.",
+  "L4 mechanisms: DERIVED candidates only, not asserted as fact (section 13).",
+  "DXY and VIX: PROXY (Yahoo 5m, instrument definition UNKNOWN) - never upgraded to DIRECT.",
+  "UST10Y_PROXY_TNX: UNKNOWN / STALE_OR_NOT_COVERED - no rate signal available.",
+  "Absent series (GLD, GC, CFTC_COT, ETF_FLOWS, NEWS, MACRO_EVENTS): recorded as absent, never fabricated.",
+  "INTERNAL INCONSISTENCY: H4 'current' bar (high 4351.435, low 4316.305, close 4345.185) disagrees with the 12:00 H1/M15/M5/M1 bars (~4331-4335); H4 current-bar geometry treated with caution - last completed H4 bar (close 4335.535) and trend deltas used instead."
+ ],
+ "reasoning_trace": [
+  "State at t is COMPRESSION / VOL_CONTRACTION with dwell 8 and ambiguity 0.125 - the label is credible; compression at a level implies pending binary expansion.",
+  "Higher timeframe: H4 uptrend intact (trend_20 +101.24, trend_50 +238.74; 4240 -> 4361.885 over Aug 06-10), so any intraday decline is a pullback unless structure breaks.",
+  "Intraday: H1 fell from 4361.885 (08:00) to 4334.805 (12:00); the 12:00 H1 bar shows a long lower wick of 6.15 off 4328.655 and M15 low 4329.285 - buyers appeared at the support zone.",
+  "Level: swing-low 4331.265 with 22 touches in 240 bars (heavily tested), price INSIDE at 0.025 ATR distance - confluence of pullback support within an H4 uptrend favors holding.",
+  "Cross-market: DXY flat 99.72 and VIX low 15.45 provide no USD-strength or risk-off catalyst for a breakdown - neutral-to-supportive for gold.",
+  "Analog state-evolutions: 1/3 persists COMPRESSION, 2/3 resolve into TREND (via REJECTION or directly) - supports imminent resolution but direction is not supplied by analogs.",
+  "Net judgment: modest UP lean (established support + intact H4 uptrend + neutral cross-market) with confidence capped at 0.52 by conflicting lower-timeframe momentum, mixed analogs, and the H4 current-bar data inconsistency.",
+  "Invalidations are explicit: expanding-range close below 4328.7 flips the view to DOWN with targets 4316.3 / 4312.9; below 4312.9 the H4 uptrend itself is at risk."
+ ]
+}

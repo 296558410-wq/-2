@@ -1,0 +1,121 @@
+{
+ "definition_id": "V1_R2_B9_PRICE_STRUCTURE_STATE_DEFINITION",
+ "definition_version": "v1r2-b9-state-def-r1",
+ "frozen_before_full_data_run": true,
+ "DIAGNOSTIC_ONLY": true,
+ "enters_formal_v1_r2": false,
+ "dataset_variant": "TICK_ONLY",
+ "basis": "reconstructed from RAW BID OHLC + frozen level construction; break_risk is NOT reused as BREAK_ATTEMPT (task 14)",
+ "reused_frozen_constants": {
+  "TOUCH_TOL_ATR": 0.25,
+  "RECOVERY_WINDOW_BARS": 8,
+  "BREAK_CLOSE_ATR": 0.15,
+  "ABSORB_BREAK_PEN": 0.15,
+  "EV_PEN": 0.30,
+  "TOUCH_WINDOW_BARS": 240,
+  "PIVOT_LEFT": 2,
+  "PIVOT_RIGHT": 2,
+  "LEVEL_CONFIRM_LAG_BARS": 2,
+  "RANGE_WINDOW_BARS": 96,
+  "note": "constants are READ from the frozen registry; none is changed"
+ },
+ "diagnostic_constants_declared": {
+  "PENETRATION_ATR": 0.30,
+  "BREAK_CONFIRM_BARS": 2,
+  "EXHAUSTION_MIN_TOUCHES_240": 4,
+  "note": "DIAGNOSTIC-ONLY constants chosen a priori, documented, never written back to any registry"
+ },
+ "phase_order": ["NO_STRUCTURE", "APPROACH", "FIRST_TOUCH", "REPEATED_TOUCH", "PENETRATION", "BREAK_ATTEMPT", "BREAK_CONFIRMED", "RECLAIM", "FAILED_BREAK", "EXHAUSTION"],
+ "phase_level": {
+  "NO_STRUCTURE": 0, "APPROACH": 1, "FIRST_TOUCH": 2, "REPEATED_TOUCH": 2, "PENETRATION": 3,
+  "BREAK_ATTEMPT": 4, "BREAK_CONFIRMED": 5, "RECLAIM": 5, "FAILED_BREAK": 5, "EXHAUSTION": 5
+ },
+ "mutual_exclusivity_rule": "every (timestamp, level_id) carries at most one PRIMARY state; if two or more states at the SAME phase_level are simultaneously satisfied the record is AMBIGUOUS_STATE and no priority is applied (task 9)",
+ "states": {
+  "NO_STRUCTURE": {
+   "entry_condition": "no ACTIVE level exists at this bar (nearest-level resolution returns None)",
+   "exit_condition": "a level becomes ACTIVE",
+   "persistence_condition": "no ACTIVE level",
+   "required_fields": ["level_absent"],
+   "forbidden_fields": ["level_price", "touch"],
+   "ambiguity_condition": "none (terminal-empty state)"
+  },
+  "APPROACH": {
+   "entry_condition": "level ACTIVE AND NOT in_band AND dist_atr <= 1.0",
+   "exit_condition": "in_band becomes true, or dist_atr > 1.0",
+   "persistence_condition": "level ACTIVE AND NOT in_band AND dist_atr <= 1.0",
+   "required_fields": ["level.price", "close", "ATR20", "tol"],
+   "forbidden_fields": [],
+   "ambiguity_condition": "if PENETRATION / BREAK_* are simultaneously satisfied"
+  },
+  "FIRST_TOUCH": {
+   "entry_condition": "band ENTER event (previous bar NOT in_band, current bar in_band) AND band_episode_index == 1 for this level_id",
+   "exit_condition": "band EXIT event (previous in_band, current NOT in_band) OR promotion to PENETRATION/BREAK phase",
+   "persistence_condition": "in_band AND band_episode_index == 1",
+   "required_fields": ["high", "low", "level.price", "tol"],
+   "forbidden_fields": ["cumulative_touch_count"],
+   "ambiguity_condition": "co-occurrence with PENETRATION or BREAK_*"
+  },
+  "REPEATED_TOUCH": {
+   "entry_condition": "band ENTER event with band_episode_index >= 2 (a previous EXIT must have occurred)",
+   "exit_condition": "band EXIT event OR promotion",
+   "persistence_condition": "in_band AND band_episode_index >= 2",
+   "required_fields": ["high", "low", "level.price", "tol", "band_episode_index"],
+   "forbidden_fields": ["consecutive_stay_bars_as_count"],
+   "ambiguity_condition": "co-occurrence with PENETRATION or BREAK_*"
+  },
+  "PENETRATION": {
+   "entry_condition": "in_band AND ( pen_atr >= PENETRATION_ATR OR close crossed to the opposite side of level.price inside the band episode )",
+   "exit_condition": "exit from band OR promotion to BREAK_ATTEMPT",
+   "persistence_condition": "in_band AND penetration condition holds",
+   "required_fields": ["high", "low", "close", "level.price", "ATR20"],
+   "forbidden_fields": ["break_risk", "next_state"],
+   "ambiguity_condition": "co-occurrence with FIRST_TOUCH/REPEATED_TOUCH at the same phase"
+  },
+  "BREAK_ATTEMPT": {
+   "entry_condition": "close beyond level.price by >= BREAK_CLOSE_ATR*ATR AND a band touch episode exists within RECOVERY_WINDOW_BARS AND break not yet confirmed",
+   "exit_condition": "BREAK_CONFIRMED, or close returns to the original side (RECLAIM)",
+   "persistence_condition": "attempt condition holds and not confirmed/reclaimed",
+   "required_fields": ["close", "level.price", "ATR20", "last_touch_i"],
+   "forbidden_fields": ["break_risk", "next_state", "counter_evidence"],
+   "ambiguity_condition": "co-occurrence with RECLAIM (recorded, never priority-resolved)"
+  },
+  "BREAK_CONFIRMED": {
+   "entry_condition": "close beyond level.price by >= BREAK_CLOSE_ATR*ATR for >= BREAK_CONFIRM_BARS consecutive bars",
+   "exit_condition": "RECLAIM (close returns to the original side)",
+   "persistence_condition": "consecutive beyond-close bars >= BREAK_CONFIRM_BARS",
+   "required_fields": ["close", "level.price", "ATR20"],
+   "forbidden_fields": ["break_risk", "next_state", "future_return"],
+   "ambiguity_condition": "co-occurrence with RECLAIM"
+  },
+  "RECLAIM": {
+   "entry_condition": "after a BREAK_ATTEMPT/BREAK_CONFIRMED, close returns to the pre-touch side within RECOVERY_WINDOW_BARS",
+   "exit_condition": "a new band episode starts, or the level is retired",
+   "persistence_condition": "reclaim condition holds",
+   "required_fields": ["close", "level.price", "crossing_bar", "direction"],
+   "forbidden_fields": ["break_risk", "next_state"],
+   "ambiguity_condition": "co-occurrence with BREAK_ATTEMPT / BREAK_CONFIRMED / FAILED_BREAK"
+  },
+  "FAILED_BREAK": {
+   "entry_condition": "a BREAK_ATTEMPT existed AND a RECLAIM followed it (break formed then failed)",
+   "exit_condition": "episode end or new attempt",
+   "persistence_condition": "ATTEMPT_THEN_RECLAIM chain holds",
+   "required_fields": ["attempt_bar", "reclaim_bar", "level.price"],
+   "forbidden_fields": ["break_risk", "next_state"],
+   "ambiguity_condition": "co-occurrence with RECLAIM; MUST NOT be assigned when no attempt ever formed (task 16)"
+  },
+  "EXHAUSTION": {
+   "entry_condition": "touch_events_240 >= EXHAUSTION_MIN_TOUCHES_240 AND penetration trending deeper AND no net progress beyond the level",
+   "exit_condition": "episode end or breakthrough",
+   "persistence_condition": "exhaustion condition holds",
+   "required_fields": ["touch_events_240", "pen_history", "level.price"],
+   "forbidden_fields": ["next_state", "direction", "REVERSION"],
+   "ambiguity_condition": "SUBSTATE only: EXHAUSTION must NOT be equated with REVERSION (task 18)"
+  }
+ },
+ "events_tracked": ["BAND_ENTER", "BAND_STAY", "BAND_EXIT", "PENETRATION_START", "BREAK_ATTEMPT_START", "BREAK_CONFIRMED_START", "RECLAIM_START", "FAILED_BREAK_START", "EXHAUSTION_START"],
+ "event_lifecycle_rule": "FIRST_TOUCH counts one BAND_ENTER event; consecutive STAY bars must never increment the touch count (task 11/12)",
+ "lookahead_rule": "state S(t) uses only data <= t; S(t+1) may only be used as a LABEL (task 34)",
+ "null_shuffle_allowed": ["price_sequence_shuffle", "state_sequence_shuffle"],
+ "null_shuffle_purpose": "sanity only; never used to search for a best state sequence or to tune anything"
+}

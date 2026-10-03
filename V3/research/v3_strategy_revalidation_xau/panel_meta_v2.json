@@ -1,0 +1,91 @@
+{
+ "schema": "v3_h27h30_panel_v2/1",
+ "ts_utc": "2026-09-25T08:15:27.721475+00:00",
+ "xau_frozen": {
+  "normalized_sha256": "902313acacf0e8ec4eb2256fc1f8f3848a762e07f813f7cfa4e8c8b06451f63b",
+  "rows": 5186,
+  "recheck": {
+   "normalized_sha256_match": true,
+   "rows_match": true,
+   "observed_rows": 5186
+  }
+ },
+ "coverage": {
+  "xau": [
+   "2006-09-25",
+   "2026-09-25",
+   5186
+  ],
+  "dxy": [
+   "2019-04-18",
+   "2019-05-07",
+   13
+  ],
+  "vix": null,
+  "gc_f": [
+   "2016-09-26",
+   "2026-09-25",
+   2590
+  ],
+  "ust10y": [
+   "2006-01-03",
+   "2026-09-24",
+   3935
+  ]
+ },
+ "sources": {
+  "dxy": {
+   "source": "SINA",
+   "status": 200,
+   "rows": 13,
+   "sha256": "3329997787e864cf05cf427af029003cd971bf88752d7672e8ad0261392963ff",
+   "url": "https://stock2.finance.sina.com.cn/futures/api/jsonp.php/var%20_DX/GlobalFuturesService.getGlobalFuturesDailyKLine?symbol=DX",
+   "span": [
+    "2019-04-18",
+    "2019-05-07"
+   ]
+  },
+  "vix": null,
+  "gc_f": {
+   "source": "SINA",
+   "status": 200,
+   "rows": 2590,
+   "sha256": "4617e651ff922a7637d0300ff0d8760472490927bc2d084b12d1b09c515f5598",
+   "url": "https://stock2.finance.sina.com.cn/futures/api/jsonp.php/var%20_GC/GlobalFuturesService.getGlobalFuturesDailyKLine?symbol=GC",
+   "span": [
+    "2016-09-26",
+    "2026-09-25"
+   ]
+  },
+  "ust10y": {
+   "source": "US_TREASURY_CSV",
+   "years": {
+    "2006": 250,
+    "2007": -1,
+    "2008": -1,
+    "2009": 250,
+    "2010": 251,
+    "2011": 250,
+    "2012": -1,
+    "2013": -1,
+    "2014": 250,
+    "2015": 251,
+    "2016": 250,
+    "2017": 250,
+    "2018": 249,
+    "2019": 250,
+    "2020": 251,
+    "2021": 251,
+    "2022": 249,
+    "2023": 250,
+    "2024": -1,
+    "2025": 249,
+    "2026": 184
+   }
+  }
+ },
+ "aligned_rows": 0,
+ "aligned_span": null,
+ "rules": "unchanged: bar D -> available D+1 00:00Z; signal t -> close(t+1) -> close(t+2); 0.918..0.914bp anchor; stress 0/1/2/3x",
+ "only_intended_change": "predictor COVERAGE extended (uniform, no selection); gold leg stays XAU spot"
+}

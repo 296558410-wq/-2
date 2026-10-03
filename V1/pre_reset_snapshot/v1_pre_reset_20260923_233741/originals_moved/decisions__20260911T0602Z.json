@@ -1,0 +1,118 @@
+{
+ "cycle": "2026-09-11T06:02Z",
+ "symbol": "XAUUSD",
+ "decision_id": "DEC-2026-09-11T06:02Z",
+ "utc_ts": "2026-09-11T06:02Z",
+ "generated_utc": "2026-09-11T06:02Z",
+ "decision": "SHORT",
+ "confidence": 0.5,
+ "bias": "SHORT-lean 0.55 (BOOK FLAT: 0 pos / 0 broker orders; 上一轮 SHORT 0.01 @4338.79 已被 broker 硬止损 4342.13 扫出, 单槽已释放). 4300.70 崩盘急低后 V-修复延续: 现价 broker mid 4353.33 (pkg m15_live 4350.11), 自低点已 +52pt, 重夺 H1 MA20 4341.31, 正逼近 H4 MA200 4362.94。四TF立场: D1 4353.25 << MA20 4462.97 (trend down er0.354, RSI 32.3), H4 4353.25 < MA20 4379.45 & MA50 4394.70 & MA200 4362.94 (RSI 38.5), H1 4353.25 > reclaimed MA20 4341.31 但仍 < MA50 4379.05 & MA200 4399.81 (RSI 弱回升), M15 4353.25 > MA20 4327.48 & MA50 4329.15 但 < MA200 4379.76 (动能向上)。这是 D1 下行趋势内的逆势反弹, 下一步不是追多, 而是在最近的 HTF 阻力(H4 MA200 4362.94)卖出强势。永不追价, 在 MA/汇聚位卖回抽, 结构止损。",
+ "opportunity": "fade_of_V-recovery_into_H4_MA200_4362.94_confluence_after_reclaiming_H1_MA20_4341.31",
+ "opportunity_mechanism": "with-trend resistance fade -- 06:00UTC 崩盘急低 4300.70 后 V-修复: 4303.79 -> 4328.43 -> 4343.13 -> 4346.18 -> 现价 4353.33, 已重夺 H1 MA20 4341.31 并把 M15 MA20/MA50(4327.5/4329.2)甩在身后。但 D1(4353.25<<MA20 4462.97)、H4(4353.25<MA20 4379.45&MA50 4394.70)仍在其关键均线下方, 属逆势回抽。上方最近真供给 = H4 MA200 4362.94 (其上 4379.0-4379.8 三重均线簇: H4 MA20 4379.45 / H1 MA50 4379.05 / M15 MA200 4379.76)。价格冲入该台阶后滞涨/快速回落即为顺 D1 趋势 SHORT, 结构止损置于台阶上方 4369.5(仍在 4379 簇下方)。trigger 为实时 zone_touch(不等 M15 收盘), 快速 spike-and-fail 亦自动成交。注: engine 有反僵尸规则 (SHORT 计划 mid < zone_lo-2*band 即取消), 故入区带按格宽设为 [4358.0,4364.0] 以覆盖 H4 MA200 4362.94 且不被机械清扫; 触价即成交。若放量站稳 4369.5 -> 回抽证伪、延伸至 4379 簇 -> 取消。绝不摊平。",
+ "mtf_agreement": "bearish-on-HTF vs 短线走强: D1 down (4353.25<<MA20 4462.97, RSI 32.3), H4 down (4353.25<MA20 4379.45&MA50 4394.70&MA200 4362.94, RSI 38.5) -- HTF 一致在关键均线下方, 支持'在阻力卖强势'; H1 收复 MA20 4341.31 (RSI 弱回升) 但仍在 MA50 4379.05/MA200 4399.81 下方, M15 强 (已收复 MA20 4327.5/MA50 4329.2, <MA200 4379.76) -- 短线动能向上, 反弹仍可能上探 H4 MA200/簇。故一致做法 = 在 4362.94(H4 MA200)卖延伸, 而非追多。Caveat: 刚被同一波反弹扫掉 SHORT, 若动能持续可能贯破 4362.9 至 4379 簇 -> 止损 4369.5 有被扫风险; 故严格 1R 结构止损、不恋战。净 stance SHORT-lean 0.55。",
+ "state_summary": "XAUUSD 实时: pkg m15_live last_mid 4350.11 (quote_latest, spread 0.37bps, tick_rate 186/min, abnormal z0.42 normal); 同期 MT5-direct probe mid 4353.33 (bid/ask 4353.25/4353.41, spread 0.37bps)。positions=0, orders=0 (BOOK FLAT; 上一轮 SHORT 0.01 @4338.79 SL4342.0 已被扫出)。MT5-true bars(server=UTC+3): M15 last_close 4355.86 (09:00 forming, H4356.20 L4345.97), MA20 4327.48 / MA50 4329.15 / MA200 4379.76, hi60 4376.10 lo60 4300.70, RSI 强。H1 last_close 4355.86, MA20 4341.31 / MA50 4379.05 / MA200 4399.81, hi60 4434.99 lo60 4300.70。H4 MA20 4379.45 / MA50 4394.70 / MA200 4362.94, hi60 4631.4 lo60 4282.44。D1 last_close 4353.25, MA20 4462.97, hi60 4696.78。注: 本地 state_package tick-parquet 末端价与 broker 实时不符(parquet last_close ~4318.9 而 broker 4353.33, 时序错位), 故本轮 MA/价位均以 MT5-direct 重算为准。",
+ "m15_change": "vs 05:47Z (mid 4344.59, FLAT): 反弹未停, 继续上行 +8.7pt 至 broker 4353.33 (pkg 4350.11), 并站上 H1 MA20 4341.31, 直逼 H4 MA200 4362.94。M15 连收: 08:30 c4343.13 -> 08:45 c4346.18 (h4352.04) -> 09:00 forming c4355.86 (h4356.20)。后果: 旧挂单 TP-20260911T0547Zb (zone 4356.0-4364.0) 与 TP-20260911T0517Z 仍 PENDING (engine mid 4350.11 < 4356.0 未触发); TP-20260911T0447Z 已被 invalidation 取消。支撑: 4341.31(H1 MA20)/4329.2(M15 MA50)/4327.5(M15 MA20)/4300.70(崩盘位); 阻力: 4362.94(H4 MA200)/4376.10(M15 hi60)/4379.0-4379.8(M15 MA200/H1 MA50/H4 MA20 簇)/4394.70(H4 MA50)/4399.81(H1 MA200)。",
+ "position_note": "MT5 FXTM demo: BOOK FLAT (positions=0, orders=0)。上一轮 POS-20260911T0432Z SHORT 0.01 @4338.79 已被 broker 硬止损 4342.13 扫出 (RECONCILE_CLOSE realized=-3.34, -1R), 单槽已释放。本轮注册新开仓计划 TP-20260911T0602Z。engine 仍载旧挂单 TP-0517Z / TP-0547Zb, 按其 invalidation/age 规则清理。不加仓、不摊平。",
+ "answers_14": {
+  "1": "Market state: XAUUSD 实时 pkg mid 4350.11 (quote_latest, spread 0.37bps) / MT5-direct probe mid 4353.33 (bid/ask 4353.25/4353.41), BOOK FLAT (0 pos/0 ord; 上一轮 SHORT @4338.79 已被 4342.13 止损扫出)。MT5-true M15 last_close 4355.86 (09:00 forming): MA20 4327.48 / MA50 4329.15 / MA200 4379.76, hi60 4376.10 / lo60 4300.70。H1 4355.86: MA20 4341.31 / MA50 4379.05 / MA200 4399.81。H4: MA20 4379.45 / MA50 4394.70 / MA200 4362.94, hi60 4631.4 / lo60 4282.44。D1 4353.25 << MA20 4462.97 (trend down)。注: 本地 tick-parquet 末端价与 broker 实时不符, 已用 MT5-direct 重算。",
+  "2": "Agreement: HTF(D1/H4)一致在关键均线下方 (D1 4353.25<<MA20 4462.97; H4 <MA20 4379.45&MA50 4394.70&MA200 4362.94) -> 支持在阻力卖强势; 短线 H1 收复 MA20 4341.31、M15 已收复 MA20/MA50 且动能向上 -> 反弹仍可能上探 H4 MA200 4362.94 / 簇 4379。一致做法 = 卖延伸至 H4 MA200, 而非追多。净 SHORT-lean 0.55。",
+  "3": "M15 change vs 05:47Z: 反弹继续 +8.7pt 至 broker 4353.33, 站上 H1 MA20 4341.31, 直逼 H4 MA200 4362.94; M15 连收 4343.13->4346.18->4355.86(forming)。旧挂单 TP-0547Zb/TP-0517Z 仍 PENDING 未触发, TP-0447Z 已 invalidation 取消。",
+  "4": "Tradeable now? 现价 4353.33 位于 H1 MA20 4341.31 上方、H4 MA200 4362.94 下方的空档, 无立即入场位; 有利 setup 已在注册: SHORT fade @ H4 MA200 4362.94 (入区 [4358.0,4364.0])。现在离可交易只差: 自 4350.11(pkg)/4353.33(real) 再上抬 +4.7..+10.7pt 触及 zone 即自动成交。单槽已释放 (FLAT), spread 0.37bps << 0.8 gate。",
+  "5": "Mechanism: with-trend resistance fade -- 4300.70 崩盘急低 V-修复重夺 H1 MA20, 正兵临 H4 MA200 4362.94(其上 4379.0-4379.8 三重均线簇), 而 D1/H4 仍在其关键均线下方。该台阶滞涨即为顺 D1 趋势 SHORT(结构止损 4369.5, 簇下方); 若放量站稳 4369.5 则回抽证伪、延伸至 4379 簇 -> 取消。不摊平。",
+  "6": "Trigger [specific price]: SHORT {and:[{zone_touch:[4358.0,4364.0]},{spread_under_bps:0.8}]} -> 触及即市价 SHORT (需自 4350.11/pk 或 4353.33/real 上抬 +4.7..+10.7pt; 实时盘中判定, 不等 M15 收盘)。入区带按 engine 反僵尸格宽设置 (覆盖 H4 MA200 4362.94 且不被机械清扫); 单槽已释放。",
+  "7": "Invalidation [specific price]: {price_cross_up:4369.5} (清越 H4 MA200 4362.94 且动能守住 -> 回抽延伸至 4379 簇, 计划证伪; 亦为硬止损位)。若先跌破 4341.31(H1 MA20) 未回抽 -> 由新轮重建。",
+  "8": "Expected return R (SHORT ref 4361.0, 1R=8.5pt @SL4369.5): T1 4343.3 = +17.7pt = 2.08R; T2 4329.2 = +31.8pt = 3.74R; T3 4311.5 = +49.5pt = 5.82R; 加权(0.40/0.35/0.25) = 3.60R。",
+  "9": "Expected loss R: -1.0R 上限 (SL 4369.5, 风险 8.5pt ~19.5bps @4361)。0.01 手 ~8.5USD 最坏; 不摊平不加仓。",
+  "10": "Cost numbers: spread 0.37bps + slippage 0.30bps = round-trip 0.67bps ~ 0.29pt (~0.29USD on 0.01 手)。占 1R(8.5pt=19.5bps) = 0.034R。Demo 成本极低, 非障碍。",
+  "11": "Net EV (SHORT, ref 4361.0, 1R=8.5pt @SL4369.5): 目标 4343.3=2.08R / 4329.2=3.74R / 4311.5=5.82R -> 加权(0.40/0.35/0.25)=3.60R; EV_R = 0.45*3.60 - 0.55*1.00 - 0.034 = 1.620 - 0.584 = +1.04R (>0); target1 basis = 0.45*2.08 - 0.584 = +0.35R (>0)。正 -> SHORT。breakeven p ~0.23。",
+  "12": "Reproducibility: '在最近的 HTF 关键均线/前高台阶卖逆势回抽的强势, 而 D1/H4 仍在其关键均线下方' 为本周期同一 with-trend fade 边缘 (cf. TP-0432Z 已成交、TP-0447Z 破位、TP-0517Z/TP-0547Zb 台阶 fade 均属此族)。读法: 卖回抽至结构, 永不追。",
+  "13": "SHORT",
+  "14": "上一轮空单已被4342.13止损扫出(FLAT,槽释放)。4300.70急低后V修复重夺H1 MA20 4341.31,现价4353.33逼近H4 MA200 4362.94,D1/H4仍在其关键均线下方。注册SHORT {zone_touch[4358.0,4364.0]} SL4369.5 目标4343.3/4329.2/4311.5 EV+1.04R;不追价不摊平。"
+ },
+ "cost_note": "spread_bps=0.37, slippage_bps=0.30, round_trip=0.67bps (=0.29pt ~0.29USD; 0.034R at 1R=8.5pt).",
+ "ev_note": "SHORT EV_R = 0.45*(0.40*2.08+0.35*3.74+0.25*5.82) - 0.55*1.00 - 0.034 = 0.45*3.60 - 0.584 = +1.04R (weighted) / +0.35R (target1) -> positive; FLAT 单槽已释放 -> register。注: 入区带按 engine 反僵尸规则(SHORT mid<zone_lo-2band 即取消)设为 [4358.0,4364.0] 以覆盖 H4 MA200 4362.94。",
+ "plan": {
+  "plan_id": "TP-20260911T0602Z",
+  "utc_ts": "2026-09-11T06:02Z",
+  "decision_id_ref": "DEC-2026-09-11T06:02Z",
+  "direction": "SHORT",
+  "opportunity_type": "fade_of_V-recovery_into_H4_MA200_4362.94_after_reclaiming_H1_MA20",
+  "mechanism_ref": "with-trend_resistance_fade_at_4358.0-4364.0_H4_MA200_ledge",
+  "entry_style": "market_on_trigger",
+  "entry_zone": {
+   "low": 4358.0,
+   "high": 4364.0
+  },
+  "trigger_condition": {
+   "and": [
+    {
+     "zone_touch": [
+      4358.0,
+      4364.0
+     ]
+    },
+    {
+     "spread_under_bps": 0.8
+    }
+   ]
+  },
+  "invalidation_condition": {
+   "price_cross_up": 4369.5
+  },
+  "stop_logic": {
+   "type": "structure",
+   "level": "H4 MA200 4362.94 台阶上方 6.6pt (仍位于 4379.0-4379.8 三重均线簇下方: H4 MA20 4379.45 / H1 MA50 4379.05 / M15 MA200 4379.76)",
+   "level_price": 4369.5,
+   "reason": "空头结构止损: 在 4358.0-4364.0 阻力台阶(=H4 MA200 4362.94)回抽做空; 若价格放量站稳 4369.5(=清越 H4 MA200 且动能守住), 则'逆势回抽受挫'证伪、反弹延伸至 4379 簇 -> 认损。1R=8.5pt @ref 4361.0, 不恋战。"
+  },
+  "target_logic": {
+   "type": "structure",
+   "levels": [
+    {
+     "price": 4343.3,
+     "frac": 0.4
+    },
+    {
+     "price": 4329.2,
+     "frac": 0.35
+    },
+    {
+     "price": 4311.5,
+     "frac": 0.25
+    }
+   ],
+   "reason": "T1 4343.3 = H1 MA20 4341.31 (刚收复, 回抽后首支撑) -17.7pt=2.08R x0.40 落袋; T2 4329.2 = M15 MA50 4329.15 / 反弹起点货架 -31.8pt=3.74R x0.35; T3 4311.5 = 09-10/09-11 崩盘前货架 4311.26 -49.5pt=5.82R x0.25。不贪 4311 之下。"
+  },
+  "expected_R": 3.6,
+  "expected_win_probability": 0.45,
+  "probability_source": "subjective (顺 D1/H4 下行趋势在 H4 MA200 阻力台阶卖逆势回抽: 反弹已重夺 H1 MA20 且动能强(M15 连收复 MA20/MA50), 但 D1/H4 仍在关键均线下方 -> H4 MA200 台阶受拒基线胜率 ~0.43-0.48; 取 0.45 保守, 反映刚被同一波反弹扫损 + 动能可能贯破至 4379 簇的风险; breakeven p~0.23)",
+  "expected_loss": {
+   "units": "R",
+   "value": 1.0
+  },
+  "estimated_cost": {
+   "spread_bps": 0.37,
+   "slippage_bps": 0.3,
+   "total_roundtrip_bps": 0.67,
+   "cost_in_R": 0.034
+  },
+  "expected_net_EV": {
+   "value": 1.04,
+   "units": "R",
+   "note": "0.45*(0.40*2.08+0.35*3.74+0.25*5.82) - 0.55*1.00 - 0.034 = 0.45*3.60 - 0.584 = +1.04R (1R=8.5pt @ref 4361.0, SL4369.5); target1 basis = 0.45*2.08 - 0.584 = +0.35R (>0)."
+  },
+  "maximum_holding_time": "M15*8",
+  "cancel_conditions": [
+   "触发前 mid >= 4369.5 (invalidation price_cross_up) = 清越 H4 MA200 4362.94 -> 逆势回抽证伪, 计划作废, 零成本",
+   "未触发时 engine stale/age 过期清理 (2h/8 M15 bars)",
+   "触发前 mid 先跌破 4341.31 (H1 MA20) 而未回抽 -> 回抽机会错过, 由新轮重建, 本计划零成本作废",
+   "已成交 -> SL 4369.5 / broker 随单, TP 4343.3 首目标; 不补仓不加仓",
+   "FLAT 单槽; qty 0.01 在 [0.01,0.05] 合规; 与旧挂 TP-0517Z(4339.5-4343.5)/TP-0547Zb(4356.0-4364.0) 不同档; 入区带 [4358.0,4364.0] 按 engine 反僵尸格宽设置"
+  ],
+  "risk_level": "medium",
+  "reason": "上一轮空单被4342.13止损扫出(FLAT,槽释放)。4300.70急低V修复重夺H1 MA20 4341.31,现价4353.33逼近H4 MA200 4362.94,而D1/H4仍在其关键均线下方。回抽4358-4364做空SL4369.5,目标4343.3/4329.2/4311.5,EV+1.04R;不追价不摊平。",
+  "qty_lots": 0.01
+ },
+ "model": "deepseek/deepseek-v4-flash",
+ "prompt_version": "hermes_trader_v1_active_hunter"
+}

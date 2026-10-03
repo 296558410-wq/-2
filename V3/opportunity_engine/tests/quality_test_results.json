@@ -1,0 +1,129 @@
+{
+ "schema": "v3_quality_tests/1",
+ "total": 12,
+ "pass": 12,
+ "fail": 0,
+ "results": [
+  {
+   "test": "test_quality_deterministic",
+   "result": "PASS",
+   "detail": {
+    "assessed": 1999,
+    "identical": true
+   },
+   "sec": 6.4
+  },
+  {
+   "test": "test_quality_no_lookahead",
+   "result": "PASS",
+   "detail": {
+    "cut": "2026-08-18 17:35:00+00:00",
+    "assessed_before_cut": 1399,
+    "identical": true
+   },
+   "sec": 4.04
+  },
+  {
+   "test": "test_quality_replay",
+   "result": "PASS",
+   "detail": {
+    "cut": "2026-07-29 16:10:00+00:00",
+    "replayed": 999,
+    "consistent": true
+   },
+   "sec": 3.01
+  },
+  {
+   "test": "test_quality_registry_hash",
+   "result": "PASS",
+   "detail": {
+    "registry_hash": "052867f86f6735f37c7c",
+    "stable": true,
+    "matches_written_file": true
+   },
+   "sec": 0.0
+  },
+  {
+   "test": "test_quality_immutable_input",
+   "result": "PASS",
+   "detail": {
+    "r1_ledger_hashes_unchanged": true,
+    "audit_input_hash": "6685dab4878655e5"
+   },
+   "sec": 0.01
+  },
+  {
+   "test": "test_quality_no_future_return",
+   "result": "PASS",
+   "detail": {
+    "identifiers_absent": true,
+    "declared_forbidden_in_registry": true,
+    "audit_asserts_no_future_return": true,
+    "scanned": [
+     "quality_filter.py",
+     "run_quality_r1.py"
+    ]
+   },
+   "sec": 0.01
+  },
+  {
+   "test": "test_hermes_three_way_decision",
+   "result": "PASS",
+   "detail": {
+    "decisions": {
+     "REJECT": 695,
+     "INVESTIGATE": 404
+    },
+    "distinct": 2
+   },
+   "sec": 0.03
+  },
+  {
+   "test": "test_candidate_schema",
+   "result": "PASS",
+   "detail": {
+    "candidates": 0,
+    "schema_ok": true
+   },
+   "sec": 0.0
+  },
+  {
+   "test": "test_ledger_chain",
+   "result": "PASS",
+   "detail": {
+    "rows": 1999,
+    "chain_ok": true,
+    "tamper_detected": true
+   },
+   "sec": 0.06
+  },
+  {
+   "test": "test_v1_isolation",
+   "result": "PASS",
+   "detail": {
+    "v1_source_modified": 0,
+    "v1_own_runtime_files": 12
+   },
+   "sec": 0.02
+  },
+  {
+   "test": "test_v2_isolation",
+   "result": "PASS",
+   "detail": {
+    "v2_source_modified": 0,
+    "v2_own_runtime_files": 215,
+    "task_footprint_in_v2": 0
+   },
+   "sec": 0.74
+  },
+  {
+   "test": "test_order_send_disabled",
+   "result": "PASS",
+   "detail": {
+    "no_order_path": true,
+    "schema_forbids_order_fields": true
+   },
+   "sec": 0.0
+  }
+ ]
+}

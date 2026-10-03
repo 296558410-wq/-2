@@ -1,0 +1,113 @@
+{
+ "cycle": "2026-09-10T12:32Z",
+ "symbol": "XAUUSD",
+ "decision_id": "DEC-2026-09-10T12:32Z",
+ "utc_ts": "2026-09-10T12:32Z",
+ "generated_utc": "2026-09-10T12:32Z",
+ "decision": "SHORT",
+ "confidence": 0.55,
+ "bias": "SHORT-lean 0.60 (四周期同向空; 日内 4434.99->新低4350.30 单边下行; 现 flat 可新开 -> 主动猎手注册破位微支撑回抽 fade 4360-4366, 触价自动成交)",
+ "opportunity": "现 flat (MT5 demo, POSITIONS=0 / PENDING_ORDERS=0; 上一笔 POS-20260910T1102ZB SHORT 0.01@4386.83 已于 12:04Z 按 broker TP 4380.0 落袋 realized +7.2USD)。现价 MT5-tick mid 4352.26 (12:32Z, bid 4353.04/ask 4353.18, spread 0.32bps, tick_rate ~157/min)。日内 4434.99(09:00Z UTC 高)->新低 4350.30(12:30Z bar 低), 12:30Z 单根 M15 冲高 4372.96 后被拒、长上影、收 4352.19 = 破位续跌。主动猎手 setup: 反抽回破位微支撑带 4360.0-4366.0 (12:15Z 低 4361.95 + 12:15Z 收 4363.32 + 12:30Z 开 4363.30 汇聚) 时 fade 做空, zone_touch 实时成交, 不等下一根收盘。现在离可交易 = 需自 4352.26 上抽 +7.7~+13.7pt 进入 4360-4366 触价即自动成空; 若先续跌破 4348 则引擎 price_left_setup 自清, 转下轮更低一级 fade 重建。",
+ "opportunity_mechanism": "broken_micro_support_retest_fade_4363_v2 —— 强势单边下行(四周期空头共振)于 12:30Z 冲高 4372.96 被拒后刷新低 4350.30; 反抽进入破位微支撑带 4360.0-4366.0 (12:15Z 低 4361.95 / 12:15Z 收 4363.32 / 12:30Z 开 4363.30, 上方 12:00Z 低 4369.91 为缓冲) 后动能耗尽即回落续空。与 D1/H4/H1/M15 各自关键均线下方结构共振, 1R=7.5pt 有界, 分档 T 4349.5/4341.5/4331.5 加权 ~2.77R。",
+ "mtf_agreement": "bearish (四周期同向空)。MT5-true(12:32Z): D1 close 4400.49 < MA20 (range, llish5>hhish4) -> 中期空; H4 close 4352.19 < MA20 4397.88 & MA50 4405.10 -> 空; H1 close 4352.19 < MA20 4401.77/MA50 4394.68/MA200 4409.07, hi60 4443.01/lo60 4341.36 -> 空, 下方 4341.36 为下一关键支撑; M15 close 4352.19 < MA20 4388.09/MA50 4403.38/MA200 4395.06, hi60 4434.99/lo60 4350.30 -> 空且动能延续(12:30Z 破位新低)。四周期无多头反对 -> bias SHORT-lean 0.60。(注: state_pkg/parquet M15 均线块相对 MT5 偏移约 +20pt, 决策以 MT5 rates + live tick 为准)",
+ "position_note": "MT5 demo: 现 flat (POSITIONS=0, PENDING_ORDERS=0)。上一笔 POS-20260910T1102ZB SHORT 0.01@4386.83 (ticket 2375368498) 已按 broker TP 4380.0 落袋 (reconcile @4379.63, realized +7.2USD)。在册旧计划 TP-20260910T121905 (SHORT zone 4373.0-4381.0) 因 mid 4352.26 < zone_lo-2band=4357.0, 本轮将被引擎 price_left_setup 取消, 由本计划重建更低一级 fade。持仓中不叠加新仓(单仓约束)。",
+ "answers_14": {
+  "1": "市场状态: XAUUSD live mid 4352.26 (MT5-tick 12:32Z; bid 4353.04/ask 4353.18; spread 0.32bps; tick_rate ~157/min; abnormal last6_max_move 21.4bps z1.08)。四周期(MT5-true): D1 close 4400.49<MA20 (range, llish5>hhish4, RSI42.7); H4 close 4352.19<MA20 4397.88&MA50 4405.10 (range); H1 close 4352.19<MA20 4401.77/MA50 4394.68/MA200 4409.07, hi60 4443.01/lo60 4341.36; M15 close 4352.19<MA20 4388.09/MA50 4403.38/MA200 4395.06, hi60 4434.99/lo60 4350.30。日内 4434.99(09:00Z)->新低 4350.30(12:30Z) 单边下行。data_quality ok(live_days=4, live_ticks 680864, gaps[], context_days 28)。",
+  "2": "一致性: 四周期现价均在各自关键均线下方 (D1<MA20; H4<MA20&MA50; H1<三条MA; M15<三条MA) -> 空头共振, 无多头周期反对。短线动能同向下 (M15 12:30Z 破位新低, H1 recent 负)。综合 = 下跌趋势内弱反抽 -> 续空, 非抄底。bias SHORT-lean 0.60。",
+  "3": "M15变化: 12:30Z bar o4363.30 h4372.96 l4350.30 c4352.19 —— 冲高 4372.96 被拒、长上影、收于低位, 刷新日内低 4350.30(破前低 4369.91)。前根 12:15Z c4363.32。反抽高点随后递降 (4372.96 为最近高点)。上方阻力带 4360-4366(破位微支撑) + 4369.91(12:00Z 低) + 4377-4378(11:45/12:00 高); 下方 4341.36(H1 lo60) 为下一关键支撑。",
+  "4": "有无可交易机会: 有。现 flat 可新开(SHORT)。主动猎手 setup = 反抽进入破位微支撑带 4360.0-4366.0 时 fade 做空 (zone_touch 实时判定)。现在离可交易 = 需自 4352.26 上抽 +7.7~+13.7pt 进入 4360-4366 触价即自动成空; 若先续跌破 4348 则本计划引擎自清, 转下轮更低一级 fade 重建。confidence 0.55。",
+  "5": "机会机制: broken_micro_support_retest_fade_4363_v2 —— 强势下行冲高 4372.96 被拒刷新低 4350.30 后, 反抽进入破位微支撑带 4360-4366 (12:15Z 低 4361.95/收 4363.32, 12:30Z 开 4363.30 汇聚, 上方 4369.91 缓冲) 后动能耗尽回落续空; 与四周期空头背景共振。备用机制: intraday_low_break_continuation_4348_v1 供下轮更低一级使用。",
+  "6": "触发条件[具体价]: {\"and\":[{\"zone_touch\":[4360.0,4366.0]},{\"spread_under_bps\":1.2}]} —— MT5 mid 自 4352.26 上抽进入 4360.0-4366.0 即实时成交(不等下一根 M15 收盘)。",
+  "7": "失效[具体价]: {\"price_cross_up\":4369.5} (站回 12:00Z 低 4369.91 上方 -> 破位被否定、反抽升级为反转; 计划零成本取消); 另引擎 price_left_setup: mid < zone_lo-2band = 4360.0-2x6.0 = 4348.0 (先续跌破位不回 -> 自动清理转下轮)。已成交失效 = broker SL 4370.5 认损 -1R。",
+  "8": "预期收益R (ref fill 4363.0, 1R=7.5pt@SL4370.5): T1 4349.5(+13.5pt=1.80R)x0.40 / T2 4341.5(+21.5pt=2.87R)x0.35 / T3 4331.5(+31.5pt=4.20R)x0.25 -> expected_R ≈ 2.77R。",
+  "9": "预期损失R: -1.0R 有界 (SL 4370.5, risk 7.5pt ≈ 17.2bps @4363)。亏损不加仓、不反手; 空头背景下不注册反向 LONG。",
+  "10": "成本数值: spread 0.32bps + slippage 0.30bps = 单边 0.62bps, 往返 1.24bps ≈ 0.54pt ≈ 0.07R(1R=7.5pt)。demo 执行成本极低, 非障碍。",
+  "11": "净EV算式: EV_R = p×R − (1−p)×1 − cost = 0.44×2.77 − 0.56×1.0 − 0.07 = 1.219 − 0.630 = +0.59R (>0 通过; breakeven p≈0.36)。触发前 mid 未入带零成本; 入带才成交。",
+  "12": "再现: 今日套路 —— 破位/反抽 fade 连续生效: 07:47Z fade -> broker_tp +6.43USD; 11:32Z 反抽微供给带 fade 成交@4386.83 -> 12:04Z broker TP 落袋 +7.2USD; 12:17Z fade 4373-4381 几乎在 12:30Z 触及(bar 高 4372.96, 距 zone_lo 仅 0.04pt)。本轮为同一空头趋势内、价位下移一级后的 fade 接力 (4373-4381 -> 4360-4366)。",
+  "13": "决策: SHORT。confidence 0.55, bias SHORT-lean 0.60。注册 fade 计划 zone 4360.0-4366.0 (zone_touch 实时触发), SL 4370.5, T 4349.5/4341.5/4331.5 加权 2.77R, 净EV +0.59R, qty 0.01。",
+  "14": "现 flat, 上一空单已 TP 落袋。四周期空头共振、日内新低不断。主动猎手: 注册反抽 fade 4360-4366, 触价即自动空, SL4370.5 -1R 有界, T 4349.5/4341.5/4331.5 加权 2.77R, 净EV +0.59R。离可交易 = 等 +7.7~+13.7pt 上抽入带; 先破 4348 则引擎自清转下轮。"
+ },
+ "plan": {
+  "direction": "SHORT",
+  "opportunity_type": "broken_support_retest_fade",
+  "mechanism_ref": "broken_micro_support_retest_fade_4363_v2",
+  "entry_style": "market_on_trigger",
+  "entry_zone": {
+   "low": 4360.0,
+   "high": 4366.0
+  },
+  "trigger_condition": {
+   "and": [
+    {
+     "zone_touch": [
+      4360.0,
+      4366.0
+     ]
+    },
+    {
+     "spread_under_bps": 1.2
+    }
+   ]
+  },
+  "invalidation_condition": {
+   "price_cross_up": 4369.5
+  },
+  "stop_logic": {
+   "type": "structure",
+   "level_price": 4370.5,
+   "level": "12:00Z 低 4369.91 上方 0.6pt; 破位微支撑带 4360-4366 上方 4.5pt",
+   "reason": "fade 失效: 价格站回 12:00Z 低 4369.91 上方即证破位被否定、反抽升级为反转; SL 4370.5 置于该位上方 0.6pt, 认损 1R=7.5pt @ref 4363.0。"
+  },
+  "target_logic": {
+   "type": "price_levels",
+   "levels": [
+    {
+     "price": 4349.5,
+     "frac": 0.4
+    },
+    {
+     "price": 4341.5,
+     "frac": 0.35
+    },
+    {
+     "price": 4331.5,
+     "frac": 0.25
+    }
+   ],
+   "reason": "T1 4349.5 = 日内低 4350.30 下方延伸/近端目标 (+13.5pt=1.80R)x0.40 降险; T2 4341.5 = H1 lo60 4341.36 汇合 (+21.5pt=2.87R)x0.35; T3 4331.5 = 下破 H1 lo60 延伸测量 (+31.5pt=4.20R)x0.25; 不设 4331.5 之下。"
+  },
+  "expected_R": 2.77,
+  "expected_win_probability": 0.44,
+  "probability_source": "subjective",
+  "expected_loss": {
+   "units": "R",
+   "value": 1.0
+  },
+  "estimated_cost": {
+   "spread_bps": 0.32,
+   "slippage_bps": 0.3,
+   "total_roundtrip_bps": 1.24,
+   "cost_in_R": 0.07
+  },
+  "spread_bps": 0.32,
+  "slippage_bps": 0.3,
+  "expected_net_EV": {
+   "value": 0.59,
+   "units": "R",
+   "note": "0.44×(0.40×1.80+0.35×2.87+0.25×4.20) − 0.56×1.0 − 0.07 = 0.44×2.77 − 0.63 = +0.59R (1R=7.5pt @ref fill 4363.0, SL 4370.5; breakeven p≈0.36)。"
+  },
+  "maximum_holding_time": "M15*8",
+  "cancel_conditions": [
+   "触发前 mid ≥ 4369.5 (price_cross_up invalidation = 站回 12:00Z 低 4369.91 上方) -> 引擎零成本取消",
+   "触发前 mid < 4348.0 (engine price_left_setup, 价格跌破 zone_lo−2×band, 先续跌破位不回) -> 下轮改评更低一级续空",
+   "未触发 age > 120min (M15*8) 过期清理 -> 下轮重评",
+   "成交失败(仓位忙/broker 拒) -> 计划即时作废不留僵尸, 不追单",
+   "空头背景下不注册反向 LONG; 已成交 -> SL 4370.5 broker 随单 -1R 有界; 亏损不加仓不反手; 持仓中不注册新开仓计划(单仓约束)"
+  ],
+  "risk_level": "medium",
+  "reason": "四周期同向空 (D1<MA20 / H4<MA20 4397.88&MA50 4405.10 / H1<三条MA / M15<三条MA)。日内 4434.99->新低 4350.30 单边下行, 12:30Z 冲高 4372.96 被拒长上影收低 = 破位续跌未收复。上方 4360-4366 为破位微支撑带 (12:15Z 低 4361.95/收 4363.32 + 12:30Z 开 4363.30), 再上 4369.91 为缓冲。fade 该带, SL 4370.5 置 4369.91 上方 -1R 有界, 分档 T 4349.5/4341.5/4331.5 加权 2.77R, 净EV +0.59R; qty 0.01 在 [0.01,0.05] 区间内。与被取消的 TP-121905(4373-4381) 触发区不重叠。",
+  "qty_lots": 0.01
+ },
+ "model": "deepseek/deepseek-v4-flash",
+ "data_quality_note": "data_quality ok (live_days=4, live_ticks 680864, gaps=[], context_days=28)。注: state_pkg/parquet M15 bar 块与均线相对 MT5 偏高 (M15 ma20 4412.73 vs MT5-true 4388.09, 偏移 ~+24pt), 决策价位以 MT5 rates + live tick 为准; state_pkg m15_live mid 4352.76 与 MT5 tick 4352.26 一致(差 ~0.5pt)。candle_latest.json 冻结于 09-07 12:15, 忽略。MT5 现 flat (POSITIONS=0/PENDING_ORDERS=0)。"
+}

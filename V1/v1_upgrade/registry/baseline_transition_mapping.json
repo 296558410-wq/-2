@@ -1,0 +1,47 @@
+{
+ "mapping_id": "v1up-baseline-transition-order-map-v1",
+ "family_map": {
+  "TREND": "DIRECTIONAL",
+  "BREAKOUT_ATTEMPT": "DIRECTIONAL",
+  "EXPANSION": "DIRECTIONAL",
+  "ROTATION": "RANGE",
+  "REJECTION": "RANGE",
+  "DECELERATION": "RANGE",
+  "COMPRESSION": "QUIET",
+  "ACCEPTANCE": "QUIET",
+  "NO_DEFINED_STATE": "QUIET"
+ },
+ "H": 4,
+ "dev_end": "2026-06-01",
+ "successor_table": {
+  "QUIET": "QUIET",
+  "RANGE": "RANGE",
+  "DIRECTIONAL": "DIRECTIONAL"
+ },
+ "counts": {
+  "QUIET": {
+   "RANGE": 2452,
+   "QUIET": 5721,
+   "DIRECTIONAL": 926
+  },
+  "RANGE": {
+   "RANGE": 7190,
+   "DIRECTIONAL": 3020,
+   "QUIET": 2363
+  },
+  "DIRECTIONAL": {
+   "QUIET": 1013,
+   "DIRECTIONAL": 7617,
+   "RANGE": 2930
+  }
+ },
+ "lots": 0.01,
+ "sl_atr": 1.0,
+ "tp_atr": 1.5,
+ "atr_n": 14,
+ "order_rule": "DIRECTIONAL -> along M15 trend sign; RANGE/QUIET -> no trade",
+ "disclaimer": "CONTROL ARM. NOT Hermes capability, NOT alpha, NOT the R8-B predictor.",
+ "trend_sign_rule": "side = LONG if close-MA20(M15) > 0 else SHORT  (added 2026-09-28; successor table unchanged)",
+ "live_labeler": "label_adapter.py : frozen _c1_5_run.label_series + hysteresis(k=2), replay-proven 100%",
+ "mapping_hash": "d59e9e9d489c81c5af8625213def7006438d9a35e36fb4c1af97ac08433b95fa"
+}

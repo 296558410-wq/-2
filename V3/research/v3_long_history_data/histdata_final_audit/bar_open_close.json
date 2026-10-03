@@ -1,0 +1,9 @@
+{
+ "schema": "v3_histdata_bar_open_close/1",
+ "ts_utc": "2026-09-25T10:01:01.105602+00:00",
+ "documented": "the official spec lists fields 'DateTime Stamp;Bar OPEN Bid Quote;Bar HIGH Bid Quote;Bar LOW Bid Quote;Bar CLOSE Bid Quote;Volume' - it names the OHLC fields but never states whether the DateTime Stamp marks the bar's open or close",
+ "structural_evidence_L7": "the daily break is stamped as a gap 16:59:59 -> 18:00:00. Under OPEN labelling the missing stamps 17:00..17:59 are exactly the non-trading hour and the 16:59 bar covers 16:59-17:00 (the last traded minute) - consistent. Under CLOSE labelling the stamp 17:00 would be the bar covering 16:59-17:00 which DID trade, so it should exist - inconsistent.",
+ "classification": "INFERRED_OPEN (structural, L7) - NOT DOCUMENTED",
+ "BAR_TIMESTAMP": "UNKNOWN",
+ "why_not_promoted": "task section 9: inference must not be upgraded to a verification"
+}

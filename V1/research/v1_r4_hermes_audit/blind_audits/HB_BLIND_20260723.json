@@ -1,0 +1,54 @@
+{
+  "audit_id": "HB_BLIND_20260723",
+  "timestamp": "2026-07-23T12:00:00+00:00",
+  "current_state": "ACCEPTANCE (frozen C1 label, event ACCEPTANCE, dwell 1 bar) after 19 consecutive REJECTION bars; price ~4092 trading just above nearest support SWING_LOW_36735 at 4086.785 (distance 0.10 ATR, INSIDE, 19 touches/240); multi-timeframe agreement = CONFLICT (M1/M5 firm, M15/H1 down, H4 positive).",
+  "structure": "Nearest active level is a well-trafficked swing low at 4086.785 (DN side, 19 touches in 240 bars, reclaim NONE). Price is inside/at this level after a sharp 24h flush from 4165.775 (H4 high Jul22 16:00) to 4039.685 (current H4 low). H1 shows 8 consecutive down bars and trend_20 of -73.58; H4 trend_20/50 remain positive (+33.79/+42.70), indicating the larger structure is an uptrend in a deep pullback. Current H1 (12:00) bar has a large lower wick (12.78) and M15 11:45 bar bounced 4087->4095, signaling buyer absorption at the lows.",
+  "mechanism": "Candidate mechanism (DERIVED, not asserted): trend_continuation (downside) supported by 'price inside level, 8-bar displacement -7.15', invalidated by a decisive break of the active level. The displacement supports continuation of the down-move, but the lower-wick rejection and the just-completed REJECTION->ACCEPTANCE transition cut against immediate continuation; mechanism remains a candidate only.",
+  "primary_scenario": {
+    "scenario": "Stabilization/bounce: price holds above the 4086.785 swing low; ACCEPTANCE consolidates; lower-wick absorption drives a mean-reversion recovery toward 4095-4100, with extension toward the 4105-4110 area (retest of broken H1 structure) if momentum builds.",
+    "confidence": 0.45,
+    "horizon": "INTRADAY",
+    "trigger": "M1/M5 firmness persists (M1 trend_20 +4.17), price reclaims 4093.7 (M1 12:00 high) and 4095.2-4096.9 (M15/H1 recent highs) on expanding M1/M5 range while 4086.785 holds.",
+    "invalidation": "Decisive break and 1H close below 4086.785 with expanding range (H1/H4), or rollover below 4091.8 (M5 12:00 low) without first making new intraday highs."
+  },
+  "alternative_scenario": {
+    "scenario": "Down-move continuation: ACCEPTANCE reflects acceptance of lower prices; the 19-touch support at 4086.785 gives way and price flushes toward the 4039.7 H4 low / 4040 zone, consistent with the negative 8-bar displacement and H1 trend_20 of -73.58.",
+    "confidence": 0.35,
+    "horizon": "INTRADAY",
+    "trigger": "Close below 4086.785 (level break, reclaim NONE) with H1/H4 range expansion and follow-through selling below 4085.5 (H1 12:00 close).",
+    "invalidation": "Strong recovery above 4095.2-4096.9 that negates the downside impulse and pulls price back into the 4100s."
+  },
+  "expected_transition": "ACCEPTANCE -> ROTATION (analog A310) or ACCEPTANCE -> TREND (analog A12220) / EXPANSION then REJECTION (analog A23519); analogs show no consensus, but the modal near-term path is stabilization/rotation within the 4086-4096 zone before directional resolution, likely within the current-to-next session. Ambiguity rate over last 8 bars is 0.625, so the state read is noisy.",
+  "direction": "UP",
+  "horizon": "INTRADAY",
+  "confidence": 0.45,
+  "counter_evidence": [
+    "H1 trend_20 of -73.58 with 8 consecutive down bars; strong downside impulse since the 4165 high.",
+    "Multi-timeframe agreement = CONFLICT: M15 (-34.44) and H1 (-73.58) trend down against M1/M5 firmness, so the bounce read is time-frame dependent.",
+    "Mechanism candidate is trend_continuation with negative 8-bar displacement (-7.15), i.e., the data-supported candidate is bearish.",
+    "DXY strengthening (+0.147 over 32 bars) and VIX up (+0.55) are mildly adverse for gold (both PROXY quality).",
+    "H4 current bar is aggressively bearish (range 54.04, percentile 0.81) and 12:00 H1 low tagged 4072.755 just below the 4086.785 level.",
+    "Historical analogs diverge: 2 of 3 converge to REJECTION by step 16; no analog supports an immediate clean continuation.",
+    "UST10Y unavailable (UNKNOWN) and no NEWS/MACRO/GLD/GC data, so the fundamental driver side is unobservable."
+  ],
+  "invalidation": "A decisive 1H close below 4086.785 with expanding H1/H4 range invalidates the primary bounce view and opens the 4039.7 H4 low; failure to defend 4039.7 would confirm deeper downside. Conversely, a break above 4096.9 with range expansion invalidates the down-continuation alternative. In the absence of either, treat the market as rotation within 4086-4096.",
+  "data_quality_flags": [
+    "L1 price: DIRECT/RAW_GEOMETRY + DERIVED (intrabar snapshot geometry)",
+    "L2 structure: DERIVED (causal pivot swing levels)",
+    "L3/L5 state: DERIVED (frozen C1 ontology + min-dwell lifecycle); ambiguity_rate_8 = 0.625",
+    "L4 mechanism: DERIVED candidate only, NOT asserted as fact",
+    "L6 multi-timeframe: DERIVED; agreement = CONFLICT, timeframes never merged",
+    "L7 DXY/VIX: PROXY (Yahoo 5m, instrument definition UNKNOWN), never upgraded",
+    "L7 UST10Y: UNKNOWN (STALE_OR_NOT_COVERED); absent: NEWS, MACRO_EVENTS, GLD, GC, CFTC_COT, ETF_FLOWS",
+    "Historical analogs: state-evolution only, no returns/PnL/labels"
+  ],
+  "reasoning_trace": [
+    "1) State flipped REJECTION(19 bars) -> ACCEPTANCE at dwell 1 while price sits ~4092, just above the 4086.785 swing low (0.10 ATR distance) -> acceptance is being tested at a key support.",
+    "2) Immediate tape (M1/M5) is firming (M1 trend_20 +4.17, M5 +0.57, M5 last bars holding 4091-4095) while M15/H1 remain down -> short-term stabilization signal at the level.",
+    "3) Lower-wick rejection on H1 12:00 (wick 12.78) and M15 11:15/11:45 bounces indicate buyers absorbing the flush -> supports a bounce read.",
+    "4) Yet H1 8 consecutive down bars, H4 aggressive bear bar, negative 8-bar displacement, and a bearish mechanism candidate argue for downside continuation -> I do not override them; I cap confidence at 0.45.",
+    "5) Cross-market is mildly adverse (DXY up, VIX up) but both PROXY; UST10Y missing -> no yield driver available, cannot strengthen either scenario.",
+    "6) Analogs (A310/A12220/A23519) point to rotation/divergence rather than consensus -> expected transition is stabilization/rotation within 4086-4096, with directional resolution only on a decisive break of 4086.785 (down) or 4096.9 (up).",
+    "7) Net: mild intraday upside bias from support acceptance and short-term firmness, explicitly contested by timeframe conflict and the bearish displacement; direction UP, confidence 0.45."
+  ]
+}

@@ -1,0 +1,13 @@
+{
+ "kind": "TARGET_LIMITATION",
+ "recorded_not_fixed": true,
+ "issue": "the BOUNDARY_STABILITY metric used lag-1 label agreement, which is dominated by STATE_CHURN (0.6473/bar). It therefore does NOT cleanly isolate boundary fragility.",
+ "consequence": "BOUNDARY_STABILITY=UNSUPPORTED and test_boundary_sensitivity=FAIL restate churn rather than proving boundary fragility",
+ "action_taken": "reported honestly; threshold NOT loosened; ontology NOT modified; metric redefinition deferred to a future task",
+ "C1_forecast_side_vs_actual_side_NODEF": {
+  "C1_forecast_NO_DEFINED_STATE": 70,
+  "C1_actual_NO_DEFINED_STATE": 14,
+  "note": "the C1 35% figure was FORECAST-side rule fallthrough; the ACTUAL label space has only 7% NO_DEFINED_STATE. C1.5 re-derives from the actual side: 14/200 = 7%."
+ },
+ "UNKNOWN_vs_NODEF_separation": "UNKNOWN_SOURCE_MATRIX from the actual side: DEFINED 186 / NO_DEFINED_STATE 14 (0 other buckets) -> the C1 38% UNKNOWN was an EVALUATION-side relation outcome, not an actual-label unknown rate"
+}

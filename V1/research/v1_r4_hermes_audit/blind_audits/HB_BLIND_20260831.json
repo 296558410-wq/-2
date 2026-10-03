@@ -1,0 +1,55 @@
+{
+  "audit_id": "HB_BLIND_20260831T120000Z",
+  "timestamp": "2026-08-31T12:00:00Z",
+  "current_state": "COMPRESSION (state_v2, dwell 3 bars) with frozen behavior label REJECTION at t; preceded by 9 bars of ROTATION (single ROTATION->COMPRESSION transition in last 8). Price 4454.8 is stalled exactly on the heavily-touched swing-high 4453.465 after a recovery rally from the 4396.1 low; the 12:00 M15 and H1 bars carry long upper wicks (3.79 and 8.76) with near-zero bodies = fresh rejection at 4457.4/4463.9.",
+  "structure": "Post-crash structure: H4 shows a violent selloff from 4630.8 high (2026-08-28 12:00 bar) through a -137pt crash bar (08-28 16:00, low 4445.2) to the 4396.1 low (08-31 00:00 bar); since then a corrective recovery to 4463.9. H4 trend_20 = -171.2 (intact downtrend), H1 trend_20 = -69.0, while M1/M5/M15 trend_20 are +5.3/+16.9/+18.0 (short-term up) -> L6 agreement = CONFLICT (timeframes never merged). L2 nearest level: SWING_HIGH_39224 at 4453.465, side UP, 25 touches in 240 bars, break_status INSIDE, distance 0.0117 ATR - price is sitting in a high-touch supply cluster. Cross-market: DXY 99.542 (flat, chg_32 -0.003), VIX 15.28 (low/calm), UST10Y PROXY unavailable; NEWS/MACRO/COT/ETF/GLD/GC all absent.",
+  "mechanism": "Corrective rally inside an intact H4 downtrend meeting supply at the 4453-4464 zone. A REJECTION at a 25-touch swing-high within a downtrend context favors resumption of the down move (classic bear-flag / retest-of-crash-zone behavior). The context's only L4 mechanism candidate is trend_continuation (DERIVED, candidate not asserted), supported by 8-bar displacement +10.83 - i.e., an alternative reading that the short-term up-leg continues. These two readings are in direct tension; the multi-timeframe CONFLICT is the crux of the mechanism.",
+  "primary_scenario": {
+    "scenario": "Rejection holds -> short-term pullback from the 4453-4464 supply zone: initial drift toward the 4433-4435 shelf (09:00-10:00 area), then watch 4415.6/4396.1; if those give way the H4 downtrend resumes toward new lows below 4396.",
+    "confidence": 0.45,
+    "horizon": "INTRADAY",
+    "trigger": "M1/M5 momentum loss below the 4453.465 level (e.g., M15 close < 4452.5 or M1 breakdown below 4453.3 with volume) confirming the rejection of the 12:00 bars.",
+    "invalidation": "H1 close above 4463.9 followed by multi-bar hold above the 4466.8-4471.8 zone (overnight highs) - rejection fails and the recovery extends instead."
+  },
+  "alternative_scenario": {
+    "scenario": "Compression resolves upward: buyers absorb the rejection, break above 4463.9 -> 4471.8 overnight high -> extension toward 4480-4500; consistent with analogs A26216/A32609 (COMPRESSION->TREND->EXPANSION/TREND), the +10.83 displacement, and the 6-8 consecutive up bars on M1/M5.",
+    "confidence": 0.30,
+    "horizon": "INTRADAY",
+    "trigger": "M15 close above 4457.4, then H1 close above 4463.9 with the 4453.5 level held on pullbacks (higher lows).",
+    "invalidation": "M15/H1 close back below 4453.5 with renewed selling, or a break below the 4452.3 H1 low - rejection confirmed, no upside follow-through."
+  },
+  "expected_transition": "COMPRESSION -> TREND or ROTATION within the next few bars/session: low recent ambiguity (ambiguity_rate_8 = 0.125) argues for a decisive resolution rather than prolonged churn. Downside resolution (primary) takes price to 4433-4435 then tests 4415/4396; upside resolution (alternative) targets 4472+; a rotation outcome would keep the 4450-4465 range intact. A third, explicitly acknowledged possibility is continued compression with no directional edge.",
+  "direction": "DOWN",
+  "horizon": "INTRADAY",
+  "confidence": 0.4,
+  "counter_evidence": [
+    "Short-timeframe momentum is up: M1 6 consecutive up bars, M5 8 consecutive up bars, M1/M5/M15 trend_20 positive, 8-bar displacement +10.83.",
+    "L6 multi-timeframe agreement = CONFLICT: lower TFs bullish while H1/H4 remain deeply bearish; the short-term edge could win in the near term.",
+    "Analog evolutions are mixed: A26216 and A32609 both leave COMPRESSION into TREND (one with EXPANSION), suggesting upside resolution is a live path.",
+    "The bounce high is still ascending: 08-31 00:00 H4 bar high 4471.775 exceeds the 08-28 20:00 high 4466.775 - the rejection at 4457-4464 may be digestion, not a top.",
+    "DXY is flat (chg_32 -0.003) and VIX low (15.28): no external USD or risk-off push reinforcing a gold selloff; UST10Y absent so real-yield pressure is unobservable.",
+    "H4 current bar is internally inconsistent with H1 (close 4431.5 vs 4455.1 at the same timestamp) - if the H4 snapshot is stale, the 'intact downtrend' read relies partly on suspect data."
+  ],
+  "invalidation": "H1 close above 4463.9 with a sustained hold above 4466.8-4471.8 (multi-bar, higher lows on M15), flipping the setup to upside continuation; alternatively, data verification showing the rejection wicks/levels are artifacts would force a re-read and a drop to NEUTRAL.",
+  "data_quality_flags": [
+    "H4 current bar contradicts H1/H15/M5/M1 at the same timestamp (close 4431.5 vs 4455.1; low 4415.6 absent from H1 range) - treat H4 current snapshot as stale/suspect; relied on completed H4 sequence history instead.",
+    "H1/H4 current-bar high 4463.9 does not appear in any shown M1/M5/M15 bar - cross-timeframe current-bar misalignment; intraday highs used with caution.",
+    "UST10Y_PROXY_TNX unavailable (UNKNOWN, stale/not covered).",
+    "DXY and VIX are PROXY quality (Yahoo 5m, instrument definition UNKNOWN) - never upgraded to DIRECT.",
+    "L2 level is DERIVED (pivot swing levels); L3/L5 labels are DERIVED (frozen C1 labeler + min-dwell lifecycle); L4 mechanism is candidate-only, not asserted.",
+    "Absent series (NEWS, MACRO_EVENTS, CFTC_COT, ETF_FLOWS, GLD, GC) - no fundamental or flow context; headline risk unobservable.",
+    "Historical analogs encode state evolution only (exact_state + dwell_bucket); no return/PnL/label information included."
+  ],
+  "reasoning_trace": [
+    "Read only the assigned PIT context; no other analyst forecast consulted; no future data.",
+    "Cross-checked closes at 12:00: M1 4454.8, M5 4455.9, M15 4453.5, H1 4455.1 are mutually consistent; H4 current close 4431.5 contradicts them -> flagged H4 current bar as suspect and anchored on completed H4 sequence history.",
+    "Established the dominant structure from completed H4 bars: crash 4630.8 -> 4396.1, then recovery to ~4464; H4 trend_20 -171 confirms the larger downtrend is intact.",
+    "Read the intraday tape: recovery from 4396.1 (03:00) to the 4463.9 high; 12:00 M15 (upper wick 3.79, body 0.11) and H1 (upper wick 8.76, body 1.44) bars are textbook rejection candles at supply.",
+    "Located price 4454.8 exactly on SWING_HIGH_39224 (4453.465, 25 touches/240 bars, INSIDE) - a statistically busy resistance cluster.",
+    "Combined the frozen REJECTION label and COMPRESSION dwell 3 with the lifecycle transition history (ROTATION x9 -> COMPRESSION) to expect an imminent resolution.",
+    "Weighed the multi-timeframe CONFLICT: lower-TF momentum argues up; higher-TF trend argues down; rejection-at-resistance-in-downtrend is the higher-probability microstructure read.",
+    "Checked cross-market: DXY flat and VIX low give no directional nudge; UST10Y absent removes the real-yield channel.",
+    "Reviewed analogs: evolutions are directionally mixed (stay-compress->REJECT, ->TREND up, ->ROTATE->TREND) - no clean support for either side, kept as counter-evidence for the primary.",
+    "Verdict: modest DOWN edge on rejection-at-resistance inside an intact H4 downtrend, INTRADAY horizon, subjective confidence 0.40 (docked for TF conflict, mixed analogs, and the H4/H1 data inconsistency); invalidated by a sustained H1 close above 4463.9/4471.8."
+  ]
+}

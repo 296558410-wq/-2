@@ -1,0 +1,89 @@
+{
+  "forecast_id": "R8B_A_20260822",
+  "sample_id": "A_20260822",
+  "timestamp": "2026-08-22 00:00:00+00:00",
+  "horizon": 4,
+  "scenario_family": "QUIET",
+  "scenario_alternative": "RANGE",
+  "scenario_abstain": false,
+  "observations": [
+    "state COMPRESSION event VOL_CONTRACTION dwell 2",
+    "price 4602.055 pinned at swing 4601.875 INSIDE",
+    "M1 range percentile 0.155 M5 0.14 contracting",
+    "analog A21233 A26956 compression persists step 4"
+  ],
+  "what_i_know": [
+    "frozen label COMPRESSION VOL_CONTRACTION current",
+    "level 4601.875 touch_count_240 11 break INSIDE",
+    "M1 M5 range_contracting true trend negative",
+    "H4 H1 trend_20 positive strong uptrend context"
+  ],
+  "what_i_do_not_know": [
+    "future prices beyond 2026-08-21 21:59",
+    "direction after compression resolution unknown",
+    "cross-market DXY VIX yields all absent",
+    "news macro fundamentals not provided"
+  ],
+  "evidence": [
+    "fresh compression dwell 2 volatility contracted",
+    "range percentile 0.155 0.14 very low",
+    "two analogs compress through step four",
+    "price pinned high-touch level suppresses range"
+  ],
+  "counter_evidence": [
+    "H4 H1 bearish candle body ratio 0.94",
+    "A32777 analog trend at step 4",
+    "M15 H1 range_expanding true higher timeframe",
+    "L4 candidate trend_continuation displacement -22"
+  ],
+  "possible_mechanisms": [
+    {"mechanism": "compression_persistence", "status": "SUPPORTED", "why": "state fresh low range percentiles"},
+    {"mechanism": "trend_continuation", "status": "POSSIBLE", "why": "sharp drop momentum level break"},
+    {"mechanism": "level_bounce", "status": "POSSIBLE", "why": "high-touch support uptrend context"},
+    {"mechanism": "volatility_expansion", "status": "UNKNOWN", "why": "analog divergence after step 8"}
+  ],
+  "primary_scenario": {
+    "scenario": "QUIET",
+    "horizon": 4,
+    "trigger": "compression persists price holds near level",
+    "invalidation": "decisive break of 4601.875 or expansion"
+  },
+  "alternative_scenario": {
+    "scenario": "RANGE",
+    "horizon": 4,
+    "trigger": "bounded oscillation around support 4601.875",
+    "invalidation": "sustained directional move beyond level zone"
+  },
+  "expected_transition": "compression persists or rejection at support",
+  "direction_bias": "NO_DIRECTIONAL_EDGE",
+  "time_horizon": "H=4 bars",
+  "evidence_strength": 0.55,
+  "confidence": 0.5,
+  "uncertainty": 0.5,
+  "confidence_reason": "state evidence coherent analog persistence",
+  "uncertainty_reason": "fresh compression divergent at horizon four",
+  "invalidation": "decisive break of level 4601.875 or expansion",
+  "change_my_mind": [
+    "M1 range percentile above 0.7 expanding",
+    "decisive close below 4601.875 confirms break",
+    "level touch count rising rejection pattern",
+    "analog A32777 style trend materializes"
+  ],
+  "abstain": false,
+  "abstain_reason": "context sufficient no contradiction abstain not needed",
+  "questions": {
+    "Q1_what_do_i_know": "COMPRESSION VOL_CONTRACTION level pinning low range",
+    "Q2_what_do_i_not_know": "future direction cross-market macro absent",
+    "Q3_evidence_for_primary": "fresh compression low percentiles analog persistence",
+    "Q4_evidence_against_primary": "strong bearish candles expansion flags trend analog",
+    "Q5_mechanism_that_is_only_possible": "trend_continuation break not entitled to assert",
+    "Q6_what_would_change_my_mind": "range expansion percentile breakout decisive",
+    "Q7_should_i_abstain_now": "false context sufficient no contradiction"
+  },
+  "reasoning_trace": [
+    "state compression fresh dwell two volatility contracted",
+    "price pinned swing level eleven touches support",
+    "analogs mostly persist compression through step four",
+    "primary QUIET alternative RANGE no direction edge"
+  ]
+}

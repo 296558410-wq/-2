@@ -1,0 +1,225 @@
+{
+ "endpoint": "https://mcp.jin10.com/mcp",
+ "protocol": "2025-11-25",
+ "token_present": true,
+ "token_printed": false,
+ "steps": {
+  "initialize": {
+   "method": "initialize",
+   "ok": true,
+   "http": 200,
+   "ctype": "text/event-stream",
+   "error": null,
+   "jsonrpc_error": null
+  },
+  "initialized": {
+   "method": "notifications/initialized",
+   "ok": true,
+   "http": 202,
+   "ctype": null,
+   "error": null,
+   "notification": true
+  },
+  "tools_list": {
+   "ok": true,
+   "http": 200,
+   "count": 8,
+   "jsonrpc_error": null
+  },
+  "resources_list": {
+   "ok": true,
+   "count": 1
+  },
+  "resources_read_quote_codes": {
+   "ok": true,
+   "http": 200
+  }
+ },
+ "server_info": {
+  "name": "jin10-mcp",
+  "title": "金十数据智能开放平台",
+  "description": "基于MCP协议的智能数据服务，为您提供实时、准确、全面的金融与市场数据接口。",
+  "version": "1.0.0",
+  "websiteUrl": "https://mcp.jin10.com/app/",
+  "icons": [
+   {
+    "src": "https://cdn.jin10.com/assets/img/commons/favicon.ico",
+    "mimeType": "image/x-icon"
+   }
+  ]
+ },
+ "negotiated_protocol": "2025-11-25",
+ "tools": [
+  {
+   "name": "get_kline",
+   "description": "获取指定品种的分钟级 K 线数据（最高价、最低价、成交量等）",
+   "input_keys": [
+    "code",
+    "count",
+    "time"
+   ]
+  },
+  {
+   "name": "get_news",
+   "description": "根据文章 ID 获取文章详情。",
+   "input_keys": [
+    "id"
+   ]
+  },
+  {
+   "name": "get_quote",
+   "description": "获取指定品种的实时行情报价（价格、成交量、涨跌幅等）",
+   "input_keys": [
+    "code"
+   ]
+  },
+  {
+   "name": "list_calendar",
+   "description": "获取当前自然周（周一到周日）的财经日历数据",
+   "input_keys": []
+  },
+  {
+   "name": "list_flash",
+   "description": "按 cursor 获取快讯分页列表。",
+   "input_keys": [
+    "cursor"
+   ]
+  },
+  {
+   "name": "list_news",
+   "description": "按 cursor 获取文章分页列表。",
+   "input_keys": [
+    "cursor"
+   ]
+  },
+  {
+   "name": "search_flash",
+   "description": "按关键词搜索快讯。最多返回 150 条，不支持翻页。",
+   "input_keys": [
+    "keyword"
+   ]
+  },
+  {
+   "name": "search_news",
+   "description": "按关键词搜索文章，支持 cursor 分页。",
+   "input_keys": [
+    "cursor",
+    "keyword"
+   ]
+  }
+ ],
+ "resources": [
+  {
+   "uri": "quote://codes",
+   "name": "quote_codes"
+  }
+ ],
+ "quote_codes": null,
+ "calls": {
+  "get_quote": {
+   "ok": true,
+   "http": 200,
+   "jsonrpc_error": null,
+   "isError": null,
+   "structured_top_keys": [
+    "data",
+    "message",
+    "status"
+   ],
+   "sample_fields": [
+    "close",
+    "code",
+    "high",
+    "low",
+    "name",
+    "open",
+    "time",
+    "ups_percent",
+    "ups_price",
+    "volume"
+   ]
+  },
+  "get_kline": {
+   "ok": true,
+   "http": 200,
+   "jsonrpc_error": null,
+   "isError": null,
+   "structured_top_keys": [
+    "data",
+    "message",
+    "status"
+   ],
+   "kline_rows": 5,
+   "kline_sample": [
+    {
+     "close": "4289.03",
+     "high": "4289.09",
+     "low": "4287.93",
+     "open": "4287.93",
+     "time": 1790325360,
+     "volume": 168
+    },
+    {
+     "close": "4288.21",
+     "high": "4289.26",
+     "low": "4287.57",
+     "open": "4287.73",
+     "time": 1790325300,
+     "volume": 205
+    }
+   ]
+  },
+  "list_flash": {
+   "ok": true,
+   "http": 200,
+   "jsonrpc_error": null,
+   "isError": null,
+   "structured_top_keys": [
+    "data",
+    "message",
+    "status"
+   ],
+   "items": 20,
+   "has_more": true,
+   "next_cursor": "1790321576511",
+   "item_fields": [
+    "content",
+    "time",
+    "url"
+   ]
+  },
+  "list_calendar": {
+   "ok": true,
+   "http": 200,
+   "jsonrpc_error": null,
+   "isError": null,
+   "structured_top_keys": [
+    "data",
+    "message",
+    "status"
+   ],
+   "rows": 158,
+   "item_fields": [
+    "actual",
+    "affect_txt",
+    "consensus",
+    "previous",
+    "pub_time",
+    "revised",
+    "star",
+    "title"
+   ],
+   "sample": {
+    "actual": "-0.8",
+    "affect_txt": "利多",
+    "consensus": null,
+    "previous": "-1.00",
+    "pub_time": "2026-09-21 07:01",
+    "revised": null,
+    "star": 2,
+    "title": "英国9月Rightmove平均房屋要价指数年率"
+   }
+  }
+ },
+ "handshake_ok": true
+}

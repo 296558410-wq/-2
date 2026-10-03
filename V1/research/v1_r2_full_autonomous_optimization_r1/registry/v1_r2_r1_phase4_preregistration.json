@@ -1,0 +1,25 @@
+{
+ "task": "V1_R2_FULL_AUTONOMOUS_OPTIMIZATION_R1",
+ "phase": "PHASE_4_TRANSITION_EARLY_WARNING_AND_HAZARD",
+ "frozen_before_analysis": true,
+ "frozen_at_utc": "2026-09-27T20:50:00+08:00",
+ "question": "Once the state has a lifecycle (STATE v2, k=2), is a TRANSITION early-warnable? (a) is transition predictable from dwell length alone (hazard)? (b) can an early-warning model beat the base rate at lead times h=1,2,4,8? (c) does the current state add incremental value?",
+ "return_free": true,
+ "data": {"source": "research/v3_alpha_discovery_r1/xauusd_m1_histdata.parquet", "tf": "M15", "bars": 40546},
+ "target": "CHANGE(t,h) = 1 if STATE_V2(t+h) != STATE_V2(t) else 0, for h in {1,2,4,8}",
+ "features": {
+  "base": ["atr_pctl", "er10", "slope5", "rng_exp", "vel4", "acc", "eff3", "act3"],
+  "base_plus_state": "base + one-hot(current STATE_V2(t)) + dwell_length(t)",
+  "rule": "features use only information <= t; the target uses STATE_V2(t+h); no returns anywhere"
+ },
+ "protocol": {
+  "model": "binary logistic, C=1.0, TRAIN-only StandardScaler",
+  "walk_forward": "expanding, 5 folds, PURGE=480, EMBARGO=1",
+  "metrics": ["DeltaLL bits vs base-rate baseline", "ROC AUC", "Brier skill"],
+  "effect_floor_bits": 0.005,
+  "hazard": "empirical P(change at t+1 | dwell = d) reported as a curve; no fitting",
+  "acceptance": "EARLY_WARNING_SURVIVES if for some h the base_plus_state DeltaLL >= floor, AUC >= 0.55, and the improvement over base alone is positive"
+ },
+ "forbidden": ["returns/PnL/win-rate", "orders/broker", "live/shadow/forward", "editing frozen artifacts", "tuning thresholds"],
+ "write_scope": "research/hermes/trader_v1/v1_r2_full_autonomous_optimization_r1/** ONLY"
+}

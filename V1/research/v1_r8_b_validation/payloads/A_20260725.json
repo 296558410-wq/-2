@@ -1,0 +1,104 @@
+{
+ "sample_id": "A_20260725",
+ "horizon": 4,
+ "scenario_family": "RANGE",
+ "scenario_alternative": "DIRECTIONAL",
+ "scenario_abstain": false,
+ "forecast_id": "R8B_A_20260725",
+ "timestamp": "2026-07-25T00:00:00+00:00",
+ "observations": [
+  "Close 4049.125, 0.13 above swing-low 4048.995",
+  "State COMPRESSION, event ACCEPTANCE, dwell 1",
+  "M1 eight consecutive down bars; M5/M15 close at lows",
+  "H4 range percentile 0.015; contracting flags true"
+ ],
+ "what_i_know": [
+  "Nearest level 4048.995, 54 touches per 240",
+  "Label COMPRESSION, ACCEPTANCE, after TREND dwell 8",
+  "L4 trend_continuation candidate only, not asserted",
+  "Timeframe agreement CONFLICT; H1 trend_20 positive"
+ ],
+ "what_i_do_not_know": [
+  "Whether 4048.995 holds or breaks",
+  "Cross-market drivers; DXY/VIX/news all UNKNOWN",
+  "Future flow, liquidity, macro events",
+  "Analog outcome distribution beyond step four"
+ ],
+ "evidence": [
+  "Contracting ranges M1/H1/H4 with compression state",
+  "Price INSIDE heavily-tested swing low, distance 0.027 ATR",
+  "Two of three analogs hold COMPRESSION at step 4",
+  "Dwell 1; compression early in lifecycle"
+ ],
+ "counter_evidence": [
+  "M1 eight down bars; bearish closes at lows",
+  "H4 trend_20 negative 32.87; continuation candidate present",
+  "M5/M15 ranges expanding into the level",
+  "Two of three analogs reach REJECTION by step 8"
+ ],
+ "possible_mechanisms": [
+  {
+   "mechanism": "level_acceptance_compression",
+   "status": "SUPPORTED",
+   "why": "ACCEPTANCE event; INSIDE level; contracting ranges"
+  },
+  {
+   "mechanism": "trend_continuation_down",
+   "status": "POSSIBLE",
+   "why": "Down momentum; closes at lows; L4 candidate"
+  },
+  {
+   "mechanism": "swing_low_rejection",
+   "status": "POSSIBLE",
+   "why": "54 touches; distance only 0.027 ATR"
+  },
+  {
+   "mechanism": "quiet_liquidity_drain",
+   "status": "WEAK",
+   "why": "H4 range percentile 0.015 only"
+  }
+ ],
+ "primary_scenario": {
+  "scenario": "RANGE",
+  "horizon": 4,
+  "trigger": "Price holds 4048.995; compressed oscillation persists",
+  "invalidation": "Decisive break of 4048.995 or strong expansion"
+ },
+ "alternative_scenario": {
+  "scenario": "DIRECTIONAL",
+  "horizon": 4,
+  "trigger": "Break of 4048.995 extends downside",
+  "invalidation": "Rejection reclaims 4054 region"
+ },
+ "expected_transition": "COMPRESSION persists, or resolves to REJECTION",
+ "direction_bias": "NO_DIRECTIONAL_EDGE",
+ "time_horizon": "H4",
+ "evidence_strength": 0.4,
+ "confidence": 0.42,
+ "uncertainty": 0.58,
+ "confidence_reason": "Coherent compression at tested level; timeframe conflict tempers confidence",
+ "uncertainty_reason": "Price exactly at decisive level; momentum-support tension",
+ "invalidation": "Close below 4048.995 flips to DIRECTIONAL down",
+ "change_my_mind": [
+  "H1 close below 4048.995",
+  "Reclaim above 4054 with expanding range",
+  "M1 range percentiles sustain above 0.8"
+ ],
+ "abstain": false,
+ "abstain_reason": "",
+ "questions": {
+  "Q1": "Only PIT facts: price, level, state labels",
+  "Q2": "Break direction, flow, macro drivers all unknown",
+  "Q3": "Compression, acceptance, contracting ranges, level intact",
+  "Q4": "Down momentum, close-at-lows, expanding M5/M15",
+  "Q5": "Swing-low rejection strength; possible only",
+  "Q6": "H1 close below 4048.995 or reclaim 4054",
+  "Q7": "false; consistent context, low conviction"
+ },
+ "reasoning_trace": [
+  "COMPRESSION dwell 1; price at swing low",
+  "Down momentum versus 54-touch support tension",
+  "Analogs show compression persists at step 4",
+  "Primary RANGE; DIRECTIONAL on decisive break"
+ ]
+}

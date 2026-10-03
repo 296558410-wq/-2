@@ -1,0 +1,105 @@
+{
+ "sample_id": "A_20260721",
+ "forecast_id": "R8B_A_20260721",
+ "timestamp": "2026-07-21T00:00:00Z",
+ "horizon": 4,
+ "scenario_family": "RANGE",
+ "scenario_alternative": "DIRECTIONAL",
+ "scenario_abstain": false,
+ "observations": [
+  "H4 close 4037.715, body 37.77, body_ratio 0.84",
+  "M1 close 4000.245 near swing low 4003",
+  "state COMPRESSION, dwell 6, event REJECTION",
+  "multi-TF trend agreement CONFLICT"
+ ],
+ "what_i_know": [
+  "Current state COMPRESSION, dwell 6 bars",
+  "Swing low 4003.005, 45 touches, price inside",
+  "H4/H1 last bars strongly bullish",
+  "M1-M15 trends negative, price at 4000-4003"
+ ],
+ "what_i_do_not_know": [
+  "VIX, UST10Y, news, macro events absent",
+  "Direction of H4 impulse sustainability",
+  "Whether 4003 level holds or breaks",
+  "DXY is PROXY, instrument definition unknown"
+ ],
+ "evidence": [
+  "3/3 analogs COMPRESSION at step 4",
+  "COMPRESSION dwell 6, ambiguity 0.25",
+  "Swing low 4003, 45 touches, REJECTION event",
+  "H4/H1 strong bullish impulse recent bars"
+ ],
+ "counter_evidence": [
+  "M1-M15 negative trends, price pulled back",
+  "H4 trend_50 -69.86, H1 trend_20 -14.11",
+  "M5/M15 range_expanding contradicts quiet",
+  "Multi-TF agreement explicitly CONFLICT"
+ ],
+ "possible_mechanisms": [
+  {
+   "mechanism": "trend_continuation",
+   "status": "POSSIBLE",
+   "why": "H4 bullish impulse, candidate only"
+  },
+  {
+   "mechanism": "level_rejection_range",
+   "status": "SUPPORTED",
+   "why": "45 touches, REJECTION, COMPRESSION"
+  },
+  {
+   "mechanism": "compression_continuation",
+   "status": "SUPPORTED",
+   "why": "dwell 6, analogs 3/3"
+  },
+  {
+   "mechanism": "impulse_exhaustion",
+   "status": "WEAK",
+   "why": "intraday retrace to 4000"
+  }
+ ],
+ "primary_scenario": {
+  "scenario": "RANGE",
+  "horizon": 4,
+  "trigger": "Price oscillates 3999-4045, swing low respected",
+  "invalidation": "Decisive H1 close below 3999 or above 4045"
+ },
+ "alternative_scenario": {
+  "scenario": "DIRECTIONAL",
+  "horizon": 4,
+  "trigger": "H4 impulse resumes, break above 4045",
+  "invalidation": "Rejection at 4003, breakdown below 3999"
+ },
+ "expected_transition": "COMPRESSION persists, bounded oscillation",
+ "direction_bias": "NO_DIRECTIONAL_EDGE",
+ "time_horizon": "4h",
+ "evidence_strength": 0.4,
+ "confidence": 0.45,
+ "uncertainty": 0.55,
+ "confidence_reason": "Frozen state, analog consensus, level touches align",
+ "uncertainty_reason": "Multi-TF conflict, absent macro data, mixed momentum",
+ "invalidation": "Close below 3999 or above 4045 breaks range",
+ "change_my_mind": [
+  "H1 close above 4045 with M15 positive trend",
+  "H1 close below 3999 breaks swing low",
+  "M5/M15 trend_20 flip positive for 4+ bars",
+  "New macro/news data release shifts bias"
+ ],
+ "abstain": false,
+ "abstain_reason": "",
+ "questions": {
+  "Q1": "Current COMPRESSION dwell 6, price inside 4003 level",
+  "Q2": "Absent VIX, UST10Y, news; DXY proxy; impulse sustainability unknown",
+  "Q3": "COMPRESSION, 3/3 analog step-4, 45 level touches",
+  "Q4": "Negative M1-M15 trends, CONFLICT flag, mixed trend_20/50",
+  "Q5": "Impulse continuation mechanism not asserted",
+  "Q6": "Sustained H1 break of 4045 or 3999",
+  "Q7": "false; enough to call low-confidence RANGE"
+ },
+ "reasoning_trace": [
+  "Frozen state COMPRESSION, dwell 6, ambiguity 0.25",
+  "All three analogs remain COMPRESSION at step 4",
+  "Swing low 4003 with 45 touches anchors range",
+  "H4/H1 impulse conflicts with intraday retrace"
+ ]
+}

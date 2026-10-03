@@ -1,0 +1,2879 @@
+{
+ "schema": "v3_hermes_reviews/1",
+ "ts_utc": "2026-09-25T11:22:45.775703+00:00",
+ "grid": "1h",
+ "reviews": [
+  {
+   "opportunity_id": "OPP-1h-89585175",
+   "cluster_id": "OPP_CLUSTER_001",
+   "detected_at": "2025-01-30 13:00:00+00:00",
+   "opportunity_type": "OPP_STATE_TRANSITION",
+   "hermes_review": {
+    "A_what_happened": "at 2025-01-30 13:00:00+00:00 the engine recorded OPP_STATE_TRANSITION (VOL_CONTRACTION->VOL_EXPANSION); vol_state=VOL_EXPANSION, session=NewYork",
+    "B_mechanism_hypotheses": [
+     "volatility-regime mechanics (vol clustering / mean reversion of vol)",
+     "cross-asset information flow (DXY/VIX/UST10Y_PROXY leading or lagging XAUUSD)",
+     "liquidity/session structure (Asia vs London vs NY behaviour)",
+     "measurement artifact (semantics UNKNOWN: bar open/close, and UST10Y_PROXY is not the official series)"
+    ],
+    "C_counter_evidence": [
+     "the same state occurs at a similar rate in random windows (permutation idea)",
+     "the pattern may be a data artifact from mixed sources (HistData XAUUSD vs Yahoo externals)",
+     "the observation window may be too short (624d at 1h / 63d at 5m)",
+     "selection bias: only states that look 'abnormal' get reviewed"
+    ],
+    "D_historical_repetition": {
+     "same_type_historical_count": 10,
+     "per_day": 0.016,
+     "descriptive_next_60m_move_bp": {
+      "n": 10,
+      "mean": 249.81,
+      "median": 266.99,
+      "note": "DESCRIPTIVE ONLY - not an edge, not a signal"
+     },
+     "recurring": true
+    },
+    "E_decision": "INVESTIGATE",
+    "E_reason": "state is recurrent and the data quality allows investigation",
+    "semantic_dependency": {
+     "SEMANTIC_DEPENDENCY": "PARTIAL"
+    },
+    "observation_only": {
+     "pre_event_context_tail": "{'return_60m': {Timestamp('2025-01-29 19:00:00+0000', tz='UTC'): 140.70649191175067}}",
+     "post_event_observation_head": "{'return_60m': {Timestamp('2025-01-30 14:00:00+0000', tz='UTC'): 239.3435551330869}}"
+    }
+   },
+   "review_status": "INVESTIGATE",
+   "data_quality": "PARTIAL",
+   "lookahead_check": "PASS",
+   "detector_version": "R1.0.0",
+   "created_at": "2026-09-25T11:22:45.775703+00:00"
+  },
+  {
+   "opportunity_id": "OPP-1h-31447870",
+   "cluster_id": "OPP_CLUSTER_002",
+   "detected_at": "2025-02-03 13:00:00+00:00",
+   "opportunity_type": "OPP_CROSSMARKET_SHOCK",
+   "hermes_review": {
+    "A_what_happened": "at 2025-02-03 13:00:00+00:00 the engine recorded OPP_CROSSMARKET_SHOCK (DXY z=2.17); vol_state=VOL_CONTRACTION, session=NewYork",
+    "B_mechanism_hypotheses": [
+     "volatility-regime mechanics (vol clustering / mean reversion of vol)",
+     "cross-asset information flow (DXY/VIX/UST10Y_PROXY leading or lagging XAUUSD)",
+     "liquidity/session structure (Asia vs London vs NY behaviour)",
+     "measurement artifact (semantics UNKNOWN: bar open/close, and UST10Y_PROXY is not the official series)"
+    ],
+    "C_counter_evidence": [
+     "the same state occurs at a similar rate in random windows (permutation idea)",
+     "the pattern may be a data artifact from mixed sources (HistData XAUUSD vs Yahoo externals)",
+     "the observation window may be too short (624d at 1h / 63d at 5m)",
+     "selection bias: only states that look 'abnormal' get reviewed"
+    ],
+    "D_historical_repetition": {
+     "same_type_historical_count": 448,
+     "per_day": 0.7177,
+     "descriptive_next_60m_move_bp": {
+      "n": 447,
+      "mean": 109.954,
+      "median": 110.082,
+      "note": "DESCRIPTIVE ONLY - not an edge, not a signal"
+     },
+     "recurring": true
+    },
+    "E_decision": "INVESTIGATE",
+    "E_reason": "state is recurrent and the data quality allows investigation",
+    "semantic_dependency": {
+     "SEMANTIC_DEPENDENCY": "UNKNOWN",
+     "depends_on": [
+      "XAUUSD bar open/close semantics",
+      "UST10Y_PROXY is not official UST10Y"
+     ]
+    },
+    "observation_only": {
+     "pre_event_context_tail": "{'return_60m': {Timestamp('2025-01-31 19:00:00+0000', tz='UTC'): 209.08149833220423}}",
+     "post_event_observation_head": "{'return_60m': {Timestamp('2025-02-03 14:00:00+0000', tz='UTC'): 327.1013881817497}}"
+    }
+   },
+   "review_status": "INVESTIGATE",
+   "data_quality": "PARTIAL",
+   "lookahead_check": "PASS",
+   "detector_version": "R1.0.0",
+   "created_at": "2026-09-25T11:22:45.775703+00:00"
+  },
+  {
+   "opportunity_id": "OPP-1h-78071169",
+   "cluster_id": "OPP_CLUSTER_003",
+   "detected_at": "2025-02-12 13:00:00+00:00",
+   "opportunity_type": "OPP_CROSSMARKET_SHOCK",
+   "hermes_review": {
+    "A_what_happened": "at 2025-02-12 13:00:00+00:00 the engine recorded OPP_CROSSMARKET_SHOCK (UST10Y_PROXY z=2.49); vol_state=VOL_EXPANSION, session=NewYork",
+    "B_mechanism_hypotheses": [
+     "volatility-regime mechanics (vol clustering / mean reversion of vol)",
+     "cross-asset information flow (DXY/VIX/UST10Y_PROXY leading or lagging XAUUSD)",
+     "liquidity/session structure (Asia vs London vs NY behaviour)",
+     "measurement artifact (semantics UNKNOWN: bar open/close, and UST10Y_PROXY is not the official series)"
+    ],
+    "C_counter_evidence": [
+     "the same state occurs at a similar rate in random windows (permutation idea)",
+     "the pattern may be a data artifact from mixed sources (HistData XAUUSD vs Yahoo externals)",
+     "the observation window may be too short (624d at 1h / 63d at 5m)",
+     "selection bias: only states that look 'abnormal' get reviewed"
+    ],
+    "D_historical_repetition": {
+     "same_type_historical_count": 448,
+     "per_day": 0.7177,
+     "descriptive_next_60m_move_bp": {
+      "n": 447,
+      "mean": 109.954,
+      "median": 110.082,
+      "note": "DESCRIPTIVE ONLY - not an edge, not a signal"
+     },
+     "recurring": true
+    },
+    "E_decision": "INVESTIGATE",
+    "E_reason": "state is recurrent and the data quality allows investigation",
+    "semantic_dependency": {
+     "SEMANTIC_DEPENDENCY": "UNKNOWN",
+     "depends_on": [
+      "XAUUSD bar open/close semantics",
+      "UST10Y_PROXY is not official UST10Y"
+     ]
+    },
+    "observation_only": {
+     "pre_event_context_tail": "{'return_60m': {Timestamp('2025-02-11 19:00:00+0000', tz='UTC'): 374.87456780672}}",
+     "post_event_observation_head": "{'return_60m': {Timestamp('2025-02-12 14:00:00+0000', tz='UTC'): 353.33236745564545}}"
+    }
+   },
+   "review_status": "INVESTIGATE",
+   "data_quality": "PARTIAL",
+   "lookahead_check": "PASS",
+   "detector_version": "R1.0.0",
+   "created_at": "2026-09-25T11:22:45.775703+00:00"
+  },
+  {
+   "opportunity_id": "OPP-1h-20812256",
+   "cluster_id": "OPP_CLUSTER_004",
+   "detected_at": "2025-02-18 13:00:00+00:00",
+   "opportunity_type": "OPP_STATE_TRANSITION",
+   "hermes_review": {
+    "A_what_happened": "at 2025-02-18 13:00:00+00:00 the engine recorded OPP_STATE_TRANSITION (VOL_CONTRACTION->VOL_EXPANSION); vol_state=VOL_EXPANSION, session=NewYork",
+    "B_mechanism_hypotheses": [
+     "volatility-regime mechanics (vol clustering / mean reversion of vol)",
+     "cross-asset information flow (DXY/VIX/UST10Y_PROXY leading or lagging XAUUSD)",
+     "liquidity/session structure (Asia vs London vs NY behaviour)",
+     "measurement artifact (semantics UNKNOWN: bar open/close, and UST10Y_PROXY is not the official series)"
+    ],
+    "C_counter_evidence": [
+     "the same state occurs at a similar rate in random windows (permutation idea)",
+     "the pattern may be a data artifact from mixed sources (HistData XAUUSD vs Yahoo externals)",
+     "the observation window may be too short (624d at 1h / 63d at 5m)",
+     "selection bias: only states that look 'abnormal' get reviewed"
+    ],
+    "D_historical_repetition": {
+     "same_type_historical_count": 10,
+     "per_day": 0.016,
+     "descriptive_next_60m_move_bp": {
+      "n": 10,
+      "mean": 249.81,
+      "median": 266.99,
+      "note": "DESCRIPTIVE ONLY - not an edge, not a signal"
+     },
+     "recurring": true
+    },
+    "E_decision": "INVESTIGATE",
+    "E_reason": "state is recurrent and the data quality allows investigation",
+    "semantic_dependency": {
+     "SEMANTIC_DEPENDENCY": "PARTIAL"
+    },
+    "observation_only": {
+     "pre_event_context_tail": "{'return_60m': {Timestamp('2025-02-14 19:00:00+0000', tz='UTC'): 157.73855178870866}}",
+     "post_event_observation_head": "{'return_60m': {Timestamp('2025-02-18 14:00:00+0000', tz='UTC'): 294.63631105070885}}"
+    }
+   },
+   "review_status": "INVESTIGATE",
+   "data_quality": "PARTIAL",
+   "lookahead_check": "PASS",
+   "detector_version": "R1.0.0",
+   "created_at": "2026-09-25T11:22:45.775703+00:00"
+  },
+  {
+   "opportunity_id": "OPP-1h-37567739",
+   "cluster_id": "OPP_CLUSTER_005",
+   "detected_at": "2025-02-18 18:00:00+00:00",
+   "opportunity_type": "OPP_CROSSMARKET_SHOCK",
+   "hermes_review": {
+    "A_what_happened": "at 2025-02-18 18:00:00+00:00 the engine recorded OPP_CROSSMARKET_SHOCK (UST10Y_PROXY z=2.07); vol_state=VOL_EXPANSION, session=NewYork",
+    "B_mechanism_hypotheses": [
+     "volatility-regime mechanics (vol clustering / mean reversion of vol)",
+     "cross-asset information flow (DXY/VIX/UST10Y_PROXY leading or lagging XAUUSD)",
+     "liquidity/session structure (Asia vs London vs NY behaviour)",
+     "measurement artifact (semantics UNKNOWN: bar open/close, and UST10Y_PROXY is not the official series)"
+    ],
+    "C_counter_evidence": [
+     "the same state occurs at a similar rate in random windows (permutation idea)",
+     "the pattern may be a data artifact from mixed sources (HistData XAUUSD vs Yahoo externals)",
+     "the observation window may be too short (624d at 1h / 63d at 5m)",
+     "selection bias: only states that look 'abnormal' get reviewed"
+    ],
+    "D_historical_repetition": {
+     "same_type_historical_count": 448,
+     "per_day": 0.7177,
+     "descriptive_next_60m_move_bp": {
+      "n": 447,
+      "mean": 109.954,
+      "median": 110.082,
+      "note": "DESCRIPTIVE ONLY - not an edge, not a signal"
+     },
+     "recurring": true
+    },
+    "E_decision": "INVESTIGATE",
+    "E_reason": "state is recurrent and the data quality allows investigation",
+    "semantic_dependency": {
+     "SEMANTIC_DEPENDENCY": "UNKNOWN",
+     "depends_on": [
+      "XAUUSD bar open/close semantics",
+      "UST10Y_PROXY is not official UST10Y"
+     ]
+    },
+    "observation_only": {
+     "pre_event_context_tail": "{'return_60m': {Timestamp('2025-02-18 17:00:00+0000', tz='UTC'): 242.22568194009807}}",
+     "post_event_observation_head": "{'return_60m': {Timestamp('2025-02-18 19:00:00+0000', tz='UTC'): 193.0572313995782}}"
+    }
+   },
+   "review_status": "INVESTIGATE",
+   "data_quality": "PARTIAL",
+   "lookahead_check": "PASS",
+   "detector_version": "R1.0.0",
+   "created_at": "2026-09-25T11:22:45.775703+00:00"
+  },
+  {
+   "opportunity_id": "OPP-1h-54974575",
+   "cluster_id": "OPP_CLUSTER_006",
+   "detected_at": "2025-02-19 13:00:00+00:00",
+   "opportunity_type": "OPP_CROSSMARKET_SHOCK",
+   "hermes_review": {
+    "A_what_happened": "at 2025-02-19 13:00:00+00:00 the engine recorded OPP_CROSSMARKET_SHOCK (UST10Y_PROXY z=2.34); vol_state=VOL_EXPANSION, session=NewYork",
+    "B_mechanism_hypotheses": [
+     "volatility-regime mechanics (vol clustering / mean reversion of vol)",
+     "cross-asset information flow (DXY/VIX/UST10Y_PROXY leading or lagging XAUUSD)",
+     "liquidity/session structure (Asia vs London vs NY behaviour)",
+     "measurement artifact (semantics UNKNOWN: bar open/close, and UST10Y_PROXY is not the official series)"
+    ],
+    "C_counter_evidence": [
+     "the same state occurs at a similar rate in random windows (permutation idea)",
+     "the pattern may be a data artifact from mixed sources (HistData XAUUSD vs Yahoo externals)",
+     "the observation window may be too short (624d at 1h / 63d at 5m)",
+     "selection bias: only states that look 'abnormal' get reviewed"
+    ],
+    "D_historical_repetition": {
+     "same_type_historical_count": 448,
+     "per_day": 0.7177,
+     "descriptive_next_60m_move_bp": {
+      "n": 447,
+      "mean": 109.954,
+      "median": 110.082,
+      "note": "DESCRIPTIVE ONLY - not an edge, not a signal"
+     },
+     "recurring": true
+    },
+    "E_decision": "INVESTIGATE",
+    "E_reason": "state is recurrent and the data quality allows investigation",
+    "semantic_dependency": {
+     "SEMANTIC_DEPENDENCY": "UNKNOWN",
+     "depends_on": [
+      "XAUUSD bar open/close semantics",
+      "UST10Y_PROXY is not official UST10Y"
+     ]
+    },
+    "observation_only": {
+     "pre_event_context_tail": "{'return_60m': {Timestamp('2025-02-18 19:00:00+0000', tz='UTC'): 193.0572313995782}}",
+     "post_event_observation_head": "{'return_60m': {Timestamp('2025-02-19 14:00:00+0000', tz='UTC'): 226.81822691221322}}"
+    }
+   },
+   "review_status": "INVESTIGATE",
+   "data_quality": "PARTIAL",
+   "lookahead_check": "PASS",
+   "detector_version": "R1.0.0",
+   "created_at": "2026-09-25T11:22:45.775703+00:00"
+  },
+  {
+   "opportunity_id": "OPP-1h-92325740",
+   "cluster_id": "OPP_CLUSTER_007",
+   "detected_at": "2025-02-24 14:00:00+00:00",
+   "opportunity_type": "OPP_CROSSMARKET_SHOCK",
+   "hermes_review": {
+    "A_what_happened": "at 2025-02-24 14:00:00+00:00 the engine recorded OPP_CROSSMARKET_SHOCK (VIX z=2.19); vol_state=VOL_EXPANSION, session=NewYork",
+    "B_mechanism_hypotheses": [
+     "volatility-regime mechanics (vol clustering / mean reversion of vol)",
+     "cross-asset information flow (DXY/VIX/UST10Y_PROXY leading or lagging XAUUSD)",
+     "liquidity/session structure (Asia vs London vs NY behaviour)",
+     "measurement artifact (semantics UNKNOWN: bar open/close, and UST10Y_PROXY is not the official series)"
+    ],
+    "C_counter_evidence": [
+     "the same state occurs at a similar rate in random windows (permutation idea)",
+     "the pattern may be a data artifact from mixed sources (HistData XAUUSD vs Yahoo externals)",
+     "the observation window may be too short (624d at 1h / 63d at 5m)",
+     "selection bias: only states that look 'abnormal' get reviewed"
+    ],
+    "D_historical_repetition": {
+     "same_type_historical_count": 448,
+     "per_day": 0.7177,
+     "descriptive_next_60m_move_bp": {
+      "n": 447,
+      "mean": 109.954,
+      "median": 110.082,
+      "note": "DESCRIPTIVE ONLY - not an edge, not a signal"
+     },
+     "recurring": true
+    },
+    "E_decision": "INVESTIGATE",
+    "E_reason": "state is recurrent and the data quality allows investigation",
+    "semantic_dependency": {
+     "SEMANTIC_DEPENDENCY": "UNKNOWN",
+     "depends_on": [
+      "XAUUSD bar open/close semantics",
+      "UST10Y_PROXY is not official UST10Y"
+     ]
+    },
+    "observation_only": {
+     "pre_event_context_tail": "{'return_60m': {Timestamp('2025-02-24 13:00:00+0000', tz='UTC'): 184.1506988384567}}",
+     "post_event_observation_head": "{'return_60m': {Timestamp('2025-02-24 15:00:00+0000', tz='UTC'): 108.26441302271172}}"
+    }
+   },
+   "review_status": "INVESTIGATE",
+   "data_quality": "PARTIAL",
+   "lookahead_check": "PASS",
+   "detector_version": "R1.0.0",
+   "created_at": "2026-09-25T11:22:45.775703+00:00"
+  },
+  {
+   "opportunity_id": "OPP-1h-11581410",
+   "cluster_id": "OPP_CLUSTER_008",
+   "detected_at": "2025-02-24 16:00:00+00:00",
+   "opportunity_type": "OPP_VOL_TRANSITION",
+   "hermes_review": {
+    "A_what_happened": "at 2025-02-24 16:00:00+00:00 the engine recorded OPP_VOL_TRANSITION (low->expansion ratio=2.13); vol_state=VOL_CONTRACTION, session=NewYork",
+    "B_mechanism_hypotheses": [
+     "volatility-regime mechanics (vol clustering / mean reversion of vol)",
+     "cross-asset information flow (DXY/VIX/UST10Y_PROXY leading or lagging XAUUSD)",
+     "liquidity/session structure (Asia vs London vs NY behaviour)",
+     "measurement artifact (semantics UNKNOWN: bar open/close, and UST10Y_PROXY is not the official series)"
+    ],
+    "C_counter_evidence": [
+     "the same state occurs at a similar rate in random windows (permutation idea)",
+     "the pattern may be a data artifact from mixed sources (HistData XAUUSD vs Yahoo externals)",
+     "the observation window may be too short (624d at 1h / 63d at 5m)",
+     "selection bias: only states that look 'abnormal' get reviewed"
+    ],
+    "D_historical_repetition": {
+     "same_type_historical_count": 25,
+     "per_day": 0.0401,
+     "descriptive_next_60m_move_bp": {
+      "n": 25,
+      "mean": 258.627,
+      "median": 260.568,
+      "note": "DESCRIPTIVE ONLY - not an edge, not a signal"
+     },
+     "recurring": true
+    },
+    "E_decision": "INVESTIGATE",
+    "E_reason": "state is recurrent and the data quality allows investigation",
+    "semantic_dependency": {
+     "SEMANTIC_DEPENDENCY": "PARTIAL"
+    },
+    "observation_only": {
+     "pre_event_context_tail": "{'return_60m': {Timestamp('2025-02-24 15:00:00+0000', tz='UTC'): 108.26441302271172}}",
+     "post_event_observation_head": "{'return_60m': {Timestamp('2025-02-24 17:00:00+0000', tz='UTC'): 161.69435519930443}}"
+    }
+   },
+   "review_status": "INVESTIGATE",
+   "data_quality": "PARTIAL",
+   "lookahead_check": "PASS",
+   "detector_version": "R1.0.0",
+   "created_at": "2026-09-25T11:22:45.775703+00:00"
+  },
+  {
+   "opportunity_id": "OPP-1h-10765387",
+   "cluster_id": "OPP_CLUSTER_009",
+   "detected_at": "2025-02-25 13:00:00+00:00",
+   "opportunity_type": "OPP_CROSSMARKET_SHOCK",
+   "hermes_review": {
+    "A_what_happened": "at 2025-02-25 13:00:00+00:00 the engine recorded OPP_CROSSMARKET_SHOCK (VIX z=2.01); vol_state=VOL_CONTRACTION, session=NewYork",
+    "B_mechanism_hypotheses": [
+     "volatility-regime mechanics (vol clustering / mean reversion of vol)",
+     "cross-asset information flow (DXY/VIX/UST10Y_PROXY leading or lagging XAUUSD)",
+     "liquidity/session structure (Asia vs London vs NY behaviour)",
+     "measurement artifact (semantics UNKNOWN: bar open/close, and UST10Y_PROXY is not the official series)"
+    ],
+    "C_counter_evidence": [
+     "the same state occurs at a similar rate in random windows (permutation idea)",
+     "the pattern may be a data artifact from mixed sources (HistData XAUUSD vs Yahoo externals)",
+     "the observation window may be too short (624d at 1h / 63d at 5m)",
+     "selection bias: only states that look 'abnormal' get reviewed"
+    ],
+    "D_historical_repetition": {
+     "same_type_historical_count": 448,
+     "per_day": 0.7177,
+     "descriptive_next_60m_move_bp": {
+      "n": 447,
+      "mean": 109.954,
+      "median": 110.082,
+      "note": "DESCRIPTIVE ONLY - not an edge, not a signal"
+     },
+     "recurring": true
+    },
+    "E_decision": "INVESTIGATE",
+    "E_reason": "state is recurrent and the data quality allows investigation",
+    "semantic_dependency": {
+     "SEMANTIC_DEPENDENCY": "UNKNOWN",
+     "depends_on": [
+      "XAUUSD bar open/close semantics",
+      "UST10Y_PROXY is not official UST10Y"
+     ]
+    },
+    "observation_only": {
+     "pre_event_context_tail": "{'return_60m': {Timestamp('2025-02-24 19:00:00+0000', tz='UTC'): 152.86124227301912}}",
+     "post_event_observation_head": "{'return_60m': {Timestamp('2025-02-25 14:00:00+0000', tz='UTC'): 91.8301142885669}}"
+    }
+   },
+   "review_status": "INVESTIGATE",
+   "data_quality": "PARTIAL",
+   "lookahead_check": "PASS",
+   "detector_version": "R1.0.0",
+   "created_at": "2026-09-25T11:22:45.775703+00:00"
+  },
+  {
+   "opportunity_id": "OPP-1h-05346179",
+   "cluster_id": "OPP_CLUSTER_010",
+   "detected_at": "2025-02-25 15:00:00+00:00",
+   "opportunity_type": "OPP_STATE_BREAK",
+   "hermes_review": {
+    "A_what_happened": "at 2025-02-25 15:00:00+00:00 the engine recorded OPP_STATE_BREAK (return_60m z=-3.01); vol_state=VOL_NORMAL, session=NewYork",
+    "B_mechanism_hypotheses": [
+     "volatility-regime mechanics (vol clustering / mean reversion of vol)",
+     "cross-asset information flow (DXY/VIX/UST10Y_PROXY leading or lagging XAUUSD)",
+     "liquidity/session structure (Asia vs London vs NY behaviour)",
+     "measurement artifact (semantics UNKNOWN: bar open/close, and UST10Y_PROXY is not the official series)"
+    ],
+    "C_counter_evidence": [
+     "the same state occurs at a similar rate in random windows (permutation idea)",
+     "the pattern may be a data artifact from mixed sources (HistData XAUUSD vs Yahoo externals)",
+     "the observation window may be too short (624d at 1h / 63d at 5m)",
+     "selection bias: only states that look 'abnormal' get reviewed"
+    ],
+    "D_historical_repetition": {
+     "same_type_historical_count": 370,
+     "per_day": 0.5928,
+     "descriptive_next_60m_move_bp": {
+      "n": 370,
+      "mean": 279.059,
+      "median": 285.766,
+      "note": "DESCRIPTIVE ONLY - not an edge, not a signal"
+     },
+     "recurring": true
+    },
+    "E_decision": "INVESTIGATE",
+    "E_reason": "state is recurrent and the data quality allows investigation",
+    "semantic_dependency": {
+     "SEMANTIC_DEPENDENCY": "PARTIAL"
+    },
+    "observation_only": {
+     "pre_event_context_tail": "{'return_60m': {Timestamp('2025-02-25 14:00:00+0000', tz='UTC'): 91.8301142885669}}",
+     "post_event_observation_head": "{'return_60m': {Timestamp('2025-02-25 16:00:00+0000', tz='UTC'): -13.378733675273313}}"
+    }
+   },
+   "review_status": "INVESTIGATE",
+   "data_quality": "PARTIAL",
+   "lookahead_check": "PASS",
+   "detector_version": "R1.0.0",
+   "created_at": "2026-09-25T11:22:45.775703+00:00"
+  },
+  {
+   "opportunity_id": "OPP-1h-02944256",
+   "cluster_id": "OPP_CLUSTER_011",
+   "detected_at": "2025-02-26 13:00:00+00:00",
+   "opportunity_type": "OPP_CROSSMARKET_SHOCK",
+   "hermes_review": {
+    "A_what_happened": "at 2025-02-26 13:00:00+00:00 the engine recorded OPP_CROSSMARKET_SHOCK (UST10Y_PROXY z=-2.55); vol_state=VOL_NORMAL, session=NewYork",
+    "B_mechanism_hypotheses": [
+     "volatility-regime mechanics (vol clustering / mean reversion of vol)",
+     "cross-asset information flow (DXY/VIX/UST10Y_PROXY leading or lagging XAUUSD)",
+     "liquidity/session structure (Asia vs London vs NY behaviour)",
+     "measurement artifact (semantics UNKNOWN: bar open/close, and UST10Y_PROXY is not the official series)"
+    ],
+    "C_counter_evidence": [
+     "the same state occurs at a similar rate in random windows (permutation idea)",
+     "the pattern may be a data artifact from mixed sources (HistData XAUUSD vs Yahoo externals)",
+     "the observation window may be too short (624d at 1h / 63d at 5m)",
+     "selection bias: only states that look 'abnormal' get reviewed"
+    ],
+    "D_historical_repetition": {
+     "same_type_historical_count": 448,
+     "per_day": 0.7177,
+     "descriptive_next_60m_move_bp": {
+      "n": 447,
+      "mean": 109.954,
+      "median": 110.082,
+      "note": "DESCRIPTIVE ONLY - not an edge, not a signal"
+     },
+     "recurring": true
+    },
+    "E_decision": "INVESTIGATE",
+    "E_reason": "state is recurrent and the data quality allows investigation",
+    "semantic_dependency": {
+     "SEMANTIC_DEPENDENCY": "UNKNOWN",
+     "depends_on": [
+      "XAUUSD bar open/close semantics",
+      "UST10Y_PROXY is not official UST10Y"
+     ]
+    },
+    "observation_only": {
+     "pre_event_context_tail": "{'return_60m': {Timestamp('2025-02-25 19:00:00+0000', tz='UTC'): 60.14845370797328}}",
+     "post_event_observation_head": "{'return_60m': {Timestamp('2025-02-26 14:00:00+0000', tz='UTC'): -7.038473543539148}}"
+    }
+   },
+   "review_status": "INVESTIGATE",
+   "data_quality": "PARTIAL",
+   "lookahead_check": "PASS",
+   "detector_version": "R1.0.0",
+   "created_at": "2026-09-25T11:22:45.775703+00:00"
+  },
+  {
+   "opportunity_id": "OPP-1h-79546325",
+   "cluster_id": "OPP_CLUSTER_012",
+   "detected_at": "2025-02-27 13:00:00+00:00",
+   "opportunity_type": "OPP_STATE_BREAK",
+   "hermes_review": {
+    "A_what_happened": "at 2025-02-27 13:00:00+00:00 the engine recorded OPP_STATE_BREAK (return_60m z=-3.10); vol_state=VOL_EXPANSION, session=NewYork",
+    "B_mechanism_hypotheses": [
+     "volatility-regime mechanics (vol clustering / mean reversion of vol)",
+     "cross-asset information flow (DXY/VIX/UST10Y_PROXY leading or lagging XAUUSD)",
+     "liquidity/session structure (Asia vs London vs NY behaviour)",
+     "measurement artifact (semantics UNKNOWN: bar open/close, and UST10Y_PROXY is not the official series)"
+    ],
+    "C_counter_evidence": [
+     "the same state occurs at a similar rate in random windows (permutation idea)",
+     "the pattern may be a data artifact from mixed sources (HistData XAUUSD vs Yahoo externals)",
+     "the observation window may be too short (624d at 1h / 63d at 5m)",
+     "selection bias: only states that look 'abnormal' get reviewed"
+    ],
+    "D_historical_repetition": {
+     "same_type_historical_count": 370,
+     "per_day": 0.5928,
+     "descriptive_next_60m_move_bp": {
+      "n": 370,
+      "mean": 279.059,
+      "median": 285.766,
+      "note": "DESCRIPTIVE ONLY - not an edge, not a signal"
+     },
+     "recurring": true
+    },
+    "E_decision": "INVESTIGATE",
+    "E_reason": "state is recurrent and the data quality allows investigation",
+    "semantic_dependency": {
+     "SEMANTIC_DEPENDENCY": "PARTIAL"
+    },
+    "observation_only": {
+     "pre_event_context_tail": "{'return_60m': {Timestamp('2025-02-26 19:00:00+0000', tz='UTC'): -21.60881201189624}}",
+     "post_event_observation_head": "{'return_60m': {Timestamp('2025-02-27 14:00:00+0000', tz='UTC'): -160.50391521013174}}"
+    }
+   },
+   "review_status": "INVESTIGATE",
+   "data_quality": "PARTIAL",
+   "lookahead_check": "PASS",
+   "detector_version": "R1.0.0",
+   "created_at": "2026-09-25T11:22:45.775703+00:00"
+  },
+  {
+   "opportunity_id": "OPP-1h-68798041",
+   "cluster_id": "OPP_CLUSTER_013",
+   "detected_at": "2025-02-27 19:00:00+00:00",
+   "opportunity_type": "OPP_CROSSMARKET_SHOCK",
+   "hermes_review": {
+    "A_what_happened": "at 2025-02-27 19:00:00+00:00 the engine recorded OPP_CROSSMARKET_SHOCK (VIX z=2.42); vol_state=VOL_EXPANSION, session=NewYork",
+    "B_mechanism_hypotheses": [
+     "volatility-regime mechanics (vol clustering / mean reversion of vol)",
+     "cross-asset information flow (DXY/VIX/UST10Y_PROXY leading or lagging XAUUSD)",
+     "liquidity/session structure (Asia vs London vs NY behaviour)",
+     "measurement artifact (semantics UNKNOWN: bar open/close, and UST10Y_PROXY is not the official series)"
+    ],
+    "C_counter_evidence": [
+     "the same state occurs at a similar rate in random windows (permutation idea)",
+     "the pattern may be a data artifact from mixed sources (HistData XAUUSD vs Yahoo externals)",
+     "the observation window may be too short (624d at 1h / 63d at 5m)",
+     "selection bias: only states that look 'abnormal' get reviewed"
+    ],
+    "D_historical_repetition": {
+     "same_type_historical_count": 448,
+     "per_day": 0.7177,
+     "descriptive_next_60m_move_bp": {
+      "n": 447,
+      "mean": 109.954,
+      "median": 110.082,
+      "note": "DESCRIPTIVE ONLY - not an edge, not a signal"
+     },
+     "recurring": true
+    },
+    "E_decision": "INVESTIGATE",
+    "E_reason": "state is recurrent and the data quality allows investigation",
+    "semantic_dependency": {
+     "SEMANTIC_DEPENDENCY": "UNKNOWN",
+     "depends_on": [
+      "XAUUSD bar open/close semantics",
+      "UST10Y_PROXY is not official UST10Y"
+     ]
+    },
+    "observation_only": {
+     "pre_event_context_tail": "{'return_60m': {Timestamp('2025-02-27 18:00:00+0000', tz='UTC'): -115.36334987478413}}",
+     "post_event_observation_head": "{'return_60m': {Timestamp('2025-02-28 13:00:00+0000', tz='UTC'): -163.4068975758507}}"
+    }
+   },
+   "review_status": "INVESTIGATE",
+   "data_quality": "PARTIAL",
+   "lookahead_check": "PASS",
+   "detector_version": "R1.0.0",
+   "created_at": "2026-09-25T11:22:45.775703+00:00"
+  },
+  {
+   "opportunity_id": "OPP-1h-42705311",
+   "cluster_id": "OPP_CLUSTER_014",
+   "detected_at": "2025-02-28 13:00:00+00:00",
+   "opportunity_type": "OPP_STATE_BREAK",
+   "hermes_review": {
+    "A_what_happened": "at 2025-02-28 13:00:00+00:00 the engine recorded OPP_STATE_BREAK (return_60m z=-3.08); vol_state=VOL_EXTREME, session=NewYork",
+    "B_mechanism_hypotheses": [
+     "volatility-regime mechanics (vol clustering / mean reversion of vol)",
+     "cross-asset information flow (DXY/VIX/UST10Y_PROXY leading or lagging XAUUSD)",
+     "liquidity/session structure (Asia vs London vs NY behaviour)",
+     "measurement artifact (semantics UNKNOWN: bar open/close, and UST10Y_PROXY is not the official series)"
+    ],
+    "C_counter_evidence": [
+     "the same state occurs at a similar rate in random windows (permutation idea)",
+     "the pattern may be a data artifact from mixed sources (HistData XAUUSD vs Yahoo externals)",
+     "the observation window may be too short (624d at 1h / 63d at 5m)",
+     "selection bias: only states that look 'abnormal' get reviewed"
+    ],
+    "D_historical_repetition": {
+     "same_type_historical_count": 370,
+     "per_day": 0.5928,
+     "descriptive_next_60m_move_bp": {
+      "n": 370,
+      "mean": 279.059,
+      "median": 285.766,
+      "note": "DESCRIPTIVE ONLY - not an edge, not a signal"
+     },
+     "recurring": true
+    },
+    "E_decision": "INVESTIGATE",
+    "E_reason": "state is recurrent and the data quality allows investigation",
+    "semantic_dependency": {
+     "SEMANTIC_DEPENDENCY": "PARTIAL"
+    },
+    "observation_only": {
+     "pre_event_context_tail": "{'return_60m': {Timestamp('2025-02-27 19:00:00+0000', tz='UTC'): -78.50286287327978}}",
+     "post_event_observation_head": "{'return_60m': {Timestamp('2025-02-28 14:00:00+0000', tz='UTC'): -183.90828487944043}}"
+    }
+   },
+   "review_status": "INVESTIGATE",
+   "data_quality": "PARTIAL",
+   "lookahead_check": "PASS",
+   "detector_version": "R1.0.0",
+   "created_at": "2026-09-25T11:22:45.775703+00:00"
+  },
+  {
+   "opportunity_id": "OPP-1h-24842051",
+   "cluster_id": "OPP_CLUSTER_015",
+   "detected_at": "2025-03-03 13:00:00+00:00",
+   "opportunity_type": "OPP_STATE_BREAK",
+   "hermes_review": {
+    "A_what_happened": "at 2025-03-03 13:00:00+00:00 the engine recorded OPP_STATE_BREAK (vol_pct=1.00); vol_state=VOL_EXTREME, session=NewYork",
+    "B_mechanism_hypotheses": [
+     "volatility-regime mechanics (vol clustering / mean reversion of vol)",
+     "cross-asset information flow (DXY/VIX/UST10Y_PROXY leading or lagging XAUUSD)",
+     "liquidity/session structure (Asia vs London vs NY behaviour)",
+     "measurement artifact (semantics UNKNOWN: bar open/close, and UST10Y_PROXY is not the official series)"
+    ],
+    "C_counter_evidence": [
+     "the same state occurs at a similar rate in random windows (permutation idea)",
+     "the pattern may be a data artifact from mixed sources (HistData XAUUSD vs Yahoo externals)",
+     "the observation window may be too short (624d at 1h / 63d at 5m)",
+     "selection bias: only states that look 'abnormal' get reviewed"
+    ],
+    "D_historical_repetition": {
+     "same_type_historical_count": 370,
+     "per_day": 0.5928,
+     "descriptive_next_60m_move_bp": {
+      "n": 370,
+      "mean": 279.059,
+      "median": 285.766,
+      "note": "DESCRIPTIVE ONLY - not an edge, not a signal"
+     },
+     "recurring": true
+    },
+    "E_decision": "INVESTIGATE",
+    "E_reason": "state is recurrent and the data quality allows investigation",
+    "semantic_dependency": {
+     "SEMANTIC_DEPENDENCY": "PARTIAL"
+    },
+    "observation_only": {
+     "pre_event_context_tail": "{'return_60m': {Timestamp('2025-02-28 19:00:00+0000', tz='UTC'): -264.54746257540074}}",
+     "post_event_observation_head": "{'return_60m': {Timestamp('2025-03-03 14:00:00+0000', tz='UTC'): -183.77122018494507}}"
+    }
+   },
+   "review_status": "INVESTIGATE",
+   "data_quality": "PARTIAL",
+   "lookahead_check": "PASS",
+   "detector_version": "R1.0.0",
+   "created_at": "2026-09-25T11:22:45.775703+00:00"
+  },
+  {
+   "opportunity_id": "OPP-1h-73321637",
+   "cluster_id": "OPP_CLUSTER_016",
+   "detected_at": "2025-03-04 13:00:00+00:00",
+   "opportunity_type": "OPP_STATE_BREAK",
+   "hermes_review": {
+    "A_what_happened": "at 2025-03-04 13:00:00+00:00 the engine recorded OPP_STATE_BREAK (vol_pct=1.00); vol_state=VOL_EXTREME, session=NewYork",
+    "B_mechanism_hypotheses": [
+     "volatility-regime mechanics (vol clustering / mean reversion of vol)",
+     "cross-asset information flow (DXY/VIX/UST10Y_PROXY leading or lagging XAUUSD)",
+     "liquidity/session structure (Asia vs London vs NY behaviour)",
+     "measurement artifact (semantics UNKNOWN: bar open/close, and UST10Y_PROXY is not the official series)"
+    ],
+    "C_counter_evidence": [
+     "the same state occurs at a similar rate in random windows (permutation idea)",
+     "the pattern may be a data artifact from mixed sources (HistData XAUUSD vs Yahoo externals)",
+     "the observation window may be too short (624d at 1h / 63d at 5m)",
+     "selection bias: only states that look 'abnormal' get reviewed"
+    ],
+    "D_historical_repetition": {
+     "same_type_historical_count": 370,
+     "per_day": 0.5928,
+     "descriptive_next_60m_move_bp": {
+      "n": 370,
+      "mean": 279.059,
+      "median": 285.766,
+      "note": "DESCRIPTIVE ONLY - not an edge, not a signal"
+     },
+     "recurring": true
+    },
+    "E_decision": "INVESTIGATE",
+    "E_reason": "state is recurrent and the data quality allows investigation",
+    "semantic_dependency": {
+     "SEMANTIC_DEPENDENCY": "PARTIAL"
+    },
+    "observation_only": {
+     "pre_event_context_tail": "{'return_60m': {Timestamp('2025-03-03 19:00:00+0000', tz='UTC'): -151.25024994744663}}",
+     "post_event_observation_head": "{'return_60m': {Timestamp('2025-03-04 14:00:00+0000', tz='UTC'): -69.25448895441}}"
+    }
+   },
+   "review_status": "INVESTIGATE",
+   "data_quality": "PARTIAL",
+   "lookahead_check": "PASS",
+   "detector_version": "R1.0.0",
+   "created_at": "2026-09-25T11:22:45.775703+00:00"
+  },
+  {
+   "opportunity_id": "OPP-1h-82291907",
+   "cluster_id": "OPP_CLUSTER_017",
+   "detected_at": "2025-03-05 13:00:00+00:00",
+   "opportunity_type": "OPP_STATE_BREAK",
+   "hermes_review": {
+    "A_what_happened": "at 2025-03-05 13:00:00+00:00 the engine recorded OPP_STATE_BREAK (vol_pct=1.00); vol_state=VOL_EXTREME, session=NewYork",
+    "B_mechanism_hypotheses": [
+     "volatility-regime mechanics (vol clustering / mean reversion of vol)",
+     "cross-asset information flow (DXY/VIX/UST10Y_PROXY leading or lagging XAUUSD)",
+     "liquidity/session structure (Asia vs London vs NY behaviour)",
+     "measurement artifact (semantics UNKNOWN: bar open/close, and UST10Y_PROXY is not the official series)"
+    ],
+    "C_counter_evidence": [
+     "the same state occurs at a similar rate in random windows (permutation idea)",
+     "the pattern may be a data artifact from mixed sources (HistData XAUUSD vs Yahoo externals)",
+     "the observation window may be too short (624d at 1h / 63d at 5m)",
+     "selection bias: only states that look 'abnormal' get reviewed"
+    ],
+    "D_historical_repetition": {
+     "same_type_historical_count": 370,
+     "per_day": 0.5928,
+     "descriptive_next_60m_move_bp": {
+      "n": 370,
+      "mean": 279.059,
+      "median": 285.766,
+      "note": "DESCRIPTIVE ONLY - not an edge, not a signal"
+     },
+     "recurring": true
+    },
+    "E_decision": "INVESTIGATE",
+    "E_reason": "state is recurrent and the data quality allows investigation",
+    "semantic_dependency": {
+     "SEMANTIC_DEPENDENCY": "PARTIAL"
+    },
+    "observation_only": {
+     "pre_event_context_tail": "{'return_60m': {Timestamp('2025-03-04 19:00:00+0000', tz='UTC'): -76.57111159133478}}",
+     "post_event_observation_head": "{'return_60m': {Timestamp('2025-03-05 14:00:00+0000', tz='UTC'): -102.73694234480769}}"
+    }
+   },
+   "review_status": "INVESTIGATE",
+   "data_quality": "PARTIAL",
+   "lookahead_check": "PASS",
+   "detector_version": "R1.0.0",
+   "created_at": "2026-09-25T11:22:45.775703+00:00"
+  },
+  {
+   "opportunity_id": "OPP-1h-35243372",
+   "cluster_id": "OPP_CLUSTER_018",
+   "detected_at": "2025-03-06 13:00:00+00:00",
+   "opportunity_type": "OPP_STATE_BREAK",
+   "hermes_review": {
+    "A_what_happened": "at 2025-03-06 13:00:00+00:00 the engine recorded OPP_STATE_BREAK (vol_pct=0.97); vol_state=VOL_EXTREME, session=NewYork",
+    "B_mechanism_hypotheses": [
+     "volatility-regime mechanics (vol clustering / mean reversion of vol)",
+     "cross-asset information flow (DXY/VIX/UST10Y_PROXY leading or lagging XAUUSD)",
+     "liquidity/session structure (Asia vs London vs NY behaviour)",
+     "measurement artifact (semantics UNKNOWN: bar open/close, and UST10Y_PROXY is not the official series)"
+    ],
+    "C_counter_evidence": [
+     "the same state occurs at a similar rate in random windows (permutation idea)",
+     "the pattern may be a data artifact from mixed sources (HistData XAUUSD vs Yahoo externals)",
+     "the observation window may be too short (624d at 1h / 63d at 5m)",
+     "selection bias: only states that look 'abnormal' get reviewed"
+    ],
+    "D_historical_repetition": {
+     "same_type_historical_count": 370,
+     "per_day": 0.5928,
+     "descriptive_next_60m_move_bp": {
+      "n": 370,
+      "mean": 279.059,
+      "median": 285.766,
+      "note": "DESCRIPTIVE ONLY - not an edge, not a signal"
+     },
+     "recurring": true
+    },
+    "E_decision": "INVESTIGATE",
+    "E_reason": "state is recurrent and the data quality allows investigation",
+    "semantic_dependency": {
+     "SEMANTIC_DEPENDENCY": "PARTIAL"
+    },
+    "observation_only": {
+     "pre_event_context_tail": "{'return_60m': {Timestamp('2025-03-05 19:00:00+0000', tz='UTC'): -27.761794921264958}}",
+     "post_event_observation_head": "{'return_60m': {Timestamp('2025-03-06 14:00:00+0000', tz='UTC'): -83.75331892086723}}"
+    }
+   },
+   "review_status": "INVESTIGATE",
+   "data_quality": "PARTIAL",
+   "lookahead_check": "PASS",
+   "detector_version": "R1.0.0",
+   "created_at": "2026-09-25T11:22:45.775703+00:00"
+  },
+  {
+   "opportunity_id": "OPP-1h-27492586",
+   "cluster_id": "OPP_CLUSTER_019",
+   "detected_at": "2025-03-06 15:00:00+00:00",
+   "opportunity_type": "OPP_CROSSMARKET_SHOCK",
+   "hermes_review": {
+    "A_what_happened": "at 2025-03-06 15:00:00+00:00 the engine recorded OPP_CROSSMARKET_SHOCK (DXY z=-2.01); vol_state=VOL_EXPANSION, session=NewYork",
+    "B_mechanism_hypotheses": [
+     "volatility-regime mechanics (vol clustering / mean reversion of vol)",
+     "cross-asset information flow (DXY/VIX/UST10Y_PROXY leading or lagging XAUUSD)",
+     "liquidity/session structure (Asia vs London vs NY behaviour)",
+     "measurement artifact (semantics UNKNOWN: bar open/close, and UST10Y_PROXY is not the official series)"
+    ],
+    "C_counter_evidence": [
+     "the same state occurs at a similar rate in random windows (permutation idea)",
+     "the pattern may be a data artifact from mixed sources (HistData XAUUSD vs Yahoo externals)",
+     "the observation window may be too short (624d at 1h / 63d at 5m)",
+     "selection bias: only states that look 'abnormal' get reviewed"
+    ],
+    "D_historical_repetition": {
+     "same_type_historical_count": 448,
+     "per_day": 0.7177,
+     "descriptive_next_60m_move_bp": {
+      "n": 447,
+      "mean": 109.954,
+      "median": 110.082,
+      "note": "DESCRIPTIVE ONLY - not an edge, not a signal"
+     },
+     "recurring": true
+    },
+    "E_decision": "INVESTIGATE",
+    "E_reason": "state is recurrent and the data quality allows investigation",
+    "semantic_dependency": {
+     "SEMANTIC_DEPENDENCY": "UNKNOWN",
+     "depends_on": [
+      "XAUUSD bar open/close semantics",
+      "UST10Y_PROXY is not official UST10Y"
+     ]
+    },
+    "observation_only": {
+     "pre_event_context_tail": "{'return_60m': {Timestamp('2025-03-06 14:00:00+0000', tz='UTC'): -83.75331892086723}}",
+     "post_event_observation_head": "{'return_60m': {Timestamp('2025-03-06 16:00:00+0000', tz='UTC'): -55.40015102933449}}"
+    }
+   },
+   "review_status": "INVESTIGATE",
+   "data_quality": "PARTIAL",
+   "lookahead_check": "PASS",
+   "detector_version": "R1.0.0",
+   "created_at": "2026-09-25T11:22:45.775703+00:00"
+  },
+  {
+   "opportunity_id": "OPP-1h-69973085",
+   "cluster_id": "OPP_CLUSTER_020",
+   "detected_at": "2025-03-07 13:00:00+00:00",
+   "opportunity_type": "OPP_CROSSMARKET_SHOCK",
+   "hermes_review": {
+    "A_what_happened": "at 2025-03-07 13:00:00+00:00 the engine recorded OPP_CROSSMARKET_SHOCK (DXY z=-2.10); vol_state=VOL_EXPANSION, session=NewYork",
+    "B_mechanism_hypotheses": [
+     "volatility-regime mechanics (vol clustering / mean reversion of vol)",
+     "cross-asset information flow (DXY/VIX/UST10Y_PROXY leading or lagging XAUUSD)",
+     "liquidity/session structure (Asia vs London vs NY behaviour)",
+     "measurement artifact (semantics UNKNOWN: bar open/close, and UST10Y_PROXY is not the official series)"
+    ],
+    "C_counter_evidence": [
+     "the same state occurs at a similar rate in random windows (permutation idea)",
+     "the pattern may be a data artifact from mixed sources (HistData XAUUSD vs Yahoo externals)",
+     "the observation window may be too short (624d at 1h / 63d at 5m)",
+     "selection bias: only states that look 'abnormal' get reviewed"
+    ],
+    "D_historical_repetition": {
+     "same_type_historical_count": 448,
+     "per_day": 0.7177,
+     "descriptive_next_60m_move_bp": {
+      "n": 447,
+      "mean": 109.954,
+      "median": 110.082,
+      "note": "DESCRIPTIVE ONLY - not an edge, not a signal"
+     },
+     "recurring": true
+    },
+    "E_decision": "INVESTIGATE",
+    "E_reason": "state is recurrent and the data quality allows investigation",
+    "semantic_dependency": {
+     "SEMANTIC_DEPENDENCY": "UNKNOWN",
+     "depends_on": [
+      "XAUUSD bar open/close semantics",
+      "UST10Y_PROXY is not official UST10Y"
+     ]
+    },
+    "observation_only": {
+     "pre_event_context_tail": "{'return_60m': {Timestamp('2025-03-06 19:00:00+0000', tz='UTC'): -77.2721467796178}}",
+     "post_event_observation_head": "{'return_60m': {Timestamp('2025-03-07 14:00:00+0000', tz='UTC'): -56.19029335362957}}"
+    }
+   },
+   "review_status": "INVESTIGATE",
+   "data_quality": "PARTIAL",
+   "lookahead_check": "PASS",
+   "detector_version": "R1.0.0",
+   "created_at": "2026-09-25T11:22:45.775703+00:00"
+  },
+  {
+   "opportunity_id": "OPP-1h-14701724",
+   "cluster_id": "OPP_CLUSTER_021",
+   "detected_at": "2025-03-10 18:00:00+00:00",
+   "opportunity_type": "OPP_CROSSMARKET_SHOCK",
+   "hermes_review": {
+    "A_what_happened": "at 2025-03-10 18:00:00+00:00 the engine recorded OPP_CROSSMARKET_SHOCK (VIX z=2.40); vol_state=VOL_CONTRACTION, session=NewYork",
+    "B_mechanism_hypotheses": [
+     "volatility-regime mechanics (vol clustering / mean reversion of vol)",
+     "cross-asset information flow (DXY/VIX/UST10Y_PROXY leading or lagging XAUUSD)",
+     "liquidity/session structure (Asia vs London vs NY behaviour)",
+     "measurement artifact (semantics UNKNOWN: bar open/close, and UST10Y_PROXY is not the official series)"
+    ],
+    "C_counter_evidence": [
+     "the same state occurs at a similar rate in random windows (permutation idea)",
+     "the pattern may be a data artifact from mixed sources (HistData XAUUSD vs Yahoo externals)",
+     "the observation window may be too short (624d at 1h / 63d at 5m)",
+     "selection bias: only states that look 'abnormal' get reviewed"
+    ],
+    "D_historical_repetition": {
+     "same_type_historical_count": 448,
+     "per_day": 0.7177,
+     "descriptive_next_60m_move_bp": {
+      "n": 447,
+      "mean": 109.954,
+      "median": 110.082,
+      "note": "DESCRIPTIVE ONLY - not an edge, not a signal"
+     },
+     "recurring": true
+    },
+    "E_decision": "INVESTIGATE",
+    "E_reason": "state is recurrent and the data quality allows investigation",
+    "semantic_dependency": {
+     "SEMANTIC_DEPENDENCY": "UNKNOWN",
+     "depends_on": [
+      "XAUUSD bar open/close semantics",
+      "UST10Y_PROXY is not official UST10Y"
+     ]
+    },
+    "observation_only": {
+     "pre_event_context_tail": "{'return_60m': {Timestamp('2025-03-10 17:00:00+0000', tz='UTC'): -50.955414012737734}}",
+     "post_event_observation_head": "{'return_60m': {Timestamp('2025-03-11 12:00:00+0000', tz='UTC'): -0.03432963660232602}}"
+    }
+   },
+   "review_status": "INVESTIGATE",
+   "data_quality": "PARTIAL",
+   "lookahead_check": "PASS",
+   "detector_version": "R1.0.0",
+   "created_at": "2026-09-25T11:22:45.775703+00:00"
+  },
+  {
+   "opportunity_id": "OPP-1h-23311919",
+   "cluster_id": "OPP_CLUSTER_022",
+   "detected_at": "2025-03-11 12:00:00+00:00",
+   "opportunity_type": "OPP_CROSSMARKET_SHOCK",
+   "hermes_review": {
+    "A_what_happened": "at 2025-03-11 12:00:00+00:00 the engine recorded OPP_CROSSMARKET_SHOCK (VIX z=2.10); vol_state=VOL_NORMAL, session=London",
+    "B_mechanism_hypotheses": [
+     "volatility-regime mechanics (vol clustering / mean reversion of vol)",
+     "cross-asset information flow (DXY/VIX/UST10Y_PROXY leading or lagging XAUUSD)",
+     "liquidity/session structure (Asia vs London vs NY behaviour)",
+     "measurement artifact (semantics UNKNOWN: bar open/close, and UST10Y_PROXY is not the official series)"
+    ],
+    "C_counter_evidence": [
+     "the same state occurs at a similar rate in random windows (permutation idea)",
+     "the pattern may be a data artifact from mixed sources (HistData XAUUSD vs Yahoo externals)",
+     "the observation window may be too short (624d at 1h / 63d at 5m)",
+     "selection bias: only states that look 'abnormal' get reviewed"
+    ],
+    "D_historical_repetition": {
+     "same_type_historical_count": 448,
+     "per_day": 0.7177,
+     "descriptive_next_60m_move_bp": {
+      "n": 447,
+      "mean": 109.954,
+      "median": 110.082,
+      "note": "DESCRIPTIVE ONLY - not an edge, not a signal"
+     },
+     "recurring": true
+    },
+    "E_decision": "INVESTIGATE",
+    "E_reason": "state is recurrent and the data quality allows investigation",
+    "semantic_dependency": {
+     "SEMANTIC_DEPENDENCY": "UNKNOWN",
+     "depends_on": [
+      "XAUUSD bar open/close semantics",
+      "UST10Y_PROXY is not official UST10Y"
+     ]
+    },
+    "observation_only": {
+     "pre_event_context_tail": "{'return_60m': {Timestamp('2025-03-10 18:00:00+0000', tz='UTC'): -95.3281647182802}}",
+     "post_event_observation_head": "{'return_60m': {Timestamp('2025-03-11 13:00:00+0000', tz='UTC'): 12.973529537947392}}"
+    }
+   },
+   "review_status": "INVESTIGATE",
+   "data_quality": "PARTIAL",
+   "lookahead_check": "PASS",
+   "detector_version": "R1.0.0",
+   "created_at": "2026-09-25T11:22:45.775703+00:00"
+  },
+  {
+   "opportunity_id": "OPP-1h-26499644",
+   "cluster_id": "OPP_CLUSTER_023",
+   "detected_at": "2025-03-12 12:00:00+00:00",
+   "opportunity_type": "OPP_CROSSMARKET_SHOCK",
+   "hermes_review": {
+    "A_what_happened": "at 2025-03-12 12:00:00+00:00 the engine recorded OPP_CROSSMARKET_SHOCK (DXY z=-2.12); vol_state=VOL_CONTRACTION, session=London",
+    "B_mechanism_hypotheses": [
+     "volatility-regime mechanics (vol clustering / mean reversion of vol)",
+     "cross-asset information flow (DXY/VIX/UST10Y_PROXY leading or lagging XAUUSD)",
+     "liquidity/session structure (Asia vs London vs NY behaviour)",
+     "measurement artifact (semantics UNKNOWN: bar open/close, and UST10Y_PROXY is not the official series)"
+    ],
+    "C_counter_evidence": [
+     "the same state occurs at a similar rate in random windows (permutation idea)",
+     "the pattern may be a data artifact from mixed sources (HistData XAUUSD vs Yahoo externals)",
+     "the observation window may be too short (624d at 1h / 63d at 5m)",
+     "selection bias: only states that look 'abnormal' get reviewed"
+    ],
+    "D_historical_repetition": {
+     "same_type_historical_count": 448,
+     "per_day": 0.7177,
+     "descriptive_next_60m_move_bp": {
+      "n": 447,
+      "mean": 109.954,
+      "median": 110.082,
+      "note": "DESCRIPTIVE ONLY - not an edge, not a signal"
+     },
+     "recurring": true
+    },
+    "E_decision": "INVESTIGATE",
+    "E_reason": "state is recurrent and the data quality allows investigation",
+    "semantic_dependency": {
+     "SEMANTIC_DEPENDENCY": "UNKNOWN",
+     "depends_on": [
+      "XAUUSD bar open/close semantics",
+      "UST10Y_PROXY is not official UST10Y"
+     ]
+    },
+    "observation_only": {
+     "pre_event_context_tail": "{'return_60m': {Timestamp('2025-03-11 18:00:00+0000', tz='UTC'): 159.9080529565944}}",
+     "post_event_observation_head": "{'return_60m': {Timestamp('2025-03-12 13:00:00+0000', tz='UTC'): 112.65048623164687}}"
+    }
+   },
+   "review_status": "INVESTIGATE",
+   "data_quality": "PARTIAL",
+   "lookahead_check": "PASS",
+   "detector_version": "R1.0.0",
+   "created_at": "2026-09-25T11:22:45.775703+00:00"
+  },
+  {
+   "opportunity_id": "OPP-1h-22800215",
+   "cluster_id": "OPP_CLUSTER_024",
+   "detected_at": "2025-03-13 14:00:00+00:00",
+   "opportunity_type": "OPP_CROSSMARKET_SHOCK",
+   "hermes_review": {
+    "A_what_happened": "at 2025-03-13 14:00:00+00:00 the engine recorded OPP_CROSSMARKET_SHOCK (DXY z=-2.27); vol_state=VOL_CONTRACTION, session=NewYork",
+    "B_mechanism_hypotheses": [
+     "volatility-regime mechanics (vol clustering / mean reversion of vol)",
+     "cross-asset information flow (DXY/VIX/UST10Y_PROXY leading or lagging XAUUSD)",
+     "liquidity/session structure (Asia vs London vs NY behaviour)",
+     "measurement artifact (semantics UNKNOWN: bar open/close, and UST10Y_PROXY is not the official series)"
+    ],
+    "C_counter_evidence": [
+     "the same state occurs at a similar rate in random windows (permutation idea)",
+     "the pattern may be a data artifact from mixed sources (HistData XAUUSD vs Yahoo externals)",
+     "the observation window may be too short (624d at 1h / 63d at 5m)",
+     "selection bias: only states that look 'abnormal' get reviewed"
+    ],
+    "D_historical_repetition": {
+     "same_type_historical_count": 448,
+     "per_day": 0.7177,
+     "descriptive_next_60m_move_bp": {
+      "n": 447,
+      "mean": 109.954,
+      "median": 110.082,
+      "note": "DESCRIPTIVE ONLY - not an edge, not a signal"
+     },
+     "recurring": true
+    },
+    "E_decision": "INVESTIGATE",
+    "E_reason": "state is recurrent and the data quality allows investigation",
+    "semantic_dependency": {
+     "SEMANTIC_DEPENDENCY": "UNKNOWN",
+     "depends_on": [
+      "XAUUSD bar open/close semantics",
+      "UST10Y_PROXY is not official UST10Y"
+     ]
+    },
+    "observation_only": {
+     "pre_event_context_tail": "{'return_60m': {Timestamp('2025-03-13 13:00:00+0000', tz='UTC'): 369.7448272104631}}",
+     "post_event_observation_head": "{'return_60m': {Timestamp('2025-03-13 15:00:00+0000', tz='UTC'): 449.91059693871404}}"
+    }
+   },
+   "review_status": "INVESTIGATE",
+   "data_quality": "PARTIAL",
+   "lookahead_check": "PASS",
+   "detector_version": "R1.0.0",
+   "created_at": "2026-09-25T11:22:45.775703+00:00"
+  },
+  {
+   "opportunity_id": "OPP-1h-58027035",
+   "cluster_id": "OPP_CLUSTER_025",
+   "detected_at": "2025-03-14 17:00:00+00:00",
+   "opportunity_type": "OPP_CROSSMARKET_SHOCK",
+   "hermes_review": {
+    "A_what_happened": "at 2025-03-14 17:00:00+00:00 the engine recorded OPP_CROSSMARKET_SHOCK (UST10Y_PROXY z=2.30); vol_state=VOL_CONTRACTION, session=NewYork",
+    "B_mechanism_hypotheses": [
+     "volatility-regime mechanics (vol clustering / mean reversion of vol)",
+     "cross-asset information flow (DXY/VIX/UST10Y_PROXY leading or lagging XAUUSD)",
+     "liquidity/session structure (Asia vs London vs NY behaviour)",
+     "measurement artifact (semantics UNKNOWN: bar open/close, and UST10Y_PROXY is not the official series)"
+    ],
+    "C_counter_evidence": [
+     "the same state occurs at a similar rate in random windows (permutation idea)",
+     "the pattern may be a data artifact from mixed sources (HistData XAUUSD vs Yahoo externals)",
+     "the observation window may be too short (624d at 1h / 63d at 5m)",
+     "selection bias: only states that look 'abnormal' get reviewed"
+    ],
+    "D_historical_repetition": {
+     "same_type_historical_count": 448,
+     "per_day": 0.7177,
+     "descriptive_next_60m_move_bp": {
+      "n": 447,
+      "mean": 109.954,
+      "median": 110.082,
+      "note": "DESCRIPTIVE ONLY - not an edge, not a signal"
+     },
+     "recurring": true
+    },
+    "E_decision": "INVESTIGATE",
+    "E_reason": "state is recurrent and the data quality allows investigation",
+    "semantic_dependency": {
+     "SEMANTIC_DEPENDENCY": "UNKNOWN",
+     "depends_on": [
+      "XAUUSD bar open/close semantics",
+      "UST10Y_PROXY is not official UST10Y"
+     ]
+    },
+    "observation_only": {
+     "pre_event_context_tail": "{'return_60m': {Timestamp('2025-03-14 16:00:00+0000', tz='UTC'): 229.60596058442474}}",
+     "post_event_observation_head": "{'return_60m': {Timestamp('2025-03-14 18:00:00+0000', tz='UTC'): 266.48312412351106}}"
+    }
+   },
+   "review_status": "INVESTIGATE",
+   "data_quality": "PARTIAL",
+   "lookahead_check": "PASS",
+   "detector_version": "R1.0.0",
+   "created_at": "2026-09-25T11:22:45.775703+00:00"
+  },
+  {
+   "opportunity_id": "OPP-1h-34858479",
+   "cluster_id": "OPP_CLUSTER_026",
+   "detected_at": "2025-03-24 13:00:00+00:00",
+   "opportunity_type": "OPP_CROSSMARKET_SHOCK",
+   "hermes_review": {
+    "A_what_happened": "at 2025-03-24 13:00:00+00:00 the engine recorded OPP_CROSSMARKET_SHOCK (VIX z=-2.02); vol_state=VOL_NORMAL, session=NewYork",
+    "B_mechanism_hypotheses": [
+     "volatility-regime mechanics (vol clustering / mean reversion of vol)",
+     "cross-asset information flow (DXY/VIX/UST10Y_PROXY leading or lagging XAUUSD)",
+     "liquidity/session structure (Asia vs London vs NY behaviour)",
+     "measurement artifact (semantics UNKNOWN: bar open/close, and UST10Y_PROXY is not the official series)"
+    ],
+    "C_counter_evidence": [
+     "the same state occurs at a similar rate in random windows (permutation idea)",
+     "the pattern may be a data artifact from mixed sources (HistData XAUUSD vs Yahoo externals)",
+     "the observation window may be too short (624d at 1h / 63d at 5m)",
+     "selection bias: only states that look 'abnormal' get reviewed"
+    ],
+    "D_historical_repetition": {
+     "same_type_historical_count": 448,
+     "per_day": 0.7177,
+     "descriptive_next_60m_move_bp": {
+      "n": 447,
+      "mean": 109.954,
+      "median": 110.082,
+      "note": "DESCRIPTIVE ONLY - not an edge, not a signal"
+     },
+     "recurring": true
+    },
+    "E_decision": "INVESTIGATE",
+    "E_reason": "state is recurrent and the data quality allows investigation",
+    "semantic_dependency": {
+     "SEMANTIC_DEPENDENCY": "UNKNOWN",
+     "depends_on": [
+      "XAUUSD bar open/close semantics",
+      "UST10Y_PROXY is not official UST10Y"
+     ]
+    },
+    "observation_only": {
+     "pre_event_context_tail": "{'return_60m': {Timestamp('2025-03-24 12:00:00+0000', tz='UTC'): 368.5779576666781}}",
+     "post_event_observation_head": "{'return_60m': {Timestamp('2025-03-24 14:00:00+0000', tz='UTC'): 323.352944503188}}"
+    }
+   },
+   "review_status": "INVESTIGATE",
+   "data_quality": "PARTIAL",
+   "lookahead_check": "PASS",
+   "detector_version": "R1.0.0",
+   "created_at": "2026-09-25T11:22:45.775703+00:00"
+  },
+  {
+   "opportunity_id": "OPP-1h-43599454",
+   "cluster_id": "OPP_CLUSTER_027",
+   "detected_at": "2025-04-03 15:00:00+00:00",
+   "opportunity_type": "OPP_STATE_BREAK",
+   "hermes_review": {
+    "A_what_happened": "at 2025-04-03 15:00:00+00:00 the engine recorded OPP_STATE_BREAK (vol_pct=0.97); vol_state=VOL_EXTREME, session=NewYork",
+    "B_mechanism_hypotheses": [
+     "volatility-regime mechanics (vol clustering / mean reversion of vol)",
+     "cross-asset information flow (DXY/VIX/UST10Y_PROXY leading or lagging XAUUSD)",
+     "liquidity/session structure (Asia vs London vs NY behaviour)",
+     "measurement artifact (semantics UNKNOWN: bar open/close, and UST10Y_PROXY is not the official series)"
+    ],
+    "C_counter_evidence": [
+     "the same state occurs at a similar rate in random windows (permutation idea)",
+     "the pattern may be a data artifact from mixed sources (HistData XAUUSD vs Yahoo externals)",
+     "the observation window may be too short (624d at 1h / 63d at 5m)",
+     "selection bias: only states that look 'abnormal' get reviewed"
+    ],
+    "D_historical_repetition": {
+     "same_type_historical_count": 370,
+     "per_day": 0.5928,
+     "descriptive_next_60m_move_bp": {
+      "n": 370,
+      "mean": 279.059,
+      "median": 285.766,
+      "note": "DESCRIPTIVE ONLY - not an edge, not a signal"
+     },
+     "recurring": true
+    },
+    "E_decision": "INVESTIGATE",
+    "E_reason": "state is recurrent and the data quality allows investigation",
+    "semantic_dependency": {
+     "SEMANTIC_DEPENDENCY": "PARTIAL"
+    },
+    "observation_only": {
+     "pre_event_context_tail": "{'return_60m': {Timestamp('2025-04-03 14:00:00+0000', tz='UTC'): 238.89442883856304}}",
+     "post_event_observation_head": "{'return_60m': {Timestamp('2025-04-03 16:00:00+0000', tz='UTC'): 285.2735428381537}}"
+    }
+   },
+   "review_status": "INVESTIGATE",
+   "data_quality": "PARTIAL",
+   "lookahead_check": "PASS",
+   "detector_version": "R1.0.0",
+   "created_at": "2026-09-25T11:22:45.775703+00:00"
+  },
+  {
+   "opportunity_id": "OPP-1h-42764998",
+   "cluster_id": "OPP_CLUSTER_028",
+   "detected_at": "2025-04-04 12:00:00+00:00",
+   "opportunity_type": "OPP_STATE_BREAK",
+   "hermes_review": {
+    "A_what_happened": "at 2025-04-04 12:00:00+00:00 the engine recorded OPP_STATE_BREAK (vol_pct=0.95); vol_state=VOL_EXPANSION, session=London",
+    "B_mechanism_hypotheses": [
+     "volatility-regime mechanics (vol clustering / mean reversion of vol)",
+     "cross-asset information flow (DXY/VIX/UST10Y_PROXY leading or lagging XAUUSD)",
+     "liquidity/session structure (Asia vs London vs NY behaviour)",
+     "measurement artifact (semantics UNKNOWN: bar open/close, and UST10Y_PROXY is not the official series)"
+    ],
+    "C_counter_evidence": [
+     "the same state occurs at a similar rate in random windows (permutation idea)",
+     "the pattern may be a data artifact from mixed sources (HistData XAUUSD vs Yahoo externals)",
+     "the observation window may be too short (624d at 1h / 63d at 5m)",
+     "selection bias: only states that look 'abnormal' get reviewed"
+    ],
+    "D_historical_repetition": {
+     "same_type_historical_count": 370,
+     "per_day": 0.5928,
+     "descriptive_next_60m_move_bp": {
+      "n": 370,
+      "mean": 279.059,
+      "median": 285.766,
+      "note": "DESCRIPTIVE ONLY - not an edge, not a signal"
+     },
+     "recurring": true
+    },
+    "E_decision": "INVESTIGATE",
+    "E_reason": "state is recurrent and the data quality allows investigation",
+    "semantic_dependency": {
+     "SEMANTIC_DEPENDENCY": "PARTIAL"
+    },
+    "observation_only": {
+     "pre_event_context_tail": "{'return_60m': {Timestamp('2025-04-03 18:00:00+0000', tz='UTC'): 323.726424725963}}",
+     "post_event_observation_head": "{'return_60m': {Timestamp('2025-04-04 13:00:00+0000', tz='UTC'): 203.70453439129798}}"
+    }
+   },
+   "review_status": "INVESTIGATE",
+   "data_quality": "PARTIAL",
+   "lookahead_check": "PASS",
+   "detector_version": "R1.0.0",
+   "created_at": "2026-09-25T11:22:45.775703+00:00"
+  },
+  {
+   "opportunity_id": "OPP-1h-94045901",
+   "cluster_id": "OPP_CLUSTER_029",
+   "detected_at": "2025-04-04 14:00:00+00:00",
+   "opportunity_type": "OPP_CROSSMARKET_SHOCK",
+   "hermes_review": {
+    "A_what_happened": "at 2025-04-04 14:00:00+00:00 the engine recorded OPP_CROSSMARKET_SHOCK (VIX z=4.62); vol_state=VOL_EXPANSION, session=NewYork",
+    "B_mechanism_hypotheses": [
+     "volatility-regime mechanics (vol clustering / mean reversion of vol)",
+     "cross-asset information flow (DXY/VIX/UST10Y_PROXY leading or lagging XAUUSD)",
+     "liquidity/session structure (Asia vs London vs NY behaviour)",
+     "measurement artifact (semantics UNKNOWN: bar open/close, and UST10Y_PROXY is not the official series)"
+    ],
+    "C_counter_evidence": [
+     "the same state occurs at a similar rate in random windows (permutation idea)",
+     "the pattern may be a data artifact from mixed sources (HistData XAUUSD vs Yahoo externals)",
+     "the observation window may be too short (624d at 1h / 63d at 5m)",
+     "selection bias: only states that look 'abnormal' get reviewed"
+    ],
+    "D_historical_repetition": {
+     "same_type_historical_count": 448,
+     "per_day": 0.7177,
+     "descriptive_next_60m_move_bp": {
+      "n": 447,
+      "mean": 109.954,
+      "median": 110.082,
+      "note": "DESCRIPTIVE ONLY - not an edge, not a signal"
+     },
+     "recurring": true
+    },
+    "E_decision": "INVESTIGATE",
+    "E_reason": "state is recurrent and the data quality allows investigation",
+    "semantic_dependency": {
+     "SEMANTIC_DEPENDENCY": "UNKNOWN",
+     "depends_on": [
+      "XAUUSD bar open/close semantics",
+      "UST10Y_PROXY is not official UST10Y"
+     ]
+    },
+    "observation_only": {
+     "pre_event_context_tail": "{'return_60m': {Timestamp('2025-04-04 13:00:00+0000', tz='UTC'): 203.70453439129798}}",
+     "post_event_observation_head": "{'return_60m': {Timestamp('2025-04-04 15:00:00+0000', tz='UTC'): 104.36951731592758}}"
+    }
+   },
+   "review_status": "INVESTIGATE",
+   "data_quality": "PARTIAL",
+   "lookahead_check": "PASS",
+   "detector_version": "R1.0.0",
+   "created_at": "2026-09-25T11:22:45.775703+00:00"
+  },
+  {
+   "opportunity_id": "OPP-1h-99455927",
+   "cluster_id": "OPP_CLUSTER_030",
+   "detected_at": "2025-04-07 12:00:00+00:00",
+   "opportunity_type": "OPP_STATE_BREAK",
+   "hermes_review": {
+    "A_what_happened": "at 2025-04-07 12:00:00+00:00 the engine recorded OPP_STATE_BREAK (vol_pct=0.99); vol_state=VOL_EXTREME, session=London",
+    "B_mechanism_hypotheses": [
+     "volatility-regime mechanics (vol clustering / mean reversion of vol)",
+     "cross-asset information flow (DXY/VIX/UST10Y_PROXY leading or lagging XAUUSD)",
+     "liquidity/session structure (Asia vs London vs NY behaviour)",
+     "measurement artifact (semantics UNKNOWN: bar open/close, and UST10Y_PROXY is not the official series)"
+    ],
+    "C_counter_evidence": [
+     "the same state occurs at a similar rate in random windows (permutation idea)",
+     "the pattern may be a data artifact from mixed sources (HistData XAUUSD vs Yahoo externals)",
+     "the observation window may be too short (624d at 1h / 63d at 5m)",
+     "selection bias: only states that look 'abnormal' get reviewed"
+    ],
+    "D_historical_repetition": {
+     "same_type_historical_count": 370,
+     "per_day": 0.5928,
+     "descriptive_next_60m_move_bp": {
+      "n": 370,
+      "mean": 279.059,
+      "median": 285.766,
+      "note": "DESCRIPTIVE ONLY - not an edge, not a signal"
+     },
+     "recurring": true
+    },
+    "E_decision": "INVESTIGATE",
+    "E_reason": "state is recurrent and the data quality allows investigation",
+    "semantic_dependency": {
+     "SEMANTIC_DEPENDENCY": "PARTIAL"
+    },
+    "observation_only": {
+     "pre_event_context_tail": "{'return_60m': {Timestamp('2025-04-04 18:00:00+0000', tz='UTC'): 2.6778054557818898}}",
+     "post_event_observation_head": "{'return_60m': {Timestamp('2025-04-07 13:00:00+0000', tz='UTC'): 26.10978149225618}}"
+    }
+   },
+   "review_status": "INVESTIGATE",
+   "data_quality": "PARTIAL",
+   "lookahead_check": "PASS",
+   "detector_version": "R1.0.0",
+   "created_at": "2026-09-25T11:22:45.775703+00:00"
+  },
+  {
+   "opportunity_id": "OPP-1h-55857557",
+   "cluster_id": "OPP_CLUSTER_031",
+   "detected_at": "2025-04-08 12:00:00+00:00",
+   "opportunity_type": "OPP_STATE_BREAK",
+   "hermes_review": {
+    "A_what_happened": "at 2025-04-08 12:00:00+00:00 the engine recorded OPP_STATE_BREAK (vol_pct=1.00); vol_state=VOL_EXTREME, session=London",
+    "B_mechanism_hypotheses": [
+     "volatility-regime mechanics (vol clustering / mean reversion of vol)",
+     "cross-asset information flow (DXY/VIX/UST10Y_PROXY leading or lagging XAUUSD)",
+     "liquidity/session structure (Asia vs London vs NY behaviour)",
+     "measurement artifact (semantics UNKNOWN: bar open/close, and UST10Y_PROXY is not the official series)"
+    ],
+    "C_counter_evidence": [
+     "the same state occurs at a similar rate in random windows (permutation idea)",
+     "the pattern may be a data artifact from mixed sources (HistData XAUUSD vs Yahoo externals)",
+     "the observation window may be too short (624d at 1h / 63d at 5m)",
+     "selection bias: only states that look 'abnormal' get reviewed"
+    ],
+    "D_historical_repetition": {
+     "same_type_historical_count": 370,
+     "per_day": 0.5928,
+     "descriptive_next_60m_move_bp": {
+      "n": 370,
+      "mean": 279.059,
+      "median": 285.766,
+      "note": "DESCRIPTIVE ONLY - not an edge, not a signal"
+     },
+     "recurring": true
+    },
+    "E_decision": "INVESTIGATE",
+    "E_reason": "state is recurrent and the data quality allows investigation",
+    "semantic_dependency": {
+     "SEMANTIC_DEPENDENCY": "PARTIAL"
+    },
+    "observation_only": {
+     "pre_event_context_tail": "{'return_60m': {Timestamp('2025-04-07 18:00:00+0000', tz='UTC'): -157.1953408136173}}",
+     "post_event_observation_head": "{'return_60m': {Timestamp('2025-04-08 13:00:00+0000', tz='UTC'): -43.74074571504849}}"
+    }
+   },
+   "review_status": "INVESTIGATE",
+   "data_quality": "PARTIAL",
+   "lookahead_check": "PASS",
+   "detector_version": "R1.0.0",
+   "created_at": "2026-09-25T11:22:45.775703+00:00"
+  },
+  {
+   "opportunity_id": "OPP-1h-57249463",
+   "cluster_id": "OPP_CLUSTER_032",
+   "detected_at": "2025-04-09 12:00:00+00:00",
+   "opportunity_type": "OPP_STATE_BREAK",
+   "hermes_review": {
+    "A_what_happened": "at 2025-04-09 12:00:00+00:00 the engine recorded OPP_STATE_BREAK (vol_pct=1.00); vol_state=VOL_EXTREME, session=London",
+    "B_mechanism_hypotheses": [
+     "volatility-regime mechanics (vol clustering / mean reversion of vol)",
+     "cross-asset information flow (DXY/VIX/UST10Y_PROXY leading or lagging XAUUSD)",
+     "liquidity/session structure (Asia vs London vs NY behaviour)",
+     "measurement artifact (semantics UNKNOWN: bar open/close, and UST10Y_PROXY is not the official series)"
+    ],
+    "C_counter_evidence": [
+     "the same state occurs at a similar rate in random windows (permutation idea)",
+     "the pattern may be a data artifact from mixed sources (HistData XAUUSD vs Yahoo externals)",
+     "the observation window may be too short (624d at 1h / 63d at 5m)",
+     "selection bias: only states that look 'abnormal' get reviewed"
+    ],
+    "D_historical_repetition": {
+     "same_type_historical_count": 370,
+     "per_day": 0.5928,
+     "descriptive_next_60m_move_bp": {
+      "n": 370,
+      "mean": 279.059,
+      "median": 285.766,
+      "note": "DESCRIPTIVE ONLY - not an edge, not a signal"
+     },
+     "recurring": true
+    },
+    "E_decision": "INVESTIGATE",
+    "E_reason": "state is recurrent and the data quality allows investigation",
+    "semantic_dependency": {
+     "SEMANTIC_DEPENDENCY": "PARTIAL"
+    },
+    "observation_only": {
+     "pre_event_context_tail": "{'return_60m': {Timestamp('2025-04-08 18:00:00+0000', tz='UTC'): -236.71745343528673}}",
+     "post_event_observation_head": "{'return_60m': {Timestamp('2025-04-09 13:00:00+0000', tz='UTC'): -3.3134254421851583}}"
+    }
+   },
+   "review_status": "INVESTIGATE",
+   "data_quality": "PARTIAL",
+   "lookahead_check": "PASS",
+   "detector_version": "R1.0.0",
+   "created_at": "2026-09-25T11:22:45.775703+00:00"
+  },
+  {
+   "opportunity_id": "OPP-1h-65036160",
+   "cluster_id": "OPP_CLUSTER_033",
+   "detected_at": "2025-04-10 12:00:00+00:00",
+   "opportunity_type": "OPP_STATE_BREAK",
+   "hermes_review": {
+    "A_what_happened": "at 2025-04-10 12:00:00+00:00 the engine recorded OPP_STATE_BREAK (vol_pct=1.00); vol_state=VOL_EXTREME, session=London",
+    "B_mechanism_hypotheses": [
+     "volatility-regime mechanics (vol clustering / mean reversion of vol)",
+     "cross-asset information flow (DXY/VIX/UST10Y_PROXY leading or lagging XAUUSD)",
+     "liquidity/session structure (Asia vs London vs NY behaviour)",
+     "measurement artifact (semantics UNKNOWN: bar open/close, and UST10Y_PROXY is not the official series)"
+    ],
+    "C_counter_evidence": [
+     "the same state occurs at a similar rate in random windows (permutation idea)",
+     "the pattern may be a data artifact from mixed sources (HistData XAUUSD vs Yahoo externals)",
+     "the observation window may be too short (624d at 1h / 63d at 5m)",
+     "selection bias: only states that look 'abnormal' get reviewed"
+    ],
+    "D_historical_repetition": {
+     "same_type_historical_count": 370,
+     "per_day": 0.5928,
+     "descriptive_next_60m_move_bp": {
+      "n": 370,
+      "mean": 279.059,
+      "median": 285.766,
+      "note": "DESCRIPTIVE ONLY - not an edge, not a signal"
+     },
+     "recurring": true
+    },
+    "E_decision": "INVESTIGATE",
+    "E_reason": "state is recurrent and the data quality allows investigation",
+    "semantic_dependency": {
+     "SEMANTIC_DEPENDENCY": "PARTIAL"
+    },
+    "observation_only": {
+     "pre_event_context_tail": "{'return_60m': {Timestamp('2025-04-09 18:00:00+0000', tz='UTC'): -35.86582078491163}}",
+     "post_event_observation_head": "{'return_60m': {Timestamp('2025-04-10 13:00:00+0000', tz='UTC'): 126.30827975905757}}"
+    }
+   },
+   "review_status": "INVESTIGATE",
+   "data_quality": "PARTIAL",
+   "lookahead_check": "PASS",
+   "detector_version": "R1.0.0",
+   "created_at": "2026-09-25T11:22:45.775703+00:00"
+  },
+  {
+   "opportunity_id": "OPP-1h-93971178",
+   "cluster_id": "OPP_CLUSTER_034",
+   "detected_at": "2025-04-11 12:00:00+00:00",
+   "opportunity_type": "OPP_STATE_BREAK",
+   "hermes_review": {
+    "A_what_happened": "at 2025-04-11 12:00:00+00:00 the engine recorded OPP_STATE_BREAK (vol_pct=1.00); vol_state=VOL_EXTREME, session=London",
+    "B_mechanism_hypotheses": [
+     "volatility-regime mechanics (vol clustering / mean reversion of vol)",
+     "cross-asset information flow (DXY/VIX/UST10Y_PROXY leading or lagging XAUUSD)",
+     "liquidity/session structure (Asia vs London vs NY behaviour)",
+     "measurement artifact (semantics UNKNOWN: bar open/close, and UST10Y_PROXY is not the official series)"
+    ],
+    "C_counter_evidence": [
+     "the same state occurs at a similar rate in random windows (permutation idea)",
+     "the pattern may be a data artifact from mixed sources (HistData XAUUSD vs Yahoo externals)",
+     "the observation window may be too short (624d at 1h / 63d at 5m)",
+     "selection bias: only states that look 'abnormal' get reviewed"
+    ],
+    "D_historical_repetition": {
+     "same_type_historical_count": 370,
+     "per_day": 0.5928,
+     "descriptive_next_60m_move_bp": {
+      "n": 370,
+      "mean": 279.059,
+      "median": 285.766,
+      "note": "DESCRIPTIVE ONLY - not an edge, not a signal"
+     },
+     "recurring": true
+    },
+    "E_decision": "INVESTIGATE",
+    "E_reason": "state is recurrent and the data quality allows investigation",
+    "semantic_dependency": {
+     "SEMANTIC_DEPENDENCY": "PARTIAL"
+    },
+    "observation_only": {
+     "pre_event_context_tail": "{'return_60m': {Timestamp('2025-04-10 18:00:00+0000', tz='UTC'): 157.71513953564576}}",
+     "post_event_observation_head": "{'return_60m': {Timestamp('2025-04-11 13:00:00+0000', tz='UTC'): 384.7901735747006}}"
+    }
+   },
+   "review_status": "INVESTIGATE",
+   "data_quality": "PARTIAL",
+   "lookahead_check": "PASS",
+   "detector_version": "R1.0.0",
+   "created_at": "2026-09-25T11:22:45.775703+00:00"
+  },
+  {
+   "opportunity_id": "OPP-1h-90273119",
+   "cluster_id": "OPP_CLUSTER_035",
+   "detected_at": "2025-04-14 12:00:00+00:00",
+   "opportunity_type": "OPP_STATE_BREAK",
+   "hermes_review": {
+    "A_what_happened": "at 2025-04-14 12:00:00+00:00 the engine recorded OPP_STATE_BREAK (vol_pct=0.95); vol_state=VOL_EXPANSION, session=London",
+    "B_mechanism_hypotheses": [
+     "volatility-regime mechanics (vol clustering / mean reversion of vol)",
+     "cross-asset information flow (DXY/VIX/UST10Y_PROXY leading or lagging XAUUSD)",
+     "liquidity/session structure (Asia vs London vs NY behaviour)",
+     "measurement artifact (semantics UNKNOWN: bar open/close, and UST10Y_PROXY is not the official series)"
+    ],
+    "C_counter_evidence": [
+     "the same state occurs at a similar rate in random windows (permutation idea)",
+     "the pattern may be a data artifact from mixed sources (HistData XAUUSD vs Yahoo externals)",
+     "the observation window may be too short (624d at 1h / 63d at 5m)",
+     "selection bias: only states that look 'abnormal' get reviewed"
+    ],
+    "D_historical_repetition": {
+     "same_type_historical_count": 370,
+     "per_day": 0.5928,
+     "descriptive_next_60m_move_bp": {
+      "n": 370,
+      "mean": 279.059,
+      "median": 285.766,
+      "note": "DESCRIPTIVE ONLY - not an edge, not a signal"
+     },
+     "recurring": true
+    },
+    "E_decision": "INVESTIGATE",
+    "E_reason": "state is recurrent and the data quality allows investigation",
+    "semantic_dependency": {
+     "SEMANTIC_DEPENDENCY": "PARTIAL"
+    },
+    "observation_only": {
+     "pre_event_context_tail": "{'return_60m': {Timestamp('2025-04-11 18:00:00+0000', tz='UTC'): 320.33575093153297}}",
+     "post_event_observation_head": "{'return_60m': {Timestamp('2025-04-14 13:00:00+0000', tz='UTC'): 298.9235604246643}}"
+    }
+   },
+   "review_status": "INVESTIGATE",
+   "data_quality": "PARTIAL",
+   "lookahead_check": "PASS",
+   "detector_version": "R1.0.0",
+   "created_at": "2026-09-25T11:22:45.775703+00:00"
+  },
+  {
+   "opportunity_id": "OPP-1h-04948649",
+   "cluster_id": "OPP_CLUSTER_036",
+   "detected_at": "2025-04-14 14:00:00+00:00",
+   "opportunity_type": "OPP_CROSSMARKET_SHOCK",
+   "hermes_review": {
+    "A_what_happened": "at 2025-04-14 14:00:00+00:00 the engine recorded OPP_CROSSMARKET_SHOCK (DXY z=-2.23); vol_state=VOL_EXPANSION, session=NewYork",
+    "B_mechanism_hypotheses": [
+     "volatility-regime mechanics (vol clustering / mean reversion of vol)",
+     "cross-asset information flow (DXY/VIX/UST10Y_PROXY leading or lagging XAUUSD)",
+     "liquidity/session structure (Asia vs London vs NY behaviour)",
+     "measurement artifact (semantics UNKNOWN: bar open/close, and UST10Y_PROXY is not the official series)"
+    ],
+    "C_counter_evidence": [
+     "the same state occurs at a similar rate in random windows (permutation idea)",
+     "the pattern may be a data artifact from mixed sources (HistData XAUUSD vs Yahoo externals)",
+     "the observation window may be too short (624d at 1h / 63d at 5m)",
+     "selection bias: only states that look 'abnormal' get reviewed"
+    ],
+    "D_historical_repetition": {
+     "same_type_historical_count": 448,
+     "per_day": 0.7177,
+     "descriptive_next_60m_move_bp": {
+      "n": 447,
+      "mean": 109.954,
+      "median": 110.082,
+      "note": "DESCRIPTIVE ONLY - not an edge, not a signal"
+     },
+     "recurring": true
+    },
+    "E_decision": "INVESTIGATE",
+    "E_reason": "state is recurrent and the data quality allows investigation",
+    "semantic_dependency": {
+     "SEMANTIC_DEPENDENCY": "UNKNOWN",
+     "depends_on": [
+      "XAUUSD bar open/close semantics",
+      "UST10Y_PROXY is not official UST10Y"
+     ]
+    },
+    "observation_only": {
+     "pre_event_context_tail": "{'return_60m': {Timestamp('2025-04-14 13:00:00+0000', tz='UTC'): 298.9235604246643}}",
+     "post_event_observation_head": "{'return_60m': {Timestamp('2025-04-14 15:00:00+0000', tz='UTC'): 312.60488547509846}}"
+    }
+   },
+   "review_status": "INVESTIGATE",
+   "data_quality": "PARTIAL",
+   "lookahead_check": "PASS",
+   "detector_version": "R1.0.0",
+   "created_at": "2026-09-25T11:22:45.775703+00:00"
+  },
+  {
+   "opportunity_id": "OPP-1h-90410116",
+   "cluster_id": "OPP_CLUSTER_037",
+   "detected_at": "2025-04-14 17:00:00+00:00",
+   "opportunity_type": "OPP_VOL_TRANSITION",
+   "hermes_review": {
+    "A_what_happened": "at 2025-04-14 17:00:00+00:00 the engine recorded OPP_VOL_TRANSITION (extreme->decay ratio=0.44); vol_state=VOL_EXPANSION, session=NewYork",
+    "B_mechanism_hypotheses": [
+     "volatility-regime mechanics (vol clustering / mean reversion of vol)",
+     "cross-asset information flow (DXY/VIX/UST10Y_PROXY leading or lagging XAUUSD)",
+     "liquidity/session structure (Asia vs London vs NY behaviour)",
+     "measurement artifact (semantics UNKNOWN: bar open/close, and UST10Y_PROXY is not the official series)"
+    ],
+    "C_counter_evidence": [
+     "the same state occurs at a similar rate in random windows (permutation idea)",
+     "the pattern may be a data artifact from mixed sources (HistData XAUUSD vs Yahoo externals)",
+     "the observation window may be too short (624d at 1h / 63d at 5m)",
+     "selection bias: only states that look 'abnormal' get reviewed"
+    ],
+    "D_historical_repetition": {
+     "same_type_historical_count": 25,
+     "per_day": 0.0401,
+     "descriptive_next_60m_move_bp": {
+      "n": 25,
+      "mean": 258.627,
+      "median": 260.568,
+      "note": "DESCRIPTIVE ONLY - not an edge, not a signal"
+     },
+     "recurring": true
+    },
+    "E_decision": "INVESTIGATE",
+    "E_reason": "state is recurrent and the data quality allows investigation",
+    "semantic_dependency": {
+     "SEMANTIC_DEPENDENCY": "PARTIAL"
+    },
+    "observation_only": {
+     "pre_event_context_tail": "{'return_60m': {Timestamp('2025-04-14 16:00:00+0000', tz='UTC'): 245.5485514269462}}",
+     "post_event_observation_head": "{'return_60m': {Timestamp('2025-04-14 18:00:00+0000', tz='UTC'): 294.8110412319682}}"
+    }
+   },
+   "review_status": "INVESTIGATE",
+   "data_quality": "PARTIAL",
+   "lookahead_check": "PASS",
+   "detector_version": "R1.0.0",
+   "created_at": "2026-09-25T11:22:45.775703+00:00"
+  },
+  {
+   "opportunity_id": "OPP-1h-82028514",
+   "cluster_id": "OPP_CLUSTER_038",
+   "detected_at": "2025-04-15 12:00:00+00:00",
+   "opportunity_type": "OPP_VOL_TRANSITION",
+   "hermes_review": {
+    "A_what_happened": "at 2025-04-15 12:00:00+00:00 the engine recorded OPP_VOL_TRANSITION (extreme->decay ratio=0.35); vol_state=VOL_EXPANSION, session=London",
+    "B_mechanism_hypotheses": [
+     "volatility-regime mechanics (vol clustering / mean reversion of vol)",
+     "cross-asset information flow (DXY/VIX/UST10Y_PROXY leading or lagging XAUUSD)",
+     "liquidity/session structure (Asia vs London vs NY behaviour)",
+     "measurement artifact (semantics UNKNOWN: bar open/close, and UST10Y_PROXY is not the official series)"
+    ],
+    "C_counter_evidence": [
+     "the same state occurs at a similar rate in random windows (permutation idea)",
+     "the pattern may be a data artifact from mixed sources (HistData XAUUSD vs Yahoo externals)",
+     "the observation window may be too short (624d at 1h / 63d at 5m)",
+     "selection bias: only states that look 'abnormal' get reviewed"
+    ],
+    "D_historical_repetition": {
+     "same_type_historical_count": 25,
+     "per_day": 0.0401,
+     "descriptive_next_60m_move_bp": {
+      "n": 25,
+      "mean": 258.627,
+      "median": 260.568,
+      "note": "DESCRIPTIVE ONLY - not an edge, not a signal"
+     },
+     "recurring": true
+    },
+    "E_decision": "INVESTIGATE",
+    "E_reason": "state is recurrent and the data quality allows investigation",
+    "semantic_dependency": {
+     "SEMANTIC_DEPENDENCY": "PARTIAL"
+    },
+    "observation_only": {
+     "pre_event_context_tail": "{'return_60m': {Timestamp('2025-04-14 18:00:00+0000', tz='UTC'): 294.8110412319682}}",
+     "post_event_observation_head": "{'return_60m': {Timestamp('2025-04-15 13:00:00+0000', tz='UTC'): 306.2308999605823}}"
+    }
+   },
+   "review_status": "INVESTIGATE",
+   "data_quality": "PARTIAL",
+   "lookahead_check": "PASS",
+   "detector_version": "R1.0.0",
+   "created_at": "2026-09-25T11:22:45.775703+00:00"
+  },
+  {
+   "opportunity_id": "OPP-1h-35608715",
+   "cluster_id": "OPP_CLUSTER_039",
+   "detected_at": "2025-04-15 16:00:00+00:00",
+   "opportunity_type": "OPP_CROSSMARKET_SHOCK",
+   "hermes_review": {
+    "A_what_happened": "at 2025-04-15 16:00:00+00:00 the engine recorded OPP_CROSSMARKET_SHOCK (UST10Y_PROXY z=2.14); vol_state=VOL_EXPANSION, session=NewYork",
+    "B_mechanism_hypotheses": [
+     "volatility-regime mechanics (vol clustering / mean reversion of vol)",
+     "cross-asset information flow (DXY/VIX/UST10Y_PROXY leading or lagging XAUUSD)",
+     "liquidity/session structure (Asia vs London vs NY behaviour)",
+     "measurement artifact (semantics UNKNOWN: bar open/close, and UST10Y_PROXY is not the official series)"
+    ],
+    "C_counter_evidence": [
+     "the same state occurs at a similar rate in random windows (permutation idea)",
+     "the pattern may be a data artifact from mixed sources (HistData XAUUSD vs Yahoo externals)",
+     "the observation window may be too short (624d at 1h / 63d at 5m)",
+     "selection bias: only states that look 'abnormal' get reviewed"
+    ],
+    "D_historical_repetition": {
+     "same_type_historical_count": 448,
+     "per_day": 0.7177,
+     "descriptive_next_60m_move_bp": {
+      "n": 447,
+      "mean": 109.954,
+      "median": 110.082,
+      "note": "DESCRIPTIVE ONLY - not an edge, not a signal"
+     },
+     "recurring": true
+    },
+    "E_decision": "INVESTIGATE",
+    "E_reason": "state is recurrent and the data quality allows investigation",
+    "semantic_dependency": {
+     "SEMANTIC_DEPENDENCY": "UNKNOWN",
+     "depends_on": [
+      "XAUUSD bar open/close semantics",
+      "UST10Y_PROXY is not official UST10Y"
+     ]
+    },
+    "observation_only": {
+     "pre_event_context_tail": "{'return_60m': {Timestamp('2025-04-15 15:00:00+0000', tz='UTC'): 317.15692159923094}}",
+     "post_event_observation_head": "{'return_60m': {Timestamp('2025-04-15 17:00:00+0000', tz='UTC'): 471.760829742518}}"
+    }
+   },
+   "review_status": "INVESTIGATE",
+   "data_quality": "PARTIAL",
+   "lookahead_check": "PASS",
+   "detector_version": "R1.0.0",
+   "created_at": "2026-09-25T11:22:45.775703+00:00"
+  },
+  {
+   "opportunity_id": "OPP-1h-51212081",
+   "cluster_id": "OPP_CLUSTER_040",
+   "detected_at": "2025-04-16 13:00:00+00:00",
+   "opportunity_type": "OPP_CROSSMARKET_SHOCK",
+   "hermes_review": {
+    "A_what_happened": "at 2025-04-16 13:00:00+00:00 the engine recorded OPP_CROSSMARKET_SHOCK (UST10Y_PROXY z=2.04); vol_state=VOL_EXPANSION, session=NewYork",
+    "B_mechanism_hypotheses": [
+     "volatility-regime mechanics (vol clustering / mean reversion of vol)",
+     "cross-asset information flow (DXY/VIX/UST10Y_PROXY leading or lagging XAUUSD)",
+     "liquidity/session structure (Asia vs London vs NY behaviour)",
+     "measurement artifact (semantics UNKNOWN: bar open/close, and UST10Y_PROXY is not the official series)"
+    ],
+    "C_counter_evidence": [
+     "the same state occurs at a similar rate in random windows (permutation idea)",
+     "the pattern may be a data artifact from mixed sources (HistData XAUUSD vs Yahoo externals)",
+     "the observation window may be too short (624d at 1h / 63d at 5m)",
+     "selection bias: only states that look 'abnormal' get reviewed"
+    ],
+    "D_historical_repetition": {
+     "same_type_historical_count": 448,
+     "per_day": 0.7177,
+     "descriptive_next_60m_move_bp": {
+      "n": 447,
+      "mean": 109.954,
+      "median": 110.082,
+      "note": "DESCRIPTIVE ONLY - not an edge, not a signal"
+     },
+     "recurring": true
+    },
+    "E_decision": "INVESTIGATE",
+    "E_reason": "state is recurrent and the data quality allows investigation",
+    "semantic_dependency": {
+     "SEMANTIC_DEPENDENCY": "UNKNOWN",
+     "depends_on": [
+      "XAUUSD bar open/close semantics",
+      "UST10Y_PROXY is not official UST10Y"
+     ]
+    },
+    "observation_only": {
+     "pre_event_context_tail": "{'return_60m': {Timestamp('2025-04-16 12:00:00+0000', tz='UTC'): 568.7664448029927}}",
+     "post_event_observation_head": "{'return_60m': {Timestamp('2025-04-16 14:00:00+0000', tz='UTC'): 656.4665431744365}}"
+    }
+   },
+   "review_status": "INVESTIGATE",
+   "data_quality": "PARTIAL",
+   "lookahead_check": "PASS",
+   "detector_version": "R1.0.0",
+   "created_at": "2026-09-25T11:22:45.775703+00:00"
+  },
+  {
+   "opportunity_id": "OPP-1h-80295246",
+   "cluster_id": "OPP_CLUSTER_041",
+   "detected_at": "2025-04-16 17:00:00+00:00",
+   "opportunity_type": "OPP_STATE_BREAK",
+   "hermes_review": {
+    "A_what_happened": "at 2025-04-16 17:00:00+00:00 the engine recorded OPP_STATE_BREAK (return_60m z=3.10); vol_state=VOL_EXPANSION, session=NewYork",
+    "B_mechanism_hypotheses": [
+     "volatility-regime mechanics (vol clustering / mean reversion of vol)",
+     "cross-asset information flow (DXY/VIX/UST10Y_PROXY leading or lagging XAUUSD)",
+     "liquidity/session structure (Asia vs London vs NY behaviour)",
+     "measurement artifact (semantics UNKNOWN: bar open/close, and UST10Y_PROXY is not the official series)"
+    ],
+    "C_counter_evidence": [
+     "the same state occurs at a similar rate in random windows (permutation idea)",
+     "the pattern may be a data artifact from mixed sources (HistData XAUUSD vs Yahoo externals)",
+     "the observation window may be too short (624d at 1h / 63d at 5m)",
+     "selection bias: only states that look 'abnormal' get reviewed"
+    ],
+    "D_historical_repetition": {
+     "same_type_historical_count": 370,
+     "per_day": 0.5928,
+     "descriptive_next_60m_move_bp": {
+      "n": 370,
+      "mean": 279.059,
+      "median": 285.766,
+      "note": "DESCRIPTIVE ONLY - not an edge, not a signal"
+     },
+     "recurring": true
+    },
+    "E_decision": "INVESTIGATE",
+    "E_reason": "state is recurrent and the data quality allows investigation",
+    "semantic_dependency": {
+     "SEMANTIC_DEPENDENCY": "PARTIAL"
+    },
+    "observation_only": {
+     "pre_event_context_tail": "{'return_60m': {Timestamp('2025-04-16 16:00:00+0000', tz='UTC'): 691.5441249761267}}",
+     "post_event_observation_head": "{'return_60m': {Timestamp('2025-04-16 18:00:00+0000', tz='UTC'): 870.8760205323185}}"
+    }
+   },
+   "review_status": "INVESTIGATE",
+   "data_quality": "PARTIAL",
+   "lookahead_check": "PASS",
+   "detector_version": "R1.0.0",
+   "created_at": "2026-09-25T11:22:45.775703+00:00"
+  },
+  {
+   "opportunity_id": "OPP-1h-12881596",
+   "cluster_id": "OPP_CLUSTER_042",
+   "detected_at": "2025-04-17 12:00:00+00:00",
+   "opportunity_type": "OPP_STATE_BREAK",
+   "hermes_review": {
+    "A_what_happened": "at 2025-04-17 12:00:00+00:00 the engine recorded OPP_STATE_BREAK (return_60m z=3.48); vol_state=VOL_EXPANSION, session=London",
+    "B_mechanism_hypotheses": [
+     "volatility-regime mechanics (vol clustering / mean reversion of vol)",
+     "cross-asset information flow (DXY/VIX/UST10Y_PROXY leading or lagging XAUUSD)",
+     "liquidity/session structure (Asia vs London vs NY behaviour)",
+     "measurement artifact (semantics UNKNOWN: bar open/close, and UST10Y_PROXY is not the official series)"
+    ],
+    "C_counter_evidence": [
+     "the same state occurs at a similar rate in random windows (permutation idea)",
+     "the pattern may be a data artifact from mixed sources (HistData XAUUSD vs Yahoo externals)",
+     "the observation window may be too short (624d at 1h / 63d at 5m)",
+     "selection bias: only states that look 'abnormal' get reviewed"
+    ],
+    "D_historical_repetition": {
+     "same_type_historical_count": 370,
+     "per_day": 0.5928,
+     "descriptive_next_60m_move_bp": {
+      "n": 370,
+      "mean": 279.059,
+      "median": 285.766,
+      "note": "DESCRIPTIVE ONLY - not an edge, not a signal"
+     },
+     "recurring": true
+    },
+    "E_decision": "INVESTIGATE",
+    "E_reason": "state is recurrent and the data quality allows investigation",
+    "semantic_dependency": {
+     "SEMANTIC_DEPENDENCY": "PARTIAL"
+    },
+    "observation_only": {
+     "pre_event_context_tail": "{'return_60m': {Timestamp('2025-04-16 18:00:00+0000', tz='UTC'): 870.8760205323185}}",
+     "post_event_observation_head": "{'return_60m': {Timestamp('2025-04-17 13:00:00+0000', tz='UTC'): 1020.8146714374889}}"
+    }
+   },
+   "review_status": "INVESTIGATE",
+   "data_quality": "PARTIAL",
+   "lookahead_check": "PASS",
+   "detector_version": "R1.0.0",
+   "created_at": "2026-09-25T11:22:45.775703+00:00"
+  },
+  {
+   "opportunity_id": "OPP-1h-20605572",
+   "cluster_id": "OPP_CLUSTER_043",
+   "detected_at": "2025-04-17 15:00:00+00:00",
+   "opportunity_type": "OPP_CROSSMARKET_SHOCK",
+   "hermes_review": {
+    "A_what_happened": "at 2025-04-17 15:00:00+00:00 the engine recorded OPP_CROSSMARKET_SHOCK (UST10Y_PROXY z=2.05); vol_state=VOL_EXPANSION, session=NewYork",
+    "B_mechanism_hypotheses": [
+     "volatility-regime mechanics (vol clustering / mean reversion of vol)",
+     "cross-asset information flow (DXY/VIX/UST10Y_PROXY leading or lagging XAUUSD)",
+     "liquidity/session structure (Asia vs London vs NY behaviour)",
+     "measurement artifact (semantics UNKNOWN: bar open/close, and UST10Y_PROXY is not the official series)"
+    ],
+    "C_counter_evidence": [
+     "the same state occurs at a similar rate in random windows (permutation idea)",
+     "the pattern may be a data artifact from mixed sources (HistData XAUUSD vs Yahoo externals)",
+     "the observation window may be too short (624d at 1h / 63d at 5m)",
+     "selection bias: only states that look 'abnormal' get reviewed"
+    ],
+    "D_historical_repetition": {
+     "same_type_historical_count": 448,
+     "per_day": 0.7177,
+     "descriptive_next_60m_move_bp": {
+      "n": 447,
+      "mean": 109.954,
+      "median": 110.082,
+      "note": "DESCRIPTIVE ONLY - not an edge, not a signal"
+     },
+     "recurring": true
+    },
+    "E_decision": "INVESTIGATE",
+    "E_reason": "state is recurrent and the data quality allows investigation",
+    "semantic_dependency": {
+     "SEMANTIC_DEPENDENCY": "UNKNOWN",
+     "depends_on": [
+      "XAUUSD bar open/close semantics",
+      "UST10Y_PROXY is not official UST10Y"
+     ]
+    },
+    "observation_only": {
+     "pre_event_context_tail": "{'return_60m': {Timestamp('2025-04-17 14:00:00+0000', tz='UTC'): 937.8108837140231}}",
+     "post_event_observation_head": "{'return_60m': {Timestamp('2025-04-17 16:00:00+0000', tz='UTC'): 875.1742512352246}}"
+    }
+   },
+   "review_status": "INVESTIGATE",
+   "data_quality": "PARTIAL",
+   "lookahead_check": "PASS",
+   "detector_version": "R1.0.0",
+   "created_at": "2026-09-25T11:22:45.775703+00:00"
+  },
+  {
+   "opportunity_id": "OPP-1h-33117268",
+   "cluster_id": "OPP_CLUSTER_044",
+   "detected_at": "2025-04-21 12:00:00+00:00",
+   "opportunity_type": "OPP_STATE_BREAK",
+   "hermes_review": {
+    "A_what_happened": "at 2025-04-21 12:00:00+00:00 the engine recorded OPP_STATE_BREAK (return_60m z=4.49); vol_state=VOL_EXPANSION, session=London",
+    "B_mechanism_hypotheses": [
+     "volatility-regime mechanics (vol clustering / mean reversion of vol)",
+     "cross-asset information flow (DXY/VIX/UST10Y_PROXY leading or lagging XAUUSD)",
+     "liquidity/session structure (Asia vs London vs NY behaviour)",
+     "measurement artifact (semantics UNKNOWN: bar open/close, and UST10Y_PROXY is not the official series)"
+    ],
+    "C_counter_evidence": [
+     "the same state occurs at a similar rate in random windows (permutation idea)",
+     "the pattern may be a data artifact from mixed sources (HistData XAUUSD vs Yahoo externals)",
+     "the observation window may be too short (624d at 1h / 63d at 5m)",
+     "selection bias: only states that look 'abnormal' get reviewed"
+    ],
+    "D_historical_repetition": {
+     "same_type_historical_count": 370,
+     "per_day": 0.5928,
+     "descriptive_next_60m_move_bp": {
+      "n": 370,
+      "mean": 279.059,
+      "median": 285.766,
+      "note": "DESCRIPTIVE ONLY - not an edge, not a signal"
+     },
+     "recurring": true
+    },
+    "E_decision": "INVESTIGATE",
+    "E_reason": "state is recurrent and the data quality allows investigation",
+    "semantic_dependency": {
+     "SEMANTIC_DEPENDENCY": "PARTIAL"
+    },
+    "observation_only": {
+     "pre_event_context_tail": "{'return_60m': {Timestamp('2025-04-17 18:00:00+0000', tz='UTC'): 1006.8337205388045}}",
+     "post_event_observation_head": "{'return_60m': {Timestamp('2025-04-21 13:00:00+0000', tz='UTC'): 1430.7334432879527}}"
+    }
+   },
+   "review_status": "INVESTIGATE",
+   "data_quality": "PARTIAL",
+   "lookahead_check": "PASS",
+   "detector_version": "R1.0.0",
+   "created_at": "2026-09-25T11:22:45.775703+00:00"
+  },
+  {
+   "opportunity_id": "OPP-1h-62852152",
+   "cluster_id": "OPP_CLUSTER_045",
+   "detected_at": "2025-04-22 12:00:00+00:00",
+   "opportunity_type": "OPP_STATE_BREAK",
+   "hermes_review": {
+    "A_what_happened": "at 2025-04-22 12:00:00+00:00 the engine recorded OPP_STATE_BREAK (return_60m z=3.90); vol_state=VOL_EXPANSION, session=London",
+    "B_mechanism_hypotheses": [
+     "volatility-regime mechanics (vol clustering / mean reversion of vol)",
+     "cross-asset information flow (DXY/VIX/UST10Y_PROXY leading or lagging XAUUSD)",
+     "liquidity/session structure (Asia vs London vs NY behaviour)",
+     "measurement artifact (semantics UNKNOWN: bar open/close, and UST10Y_PROXY is not the official series)"
+    ],
+    "C_counter_evidence": [
+     "the same state occurs at a similar rate in random windows (permutation idea)",
+     "the pattern may be a data artifact from mixed sources (HistData XAUUSD vs Yahoo externals)",
+     "the observation window may be too short (624d at 1h / 63d at 5m)",
+     "selection bias: only states that look 'abnormal' get reviewed"
+    ],
+    "D_historical_repetition": {
+     "same_type_historical_count": 370,
+     "per_day": 0.5928,
+     "descriptive_next_60m_move_bp": {
+      "n": 370,
+      "mean": 279.059,
+      "median": 285.766,
+      "note": "DESCRIPTIVE ONLY - not an edge, not a signal"
+     },
+     "recurring": true
+    },
+    "E_decision": "INVESTIGATE",
+    "E_reason": "state is recurrent and the data quality allows investigation",
+    "semantic_dependency": {
+     "SEMANTIC_DEPENDENCY": "PARTIAL"
+    },
+    "observation_only": {
+     "pre_event_context_tail": "{'return_60m': {Timestamp('2025-04-21 18:00:00+0000', tz='UTC'): 1369.2167907206199}}",
+     "post_event_observation_head": "{'return_60m': {Timestamp('2025-04-22 13:00:00+0000', tz='UTC'): 1432.9862042425168}}"
+    }
+   },
+   "review_status": "INVESTIGATE",
+   "data_quality": "PARTIAL",
+   "lookahead_check": "PASS",
+   "detector_version": "R1.0.0",
+   "created_at": "2026-09-25T11:22:45.775703+00:00"
+  },
+  {
+   "opportunity_id": "OPP-1h-24518170",
+   "cluster_id": "OPP_CLUSTER_046",
+   "detected_at": "2025-04-23 12:00:00+00:00",
+   "opportunity_type": "OPP_STATE_BREAK",
+   "hermes_review": {
+    "A_what_happened": "at 2025-04-23 12:00:00+00:00 the engine recorded OPP_STATE_BREAK (vol_pct=0.96); vol_state=VOL_EXTREME, session=London",
+    "B_mechanism_hypotheses": [
+     "volatility-regime mechanics (vol clustering / mean reversion of vol)",
+     "cross-asset information flow (DXY/VIX/UST10Y_PROXY leading or lagging XAUUSD)",
+     "liquidity/session structure (Asia vs London vs NY behaviour)",
+     "measurement artifact (semantics UNKNOWN: bar open/close, and UST10Y_PROXY is not the official series)"
+    ],
+    "C_counter_evidence": [
+     "the same state occurs at a similar rate in random windows (permutation idea)",
+     "the pattern may be a data artifact from mixed sources (HistData XAUUSD vs Yahoo externals)",
+     "the observation window may be too short (624d at 1h / 63d at 5m)",
+     "selection bias: only states that look 'abnormal' get reviewed"
+    ],
+    "D_historical_repetition": {
+     "same_type_historical_count": 370,
+     "per_day": 0.5928,
+     "descriptive_next_60m_move_bp": {
+      "n": 370,
+      "mean": 279.059,
+      "median": 285.766,
+      "note": "DESCRIPTIVE ONLY - not an edge, not a signal"
+     },
+     "recurring": true
+    },
+    "E_decision": "INVESTIGATE",
+    "E_reason": "state is recurrent and the data quality allows investigation",
+    "semantic_dependency": {
+     "SEMANTIC_DEPENDENCY": "PARTIAL"
+    },
+    "observation_only": {
+     "pre_event_context_tail": "{'return_60m': {Timestamp('2025-04-22 18:00:00+0000', tz='UTC'): 1061.6907770329042}}",
+     "post_event_observation_head": "{'return_60m': {Timestamp('2025-04-23 13:00:00+0000', tz='UTC'): 727.3546189950797}}"
+    }
+   },
+   "review_status": "INVESTIGATE",
+   "data_quality": "PARTIAL",
+   "lookahead_check": "PASS",
+   "detector_version": "R1.0.0",
+   "created_at": "2026-09-25T11:22:45.775703+00:00"
+  },
+  {
+   "opportunity_id": "OPP-1h-44184550",
+   "cluster_id": "OPP_CLUSTER_047",
+   "detected_at": "2025-04-24 17:00:00+00:00",
+   "opportunity_type": "OPP_VOL_TRANSITION",
+   "hermes_review": {
+    "A_what_happened": "at 2025-04-24 17:00:00+00:00 the engine recorded OPP_VOL_TRANSITION (extreme->decay ratio=0.44); vol_state=VOL_EXPANSION, session=NewYork",
+    "B_mechanism_hypotheses": [
+     "volatility-regime mechanics (vol clustering / mean reversion of vol)",
+     "cross-asset information flow (DXY/VIX/UST10Y_PROXY leading or lagging XAUUSD)",
+     "liquidity/session structure (Asia vs London vs NY behaviour)",
+     "measurement artifact (semantics UNKNOWN: bar open/close, and UST10Y_PROXY is not the official series)"
+    ],
+    "C_counter_evidence": [
+     "the same state occurs at a similar rate in random windows (permutation idea)",
+     "the pattern may be a data artifact from mixed sources (HistData XAUUSD vs Yahoo externals)",
+     "the observation window may be too short (624d at 1h / 63d at 5m)",
+     "selection bias: only states that look 'abnormal' get reviewed"
+    ],
+    "D_historical_repetition": {
+     "same_type_historical_count": 25,
+     "per_day": 0.0401,
+     "descriptive_next_60m_move_bp": {
+      "n": 25,
+      "mean": 258.627,
+      "median": 260.568,
+      "note": "DESCRIPTIVE ONLY - not an edge, not a signal"
+     },
+     "recurring": true
+    },
+    "E_decision": "INVESTIGATE",
+    "E_reason": "state is recurrent and the data quality allows investigation",
+    "semantic_dependency": {
+     "SEMANTIC_DEPENDENCY": "PARTIAL"
+    },
+    "observation_only": {
+     "pre_event_context_tail": "{'return_60m': {Timestamp('2025-04-24 16:00:00+0000', tz='UTC'): 360.00740615115046}}",
+     "post_event_observation_head": "{'return_60m': {Timestamp('2025-04-24 18:00:00+0000', tz='UTC'): 350.9376071279569}}"
+    }
+   },
+   "review_status": "INVESTIGATE",
+   "data_quality": "PARTIAL",
+   "lookahead_check": "PASS",
+   "detector_version": "R1.0.0",
+   "created_at": "2026-09-25T11:22:45.775703+00:00"
+  },
+  {
+   "opportunity_id": "OPP-1h-04063854",
+   "cluster_id": "OPP_CLUSTER_048",
+   "detected_at": "2025-05-01 16:00:00+00:00",
+   "opportunity_type": "OPP_CROSSMARKET_SHOCK",
+   "hermes_review": {
+    "A_what_happened": "at 2025-05-01 16:00:00+00:00 the engine recorded OPP_CROSSMARKET_SHOCK (DXY z=2.01); vol_state=VOL_EXPANSION, session=NewYork",
+    "B_mechanism_hypotheses": [
+     "volatility-regime mechanics (vol clustering / mean reversion of vol)",
+     "cross-asset information flow (DXY/VIX/UST10Y_PROXY leading or lagging XAUUSD)",
+     "liquidity/session structure (Asia vs London vs NY behaviour)",
+     "measurement artifact (semantics UNKNOWN: bar open/close, and UST10Y_PROXY is not the official series)"
+    ],
+    "C_counter_evidence": [
+     "the same state occurs at a similar rate in random windows (permutation idea)",
+     "the pattern may be a data artifact from mixed sources (HistData XAUUSD vs Yahoo externals)",
+     "the observation window may be too short (624d at 1h / 63d at 5m)",
+     "selection bias: only states that look 'abnormal' get reviewed"
+    ],
+    "D_historical_repetition": {
+     "same_type_historical_count": 448,
+     "per_day": 0.7177,
+     "descriptive_next_60m_move_bp": {
+      "n": 447,
+      "mean": 109.954,
+      "median": 110.082,
+      "note": "DESCRIPTIVE ONLY - not an edge, not a signal"
+     },
+     "recurring": true
+    },
+    "E_decision": "INVESTIGATE",
+    "E_reason": "state is recurrent and the data quality allows investigation",
+    "semantic_dependency": {
+     "SEMANTIC_DEPENDENCY": "UNKNOWN",
+     "depends_on": [
+      "XAUUSD bar open/close semantics",
+      "UST10Y_PROXY is not official UST10Y"
+     ]
+    },
+    "observation_only": {
+     "pre_event_context_tail": "{'return_60m': {Timestamp('2025-05-01 15:00:00+0000', tz='UTC'): -301.6775768167468}}",
+     "post_event_observation_head": "{'return_60m': {Timestamp('2025-05-01 17:00:00+0000', tz='UTC'): -572.29122952416}}"
+    }
+   },
+   "review_status": "INVESTIGATE",
+   "data_quality": "PARTIAL",
+   "lookahead_check": "PASS",
+   "detector_version": "R1.0.0",
+   "created_at": "2026-09-25T11:22:45.775703+00:00"
+  },
+  {
+   "opportunity_id": "OPP-1h-04470240",
+   "cluster_id": "OPP_CLUSTER_049",
+   "detected_at": "2025-05-05 12:00:00+00:00",
+   "opportunity_type": "OPP_STATE_BREAK",
+   "hermes_review": {
+    "A_what_happened": "at 2025-05-05 12:00:00+00:00 the engine recorded OPP_STATE_BREAK (vol_pct=1.00); vol_state=VOL_EXTREME, session=London",
+    "B_mechanism_hypotheses": [
+     "volatility-regime mechanics (vol clustering / mean reversion of vol)",
+     "cross-asset information flow (DXY/VIX/UST10Y_PROXY leading or lagging XAUUSD)",
+     "liquidity/session structure (Asia vs London vs NY behaviour)",
+     "measurement artifact (semantics UNKNOWN: bar open/close, and UST10Y_PROXY is not the official series)"
+    ],
+    "C_counter_evidence": [
+     "the same state occurs at a similar rate in random windows (permutation idea)",
+     "the pattern may be a data artifact from mixed sources (HistData XAUUSD vs Yahoo externals)",
+     "the observation window may be too short (624d at 1h / 63d at 5m)",
+     "selection bias: only states that look 'abnormal' get reviewed"
+    ],
+    "D_historical_repetition": {
+     "same_type_historical_count": 370,
+     "per_day": 0.5928,
+     "descriptive_next_60m_move_bp": {
+      "n": 370,
+      "mean": 279.059,
+      "median": 285.766,
+      "note": "DESCRIPTIVE ONLY - not an edge, not a signal"
+     },
+     "recurring": true
+    },
+    "E_decision": "INVESTIGATE",
+    "E_reason": "state is recurrent and the data quality allows investigation",
+    "semantic_dependency": {
+     "SEMANTIC_DEPENDENCY": "PARTIAL"
+    },
+    "observation_only": {
+     "pre_event_context_tail": "{'return_60m': {Timestamp('2025-05-02 18:00:00+0000', tz='UTC'): -547.9844778686748}}",
+     "post_event_observation_head": "{'return_60m': {Timestamp('2025-05-05 13:00:00+0000', tz='UTC'): -286.9670940302249}}"
+    }
+   },
+   "review_status": "INVESTIGATE",
+   "data_quality": "PARTIAL",
+   "lookahead_check": "PASS",
+   "detector_version": "R1.0.0",
+   "created_at": "2026-09-25T11:22:45.775703+00:00"
+  },
+  {
+   "opportunity_id": "OPP-1h-25579661",
+   "cluster_id": "OPP_CLUSTER_050",
+   "detected_at": "2025-05-06 12:00:00+00:00",
+   "opportunity_type": "OPP_STATE_BREAK",
+   "hermes_review": {
+    "A_what_happened": "at 2025-05-06 12:00:00+00:00 the engine recorded OPP_STATE_BREAK (vol_pct=1.00); vol_state=VOL_EXTREME, session=London",
+    "B_mechanism_hypotheses": [
+     "volatility-regime mechanics (vol clustering / mean reversion of vol)",
+     "cross-asset information flow (DXY/VIX/UST10Y_PROXY leading or lagging XAUUSD)",
+     "liquidity/session structure (Asia vs London vs NY behaviour)",
+     "measurement artifact (semantics UNKNOWN: bar open/close, and UST10Y_PROXY is not the official series)"
+    ],
+    "C_counter_evidence": [
+     "the same state occurs at a similar rate in random windows (permutation idea)",
+     "the pattern may be a data artifact from mixed sources (HistData XAUUSD vs Yahoo externals)",
+     "the observation window may be too short (624d at 1h / 63d at 5m)",
+     "selection bias: only states that look 'abnormal' get reviewed"
+    ],
+    "D_historical_repetition": {
+     "same_type_historical_count": 370,
+     "per_day": 0.5928,
+     "descriptive_next_60m_move_bp": {
+      "n": 370,
+      "mean": 279.059,
+      "median": 285.766,
+      "note": "DESCRIPTIVE ONLY - not an edge, not a signal"
+     },
+     "recurring": true
+    },
+    "E_decision": "INVESTIGATE",
+    "E_reason": "state is recurrent and the data quality allows investigation",
+    "semantic_dependency": {
+     "SEMANTIC_DEPENDENCY": "PARTIAL"
+    },
+    "observation_only": {
+     "pre_event_context_tail": "{'return_60m': {Timestamp('2025-05-05 18:00:00+0000', tz='UTC'): 120.55968253532168}}",
+     "post_event_observation_head": "{'return_60m': {Timestamp('2025-05-06 13:00:00+0000', tz='UTC'): 337.00757154246253}}"
+    }
+   },
+   "review_status": "INVESTIGATE",
+   "data_quality": "PARTIAL",
+   "lookahead_check": "PASS",
+   "detector_version": "R1.0.0",
+   "created_at": "2026-09-25T11:22:45.775703+00:00"
+  },
+  {
+   "opportunity_id": "OPP-1h-85070274",
+   "cluster_id": "OPP_CLUSTER_051",
+   "detected_at": "2025-05-07 12:00:00+00:00",
+   "opportunity_type": "OPP_STATE_BREAK",
+   "hermes_review": {
+    "A_what_happened": "at 2025-05-07 12:00:00+00:00 the engine recorded OPP_STATE_BREAK (vol_pct=0.99); vol_state=VOL_EXTREME, session=London",
+    "B_mechanism_hypotheses": [
+     "volatility-regime mechanics (vol clustering / mean reversion of vol)",
+     "cross-asset information flow (DXY/VIX/UST10Y_PROXY leading or lagging XAUUSD)",
+     "liquidity/session structure (Asia vs London vs NY behaviour)",
+     "measurement artifact (semantics UNKNOWN: bar open/close, and UST10Y_PROXY is not the official series)"
+    ],
+    "C_counter_evidence": [
+     "the same state occurs at a similar rate in random windows (permutation idea)",
+     "the pattern may be a data artifact from mixed sources (HistData XAUUSD vs Yahoo externals)",
+     "the observation window may be too short (624d at 1h / 63d at 5m)",
+     "selection bias: only states that look 'abnormal' get reviewed"
+    ],
+    "D_historical_repetition": {
+     "same_type_historical_count": 370,
+     "per_day": 0.5928,
+     "descriptive_next_60m_move_bp": {
+      "n": 370,
+      "mean": 279.059,
+      "median": 285.766,
+      "note": "DESCRIPTIVE ONLY - not an edge, not a signal"
+     },
+     "recurring": true
+    },
+    "E_decision": "INVESTIGATE",
+    "E_reason": "state is recurrent and the data quality allows investigation",
+    "semantic_dependency": {
+     "SEMANTIC_DEPENDENCY": "PARTIAL"
+    },
+    "observation_only": {
+     "pre_event_context_tail": "{'return_60m': {Timestamp('2025-05-06 18:00:00+0000', tz='UTC'): 297.828503512072}}",
+     "post_event_observation_head": "{'return_60m': {Timestamp('2025-05-07 13:00:00+0000', tz='UTC'): 184.45678962283995}}"
+    }
+   },
+   "review_status": "INVESTIGATE",
+   "data_quality": "PARTIAL",
+   "lookahead_check": "PASS",
+   "detector_version": "R1.0.0",
+   "created_at": "2026-09-25T11:22:45.775703+00:00"
+  },
+  {
+   "opportunity_id": "OPP-1h-33784702",
+   "cluster_id": "OPP_CLUSTER_052",
+   "detected_at": "2025-05-07 14:00:00+00:00",
+   "opportunity_type": "OPP_STATE_TRANSITION",
+   "hermes_review": {
+    "A_what_happened": "at 2025-05-07 14:00:00+00:00 the engine recorded OPP_STATE_TRANSITION (VOL_EXTREME->VOL_NORMAL); vol_state=VOL_NORMAL, session=NewYork",
+    "B_mechanism_hypotheses": [
+     "volatility-regime mechanics (vol clustering / mean reversion of vol)",
+     "cross-asset information flow (DXY/VIX/UST10Y_PROXY leading or lagging XAUUSD)",
+     "liquidity/session structure (Asia vs London vs NY behaviour)",
+     "measurement artifact (semantics UNKNOWN: bar open/close, and UST10Y_PROXY is not the official series)"
+    ],
+    "C_counter_evidence": [
+     "the same state occurs at a similar rate in random windows (permutation idea)",
+     "the pattern may be a data artifact from mixed sources (HistData XAUUSD vs Yahoo externals)",
+     "the observation window may be too short (624d at 1h / 63d at 5m)",
+     "selection bias: only states that look 'abnormal' get reviewed"
+    ],
+    "D_historical_repetition": {
+     "same_type_historical_count": 10,
+     "per_day": 0.016,
+     "descriptive_next_60m_move_bp": {
+      "n": 10,
+      "mean": 249.81,
+      "median": 266.99,
+      "note": "DESCRIPTIVE ONLY - not an edge, not a signal"
+     },
+     "recurring": true
+    },
+    "E_decision": "INVESTIGATE",
+    "E_reason": "state is recurrent and the data quality allows investigation",
+    "semantic_dependency": {
+     "SEMANTIC_DEPENDENCY": "PARTIAL"
+    },
+    "observation_only": {
+     "pre_event_context_tail": "{'return_60m': {Timestamp('2025-05-07 13:00:00+0000', tz='UTC'): 184.45678962283995}}",
+     "post_event_observation_head": "{'return_60m': {Timestamp('2025-05-07 15:00:00+0000', tz='UTC'): 147.34068937819256}}"
+    }
+   },
+   "review_status": "INVESTIGATE",
+   "data_quality": "PARTIAL",
+   "lookahead_check": "PASS",
+   "detector_version": "R1.0.0",
+   "created_at": "2026-09-25T11:22:45.775703+00:00"
+  },
+  {
+   "opportunity_id": "OPP-1h-05249580",
+   "cluster_id": "OPP_CLUSTER_053",
+   "detected_at": "2025-06-12 12:00:00+00:00",
+   "opportunity_type": "OPP_VOL_TRANSITION",
+   "hermes_review": {
+    "A_what_happened": "at 2025-06-12 12:00:00+00:00 the engine recorded OPP_VOL_TRANSITION (low->expansion ratio=2.11); vol_state=VOL_CONTRACTION, session=London",
+    "B_mechanism_hypotheses": [
+     "volatility-regime mechanics (vol clustering / mean reversion of vol)",
+     "cross-asset information flow (DXY/VIX/UST10Y_PROXY leading or lagging XAUUSD)",
+     "liquidity/session structure (Asia vs London vs NY behaviour)",
+     "measurement artifact (semantics UNKNOWN: bar open/close, and UST10Y_PROXY is not the official series)"
+    ],
+    "C_counter_evidence": [
+     "the same state occurs at a similar rate in random windows (permutation idea)",
+     "the pattern may be a data artifact from mixed sources (HistData XAUUSD vs Yahoo externals)",
+     "the observation window may be too short (624d at 1h / 63d at 5m)",
+     "selection bias: only states that look 'abnormal' get reviewed"
+    ],
+    "D_historical_repetition": {
+     "same_type_historical_count": 25,
+     "per_day": 0.0401,
+     "descriptive_next_60m_move_bp": {
+      "n": 25,
+      "mean": 258.627,
+      "median": 260.568,
+      "note": "DESCRIPTIVE ONLY - not an edge, not a signal"
+     },
+     "recurring": true
+    },
+    "E_decision": "INVESTIGATE",
+    "E_reason": "state is recurrent and the data quality allows investigation",
+    "semantic_dependency": {
+     "SEMANTIC_DEPENDENCY": "PARTIAL"
+    },
+    "observation_only": {
+     "pre_event_context_tail": "{'return_60m': {Timestamp('2025-06-11 18:00:00+0000', tz='UTC'): 145.93440536453173}}",
+     "post_event_observation_head": "{'return_60m': {Timestamp('2025-06-12 13:00:00+0000', tz='UTC'): 302.3964860701178}}"
+    }
+   },
+   "review_status": "INVESTIGATE",
+   "data_quality": "PARTIAL",
+   "lookahead_check": "PASS",
+   "detector_version": "R1.0.0",
+   "created_at": "2026-09-25T11:22:45.775703+00:00"
+  },
+  {
+   "opportunity_id": "OPP-1h-74318162",
+   "cluster_id": "OPP_CLUSTER_054",
+   "detected_at": "2025-06-13 18:00:00+00:00",
+   "opportunity_type": "OPP_CROSSMARKET_SHOCK",
+   "hermes_review": {
+    "A_what_happened": "at 2025-06-13 18:00:00+00:00 the engine recorded OPP_CROSSMARKET_SHOCK (VIX z=2.22); vol_state=VOL_CONTRACTION, session=NewYork",
+    "B_mechanism_hypotheses": [
+     "volatility-regime mechanics (vol clustering / mean reversion of vol)",
+     "cross-asset information flow (DXY/VIX/UST10Y_PROXY leading or lagging XAUUSD)",
+     "liquidity/session structure (Asia vs London vs NY behaviour)",
+     "measurement artifact (semantics UNKNOWN: bar open/close, and UST10Y_PROXY is not the official series)"
+    ],
+    "C_counter_evidence": [
+     "the same state occurs at a similar rate in random windows (permutation idea)",
+     "the pattern may be a data artifact from mixed sources (HistData XAUUSD vs Yahoo externals)",
+     "the observation window may be too short (624d at 1h / 63d at 5m)",
+     "selection bias: only states that look 'abnormal' get reviewed"
+    ],
+    "D_historical_repetition": {
+     "same_type_historical_count": 448,
+     "per_day": 0.7177,
+     "descriptive_next_60m_move_bp": {
+      "n": 447,
+      "mean": 109.954,
+      "median": 110.082,
+      "note": "DESCRIPTIVE ONLY - not an edge, not a signal"
+     },
+     "recurring": true
+    },
+    "E_decision": "INVESTIGATE",
+    "E_reason": "state is recurrent and the data quality allows investigation",
+    "semantic_dependency": {
+     "SEMANTIC_DEPENDENCY": "UNKNOWN",
+     "depends_on": [
+      "XAUUSD bar open/close semantics",
+      "UST10Y_PROXY is not official UST10Y"
+     ]
+    },
+    "observation_only": {
+     "pre_event_context_tail": "{'return_60m': {Timestamp('2025-06-13 17:00:00+0000', tz='UTC'): 210.82147647969896}}",
+     "post_event_observation_head": "{'return_60m': {Timestamp('2025-06-16 12:00:00+0000', tz='UTC'): 204.94005435422568}}"
+    }
+   },
+   "review_status": "INVESTIGATE",
+   "data_quality": "PARTIAL",
+   "lookahead_check": "PASS",
+   "detector_version": "R1.0.0",
+   "created_at": "2026-09-25T11:22:45.775703+00:00"
+  },
+  {
+   "opportunity_id": "OPP-1h-26469864",
+   "cluster_id": "OPP_CLUSTER_055",
+   "detected_at": "2025-06-17 17:00:00+00:00",
+   "opportunity_type": "OPP_CROSSMARKET_SHOCK",
+   "hermes_review": {
+    "A_what_happened": "at 2025-06-17 17:00:00+00:00 the engine recorded OPP_CROSSMARKET_SHOCK (VIX z=2.01); vol_state=VOL_CONTRACTION, session=NewYork",
+    "B_mechanism_hypotheses": [
+     "volatility-regime mechanics (vol clustering / mean reversion of vol)",
+     "cross-asset information flow (DXY/VIX/UST10Y_PROXY leading or lagging XAUUSD)",
+     "liquidity/session structure (Asia vs London vs NY behaviour)",
+     "measurement artifact (semantics UNKNOWN: bar open/close, and UST10Y_PROXY is not the official series)"
+    ],
+    "C_counter_evidence": [
+     "the same state occurs at a similar rate in random windows (permutation idea)",
+     "the pattern may be a data artifact from mixed sources (HistData XAUUSD vs Yahoo externals)",
+     "the observation window may be too short (624d at 1h / 63d at 5m)",
+     "selection bias: only states that look 'abnormal' get reviewed"
+    ],
+    "D_historical_repetition": {
+     "same_type_historical_count": 448,
+     "per_day": 0.7177,
+     "descriptive_next_60m_move_bp": {
+      "n": 447,
+      "mean": 109.954,
+      "median": 110.082,
+      "note": "DESCRIPTIVE ONLY - not an edge, not a signal"
+     },
+     "recurring": true
+    },
+    "E_decision": "INVESTIGATE",
+    "E_reason": "state is recurrent and the data quality allows investigation",
+    "semantic_dependency": {
+     "SEMANTIC_DEPENDENCY": "UNKNOWN",
+     "depends_on": [
+      "XAUUSD bar open/close semantics",
+      "UST10Y_PROXY is not official UST10Y"
+     ]
+    },
+    "observation_only": {
+     "pre_event_context_tail": "{'return_60m': {Timestamp('2025-06-17 16:00:00+0000', tz='UTC'): -38.0306828011101}}",
+     "post_event_observation_head": "{'return_60m': {Timestamp('2025-06-17 18:00:00+0000', tz='UTC'): 36.26508146321372}}"
+    }
+   },
+   "review_status": "INVESTIGATE",
+   "data_quality": "PARTIAL",
+   "lookahead_check": "PASS",
+   "detector_version": "R1.0.0",
+   "created_at": "2026-09-25T11:22:45.775703+00:00"
+  },
+  {
+   "opportunity_id": "OPP-1h-43336961",
+   "cluster_id": "OPP_CLUSTER_056",
+   "detected_at": "2025-06-18 12:00:00+00:00",
+   "opportunity_type": "OPP_CROSSMARKET_SHOCK",
+   "hermes_review": {
+    "A_what_happened": "at 2025-06-18 12:00:00+00:00 the engine recorded OPP_CROSSMARKET_SHOCK (VIX z=2.42); vol_state=VOL_CONTRACTION, session=London",
+    "B_mechanism_hypotheses": [
+     "volatility-regime mechanics (vol clustering / mean reversion of vol)",
+     "cross-asset information flow (DXY/VIX/UST10Y_PROXY leading or lagging XAUUSD)",
+     "liquidity/session structure (Asia vs London vs NY behaviour)",
+     "measurement artifact (semantics UNKNOWN: bar open/close, and UST10Y_PROXY is not the official series)"
+    ],
+    "C_counter_evidence": [
+     "the same state occurs at a similar rate in random windows (permutation idea)",
+     "the pattern may be a data artifact from mixed sources (HistData XAUUSD vs Yahoo externals)",
+     "the observation window may be too short (624d at 1h / 63d at 5m)",
+     "selection bias: only states that look 'abnormal' get reviewed"
+    ],
+    "D_historical_repetition": {
+     "same_type_historical_count": 448,
+     "per_day": 0.7177,
+     "descriptive_next_60m_move_bp": {
+      "n": 447,
+      "mean": 109.954,
+      "median": 110.082,
+      "note": "DESCRIPTIVE ONLY - not an edge, not a signal"
+     },
+     "recurring": true
+    },
+    "E_decision": "INVESTIGATE",
+    "E_reason": "state is recurrent and the data quality allows investigation",
+    "semantic_dependency": {
+     "SEMANTIC_DEPENDENCY": "UNKNOWN",
+     "depends_on": [
+      "XAUUSD bar open/close semantics",
+      "UST10Y_PROXY is not official UST10Y"
+     ]
+    },
+    "observation_only": {
+     "pre_event_context_tail": "{'return_60m': {Timestamp('2025-06-17 18:00:00+0000', tz='UTC'): 36.26508146321372}}",
+     "post_event_observation_head": "{'return_60m': {Timestamp('2025-06-18 13:00:00+0000', tz='UTC'): 125.39822307668258}}"
+    }
+   },
+   "review_status": "INVESTIGATE",
+   "data_quality": "PARTIAL",
+   "lookahead_check": "PASS",
+   "detector_version": "R1.0.0",
+   "created_at": "2026-09-25T11:22:45.775703+00:00"
+  },
+  {
+   "opportunity_id": "OPP-1h-09139596",
+   "cluster_id": "OPP_CLUSTER_057",
+   "detected_at": "2025-06-18 18:00:00+00:00",
+   "opportunity_type": "OPP_CROSSMARKET_SHOCK",
+   "hermes_review": {
+    "A_what_happened": "at 2025-06-18 18:00:00+00:00 the engine recorded OPP_CROSSMARKET_SHOCK (VIX z=2.05); vol_state=VOL_CONTRACTION, session=NewYork",
+    "B_mechanism_hypotheses": [
+     "volatility-regime mechanics (vol clustering / mean reversion of vol)",
+     "cross-asset information flow (DXY/VIX/UST10Y_PROXY leading or lagging XAUUSD)",
+     "liquidity/session structure (Asia vs London vs NY behaviour)",
+     "measurement artifact (semantics UNKNOWN: bar open/close, and UST10Y_PROXY is not the official series)"
+    ],
+    "C_counter_evidence": [
+     "the same state occurs at a similar rate in random windows (permutation idea)",
+     "the pattern may be a data artifact from mixed sources (HistData XAUUSD vs Yahoo externals)",
+     "the observation window may be too short (624d at 1h / 63d at 5m)",
+     "selection bias: only states that look 'abnormal' get reviewed"
+    ],
+    "D_historical_repetition": {
+     "same_type_historical_count": 448,
+     "per_day": 0.7177,
+     "descriptive_next_60m_move_bp": {
+      "n": 447,
+      "mean": 109.954,
+      "median": 110.082,
+      "note": "DESCRIPTIVE ONLY - not an edge, not a signal"
+     },
+     "recurring": true
+    },
+    "E_decision": "INVESTIGATE",
+    "E_reason": "state is recurrent and the data quality allows investigation",
+    "semantic_dependency": {
+     "SEMANTIC_DEPENDENCY": "UNKNOWN",
+     "depends_on": [
+      "XAUUSD bar open/close semantics",
+      "UST10Y_PROXY is not official UST10Y"
+     ]
+    },
+    "observation_only": {
+     "pre_event_context_tail": "{'return_60m': {Timestamp('2025-06-18 17:00:00+0000', tz='UTC'): 112.13353433865869}}",
+     "post_event_observation_head": "{'return_60m': {Timestamp('2025-06-20 12:00:00+0000', tz='UTC'): 62.63746010556126}}"
+    }
+   },
+   "review_status": "INVESTIGATE",
+   "data_quality": "PARTIAL",
+   "lookahead_check": "PASS",
+   "detector_version": "R1.0.0",
+   "created_at": "2026-09-25T11:22:45.775703+00:00"
+  },
+  {
+   "opportunity_id": "OPP-1h-99693019",
+   "cluster_id": "OPP_CLUSTER_058",
+   "detected_at": "2025-06-20 14:00:00+00:00",
+   "opportunity_type": "OPP_CROSSMARKET_SHOCK",
+   "hermes_review": {
+    "A_what_happened": "at 2025-06-20 14:00:00+00:00 the engine recorded OPP_CROSSMARKET_SHOCK (VIX z=2.07); vol_state=VOL_CONTRACTION, session=NewYork",
+    "B_mechanism_hypotheses": [
+     "volatility-regime mechanics (vol clustering / mean reversion of vol)",
+     "cross-asset information flow (DXY/VIX/UST10Y_PROXY leading or lagging XAUUSD)",
+     "liquidity/session structure (Asia vs London vs NY behaviour)",
+     "measurement artifact (semantics UNKNOWN: bar open/close, and UST10Y_PROXY is not the official series)"
+    ],
+    "C_counter_evidence": [
+     "the same state occurs at a similar rate in random windows (permutation idea)",
+     "the pattern may be a data artifact from mixed sources (HistData XAUUSD vs Yahoo externals)",
+     "the observation window may be too short (624d at 1h / 63d at 5m)",
+     "selection bias: only states that look 'abnormal' get reviewed"
+    ],
+    "D_historical_repetition": {
+     "same_type_historical_count": 448,
+     "per_day": 0.7177,
+     "descriptive_next_60m_move_bp": {
+      "n": 447,
+      "mean": 109.954,
+      "median": 110.082,
+      "note": "DESCRIPTIVE ONLY - not an edge, not a signal"
+     },
+     "recurring": true
+    },
+    "E_decision": "INVESTIGATE",
+    "E_reason": "state is recurrent and the data quality allows investigation",
+    "semantic_dependency": {
+     "SEMANTIC_DEPENDENCY": "UNKNOWN",
+     "depends_on": [
+      "XAUUSD bar open/close semantics",
+      "UST10Y_PROXY is not official UST10Y"
+     ]
+    },
+    "observation_only": {
+     "pre_event_context_tail": "{'return_60m': {Timestamp('2025-06-20 13:00:00+0000', tz='UTC'): 37.237034266954794}}",
+     "post_event_observation_head": "{'return_60m': {Timestamp('2025-06-20 15:00:00+0000', tz='UTC'): 136.99639982006627}}"
+    }
+   },
+   "review_status": "INVESTIGATE",
+   "data_quality": "PARTIAL",
+   "lookahead_check": "PASS",
+   "detector_version": "R1.0.0",
+   "created_at": "2026-09-25T11:22:45.775703+00:00"
+  },
+  {
+   "opportunity_id": "OPP-1h-24255551",
+   "cluster_id": "OPP_CLUSTER_059",
+   "detected_at": "2025-06-20 15:00:00+00:00",
+   "opportunity_type": "OPP_VOL_TRANSITION",
+   "hermes_review": {
+    "A_what_happened": "at 2025-06-20 15:00:00+00:00 the engine recorded OPP_VOL_TRANSITION (low->expansion ratio=2.02); vol_state=VOL_CONTRACTION, session=NewYork",
+    "B_mechanism_hypotheses": [
+     "volatility-regime mechanics (vol clustering / mean reversion of vol)",
+     "cross-asset information flow (DXY/VIX/UST10Y_PROXY leading or lagging XAUUSD)",
+     "liquidity/session structure (Asia vs London vs NY behaviour)",
+     "measurement artifact (semantics UNKNOWN: bar open/close, and UST10Y_PROXY is not the official series)"
+    ],
+    "C_counter_evidence": [
+     "the same state occurs at a similar rate in random windows (permutation idea)",
+     "the pattern may be a data artifact from mixed sources (HistData XAUUSD vs Yahoo externals)",
+     "the observation window may be too short (624d at 1h / 63d at 5m)",
+     "selection bias: only states that look 'abnormal' get reviewed"
+    ],
+    "D_historical_repetition": {
+     "same_type_historical_count": 25,
+     "per_day": 0.0401,
+     "descriptive_next_60m_move_bp": {
+      "n": 25,
+      "mean": 258.627,
+      "median": 260.568,
+      "note": "DESCRIPTIVE ONLY - not an edge, not a signal"
+     },
+     "recurring": true
+    },
+    "E_decision": "INVESTIGATE",
+    "E_reason": "state is recurrent and the data quality allows investigation",
+    "semantic_dependency": {
+     "SEMANTIC_DEPENDENCY": "PARTIAL"
+    },
+    "observation_only": {
+     "pre_event_context_tail": "{'return_60m': {Timestamp('2025-06-20 14:00:00+0000', tz='UTC'): 142.84961859516}}",
+     "post_event_observation_head": "{'return_60m': {Timestamp('2025-06-20 16:00:00+0000', tz='UTC'): 157.8115353449605}}"
+    }
+   },
+   "review_status": "INVESTIGATE",
+   "data_quality": "PARTIAL",
+   "lookahead_check": "PASS",
+   "detector_version": "R1.0.0",
+   "created_at": "2026-09-25T11:22:45.775703+00:00"
+  },
+  {
+   "opportunity_id": "OPP-1h-74966765",
+   "cluster_id": "OPP_CLUSTER_060",
+   "detected_at": "2025-06-23 15:00:00+00:00",
+   "opportunity_type": "OPP_CROSSMARKET_SHOCK",
+   "hermes_review": {
+    "A_what_happened": "at 2025-06-23 15:00:00+00:00 the engine recorded OPP_CROSSMARKET_SHOCK (VIX z=2.00); vol_state=VOL_CONTRACTION, session=NewYork",
+    "B_mechanism_hypotheses": [
+     "volatility-regime mechanics (vol clustering / mean reversion of vol)",
+     "cross-asset information flow (DXY/VIX/UST10Y_PROXY leading or lagging XAUUSD)",
+     "liquidity/session structure (Asia vs London vs NY behaviour)",
+     "measurement artifact (semantics UNKNOWN: bar open/close, and UST10Y_PROXY is not the official series)"
+    ],
+    "C_counter_evidence": [
+     "the same state occurs at a similar rate in random windows (permutation idea)",
+     "the pattern may be a data artifact from mixed sources (HistData XAUUSD vs Yahoo externals)",
+     "the observation window may be too short (624d at 1h / 63d at 5m)",
+     "selection bias: only states that look 'abnormal' get reviewed"
+    ],
+    "D_historical_repetition": {
+     "same_type_historical_count": 448,
+     "per_day": 0.7177,
+     "descriptive_next_60m_move_bp": {
+      "n": 447,
+      "mean": 109.954,
+      "median": 110.082,
+      "note": "DESCRIPTIVE ONLY - not an edge, not a signal"
+     },
+     "recurring": true
+    },
+    "E_decision": "INVESTIGATE",
+    "E_reason": "state is recurrent and the data quality allows investigation",
+    "semantic_dependency": {
+     "SEMANTIC_DEPENDENCY": "UNKNOWN",
+     "depends_on": [
+      "XAUUSD bar open/close semantics",
+      "UST10Y_PROXY is not official UST10Y"
+     ]
+    },
+    "observation_only": {
+     "pre_event_context_tail": "{'return_60m': {Timestamp('2025-06-23 14:00:00+0000', tz='UTC'): 127.6998006001473}}",
+     "post_event_observation_head": "{'return_60m': {Timestamp('2025-06-23 16:00:00+0000', tz='UTC'): 160.30982032640972}}"
+    }
+   },
+   "review_status": "INVESTIGATE",
+   "data_quality": "PARTIAL",
+   "lookahead_check": "PASS",
+   "detector_version": "R1.0.0",
+   "created_at": "2026-09-25T11:22:45.775703+00:00"
+  }
+ ]
+}

@@ -1,0 +1,109 @@
+{
+ "cycle": "2026-09-10T06:17Z",
+ "symbol": "XAUUSD",
+ "decision_id": "DEC-2026-09-10T06:17Z",
+ "generated_utc": "2026-09-10T06:17:30Z",
+ "decision": "LONG",
+ "confidence": 0.52,
+ "bias": "LONG-lean",
+ "opportunity": "pullback",
+ "opportunity_mechanism": "trend_pullback_to_ma_cluster_v1: 现价 mid 4414.01 自 4430.5 高位回落 ~16pt, 回撤至 M15 MA20 4405.01 / M15 MA50 4406.59 / H1 MA20 4404.86 三线均线簇(间距<2pt) + 下方 M15 MA200 4397.87 / H1 MA50 4398.42 结构支撑。M15 为唯一趋势级(er 0.591, exp_cont 1.36 expanding, hhish7/llish2) → 顺势回撤承接; 触及均线簇即市价建多, SL 置簇下, 分批止盈于 4419 / 4434.2 / 4440.9。",
+ "mtf_agreement": "partial-bullish: M15 趋势多头 (er0.591, exp_cont expanding 1.36, hhish7, close>MA20/MA50/MA200) 为核心多头依据; H1 range (er0.109, pos78.6, 贴区间上沿) 与 H4 range (er0.059, pos32.9, close≈MA20) 中性; D1 range 偏空 (close 4400.49 < MA20 4464.19, RSI42.7, llish5>hhish4) 提供上方压力 → 非全周期共振, 故 confidence 0.52 不取高。",
+ "answers_14": {
+  "1": "市场状态: XAUUSD mid 4414.01 (m15_live live, spread 0.36bps, tick 154/min, z -0.39 低异动, quote_latest)。M15 last_close 4419.62 (05:45 bar), MA20 4405.01/MA50 4406.59/MA200 4397.87, RSI79.57 超买, pos75.3, high60 4434.23/low60 4375.19, er0.591 trend, exp_cont1.36 expanding, hhish7/llish2; H1 close 4419.62, MA20 4404.86/MA50 4398.42 < MA200 4424.81, RSI55.45, pos78.6, high60 4440.96/low60 4341.45, er0.109 range; H4 range er0.059, close 4401.31 ≈ MA20 4400.64 < MA50 4413.14, RSI47.04, pos32.9; D1 range 偏空 close 4400.485 < MA20 4464.19, RSI42.66, pos54.7, llish5>hhish4, er0.147。数据 ok: live_days4 / live_ticks624334 / gaps[] / context28d。",
+  "2": "一致性: partial→neutral-bullish。M15 趋势多头 (er0.591, exp_cont expanding, hhish7) = 顺势回撤多依据; H1/H4 纯区间中性 (er0.109/0.059, close≈MA20) 不反对; D1 偏空 (close<MA20 4464.19, llish5) 为唯一反向但 D1 属慢区间 (er0.147) 上方压力。→ bias LONG-lean 0.52。",
+  "3": "M15 变化: 自 06:02 mid 4430.52 高位回落至 06:17 mid 4414.01 (-16.5pt), 冲高 M15 high60 4434.23 未破即回撤 = 上冲受阻滞涨, 现落回 H4 MA50 4413.14 与 M15/H1 均线簇 4404.9-4406.6 之间; RSI 自 79.6 回落出超买, 属健康回撤而非破位 (close 仍 > MA20 33bps)。",
+  "4": "机会: 回撤至 4404.5-4408.5 三重均线簇 (M15 MA20 4405.0 + M15 MA50 4406.6 + H1 MA20 4404.9) 顺势承接做多; 不追高。现价距带上沿 4408.5 ~5.5pt / 带下沿 4404.5 ~9.5pt, 贴近边界即计划, 触价自动成交。",
+  "5": "机制: trend_pullback_to_ma_cluster_v1 — M15 趋势中回撤均线簇获支撑续上。上方 T1 4419.0 (前 bar 高位) / T2 4434.2 (M15 high60) / T3 4440.9 (H1 high60 汇合); 下方 M15 MA200 4397.87 + H1 MA50 4398.42 为结构失效线。",
+  "6": "触发条件[具体价]: {\"and\":[{\"zone_touch\":[4404.5,4408.5]},{\"spread_under_bps\":1.0}]} — mid 进入 4404.5-4408.5 即触发市价建多 (不要求下一根收盘)。现价 4414.01 距带仅 ~5.5-9.5pt。",
+  "7": "失效[具体价]: 未触发失效 = {\"price_cross_down\":4397.5} (跌破 M15 MA200 4397.87/H1 MA50 4398.42 承接簇 → 回撤升级为破位, 计划作废); 触发后失效 = mid <= 4396.0 (SL, -1R 有界)。",
+  "8": "预期收益R (加权, ref fill 4406.5, 1R=10.5pt): T1 4419.0 (+12.5pt=1.19R)x0.40 / T2 4434.2 (+27.7pt=2.64R)x0.35 / T3 4440.9 (+34.4pt=3.28R)x0.25; 加权 expected_R ≈ 2.22R。",
+  "9": "预期损失R: -1.0R 有界 (SL 4396.0, entry_mid 4406.5, risk 10.5pt ≈ 23.8bps); 亏损不加仓不反手。",
+  "10": "成本数值: spread 0.36bps + slippage ~0.3bps = 单边 0.66bps, 往返 1.32bps ≈ 0.58pt ≈ 0.055R (1R=10.5pt); demo 执行费由 engine 统计, 非障碍。",
+  "11": "净EV算式: EV_R = R×Pwin − 1×Ploss − cost = 2.22×0.45 − 0.55 − 0.055 = 0.999 − 0.605 = +0.39R (>0, 通过)。",
+  "12": "再现: 今日 4393-4400 支撑三测未破 + 4402-4407 破位供应转支撑两次回踩获承接 (POS-2202Z 自 4403.27 空转多已验证该带流动性); 均线簇回撤承接结构重复出现, 且 M15 趋势级 er 抬升 (0.109→0.591) 加强。",
+  "13": "决策: LONG (回撤 4404.5-4408.5 均线簇承接多; bias LONG-lean 0.52; FLAT 可注册, 无持仓)。",
+  "14": "理由: M15 唯一趋势级多头(er0.591/expanding), 冲高4434未破回落 16pt 至 4404.9-4406.6 三重均线簇(M15 MA20/50+H1 MA20), 顺势回撤承接; SL 4396 簇下结构失效, T 4419/4434.2/4440.9, 加权 2.22R, EV +0.39R。"
+ },
+ "plan": {
+  "plan_id": "TP-20260910T0617Z",
+  "direction": "LONG",
+  "opportunity_type": "pullback",
+  "mechanism_ref": "trend_pullback_to_ma_cluster_v1",
+  "entry_style": "market_on_trigger",
+  "entry_zone": {
+   "low": 4404.5,
+   "high": 4408.5
+  },
+  "trigger_condition": {
+   "and": [
+    {
+     "zone_touch": [
+      4404.5,
+      4408.5
+     ]
+    },
+    {
+     "spread_under_bps": 1.0
+    }
+   ]
+  },
+  "invalidation_condition": {
+   "price_cross_down": 4397.5
+  },
+  "stop_logic": {
+   "type": "structure",
+   "level_price": 4396.0,
+   "level": "M15 MA200 4397.87 / H1 MA50 4398.42 下方 1.5-2.4pt",
+   "reason": "回撤承接结构失效: 跌破 M15 MA200(4397.87)+H1 MA50(4398.42) 汇合支撑 → 顺势回撤升级为破位; SL 4396.0 置簇下 1.9pt, 认损 1R=10.5pt @ref fill 4406.5。"
+  },
+  "target_logic": {
+   "type": "price_levels",
+   "levels": [
+    {
+     "price": 4419.0,
+     "frac": 0.4
+    },
+    {
+     "price": 4434.2,
+     "frac": 0.35
+    },
+    {
+     "price": 4440.9,
+     "frac": 0.25
+    }
+   ],
+   "reason": "T1 4419.0 = 05:45 bar 高位/前 bar 供给回测 (+12.5pt=1.19R)x0.40 降险; T2 4434.2 = M15 high60 (+27.7pt=2.64R)x0.35; T3 4440.9 = H1 high60 汇合阻力 (+34.4pt=3.28R)x0.25; 不设 4440.9 之上 (4443 上方为 D1 MA20 4464 前的真空带)。"
+  },
+  "expected_R": 2.22,
+  "expected_win_probability": 0.45,
+  "probability_source": "subjective",
+  "expected_loss": {
+   "units": "R",
+   "value": 1.0
+  },
+  "estimated_cost": {
+   "spread_bps": 0.36,
+   "slippage_bps": 0.3,
+   "total_roundtrip_bps": 1.32,
+   "cost_in_R": 0.055
+  },
+  "expected_net_EV": {
+   "value": 0.39,
+   "units": "R",
+   "note": "0.45×(0.40×1.19+0.35×2.64+0.25×3.28) − 0.55×1.0 − 0.055 = 0.45×2.22 − 0.605 = +0.39R (1R=10.5pt @ref fill 4406.5, SL 4396.0; breakeven p≈0.27)"
+  },
+  "maximum_holding_time": "M15*8",
+  "cancel_conditions": [
+   "触发前 mid <= 4397.5 (price_cross_down invalidation = 跌破 M15 MA200/H1 MA50 承接簇) → 引擎零成本取消",
+   "触发前 mid > 4417.5 (engine price_left_setup, 价格跑离带上沿 2×band, 机会已走) → 由新轮重建",
+   "未触发 age > 120min (M15*8) 过期清理 → 下轮重评",
+   "成交失败(仓位忙/broker 拒) → 计划即时作废不留僵尸, 不追单",
+   "已成交 → SL 4396.0 broker 随单 -1R 有界; 亏损不加仓不反手; 持仓中不注册新开仓计划(单仓约束)"
+  ],
+  "risk_level": "medium",
+  "reason": "现价 4414.01 自高位 4430.5 回撤 16pt 至 4404.9-4406.6 三重均线簇 (M15 MA20/MA50+H1 MA20) 承接位; M15 趋势级多头 (er0.591/expanding) 顺势回撤多; 触价即自动建仓, SL 4396.0 结构下 -1R 有界, 分批 T 4419/4434.2/4440.9, 加权 2.22R, 净 EV +0.39R; LONG 侧 SL 在下方, 规避上冲 exec 失效。",
+  "qty_lots": 0.01
+ },
+ "model": "deepseek/deepseek-v4-flash"
+}

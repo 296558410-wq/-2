@@ -1,0 +1,49 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8">
+<title>V2 Grand Architecture · Research Dashboard</title>
+<style>
+body{font-family:system-ui,'Microsoft YaHei',sans-serif;margin:0;background:#0f1218;color:#e8eef7}
+header{padding:18px 24px;background:#161b25;border-bottom:1px solid #233}
+h1{font-size:18px;margin:0} .sub{color:#8fa3bf;font-size:12px;margin-top:4px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:14px;padding:16px 24px}
+.card{background:#161b25;border:1px solid #223;border-radius:10px;padding:14px 16px}
+.card h2{font-size:13px;margin:0 0 10px;color:#9db4d6;letter-spacing:.5px;text-transform:uppercase}
+.row{display:flex;align-items:center;gap:8px;font-size:12px;margin:4px 0}
+.row span{width:120px;color:#b9c9e0} .bar{flex:1;background:#0c0f15;border-radius:4px;height:10px;overflow:hidden}
+.bar i{display:block;height:100%;background:linear-gradient(90deg,#2f81f7,#39d353)}
+.row b{width:36px;text-align:right;color:#e8eef7}
+table{width:100%;border-collapse:collapse;font-size:12px} td,th{padding:4px 6px;border-bottom:1px solid #202836;text-align:left}
+th{color:#8fa3bf} .k{color:#39d353} .w{color:#f0a35e} .bad{color:#f85149}
+.tag{display:inline-block;padding:2px 8px;border-radius:999px;font-size:11px;background:#1f2937;color:#9db4d6;margin:2px}
+</style></head><body>
+<header><h1>V2 多策略智能交易系统 · Research Dashboard</h1>
+<div class="sub">只读 / Shadow 研究面板 · 不接口生产 · commit 23116019e2 · dataset b726a7919b56 · seed 20261003</div></header>
+<div class="grid">
+<div class="card"><h2>策略总数与生命周期</h2><div class="row"><span>候选总数</span><b>17</b></div>
+<div class="row"><span>RESEARCH</span><div class="bar"><i style="width:100%"></i></div><b>17</b></div></div>
+<div class="card"><h2>Market Regime 分布</h2><div class="row"><span>TRANSITION</span><div class="bar"><i style="width:53%"></i></div><b>13852</b></div><div class="row"><span>TREND</span><div class="bar"><i style="width:40%"></i></div><b>10565</b></div><div class="row"><span>RANGE</span><div class="bar"><i style="width:7%"></i></div><b>1797</b></div><div class="row"><span>BREAKOUT</span><div class="bar"><i style="width:0%"></i></div><b>6</b></div></div>
+<div class="card"><h2>策略一致 / 冲突</h2>
+<div class="row"><span>AGREEMENT</span><b>0</b></div>
+<div class="row"><span>CONFLICT</span><b>0</b></div>
+<div class="row"><span>ABSENT</span><b>0</b></div>
+<div class="row"><span>DATA_GAP</span><b>0</b></div></div>
+<div class="card"><h2>Opportunity Concentration</h2>
+<div class="row"><span>来源数</span><b>7</b></div>
+<div class="row"><span>最大份额</span><b>0.17</b></div>
+<div><span class="tag">TECHNICAL:5230</span><span class="tag">MOMENTUM:5227</span><span class="tag">REVERSAL:5227</span><span class="tag">BREAKOUT:0</span><span class="tag">VOLATILITY:5232</span><span class="tag">MACRO:5232</span><span class="tag">EVENT:142</span><span class="tag">STRUCTURE:5230</span></div></div>
+<div class="card"><h2>GPU 状态</h2>
+<div class="row"><span>设备</span><b>NVIDIA RTX A2000 Laptop GPU</b></div>
+<div class="row"><span>research</span><b class="k">PASS</b></div>
+<div class="row"><span>speedup</span><b>6.68×</b></div>
+<div class="row"><span>peak VRAM</span><b>1223.2MB</b></div>
+<div class="row"><span>util max</span><b>43.0%</b></div>
+<div class="row"><span>组合数</span><b>13296</b></div></div>
+<div class="card"><h2>Evolution 状态</h2>
+<div class="row"><span>总证据</span><b class="w">INCONCLUSIVE</b></div>
+<div class="row"><span>SHADOW</span><div class="bar"><i style="width:65%"></i></div><b>11</b></div><div class="row"><span>NO_CHANGE</span><div class="bar"><i style="width:29%"></i></div><b>5</b></div><div class="row"><span>CANDIDATE_RELEASE</span><div class="bar"><i style="width:6%"></i></div><b>1</b></div></div>
+<div class="card"><h2>大实验 A–F</h2>
+<div class="row"><span>Experiment A</span><b class="w">NOT_SUPPORTED</b></div><div class="row"><span>Experiment B</span><b class="w">INCONCLUSIVE</b></div><div class="row"><span>Experiment C</span><b class="w">INCONCLUSIVE</b></div><div class="row"><span>Experiment D</span><b class="w">INCONCLUSIVE</b></div><div class="row"><span>Experiment E</span><b class="k">PASS</b></div><div class="row"><span>Experiment F</span><b class="w">NOT_SUPPORTED</b></div></div>
+<div class="card" style="grid-column:1/-1"><h2>近期性能 / 退化（Untouched OOS）</h2>
+<table><tr><th>strategy_id</th><th>mechanism</th><th>oos_expectancy</th><th>oos_n</th><th>FDR</th></tr><tr><td>SF-TREND-00</td><td>TREND</td><td>0.5675</td><td>605</td><td>n</td></tr><tr><td>SF-TREND-01</td><td>TREND</td><td>0.5675</td><td>605</td><td>n</td></tr><tr><td>SF-MOMENTUM-00</td><td>MOMENTUM</td><td>0.0296</td><td>652</td><td>n</td></tr><tr><td>SF-MOMENTUM-01</td><td>MOMENTUM</td><td>-0.2083</td><td>878</td><td>n</td></tr><tr><td>SF-REVERSAL-00</td><td>REVERSAL</td><td>0.1153</td><td>562</td><td>n</td></tr><tr><td>SF-REVERSAL-01</td><td>REVERSAL</td><td>-0.1269</td><td>586</td><td>n</td></tr><tr><td>SF-RANGE-00</td><td>RANGE</td><td>0.4700</td><td>8</td><td>n</td></tr><tr><td>SF-RANGE-01</td><td>RANGE</td><td>1.1967</td><td>3</td><td>n</td></tr><tr><td>SF-BREAKOUT-00</td><td>BREAKOUT</td><td>nan</td><td>0</td><td>n</td></tr><tr><td>SF-BREAKOUT-01</td><td>BREAKOUT</td><td>nan</td><td>0</td><td>n</td></tr><tr><td>SF-VOL_EXPANSION-00</td><td>VOL_EXPANSION</td><td>nan</td><td>0</td><td>n</td></tr><tr><td>SF-VOL_EXPANSION-01</td><td>VOL_EXPANSION</td><td>nan</td><td>0</td><td>n</td></tr><tr><td>SF-VOL_CONTRACTION-00</td><td>VOL_CONTRACTION</td><td>-0.3237</td><td>38</td><td>n</td></tr><tr><td>SF-MTF_STRUCTURE-00</td><td>MTF_STRUCTURE</td><td>-0.0069</td><td>909</td><td>n</td></tr><tr><td>SF-EVENT-00</td><td>EVENT</td><td>0.0836</td><td>190</td><td>n</td></tr><tr><td>SF-MACRO-00</td><td>MACRO</td><td>-0.1667</td><td>162</td><td>n</td></tr><tr><td>SF-HYBRID-00</td><td>HYBRID</td><td>0.3432</td><td>355</td><td>n</td></tr></table></div>
+<div class="card" style="grid-column:1/-1"><h2>Evolution 明细</h2>
+<table><tr><th>strategy_id</th><th>state</th><th>triggers</th></tr><tr><td>SF-TREND-00</td><td>SHADOW</td><td>cost_sensitivity</td></tr><tr><td>SF-TREND-01</td><td>SHADOW</td><td>cost_sensitivity</td></tr><tr><td>SF-MOMENTUM-00</td><td>SHADOW</td><td>cost_sensitivity</td></tr><tr><td>SF-MOMENTUM-01</td><td>SHADOW</td><td>edge_degradation, cost_sensitivity</td></tr><tr><td>SF-REVERSAL-00</td><td>SHADOW</td><td>cost_sensitivity</td></tr><tr><td>SF-REVERSAL-01</td><td>SHADOW</td><td>cost_sensitivity</td></tr><tr><td>SF-RANGE-00</td><td>NO_CHANGE</td><td>—</td></tr><tr><td>SF-RANGE-01</td><td>SHADOW</td><td>edge_degradation</td></tr><tr><td>SF-BREAKOUT-00</td><td>NO_CHANGE</td><td>—</td></tr><tr><td>SF-BREAKOUT-01</td><td>NO_CHANGE</td><td>—</td></tr><tr><td>SF-VOL_EXPANSION-00</td><td>NO_CHANGE</td><td>—</td></tr><tr><td>SF-VOL_EXPANSION-01</td><td>NO_CHANGE</td><td>—</td></tr><tr><td>SF-VOL_CONTRACTION-00</td><td>SHADOW</td><td>cost_sensitivity</td></tr><tr><td>SF-MTF_STRUCTURE-00</td><td>SHADOW</td><td>cost_sensitivity</td></tr><tr><td>SF-EVENT-00</td><td>CANDIDATE_RELEASE</td><td>cost_sensitivity</td></tr><tr><td>SF-MACRO-00</td><td>SHADOW</td><td>cost_sensitivity</td></tr><tr><td>SF-HYBRID-00</td><td>SHADOW</td><td>cost_sensitivity</td></tr></table></div>
+</div></body></html>

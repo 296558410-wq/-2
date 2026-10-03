@@ -1,0 +1,319 @@
+{
+ "schema": "v1_arch_behavior_timeline/1",
+ "generated_utc": "2026-10-02T13:37:15.597995+00:00",
+ "epochs": [
+  {
+   "name": "E0_initial",
+   "start": "2026-09-28T12:33:29+00:00",
+   "end": "2026-10-01T13:52:15+00:00"
+  },
+  {
+   "name": "E0b_restart",
+   "start": "2026-10-01T13:52:15+00:00",
+   "end": "2026-10-02T03:51:44+00:00"
+  },
+  {
+   "name": "E1_riskguard_fix",
+   "start": "2026-10-02T03:51:44+00:00",
+   "end": "2026-10-02T04:13:08+00:00"
+  },
+  {
+   "name": "E2_risk_hardening",
+   "start": "2026-10-02T04:13:08+00:00",
+   "end": "2026-10-02T04:31:39+00:00"
+  },
+  {
+   "name": "E3_truth",
+   "start": "2026-10-02T04:31:39+00:00",
+   "end": null
+  }
+ ],
+ "events": [
+  {
+   "ts": "2026-09-28T12:33:29Z",
+   "kind": "RUNTIME_START",
+   "what": "首次 cycle（ledger seq1）",
+   "evidence": "ledger seq1"
+  },
+  {
+   "ts": "2026-09-28T12:45:00Z",
+   "kind": "CONFIG",
+   "what": "signal_source=BASELINE_TRANSITION 设置",
+   "evidence": "registry/runtime_config.json set_at_utc"
+  },
+  {
+   "ts": "2026-09-28T15:27:55Z",
+   "kind": "CODE",
+   "what": "gates.py 最后一次改动(原始版)",
+   "evidence": "备份 mtime + 原始 hash 0e02a424"
+  },
+  {
+   "ts": "2026-09-28T15:31:11Z",
+   "kind": "CONFIG",
+   "what": "runtime_config 最后写入",
+   "evidence": "registry mtime"
+  },
+  {
+   "ts": "2026-09-28T15:35:00Z",
+   "kind": "CONFIG",
+   "what": "order_send_enabled=true (开闸)",
+   "evidence": "runtime_config order_send_opened_at"
+  },
+  {
+   "ts": "2026-09-28T15:35:14Z",
+   "kind": "TRADE_EPOCH",
+   "what": "首笔真实成交/持仓",
+   "evidence": "ledger seq48/49"
+  },
+  {
+   "ts": "2026-09-29T23:38:02Z",
+   "kind": "CODE_EVIDENCE",
+   "what": "首个 CLOSE/PNL（对账机制运行）",
+   "evidence": "ledger seq228/229"
+  },
+  {
+   "ts": "2026-10-01T13:52:15Z",
+   "kind": "RESTART",
+   "what": "主机重启(漏1拍14:03Z)",
+   "evidence": "既有重启审计"
+  },
+  {
+   "ts": "2026-10-01T14:33:19Z",
+   "kind": "CODE",
+   "what": "cycle.py 改动(mtime; 未提交; 内容不可得)",
+   "evidence": "backup cycle.py mtime"
+  },
+  {
+   "ts": "2026-10-02T02:05:01Z",
+   "kind": "TRADE_EPOCH",
+   "what": "末笔平仓（此后无新成交）",
+   "evidence": "ledger/券商 deals"
+  },
+  {
+   "ts": "2026-10-02T03:48:21Z",
+   "kind": "BACKUP",
+   "what": "修复前备份",
+   "evidence": "backup manifest"
+  },
+  {
+   "ts": "2026-10-02T03:51:44Z",
+   "kind": "CODE",
+   "what": "63d5a22 riskguard 接线修复(cycle.py,gates.py)",
+   "evidence": "git"
+  },
+  {
+   "ts": "2026-10-02T04:13:08Z",
+   "kind": "CODE",
+   "what": "eceeec2 risk hardening",
+   "evidence": "git"
+  },
+  {
+   "ts": "2026-10-02T04:31:39Z",
+   "kind": "CODE",
+   "what": "ec0907e truth system",
+   "evidence": "git"
+  },
+  {
+   "ts": "2026-10-02T04:35:14Z",
+   "kind": "CODE",
+   "what": "0f4ce66 truth evidence",
+   "evidence": "git"
+  }
+ ],
+ "commits_touching_v1_upgrade": {
+  "0f4ce66": {
+   "date": "2026-10-02T12:35:14+08:00",
+   "author": "296558410-wq",
+   "subject": "chore(v1-truth): first live truth cycle evidence (cycle V1C-20261002T043301, snapshot #1, scoped incidents)"
+  },
+  "ec0907e": {
+   "date": "2026-10-02T12:31:39+08:00",
+   "author": "296558410-wq",
+   "subject": "feat(v1-truth-system): black-box fact chain + ids + decision snapshots + incidents + forensic CLI + daily truth (order_send=0)"
+  },
+  "eceeec2": {
+   "date": "2026-10-02T12:13:08+08:00",
+   "author": "296558410-wq",
+   "subject": "fix(v1-risk-hardening): fail-closed inputs + reachable DUPLICATE_ORDER + file-based KILL_SWITCH + gap watchdog (order_send=0, limits unchanged)"
+  },
+  "63d5a22": {
+   "date": "2026-10-02T11:51:44+08:00",
+   "author": "296558410-wq",
+   "subject": "fix(v1-riskguard): wire declared risk limits to real ledger state + real inputs/dry-run validation"
+  }
+ },
+ "runtime_file_hashes": {
+  "original": {
+   "gates.py": "0e02a4240b517b2a987c377d4488945a75c701c144e56ca3691d0ed349f2c9d3",
+   "cycle.py": "dcb7edde220cfe07be93c72cda1fa55ae48ed71316b384a38c1898d7161b523b"
+  },
+  "current": {
+   "cycle.py": "0ed44fb8fe654ea04904c16ffbfc527bf3b620f2c3a192e94cfb848c6e6f9ef8",
+   "gates.py": "b784999aa3b4517c527ba4087c8db0c7ad4ad5238a25d8bc500efc185f301c06"
+  }
+ },
+ "ledger_decision_fieldset_drift": [
+  {
+   "first_seen_ts": "2026-09-28T12:33:29.751274+00:00",
+   "n_fields": 14,
+   "fields": [
+    "account_login",
+    "account_mode",
+    "account_positions",
+    "action",
+    "event",
+    "own_positions",
+    "previous_hash",
+    "risk_allow",
+    "risk_reasons",
+    "seq",
+    "signal",
+    "signal_source",
+    "snapshot",
+    "ts_utc"
+   ]
+  },
+  {
+   "first_seen_ts": "2026-09-28T12:43:31.750352+00:00",
+   "n_fields": 17,
+   "fields": [
+    "account_login",
+    "account_positions",
+    "action",
+    "atr",
+    "event",
+    "live_state",
+    "not_hermes_alpha",
+    "order_intent",
+    "previous_hash",
+    "risk_allow",
+    "risk_reasons",
+    "seq",
+    "signal",
+    "signal_source",
+    "signal_type",
+    "snapshot",
+    "ts_utc"
+   ]
+  },
+  {
+   "first_seen_ts": "2026-09-28T15:31:14.598943+00:00",
+   "n_fields": 8,
+   "fields": [
+    "action",
+    "event",
+    "filling_name",
+    "previous_hash",
+    "reason",
+    "retcode",
+    "seq",
+    "ts_utc"
+   ]
+  },
+  {
+   "first_seen_ts": "2026-09-28T15:32:11.431955+00:00",
+   "n_fields": 6,
+   "fields": [
+    "action",
+    "event",
+    "previous_hash",
+    "reason",
+    "seq",
+    "ts_utc"
+   ]
+  },
+  {
+   "first_seen_ts": "2026-09-28T15:32:58.342307+00:00",
+   "n_fields": 9,
+   "fields": [
+    "action",
+    "event",
+    "filling_name",
+    "previous_hash",
+    "probes",
+    "reason",
+    "retcode",
+    "seq",
+    "ts_utc"
+   ]
+  },
+  {
+   "first_seen_ts": "2026-10-02T04:33:03.110907+00:00",
+   "n_fields": 20,
+   "fields": [
+    "account_login",
+    "account_positions",
+    "action",
+    "atr",
+    "cycle_id",
+    "decision_id",
+    "event",
+    "live_state",
+    "not_hermes_alpha",
+    "order_intent",
+    "previous_hash",
+    "risk_allow",
+    "risk_reasons",
+    "seq",
+    "signal",
+    "signal_source",
+    "signal_type",
+    "snapshot",
+    "truth_record_ok",
+    "ts_utc"
+   ]
+  }
+ ],
+ "first_decision_ts": "2026-09-28T12:33:29.751274+00:00",
+ "last_decision_ts": "2026-10-02T13:33:03.637751+00:00",
+ "instrument_notes": [
+  "MT5 deal.time is SERVER frame (UTC+3); trade timestamps here come from the LEDGER (true UTC). Broker server-frame times kept in *_broker_serverframe columns.",
+  "broker roundtrips = 32 == ledger POSITION order_ids = 32 (symmetric set match)."
+ ],
+ "segments": {
+  "A_pre_restart": {
+   "n": 25,
+   "win_rate": 0.48,
+   "price": 54.28,
+   "net": 49.89,
+   "risk_reasons": {
+    "": 25
+   },
+   "signal_source": {
+    "BASELINE_TRANSITION": 25
+   },
+   "retcodes": {
+    "10009": 25
+   },
+   "slippage_max": 2.258
+  },
+  "B_post_restart": {
+   "n": 7,
+   "win_rate": 0.0,
+   "price": -65.72,
+   "net": -67.75,
+   "risk_reasons": {
+    "": 7
+   },
+   "signal_source": {
+    "BASELINE_TRANSITION": 7
+   },
+   "retcodes": {
+    "10009": 7
+   },
+   "slippage_max": 3.3941
+  },
+  "boundary": "2026-10-01T13:52:15+00:00",
+  "note": "all 32 trades precede every architecture change (first change 2026-10-02T03:51:44Z > last exit 2026-10-02T02:18:01Z)"
+ },
+ "answer": {
+  "verdict": "CLOSER_TO_ORIGINAL_BASELINE_ARCHITECTURE",
+  "basis": [
+   "no code/config/risk/signal/execution change occurred before any trade",
+   "all 32 trades ran on the same architecture (signal_source=BASELINE_TRANSITION, risk_reasons empty, retcode 10009 across A and B)",
+   "risk/hardening/truth changes took effect 03:51:44Z-04:35:14Z, after the last trade closed 02:18:01Z",
+   "only mid-window break = host restart 2026-10-01T13:52:15Z (association) + uncommitted cycle.py edit 14:33:19Z (content unavailable = DATA_GAP)"
+  ],
+  "post_change_behavior": "after the changes the risk layer is reachable and now blocks: DECISION=WAIT_RISK:MAX_DAILY_LOSS,MAX_CONSECUTIVE_LOSS since 2026-10-02T04:03Z; no trades after 02:18:01Z"
+ }
+}

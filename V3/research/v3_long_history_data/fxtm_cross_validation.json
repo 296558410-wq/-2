@@ -1,0 +1,23 @@
+{
+ "schema": "v3_fxtm_cross_validation/2",
+ "ts_utc": "2026-09-25T09:07:06.449875+00:00",
+ "important_correction": "v1 of this file compared UNSCALED Dukascopy integer prices against FXTM USD prices (mean diff ~4.45e6). The repo documents SCALE=1000 for this feed; the comparison below applies it. The bogus v1 numbers are withdrawn.",
+ "scale_applied": 1000.0,
+ "scale_evidence": "scripts/dukascopy.py + duka_download.py: 'SCALE = 1000.0  # XAUUSD x1000'",
+ "duka_level_usd_after_scale": 4480.27,
+ "fxtm_level_usd": 4051.625,
+ "level_gap_usd": 428.645,
+ "level_gap_pct": 10.58,
+ "duka_file_price_range_usd": [
+  4365.305,
+  4491.065
+ ],
+ "fxtm_file_price_range_usd": [
+  4042.49,
+  4106.62
+ ],
+ "TIMESTAMP_ALIGNMENT": "UNRESOLVED",
+ "timestamp_finding": "reconstructing the daily Dukascopy tick file as (filename date + hour + ms) puts its price level at ~4480 USD while FXTM on the same calendar date trades ~4052 USD (+10.6%). ~4480 corresponds to a LATER period, so either the filename date is a download date rather than the data date, or the hour field is not the UTC hour. Per task section 9 this must NOT be assumed; the tick files are therefore NOT usable for event-window alignment until resolved.",
+ "BAR_CLOSE_DEFINITION": "UNKNOWN (candles expose day+sec; whether sec labels bar open or close is undocumented)",
+ "merge_policy": "NEVER merge Dukascopy with FXTM or GC; definition differs (E_CFD_XAUUSD_DUKASCOPY)"
+}

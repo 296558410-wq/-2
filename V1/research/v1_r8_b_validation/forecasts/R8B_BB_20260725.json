@@ -1,0 +1,52 @@
+{
+ "audit_id": "BB_20260725",
+ "timestamp": "2026-07-25 00:00:00+00:00",
+ "current_state": "COMPRESSION (dwell 1) with ACCEPTANCE event at t; price pinned at heavily-tested swing low 4048.995 (54 touches / 240 bars, distance_atr 0.027, break_status INSIDE); fresh TREND->COMPRESSION transition after 2-8 bar TREND dwells; M5/M15/H1 all closed 4049.125 at their lows with minimal lower wicks on the M15 (body_ratio 0.96) and H1 (lower_wick 0.0).",
+ "structure": "Downtrend structure from 4140.895 (07-23) through 4022.755 low (07-24 00:00), bounce to 4081.895, then rollover back down into current compression at 4048.995. Nearest L2 level is a 6-bar-old swing low with extreme touch count (54) and break_status INSIDE; no reclaim above it yet. MTF trend_20 negative on M1/M5/M15/H4, positive only on H1 (+5.75); trend_50 negative on M1/M5/M15/H1, positive on H4. Multi-timeframe agreement: CONFLICT.",
+ "mechanism": "Candidate mechanism: trend_continuation (price inside level, 8-bar displacement -5.06, invalidation = decisive break of active level). Not asserted as fact (DERIVED). Microstructure supports near-term continuation attempt: 8 consecutive down M1 bars, consecutive_down 7 on M5/M15, strong-bodied bearish closes at the lows (no lower wicks), M5 range expanding into the level. Compression at a pivot level implies imminent resolution, direction unresolved by state alone.",
+ "primary_scenario": {
+  "scenario": "Break-and-continue: decisive M1/M5 close below 4048.995 triggers continuation of the prevailing downtrend; price extends toward the 4039.685/4034-4022 region (prior session low zone), consistent with the only mechanism candidate (trend_continuation) and the ACCEPTANCE event at the level.",
+  "confidence": 0.42,
+  "horizon": "SHORT_TERM",
+  "trigger": "Sustained close below 4048.995 (decisive, e.g. M1/M5 close with follow-through >1 ATR ~2.2-3.6 pts), confirming acceptance below the swing low.",
+  "invalidation": "Price reclaims and holds above the 4055.45-4057.7 zone (current M15 high / H4 high) with rejection candles (upper wicks / bearish engulf), i.e. the level defends and structure re-ranges higher."
+ },
+ "alternative_scenario": {
+  "scenario": "Level defense / rejection: the 54-touch swing low holds; compression resolves with a rejection bounce back into the 4055-4063 zone (recent H1 range), possibly retesting 4069.825. Analog evidence (A19573, A25757 both reach REJECTION within 4-8 steps; only 1 of 3 analogs transitions to TREND) and M1 range contraction (seller exhaustion) support this.",
+  "confidence": 0.38,
+  "horizon": "SHORT_TERM",
+  "trigger": "Rejection candle at 4048.995 (long lower wick / bullish engulf on M5/M15) and failure to hold below the level; buying absorption at 54-touch support.",
+  "invalidation": "Close below 4048.995 with follow-through; a break negates the defense case and converts to the primary scenario."
+ },
+ "expected_transition": "COMPRESSION -> TREND or COMPRESSION -> REJECTION within a short window; resolution is imminent given 1-bar dwell and price sitting on the level. Direction of resolution is the open question: momentum skews to a downside break attempt, level quality (54 touches) skews to rejection.",
+ "direction": "DOWN",
+ "horizon": "SHORT_TERM",
+ "confidence": 0.40,
+ "counter_evidence": [
+  "Swing low 4048.995 has 54 touches in 240 bars - extreme level quality, historically high defense probability.",
+  "Multi-timeframe agreement = CONFLICT (H1 trend_20 +5.75, H4 trend_50 +4.84) - no clean aligned downtrend across all frames.",
+  "M1 range_contracting and ATR compression suggest possible seller exhaustion into the level.",
+  "Historical analogs from identical COMPRESSION state: 2 of 3 (A19573, A25757) evolve to REJECTION rather than TREND; only A31035 goes to TREND.",
+  "No cross-market confirmation (DXY, VIX, UST10Y/TNX all UNKNOWN/STALE) - cannot corroborate the direction of any break.",
+  "L4 mechanism is only a candidate, not asserted fact; single-candidate list may reflect limited feature inputs."
+ ],
+ "invalidation": "DOWN scenario is invalidated by a decisive reclaim and hold above 4055.45-4057.7 (rejection structure at the level); additionally, any close back above 4063-4069 (H1 highs) would negate the continuation case entirely. Conversely, a confirmed close below 4048.995 validates the primary and removes the alternative.",
+ "data_quality_flags": [
+  "UST10Y_PROXY_TNX: UNKNOWN (STALE_OR_NOT_COVERED) - never treated as DIRECT",
+  "DXY/VIX: UNKNOWN (STALE_OR_NOT_COVERED)",
+  "CROSS_MARKET_ABSENT: GLD, GC, CFTC_COT, ETF_FLOWS, NEWS, MACRO_EVENTS recorded absent, never fabricated",
+  "L2_PRICE_STRUCTURE: DERIVED (causal pivot/swing levels, not raw)",
+  "L3/L4/L5: DERIVED (frozen C1 ontology + min-dwell lifecycle); mechanism candidates only",
+  "MTF_AGREEMENT: CONFLICT - timeframes never merged into one direction",
+  "L1_PRICE_KLINE: RAW_GEOMETRY + DERIVED; minor floating-point artifacts in range/body values noted but immaterial"
+ ],
+ "reasoning_trace": [
+  "Price 4049.125 sits essentially ON the nearest swing low 4048.995 (distance_atr 0.027) with break_status INSIDE - a decision point, not a range mid.",
+  "Momentum immediately before t: 8 consecutive down M1 bars, consecutive_down 7 on M5 and M15, M5/M15/H1 all closing at their lows with no lower wicks - sellers in control of the last hour.",
+  "State machine: TREND (dwell 2-8) -> COMPRESSION (dwell 1) with ACCEPTANCE at t; acceptance of price at the low region is consistent with a break attempt being in progress.",
+  "Only mechanism candidate is trend_continuation; its own invalidation is a decisive break of the active level, which is the trigger of my primary scenario.",
+  "Counterweight: 54 touches in 240 bars makes 4048.995 one of the most defended levels in the window; rejection probability is material and analogs lean REJECTION.",
+  "Cross-market and news are entirely absent; MTF is in conflict - I cannot confirm direction from external or higher-context evidence, capping confidence near 0.4.",
+  "Net: mild short-term DOWN skew (continuation attempt) driven by microstructure momentum, but with honest low confidence and a clearly defined rejection alternative at the same level."
+ ]
+}

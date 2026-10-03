@@ -1,0 +1,75 @@
+{
+  "hypothesis": "趋势状态是否影响未来收益分布？",
+  "features": "slope_60",
+  "parameters": {
+    "holding": 240,
+    "feature_params": {}
+  },
+  "dataset": "XAUUSD_M1_MT5-FXTM-Live_20260904_v001",
+  "train_period": "2026-05-26 03:43:00+00:00→2026-07-27 06:53:00+00:00",
+  "test_period": "2026-07-27 06:53:00+00:00→2026-09-04 11:22:00+00:00",
+  "OOS": {
+    "ic": 0.02310620068255561,
+    "p": 0.0
+  },
+  "FDR": {
+    "q": 0.0,
+    "reject": true
+  },
+  "WF": {
+    "folds_ic": [
+      0.011,
+      0.0578,
+      0.006,
+      -0.0683,
+      0.0436
+    ],
+    "positive_frac": 0.8,
+    "n_folds": 5
+  },
+  "cost_stress": {
+    "1x": -0.2073,
+    "2x": -0.7062,
+    "3x": -1.2046,
+    "net_total": -0.019367627528100617,
+    "n_trades": 231,
+    "subperiod": {
+      "n_parts": 4,
+      "parts": [
+        {
+          "segment": 1,
+          "n": 24985,
+          "sharpe": -0.052,
+          "mean": -1.4841408213342585e-06
+        },
+        {
+          "segment": 2,
+          "n": 24985,
+          "sharpe": -0.052,
+          "mean": -1.3979331294817292e-06
+        },
+        {
+          "segment": 3,
+          "n": 24985,
+          "sharpe": -0.004,
+          "mean": -7.933487264184499e-08
+        },
+        {
+          "segment": 4,
+          "n": 24986,
+          "sharpe": 0.108,
+          "mean": 2.501710828400214e-06
+        }
+      ],
+      "sharpe_positive_frac": 0.25,
+      "sharpe_min": -0.052,
+      "sharpe_max": 0.108,
+      "note": "子段 Sharpe 一致性低 → 结果可能依赖特定时期"
+    }
+  },
+  "subperiod": null,
+  "status": "EDGE_UNCERTAIN",
+  "git_commit": "c1d84d3",
+  "alpha_id": "H5_trend_regime_04_slope_60_h240_v001",
+  "created_at": "2026-09-04T11:58:35.956312+00:00"
+}

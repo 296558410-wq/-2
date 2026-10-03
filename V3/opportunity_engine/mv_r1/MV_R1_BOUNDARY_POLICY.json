@@ -1,0 +1,31 @@
+{
+ "POLICY_VERSION": 1,
+ "policy_name": "MV_R1_BOUNDARY_POLICY",
+ "mv_r1_scope_prefix": "research/v3_opportunity_engine/mv_r1/",
+ "r2_scope_prefix_readonly": "research/v3_opportunity_engine/high_frequency_r2/",
+ "closeout_artifact_allowlist": [
+  "research/hermes/trader_v3/reports/V3_R2_CANONICAL_HASH_SPEC.md"
+ ],
+ "runtime_output_path_classes": [
+  "research/hermes/trader_v1/run_state/*",
+  "research/hermes/trader_v1/memory/reviews/*",
+  "research/hermes/trader_v2/observations/*",
+  "research/hermes/trader_v2/state/decision_contexts/*"
+ ],
+ "non_research_cache_patterns": [
+  "*__pycache__/*",
+  "*.pyc"
+ ],
+ "unexpected_classes": [
+  "V1/V2 source/config",
+  "unknown trader_v3 files",
+  "unregistered research files"
+ ],
+ "principles": {
+  "exclusions_pre_registered_before_results": true,
+  "exclusion_unit": "PATH_CLASS_NOT_INDIVIDUAL_FILES",
+  "unknown_new_file": "BOUNDARY_VIOLATION",
+  "no_reset_hard_no_clean_fd_no_checkout_dot": true
+ },
+ "POLICY_HASH": "610a517bd74ee66bd0749f42720bba704357b6ebf5beb56f0f6f4e9c6bf5e0c1"
+}

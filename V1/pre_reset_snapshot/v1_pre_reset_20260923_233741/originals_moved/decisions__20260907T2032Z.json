@@ -1,0 +1,148 @@
+{
+ "schema": "hermes_decision_v1",
+ "decision_id": "DEC-2026-09-07T20:32Z",
+ "utc_ts": "2026-09-07T20:32:05+00:00",
+ "symbol": "XAUUSD",
+ "cycle": "2026-09-07T20:32Z",
+ "market_state": {
+  "d1": {
+   "tf": "D1",
+   "last_close": 4399.05,
+   "last_bar": "2026-09-04",
+   "ma20": 4464.43,
+   "price_vs_ma20": -146.4,
+   "rsi14": 49.14,
+   "structure": {
+    "hhish": 4,
+    "llish": 5,
+    "last_vs_5ago": "down"
+   },
+   "trend_range": {
+    "cat": "range",
+    "er": 0.017
+   },
+   "s_r": {
+    "high60": 4696.87,
+    "low60": 4042.58,
+    "pos_in_range": 54.5
+   }
+  },
+  "h4": {
+   "tf": "H4",
+   "last_close": 4414.385,
+   "last_bar": "2026-09-07 16:00",
+   "ma20": 4415.09,
+   "ma50": 4470.91,
+   "price_vs_ma20": -1.6,
+   "rsi14": 53.07,
+   "structure": {
+    "hhish": 5,
+    "llish": 4,
+    "last_vs_5ago": "up"
+   },
+   "trend_range": {
+    "cat": "range",
+    "er": 0.061
+   },
+   "s_r": {
+    "high60": 4696.87,
+    "low60": 4282.53,
+    "pos_in_range": 31.8
+   }
+  },
+  "h1": {
+   "tf": "H1",
+   "last_close": 4414.385,
+   "last_bar": "2026-09-07 19:00",
+   "ma20": 4405.88,
+   "ma50": 4442.27,
+   "ma200": 4482.11,
+   "price_vs_ma20": 19.3,
+   "rsi14": 52.9,
+   "structure": {
+    "hhish": 5,
+    "llish": 4,
+    "last_vs_5ago": "up"
+   },
+   "trend_range": {
+    "cat": "range",
+    "er": 0.058
+   },
+   "s_r": {
+    "high60": 4511.01,
+    "low60": 4369.36,
+    "pos_in_range": 31.8
+   }
+  },
+  "m15": {
+   "tf": "M15",
+   "last_close": 4412.06,
+   "last_bar": "2026-09-07 20:00",
+   "ma20": 4408.54,
+   "ma50": 4403.77,
+   "ma200": 4442.7,
+   "price_vs_ma20": 3.5,
+   "rsi14": 65.51,
+   "structure": {
+    "hhish": 4,
+    "llish": 5,
+    "last_vs_5ago": "down"
+   },
+   "trend_range": {
+    "cat": "mixed",
+    "er": 0.31
+   },
+   "s_r": {
+    "high60": 4423.96,
+    "low60": 4381.09,
+    "pos_in_range": 72.2
+   },
+   "recent_move_bps": -5.2
+  },
+  "m15_live": {
+   "last_mid": 4406.61,
+   "spread_bps_now": 0.34,
+   "tick_rate_per_min_15m": 53,
+   "quote_source": "quote_latest",
+   "abnormal": {
+    "last6_max_move_bps": 5.9,
+    "z_vs_baseline": -0.41,
+    "baseline_mean_move_bps": 10.21
+   }
+  }
+ },
+ "data_quality": {
+  "live_days": 1,
+  "live_ticks": 160677,
+  "context_days": 25,
+  "gaps": [],
+  "notes": "quote 冻结第9 cycle 确认: mid 4406.61 自18:32Z→20:32Z 钉死 ~120min(连续9 cycle同值), tick_rate 64→53/min 仍流、spread 0.34bps、z -0.41 正常 → quote_latest.json(10s dashboard线程)冻结判定维持, parquet bar源为真实价格源; bar推进: 20:00收4412.06(19:45收4414.385→-2.33pt, 7叩墙后首次收跌), 采集滞后~30min, 20:15/20:30 bar预计~20:45-21:00Z入缓存; M15 last_bar 20:00=最新已收盘bar; H1缓存滞后至19:00、H4至16:00; candle_latest.json stale@12:15Z(内容8h+未动)不采信; engine zone_touch/price_cross 以 mid=4406.61 输入, 冻结期一切mid型触发惰性(含在册双空书); close型条件基于bar源可正常判定"
+ },
+ "mtf_agreement": "partial_short_align_rollover_start_no_confirm_d1h4_below_ma_wall_7_pokes_fading",
+ "state_summary": "XAUUSD bar源真价~4412.1: M15 7叩4411-4416墙后首次收跌, 20:00收4412.06(19:45收4414.385→-2.33pt)回墙带内下沿, 未破4411/4423.96; RSI 71.27→65.51续退烧, er 0.425→0.31(trend→mixed), pos 77.7→72.2, 结构hhish5/llish4→hhish4/llish5末棒down; D1/H4价<MA(4464)空排背景不变; quote仍4406.61第9 cycle冻结(120min); 在册TP-20260907T1947Z墙fade空[4411,4415.5]止4418 PENDING(close-gate开: 20:00收4412.06<4414.5, 余量2.44pt, 寿命至01:52Z) + TP-182005R floor空[4398.5,4401.5]止4406 PENDING(至00:21Z); 无持仓无浮亏",
+ "m15_change": "较20:17Z(19:45收4414.385): bar推进一根, 20:00收4412.06(-2.33pt)=7叩墙后首次收跌, 离开墙顶区回墙带内下沿(仍>4411墙底1.06pt、>MA20 4408.54约3.5pt); RSI 71.27→65.51(-5.8续退烧, 自17:00峰值86.8累计-21), er 0.425→0.31(降至trend阈值0.3上沿, cat trend→mixed), pos 77.7→72.2, 结构计数hhish5/llish4→hhish4/llish5、last_vs_5ago up→down; quote仍4406.61第9 cycle钉死(stall维持, tick_rate 64→53/min仍流); 变化定性: rollover初现(上轮两分支中'rollover确认'分支概率升, 但未收破4411/未破MA簇=未确认); 立场: neutral-lean-short不变, 不新增注册(空侧两腿在册已覆盖: 反弹第8触归墙fade书、破MA簇延续归floor书; 中段4403-4408再注册=与floor书同波叠单否决)",
+ "opportunity": "none_new_registered_books_cover_both_rollover_legs_floor_now_primary_gate_quote_unfreeze",
+ "opportunity_mechanism": "机会结构(本cycle无新注册, 理由: ①rollover两腿均已在册—反弹再叩墙(第8触, 大概率lower-high)归TP-1947Z墙fade[4411,4415.5], 收破MA簇的动量延续归TP-182005R floor[4398.5,4401.5]; 中段4403-4408插第三书=与floor同波叠单, EV/风险比恶化明确否决; ②多头无有利区: rollover初现期接刀买MA簇=逆M15刚转空的结构, 且上方4442-4482 MA墙限制反弹空间; ③破位追多(收≥4417)EV为负等回踩): 本cycle变化=rollover初现使floor书由'备选接力腿'升级为'主路径'(若收<4411确认, floor书是唯一正确延续载体且已在册); 真正机会=解冻瞬间双书条件触发: TP-1947Z解冻后mid入墙带且收<4414.5即自动空(20:00收4412.06已满足, 余量2.44pt), TP-182005R解冻后mid≤4401.5自动接力; 差什么=唯quote解冻(mid偏离4406.61)恢复mid型触发; 风险点: 冻结若持续, TP-182005R 00:21Z、TP-1947Z 01:52Z先后自然到期零成本, 按真实价格下轮重建; engine stale规则: mid<4402 cancel TP-1947Z(冻结4406.61缓冲4.61pt)、mid<4392.5 cancel TP-182005R(缓冲14.1pt)",
+ "decision": "WAIT",
+ "confidence": 0.5,
+ "answers_14": {
+  "1": "XAUUSD bar源真价~4412.1(quote 4406.61冻结第9 cycle 120min不采信): M15 20:00收4412.06较19:45收4414.385回落2.33pt=7叩墙后首次收跌(rollover初现未确认); RSI 71.27→65.51退烧, er 0.425→0.31(trend→mixed), pos 77.7→72.2, 结构hhish4/llish5末棒down; 收4412.06仍在墙带内(>4411墙底1.06pt, >M15 MA20 4408.54约3.5pt); D1/H4价<MA(4464)空排背景不变; 在册双空书TP-1947Z墙fade+TP-182005R floor均PENDING(close-gate开: 20:00收4412.06<4414.5余量2.44pt); 无持仓; candle_latest stale@12:15Z不采信",
+  "2": "一致性: 部分, 短侧边际增强。同向: 7叩墙(4416/4423.96双压)后首次收跌+RSI 86.8→65.5连续退烧+er 0.591→0.31降至mixed+D1/H4价<MA空排=rollover初现链条完整; 反向/未决: 收4412.06未破墙底4411(余1.06pt)未破MA20 4408.5, 单根收跌不足证, H1/H4结构计数仍偏多(缓存滞后); 综合=neutral-lean-short(若收<4411确认则lean升), 由在册双书以受限触发表达, 收≥4417即证伪让位上行",
+  "3": "较20:17Z: bar推进一根, 20:00收4412.06 vs 19:45收4414.385=-2.33pt=7叩后首次收跌, 回墙带内下沿未破4411; RSI 71.27→65.51(-5.8续退烧, 峰值86.8累计-21), er 0.425→0.31(cat trend→mixed), pos 77.7→72.2, 结构hhish5/llish4→hhish4/llish5、last_vs_5ago up→down; quote仍4406.61第9 cycle(stall维持, tick 64→53/min仍流); 变化定性: rollover初现非确认, 上轮'等rollover或破墙'两分支中rollover分支概率升; 立场: neutral-lean-short不变, 不新增注册(双书覆盖两腿, 中段簇4403-4408插单=同波叠单否决), 若收<4411则floor书升级为主路径、墙fade书闲置待反弹",
+  "4": "机会: 本cycle无新注册=在册双书已覆盖rollover两腿: ①反弹再叩墙(第8触, lower-high)→TP-1947Z墙fade[4411,4415.5]止4418接(close-gate开余量2.44pt); ②rollover延续收破MA簇→TP-182005R floor[4398.5,4401.5]止4406于解冻后mid入带自动接力(本cycle升级为主路径); ③中段4403-4408不加第三书(同波叠单); 多头无有利区(rollover初现不接刀, 上方4442-4482 MA墙); 差什么=唯quote解冻(mid偏离4406.61)恢复mid型触发, 双书已前置武装; 冻结拖至到期(00:21Z/01:52Z)则按真价重建, 零成本",
+  "5": "机制: M15 17:00起7叩4411-4416墙(4416尖峰/4413.16/4414.365/4415.55/4413.58/4414.325/4414.385)均被4416+4423.96双压与D1/H4价<MA(4464)空排挡回; 本cycle首次收跌(4414.385→4412.06)=第7叩后边际买力衰竭兑现(RSI 86.8→65.5, er 0.591→0.31三轮降速, cat转mixed), rollover初现但未确认(未收破4411/MA20 4408.5); 空侧两腿在册: 墙带fade书(反弹第8触用)+floor书(破MA簇后动量延续用, 现为主路径), 触发均需quote解冻; 上行证伪线收≥4417明确; 无新信息需新增注册, engine逐cycle对在册书做触发判定",
+  "6": "触发具体价(在册, 本cycle无新单): ①TP-1947Z墙fade空: 解冻后mid∈[4411.0,4415.5]即市价空 AND M15收<4414.5(现20:00收4412.06满足, 余量2.44pt; 任一收≥4414.5关gate转惰性, 需后续收<4411且解冻复开); invalidation: mid≥4417或M15收≥4417→自撤; ②TP-182005R floor空(主路径): 解冻后mid∈[4398.5,4401.5]自动空, 止损4406; ③下行确认: M15收<4411=破墙底→rollover确认, floor书唯一延续载体; 上行: bar收≥4417=破墙, TP-1947Z撤, 下轮评估4420-4424回踩多, 本cycle不追; ④engine stale: mid<4402 cancel TP-1947Z(冻结4406.61缓冲4.61pt)、mid<4392.5 cancel TP-182005R(缓冲14.1pt); 到期: floor 00:21Z/墙fade 01:52Z(零成本自然归零)",
+  "7": "失效: 在册书: TP-1947Z mid≥4417或M15收≥4417(墙破fade证伪自撤); TP-182005R成交后收上4406(MA簇上方)止损证伪, 未成交00:21Z龄到期; TP-1947Z 01:52Z到期; engine stale: mid<4402 cancel TP-1947Z、mid<4392.5 cancel TP-182005R(冻结期仅理论, 解冻瞬间若mid已落线下方该书不复活); rollover假摔路径(收重回≥4414.5连续或≥4417): 墙fade书gate关转惰性、floor书需真价到4398.5-4401.5才动=双书自然闲置至到期零亏损; 大周期: D1/H4转上(需收>4443 M15 MA200)空侧作废, 现未及; 若bar源收≥4417本'空侧等待'整体失效转上行评估",
+  "8": "预期收益(在册口径, 本cycle零新注册): TP-1947Z墙fade R3.2/p0.42→EV+0.69R(0.5×8.25+0.3×19.25+0.2×27.75=15.4pt/4.75pt风险); TP-182005R floor R2.72/p0.45→EV约+0.61R(rollover初现使floor触发概率边际升); 双书若先后成交(反弹fade回落→floor接力)共享回落行情; 冻结期触发p受抑但未触发零成本; 上行突破支路(收≥4417回踩多4420-4424)潜在R≥2需破位真收后下轮注册; 本cycle强追破位多(市价~4418止4410TP 4424/4442.5): 0.35×1.9−0.65×1.0−0.07≈−0.06R负→否决",
+  "9": "预期损失: 在册双书各1.0R(TP-1947Z=4.75pt止4418; TP-182005R=6pt止4406), 独立止损不连锁, 均未成交无浮亏; 本cycle零新注册=零新增风险敞口; 三重纪律保持: 不叠同setup单(与1947Z同价位再注册=变相加仓)、中段4403-4408不插第三书(与floor同波叠单, 亏损不加仓精神延伸)、不逆势硬空(收≥4417空侧自撤); rollover假摔路径最大损失=零成交零成本",
+  "10": "成本: spread 0.34bps+slippage~0.1bps≈roundtrip 0.78bps≈0.35pt@4412≈0.07R(相对TP-1947Z 4.75pt止损基数); 双书挂book零持有成本; 本cycle WAIT零成本; 成本极低非决策障碍, 亦不构成'为摊薄成本而注册'的理由",
+  "11": "净EV算式: 在册TP-1947Z=0.42×3.2−0.58×1.0−0.07=+0.69R; TP-182005R=0.45×2.72−0.55×1.0−0.06≈+0.61R; 双书注册口径合计≈+1.30R>0(触发均前置quote解冻事件, 冻结期零成本不注销; 到期00:21Z/01:52Z自然归零零亏损); 本cycle新增中段第三空书(4403-4408与floor同波): 敞口+50%而EV不增→否决; 上行破位追多(close_above4417, entry~4418, 止4410=8pt, TP 4424@0.5/4442.5@0.5→均值1.9R, p0.35): 0.35×1.9−0.65×1.0−0.07≈−0.06R<0→否决, 等破位真收后回踩多重算",
+  "12": "再现: 4411-4416墙17:00Z起7触后首次收跌=经典'多次叩墙-边际衰竭(RSI 86.8→65.5, er 0.591→0.31)-rollover初现'结构, 同族形态高频复现; 双书触发(解冻+反弹入墙带收滞涨 / 解冻+floor带)均为可机械判定组合; 若rollover真确认(收<4411), floor书是唯一正确延续载体且已在册, 无需新注册; quote stall为数据层异常非市场形态, 解冻不可预测但engine每cycle对在册书判定, 解冻即自动执行; 冻结拖至到期则按真实价格重建, 触发点(墙带/floor带)与本次同构, 再现性完备",
+  "13": "WAIT(立场neutral-lean-short; rollover初现未确认, 由在册双空书表达, 本cycle无新注册)",
+  "14": "7叩墙后首收跌4414.385→4412.06, rollover初现但未破4411未确认; RSI65.5/er0.31续退烧, 在册双书覆盖两腿close-gate余量2.44pt; 追多EV负中段叠单否决; 就差quote解冻, 解冻即条件自动成交"
+ },
+ "cost_note": "spread_bps_now=0.34; slippage_bps~0.1(paper); total_roundtrip_bps~0.78≈0.35pt@4412≈0.07R(相对TP-1947Z 4.75pt止损); 在册双书挂book零持有成本; 本cycle WAIT零成本",
+ "ev_note": "在册TP-20260907T1947Z墙fade空: 0.42×3.2−0.58×1.0−0.07=+0.69R; TP-182005R floor空: 0.45×2.72−0.55×1.0−0.06≈+0.61R; 合计≈+1.30R注册口径(触发均需quote解冻, 冻结期零成本不注销; 到期00:21Z/01:52Z自然归零零亏损); 本cycle不新增注册(中段同波叠单与同setup叠单均否决; 破位追多EV−0.06R否决); 收<4411→floor书升主路径; 收≥4417空侧自撤, 下轮评估4420-4424回踩多; 差什么=quote解冻(mid偏离4406.61)即恢复全部可执行性",
+ "model": "deepseek/deepseek-v4-flash",
+ "prompt_version": "hermes-trader-v1-p0-m15-14Q 2026-09-07"
+}

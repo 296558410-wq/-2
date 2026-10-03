@@ -1,0 +1,223 @@
+{
+ "AUDIT_NOW_UTC": "2026-09-25T15:55:58.008141+00:00",
+ "ANOMALY": "NO",
+ "ENGINE_SHA256": "7d95645678cf0615c77c0d1c91177cf1652ca1fa6b1f509ec99e415dba55c25d",
+ "ENGINE_STATE": "MV-R1_BASELINE",
+ "AUTOMATION_RAW_JSON": "{\"id\": \"cd47547e-ae38-4b36-a585-8b041ee826bb\", \"owner\": {\"agentId\": \"main\", \"sessionKey\": \"agent:main:main\"}, \"name\": \"hermes-trader-m15-cycle\", \"enabled\": true, \"createdAtMs\": 1788781525848, \"agentId\": \"main\", \"schedule\": {\"kind\": \"cron\", \"expr\": \"2-59/15 * * * 0-5\", \"tz\": \"UTC\"}, \"sessionTarget\": \"isolated\", \"wakeMode\": \"now\", \"payload\": {\"kind\": \"agentTurn\", \"message\": \"【交易时段前置门 2026-09-12】步骤0(先做): exec 运行 `C:\\\\AIQuant\\\\.venv\\\\Scripts\\\\python.exe C:\\\\AIQuant\\\\research\\\\hermes\\\\trading_hours.py --gate`。退出码≠0(armed=false: 周末/非交易时段/未到开市前2小时) → 本周期只输出一行 {\\\"skipped\\\":\\\"MARKET_CLOSED\\\"} 并立即结束, 不执行任何后续步骤。只有退出码=0 才继续。\\n\\nHermes 交易员(主动猎手模式, demo 实盘执行): 1) 运行 C:\\\\AIQuant\\\\.venv\\\\Scripts\\\\python.exe research\\\\hermes\\\\trader_v1\\\\state_package.py; 2) 读 run_state/state_package_latest.json 的 market_state/data_quality 与蜡烛图 run_state/candle_latest.json(若有); 3) 决策(见下)写 run_state/decisions/<cycle紧凑>.json; 4) 运行 C:\\\\AIQuant\\\\.venv\\\\Scripts\\\\python.exe research\\\\hermes\\\\trader_v1\\\\engine.py --decide --exec demo 消费(触发+risk通过即自动建仓下单)。\\n\\n【交易哲学: 主动猎手, 非完美主义】每轮必须: a) 主动给出具体 setup(当前价距哪个 key level 多近、需什么 tick 级/盘中信号即可行动), 不允许只因'无收盘确认'就无限 WAIT; b) 价格进入有利区(区间边界/结构位/前高前低/回撤到 MA)且有盘中行为佐证(拒绝K形态、快速反弹/下探、量能变化) → 立即注册带盘中触发条件的计划(trigger 用 zone_touch/price_cross 实时判定, 不要求等下一根收盘); c) 明确 bias(至少 neutral-lean), 禁止无立场观望; d) 触发条件写具体价, 允许'贴近边界即计划, 触价自动成交'。\\n\\n【仓位纪律 2026-09-08 定案】qty_lots 只允许 0.01-0.05 手(区间内自选, 默认 0.01); 超出区间会被 engine 机械否决(risk veto)且计划即时作废不留存。持仓中不注册新开仓计划(单仓约束); 触发即自动成交, 止损止盈随单。\\n\\n输出 JSON: cycle/decision(LONG/SHORT/WAIT)/confidence/opportunity/opportunity_mechanism/mtf_agreement/answers_14(第1市场状态/第2一致性/第3M15变化/第4机会/第5机制/第6触发条件[具体价]/第7失效[具体价]/第8预期收益R/第9预期损失R/第10成本数值/第11净EV算式/第12再现/第13决策/第14理由≤100字)/plan(若 LONG/SHORT: direction/entry_zone{low,high}/trigger_condition(JSON dict 如 {\\\"zone_touch\\\":[low,high]} 或 {\\\"price_cross_up\\\":X})/invalidation_condition/stop_logic{type,level_price}/target_logic{levels:[{price,frac}]}/expected_R/expected_win_probability/probability_source/estimated_cost/spread_bps/slippage_bps/expected_net_EV{value,units,note}/maximum_holding_time/qty_lots(0.01-0.05))/model。\\n\\n要求: EV 仍须为正才 LONG/SHORT(成本已极低 0.3bps, 不是障碍); 亏损不加仓; 每轮必须评估'现在离可交易就差什么'并写明; WAIT 仅当确实无有利 setup 且说明等什么价触发。已有同 cycle 文件则跳过。静默; 摘要一行 trader_summary.txt。禁止真实账户/禁改 registry。\", \"timeoutSeconds\": 480, \"toolsAllow\": [\"read\", \"write\", \"apply_patch\", \"exec\", \"process\"]}, \"delivery\": {\"mode\": \"none\"}, \"state\": {\"lastRunAtMs\": 1790351220020, \"lastRunStatus\": \"ok\", \"lastStatus\": \"ok\", \"lastDurationMs\": 138029, \"lastDeliveryStatus\": \"not-requested\", \"lastFailureNotificationDeliveryStatus\": \"not-requested\", \"consecutiveErrors\": 0, \"consecutiveSkipped\": 0, \"scheduleActivatedAtMs\": 1790206833824, \"scheduleErrorCount\": 0, \"nextRunAtMs\": 1790352120000, \"lastDelivered\": false}, \"updatedAtMs\": 1790351358049, \"configRevision\": \"sha256:oBTIaJxRuMBKNm6kE6BEfx3NSImgXAnsRgVbbpHugoY\", \"nextRunAtMs\": 1790352120000, \"lastRunAtMs\": 1790351220020, \"lastRunStatus\": \"ok\", \"lastDelivered\": false, \"lastDeliveryStatu",
+ "AUTOMATION_ENABLED": true,
+ "AUTOMATION_STATUS": "ok",
+ "LAST_RUN_AT": "2026-09-25T15:47:00.020000+00:00",
+ "LAST_RUN_STATUS": "ok",
+ "NEXT_RUN_AT": "2026-09-25T16:02:00+00:00",
+ "SESSION_TARGET": "isolated",
+ "AGENT_ID": "main",
+ "SCHEDULE_KIND": "cron",
+ "TIMEZONE": "UTC",
+ "PAYLOAD_KIND": "agentTurn",
+ "PAYLOAD_MESSAGE": "【交易时段前置门 2026-09-12】步骤0(先做): exec 运行 `C:\\AIQuant\\.venv\\Scripts\\python.exe C:\\AIQuant\\research\\hermes\\trading_hours.py --gate`。退出码≠0(armed=false: 周末/非交易时段/未到开市前2小时) → 本周期只输出一行 {\"skipped\":\"MARKET_CLOSED\"} 并立即结束, 不执行任何后续步骤。只有退出码=0 才继续。\n\nHermes 交易员(主动猎手模式, demo 实盘执行): 1) 运行 C:\\AIQuant\\.venv\\Scripts\\python.exe research\\hermes\\trader_v1\\state_package.py; 2) 读 run_state/state_package_latest.json 的 market_state/data_quality 与蜡烛图 run_state/candle_latest.json(若有); 3) 决策(见下)写 run_state/decisions/<cycle紧凑>.json; 4) 运行 C:\\AIQuant\\.venv\\Scripts\\python.exe research\\hermes\\trader_v1\\engine.py --decide --exec demo 消费(触发+risk通过即自动建仓下单)。\n\n【交易哲学: 主动猎手, 非完美主义】每轮必须: a) 主动给出具体 setup(当前价距哪个 key level 多近、需什么 tick 级/盘中信号即可行动), 不允许只因'无收盘确认'就无限 WAIT; b) 价格进入有利区(区间边界/结构位/前高前低/回撤到 MA)且有盘中行为佐证(拒绝K形态、快速反弹/下探、量能变化) → 立即注册带盘中触发条件的计划(trigger 用 zone_touch/price_cross 实时判定, 不要求等下一根收盘); c) 明确 bias(至少 neutral-lean), 禁止无立场观望; d) 触发条件写具体价, 允许'贴近边界即计划, 触价自动成交'。\n\n【仓位纪律 2026-09-08 定案】qty_lots 只允许 0.01-0.05 手(区间内自选, 默认 0.01); 超出区间会被 engine 机械否决(risk veto)且计划即时作废不留存。持仓中不注册新开仓计划(单仓约束); 触发即自动成交, 止损止盈随单。\n\n输出 JSON: cycle/decision(LONG/SHORT/WAIT)/confidence/opportunity/opportunity_mechanism/mtf_agreement/answers_14(第1市场状态/第2一致性/第3M15变化/第4机会/第5机制/第6触发条件[具体价]/第7失效[具体价]/第8预期收益R/第9预期损失R/第10成本数值/第11净EV算式/第12再现/第13决策/第14理由≤100字)/plan(若 LONG/SHORT: direction/entry_zone{low,high}/trigger_condition(JSON dict 如 {\"zone_touch\":[low,high]} 或 {\"price_cross_up\":X})/invalidation_condition/stop_logic{type,level_price}/target_logic{levels:[{price,frac}]}/expected_R/expected_win_probability/probability_source/estimated_cost/spread_bps/slippage_bps/expected_net_EV{value,units,note}/maximum_holding_time/qty_lots(0.01-0.05))/model。\n\n要求: EV 仍须为正才 LONG/SHORT(成本已极低 0.3bps, 不是障碍); 亏损不加仓; 每轮必须评估'现在离可交易就差什么'并写明; WAIT 仅当确实无有利 setup 且说明等什么价触发。已有同 cycle 文件则跳过。静默; 摘要一行 trader_summary.txt。禁止真实账户/禁改 registry。",
+ "WAKE_MODE": "now",
+ "SECONDS_TO_NEXT_RUN": 361,
+ "V1_ENGINE_PROCESS": "NOT_RUNNING",
+ "CURRENT_CYCLE": "NOT_RUNNING",
+ "V1_MATCHING_PROCESSES": [],
+ "MT5_CONTEXT": "CONFIRMED",
+ "ACCOUNT_MASKED": "160***34",
+ "SERVER": "ForexTimeFXTM-Demo01",
+ "OPEN_POSITIONS": 1,
+ "PENDING_ORDERS": 0,
+ "POSITION_TICKET": 2377449557,
+ "POSITION_SYMBOL": "XAUUSD",
+ "POSITION_TYPE": "SELL",
+ "POSITION_VOLUME": 0.01,
+ "POSITION_PRICE_OPEN": 4277.28,
+ "POSITION_SL": 4299.0,
+ "POSITION_TP": 4257.0,
+ "POSITION_TIME": "2026-09-25T17:51:24+00:00",
+ "POSITION_TIME_MSC": 1790358684796,
+ "POSITION_MAGIC": 90002,
+ "POSITION_COMMENT": "hermes-demo",
+ "POSITION_REASON": 3,
+ "POSITION_SWAP": 0.0,
+ "POSITION_PROFIT": -0.87,
+ "POSITION_IDENTIFIER": 2377449557,
+ "POSITION_FINGERPRINT": "75cb9522be303bef67daad42e1efc9410d08c99299f85c99ea861ff7295b79f9",
+ "POSITION_FINGERPRINT_INPUTS": {
+  "ticket": 2377449557,
+  "symbol": "XAUUSD",
+  "type": "SELL",
+  "volume": 0.01,
+  "price_open": 4277.28,
+  "time": "2026-09-25T17:51:24+00:00",
+  "magic": 90002,
+  "comment": "hermes-demo",
+  "identifier": 2377449557
+ },
+ "LEDGER_EXISTS": "YES",
+ "LEDGER_SIZE": 242825,
+ "LEDGER_MTIME": "2026-09-25T14:51:24.870933+00:00",
+ "LEDGER_SHA256": "0b90493cae0cdf7b73056bc72b1e5752f35c3eb20f9306c098d26f4bec819261",
+ "LEDGER_LINE_COUNT": 173,
+ "LEDGER_SHA256_AT_READ": "0b90493cae0cdf7b73056bc72b1e5752f35c3eb20f9306c098d26f4bec819261",
+ "MATCH_WINDOWS": {
+  "time_window_hours": 72,
+  "basis": "POSITION_TIME ± 72h for candidate scan (declared, not widened)"
+ },
+ "DECISION_FOUND": "FOUND",
+ "REQUEST_FOUND": "NOT_FOUND",
+ "FILL_FOUND": "FOUND",
+ "OPEN_FOUND": "NOT_FOUND",
+ "CLOSE_FOUND": "FOUND",
+ "PNL_FOUND": "NOT_FOUND",
+ "LEDGER_MT5_STATE_CONFLICT": "UNKNOWN",
+ "LEDGER_LINK_STATUS": "EXACT",
+ "MATCH_DETAIL": {
+  "ticket_hits": [
+   168
+  ],
+  "identifier_hits": [
+   168
+  ],
+  "magic_hits": [],
+  "comment_hits": [],
+  "symbol_time_hits": [
+   85,
+   87,
+   89,
+   93,
+   94
+  ],
+  "time_window_used_hours": 72
+ },
+ "V1_MANAGED_STATUS": "V1_MANAGED",
+ "LAST_CYCLE_ARTIFACTS": [
+  {
+   "path": "research/hermes/trader_v1/run_state/state_package_latest.json",
+   "mtime": "2026-09-25T15:47:15.095192+00:00",
+   "size": 3217
+  },
+  {
+   "path": "research/hermes/trader_v1/run_state/statistics.json",
+   "mtime": "2026-09-25T15:49:00.047044+00:00",
+   "size": 5472
+  },
+  {
+   "path": "research/hermes/trader_v1/run_state/trader_summary.txt",
+   "mtime": "2026-09-25T15:49:05.896690+00:00",
+   "size": 1088
+  },
+  {
+   "path": "research/hermes/trader_v1/run_state/workflow_history.jsonl",
+   "mtime": "2026-09-25T15:49:00.055194+00:00",
+   "size": 23267
+  },
+  {
+   "path": "research/hermes/trader_v1/run_state/workflow_latest.json",
+   "mtime": "2026-09-25T15:49:00.047044+00:00",
+   "size": 2000
+  },
+  {
+   "path": "research/hermes/trader_v1/run_state/decisions/20260925T1547Z.json",
+   "mtime": "2026-09-25T15:48:59.877448+00:00",
+   "size": 3553
+  },
+  {
+   "path": "research/hermes/trader_v1/run_state/positions/POS-20260925T140419.json",
+   "mtime": "2026-09-25T15:48:59.877448+00:00",
+   "size": 1196
+  }
+ ],
+ "LAST_CYCLE_RUN_ID": "cd47547e-ae38-4b36-a585-8b041ee826bb",
+ "LAST_CYCLE_POSITION_AWARENESS": "UNKNOWN",
+ "LAST_CYCLE_EVIDENCE": {
+  "artifacts_in_window": 7,
+  "window": [
+   "2026-09-25T15:46:30",
+   "2026-09-25T15:53:00"
+  ],
+  "note": "runtime artifacts in the window listed; whether the cycle READ this position cannot be proven from filenames alone"
+ },
+ "AUTOMATION_PAYLOAD_FLAGS": {
+  "engine.py": true,
+  "state_package.py": true,
+  "trader_v1": true,
+  "positions": false,
+  "orders": false
+ },
+ "AUTOMATION_CAN_TOUCH_V1": "YES",
+ "STILLNESS_WINDOW_SECONDS": 60,
+ "STILLNESS_CHANGED_FILES": [],
+ "STILLNESS_MIN_AGE_SECONDS": 480.4,
+ "STATE_WRITE_IN_FLIGHT": "NO",
+ "LEDGER_CHANGED_DURING_AUDIT": "NO",
+ "ARCHIVE_CLASS_COUNTS": {
+  "STATE": 213,
+  "LEDGER": 1,
+  "STATISTICS": 1,
+  "DECISION_HISTORY": 157,
+  "RUNTIME": 667,
+  "OTHER": 2,
+  "REVIEWS": 102
+ },
+ "ARCHIVE_CLASS_SAMPLES": {
+  "STATE": [
+   "research/hermes/trader_v1/run_state/bars_cache.json",
+   "research/hermes/trader_v1/run_state/candle_latest.json",
+   "research/hermes/trader_v1/run_state/E2E_REPLAY_20260907T1247.md",
+   "research/hermes/trader_v1/run_state/opportunity_frequency_study.txt"
+  ],
+  "LEDGER": [
+   "research/hermes/trader_v1/run_state/plan_ledger.jsonl"
+  ],
+  "STATISTICS": [
+   "research/hermes/trader_v1/run_state/statistics.json"
+  ],
+  "DECISION_HISTORY": [
+   "research/hermes/trader_v1/run_state/workflow_history.jsonl",
+   "research/hermes/trader_v1/run_state/decisions/2026-09-25T1047Z.json",
+   "research/hermes/trader_v1/run_state/decisions/20260923T2347Z.json",
+   "research/hermes/trader_v1/run_state/decisions/20260923T2349Z.json"
+  ],
+  "RUNTIME": [
+   "research/hermes/trader_v1/run_state/tmp/active_1932Z.py",
+   "research/hermes/trader_v1/run_state/tmp/analyze_0602Z.py",
+   "research/hermes/trader_v1/run_state/tmp/analyze_0938Z.py",
+   "research/hermes/trader_v1/run_state/tmp/analyze_0947Z.py"
+  ],
+  "OTHER": [
+   "research/hermes/trader_v1/tmp/probe_0002Z.json",
+   "research/hermes/trader_v1/tmp/_sum_2017.txt"
+  ],
+  "REVIEWS": [
+   "research/hermes/trader_v1/memory/reviews/RV-TP-2026-09-22T0417Z-20260922053448.json",
+   "research/hermes/trader_v1/memory/reviews/RV-TP-20260907T2355Z-20260908042648.json",
+   "research/hermes/trader_v1/memory/reviews/RV-TP-20260908T0532Z-20260908060402.json",
+   "research/hermes/trader_v1/memory/reviews/RV-TP-20260908T063856-20260908080419.json"
+  ]
+ },
+ "ARCHIVE_CLASSIFIED_TOTAL": 1143,
+ "ARCHIVE_SCOPE_USED": "V1 root-relative path (trader_v1 prefix stripped before keyword match)",
+ "NEXT_CYCLE_RISK": "ELEVATED",
+ "AUTOMATION_FREEZE_REQUIRED": "YES",
+ "AUTOMATION_FREEZE_EXECUTED": "NO",
+ "ORDER_SEND": 0,
+ "POSITION_CLOSE": 0,
+ "POSITION_MODIFY": 0,
+ "PENDING_ORDER_CANCEL": 0,
+ "V1_STOP": 0,
+ "V1_RESTART": 0,
+ "LEDGER_CLEAR": 0,
+ "STATE_CLEAR": 0,
+ "RUN_ID_CHANGE": 0,
+ "ENGINE_WRITE": 0,
+ "V1_CONFIG_WRITE": 0,
+ "STRATEGY_CHANGE": 0,
+ "PARAMETER_CHANGE": 0,
+ "AUTOMATION_DISABLE": 0,
+ "AUTOMATION_UPDATE": 0,
+ "AUTOMATION_RUN": 0,
+ "GIT_COMMIT": "NONE",
+ "FORMAL_RESET": "FORBIDDEN",
+ "RESET_FREEZE_GATE": "FAIL",
+ "NEXT_STAGE_AUTHORIZED": "NO",
+ "TASK_STATUS": "V1_POSITION_RECONCILIATION_R17_COMPLETE"
+}

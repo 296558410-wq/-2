@@ -1,0 +1,59 @@
+{
+ "task": "V1_R2_FULL_AUTONOMOUS_OPTIMIZATION_R1",
+ "phase": "PHASE_1_AUTONOMOUS_DIAGNOSIS",
+ "frozen_before_analysis": true,
+ "frozen_at_utc": "2026-09-27T12:16:00+00:00",
+ "baseline": {
+  "c1_git_head": "0f3d5d3c88a701a80b42d520b2b510f1aa07ccf3",
+  "c1_ontology_hash": "8436866dfe71030ba7be036b2d73904ed2f817aa52673a5e27d583e931c354d8",
+  "c1_label_mapping_hash": "21e0f842edc14f6feee8cade3d6d919f879b6d36a58ffb056437b382428d7cf4",
+  "c1_forecast_hash": "cd21008d11c0f5124f4b94c6f07f376062c6002ab3b256f57382e537ecd23ac0",
+  "c15_target_registry_hash": "58022bdb5572d33a98d93af914fe7771378fc164c5593d0759c9bbcdbd475d88",
+  "c15_published": {
+   "persistence_M15": 0.1447,
+   "churn_M15": 0.6473,
+   "duration_M15_median": 1.0,
+   "duration_M15_mean": 1.544,
+   "transition_entropy_M15": 3.0114
+  }
+ },
+ "immutable_inputs": [
+  "research/hermes/trader_v1/v1_r2_market_reading/** (C1 + C1 blind + C1.5)",
+  "research/hermes/trader_v1/v1_r2_prediction_upgrade/** (Phase B R1-R13)",
+  "research/v3_alpha_discovery_r1/xauusd_m1_histdata.parquet",
+  "data/live_fxtm/ticks_*.parquet",
+  "research/hermes/trader_v1/run_state/** (live engine state)"
+ ],
+ "write_scope": "research/hermes/trader_v1/v1_r2_full_autonomous_optimization_r1/** ONLY",
+ "question": "Why is the frozen C1/C1.5 MARKET_BEHAVIOR state sequence dominated by 1-bar duration (churn 0.6473 at M15)? Attribute the cause rather than assume it.",
+ "hypotheses": {
+  "A_ONTOLOGY_CONFLICT": "The behaviour label is assigned by a priority chain over sub-engines; conflicting sub-labels force the top-level label to flip between rules. Test: decompose assignment source frequency and count bars where sub-engines disagree.",
+  "B_GRANULARITY": "The label set is finer than the timescale; duration measured in hours is stable while duration in bars is 1. Test: compare bar-duration and hour-duration across M5/M15/H1 and label entropy.",
+  "C_BAR_BOUNDARY_ALIASING": "Churn is concentrated at session/day/weekend boundaries where the bar clock resets level/ATR state. Test: state-change rate at boundaries vs interior.",
+  "D_MEASUREMENT_NOISE": "Threshold coincidences: many bars sit on rule thresholds so tiny measurement noise flips labels. Test: inject sub-threshold noise (0.01*ATR) at multiple seeds, measure label agreement.",
+  "E_GENUINE_MARKET_CHURN": "The market itself genuinely changes state every ~15 min at this timescale. Test: compare observed duration/churn against an IID-return surrogate and a block-bootstrap (block=48) surrogate built from the SAME returns with the SAME labeler.",
+  "F_NO_HYSTERESIS": "The frozen rules have no minimum-duration/persistence requirement, so single-bar excursions are recorded as full transitions. Test: apply a diagnostic carry-forward hysteresis (k=2,3,5) to the SAME frozen labels and measure duration inflation.",
+  "G_UNKNOWN_LEAKAGE": "NO_DEFINED_STATE / UNKNOWN_REASON bars are emitted as their own label, inflating apparent transitions. Test: count UNKNOWN/NO_DEFINED bars and measure churn if they carry forward the previous defined state (diagnostic only).",
+  "H_INSTRUMENT_SCALE": "Our re-implementation misapplies the frozen rules (scale/window error). Test: reproduce the published C1.5 metrics on the identical inputs; mismatch => instrument fault, fix instrument before attributing cause."
+ },
+ "decision_rules": {
+  "instrument_gate": "if hypothesis H fails (reproduction off by >0.001 absolute on persistence or churn), STOP attribution; fix instrument first",
+  "primary_metric": "state_changes_per_bar (churn)",
+  "secondary_metrics": ["duration median/mean/p90", "persistence at registered horizon", "label entropy", "UNKNOWN rate"],
+  "attribution_rule": "a hypothesis is SUPPORTED only if its test metric separates from the null by the pre-registered margin (churn delta >= 0.05 absolute OR duration-median delta >= 1.0 bar) AND the effect is stable across >= 2 timeframes or >= 2 seeds",
+  "no_tuning": "no threshold in the frozen ontology may be changed; every perturbation is diagnostic and reported as a delta, never adopted"
+ },
+ "forbidden": [
+  "editing C1/C1.5 or Phase B artifacts",
+  "changing any frozen ontology/registry/parameter",
+  "future returns / PnL / win-rate as label or feature",
+  "order_send / order_check / broker write",
+  "live/shadow/forward enablement"
+ ],
+ "seeds": [20260927, 20260928, 20260929],
+ "data": {
+  "short_tick_m15": "v1_r2_prediction_upgrade/v1_r2_research_runs/V1_R2_RUN_B4_20260926T123252/m15_tick_bid.parquet",
+  "long_hist_m1": "research/v3_alpha_discovery_r1/xauusd_m1_histdata.parquet",
+  "long_range": ["2025-01-01T23:00Z", "2026-09-18T21:45Z"]
+ }
+}

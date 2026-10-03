@@ -1,0 +1,111 @@
+{
+ "task": "V1_R4_HERMES_B_INDEPENDENT_AUDIT_ENGINE",
+ "registry_id": "v1r4-audit-registry-r1",
+ "frozen": true,
+ "frozen_before_any_audit": true,
+ "frozen_at_utc": "2026-09-27T14:37:07.050493+00:00",
+ "r3_immutable": true,
+ "r3_baseline_hash": "4c33e39e59360c3843c19efe9f3c1f3596122929e4c6ababd66cc0ca7c9fea29",
+ "stages": [
+  "BLIND_AUDIT",
+  "ADVERSARIAL_AUDIT",
+  "POST_OUTCOME_AUDIT"
+ ],
+ "blind_rule": "Blind Audit receives ONLY the PIT context — no Hermes-A forecast, no outcome",
+ "adversarial_rule": "Adversarial Audit receives PIT context + Hermes-A forecast — still NO outcome",
+ "post_outcome_rule": "Post-Outcome Audit receives PIT context + Hermes-A forecast + ACTUAL outcome; outcome must never be written back into R3",
+ "verdicts": [
+  "AGREE",
+  "PARTIAL_AGREE",
+  "DISAGREE",
+  "INSUFFICIENT_EVIDENCE"
+ ],
+ "dimensions": [
+  "CURRENT_STATE",
+  "STRUCTURE",
+  "MECHANISM",
+  "PRIMARY_SCENARIO",
+  "ALTERNATIVE_SCENARIO",
+  "EXPECTED_TRANSITION",
+  "DIRECTION",
+  "HORIZON",
+  "CONFIDENCE",
+  "INVALIDATION",
+  "ABSTENTION"
+ ],
+ "sample": {
+  "source": "R3 frozen paired blind points",
+  "points": [
+   "20260720",
+   "20260723",
+   "20260726",
+   "20260729",
+   "20260801",
+   "20260804",
+   "20260807",
+   "20260810",
+   "20260813",
+   "20260816",
+   "20260822",
+   "20260825",
+   "20260828",
+   "20260831",
+   "20260903",
+   "20260906",
+   "20260912",
+   "20260915"
+  ],
+  "n": 18,
+  "selection_rule": "inherited from R3 (deterministic 3-day sample); NOT re-selected for this audit",
+  "seed": "n/a (inherited)",
+  "effective_n": 18,
+  "no_reselection": true
+ },
+ "metrics_mandatory": [
+  "agreement_rate",
+  "partial_agreement_rate",
+  "disagreement_rate",
+  "insufficient_rate",
+  "state_audit",
+  "transition_audit",
+  "scenario_audit",
+  "direction_audit",
+  "timing_audit",
+  "counter_evidence_detection",
+  "invalidation_quality",
+  "confidence_calibration",
+  "abstention_quality"
+ ],
+ "forbidden_outputs": [
+  "profit_score",
+  "win_probability",
+  "expected_profit",
+  "future_return",
+  "pnl"
+ ],
+ "focus_checks": [
+  "explanation_vs_prediction",
+  "kline_overreliance",
+  "mtf_conflict_ignored",
+  "crossmarket_misuse",
+  "proxy_as_direct",
+  "hindsight"
+ ],
+ "hard_safety": {
+  "ORDER_SEND": 0,
+  "ORDER_CHECK": 0,
+  "BROKER_WRITE": 0,
+  "FORWARD": "OFF",
+  "SHADOW": "OFF",
+  "LIVE": "OFF",
+  "V2_WRITE": 0,
+  "V3_WRITE": 0,
+  "BOUNDARY_VIOLATION": 0
+ },
+ "prompt_hashes": {
+  "blind": "d515a26c4bf5798788e3644dd38f0e5ef06b607836de1bcd3f3bc72e167c5162",
+  "adversarial": "71056210e753bd53815a50d1d4bcb8a69e142d00e588dd51e93a835ede2b2a0b",
+  "post_outcome": "454b308e0dfa4fdefd3cc087cc4da1948dd2e064d9e9f3696dac4afb7b32390a"
+ },
+ "registry_hash": "aee7185f50086cf32e9b17616b142bdd7b645a1b2aed35bc2c5af6fc0bdbb91c"
+}

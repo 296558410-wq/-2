@@ -1,0 +1,47 @@
+{
+ "task": "V1_R8_TARGET_REDESIGN_A",
+ "amendment": 1,
+ "ts_utc": "2026-09-28T10:48:23.294797+00:00",
+ "made_before_validation": true,
+ "validation_started": false,
+ "reason": "the original rule ranked ONLY by stability_score, but the three stability scores are within 0.0003 (a numerical tie), so it selected the lowest-information horizon. The pre-registration text says to compare stability AND information.",
+ "original_rule": "SELECTED_HORIZON = argmax over the pre-registered set {4,8,16} of stability_score, tie-broken by information_score, where stability_score = mean(1-boundary_disagreement, 1-TV(dev,blind), min(1, min_class_share_blind/0.25)) and information_score = max(0, balanced_acc - chance).",
+ "original_selected_horizon": 16,
+ "original_registry_hash": "7ac48d2adefbbc26c5774149f1c19d3f712acf143b68b1f450ae3b9a243f4dc7",
+ "stability_tie_tolerance": 0.005,
+ "stability_tied_horizons": [
+  "16",
+  "4",
+  "8"
+ ],
+ "amended_rule": "SELECTED_HORIZON = among horizons whose stability_score is within 0.005 of the maximum, argmax information_score, tie-broken by stability_score.",
+ "amended_selected_horizon": "4",
+ "selection_trace": {
+  "16": {
+   "stability_score": 0.9612,
+   "information_score": 0.1454,
+   "balanced_acc": 0.4787,
+   "chance": 0.3333,
+   "min_class_share_blind": 0.285,
+   "stable": true
+  },
+  "4": {
+   "stability_score": 0.9609,
+   "information_score": 0.2244,
+   "balanced_acc": 0.5577,
+   "chance": 0.3333,
+   "min_class_share_blind": 0.2858,
+   "stable": true
+  },
+  "8": {
+   "stability_score": 0.961,
+   "information_score": 0.2049,
+   "balanced_acc": 0.5382,
+   "chance": 0.3333,
+   "min_class_share_blind": 0.2854,
+   "stable": true
+  }
+ },
+ "no_validation_peek": "R8-B blind validation has not been run; no outcome information was consulted",
+ "amendment_hash": "e624c9605c75bc430d1e93efe4cfc6b30e49ce93b7158ab05b671f4ed4bb7291"
+}

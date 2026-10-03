@@ -1,0 +1,64 @@
+{
+ "schema": "v3_alpha_postmortem_data_leakage/1",
+ "generated_utc": "2026-09-21T20:23:18.281416+00:00",
+ "task": "V3-HFT-ALPHA-POSTMORTEM-001",
+ "input_freeze_sha256": "557bcc3c96338c1261f8a5b70371a6a679ff61ec433fbd24234aabf782b8a4d0",
+ "folds": {
+  "train": [
+   "2026-08-04",
+   "2026-08-22"
+  ],
+  "val": [
+   "2026-08-24",
+   "2026-09-05"
+  ],
+  "test": [
+   "2026-09-07",
+   "2026-09-22"
+  ]
+ },
+ "checks": {
+  "chronological_folds": {
+   "result": "PASS",
+   "evidence": "run_experiments.py L41-43 FOLDS by UTC day number; fold assigned by day, no shuffle"
+  },
+  "purge_embargo_equals_h": {
+   "result": "PASS",
+   "evidence": "L256-258 purge = (train & fwd_day>=VAL_start)|(val & fwd_day>=TEST_start)"
+  },
+  "feature_causality_pit": {
+   "result": "PASS",
+   "evidence": "feature_builder.compute_tick_features uses only ts<=i (rolling/lag); grid as-of = searchsorted(ts,grid,'right')-1 (last tick <= instant)"
+  },
+  "normalization_train_only": {
+   "result": "PASS",
+   "evidence": "run_experiments.py L314/L424 mu,sd = Xi[train].mean(0)/std(0); applied to val/test"
+  },
+  "no_interpolation": {
+   "result": "PASS",
+   "evidence": "forward_labels picks first real tick >= t+h; gaps -> undefined/clean=false; never filled"
+  },
+  "test_used_for_model_selection": {
+   "result": "PASS",
+   "evidence": "L343-348 best family = argmax(val_net_edge_usd); model loop selects on VAL; no selection key uses test"
+  },
+  "test_metrics_observed_during_screening": {
+   "result": "MINOR_EXPOSURE",
+   "evidence": "L319 run_config evaluates BOTH val and test on every candidate; test_net_edge_* written into model_manifest.iteration_log. Not used to select, but TEST was de-facto observed 30x -> weakens literal 'TEST never used before final'."
+  },
+  "threshold_selection_leakage": {
+   "result": "PASS",
+   "evidence": "position threshold = cost c_bp (frozen cost), not tuned on test"
+  },
+  "cost_latency_selection_leakage": {
+   "result": "PASS",
+   "evidence": "cost tiers and latency grid are frozen; latency uses real ticks via searchsorted, not re-optimised"
+  },
+  "overlap_handling": {
+   "result": "PASS",
+   "evidence": "rho=h/median_dt; effective_n=n/max(rho,1); ttest on non-overlapping sub-sample; block bootstrap block=max(50,10*rho)"
+  }
+ },
+ "verdict": "PASS",
+ "verdict_note": "No data leakage into selection. One documented MINOR_EXPOSURE: TEST metrics were computed/logged during the 30-iteration screen (not used to select). A negative result cannot be inflated by test peeking."
+}

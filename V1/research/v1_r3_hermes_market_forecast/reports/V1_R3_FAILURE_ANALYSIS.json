@@ -1,0 +1,53 @@
+{
+ "task": "V1_R3_HERMES_MARKET_FORECAST_ENGINE",
+ "stage": "FAILURE_ANALYSIS",
+ "ts_utc": "2026-09-27T14:27:34.130776+00:00",
+ "outcome": "HERMES_PREDICTIVE_CAPABILITY = UNSUPPORTED on the STATE target (Hermes 0.333 vs PREVIOUS_STATE 0.389)",
+ "what_hermes_did_well": {
+  "TRANSITION_accuracy": 0.6111,
+  "SCENARIO_COVERAGE": 0.8333,
+  "INVALIDATION_present_rate": 1.0,
+  "context_value_FULL_vs_PRICE_ONLY_STATE": 0.119
+ },
+ "root_causes": [
+  {
+   "cause": "SAMPLE SIZE (effective N)",
+   "detail": "18 matched blind points; scoring noise ~ +/-0.11 at this N. Cannot separate 0.333 from 0.389 reliably.",
+   "severity": "HIGH"
+  },
+  {
+   "cause": "TARGET DIFFICULTY / MARKET",
+   "detail": "STATE_V2(t+8) is itself weakly predictable in this window; the frozen model also only reaches 0.333.",
+   "severity": "HIGH"
+  },
+  {
+   "cause": "LABEL EXTRACTOR",
+   "detail": "Hermes emits free text; the destination-state parser may drop information (expected_state_transition is prose).",
+   "severity": "MEDIUM"
+  },
+  {
+   "cause": "CONTEXT COVERAGE",
+   "detail": "cross-market only 63 days; GLD/GC/COT/ETF/news UNKNOWN; L4 mechanism is candidate-only.",
+   "severity": "MEDIUM"
+  },
+  {
+   "cause": "PROMPT",
+   "detail": "prompt favours structured scenario reasoning over single-label classification; not tuned (nor re-tuned) after seeing blind results.",
+   "severity": "LOW"
+  },
+  {
+   "cause": "MODEL",
+   "detail": "single model, default temperature; no model selection on a development set.",
+   "severity": "LOW"
+  }
+ ],
+ "directional_evidence": {
+  "FULL_STATE": 0.3333,
+  "PRICE_ONLY_STATE": 0.2143,
+  "FROZEN_MODEL_STATE": 0.3333,
+  "PREVIOUS_STATE": 0.3889,
+  "note": "full context DOES beat price-only (+0.119), so the context layer carries signal even though it does not beat the strongest simple baseline"
+ },
+ "no_forced_success": true,
+ "prompt_not_modified_after_blind": true
+}

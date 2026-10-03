@@ -1,0 +1,107 @@
+{
+ "decision_id": "DEC-2026-09-21T13:32Z",
+ "cycle": "2026-09-21T13:32Z",
+ "utc_ts": "2026-09-21T13:32:00Z",
+ "symbol": "XAUUSD",
+ "decision": "SHORT",
+ "confidence": 0.55,
+ "bias": "SHORT-lean, but ONLY at the fresh 20-bar high 4374.95 (fade the retest from below), NOT at the 4362.7-4363.8 MA cluster: the new shape-matched poke-fail analog (n=26) says the cluster fade is NEGATIVE (p 0.333), i.e. the box is more likely to resolve UP through the cluster - which is exactly the route that carries price into the armed 4374.0-4375.5 supply.",
+ "opportunity": "swing_high_fade",
+ "opportunity_mechanism": "Failed poke above the M15 MA200 cluster + fresh overhead supply at the 20-bar high. The 13:15Z M15 bar (o4362.93 h4369.52 l4360.61 c4364.38, vol 2693) pushed to 4369.52 and CLOSED above the whole cluster (M15 MA200 4362.738, H1 MA50 4363.019, H1 MA20 4363.76), then the forming 13:30Z bar fell straight back to 4356.25 (o4364.41 h4364.75 l4356.13, vol 583) = the poke failed and price is back inside the 4351.11-4374.95 chop box. Two distinct measured reads follow from that shape: (a) fading the cluster itself is NEGATIVE (read-only probe run this cycle, n=26, p 0.333, SL +7.0/TP -10.0, gross -0.191R), while (b) fading the retest of the prior-20-bar high from below is POSITIVE (same probe run, n=42, p 0.537, SL +6.0/TP -8.0, gross +0.253R). The prior-20-bar high today IS 4374.95 - the 12:00Z impulse high and the top of the failed leg - so the trade is to sell the retest of 4374.95 from below with the measured 6.0pt stop / 8.0pt first target, and to leave the cluster alone.",
+ "mtf_agreement": "mixed_neutral",
+ "answers_14": {
+  "1": "Market state: pkg D1 range (er 0.091, close 4378.645 under MA20 4419.98, RSI 45.4, pos_in_range 51.4, hi60 4696.87/lo60 4042.58); pkg H4 mixed (er 0.302, RSI 65.1, pos 57.4); pkg H1 trend (er 0.438, RSI 28.1 = lagged washout read); pkg M15 range (er 0.036, pos_in_range 25.2). Fresh MT5 read 13:32:36Z (server 16:32): M15 close 4356.25, MA20 4355.54 / MA50 4357.653 / MA200 4362.738, ATR14 9.669, RSI14 51.96, hi20 4374.95, lo20 4339.98 = lo60, hi60 4383.42; H1 close 4356.25 < MA20 4363.76 and < MA50 4363.019, > MA200 4343.294, RSI 42.7, ATR14 15.742; H4 close 4356.25 > MA20 4348.002 > MA50 4340.68, RSI 60.15, ATR14 32.355 (constructive); D1 close 4356.25 < MA20 4406.745, RSI 52.11, ATR14 97.789, Monday o4380.36 h4383.42 l4339.98 = 43.44pt day range, price at 37.5% of it. Live quote: bid 4356.25 / ask 4356.38, mid 4356.315, spread 0.13pt = 0.298bps, tick 16:32:36.124 server. Book: FLAT - MT5 positions_get [] and demo160759434 balance = equity = margin_free 1971.70, i.e. POS-20260921T1147Z LONG 0.01 @4358.29 was closed by the broker at a profit (balance 1961.81 -> 1971.70 while the 13:15Z bar ran to 4369.52, above its T1 4367.5), so the single-position slot is FREE; the run_state position file still says OPEN and the engine's reconcile pass owns that bookkeeping.",
+  "2": "Consistency: mixed_neutral - H4 constructive (close > MA20 > MA50, RSI 60.15) and M15 has held higher lows off 4339.98, but H1 is capped by both short H1 MAs (RSI 42.7) and D1 is still 50pt under its MA20; the frames agree on a 4351-4375 chop box, not on direction, and the last bar just failed a poke above the box's MA cluster.",
+  "3": "M15 change vs 13:17Z: the 13:15Z bar (o4362.93 h4369.52 l4360.61 c4364.38 vol 2693) pushed 3.9pt ABOVE the prior cap and closed 4364.38, i.e. above the entire cluster (M15 MA200 4362.738, H1 MA50 4363.019, H1 MA20 4363.76) - the first close above it since the 12:15Z failed re-entry - and it also tagged the 4369.52 level that had capped nothing (the earlier rejections were 4363.35/4363.65/4371.07). Then the forming 13:30Z bar (o4364.41 h4364.75 l4356.13 c4356.25, vol 583 so far) fell 8.5pt back BELOW the cluster: the poke was not held, so price is back inside the box and the overhead 4374.95 high is the untested supply. Also, the open LONG was closed at a profit on that same 13:15Z spike (balance 1961.81 -> 1971.70), so the book is flat.",
+  "4": "Opportunity: SHORT the retest of the fresh 20-bar high 4374.95 from below - the only positive measured structure on the board this cycle. Concretely: zone 4374.0-4375.5 (17.7pt above mid), trigger zone_touch, stop 4381.0 (the probe's exact +6.0pt offset, 0.55pt above the 12:00Z high 4374.95 and 2.4pt under the Monday-high shelf 4383.42), first target 4367.0 (the probe's exact -8.0pt offset), measured p 0.537 n=42, R_T1 1.24-1.31, net EV +0.145R. The competing cluster fade is now measured NEGATIVE (n=26 p 0.333) and is deliberately NOT armed.",
+  "5": "Mechanism: overhead supply at the box top, refreshed by a failed poke. The 13:15Z bar closed above the MA cluster and immediately failed (13:30Z back to 4356.25), and the level it never reached - 4374.95, the 12:00Z impulse high - sits just under the Monday high 4383.42, with the 4371.07/4371.18 rejections 4pt below it. Fading the FIRST touch of the prior-20-bar high from below (while price is under the M15 MA200) measured p 0.537, R 1.333 over n=42 in the same 3000-bar MT5 sample; the same events with a deeper -12.5pt target drop to p 0.316 (gross -0.026R), so only the tight 8pt first target is supported - hence T1 4367.0 and the stop kept tight at 4381.0. The opposite-side read (the poke-fail cluster fade) is what tells us the box resolves up into this zone rather than down out of it.",
+  "6": "Trigger conditions in concrete prices: {zone_touch: [4374.0, 4375.5]} - the engine fills at market on the first sample whose mid is inside that band, no M15 close required (mid 4356.315 is 17.7pt below the band, i.e. a rally of ~1.8x the M15 ATR14 9.669). Single plan this cycle. Nothing else is armed: the old TP-20260921T1247Z SHORT was already cancelled with exec_fail:position_busy at 13:17Z.",
+  "7": "Invalidation in concrete prices: {price_cross_up: 4378.5} - acceptance more than 3pt above the zone top kills the plan (that opens 4383.42 Monday high then 4397.07); once filled the broker stop 4381.0 governs. Downside structure for the targets: 4367.0 (top of the box's lower half, above the 4362.738 MA200), 4361.5 (the cluster), 4351.5 (the 4351.11/4351.47 double bottom), and if that gives way 4348.002 (H4 MA20) / 4340.68 (H4 MA50) / 4339.98 (day low).",
+  "8": "Expected return: headline fill at the zone centre 4374.75 gives 1R = 4381.0 - 4374.75 = 6.25pt and T1 4367.0 = 7.75pt = 1.24R; the level frame (fill at 4374.95, the measured level) gives 1R 6.05pt and R_T1 1.314; the deepest ladder rung: T2 4361.5 = 13.25pt = 2.12R, T3 4351.5 = 23.25pt = 3.72R (quoted as geometry only - the demo banks tp_levels[0] = 4367.0).",
+  "9": "Expected loss: 1R = 6.25pt = 6.25 USD = 0.317% of the 1971.70 balance (worst in-zone fill 4374.0 -> 7.00pt = 7.00 USD = 0.355%), under the 1% per-trade cap; notional = 0.01 lot x 100 oz x 4374.75 = about 4375 USD, far under the 25000 USD cap; no add, no averaging, no re-sizing after the earlier stop-outs.",
+  "10": "Cost: live spread 0.13pt on mid 4356.315 = 0.298bps (tick 16:32:36.124 server) + 0.30bps modelled slippage = 0.598bps round trip = about 0.26 USD per 0.01 lot = 0.042R of the headline 6.25pt 1R; far below the 1.0bps entry ceiling, so cost is not the obstacle.",
+  "11": "Net EV: 0.53 x 1.24 - 0.47 - 0.042 = +0.145R (breakeven p = 0.451). Frames: measured p 0.537 -> +0.161R; zone-high fill 4375.5 (1R 5.5pt, R_T1 1.545) -> 0.53 x 1.545 - 0.47 - 0.047 = +0.302R; worst in-zone fill 4374.0 (1R 7.0pt, R_T1 1.000) -> 0.53 x 1.0 - 0.47 - 0.037 = +0.023R = positive at every fill inside the zone. Cost 0.3bps is not the obstacle.",
+  "12": "Reproducibility: read-only probes run this cycle - run_state/tmp/q_20260921T1332Z.py (live MT5 tick + account + positions + 300 M15 / 300 H1 / 200 H4 / 60 D1 bars with MA20/50/200, ATR14, RSI14, hi/lo20-60, day range) and run_state/tmp/baserate_1332Z_swinghigh.py (3000 MT5 M15 bars; event = first touch of the prior-20-bar high from below with the previous close below M15 MA200; S1c SL+6.0/TP-8.0 n=42 22tp/19sl/1open p 0.537 R 1.333 gross +0.253R; S1a same events SL+6.0/TP-12.5 p 0.316 gross -0.026R; S1e unfiltered n=110 p 0.32) and run_state/tmp/baserate_1332Z_pokefail.py (the negative cluster fade: bar i-1 close above MA200 then bar i close below, then first touch from below; P1 SL+7/TP-10 n=26 p 0.333 gross -0.191R; P5 with a falling-MA200 filter n=14 p 0.692 - not applicable, the live MA200 is flat-to-rising 4362.195 -> 4362.485 -> 4362.738). No orders, no registry changes, no manual ledger surgery; this cycle writes only this decision file.",
+  "13": "Decision: SHORT - positive measured EV (+0.145R headline, +0.023R even at the worst in-zone fill), slot FREE (book FLAT, balance 1971.70), qty 0.01 inside [0.01,0.05], spread 0.298bps << 1.0bps ceiling.",
+  "14": "SHORT 4374.0-4375.5 (fresh 20-bar high 4374.95, failed poke above cluster), SL 4381.0, T1 4367.0, p 0.537 n=42, EV +0.145R; cluster fade measured negative, skipped."
+ },
+ "plan": {
+  "plan_id": "TP-20260921T1332Z",
+  "direction": "SHORT",
+  "entry_zone": {
+   "low": 4374.0,
+   "high": 4375.5
+  },
+  "trigger_condition": {
+   "zone_touch": [
+    4374.0,
+    4375.5
+   ]
+  },
+  "invalidation_condition": {
+   "price_cross_up": 4378.5
+  },
+  "stop_logic": {
+   "type": "above_the_fresh_20-bar_high_4374.95_(the_12:00Z_impulse_high_and_the_top_of_the_failed_leg)_plus_the_measured_probe_offset_of_+6.0pt;_also_0.55pt_above_the_13:15Z_poke_high_4369.52_and_the_4371.07/4371.18_rejections_and_2.4pt_under_the_Monday-high_shelf_4383.42_(a_run_to_4383.4_is_a_deliberate_stop)",
+   "level_price": 4381.0
+  },
+  "target_logic": {
+   "levels": [
+    {
+     "price": 4367.0,
+     "frac": 0.5
+    },
+    {
+     "price": 4361.5,
+     "frac": 0.3
+    },
+    {
+     "price": 4351.5,
+     "frac": 0.2
+    }
+   ]
+  },
+  "expected_R": 1.24,
+  "expected_win_probability": 0.53,
+  "probability_source": "Read-only geometry-matched base-rate probe run this cycle: run_state/tmp/baserate_1332Z_swinghigh.py over 3000 MT5 XAUUSD M15 bars (2026-07-21 -> 2026-09-21, non-overlapping, intrabar ambiguity -> SL, horizon 8 bars). Event = price's previous close below the M15 MA200 and then the FIRST touch of the prior-20-bar high from below (the level that is 4374.95 today); entry at that level, SL +6.0pt, T1 -8.0pt, R 1.333. Result n=42: 22 tp / 19 sl / 1 open -> p 0.537, gross +0.253R. Same events with the deeper target SL +6.0/TP -12.5: n=42, 12 tp / 26 sl / 4 open -> p 0.316, gross -0.026R (only the tight 8pt first target is supported, which is why T1 is 4367.0 and not lower). Cross-checks on the same bars: prior-10-bar high variant n=62 p 0.356 (+0.098R), prior-60-bar high n=10 p 0.400 (+0.233R, too thin to use), unfiltered (no below-MA200 condition) n=110 p 0.32, horizon-16 variant n=35 p 0.286 (-0.118R => the edge decays with time, so maximum_holding_time stays M15*8). p held to 0.53 (below the measured 0.537) for the H4 still being constructive (close > MA20 > MA50, RSI 60.15), the possibility that the fill prints at the zone low 4374.0 instead of the level, and the general box regime. The competing cluster fade was probed in the same cycle (run_state/tmp/baserate_1332Z_pokefail.py: bar i-1 close above MA200, bar i close below, then first touch from below; n=26, p 0.333, gross -0.191R) and is why this plan fades the high instead of the MA cluster.",
+  "estimated_cost": {
+   "spread_bps": 0.298,
+   "slippage_bps": 0.3,
+   "roundtrip_bps": 0.598,
+   "roundtrip_usd_per_0.01lot": 0.26
+  },
+  "spread_bps": 0.298,
+  "slippage_bps": 0.3,
+  "expected_net_EV": {
+   "value": 0.145,
+   "units": "R",
+   "note": "Headline frame: fill at the zone centre 4374.75, 1R = 6.25pt (stop 4381.0), R_T1 = 1.24 (T1 4367.0), p = 0.53, c = 0.042R -> EV = 0.53 x 1.24 - 0.47 - 0.042 = +0.145R; breakeven p = 0.451. Sensitivity: p 0.537 (measured analog) -> +0.161R; p 0.50 -> +0.103R; p 0.451 -> 0.000R. Level frame (fill 4374.95, 1R 6.05pt, R_T1 1.314, c 0.043R): +0.200R. Zone-high frame (fill 4375.5, 1R 5.5pt, R_T1 1.545, c 0.047R): +0.302R. Worst in-zone fill (4374.0, 1R 7.0pt, R_T1 1.000, c 0.037R): +0.023R - still positive, so the plan does not depend on the fill landing at the level. Demo banks tp_levels[0] = 4367.0 only; the 4361.5/4351.5 rungs are geometry."
+  },
+  "maximum_holding_time": "M15*8",
+  "qty_lots": 0.01
+ },
+ "gap_to_tradable": "PRICE only, 17.7pt of it - and nothing else. The armed band [4374.0, 4375.5] sits 17.7pt above the live mid 4356.315 (~1.8x the M15 ATR14 9.669), so the trigger is a rally back through the 4362.7-4363.8 MA cluster into the 4374.95 high, and the engine will fill at market on the first sample inside the band - no M15 close confirmation required. Everything else is already satisfied: spread 0.298bps << the 1.0bps ceiling, data fresh (pkg live_days 11, live_ticks 2,175,075+, context_days 35, gaps[]), qty 0.01 inside [0.01, 0.05], notional ~4375 USD << the 25000 USD cap, 1R 6.25 USD = 0.317% of the 1971.70 balance, and the POSITION SLOT IS FREE (broker positions_get []; the LONG POS-20260921T1147Z was closed at a profit, balance 1961.81 -> 1971.70). The only administratively open item is the stale run_state position file for POS-20260921T1147Z, which still reads OPEN while the broker is flat - that is engine-owned reconcile bookkeeping and this layer did not touch it. If instead price breaks the box floor 4351.11 first, this plan simply never fills and ages out.",
+ "bench_not_registered": [
+  "Fade of the 4362.7-4363.8 MA cluster (M15 MA200 4362.738 + H1 MA50 4363.019 + H1 MA20 4363.76) - the plan armed at 12:47Z and the shape that just printed: REJECTED on this cycle's geometry-matched read. run_state/tmp/baserate_1332Z_pokefail.py, event = close above MA200 then close back below, then first touch from below: n=26, SL +7.0/TP -10.0 -> 8 tp / 16 sl / 2 open, p 0.333, gross -0.191R; symmetric SL +7/TP -7 -> p 0.417, gross -0.166R. This supersedes the older n=41 first-touch read (p 0.564) whose sample mixes clean-below cases with poke-fail cases; today's is a poke-fail, and it is the losing subset. Not armed.",
+  "LONG the same cluster on the complement of that read (reclaim path, entry at the MA200 touch 4362.74, SL -7.0pt, TP +7.0pt): 14 wins / 10 losses of the same n=26 set = p 0.583, R 1.0 -> +0.129R net. Positive but thinner than the armed short, it fights the fresh failed poke above the cluster, and the single-position rule allows one plan - benched, and it is the natural precursor path to the armed 4374 zone anyway.",
+  "SHORT at market 4356.315: the stop has to clear the whole cluster at 4374.0-4381.0 (18-25pt) while the first real shelf (4351.5 double bottom) is only 4.8pt away -> R_T1 under 0.25; the same thesis has usable geometry only at the zone touch. Rejected on geometry.",
+  "LONG the 4351.5-4353.5 double bottom: today's broker tape dip-buy was 1 tp / 45 sl (p 0.022) and the 3000-bar M15 MA20-pullback analog is only n=83 p 0.451 -> about +0.02R. Rejected on EV.",
+  "LONG the 4348.0 (H4 MA20) / 4340.68 (H4 MA50) / 4339.98 (day low) floor: session record 0/3 with MFE +2.9/+3.1pt. Rejected.",
+  "SHORT the 4369.5-4371.2 rejections (12:15Z 4371.07, 11:00Z 4371.18, 13:15Z poke high 4369.52): same family as the armed trade but 4-6pt lower, so the stop 4381.0 gives 1R 10-11.5pt against a T1 7.75pt -> R_T1 0.67-0.78, negative at p 0.53. The wider 4374.0-4375.5 band pays 1.24R for the same stop. Rejected on geometry; the armed zone is the better expression.",
+  "Breakout LONG above 4375.5 / chase of the 20-bar high: chase-at-close measured 0/8 in this sample, and the target would be the Monday-high supply 4383.42 only 8pt away. Rejected.",
+  "SHORT the breakdown below 4351.11: chase-the-breakdown measured 0/8, and the H4 MA20 4348.0 shelf is 3pt under the trigger. Rejected."
+ ],
+ "risk_discipline": "qty_lots 0.01 (inside 0.01-0.05, default); ONE plan this cycle (single-position rule: broker positions_get [] -> slot free); no add, no averaging, no manual close, no SL move (stop_authority=initial); 1R 6.25pt = 6.25 USD = 0.317% of the 1971.70 balance (worst in-zone fill 7.00 USD = 0.355%), under the 1% cap; notional ~4375 USD << the 25000 USD cap; demo exec only, real account untouched, registry unmodified. DISCLOSED, no ledger surgery attempted: run_state/positions/POS-20260921T1147Z.json still reads state OPEN while MT5 shows no position and the balance has risen 1961.81 -> 1971.70 (the LONG was closed at a profit on the 13:15Z spike to 4369.52, above its T1 4367.5); the engine's reconcile/manage pass owns that bookkeeping, and this layer neither hand-closed nor hand-edited it. No other plan is active - TP-20260921T1247Z was already cancelled with exec_fail:position_busy at 13:17Z.",
+ "data_quality_note": "pkg live_days 11, live_ticks 2,175,075, context_days 35, gaps[]; spread 0.298bps measured on the 16:32:36.124 server tick. run_state/candle_latest.json is STALE (last bar 2026-09-07 12:15Z, bearish engulfing pair) and was ignored - no fresh candle patterns, so every structure call comes from the fresh MT5 bars read at 13:32:36Z plus the pkg regime fields. Known drift: the pkg M15/H1 snapshots lag live MT5 by about 1-2 M15 bars (pkg M15 last_bar 13:00Z close 4353.39 vs fresh MT5 13:30Z close 4356.25), so the pkg is used for regime framing and for the engine's trigger sample only, while every execution level quoted here is in fresh-MT5 space (M15 MA200 4362.738, MA50 4357.653, MA20 4355.54, H1 MA50 4363.019, H1 MA20 4363.76, 20-bar high 4374.95). Note also that the MT5 bar timestamps print in broker server time (GMT+3) while being read as UTC: the '16:30' M15 bar is the 13:30Z bar. The live_fxtm tick parquet lags in 15-min batches and was not used for execution levels.",
+ "model": "deepseek/deepseek-v4-flash",
+ "prompt_version": "hermes_trader_m15_v1",
+ "engine": {
+  "plan_id": "TP-20260921T1332Z",
+  "registered": true,
+  "ledger_sha": "6121eb311748",
+  "validation": "OK",
+  "outcome": "cancelled by the engine's own anti-zombie guard: price_left_setup mid=4360.64 < zone_lo-2band=4371.0 (zone 4374.0-4375.5, band 1.5pt, mid 17.7pt below zone_lo)",
+  "consequence": "the plan must be re-armed in a LATER cycle: with a 1.5pt band, mid must be >= 4370.0 (zone_lo - 2 x band) for registration to survive; at mid 4356.3-4360.6 it cannot. Widening the band is NOT an acceptable fix - a band reaching down to 4369.0 would let the fill print there, where 1R = 12.0pt against T1 4367.0 = 2.0pt -> R_T1 0.17 -> negative EV.",
+  "book_after": "FLAT - reconcile closed POS-20260921T1147Z at broker_tp 4368.29 (realized +10.00 USD, balance 1961.81 -> 1971.70), MT5 positions_get [], no plan active"
+ }
+}

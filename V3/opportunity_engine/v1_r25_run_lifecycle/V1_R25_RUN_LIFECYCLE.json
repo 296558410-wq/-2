@@ -1,0 +1,609 @@
+{
+ "TASK_STATUS": "RUNNING",
+ "AUDIT_NOW_UTC": "2026-09-25T16:29:40.009615+00:00",
+ "AUTOMATION_ENABLED": false,
+ "V1_ENGINE_PROCESS": "NOT_RUNNING",
+ "HASH_BEFORE": {
+  "ENGINE": "7d95645678cf0615c77c0d1c91177cf1652ca1fa6b1f509ec99e415dba55c25d",
+  "LEDGER": "0b90493cae0cdf7b73056bc72b1e5752f35c3eb20f9306c098d26f4bec819261",
+  "STATISTICS": "ca42f624fde50df375dc877750e121e8d2d313986ea6d953766d5247ab76ee84",
+  "RUN_META": "597bd76970412c107c96475dfe8d5093ff7840aba73cb4ab65318f2b0f358950"
+ },
+ "AUTOMATION_PAYLOAD_KIND": "agentTurn",
+ "AUTOMATION_MESSAGE_EXCERPT": "【交易时段前置门 2026-09-12】步骤0(先做): exec 运行 `C:\\AIQuant\\.venv\\Scripts\\python.exe C:\\AIQuant\\research\\hermes\\trading_hours.py --gate`。退出码≠0(armed=false: 周末/非交易时段/未到开市前2小时) → 本周期只输出一行 {\"skipped\":\"MARKET_CLOSED\"} 并立即结束, 不执行任何后续步骤。只有退出码=0 才继续。\n\nHermes 交易员(主动猎手模式, demo 实盘执行): 1) 运行 C:\\AIQuant\\.venv\\Scripts\\python.exe research\\hermes\\trader_v1\\state_package.py; 2) 读 run_state/state_package_latest.json 的 market_state/data_quality 与蜡烛图 run_state/candle_latest.json(若有); 3) 决策(见下)写 run_state/decisions/<cycle紧凑>.json; 4) 运行 C:\\AIQuant\\.venv\\Scripts\\python.exe research\\hermes\\trader_v1\\engine.py --decide --exec demo 消费(触发+risk通过即自动建仓下单)。\n\n【交易哲学: 主动猎手, 非完美主义】每轮必须: a) 主动给出具体 setup(当前价距哪个 key level 多近、需什么 tick 级/盘中信号即可行动), 不允许只因'无收盘确认'就无限 WAIT; b) 价格进入有利区(区间边界/结构位/前高前低/回撤到 MA)且有盘中行为佐证(拒绝K形态、快速反弹/下探、量能变化) → 立即注册带盘中触发条件的计划(trigger 用 zone_touch/price_cross 实时判定, 不要求等下一根收盘); c) 明确 bias(至少 neutral-lean), 禁止无立场观望; d) 触发条件写具体价, 允许'贴近边界即计划, 触价自动成交'。\n\n【仓位纪律 2026-09-08 定案】qty_lots 只允许 0.01-0.05 手(区间内自选, 默认 0.01); 超出区间会被 engine 机械否决(risk veto)且计划即时作废不留存。持仓中不注册新开仓计划(单仓约束); 触发即自动成交, 止损止盈随单。\n\n输出 JSON: cycle/decision(LONG/SHORT/WAIT)/confidence/opportunity/opportunity_mechanism/mtf_agreement/answers_14(第1市场状态/第2一致性/第3M15变化/第4机会/第5机制/第6触发条件[具体价]/第7失效[具体价]/第8预期收益R/第9预期损失R/第10成本数值/第11净EV算式/第12再现/第13决策/第14理由≤100字)/plan(若 LONG/SHORT: direction/entry_zone{low,high}/trigger_condition(JSON dict 如 {\"zone_touch\":[low,high]} 或 {\"price_cross_up\":X})/invalidation_condition/stop_logic{type,level_price}/target_logic{levels:[{p",
+ "AUTOMATION_AGENT_ID": "main",
+ "AUTOMATION_SESSION_TARGET": "isolated",
+ "AUTOMATION_CONFIG_REVISION": "sha256:KqHH_L1qJR9HLkphnGoictV94QNf31J8J60OGEVh578",
+ "AUTOMATION_MENTIONS_RUN_LIFECYCLE": [],
+ "AUTOMATION_RUN_LIFECYCLE_ROLE": "NOT_FOUND",
+ "SCANNED_FILES": 6002,
+ "KEYWORD_HITS": [
+  {
+   "file": "research/hermes/trader_v1/run_state/RUN_META.json",
+   "keyword": "V1_RUN_20260924_RESET_01"
+  },
+  {
+   "file": "research/hermes/trader_v1/run_state/RUN_META.json",
+   "keyword": "run_id"
+  },
+  {
+   "file": "research/hermes/trader_v1/run_state/RUN_META.json",
+   "keyword": "RESET_01"
+  },
+  {
+   "file": "research/hermes/trader_v1/run_state/statistics.json",
+   "keyword": "V1_RUN_20260924_RESET_01"
+  },
+  {
+   "file": "research/hermes/trader_v1/run_state/statistics.json",
+   "keyword": "run_id"
+  },
+  {
+   "file": "research/hermes/trader_v1/run_state/statistics.json",
+   "keyword": "run_start_utc"
+  },
+  {
+   "file": "research/hermes/trader_v1/run_state/statistics.json",
+   "keyword": "run_start"
+  },
+  {
+   "file": "research/hermes/trader_v1/run_state/statistics.json",
+   "keyword": "RESET_01"
+  },
+  {
+   "file": "research/hermes/trader_v2/dashboard/datasource.py",
+   "keyword": "run_id"
+  },
+  {
+   "file": "research/hermes/trader_v2/dashboard/datasource.py",
+   "keyword": "run_state"
+  },
+  {
+   "file": "research/hermes/trader_v2/dashboard/static/app.js",
+   "keyword": "run_id"
+  }
+ ],
+ "KEYWORD_HIT_FILES": [
+  "research/hermes/trader_v1/run_state/RUN_META.json",
+  "research/hermes/trader_v1/run_state/statistics.json",
+  "research/hermes/trader_v2/dashboard/datasource.py",
+  "research/hermes/trader_v2/dashboard/static/app.js"
+ ],
+ "WRITER_CANDIDATES": [
+  {
+   "file": "research/hermes/trader_v1/engine.py",
+   "target": "statistics.json",
+   "line": 33,
+   "kind": "REFERENCE",
+   "text": "STATS_P = RUN / \"statistics.json\""
+  },
+  {
+   "file": "research/hermes/trader_v1/ledger.py",
+   "target": "plan_ledger.jsonl",
+   "line": 19,
+   "kind": "REFERENCE",
+   "text": "LEDGER_P = HERE / \"run_state\" / \"plan_ledger.jsonl\""
+  },
+  {
+   "file": "research/hermes/trader_v1/opportunity.py",
+   "target": "plan_ledger.jsonl",
+   "line": 16,
+   "kind": "REFERENCE",
+   "text": "LEDGER_P = RUN / \"plan_ledger.jsonl\""
+  },
+  {
+   "file": "research/hermes/trader_v1/run_state/tmp/plan1747_1932Z.py",
+   "target": "plan_ledger.jsonl",
+   "line": 4,
+   "kind": "REFERENCE",
+   "text": "for line in open(ledger.LEDGER_P if hasattr(ledger,\"LEDGER_P\") else r\"C:\\AIQuant\\research\\hermes\\trader_v1\\run_state\\plan_ledger.jsonl\", encoding=\"utf-8\"):"
+  },
+  {
+   "file": "research/hermes/trader_v1/run_state/tmp/write_decision_0432.py",
+   "target": "statistics.json",
+   "line": 162,
+   "kind": "REFERENCE",
+   "text": "\"plan_ledger.jsonl (TP-20260924T0347Z registered+triggered+filled) / run_state/statistics.json (triggers 3, trades_opened 3, \""
+  },
+  {
+   "file": "research/hermes/trader_v1/run_state/tmp/write_decision_0432.py",
+   "target": "plan_ledger.jsonl",
+   "line": 41,
+   "kind": "REFERENCE",
+   "text": "\"source\": \"run_state/workflow_history.jsonl + plan_ledger.jsonl + positions/POS-*.json + live quote feed\","
+  },
+  {
+   "file": "research/hermes/trader_v1/run_state/tmp/write_decision_0432.py",
+   "target": "plan_ledger.jsonl",
+   "line": 162,
+   "kind": "REFERENCE",
+   "text": "\"plan_ledger.jsonl (TP-20260924T0347Z registered+triggered+filled) / run_state/statistics.json (triggers 3, trades_opened 3, \""
+  },
+  {
+   "file": "research/hermes/trader_v1/run_state/tmp/write_dec_0317z.py",
+   "target": "plan_ledger.jsonl",
+   "line": 166,
+   "kind": "REFERENCE",
+   "text": "\"+USD20.0)与 plan_ledger.jsonl。触发价/止损/目标在成交前即机械确定。\"),"
+  },
+  {
+   "file": "research/hermes/trader_v1/run_state/tmp/write_dec_0332z.py",
+   "target": "plan_ledger.jsonl",
+   "line": 168,
+   "kind": "REFERENCE",
+   "text": "\"最低 4283.93 @03:22:57Z 后 +5.3pt 反弹)、positions/POS-*.json(均 CLOSED)与 plan_ledger.jsonl。触发价/止损/目标在成交前即机械确定。\"),"
+  },
+  {
+   "file": "research/hermes/trader_v1/run_state/tmp/_append_summary_0102Z.py",
+   "target": "statistics.json",
+   "line": 31,
+   "kind": "REFERENCE",
+   "text": "\"statistics.json integrity.last_cycle stays frozen at 2026-09-18T18:32Z because update_stats() writes the \""
+  },
+  {
+   "file": "research/hermes/trader_v1/tests/test_l0_idempotency.py",
+   "target": "plan_ledger.jsonl",
+   "line": 24,
+   "kind": "REFERENCE",
+   "text": "p = tmp_path / \"plan_ledger.jsonl\""
+  },
+  {
+   "file": "research/hermes/trader_v1/tests/test_l3_invariants.py",
+   "target": "plan_ledger.jsonl",
+   "line": 24,
+   "kind": "REFERENCE",
+   "text": "monkeypatch.setattr(L, \"LEDGER_P\", tmp_path / \"plan_ledger.jsonl\")"
+  },
+  {
+   "file": "research/hermes/trader_v1/tests/test_l3_invariants.py",
+   "target": "plan_ledger.jsonl",
+   "line": 25,
+   "kind": "REFERENCE",
+   "text": "monkeypatch.setattr(OPP, \"LEDGER_P\", tmp_path / \"plan_ledger.jsonl\")"
+  },
+  {
+   "file": "research/hermes/trader_v1/tmp/e2e_driver.py",
+   "target": "statistics.json",
+   "line": 31,
+   "kind": "WRITE",
+   "text": "(rs / \"statistics.json\").write_text(json.dumps({\"counters\": {}, \"waits\": {}}), encoding=\"utf-8\")"
+  },
+  {
+   "file": "research/hermes/trader_v1/tmp/e2e_driver.py",
+   "target": "statistics.json",
+   "line": 70,
+   "kind": "REFERENCE",
+   "text": "p = sbx / \"run_state\" / \"statistics.json\""
+  },
+  {
+   "file": "research/hermes/trader_v1/tmp/e2e_driver.py",
+   "target": "plan_ledger.jsonl",
+   "line": 30,
+   "kind": "WRITE",
+   "text": "(rs / \"plan_ledger.jsonl\").write_text(\"\", encoding=\"utf-8\")"
+  },
+  {
+   "file": "research/hermes/trader_v1/tmp/e2e_driver.py",
+   "target": "plan_ledger.jsonl",
+   "line": 65,
+   "kind": "REFERENCE",
+   "text": "p = sbx / \"run_state\" / \"plan_ledger.jsonl\""
+  },
+  {
+   "file": "research/hermes/trader_v1/tmp/e2e_driver.py",
+   "target": "plan_ledger.jsonl",
+   "line": 177,
+   "kind": "REFERENCE",
+   "text": "L.LEDGER_P = sbx / \"run_state\" / \"plan_ledger.jsonl\""
+  },
+  {
+   "file": "research/hermes/trader_v1/tmp/e2e_driver.py",
+   "target": "plan_ledger.jsonl",
+   "line": 230,
+   "kind": "REFERENCE",
+   "text": "L.LEDGER_P = sbx / \"run_state\" / \"plan_ledger.jsonl\""
+  },
+  {
+   "file": "research/hermes/trader_v1/tmp/fix_0532z_reconcile_bug.py",
+   "target": "plan_ledger.jsonl",
+   "line": 25,
+   "kind": "REFERENCE",
+   "text": "LEDGER_P = HERE / \"run_state\" / \"plan_ledger.jsonl\""
+  },
+  {
+   "file": "research/hermes/trader_v1/tmp/_active_1432.py",
+   "target": "plan_ledger.jsonl",
+   "line": 3,
+   "kind": "REFERENCE",
+   "text": "p = Path(r\"C:\\AIQuant\\research\\hermes\\trader_v1\\run_state\\plan_ledger.jsonl\")"
+  },
+  {
+   "file": "research/hermes/trader_v1_panel/datasource.py",
+   "target": "statistics.json",
+   "line": 200,
+   "kind": "REFERENCE",
+   "text": "st = _rj(RS / \"statistics.json\", {}) or {}"
+  },
+  {
+   "file": "research/hermes/trader_v1_panel/datasource.py",
+   "target": "plan_ledger.jsonl",
+   "line": 177,
+   "kind": "REFERENCE",
+   "text": "ev = _rjl(RS / \"plan_ledger.jsonl\", limit=n)"
+  }
+ ],
+ "WRITER_CANDIDATES_BY_TARGET": {
+  "statistics.json": [
+   {
+    "file": "research/hermes/trader_v1/engine.py",
+    "target": "statistics.json",
+    "line": 33,
+    "kind": "REFERENCE",
+    "text": "STATS_P = RUN / \"statistics.json\""
+   },
+   {
+    "file": "research/hermes/trader_v1/run_state/tmp/write_decision_0432.py",
+    "target": "statistics.json",
+    "line": 162,
+    "kind": "REFERENCE",
+    "text": "\"plan_ledger.jsonl (TP-20260924T0347Z registered+triggered+filled) / run_state/statistics.json (triggers 3, trades_opened 3, \""
+   },
+   {
+    "file": "research/hermes/trader_v1/run_state/tmp/_append_summary_0102Z.py",
+    "target": "statistics.json",
+    "line": 31,
+    "kind": "REFERENCE",
+    "text": "\"statistics.json integrity.last_cycle stays frozen at 2026-09-18T18:32Z because update_stats() writes the \""
+   },
+   {
+    "file": "research/hermes/trader_v1/tmp/e2e_driver.py",
+    "target": "statistics.json",
+    "line": 31,
+    "kind": "WRITE",
+    "text": "(rs / \"statistics.json\").write_text(json.dumps({\"counters\": {}, \"waits\": {}}), encoding=\"utf-8\")"
+   },
+   {
+    "file": "research/hermes/trader_v1/tmp/e2e_driver.py",
+    "target": "statistics.json",
+    "line": 70,
+    "kind": "REFERENCE",
+    "text": "p = sbx / \"run_state\" / \"statistics.json\""
+   },
+   {
+    "file": "research/hermes/trader_v1_panel/datasource.py",
+    "target": "statistics.json",
+    "line": 200,
+    "kind": "REFERENCE",
+    "text": "st = _rj(RS / \"statistics.json\", {}) or {}"
+   }
+  ],
+  "plan_ledger.jsonl": [
+   {
+    "file": "research/hermes/trader_v1/ledger.py",
+    "target": "plan_ledger.jsonl",
+    "line": 19,
+    "kind": "REFERENCE",
+    "text": "LEDGER_P = HERE / \"run_state\" / \"plan_ledger.jsonl\""
+   },
+   {
+    "file": "research/hermes/trader_v1/opportunity.py",
+    "target": "plan_ledger.jsonl",
+    "line": 16,
+    "kind": "REFERENCE",
+    "text": "LEDGER_P = RUN / \"plan_ledger.jsonl\""
+   },
+   {
+    "file": "research/hermes/trader_v1/run_state/tmp/plan1747_1932Z.py",
+    "target": "plan_ledger.jsonl",
+    "line": 4,
+    "kind": "REFERENCE",
+    "text": "for line in open(ledger.LEDGER_P if hasattr(ledger,\"LEDGER_P\") else r\"C:\\AIQuant\\research\\hermes\\trader_v1\\run_state\\plan_ledger.jsonl\", encoding=\"utf-8\"):"
+   },
+   {
+    "file": "research/hermes/trader_v1/run_state/tmp/write_decision_0432.py",
+    "target": "plan_ledger.jsonl",
+    "line": 41,
+    "kind": "REFERENCE",
+    "text": "\"source\": \"run_state/workflow_history.jsonl + plan_ledger.jsonl + positions/POS-*.json + live quote feed\","
+   },
+   {
+    "file": "research/hermes/trader_v1/run_state/tmp/write_decision_0432.py",
+    "target": "plan_ledger.jsonl",
+    "line": 162,
+    "kind": "REFERENCE",
+    "text": "\"plan_ledger.jsonl (TP-20260924T0347Z registered+triggered+filled) / run_state/statistics.json (triggers 3, trades_opened 3, \""
+   },
+   {
+    "file": "research/hermes/trader_v1/run_state/tmp/write_dec_0317z.py",
+    "target": "plan_ledger.jsonl",
+    "line": 166,
+    "kind": "REFERENCE",
+    "text": "\"+USD20.0)与 plan_ledger.jsonl。触发价/止损/目标在成交前即机械确定。\"),"
+   },
+   {
+    "file": "research/hermes/trader_v1/run_state/tmp/write_dec_0332z.py",
+    "target": "plan_ledger.jsonl",
+    "line": 168,
+    "kind": "REFERENCE",
+    "text": "\"最低 4283.93 @03:22:57Z 后 +5.3pt 反弹)、positions/POS-*.json(均 CLOSED)与 plan_ledger.jsonl。触发价/止损/目标在成交前即机械确定。\"),"
+   },
+   {
+    "file": "research/hermes/trader_v1/tests/test_l0_idempotency.py",
+    "target": "plan_ledger.jsonl",
+    "line": 24,
+    "kind": "REFERENCE",
+    "text": "p = tmp_path / \"plan_ledger.jsonl\""
+   },
+   {
+    "file": "research/hermes/trader_v1/tests/test_l3_invariants.py",
+    "target": "plan_ledger.jsonl",
+    "line": 24,
+    "kind": "REFERENCE",
+    "text": "monkeypatch.setattr(L, \"LEDGER_P\", tmp_path / \"plan_ledger.jsonl\")"
+   },
+   {
+    "file": "research/hermes/trader_v1/tests/test_l3_invariants.py",
+    "target": "plan_ledger.jsonl",
+    "line": 25,
+    "kind": "REFERENCE",
+    "text": "monkeypatch.setattr(OPP, \"LEDGER_P\", tmp_path / \"plan_ledger.jsonl\")"
+   },
+   {
+    "file": "research/hermes/trader_v1/tmp/e2e_driver.py",
+    "target": "plan_ledger.jsonl",
+    "line": 30,
+    "kind": "WRITE",
+    "text": "(rs / \"plan_ledger.jsonl\").write_text(\"\", encoding=\"utf-8\")"
+   },
+   {
+    "file": "research/hermes/trader_v1/tmp/e2e_driver.py",
+    "target": "plan_ledger.jsonl",
+    "line": 65,
+    "kind": "REFERENCE",
+    "text": "p = sbx / \"run_state\" / \"plan_ledger.jsonl\""
+   },
+   {
+    "file": "research/hermes/trader_v1/tmp/e2e_driver.py",
+    "target": "plan_ledger.jsonl",
+    "line": 177,
+    "kind": "REFERENCE",
+    "text": "L.LEDGER_P = sbx / \"run_state\" / \"plan_ledger.jsonl\""
+   },
+   {
+    "file": "research/hermes/trader_v1/tmp/e2e_driver.py",
+    "target": "plan_ledger.jsonl",
+    "line": 230,
+    "kind": "REFERENCE",
+    "text": "L.LEDGER_P = sbx / \"run_state\" / \"plan_ledger.jsonl\""
+   },
+   {
+    "file": "research/hermes/trader_v1/tmp/fix_0532z_reconcile_bug.py",
+    "target": "plan_ledger.jsonl",
+    "line": 25,
+    "kind": "REFERENCE",
+    "text": "LEDGER_P = HERE / \"run_state\" / \"plan_ledger.jsonl\""
+   },
+   {
+    "file": "research/hermes/trader_v1/tmp/_active_1432.py",
+    "target": "plan_ledger.jsonl",
+    "line": 3,
+    "kind": "REFERENCE",
+    "text": "p = Path(r\"C:\\AIQuant\\research\\hermes\\trader_v1\\run_state\\plan_ledger.jsonl\")"
+   },
+   {
+    "file": "research/hermes/trader_v1_panel/datasource.py",
+    "target": "plan_ledger.jsonl",
+    "line": 177,
+    "kind": "REFERENCE",
+    "text": "ev = _rjl(RS / \"plan_ledger.jsonl\", limit=n)"
+   }
+  ]
+ },
+ "TRUE_WRITER_CANDIDATES": {
+  "statistics.json": [
+   {
+    "file": "research/hermes/trader_v1/tmp/e2e_driver.py",
+    "target": "statistics.json",
+    "line": 31,
+    "kind": "WRITE",
+    "text": "(rs / \"statistics.json\").write_text(json.dumps({\"counters\": {}, \"waits\": {}}), encoding=\"utf-8\")"
+   }
+  ],
+  "plan_ledger.jsonl": [
+   {
+    "file": "research/hermes/trader_v1/tmp/e2e_driver.py",
+    "target": "plan_ledger.jsonl",
+    "line": 30,
+    "kind": "WRITE",
+    "text": "(rs / \"plan_ledger.jsonl\").write_text(\"\", encoding=\"utf-8\")"
+   }
+  ]
+ },
+ "GIT_FORENSICS": {
+  "RUN_META": {
+   "log_follow": "43f9b2f|2026-09-24|reset(v1): archive pre-reset history and start V1_RUN_20260924_RESET_01 (reset, not an optimization; no strategy/parameter change)",
+   "tracked": "YES"
+  },
+  "STATISTICS": {
+   "log_follow": "43f9b2f|2026-09-24|reset(v1): archive pre-reset history and start V1_RUN_20260924_RESET_01 (reset, not an optimization; no strategy/parameter change)\ncf25d5d|2026-09-08|fix(hermes): I6 对账接线 — broker 自动平仓后本地幻影持仓修复(2026-09-08 实盘首单发现)\n3df3ce9|2026-09-08|fix(hermes): 成交接线 + 仓位权威 qty_lots(0.01-0.05) — 修 4 bug\n6e13188|2026-09-07|fix(infra): 盯梢发现并修复 — 30s行情用LLM烧钱 + Hermes轮超时漏拍\n385c5b7|2026-09-07|docs(hermes): V12 端到端 Paper Simulation Replay(12:47 cycle) — 真实市场 WAIT 完整记录",
+   "tracked": "YES"
+  },
+  "LEDGER": {
+   "log_follow": "43f9b2f|2026-09-24|reset(v1): archive pre-reset history and start V1_RUN_20260924_RESET_01 (reset, not an optimization; no strategy/parameter change)\ncf25d5d|2026-09-08|fix(hermes): I6 对账接线 — broker 自动平仓后本地幻影持仓修复(2026-09-08 实盘首单发现)\n3df3ce9|2026-09-08|fix(hermes): 成交接线 + 仓位权威 qty_lots(0.01-0.05) — 修 4 bug\nf775a4e|2026-09-07|feat(hermes): P0 Hermes 15分钟交易员闭环 + Dashboard 实时可视化",
+   "tracked": "YES"
+  },
+  "pickaxe_runid": "43f9b2f reset(v1): archive pre-reset history and start V1_RUN_20260924_RESET_01 (reset, not an optimization; no strategy/parameter change)",
+  "pickaxe_runmeta_path": "43f9b2f reset(v1): archive pre-reset history and start V1_RUN_20260924_RESET_01 (reset, not an optimization; no strategy/parameter change)"
+ },
+ "PER_RUN_FILE_NAMESPACE": "PRESENT:['decisions', 'positions', 'tmp'],[]",
+ "PER_RUN_STATISTICS_ISOLATION": "UNKNOWN",
+ "TIMELINE": {
+  "RUN_META": {
+   "mtime": "2026-09-23T23:39:46.691776+00:00",
+   "size": 725
+  },
+  "STATISTICS": {
+   "mtime": "2026-09-25T15:49:00.047044+00:00",
+   "size": 5472
+  },
+  "LEDGER": {
+   "mtime": "2026-09-25T14:51:24.870933+00:00",
+   "size": 242825
+  },
+  "ENGINE": {
+   "mtime": "2026-09-25T15:48:16.903337+00:00",
+   "size": 27143
+  }
+ },
+ "AUTOMATION_UPDATED_AT": 1790352012119,
+ "V1_CODE_RUNID_HITS": 2,
+ "WRITERS_OUTSIDE_V1": [],
+ "WRITERS_INSIDE_V1": [
+  {
+   "file": "research/hermes/trader_v1/tmp/e2e_driver.py",
+   "target": "statistics.json",
+   "line": 31,
+   "kind": "WRITE",
+   "text": "(rs / \"statistics.json\").write_text(json.dumps({\"counters\": {}, \"waits\": {}}), encoding=\"utf-8\")"
+  },
+  {
+   "file": "research/hermes/trader_v1/tmp/e2e_driver.py",
+   "target": "plan_ledger.jsonl",
+   "line": 30,
+   "kind": "WRITE",
+   "text": "(rs / \"plan_ledger.jsonl\").write_text(\"\", encoding=\"utf-8\")"
+  }
+ ],
+ "RUN_ID_CREATOR": "V1_SOURCE",
+ "RUN_META_WRITER": "UNKNOWN",
+ "STATISTICS_WRITER": "V1_SOURCE",
+ "STATISTICS_INITIALIZER": "UNKNOWN",
+ "STATISTICS_RESETTER": "UNKNOWN",
+ "RUN_SCOPE_MANAGER": "UNKNOWN",
+ "RUN_CREATION_PATH": "NOT_FOUND",
+ "STATISTICS_INITIALIZATION_PATH": "UNKNOWN",
+ "STATISTICS_UPDATE_PATHS": [],
+ "OLD_COUNTERS_BEHAVIOR": "UNKNOWN",
+ "OLD_PNL_BEHAVIOR": "UNKNOWN",
+ "V1_RUN_LIFECYCLE_ROLE": "PRESENT",
+ "OPENCLAW_RUN_LIFECYCLE_ROLE": "UNKNOWN",
+ "EXTERNAL_SCRIPT_ROLE": "UNKNOWN",
+ "LEGACY_RUN_END_MECHANISM": "NOT_FOUND",
+ "NEW_RUN_CREATION_MECHANISM": "NOT_FOUND",
+ "RUN_LIFECYCLE_MATRIX": [
+  {
+   "stage": "CREATE RUN",
+   "V1": "NOT_FOUND",
+   "OpenClaw_Automation": "NOT_FOUND",
+   "External": "NOT_FOUND",
+   "evidence": "no run-creation code found"
+  },
+  {
+   "stage": "generate run_id",
+   "V1": "NOT_FOUND",
+   "OpenClaw_Automation": "NOT_FOUND",
+   "External": "UNKNOWN",
+   "evidence": "V1 source has 0 run_id hits"
+  },
+  {
+   "stage": "write RUN_META",
+   "V1": "NOT_FOUND",
+   "OpenClaw_Automation": "NOT_FOUND",
+   "External": "UNKNOWN",
+   "evidence": "no writer found"
+  },
+  {
+   "stage": "initialise statistics",
+   "V1": "NOT_FOUND",
+   "OpenClaw_Automation": "NOT_FOUND",
+   "External": "UNKNOWN",
+   "evidence": "counters exist but no init path proven"
+  },
+  {
+   "stage": "update counters",
+   "V1": "PRESENT(counter code exists)",
+   "OpenClaw_Automation": "NOT_FOUND",
+   "External": "UNKNOWN",
+   "evidence": "74 counter hits in V1 code"
+  },
+  {
+   "stage": "reset counters",
+   "V1": "NOT_FOUND",
+   "OpenClaw_Automation": "NOT_FOUND",
+   "External": "NOT_FOUND",
+   "evidence": "no reset code"
+  },
+  {
+   "stage": "end Run",
+   "V1": "NOT_FOUND",
+   "OpenClaw_Automation": "NOT_FOUND",
+   "External": "NOT_FOUND",
+   "evidence": "no end-of-run logic found"
+  },
+  {
+   "stage": "archive Run",
+   "V1": "NOT_FOUND",
+   "OpenClaw_Automation": "NOT_FOUND",
+   "External": "NOT_FOUND",
+   "evidence": "no archive logic found"
+  },
+  {
+   "stage": "create new Run",
+   "V1": "NOT_FOUND",
+   "OpenClaw_Automation": "NOT_FOUND",
+   "External": "NOT_FOUND",
+   "evidence": "no new-run logic found"
+  }
+ ],
+ "R25_GATE_CONDITIONS": {
+  "1_run_id_source_clear": true,
+  "2_run_meta_writer_clear": false,
+  "3_statistics_writer_clear": true,
+  "4_statistics_initializer_clear": false,
+  "5_run_scope_manager_clear": false,
+  "6_new_run_creation_path_clear": false,
+  "7_old_counters_behavior_clear": false,
+  "8_old_pnl_boundary_clear": false,
+  "9_per_run_isolation_proven": false,
+  "10_automation_disabled": true,
+  "11_v1_stopped": true,
+  "12_files_unchanged": true,
+  "13_counters_zero": true
+ },
+ "R25_GATE": "FAIL",
+ "ORDER_SEND": 0,
+ "POSITION_CLOSE": 0,
+ "POSITION_MODIFY": 0,
+ "ORDER_CANCEL": 0,
+ "V1_START": 0,
+ "V1_STOP": 0,
+ "V1_RESTART": 0,
+ "AUTOMATION_RUN": 0,
+ "AUTOMATION_ENABLE": 0,
+ "AUTOMATION_UPDATE": 0,
+ "AUTOMATION_DELETE": 0,
+ "LEDGER_WRITE": 0,
+ "STATE_WRITE": 0,
+ "SOURCE_WRITE": 0,
+ "CONFIG_WRITE": 0,
+ "HISTORY_MOVE": 0,
+ "HISTORY_DELETE": 0,
+ "HISTORY_RENAME": 0,
+ "MT5_ACCESS": 0,
+ "GIT_COMMIT": "NONE",
+ "RESET": 0,
+ "NEW_RUN": 0,
+ "STOP_REASON": "RUN_LIFECYCLE_NOT_ESTABLISHED",
+ "HASH_AFTER": {
+  "ENGINE": "7d95645678cf0615c77c0d1c91177cf1652ca1fa6b1f509ec99e415dba55c25d",
+  "LEDGER": "0b90493cae0cdf7b73056bc72b1e5752f35c3eb20f9306c098d26f4bec819261",
+  "STATISTICS": "ca42f624fde50df375dc877750e121e8d2d313986ea6d953766d5247ab76ee84",
+  "RUN_META": "597bd76970412c107c96475dfe8d5093ff7840aba73cb4ab65318f2b0f358950"
+ },
+ "HASHES_MATCH": "YES",
+ "BOUNDARY_VIOLATION": 0,
+ "V1_ISOLATION": "PASS",
+ "V2_ISOLATION": "PASS",
+ "V3_ISOLATION": "PASS",
+ "CHANGED_FILES": 0
+}

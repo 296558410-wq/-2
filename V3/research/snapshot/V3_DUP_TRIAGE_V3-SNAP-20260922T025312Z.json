@@ -1,0 +1,30 @@
+{
+ "schema": "v3_dup_triage/1",
+ "SNAPSHOT_ID": "V3-SNAP-20260922T025312Z",
+ "generated_utc": "2026-09-22T02:53:56.576260+00:00",
+ "method": "exact-equality at three levels, computed per family on the SNAPSHOT copy",
+ "EVENT_IDENTITY": "DATA_GAP",
+ "files": {
+  "staging_fxtm": {
+   "rows": 4995855,
+   "DUP_TIMESTAMP_COUNT": 0,
+   "DUP_QUOTE_COUNT": 0,
+   "DUP_EVENT_COUNT": 0,
+   "fraction_of_rows": 0.0
+  },
+  "live_fxtm": {
+   "rows": 2289145,
+   "DUP_TIMESTAMP_COUNT": 1014,
+   "DUP_QUOTE_COUNT": 1014,
+   "DUP_EVENT_COUNT": 0,
+   "fraction_of_rows": 0.00044296
+  }
+ },
+ "staging_fxtm_DUP_TIMESTAMP_COUNT": 0,
+ "staging_fxtm_DUP_QUOTE_COUNT": 0,
+ "staging_fxtm_DUP_EVENT_COUNT": 0,
+ "live_fxtm_DUP_TIMESTAMP_COUNT": 1014,
+ "live_fxtm_DUP_QUOTE_COUNT": 1014,
+ "live_fxtm_DUP_EVENT_COUNT": 0,
+ "CONCLUSION": "duplicates are same-timestamp repeats; DUP_QUOTE_COUNT isolates identical (ts,bid,ask) quotes. No event id exists in the feed, so true event identity cannot be proven -> EVENT_IDENTITY = DATA_GAP. Nothing is deleted."
+}

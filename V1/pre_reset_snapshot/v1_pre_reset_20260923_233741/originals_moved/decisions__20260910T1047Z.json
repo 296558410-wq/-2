@@ -1,0 +1,112 @@
+{
+ "cycle": "2026-09-10T10:47Z",
+ "symbol": "XAUUSD",
+ "decision_id": "DEC-2026-09-10T10:47Z",
+ "utc_ts": "2026-09-10T10:47Z",
+ "generated_utc": "2026-09-10T10:47Z",
+ "decision": "SHORT",
+ "confidence": 0.5,
+ "bias": "SHORT-lean (broken-support-retest-fade at MA cluster 4390.5-4395.0)",
+ "opportunity": "主动猎手(破位回抽 fade): live mid 4383.81 (MT5 demo bid4383.74/ask4383.88 spread0.319bps; state_pkg m15_live 4384.41)。自 06:00Z 高 4434.99 一路 lower-high, 13:30(10:30Z) M15 bar 由 4394.27 直落至新日内低 4377.91(单根~16pt塌方), 13:45 反抽至 4385.96 后现价 4383.81。刚被跌破的 4390-4396 平台(前 swing lows 4388.29/4389.92)叠 M15MA200 4395.84 / H1MA50 4395.98 → 破位回抽供给带。更上 4399.47(H4MA20)/4403.25(M15MA20)/4405.74(H4MA50)/4406.56(H1MA20) 密集。等反抽 4390.5-4395.0 即 fade 空(触价自动成交, 不等收盘)。下方 4377.91(日内低), 更深 4341.36(H1 lo60)。",
+ "opportunity_mechanism": "broken_support_retest_fade_4392_v1 —— 下跌趋势中破位(4388-4396 平台下破至 4377.91)后, 价格反抽至刚跌破的平台/M15MA200 4395.84/H1MA50 4395.98 供给带, 遭压制 → 回补至区间下部/前低。与 D1 close 4384.08 < MA20 4467.45(-83pt)、H4 close < MA20 4399.47 < MA50 4405.74、H1 close < MA20/MA50/MA200、日内 lower-high 破位 四周期空头背景共振。",
+ "mtf_agreement": "bearish (四周期同向空)。D1: close 4384.08 < MA20 4467.45(-83.4pt), trend_range=range, structure llish>hhish → 中期偏空。H4: close 4384.08 < MA20 4399.47 < MA50 4405.74 → 空。H1: close 4384.08 < MA20 4406.56 < MA50 4395.98 < MA200 4410.20, 但 lo60 4341.36 远离 → 弱势空。M15: close 4384.08 < MA20 4403.25/MA50 4406.75/MA200 4395.84, 刚破位刷新低 4377.91 → 短线空头动能。四周期全部收盘于各自 MA 下方 → bias SHORT-lean 0.50。",
+ "position_note": "MT5 demo positions = 0 (flat); 本地 POS-20260910T0917Z 已于 10:19Z 被 broker SL 4397.5 平仓(-5.82USD)。单仓约束解除 → 本轮注册新开仓计划 TP-20260910T1047Z。上一轮挂单 TP-20260910T1032Z(zone 4395.0-4399.0) 因 mid 4384.41 < zone_lo-2band 4387.0 → 本轮 engine 将按 price_left_setup 取消。",
+ "answers_14": {
+  "1": "市场状态: XAUUSD live mid 4383.81 (MT5 bid4383.74/ask4383.88 spread0.319bps; state_pkg m15_live 4384.41; quote_source=quote_latest)。MT5 rates 真相: D1 close4384.08<MA20 4467.45 range; H4 close4384.08<MA20 4399.47<MA50 4405.74; H1 close4384.08<MA20 4406.56/MA50 4395.98/MA200 4410.20, hi60 4443.01/lo60 4341.36; M15 close4384.08<MA20 4403.25/MA50 4406.75/MA200 4395.84, hi60 4434.99/lo60 4377.91。日内 4434.99(06:00Z)→4377.91(10:30Z)单边下行。data_quality ok(live_days=4, live_ticks~664213, gaps[])。",
+  "2": "一致性: 四周期全部收盘在各自均线下方(D1<MA20 -83pt / H4<MA20&MA50 / H1<三条MA / M15<MA20&MA50&MA200) → 空头共振, 无周期反对。综合 = 下跌趋势内的破位回抽 fade, 非追空。bias SHORT-lean 0.50。",
+  "3": "M15变化: 09:00Z 起连续 lower-high(4434.99→4425.47→4412.98→4400.39→4394.82)后 10:30Z 单根塌方 4394.27→4377.91(新日内低, 波幅~16pt), 10:45Z 反抽高 4385.96 收 4384.08。破位有真实动能, 现价位于破位平台(4388-4396)下方, 属回抽结构。",
+  "4": "有无可交易机会: 有(待触发)。现价 4383.81 距 fade 触发带 4390.5-4395.0 仅 +6.7~+11.2pt(≈1×M15 ATR)。价格反抽进入该带(M15MA200 4395.84/H1MA50 4395.98/前平台 4388.29-4389.92)即自动建空。",
+  "5": "机会机制: broken_support_retest_fade_4392_v1 —— 破位后反抽至刚跌破的平台+MA 密集台(~4392.5), 供给压制回落至区间下部/前低。",
+  "6": "触发条件[具体价]: {\"and\":[{\"zone_touch\":[4390.5,4395.0]},{\"spread_under_bps\":1.2}]}。quote/MT5 mid 进入 4390.5-4395.0 且点差<1.2bps → 引擎即时市价建空(不等收盘)。",
+  "7": "失效[具体价]: {\"price_cross_up\":4402.0}。mid ≥ 4402.0(站上 H4MA20 4399.47 上方, 反抽升级为反转/区间上破) → 计划即时取消。",
+  "8": "预期收益R (ref fill 4392.75, 1R=9.25pt): T1 4384.0(+8.75pt=0.95R)×0.35 / T2 4374.5(+18.25pt=1.97R)×0.40 / T3 4365.0(+27.75pt=3.00R)×0.25 → expected_R ≈ 1.87R。",
+  "9": "预期损失R: -1.0R 有界(SL 4402.0, ref 4392.75, risk 9.25pt ≈ 21bps)。亏损不加仓、不反手。",
+  "10": "成本数值: spread 0.319bps + slippage 0.30bps = 单边 0.62bps, 往返 1.24bps ≈ 0.54pt ≈ 0.06R(1R=9.25pt)。demo 执行成本极低, 非障碍。",
+  "11": "净EV算式: EV_R = p×R − (1−p)×1 − cost = 0.46×1.87 − 0.54×1.0 − 0.06 = 0.860 − 0.54 − 0.06 = +0.26R (>0 通过; breakeven p≈0.35)。",
+  "12": "再现: 今日同构反复出现 —— 08:32Z/08:47Z/09:02Z/10:17Z/10:32Z 破位回抽 fade 计划; 07:49Z SHORT@4411.87→broker_tp +6.43USD; 09:33Z SHORT@4391.68→SL 4397.5 −5.82USD。『破位后反抽平台/MA 台 fade』为今日主导 setup。",
+  "13": "决策: SHORT, confidence 0.50, bias SHORT-lean。现持平(MT5 0 持仓); 注册 TP-20260910T1047Z: SHORT zone 4390.5-4395.0, SL 4402.0, T 4384.0/4374.5/4365.0, qty 0.01, 净EV +0.26R。",
+  "14": "破位后现价 4383.81 位于破位平台下方, 不追空; 反抽至 4390.5-4395.0(前平台 4388.29-4389.92+M15MA200 4395.84/H1MA50 4395.98)即 fade 空, SL 4402.0, T 4384.0/4374.5/4365.0, 净EV +0.26R; 触价自动成交。现在离可交易=等 +7~+11pt 反抽入带。"
+ },
+ "plan": {
+  "plan_id": "TP-20260910T1047Z",
+  "direction": "SHORT",
+  "opportunity_type": "range_reversal",
+  "mechanism_ref": "broken_support_retest_fade_4392_v1",
+  "entry_style": "market_on_trigger",
+  "entry_zone": {
+   "low": 4390.5,
+   "high": 4395.0
+  },
+  "trigger_condition": {
+   "and": [
+    {
+     "zone_touch": [
+      4390.5,
+      4395.0
+     ]
+    },
+    {
+     "spread_under_bps": 1.2
+    }
+   ]
+  },
+  "invalidation_condition": {
+   "price_cross_up": 4402.0
+  },
+  "stop_logic": {
+   "type": "structure",
+   "level_price": 4402.0,
+   "level": "H4MA20 4399.47 上方 2.5pt; 4403.25(M15MA20)/4405.74(H4MA50)/4406.56(H1MA20) 密集带下沿之下 1.2pt",
+   "reason": "fade 失效: 价格站上 H4MA20 4399.47 并突破 4402.0 → 反抽升级为反转/区间上破; SL 4402.0 置阻力台(4395.84-4399.47)上方容差内, 认损 1R=9.25pt @ref 4392.75。"
+  },
+  "target_logic": {
+   "type": "price_levels",
+   "levels": [
+    {
+     "price": 4384.0,
+     "frac": 0.35
+    },
+    {
+     "price": 4374.5,
+     "frac": 0.4
+    },
+    {
+     "price": 4365.0,
+     "frac": 0.25
+    }
+   ],
+   "reason": "T1 4384.0 = 破位后反抽起点/现价区 (-8.75pt=0.95R)×0.35 降险; T2 4374.5 = 日内低 4377.91 下破测量目标 (-18.25pt=1.97R)×0.40; T3 4365.0 = 更深延伸/区间下部 (-27.75pt=3.00R)×0.25; 不设 4360 之下。"
+  },
+  "expected_R": 1.87,
+  "expected_win_probability": 0.46,
+  "probability_source": "subjective",
+  "expected_loss": {
+   "units": "R",
+   "value": 1.0
+  },
+  "estimated_cost": {
+   "spread_bps": 0.32,
+   "slippage_bps": 0.3,
+   "total_roundtrip_bps": 1.24,
+   "cost_in_R": 0.06
+  },
+  "expected_net_EV": {
+   "value": 0.26,
+   "units": "R",
+   "note": "0.46×(0.35×0.95+0.40×1.97+0.25×3.00) − 0.54×1.0 − 0.06 = 0.46×1.87 − 0.60 = +0.26R (1R=9.25pt @ref fill 4392.75, SL 4402.0; breakeven p≈0.35)"
+  },
+  "maximum_holding_time": "M15*8",
+  "cancel_conditions": [
+   "触发前 mid ≥ 4402.0 (price_cross_up invalidation = 站上 H4MA20 4399.47) → 引擎零成本取消",
+   "触发前 mid < 4381.5 (engine price_left_setup, 价格跌离触发带>2×band=9pt, 机会已走) → 下轮改评破位续空",
+   "未触发 age > 120min (M15*8) 过期清理 → 下轮重评",
+   "成交失败(仓位忙/broker 拒) → 计划即时作废不留僵尸, 不追单",
+   "空头背景下不注册反向 LONG; 已成交 → SL 4402.0 broker 随单 -1R 有界; 亏损不加仓不反手; 持仓中不注册新开仓计划(单仓约束)"
+  ],
+  "risk_level": "medium",
+  "reason": "四周期同向空(D1<MA20 83pt / H4<MA20&MA50 / H1<三条MA / M15<三条MA), 日内 4434.99→4377.91 单边下行且 10:30Z 破位塌方。不追空; 等反抽至刚跌破的平台+MA 台 4390.5-4395.0(前 lows 4388.29/4389.92 + M15MA200 4395.84 + H1MA50 4395.98) fade。触带即自动建空, SL 4402.0 结构上方 -1R 有界, 分档 T 4384.0/4374.5/4365.0 加权 1.87R, 净EV +0.26R; qty 0.01 在 0.01-0.05 区间内。",
+  "qty_lots": 0.01
+ },
+ "model": "deepseek/deepseek-v4-flash",
+ "data_quality_note": "data_quality ok (live_days=4, live_ticks~664213, gaps=[], context_days=28)。重要: parquet/state_pkg M15 bar 块喂价相对 MT5/quote 偏移约 +24pt (state_pkg M15 close 4408.78 vs MT5 M15 close 4384.08), 故决策价位以 MT5 rates + dashboard quote 为准; state_pkg m15_live(quote_latest 4384.41) 与 MT5 mid 4383.81 基本一致, 作现价真值。candle_latest.json 已冻结于 09-07, 忽略。MT5 positions=0(flat)。"
+}

@@ -1,0 +1,98 @@
+# -*- coding: utf-8 -*-
+"""Freeze the V3 E-R1 (tick microstructure) protocol. Runs BEFORE any evaluation."""
+import json, hashlib, os, sys
+sys.stdout.reconfigure(encoding="utf-8", errors="replace")
+HERE = os.path.dirname(os.path.abspath(__file__)); os.makedirs(HERE, exist_ok=True)
+
+P = {
+ "schema": "v3_e_r1_protocol/1",
+ "task_id": "V3-PHASE2-E-R1",
+ "round": "E-R1",
+ "ts_utc": "2026-10-01T15:10:00+00:00",
+ "frozen_before_evaluation": True,
+ "scope_note": "Items 1 (tick imbalance) and 4 (micro continuation/reversal) were already run in Phase-2 R1 as A1/A2 (COST_INSUFFICIENT). They are RE-RUN here under this frozen protocol for reproducibility, and the agreement is reported. Items 2 and 3 are new.",
+ "bounds": {"order_send": "NO", "execution_mode": "RESEARCH_READONLY", "forward": "NO", "live": "NO",
+            "v1_v2_modified": "NO", "v1_v2_state_used_as_input": "NO", "historical_profit_used": "NO",
+            "strategy_development": "NO", "parameter_mining": "NO", "future_data": "NO"},
+ "data": {
+   "SNAPSHOT_ID": "V3-SNAP-20260922T025312Z",
+   "tick_dir": "research/hermes/trader_v3/data/snapshots/V3-SNAP-20260922T025312Z",
+   "files": 36, "rows": 7285000,
+   "span_utc": ["2026-08-04T01:05:00.093Z", "2026-09-22T02:39:05.572Z"],
+   "timestamp_field": "ts_utc", "timestamp_unit": "ms", "timezone": "UTC",
+   "sha256_verify": "36/36 MATCH",
+   "volume_status": "DATA_GAP - volume/volume_real/last identically 0 => every flow feature is a quote-based _PROXY",
+   "execution_reference": "FXTM demo tick bid/ask (magic 90004 account); DUKA is NOT used"
+ },
+ "cost_model": {
+   "COST_MODEL_VERSION": "CALIBRATION_20RT_20260921", "REAL_RT_COST_BP": 0.914,
+   "components": {"spread": "MEASURED (0.18bp at calibration; snapshot median 0.34bp full spread)",
+                  "commission": "MEASURED (0.22 USD/RT)", "slippage": "MEASURED distribution from the 19-RT pilot; SIGNED, only the unfavorable leg counts",
+                  "latency_cost": "MEASURED (entry signal->fill median ~272ms) - not added as bp, reported separately",
+                  "adverse_selection": "MEASURED as the execution markout itself, not double-charged",
+                  "impact": "NOT_OBSERVABLE at 0.01 lot"},
+   "stress": [0.0, 1.0, 2.0, 3.0],
+   "rule": "0.314bp must not be used (HISTORICAL_INVALID_FOR_CURRENT_RESEARCH)"
+ },
+ "execution_model": {
+   "entry": "first tick with ts > signal tick ts; long at ask, short at bid",
+   "exit": "mid at the first tick with ts >= entry_ts + h; HORIZON_CENSORED excluded when crossing a segment break (>60s gap) or the sample end",
+   "mid_markout": "dir*(future_mid - entry_mid)", "exec_markout": "dir>0 ? future_mid-entry_ask : entry_bid-future_mid",
+   "cost_adjusted": "mid_markout_bp - 0.914 * stress_mult"
+ },
+ "frozen_thresholds": {
+   "horizons_ms": [100, 250, 500, 1000, 2000, 5000],
+   "z_abs": 2.0, "z_window_ticks": 3000, "impulse_window_ticks": 500, "ti_window_ticks": 100,
+   "regime_quantiles": {"spread": [0.33, 0.67], "rv": [0.33, 0.67], "baseline_window_ticks": 3000},
+   "min_effective_n": 30, "alpha": 0.05,
+   "a_priori": "thresholds reused from the prior frozen rounds (|z|>=2, trailing-quantile regimes); NO scan, NO tuning"
+ },
+ "hypotheses": [
+  {"id": "E1_TICKIMB_CONT", "family": "1_tick_imbalance", "kind": "directional",
+   "feature": "TI_PROXY = sum(sign(dmid), trailing 100 ticks)/sqrt(100)  [_PROXY: no size data]",
+   "trigger": "|TI_PROXY| >= 2.0 (onset of a run)", "entry": "next tick after the trigger tick",
+   "exit": "mid at entry+h", "direction": "follow sign(TI_PROXY)",
+   "comparison": "re-run of Phase-2 R1 A1_TICKIMB_CONT (reproducibility check)"},
+  {"id": "E1_TICKIMB_FADE", "family": "1_tick_imbalance", "kind": "directional",
+   "feature": "same TI_PROXY", "trigger": "same", "entry": "same", "direction": "opposite sign(TI_PROXY)",
+   "comparison": "re-run of Phase-2 R1 A1_TICKIMB_REV"},
+  {"id": "E2_IMPACT_RECOVERY_FADE", "family": "2_liquidity_replenishment", "kind": "directional",
+   "feature": "impact shock = |z(dmid over trailing 500 ticks)| >= 2 vs trailing 3000-tick std; reversion target = the mid at shock onset",
+   "mechanism": "after a price impact, liquidity replenishes and the mid recovers toward the pre-shock level",
+   "trigger": "onset of the shock", "entry": "next tick after onset", "direction": "opposite the shock direction (fade)",
+   "extra": "coefficient = recovered fraction (how much of the shock is given back by h), reported per spread regime"},
+  {"id": "E2_RECOVERY_TIME", "family": "2_liquidity_replenishment", "kind": "descriptive",
+   "feature": "spread at shock onset vs trailing 3000-tick median",
+   "metric": "time (ms) until spread_bp returns within 10% of the trailing median; and the same conditioned on wide/normal spread at onset"},
+  {"id": "E3_JOINT_STATE_DRIFT", "family": "3_spread_vol_pressure", "kind": "directional",
+   "feature": "joint cell = (spread tertile TIGHT/MID/WIDE from trailing q33/q67) x (rv500 tertile LOW/MID/HIGH) x (pressure sign of TI_PROXY)",
+   "mechanism": "the JOINT state carries information the marginals do not (interaction), i.e. a conditional drift",
+   "trigger": "the pressure sign is non-zero; entry on the tick at which the joint cell label is evaluated (every 500 ticks, deterministic grid to avoid overlapping spam)",
+   "entry": "next tick", "direction": "follow the pressure sign", "exit": "mid at entry+h",
+   "multiple_testing": "18 cells x 6 horizons; Benjamini-Hochberg FDR at 0.05 reported alongside the ladder"},
+  {"id": "E4_MICRO_CONT", "family": "4_micro_continuation", "kind": "directional",
+   "feature": "micro impulse = ret over trailing 100 ticks", "trigger": "|z(ret100)| >= 2 (trailing 3000-tick std)",
+   "entry": "next tick", "direction": "follow the impulse", "exit": "mid at entry+h",
+   "comparison": "closest prior = Phase-2 R1 C2_ARRIVAL_BURST_CONT (different trigger, same direction class)"},
+  {"id": "E4_MICRO_FADE", "family": "4_micro_continuation", "kind": "directional",
+   "feature": "same", "trigger": "same", "entry": "same", "direction": "opposite the impulse",
+   "comparison": "closest prior = Phase-2 R1 A2_PXSHOCK_REV"}
+ ],
+ "validation": {
+   "is_oos": "time-ordered 70/30 by event time (no shuffle)",
+   "permutation": "sign-flip, n=2000, two-sided",
+   "bootstrap": "block bootstrap over events, n=2000, blocks=50",
+   "overlap_check": "report raw event n, overlap ratio at each horizon, and effective_n = greedy non-overlapping event count",
+   "effective_n_floor": 30,
+   "verdicts": ["VALIDATED_EDGE", "NO_VALIDATED_EDGE"],
+   "ladder": ["INSUFFICIENT_SAMPLE", "COST_INSUFFICIENT", "REJECT", "EDGE_UNCERTAIN", "EXECUTION_UNREALISTIC", "CANDIDATE"],
+   "VALIDATED_EDGE_requires": "cost-adjusted gross > 0 at 1x on IS AND OOS, permutation p<0.05, bootstrap CI excludes 0, effective_n>=30, survives 2x cost, stable across sub-segments",
+   "direction_policy": "every directional source frozen BOTH ways"
+ }
+}
+body = json.dumps(P, sort_keys=True, separators=(",", ":"), ensure_ascii=False).encode()
+P["registry_hash_sha256"] = hashlib.sha256(body).hexdigest()
+json.dump(P, open(os.path.join(HERE, "FROZEN_PROTOCOL.json"), "w", encoding="utf-8"), ensure_ascii=False, indent=1)
+print("wrote FROZEN_PROTOCOL.json")
+print("registry_hash_sha256 =", P["registry_hash_sha256"])
+print("hypotheses:", [h["id"] for h in P["hypotheses"]])

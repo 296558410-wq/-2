@@ -1,0 +1,98 @@
+{
+ "schema": "hermes_decision_v1",
+ "utc_ts": "2026-09-20T23:19:00Z",
+ "cycle": "2026-09-20T23:17Z",
+ "decision_id": "DEC-2026-09-20T23:17Z",
+ "symbol": "XAUUSD",
+ "mid": 4372.92,
+ "decision": "LONG",
+ "plan_id": "TP-20260920T2317Z",
+ "confidence": 0.45,
+ "bias": "NEUTRAL-lean-BULLISH 0.52 (H4 up-structure vs D1 bearish-lean; H1/M15 in range, price mid-range just under the broken M15 MA50 4375.13 shelf, sitting on H1 MA20 4371.56 -> prefer a with-trend pullback dip-buy into the 50-61.8% retracement/H1-MA20 support band rather than a chase).",
+ "mtf_agreement": "mixed_neutral",
+ "state_summary": "Gate 23:17Z: armed=true open=true reason=open (exit 0; Sun cash-open reached). Slot FLAT: POS-20260918T1847Z LONG 0.01@4382.66 was closed by broker SL @4373.33 at 23:03Z (realized -9.33 USD ~-1.02R) -> single-position slot FREE this cycle. Live quote (quote_latest 23:18:42Z) mid 4372.92 (bid 4372.83/ask 4373.01), spread 0.18 USD = 0.41bps; pkg m15_live mid 4372.37, tick 84/min, z0.07 normal. Regime: D1 bearish-lean (4341.74 < MA20 4431.29, RSI42.3, hh4/ll5 down); H4 up (4382.76 > MA20 4330.00 > MA50 4343.61 < MA200 4402.89, RSI57.9, hh6/ll3); H1 range (4376.68 > MA20 4371.56 > MA200 4348.65 > MA50 4341.57, RSI49.8, er0.005); M15 range (4380.87 ~ MA20 4381.42 > MA50 4375.13 > MA200 4342.15, RSI44.1, er0.119, hi60 4399.77 / lo60 4342.68). Level map: resistance 4375.13 (M15 MA50) -> 4381.42 (M15 MA20) -> 4399.77 (M15/H1 high60, Fri high 4397.15); support 4371.56 (H1 MA20) -> 4369.9 (50% retr of Fri 4342.68->4397.15 leg) -> 4363.5 (61.8% retr) -> 4348.65 (H1 MA200) -> 4343.61 (H4 MA50) -> 4342.68 (Fri low) / 4342.15 (M15 MA200) / 4341.57 (H1 MA50). Caveat: candle_latest.json stale (ts 2026-09-07) ignored; tick feed ends Fri 23:54Z so all intraday levels anchored to the live quote_latest print.",
+ "m15_change": "Sunday re-open vs Friday's M15 close 4380.87: mid printed 4372.92 = a ~8pt gap-down at the week open, continuing Friday's late fade (Fri 20:00Z high 4397.15 -> 23:30Z close 4380.86). Price is now BELOW both M15 MA20 4381.42 and M15 MA50 4375.13 and sitting right on H1 MA20 4371.56; M15 RSI44.1 neutral-cool, structure hh4/ll5 (slightly down), feed only marginally refreshed (recent_move_bps 0.8). The 4375-4381 shelf that held the previous long is now lost -> treat as broken support / near-term resistance.",
+ "opportunity": "pullback",
+ "opportunity_mechanism": "With-trend pullback dip-buy: Friday's 4342.68 -> 4397.15 leg (+54.5pt) is retracing; price 4372.92 has already given the 50% retracement 4369.9 and is heading to the 61.8% retracement 4363.5 = the H1 MA20/H1-MA200 4371.56/4348.65 shelf zone, while H4 stays up (price > H4 MA20/MA50). Register LONG zone_touch[4361.0,4367.0] to buy the retracement into the 61.8% level with a structure stop under it; targets back to the M15 MA20 4381.4 and the Fri high 4397.2. Invalidation = decisive break/hold below 4358 re-opening the 4348.65/4342.68 stack.",
+ "answers_14": {
+  "1_market_state": "Gate 23:17Z armed=true open=true reason=open (exit 0). Slot FLAT (POS-1847Z closed broker SL @4373.33, -9.33 USD at 23:03Z). Live mid 4372.92, spread 0.41bps, tick 84/min z0.07. D1 bearish-lean (4341.74 < MA20 4431.29, RSI42.3); H4 up (4382.76 > MA20 4330.00 > MA50 4343.61 < MA200 4402.89, RSI57.9); H1 range (4376.68 > MA20 4371.56 > MA200 4348.65 > MA50 4341.57, RSI49.8, er0.005); M15 range (4380.87 ~ MA20 4381.42 > MA50 4375.13 > MA200 4342.15, RSI44.1, hi60 4399.77 lo60 4342.68).",
+  "2_consistency": "mixed/partial: H4 up (hh6/ll3, price > MA20/MA50) is the only clean directional TF; D1 is bearish-lean (price -202pt under MA20 4431.29) and H1/M15 are both range (er 0.005 / 0.119) with price mid-range. Net = range with a mild up-bias -> trade the edges, not the middle.",
+  "3_m15_change": "vs Fri M15 close 4380.87 the week opened ~8pt lower at 4372.92 (gap-down), extending Friday's 4397.15 -> 4380.86 afternoon fade. Price is back under M15 MA20 4381.42 and M15 MA50 4375.13, pinned on H1 MA20 4371.56; RSI44.1, hh4/ll5, feed only marginally refreshed (recent_move_bps 0.8). The 4375-4381 shelf that hosted the stopped long is now lost -> acts as nearby resistance.",
+  "4_opportunity": "pullback (slot FREE): buy the retracement into the H1 MA20 / 50-61.8% retracement band. Register LONG zone_touch[4361.0,4367.0], SL 4358, T1 4381.4 x0.50 / T2 4397.2 x0.50, qty 0.01.",
+  "5_mechanism": "Fri flush 4342.68 (tagged H4 MA50 4343.61 / M15 MA200 4342.15) -> V-reclaim -> +54.5pt thrust to 4397.15 -> stall under the 4399.77 high -> afternoon fade to 4380.9 -> Sun gap-down to 4372.9. With H4 up, the pullback into the 4361-4367 (61.8% retr 4363.5 + H1 MA20 shelf) is the with-trend entry; invalidation = hold below 4358 opening 4348.65/4342.68.",
+  "6_trigger_condition": "LONG only if mid enters [4361.0,4367.0] -> {zone_touch:[4361.0,4367.0]} (auto market fill on touch; needs a ~5.9pt / 0.13% dip from the live 4372.92 = about 1x M15 ATR 6.2pt).",
+  "7_invalidation": "Plan auto-cancel if {price_cross_down: 4358.0} before fill (or mid > 4379.0 = zone_hi+2band, or age > 2h). Position-thesis death = decisive break/hold below 4358, re-opening the 4348.65 (H1 MA200) / 4342.68 (Fri low) / 4342.15 (M15 MA200) stack.",
+  "8_expected_return_R": "entry mid 4364.0; T1 4381.4 x0.50 / T2 4397.2 x0.50 (blended 4389.3). R to T1 = (4381.4-4364.0)/(4364.0-4358.0) = 17.4/6.0 = 2.90R (blended 25.3/6.0 = 4.22R).",
+  "9_expected_loss_R": "1R = 6.0pt = 6.0 USD on 0.01 lot XAUUSD (1 lot = 100 oz) ~= 0.30% of the ~1,983 USD demo balance. Max loss -1.00R at SL 4358.",
+  "10_cost_value": "live spread 0.41bps (0.18 USD ~= 0.18pt @4372.9) + slippage 0.30bps (0.13pt) = 0.71bps roundtrip ~= 0.31pt ~= 0.052R on the 6.0pt 1R.",
+  "11_net_EV_formula": "EV = p*R - (1-p)*1.0 - cost = 0.45*2.90 - 0.55*1.0 - 0.052 = 1.305 - 0.550 - 0.052 = +0.703R > 0 -> LONG.",
+  "12_recurrence": "With-trend dip-buy / pullback-to-MA-retracement family (20260918T0347Z/1302Z/1417Z/171816/1747Z/1802Z/1817Z/1847Z). Condition-based: re-arm at each fresh retracement into the 50-61.8% band while H4 stays up; single position, never averaging.",
+  "13_decision": "LONG: register LONG zone_touch[4361.0,4367.0], SL 4358.0, T1 4381.4 / T2 4397.2, qty 0.01. Bias NEUTRAL-lean-BULLISH 0.52. Slot FREE -> plan fills on a dip into the band.",
+  "14_reason": "H4上行中回撤: 4372.9已破M15MA50, 逼近H1MA20 4371.6与50-61.8%回撤4369.9-4363.5支撑带. 挂LONG zone[4361,4367]触价自动成交, SL4358(61.8%下), T4381.4/4397.2, EV+0.70R. D1偏空为唯一拖累; 失效<4358."
+ },
+ "plan": {
+  "plan_id": "TP-20260920T2317Z",
+  "direction": "LONG",
+  "opportunity_type": "pullback",
+  "entry_style": "limit_at_zone",
+  "entry_zone": {
+   "low": 4361.0,
+   "high": 4367.0
+  },
+  "trigger_condition": {
+   "zone_touch": [
+    4361.0,
+    4367.0
+   ]
+  },
+  "invalidation_condition": {
+   "price_cross_down": 4358.0
+  },
+  "stop_logic": {
+   "type": "structure",
+   "level_price": 4358.0,
+   "reason": "below the 61.8% retracement of the Fri 4342.68->4397.15 leg (4363.5) and under the H1 MA20 4371.56 shelf, above the 4348.65/4342.68 stack"
+  },
+  "target_logic": {
+   "type": "structure",
+   "levels": [
+    {
+     "price": 4381.4,
+     "frac": 0.5
+    },
+    {
+     "price": 4397.2,
+     "frac": 0.5
+    }
+   ],
+   "reason": "T1 = reclaim of M15 MA20 4381.42; T2 = Fri high 4397.15 / M15-H1 high60 4399.77"
+  },
+  "expected_R": 2.9,
+  "expected_win_probability": 0.45,
+  "probability_source": "with-trend dip-buy / pullback-to-MA-retracement family on the 10 live-days sample; realised base rate ~0.42-0.48; held at 0.45 (H4 up pullback into H1 MA20/61.8% retr, but D1 below MA20 4431.29 + the failed 4397 test cap it)",
+  "estimated_cost": {
+   "spread_bps": 0.41,
+   "slippage_bps": 0.3,
+   "total_roundtrip_bps": 0.71,
+   "roundtrip_pt": 0.31,
+   "cost_in_R": 0.052,
+   "note": "0.71bps roundtrip ~= 0.31pt ~= 0.052R on the 6.0pt 1R"
+  },
+  "spread_bps": 0.41,
+  "slippage_bps": 0.3,
+  "expected_net_EV": {
+   "value": 0.7,
+   "units": "R",
+   "note": "0.45*2.90 - 0.55*1.0 - 0.052 = +0.703R"
+  },
+  "maximum_holding_time": "M15*8",
+  "qty_lots": 0.01,
+  "risk_level": "medium",
+  "reason": "Buy the with-trend retracement into the H1 MA20 4371.56 / 61.8% retr 4363.5 support band while H4 stays up; structure stop under 4358; targets back to the M15 MA20 4381.4 and Fri high 4397.2."
+ },
+ "gap_to_tradable": "PRICE only: needs a ~5.9pt dip from the live mid 4372.92 into [4361.0,4367.0] (~0.13% ~= 1x M15 ATR); the zone_touch trigger auto-fills on touch. Slot is FREE (POS-1847Z closed by broker SL @4373.33 at 23:03Z). Auto-cancel if mid <= 4358.0 before fill, or mid > 4379.0 (zone_hi+2band, price ran away) or age > 2h (M15*8).",
+ "cost_note": "spread 0.41bps (0.18pt @4372.9) + slippage 0.30bps (0.13pt) = 0.71bps roundtrip (~0.31pt).",
+ "ev_note": "EV = 0.45*2.90 - 0.55*1.0 - 0.052 = +0.703R > 0 so LONG.",
+ "model": "deepseek/deepseek-v4-flash",
+ "prompt_version": "hermes-trader-m15-cycle/2026-09-12"
+}

@@ -1,0 +1,120 @@
+{
+ "schema": "v3_global_candidate_registry/1",
+ "ts_utc": "2026-09-25T09:47:15.545056+00:00",
+ "scope": "discovery + pre-purchase audit; nothing purchased, no accounts created",
+ "definitions": {
+  "A": "XAUUSD Spot",
+  "B": "XAUUSD CFD",
+  "C": "London Gold Spot",
+  "D": "OTC Gold",
+  "E": "GC Futures",
+  "F": "ETF",
+  "G": "Other",
+  "H": "Unknown"
+ },
+ "candidates": [
+  {
+   "candidate_id": "HISTDATA_XAUUSD_M1",
+   "vendor": "HistData.com",
+   "class": "FREE_PUBLIC",
+   "symbol": "XAUUSD",
+   "display_name": "XAUUSD (HistData ASCII M1)",
+   "asset_class": "UNKNOWN (vendor symbol only)",
+   "venue": "UNKNOWN (aggregated FX/CFD broker feed)",
+   "instrument_type": "UNKNOWN",
+   "quote_currency": "USD",
+   "price_definition": "OHLCV (bid/ask aggregated; not stated)",
+   "XAU_DEFINITION_CLASS": "H (empirically aligns with FXTM XAUUSD at 0.966, but no official definition published)",
+   "access": "public download, NO account, NO payment",
+   "verdict": "CONDITIONAL"
+  },
+  {
+   "candidate_id": "OANDA",
+   "vendor": "OANDA",
+   "class": "BROKER",
+   "symbol": "XAU_USD",
+   "XAU_DEFINITION_CLASS": "B/B-C candidate (broker CFD, definition via API docs unverified)",
+   "access": "requires account+token for API",
+   "verdict": "CONDITIONAL"
+  },
+  {
+   "candidate_id": "YAHOO_GC_F",
+   "vendor": "Yahoo Finance",
+   "class": "PORTAL",
+   "symbol": "GC=F",
+   "XAU_DEFINITION_CLASS": "E (COMEX gold FUTURES)",
+   "access": "public API, no key",
+   "note": "1m reachable again (HTTP 200) but E-class: must NOT be registered as XAUUSD",
+   "verdict": "REJECTED"
+  },
+  {
+   "candidate_id": "YAHOO_XAUUSD",
+   "vendor": "Yahoo Finance",
+   "class": "PORTAL",
+   "symbol": "XAUUSD=X",
+   "XAU_DEFINITION_CLASS": "H",
+   "access": "public",
+   "note": "HTTP 404 - symbol does not exist",
+   "verdict": "REJECTED"
+  },
+  {
+   "candidate_id": "DUKASCOPY",
+   "vendor": "Dukascopy",
+   "class": "BROKER_FEED",
+   "symbol": "XAUUSD",
+   "XAU_DEFINITION_CLASS": "B",
+   "access": "datafeed still TCP-blocked from CN",
+   "note": "16y local asset remains REFERENCE_ONLY; timestamp remains UNRESOLVED",
+   "verdict": "BLOCKED"
+  },
+  {
+   "candidate_id": "DATABENTO",
+   "vendor": "Databento",
+   "class": "OVERSEAS_DATA",
+   "symbol": "GLBX.MDP3 GC",
+   "XAU_DEFINITION_CLASS": "E (COMEX futures)",
+   "access": "paid credits",
+   "verdict": "REJECTED"
+  },
+  {
+   "candidate_id": "TRUEFX",
+   "vendor": "TrueFX",
+   "class": "OVERSEAS_DATA",
+   "symbol": "FX majors",
+   "XAU_DEFINITION_CLASS": "H (XAUUSD not offered)",
+   "access": "free w/ registration",
+   "verdict": "REJECTED"
+  },
+  {
+   "candidate_id": "TWELVEDATA",
+   "vendor": "Twelve Data",
+   "class": "OVERSEAS_DATA",
+   "symbol": "XAU/USD",
+   "XAU_DEFINITION_CLASS": "H",
+   "access": "API key required (401 observed)",
+   "verdict": "CONDITIONAL"
+  },
+  {
+   "candidate_id": "POLYGON",
+   "vendor": "Polygon/Massive",
+   "class": "OVERSEAS_DATA",
+   "symbol": "X:C*",
+   "XAU_DEFINITION_CLASS": "H/E",
+   "access": "API key required (401 observed)",
+   "verdict": "CONDITIONAL"
+  },
+  {
+   "candidate_id": "TICKSTORY",
+   "vendor": "Tickstory",
+   "class": "DATA_TOOL",
+   "symbol": "n/a",
+   "XAU_DEFINITION_CLASS": "H",
+   "access": "HTTP 403 from this host",
+   "verdict": "BLOCKED"
+  }
+ ],
+ "qualified": 0,
+ "conditional": 4,
+ "blocked": 2,
+ "rejected": 4
+}

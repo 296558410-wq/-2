@@ -1,0 +1,49 @@
+{
+  "audit_id": "BB_20260827",
+  "timestamp": "2026-08-27 12:00:00+00:00",
+  "current_state": "REJECTION (dwell 4 bars; frozen label ROTATION). Price 4588-4592 has bounced ~28 pts off the 4564.225 session low on strong lower-wick rejection bars (H1 wick 11.44, H4 wick 25.58), and now trades INSIDE the 4593.285 swing-low level (distance 0.12 ATR).",
+  "structure": "Nearest level SWING_LOW 4593.285 (DN, age 15 bars, 29 touches/240) sits ~0.12 ATR overhead as resistance; break_status INSIDE, reclaim_status NONE. Multi-timeframe CONFLICT: M1 trend_20 +7.06 (up) and H1 +2.25 (flat-up), vs M5/M15 trend_20 -8.75/-17.63 (down) and H4 -52.06 (down) with H4 trend_50 +173.97 / H1 trend_50 -32.11 (long-term up, medium-term down).",
+  "mechanism": "Rejection/recovery-bounce mechanism: the aggressive flush to 4564 was strongly rejected and price is reclaiming; the open question is whether the 4593.285 swing-low overhead yields or holds. The L4 mechanism candidate (trend_continuation, 8-bar displacement -3.51) is DERIVED-only, not asserted; I weigh it as a competing downside vector given M5/M15/H4 negative trends.",
+  "primary_scenario": {
+    "scenario": "Rejection-bounce continuation: momentum from the hammer-like rejections (M1 consecutive_up 7, trend_20 +7.06, range_expanding) carries price through 4593.285 toward the 4598-4602 H1 resistance band, with ROTATION resolving toward acceptance of the higher low.",
+    "confidence": 0.42,
+    "horizon": "SHORT_TERM",
+    "trigger": "Sustained M1/M5 closes above 4593.285 with expanding range and DXY staying soft (below ~99.3).",
+    "invalidation": "Decisive break back below 4577 (M15 consolidation low) or a strong bearish rejection bar at 4593.285 reversing the bounce."
+  },
+  "alternative_scenario": {
+    "scenario": "Resistance rejection / down-continuation: the 29-touch swing low at 4593.285 holds as supply, the bounce fails, and price rolls back to retest the 4568-4564 flush-low zone as H4 (trend_20 -52) and M15 (trend_20 -17.6) reassert.",
+    "confidence": 0.36,
+    "horizon": "SHORT_TERM",
+    "trigger": "Failure to hold above 4593.285 within a few bars, then a close back under 4586 (current M1 close) toward 4580/4577.",
+    "invalidation": "Clear break and hold above 4593.285 with 4598+ reached, or a higher-low forming above 4586 without retesting 4577."
+  },
+  "expected_transition": "REJECTION -> ACCEPTANCE if 4593.285 breaks (bounce confirmed); otherwise continued ROTATION/reversion. Historical analogs split: A34029 shows REJECTION->ACCEPTANCE->ROTATION->EXPANSION while A23875 shows REJECTION->COMPRESSION and A29013 REJECTION->EXPANSION, reinforcing modest confidence in either direction.",
+  "direction": "UP",
+  "horizon": "SHORT_TERM",
+  "confidence": 0.42,
+  "counter_evidence": [
+    "Heavy overhead supply: SWING_LOW 4593.285 with 29 touches in last 240 bars; price only 0.12 ATR away.",
+    "Multi-timeframe CONFLICT; M5/M15/H4 trend_20 negative and L4 candidate is downside displacement -3.51.",
+    "H1 trend_50 -32.11 signals a medium-term downtrend still intact below the 4593-4602 zone.",
+    "Frozen label ROTATION with state REJECTION implies no clean directional commitment.",
+    "UST10Y (TNX) unavailable; NEWS/MACRO/CFTC/ETF-flow absent, leaving rate and flow drivers UNKNOWN."
+  ],
+  "invalidation": "UP invalidated by a decisive close below 4577 or a retest of 4568-4564; DOWN invalidated by break and hold above 4593.285 toward 4598-4602.",
+  "data_quality_flags": [
+    "UST10Y_PROXY_TNX: UNKNOWN (STALE_OR_NOT_COVERED)",
+    "DXY: PROXY (Yahoo, instrument definition UNKNOWN)",
+    "VIX: PROXY (Yahoo)",
+    "L2 levels / L3-L5 states: DERIVED (causal), not direct",
+    "GLD/GC/CFTC_COT/ETF_FLOWS/NEWS/MACRO_EVENTS: ABSENT"
+  ],
+  "reasoning_trace": [
+    "Read only PIT context CTX_20260827T120000Z.json; no other analyst forecast consulted.",
+    "Price flushed to H4 low 4564.225 then printed large lower wicks (H1 11.44, H4 25.58) closing near highs - a rejection-of-lows structure.",
+    "Immediate momentum (M1 trend_20 +7.06, consecutive_up 7, range_expanding) favors bounce continuation.",
+    "But the immediate target 4593.285 is a 29-touch swing low acting as resistance; reclaim_status NONE and break_status INSIDE put price in a decision zone.",
+    "Higher timeframes (M5/M15/H4 trend_20 negative; H1 trend_50 -32.11) contradict the bounce and cap confidence.",
+    "Cross-market is only mildly supportive: DXY -0.023 (soft), VIX 14.97 (stable); no rates data to confirm.",
+    "Net: mild UP bias for the bounce test of 4593, low-moderate confidence 0.42; rollover DOWN is a live alternative at 0.36."
+  ]
+}

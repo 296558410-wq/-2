@@ -1,0 +1,59 @@
+{
+ "target_version": "c1.5-target-registry-r1",
+ "frozen": true,
+ "frozen_before_analysis": true,
+ "c1_inputs_immutable": {
+  "ontology_hash": "8436866dfe71030ba7be036b2d73904ed2f817aa52673a5e27d583e931c354d8",
+  "label_mapping_hash": "21e0f842edc14f6feee8cade3d6d919f879b6d36a58ffb056437b382428d7cf4",
+  "forecast_hash": "cd21008d11c0f5124f4b94c6f07f376062c6002ab3b256f57382e537ecd23ac0",
+  "sample_selection_hash": "d87011c621a9b18225c3ec76663e469a63ebbeb12696716193b4c223e667f008"
+ },
+ "state_target_definition": {
+  "TARGET_A": "STATE_PERSISTENCE: CURRENT_STATE(t) -> CURRENT_STATE(t+h) in {PERSIST, TRANSITION}",
+  "TARGET_B": "STATE_TRANSITION: (source_state, transition_label, destination_state, transition_time, transition_horizon)",
+  "TARGET_C": "NEXT_STATE: CURRENT_STATE(t) -> ACTUAL_STATE(t+h)"
+ },
+ "transition_definition": "source_state -> transition_label -> destination_state, both endpoints declared; a bare UP/DOWN is NOT a transition",
+ "persistence_definition": "same canonical MARKET_BEHAVIOR label at t and t+h using the FROZEN ontology",
+ "horizons": {
+  "M5": 24,
+  "M15": 8,
+  "H1": 2
+ },
+ "horizon_rationale": "~2h expressed in each timeframe's own bars; H4 EXCLUDED as a primary target (only ~90 bars)",
+ "unknown_handling": {
+  "taxonomy": [
+   "INSUFFICIENT_DATA",
+   "CONFLICTING_EVIDENCE",
+   "AMBIGUOUS_STATE",
+   "UNOBSERVABLE_PREREQUISITE",
+   "NO_DEFINED_STATE",
+   "LOW_CONFIDENCE"
+  ],
+  "never_deleted": true,
+  "classified_never_merged": true
+ },
+ "evaluation_relation": "exact | equivalent | parent | child | related | conflict | unmapped (frozen in C1 mapping)",
+ "stability_rules": {
+  "persistence_baseline_required": true,
+  "majority_class_baseline_required": true,
+  "no_horizon_picking_by_accuracy": true,
+  "boundary_perturbation_diagnostic_only": true
+ },
+ "rare_transition_rule": "count <= 2 -> RARE_TRANSITION (flagged, never deleted)",
+ "churn_rule": "state_changes_per_bar and same-state run length; A-B-A-B alternation -> STATE_CHURN",
+ "no_training": true,
+ "no_model_fitting": true,
+ "no_parameter_optimization": true,
+ "no_lookahead": "CURRENT_STATE uses bars <= t; ACTUAL_NEXT_STATE uses bars <= t+h only",
+ "boundary_perturbation": {
+  "allowed": [
+   "±1 bar",
+   "±1 frozen measurement unit"
+  ],
+  "forbidden": [
+   "ontology edit"
+  ]
+ },
+ "target_registry_hash": "58022bdb5572d33a98d93af914fe7771378fc164c5593d0759c9bbcdbd475d88"
+}

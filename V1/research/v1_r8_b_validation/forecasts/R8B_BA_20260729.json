@@ -1,0 +1,58 @@
+{
+  "audit_id": "BA_20260729",
+  "timestamp": "2026-09-28T11:19:00Z",
+  "overall_verdict": "PARTIAL_AGREE",
+  "focus_verdicts": {
+    "OBSERVATION_DISCIPLINE": "PARTIAL_AGREE",
+    "MECHANISM_DISCIPLINE": "PARTIAL_AGREE",
+    "COUNTER_EVIDENCE": "PARTIAL_AGREE",
+    "CONFIDENCE": "PARTIAL_AGREE",
+    "ABSTENTION": "PARTIAL_AGREE",
+    "INVALIDATION": "PARTIAL_AGREE"
+  },
+  "over_inference": [
+    "observations[0]: \"price 4017-4024, pinned at swing low 4021.515\" — \"pinned\" asserts a stable anchor, but M1 close 4017.475 and M5 close 4016.505 already trade BELOW 4021.515 (CTX L1), and L2 break_status is only INSIDE with reclaim_status NONE. A level already traded under on the lowest timeframes is not a pin.",
+    "primary_scenario RANGE trigger \"oscillation 4013-4030 around 4021.5\" — the current H4 bar already realized low 4010.055 / high 4037.835 and the H1 16:00 bar printed 4047.025 (CTX L1), so the forecast band is narrower than the range already realized in the prior 4 hours; the scenario adds little information and is nearly tautological.",
+    "evidence[3]: \"analog A33379 shows TREND by step 4\" offered as evidence, extrapolating resolution from a single analog (n=1) while A34354 and A35780 stay COMPRESSION through step 12 and all three analogs score similarity 1.0 under the degenerate \"exact_state + dwell_bucket\" method (CTX historical_analog)."
+  ],
+  "mechanism_jump": [
+    "possible_mechanisms: \"range_rotation\" status SUPPORTED with why \"20-touch level, churn, long wicks\" — this mechanism is NOT among the L4 candidates (only trend_continuation and exhaustion; CTX L4 note: \"mechanism CANDIDATES only; NOT asserted as fact (§13)\"), and the same price-only evidence is equally compatible with exhaustion or accumulation. A itself caps accumulation at WEAK because of \"no volume data\" — the identical missing data must cap range_rotation at POSSIBLE, not SUPPORTED.",
+    "The SUPPORTED range_rotation label then propagates into the load-bearing parts of the forecast: primary_scenario RANGE and confidence_reason \"heavy-touch compression favors range\". The strongest mechanism status is the one with the thinnest discrimination."
+  ],
+  "missing_counter_evidence": [
+    "No counter to RANGE from range expansion: M5, M15 and H4 all carry range_expanding=true (CTX L1 sequence_flags) while evidence[2] cites only \"M1 ranges contracting, percentile 0.17\". 3 of 5 timeframes are EXPANDING; expansion + ACCEPTANCE event + 20 touches at a level is the standard pre-breakout configuration A never tests against its own RANGE thesis.",
+    "H4 trend_50 = +30.15 (CTX L6) is never mentioned; A cites only H4 trend_20 +4.95. The 50-bar H4 uptrend is direct counter-evidence to a flat RANGE bias and A did not seek it out.",
+    "counter_evidence[2] \"two of three analogs stay COMPRESSION\" holds only through step 12; over the full 16-step window 2 of 3 analogs LEAVE COMPRESSION (A33379 → TREND at step 4, A34354 → REJECTION at step 16; CTX historical_analog). The analog base mildly favors resolution; A's framing inverts it.",
+    "The scenario's own invalidation boundary was nearly pre-triggered: current H4 close 4029.255 with bar high 4037.835 (CTX L1 H4) — price already exceeded 4030 intraday within the last 4 hours, so the RANGE scenario sat one 4h close from invalidation on the upside at forecast time, with no counter-evidence acknowledging it."
+  ],
+  "unjustified_confidence": [
+    "evidence_strength 0.45 and confidence 0.42 are near-identical with overlapping rationale (\"MTF conflict, small sample cap confidence\"), so the two metrics are not operationally distinct; more importantly a SUPPORTED mechanism (range_rotation) is inconsistent with evidence_strength 0.45 — if evidence justified SUPPORTED it should be materially higher, and if it is 0.45 nothing should be SUPPORTED.",
+    "abstain_reason \"context sufficient; conflict disclosed, abstention unwarranted\" overstates sufficiency: VIX and UST10Y are UNKNOWN, NEWS/MACRO_EVENTS/CFTC_COT/ETF_FLOWS are absent, DXY is only PROXY quality (CTX L7), and analog retrieval is degenerate (all similarity 1.0). The claim \"context sufficient\" is stronger than the data support."
+  ],
+  "observation_as_fact": [
+    "what_i_know[0]: \"XAUUSD 4017-4024 across timeframes at 00:00Z\" asserted as knowledge, but H4 close is 4029.255 and the H4 bar high is 4037.835 (CTX L1 H4) — the band silently excludes H4, presenting a selective subset as the complete price picture.",
+    "evidence[2]: \"M1 ranges contracting, percentile 0.17\" promoted to evidence for the range outcome while M5/M15/H4 show range_expanding=true (CTX L1) — a single-timeframe observation treated as representative without attaching the contradictory timeframes."
+  ],
+  "strongest_objection": "The forecast's top line rests on an unjustified mechanism promotion: range_rotation is raised to SUPPORTED — the only SUPPORTED status — from derived price geometry (20 touches, churn, long wicks) that equally fits exhaustion or accumulation, while accumulation is simultaneously capped at WEAK for the very missing volume data that should also cap rotation at POSSIBLE (and range_rotation is not even an L4 candidate, §13). That SUPPORTED label then props up primary_scenario RANGE and confidence_reason, while the counter-evidence A did not seek — M5/M15/H4 all range_expanding, H4 trend_50 +30.15, intraday prints at 4047/4037.8 already breaching the 4030 invalidation boundary, and 2 of 3 analogs leaving COMPRESSION by step 16 — points the other way. The RANGE forecast is therefore both under-evidenced and nearly non-informative: its 4013-4030 band is narrower than the range realized in the prior 4h.",
+  "evidence": [
+    "CTX L4: \"mechanism CANDIDATES only; NOT asserted as fact (§13)\"; candidates are only trend_continuation and exhaustion — no range_rotation.",
+    "CTX L1 sequence_flags: M5 range_expanding=true, M15 range_expanding=true, H4 range_expanding=true, M1 range_contracting=true; M1 current range_percentile 0.17.",
+    "CTX L6: H4 trend_20 4.95, H4 trend_50 30.15; M1 trend_50 -8.92; agreement CONFLICT.",
+    "CTX L1 H4 current: high 4037.835, low 4010.055, close 4029.255; H1 16:00 bar high 4047.025.",
+    "CTX L2: nearest level 4021.515, break_status INSIDE, reclaim_status NONE; CTX L1 M1 close 4017.475, M5 close 4016.505 (below the level).",
+    "Forecast possible_mechanisms: range_rotation SUPPORTED \"20-touch level, churn, long wicks\"; accumulation WEAK \"no volume data\"; evidence_strength 0.45; confidence 0.42; uncertainty 0.58.",
+    "CTX L7: DXY 101.428 change_8 0.056 change_32 0.034, quality PROXY; VIX/UST10Y UNKNOWN; absent GLD, GC, CFTC_COT, ETF_FLOWS, NEWS, MACRO_EVENTS.",
+    "CTX historical_analog: all analogs similarity 1.0 via \"exact_state + dwell_bucket\"; A33379 TREND by step 4; A34354 REJECTION at step 16; A35780 COMPRESSION through step 16.",
+    "Forecast counter_evidence[2] \"two of three analogs stay COMPRESSION\" vs full-window outcome 2 of 3 leave COMPRESSION; forecast change_my_mind \"VIX spike or DXY move beyond 0.3\" — VIX spike undefined, and 0.3 is ~5-9x the recent DXY 8-bar change of 0.056.",
+    "Forecast invalidation \"4h close below 4010 or above 4030\" vs alternative trigger \"decisive break of 4021.5 level\" — \"decisive\" undefined and the two scenarios overlap in the 4010-4021.5 band, so ex-post adjudication is ambiguous there."
+  ],
+  "reasoning_trace": [
+    "Reconciled every observation/what_i_know item against CTX: the 4017-4024 band claim fails on H4 (close 4029.255, high 4037.835); \"pinned at 4021.515\" conflicts with M1/M5 closing below the level.",
+    "Compared mechanism statuses to L4 candidates: SUPPORTED range_rotation is not a candidate and is not discriminated by the available price-only data; accumulation WEAK for lack of volume while rotation is SUPPORTED without it is an inconsistent epistemic bar.",
+    "Sought the counter-evidence A should have found: range expansion on 3 of 5 timeframes, H4 trend_50 +30.15, intraday prints beyond the 4030 invalidation boundary, and 2 of 3 analogs leaving COMPRESSION by step 16.",
+    "Checked the confidence triplet: 0.42 + 0.58 = 1.0 is internally consistent and the uncertainty is disclosed, but evidence_strength 0.45 vs confidence 0.42 are not distinct and sit uneasily with a SUPPORTED mechanism.",
+    "Checked abstention: a hedged non-directional RANGE with low confidence makes non-abstention defensible, but \"context sufficient\" overstates a context missing all cross-market series and using degenerate analog retrieval.",
+    "Checked invalidation: primary conditions are objectively checkable, but \"decisive break\" is undefined, primary and alternative scenarios overlap in the 4010-4021.5 band, and the boundaries sit inside the already-realized range.",
+    "Verdict: PARTIAL_AGREE — honest hedging, disclosed uncertainty and checkable primary invalidation are genuine strengths, but a load-bearing mechanism jump, selective evidence, inaccurate price characterization and near-tautological scenario bounds prevent full agreement."
+  ]
+}

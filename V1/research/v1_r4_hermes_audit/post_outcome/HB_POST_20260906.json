@@ -1,0 +1,37 @@
+{
+  "audit_id": "HB_POST_20260906",
+  "timestamp": "2026-09-27T22:54:00+08:00",
+  "correct_calls": [
+    "Primary scenario core: DECELERATION would persist into a compressed consolidation around 4423-4438 — actual_next_state is COMPRESSION, substantively confirming the compression/consolidation read.",
+    "Volatility/coil read: post-shock contraction (H1/H4 range_percentile 0.02-0.07 after the 100+ point shock bar) correctly framed as compression before resolution.",
+    "Correctly refused a directional bias: multi-timeframe CONFLICT (per §15) made direction genuinely uninferable from price alone; NO_DIRECTIONAL_EDGE was an honest reading of the available evidence.",
+    "Scenario coverage: hermes_scenario_covered_actual=true — the actual outcome fell inside the scenario envelope Hermes-A laid out."
+  ],
+  "wrong_calls": [
+    "Expected formal state transition DECELERATION -> BREAKOUT_ATTEMPT (per analogs A968/A12862/A27169) did not occur at the next step; actual transition was DECELERATION -> COMPRESSION, i.e., no breakout-attempt label yet.",
+    "Direction was left unresolved (NO_DIRECTIONAL_EDGE) while the market resolved UP; the direction that materialized was the one Hermes-A gave the LOWEST standalone confidence (third scenario, 0.15), while the higher-weighted alternative downside scenario (0.30) pointed the wrong way."
+  ],
+  "right_but_wrong_reason": [
+    "breakout_pressure candidate: the BEYOND break of 4431.915 was the correct structural signal (actual resolved UP, the break proved genuine), but Hermes-A discounted it to a co-equal candidate with failed_breakout and hedged it into a 0.15 third scenario — right signal, wrong/inconsistent weighting.",
+    "The compression call was correct, but the framing 'coil before an imminent BREAKOUT_ATTEMPT' implied resolution was the next observable event; the actual next label was COMPRESSION itself, so the reason (imminent break) overstated what the evidence supported."
+  ],
+  "direction_ok_state_wrong": "Third (upside) scenario: direction UP was right, but the implied state (genuine breakout/recovery toward 4448.545/4475.625) did not occur — the actual next state was still COMPRESSION, not an upside TREND/breakout state.",
+  "state_ok_direction_wrong": null,
+  "should_have_abstained": false,
+  "invalidation_occurred": false,
+  "prior_concerns_materialised": null,
+  "hindsight_detected": false,
+  "hindsight_evidence": [],
+  "outcome_alignment_verdict": "PARTIALLY_CORRECT",
+  "reasoning_trace": [
+    "PIT confirmed: as_of 2026-09-06 12:00Z, all data timestamps <= 2026-09-04 21:59Z; no future info leaked into the forecast.",
+    "Actual outcome: next state COMPRESSION, transition 1, direction UP; hermes_scenario_covered_actual=true; baseline persistence/previous both DECELERATION.",
+    "State assessment: Hermes-A's DECELERATION-into-compression primary scenario matched actual COMPRESSION substantively — a correct call.",
+    "Transition-label assessment: expected DECELERATION -> BREAKOUT_ATTEMPT did not materialize; actual label COMPRESSION differs — the formal transition call was wrong even though the qualitative compression was right.",
+    "Direction assessment: Hermes-A honestly declared NO_DIRECTIONAL_EDGE given CONFLICT; the market broke UP, the direction it assigned only 0.15 confidence — underweighted the genuine BEYOND/breakout_pressure signal.",
+    "Invalidation check: none of the stated invalidation conditions (decisive expansion reclaiming 4438.225, or losing 4422.275/4411.955, or state -> TREND/EXPANSION) occurred; the outcome was a COMPRESSION, consistent with the primary scenario, so invalidation_occurred=false.",
+    "Hindsight check: reasoning is fully grounded in the provided PIT context; no claim depends on knowing the present -> hindsight_detected=false.",
+    "Prior-concerns check: no earlier adversarial auditor's concerns were supplied in this payload; assessment set to null rather than fabricated.",
+    "Verdict: state/compression call correct, direction unresolved but resolved against its implicit weighting, formal transition label off by one step -> PARTIALLY_CORRECT."
+  ]
+}

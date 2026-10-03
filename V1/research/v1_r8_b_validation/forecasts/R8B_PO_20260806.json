@@ -1,0 +1,61 @@
+{
+  "audit_id": "PO_20260806",
+  "sample_id": "A_20260806",
+  "audit_type": "POST_OUTCOME_ALIGNMENT",
+  "auditor": "HERMES-B",
+  "timestamp": "2026-09-28T11:40:00Z",
+  "symbol": "XAUUSD",
+  "as_of_utc": "2026-08-06T00:00:00Z",
+  "horizon": 4,
+  "forecast_primary_scenario": "DIRECTIONAL",
+  "forecast_alternative_scenario": "RANGE",
+  "forecast_direction_bias": "UP",
+  "forecast_expected_transition": "EXPANSION continues; possible TREND transition later",
+  "outcome_family_at_H": "DIRECTIONAL",
+  "outcome_state_at_H": "TREND",
+  "outcome_state_now": "EXPANSION",
+  "outcome_alignment_verdict": "ALIGNED",
+  "alignment_rationale": "Hermes-A's primary scenario at H=4 was DIRECTIONAL with expected_transition 'EXPANSION continues; possible TREND transition later'. The realised outcome family at H=4 is DIRECTIONAL and the state at H is TREND (transitioned from EXPANSION at t0). The primary call (DIRECTIONAL family, EXPANSION->TREND evolution) matches the realised outcome at both family and state-transition level. Direction_bias UP could not be independently verified because the outcome file records only family/state, not price path.",
+  "verdict_scope": "Scored on family (DIRECTIONAL) and state (EXPANSION->TREND) alignment only; price-level and direction-bias verification not possible from outcome data.",
+  "process_defects": [
+    {
+      "defect": "OUTCOME_DATA_SPARSE",
+      "detail": "OUTCOME_20260806T000000Z.json contains only family_at_H, state_now, state_at_H. No final close, high/low at H, or realised direction, so direction_bias UP and the invalidation condition ('close back below 4253.795') cannot be scored. Alignment verdict therefore rests on family/state only."
+    },
+    {
+      "defect": "HIGHER_TF_LOOKAHEAD_INCONSISTENCY",
+      "detail": "Context H1/H4 'current' bars at as-of 2026-08-06 00:00:00 embed prices beyond the M1/M5 window (H1 high 4281.795, H4 high 4303.745 vs M1 high 4249.275), i.e. intra-bar future data. Hermes-A correctly flagged this ('Higher-timeframe current bars inconsistent with M1 data') and did not over-rely on it, but the defect itself is real and should be fixed at the context-generation layer."
+    },
+    {
+      "defect": "FORECAST_CONFIDENCE_LOW_BUT_DIRECTIONAL_CALL_MADE",
+      "detail": "evidence_strength 0.45 / confidence 0.40 with ambiguity_rate 0.5; a low-confidence directional bet that nonetheless resolved in its favour. Not a rule violation, but the audit notes the call was carried by family-level information (breakout + multi-TF agreement), consistent with its own stated uncertainty."
+    }
+  ],
+  "confirmed_elements": [
+    "Primary family DIRECTIONAL == outcome family_at_H DIRECTIONAL",
+    "Expected transition EXPANSION -> TREND == outcome state_at_H TREND",
+    "Alternative RANGE did not materialise (state TREND, not consolidation)",
+    "Breakout_pressure mechanism SUPPORTED at t0 consistent with TREND continuation outcome"
+  ],
+  "unverifiable_elements": [
+    "direction_bias UP (no price path in outcome)",
+    "invalidation 'close back below 4253.795' (no price path in outcome)",
+    "H=4 horizon exactness at price level"
+  ],
+  "evidence": [
+    "Forecast primary_scenario.scenario = DIRECTIONAL at horizon 4",
+    "Forecast expected_transition = 'EXPANSION continues; possible TREND transition later'",
+    "Outcome family_at_H = DIRECTIONAL",
+    "Outcome state_at_H = TREND",
+    "Outcome state_now = EXPANSION (matches t0 context L3/L5 EXPANSION state)"
+  ],
+  "reasoning_trace": [
+    "Read PIT context CTX_20260806T000000Z.json: t0 state EXPANSION, swing high 4253.795 broken (BEYOND), multi-TF AGREE up, H4/H1 current bars inconsistent with M1",
+    "Read forecast R8B_A_20260806.json: primary DIRECTIONAL, alternative RANGE, bias UP, expected transition EXPANSION->possible TREND",
+    "Read outcome OUTCOME_20260806T000000Z.json: family_at_H DIRECTIONAL, state_at_H TREND",
+    "Compared forecast primary family vs outcome family: DIRECTIONAL == DIRECTIONAL",
+    "Compared forecast expected transition vs outcome state: EXPANSION->TREND matches TREND at H",
+    "Determined direction_bias and invalidation unverifiable due to sparse outcome data",
+    "Verdict: ALIGNED (family and state-transition level); defects logged (sparse outcome, higher-TF lookahead inconsistency, low-confidence directional call)"
+  ]
+}

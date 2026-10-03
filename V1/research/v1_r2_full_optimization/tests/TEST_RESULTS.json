@@ -1,0 +1,129 @@
+{
+ "tests": {
+  "test_registry_hash": {
+   "result": "PASS",
+   "detail": "registry_hash recomputed matches stored"
+  },
+  "test_immutable_input": {
+   "result": "PASS",
+   "detail": "C1/C1.5 pinned artifact hashes unchanged"
+  },
+  "test_ontology_hash": {
+   "result": "PASS",
+   "detail": "C1 ontology hash unchanged"
+  },
+  "test_ledger_chain": {
+   "result": "PASS",
+   "detail": "sha256 chained, 9 entries, tamper-detectable"
+  },
+  "test_label_integrity": {
+   "result": "PASS",
+   "detail": "state/event series complete and non-null"
+  },
+  "test_kline_integrity": {
+   "result": "PASS",
+   "detail": "feature values finite after the documented warmup prefix (warmup NaNs=320, post-warmup NaNs=0); analysis masks non-finite rows"
+  },
+  "test_mtf_alignment": {
+   "result": "PASS",
+   "detail": "MTF context built by causal ffill/reindex onto the M15 grid (no future values)"
+  },
+  "test_data_quality": {
+   "result": "PASS",
+   "detail": "levels DIRECT/DERIVED/PROXY/UNKNOWN preserved; no UNKNOWN->VERIFIED upgrade (§46)"
+  },
+  "test_target_freeze": {
+   "result": "PASS",
+   "detail": "targets frozen in registry before analysis; blind written once"
+  },
+  "test_blind_selection": {
+   "result": "PASS",
+   "detail": "single fixed 60/40 time split frozen before evaluation; no post-hoc selection"
+  },
+  "test_day_purge": {
+   "result": "PASS",
+   "detail": "day holdout disjoint; day concentration max_day_share 0.0023"
+  },
+  "test_cluster_purge": {
+   "result": "PASS",
+   "detail": "cluster holdout disjoint; top5 share 0.0059"
+  },
+  "test_shuffle": {
+   "result": "PASS",
+   "detail": "label shuffle empirical p=0.0"
+  },
+  "test_null": {
+   "result": "PASS",
+   "detail": "time-block null p=0.0, null_max=-0.01755"
+  },
+  "test_effective_n": {
+   "result": "PASS",
+   "detail": "effective_n=9419.61 < raw_n=40420"
+  },
+  "test_ablation": {
+   "result": "PASS",
+   "detail": "ablation ladder present; best=A10_full"
+  },
+  "test_counter_evidence": {
+   "result": "PASS",
+   "detail": "status=EXPLANATORY_ONLY"
+  },
+  "test_invalidation": {
+   "result": "PASS",
+   "detail": "invalidation AUC=0.677"
+  },
+  "test_no_lookahead": {
+   "result": "PASS",
+   "detail": "features up to T identical under truncation at T (no future information)"
+  },
+  "test_pit_alignment": {
+   "result": "PASS",
+   "detail": "target at t+H uses bars <= t+H; features at t use bars <= t"
+  },
+  "test_replay": {
+   "result": "PASS",
+   "detail": "labeler replay PASS by C1/C1.5 (same frozen function); feature replay verified above"
+  },
+  "test_deterministic": {
+   "result": "PASS",
+   "detail": "pipeline deterministic (identical fit twice -> identical output; seed fixed)"
+  },
+  "test_shuffle_time": {
+   "result": "PASS",
+   "detail": "time shuffle performed"
+  },
+  "test_order_send_disabled": {
+   "result": "PASS",
+   "detail": "no order_send CALL in research code (calls=[])"
+  },
+  "test_broker_write_disabled": {
+   "result": "PASS",
+   "detail": "no broker write CALL in research code (calls=[])"
+  },
+  "test_secret_scan": {
+   "result": "PASS",
+   "detail": "no credential values found (hits=[])"
+  },
+  "test_v1_isolation": {
+   "result": "PASS",
+   "detail": "research code holds no V1 execution/risk/order target ([])"
+  },
+  "test_v2_isolation": {
+   "result": "PASS",
+   "detail": "no V2 reference in research code"
+  },
+  "test_v3_isolation": {
+   "result": "PASS",
+   "detail": "no V3 write target (only the read-only M1 data file is referenced)"
+  },
+  "test_v1_execution_modified": {
+   "result": "PASS",
+   "detail": "V1 execution/risk/order logic unchanged by this task (code-level check)"
+  }
+ },
+ "total": 30,
+ "pass": 30,
+ "fail": 0,
+ "review": 0,
+ "ts_utc": "2026-09-27T13:11:48.299014+00:00"
+}

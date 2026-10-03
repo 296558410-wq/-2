@@ -1,0 +1,101 @@
+{
+ "CURRENT_TIME_UTC": "2026-09-25T15:26:57.034643+00:00",
+ "R9_INPUT": {
+  "automation_id": "cd47547e-ae38-4b36-a585-8b041ee826bb",
+  "r9_chain": "CONFIRMED",
+  "r9_open_positions": 1,
+  "r9_pending_orders": 0,
+  "r9_schedule_raw": "cron 2-59/15 * * * 0-5 @ UTC"
+ },
+ "MT5_QUERIED_THIS_ROUND": "NO",
+ "CLI_ATTEMPTS": [
+  {
+   "command": "cron show cd47547e-ae38-4b36-a585-8b041ee826bb --json",
+   "bytes": 3282,
+   "json": true,
+   "has_id": true,
+   "has_name": true,
+   "err": null
+  }
+ ],
+ "READONLY_FORM_USED": "cron show cd47547e-ae38-4b36-a585-8b041ee826bb --json",
+ "AUTOMATION_JSON_RAW": "{\"id\": \"cd47547e-ae38-4b36-a585-8b041ee826bb\", \"owner\": {\"agentId\": \"main\", \"sessionKey\": \"agent:main:main\"}, \"name\": \"hermes-trader-m15-cycle\", \"enabled\": true, \"createdAtMs\": 1788781525848, \"agentId\": \"main\", \"schedule\": {\"kind\": \"cron\", \"expr\": \"2-59/15 * * * 0-5\", \"tz\": \"UTC\"}, \"sessionTarget\": \"isolated\", \"wakeMode\": \"now\", \"payload\": {\"kind\": \"agentTurn\", \"message\": \"【交易时段前置门 2026-09-12】步骤0(先做): exec 运行 `C:\\\\AIQuant\\\\.venv\\\\Scripts\\\\python.exe C:\\\\AIQuant\\\\research\\\\hermes\\\\trading_hours.py --gate`。退出码≠0(armed=false: 周末/非交易时段/未到开市前2小时) → 本周期只输出一行 {\\\"skipped\\\":\\\"MARKET_CLOSED\\\"} 并立即结束, 不执行任何后续步骤。只有退出码=0 才继续。\\n\\nHermes 交易员(主动猎手模式, demo 实盘执行): 1) 运行 C:\\\\AIQuant\\\\.venv\\\\Scripts\\\\python.exe research\\\\hermes\\\\trader_v1\\\\state_package.py; 2) 读 run_state/state_package_latest.json 的 market_state/data_quality 与蜡烛图 run_state/candle_latest.json(若有); 3) 决策(见下)写 run_state/decisions/<cycle紧凑>.json; 4) 运行 C:\\\\AIQuant\\\\.venv\\\\Scripts\\\\python.exe research\\\\hermes\\\\trader_v1\\\\engine.py --decide --exec demo 消费(触发+risk通过即自动建仓下单)。\\n\\n【交易哲学: 主动猎手, 非完美主义】每轮必须: a) 主动给出具体 setup(当前价距哪个 key level 多近、需什么 tick 级/盘中信号即可行动), 不允许只因'无收盘确认'就无限 WAIT; b) 价格进入有利区(区间边界/结构位/前高前低/回撤到 MA)且有盘中行为佐证(拒绝K形态、快速反弹/下探、量能变化) → 立即注册带盘中触发条件的计划(trigger 用 zone_touch/price_cross 实时判定, 不要求等下一根收盘); c) 明确 bias(至少 neutral-lean), 禁止无立场观望; d) 触发条件写具体价, 允许'贴近边界即计划, 触价自动成交'。\\n\\n【仓位纪律 2026-09-08 定案】qty_lots 只允许 0.01-0.05 手(区间内自选, 默认 0.01); 超出区间会被 engine 机械否决(risk veto)且计划即时作废不留存。持仓中不注册新开仓计划(单仓约束); 触发即自动成交, 止损止盈随单。\\n\\n输出 JSON: cycle/decision(LONG/SHORT/WAIT)/confidence/opportunity/opportunity_mechanism/mtf_agreement/answers_14(第1市场状态/第2一致性/第3M15变化/第4机会/第5机制/第6触发条件[具体价]/第7失效[具体价]/第8预期收益R/第9预期损失R/第10成本数值/第11净EV算式/第12再现/第13决策/第14理由≤100字)/plan(若 LONG/SHORT: direction/entry_zone{low,high}/trigger_condition(JSON dict 如 {\\\"zone_touch\\\":[low,high]} 或 {\\\"price_cross_up\\\":X})/invalidation_condition/stop_logic{type,level_price}/target_logic{levels:[{price,frac}]}/expected_R/expected_win_probability/probability_source/estimated_cost/spread_bps/slippage_bps/expected_net_EV{value,units,note}/maximum_holding_time/qty_lots(0.01-0.05))/model。\\n\\n要求: EV 仍须为正才 LONG/SHORT(成本已极低 0.3bps, 不是障碍); 亏损不加仓; 每轮必须评估'现在离可交易就差什么'并写明; WAIT 仅当确实无有利 setup 且说明等什么价触发。已有同 cycle 文件则跳过。静默; 摘要一行 trader_summary.txt。禁止真实账户/禁改 registry。\", \"timeoutSeconds\": 480, \"toolsAllow\": [\"read\", \"write\", \"apply_patch\", \"exec\", \"process\"]}, \"delivery\": {\"mode\": \"none\"}, \"state\": {\"lastRunAtMs\": 1790349420029, \"lastRunStatus\": \"ok\", \"lastStatus\": \"ok\", \"lastDurationMs\": 199624, \"lastDeliveryStatus\": \"not-requested\", \"lastFailureNotificationDeliveryStatus\": \"not-requested\", \"consecutiveErrors\": 0, \"consecutiveSkipped\": 0, \"scheduleActivatedAtMs\": 1790206833824, \"scheduleErrorCount\": 0, \"nextRunAtMs\": 1790350320000, \"lastDelivered\": false}, \"updatedAtMs\": 1790349619653, \"configRevision\": \"sha256:oBTIaJxRuMBKNm6kE6BEfx3NSImgXAnsRgVbbpHugoY\", \"nextRunAtMs\": 1790350320000, \"lastRunAtMs\": 1790349420029, \"lastRunStatus\": \"ok\", \"lastDelivered\": false, \"lastDeliveryStatus\": \"not-requested\", \"lastFailureNotificationDeliveryStatus\": \"not-requested\", \"status\": \"ok\"}",
+ "AUTOMATION_ENTRY_KEYS": [
+  "agentId",
+  "configRevision",
+  "createdAtMs",
+  "delivery",
+  "enabled",
+  "id",
+  "lastDelivered",
+  "lastDeliveryStatus",
+  "lastFailureNotificationDeliveryStatus",
+  "lastRunAtMs",
+  "lastRunStatus",
+  "name",
+  "nextRunAtMs",
+  "owner",
+  "payload",
+  "schedule",
+  "sessionTarget",
+  "state",
+  "status",
+  "updatedAtMs",
+  "wakeMode"
+ ],
+ "EXTRACTED_FIELDS": {
+  "/payload": "{\"kind\": \"agentTurn\", \"message\": \"【交易时段前置门 2026-09-12】步骤0(先做): exec 运行 `C:\\\\AIQuant\\\\.venv\\\\Scripts\\\\python.exe C:\\\\AIQuant\\\\research\\\\hermes\\\\trading_hours.py --gate`。退出码≠0(armed=false: 周末/非交易时段/未到开市前2小时) → 本周期只输出一行 {\\\"skipped\\\":\\\"MARKET_CLOSED\\\"} 并立即结束, 不执行任何后续步骤。只有退出码=0 才继续。\\n\\nHermes 交易员(主动猎手模式, demo 实盘执行): 1) 运行 C:\\\\AIQuant\\\\.venv\\\\Scripts\\\\python.exe research\\\\hermes\\\\trader_v1\\\\state_packag",
+  "/payload/message": "【交易时段前置门 2026-09-12】步骤0(先做): exec 运行 `C:\\AIQuant\\.venv\\Scripts\\python.exe C:\\AIQuant\\research\\hermes\\trading_hours.py --gate`。退出码≠0(armed=false: 周末/非交易时段/未到开市前2小时) → 本周期只输出一行 {\"skipped\":\"MARKET_CLOSED\"} 并立即结束, 不执行任何后续步骤。只有退出码=0 才继续。\n\nHermes 交易员(主动猎手模式, demo 实盘执行): 1) 运行 C:\\AIQuant\\.venv\\Scripts\\python.exe research\\hermes\\trader_v1\\state_package.py; 2) 读 run_state/state_package_latest.json 的 market"
+ },
+ "V1_REFERENCES_IN_PAYLOAD": [
+  "engine.py",
+  "trader_v1"
+ ],
+ "PAYLOAD_ACCESSIBLE": "YES",
+ "ACTION": "【交易时段前置门 2026-09-12】步骤0(先做): exec 运行 `C:\\AIQuant\\.venv\\Scripts\\python.exe C:\\AIQuant\\research\\hermes\\trading_hours.py --gate`。退出码≠0(armed=false: 周末/非交易时段/未到开市前2小时) → 本周期只输出一行 {\"skipped\":\"MARKET_CLOSED\"} 并立即结束, 不执行任何后续步骤。只有退出码=0 才继续。\n\nHermes 交易员(主动猎手模式, demo 实盘执行): 1) 运行 C:\\AIQuant\\.venv\\Scripts\\python.exe research\\hermes\\trader_v1\\state_package.py; 2) 读 run_state/state_package_latest.json 的 market",
+ "ARGUMENTS": "UNKNOWN",
+ "WORKING_DIRECTORY": "UNKNOWN",
+ "V1_REFERENCE": "[\"engine.py\", \"trader_v1\"]",
+ "REFERENCE_TYPE": "trader_v1_or_engine_py_in_automation_payload",
+ "V1_AUTOMATION_CONFIRMED": "YES",
+ "SCHEDULE_EVIDENCE_RAW": "cron 2-59/15 * * * 0-5 @ UTC",
+ "SCHEDULE_CONFIRMED_FOR_V1": "YES",
+ "SCHEDULE_TYPE": "cron",
+ "SCHEDULE_EXPRESSION": "2-59/15 * * * 0-5",
+ "TIMEZONE": "UTC",
+ "CYCLE_OBSERVATION_COVERED_A_FULL_BOUNDARY": "NO",
+ "SAFETY_WINDOW": "NOT_PROVEN",
+ "NEXT_STAGE_AUTHORIZED": "NO",
+ "V1_MODIFIED": "NO",
+ "V2_MODIFIED": "NO",
+ "V3_MODIFIED": "NO",
+ "ORDER_SEND": 0,
+ "COMMIT": "NONE",
+ "V3_HASHES": {
+  "M01_event": "ca44fd2c02afd867b9c66cb5da463eb0283fef6c31ba4e7c20fc988a1c9e2621",
+  "R1_ledger": "d9cd67757e501c3e550338da4228d67c0132ea293f28bce031b1cf010790f4ed",
+  "M01_audit": "a3bee5375f318ceb8bdd3144a0ac2639b88e2c5932a3e33c563c72b2c0c9f17d",
+  "R2_canonical": "20913b986890b1c593a63d1dfa7d6e1d90ad0b71db7b5134132f3ecfd7e72624"
+ },
+ "FALSE_POSITIVE_REJECTED": [
+  {
+   "round": "R6 §五",
+   "rejected": "%TEMP%/V2-SHADOW run_manifest 曾被误判为 V1 automation"
+  },
+  {
+   "round": "R7 §六",
+   "rejected": ".openclaw/workspace/v2_snap.json 曾被误判为 V1 automation"
+  },
+  {
+   "round": "R10-A §六",
+   "rule": "任何来自 README/SKILL/stack-map/历史任务单/粘贴文本/workspace snapshot/v2_snap/V2-SHADOW/run_manifest/archive/旧报告 的命中一律不作 Automation→V1 证据"
+  }
+ ],
+ "TASK_STATUS": "V1_AUTOMATION_PAYLOAD_R10A_COMPLETE",
+ "ts_utc": "2026-09-25T15:26:57.034643+00:00",
+ "AUTOMATION_ID": "cd47547e-ae38-4b36-a585-8b041ee826bb",
+ "AUTOMATION_NAME": "hermes-trader-m15-cycle",
+ "AUTOMATION_STATUS": "UNKNOWN",
+ "AUTOMATION_TARGET": "isolated",
+ "AUTOMATION_AGENT": "main"
+}

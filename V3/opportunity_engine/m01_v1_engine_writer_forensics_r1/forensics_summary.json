@@ -1,0 +1,194 @@
+{
+ "V3_M01_V1_ENGINE_WRITER_FORENSICS_R1": "UNRESOLVED",
+ "ENGINE_BASELINE_SHA256": "7d95645678cf0615c77c0d1c91177cf1652ca1fa6b1f509ec99e415dba55c25d",
+ "ENGINE_CURRENT_SHA256": "e308e9ced4afab35c458068642d2a0f28e56f0582d4e94ea75654beaecfb51fe",
+ "ENGINE_CURRENT_MTIME": "2026-09-25T14:30:30.482467+00:00",
+ "GIT_WRITE_EVIDENCE": "NONE",
+ "V1_WRITE_MECHANISM": "YES",
+ "V1_EXECUTION_EVIDENCE": "NONE",
+ "OS_WRITE_EVENT": "NOT_FOUND",
+ "PROCESS": null,
+ "PID": null,
+ "USER": null,
+ "TIMESTAMP": null,
+ "CHANGE_CLASS": "UNRESOLVED",
+ "EVIDENCE_CHAIN": [
+  "BASELINE_SHA256 != CURRENT_SHA256 (7d95645678cf.. vs e308e9ced4af..) -> the file content changed",
+  "CURRENT_MTIME = 2026-09-25T14:30:30.482467+00:00 (after baseline 14:03:32 and task start 14:06:56)",
+  "LAYER1: write-mechanism candidate files = 10 (existence only, NOT usage)",
+  "LAYER2: logs/task records showing an engine.py write = 0 -> V1_EXECUTION_EVIDENCE = NONE",
+  "LAYER3: git ref-moving operations in window = 0 -> GIT_WRITE_EVIDENCE = NONE",
+  "LAYER4: OS write event for engine.py = NOT_FOUND",
+  "LAYER5: self-modifying source files = 10 -> MECHANISM_EXISTS=True, EXECUTION_EVIDENCE=False, TIMESTAMP_MATCH=False",
+  "LAYER6: diff = 1 hunk, +2/-2 around plan/maximum_holding_time (style hints are auxiliary only)",
+  "no source of the write is confirmed by direct evidence -> per section 11 rule D"
+ ],
+ "RESEARCH_ARTIFACTS": "UNCHANGED",
+ "V1_ISOLATION": "FAIL",
+ "COMMIT_GATE": "FAIL",
+ "COMMIT": "NONE",
+ "ORDER_SEND": 0,
+ "CANDIDATE": 0,
+ "FORWARD": "OFF",
+ "SHADOW": "OFF",
+ "LIVE": "OFF",
+ "LAYERS": {
+  "LAYER1_V1_WRITE_MECHANISM": {
+   "files_scanned": 1115,
+   "V1_WRITE_PATH_COUNT": 10,
+   "V1_ENGINE_WRITE_PATHS": [
+    "research/hermes/trader_v1/engine.py",
+    "research/hermes/trader_v1/run_state/tmp/mk_dec_0732z.py",
+    "research/hermes/trader_v1/run_state/tmp/_append_summary_0002.py",
+    "research/hermes/trader_v1/run_state/tmp/_append_summary_0132Z.py",
+    "research/hermes/trader_v1/run_state/tmp/_append_summary_0202Z.py",
+    "research/hermes/trader_v1/run_state/tmp/_append_summary_2302.py",
+    "research/hermes/trader_v1/run_state/tmp/_append_summary_2317.py",
+    "research/hermes/trader_v1/run_state/tmp/_append_summary_2332.py",
+    "research/hermes/trader_v1/run_state/tmp/_append_summary_2349.py",
+    "research/hermes/trader_v1/tmp/e2e_driver.py"
+   ],
+   "ENGINE_WRITE_MECHANISM_EXISTS": "YES",
+   "dirs_of_interest": {
+    "run_state": {
+     "exists": true,
+     "files": 892
+    },
+    "runtime": {
+     "exists": false,
+     "files": 0
+    },
+    "tmp": {
+     "exists": true,
+     "files": 143
+    },
+    "scheduler": {
+     "exists": false,
+     "files": 0
+    },
+    "cron": {
+     "exists": false,
+     "files": 0
+    },
+    "launcher": {
+     "exists": false,
+     "files": 0
+    },
+    "bootstrap": {
+     "exists": false,
+     "files": 0
+    },
+    "update": {
+     "exists": false,
+     "files": 0
+    },
+    "deploy": {
+     "exists": false,
+     "files": 0
+    },
+    "maintenance": {
+     "exists": false,
+     "files": 0
+    }
+   },
+   "NOTE": "existence of write code is POSSIBLE, never CONFIRMED usage"
+  },
+  "LAYER2_LOGS": {
+   "log_files_total": 49,
+   "logs_touched_in_window": [
+    {
+     "file": "research/hermes/trader_v1/run_state/plan_ledger.jsonl",
+     "mtime": "2026-09-25T14:28:33.079469+00:00"
+    },
+    {
+     "file": "research/hermes/trader_v1/run_state/trader_summary.txt",
+     "mtime": "2026-09-25T14:32:13.906168+00:00"
+    },
+    {
+     "file": "research/hermes/trader_v1/run_state/workflow_history.jsonl",
+     "mtime": "2026-09-25T14:31:25.225729+00:00"
+    }
+   ],
+   "logs_with_engine_py_write_evidence": [],
+   "V1_EXECUTION_EVIDENCE": "NONE",
+   "v1_related_scheduled_tasks": [
+    "������:                             \\OpenClaw\\hermes-tick-collect",
+    "������:                             \\OpenClaw\\hermes-v2-cycle",
+    "Ҫ���е�����:                       C:\\AIQuant\\.venv\\Scripts\\python.exe C:\\AIQuant\\research\\hermes\\trader_v2\\runtime\\v2_scheduled_cycle.py",
+    "������:                             \\OpenClaw\\hermes-v2-observer",
+    "Ҫ���е�����:                       C:\\AIQuant\\.venv\\Scripts\\python.exe C:\\AIQuant\\research\\hermes\\trader_v2\\tools\\v2_observer.py --quiet",
+    "Ҫ���е�����:                       C:\\AIQuant\\research\\hermes\\trader_v3\\run_calibration_pilot.cmd "
+   ]
+  },
+  "LAYER3_GIT": {
+   "reflog_lines": 30,
+   "reflog_in_window": [],
+   "git_ops_seen_in_reflog": [
+    "checkout",
+    "merge",
+    "reset"
+   ],
+   "GIT_WRITE_EVIDENCE": "NONE",
+   "note": "reflog only records ref-moving ops; a plain worktree write leaves no reflog entry",
+   "status_short_target": "M research/hermes/trader_v1/engine.py"
+  },
+  "LAYER4_OS": {
+   "query_window": [
+    "2026-09-25T14:28:00",
+    "2026-09-25T14:32:00"
+   ],
+   "FILE_WRITE_EVENT": "NOT_FOUND",
+   "raw": "NO_EVENTS",
+   "PROCESS": null,
+   "PID": null,
+   "USER": null,
+   "TIMESTAMP": null,
+   "SOURCE": "Windows event logs",
+   "note": "no OS-level write event for engine.py was found; not fabricated"
+  },
+  "LAYER5_SELFMOD": {
+   "files_writing_their_own_source": [
+    "research/hermes/trader_v1/broker_mt5_demo.py",
+    "research/hermes/trader_v1/engine.py",
+    "research/hermes/trader_v1/ledger.py",
+    "research/hermes/trader_v1/metrics.py",
+    "research/hermes/trader_v1/opportunity.py",
+    "research/hermes/trader_v1/position.py",
+    "research/hermes/trader_v1/replay_study.py",
+    "research/hermes/trader_v1/review.py",
+    "research/hermes/trader_v1/state_package.py",
+    "research/hermes/trader_v1/trader_core.py"
+   ],
+   "MECHANISM_EXISTS": true,
+   "EXECUTION_EVIDENCE": false,
+   "TIMESTAMP_MATCH": false,
+   "targets_engine_py": true,
+   "verdict": "NOT_CONFIRMED"
+  },
+  "LAYER6_CONTENT": {
+   "OLD_LINES": [
+    "mht = (plan.get(\"maximum_holding_time\") or \"\")",
+    "if mht.startswith(\"M15*\") and mht[4:].isdigit():"
+   ],
+   "NEW_LINES": [
+    "mht = plan.get(\"maximum_holding_time\") or \"\"",
+    "if isinstance(mht, str) and mht.startswith(\"M15*\") and mht[4:].isdigit():"
+   ],
+   "SYMBOL": [
+    "and",
+    "get",
+    "isdigit",
+    "isinstance",
+    "maximum_holding_time",
+    "mht",
+    "plan",
+    "startswith",
+    "str"
+   ],
+   "HUNK": "@@ -410,8 +410,8 @@ def main():",
+   "KIND_HINT": "TYPE_GUARD_AROUND_PLAN_MAXIMUM_HOLDING_TIME",
+   "note": "style hints are auxiliary only and never sufficient for attribution"
+  }
+ },
+ "ts_utc": "2026-09-25T14:42:14.058680+00:00"
+}

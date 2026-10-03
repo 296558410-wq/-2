@@ -1,0 +1,151 @@
+{
+ "task": "V1_R2_FULL_AUTONOMOUS_OPTIMIZATION_R1",
+ "phase": "PHASE_3_STATEFUL_V2_BLIND_ABLATION",
+ "preregistration_hash": "eb6da8421eb405a7444c08de1f92285436ccf2346926d69b88bffded50a24b01",
+ "ts_utc": "2026-09-27T12:29:57.171763+00:00",
+ "bars": 40546,
+ "H": 8,
+ "state_definition": "STATE_V2 = frozen MARKET_BEHAVIOR with min-dwell k=2 (pre-registered from Phase 1)",
+ "persistence": {
+  "frozen_H8": 0.2398,
+  "stateful_k2_H8": 0.3501
+ },
+ "strict_blind_ablation": {
+  "A0_VOL_ONLY": {
+   "dll": 0.2765,
+   "ll_model": 2.45023,
+   "ll_base": 2.72673,
+   "acc_model": 0.3934,
+   "acc_majority": 0.2533,
+   "n_test": 16211,
+   "n_train": 24209
+  },
+  "A1_VOL_MOM": {
+   "dll": 0.27886,
+   "ll_model": 2.44787,
+   "ll_base": 2.72673,
+   "acc_model": 0.3923,
+   "acc_majority": 0.2533,
+   "n_test": 16211,
+   "n_train": 24209
+  },
+  "A2_VOL_MOM_STRUCT": {
+   "dll": 0.29128,
+   "ll_model": 2.43545,
+   "ll_base": 2.72673,
+   "acc_model": 0.3926,
+   "acc_majority": 0.2533,
+   "n_test": 16211,
+   "n_train": 24209
+  },
+  "A3_ALL_PLUS_SLOPE": {
+   "dll": 0.24077,
+   "ll_model": 2.48595,
+   "ll_base": 2.72673,
+   "acc_model": 0.3842,
+   "acc_majority": 0.2533,
+   "n_test": 16211,
+   "n_train": 24209
+  }
+ },
+ "stability_4blocks": {
+  "blocks": [
+   {
+    "dll": 0.22109,
+    "ll_model": 2.51576,
+    "ll_base": 2.73686,
+    "acc_model": 0.3864,
+    "acc_majority": 0.2529,
+    "n_test": 4053,
+    "n_train": 24209,
+    "block_start": "2026-01-13 18:15:00+00:00",
+    "block_end": "2026-03-17 01:15:00+00:00"
+   },
+   {
+    "dll": 0.21421,
+    "ll_model": 2.44071,
+    "ll_base": 2.65491,
+    "acc_model": 0.3982,
+    "acc_majority": 0.2702,
+    "n_test": 4053,
+    "n_train": 24209,
+    "block_start": "2026-03-17 01:30:00+00:00",
+    "block_end": "2026-05-19 04:30:00+00:00"
+   },
+   {
+    "dll": 0.28351,
+    "ll_model": 2.47093,
+    "ll_base": 2.75445,
+    "acc_model": 0.3869,
+    "acc_majority": 0.248,
+    "n_test": 4053,
+    "n_train": 24209,
+    "block_start": "2026-05-19 04:45:00+00:00",
+    "block_end": "2026-07-20 16:15:00+00:00"
+   },
+   {
+    "dll": 0.24428,
+    "ll_model": 2.51643,
+    "ll_base": 2.76071,
+    "acc_model": 0.3655,
+    "acc_majority": 0.2421,
+    "n_test": 4052,
+    "n_train": 24209,
+    "block_start": "2026-07-20 16:30:00+00:00",
+    "block_end": "2026-09-18 19:45:00+00:00"
+   }
+  ],
+  "dll_mean": 0.24077,
+  "dll_min": 0.21421,
+  "all_positive": true
+ },
+ "MTF_increment": {
+  "base_A3": {
+   "dll": 0.24077,
+   "ll_model": 2.48595,
+   "ll_base": 2.72673,
+   "acc_model": 0.3842,
+   "acc_majority": 0.2533,
+   "n_test": 16211,
+   "n_train": 24209
+  },
+  "plus_H1_context": {
+   "dll": 0.29605,
+   "ll_model": 2.43068,
+   "ll_base": 2.72673,
+   "acc_model": 0.387,
+   "acc_majority": 0.2533,
+   "n_test": 16211,
+   "n_train": 24209
+  },
+  "delta_dll": 0.05528,
+  "MTF_ADDS_VALUE": true
+ },
+ "BLIND_BEST": {
+  "model": "A2_VOL_MOM_STRUCT",
+  "dll": 0.29128,
+  "acc_model": 0.3926,
+  "acc_majority": 0.2533
+ },
+ "ACCEPTANCE": {
+  "effect_floor_bits": 0.01,
+  "blind_dll_ge_floor": true,
+  "beats_majority": true,
+  "stability_all_positive": true
+ },
+ "VERDICT": "STATEFUL_STATE_V2_ACCEPTED",
+ "safety": {
+  "ORDER_SEND": 0,
+  "ORDER_CHECK": 0,
+  "BROKER_WRITE": 0,
+  "FORWARD": "OFF",
+  "SHADOW": "OFF",
+  "LIVE": "OFF",
+  "FROZEN_ARTIFACT_WRITE": 0,
+  "ONTOLOGY_MODIFIED": 0,
+  "PARAM_MODIFIED": 0,
+  "FUTURE_RETURN_USED": "NO",
+  "PNL_USED": "NO",
+  "WIN_RATE_USED": "NO"
+ }
+}

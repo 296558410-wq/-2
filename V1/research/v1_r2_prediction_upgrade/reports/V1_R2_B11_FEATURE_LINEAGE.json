@@ -1,0 +1,30 @@
+{
+ "RAW_SOURCE_COUNT": 1,
+ "chain": "TICK_BID -> OHLC_15M -> (ATR20) + (level price from PIVOT/RANGE fractals) -> penetration_ratio",
+ "PENETRATION_inputs": [
+  "TICK_BID",
+  "OHLC_15M",
+  "ATR20",
+  "LEVEL.price"
+ ],
+ "TOUCH_inputs": [
+  "TICK_BID",
+  "OHLC_15M",
+  "ATR20",
+  "LEVEL.price"
+ ],
+ "LEVEL_inputs": [
+  "TICK_BID",
+  "OHLC_15M"
+ ],
+ "BREAK_inputs": [
+  "LEVEL",
+  "ABSORPTION",
+  "VEL4"
+ ],
+ "statement": "PENETRATION / TOUCH / LEVEL / BREAK are different GEOMETRIC TRANSFORMS of the SAME single bid price path; not independent data sources",
+ "independent_data_sources": [
+  "TICK_BID (price)",
+  "TICK_ASK (spread, unused by the state machine)"
+ ]
+}

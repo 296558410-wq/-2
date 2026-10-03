@@ -1,0 +1,54 @@
+{
+  "audit_id": "BB_20260811",
+  "timestamp": "2026-08-11T12:00:00Z",
+  "current_state": "TREND (state_v2=TREND, event_at_t=MOM_ACCELERATION) on a H4 recovery leg off the 4356.325 low, following a violent H4 reversal from the 4434.965 high. Multi-timeframe structure agrees UP (L6 AGREE). At the exact timestamp the tape is pulling back: the 12:00 M1 bar is a strong bearish impulse (open 4382.255, close 4380.455, body 1.80, close at low, no lower wick, body_ratio 0.96) after a 11:59 bullish spike to 4382.125. Intraday closes (M1 4380.455, M5 4390.975, M15 4391.225, H1 4387.575) are all BELOW the swing level 4393.445; only the H4 close (4393.935) is above it. dwell=1 on TREND, ambiguity_rate_8 = 0.5.",
+  "structure": "Higher-timeframe uptrend (H4 trend_20 +121.16, trend_50 +294.47; H1 trend_20 +29.40; M5 trend_20 +19.23) with recovery off the 08:00 low of 4356.325. L2 nearest level SWING_LOW at 4393.445 (side DN, 15 touches/240) shows break_status BEYOND but reclaim_status NONE; the 12:00 H4 bar tagged 4403.945 high then closed 4393.935 with a long upper wick (10.01). Net structure: 4393-4404 zone is current overhead supply; the last close on every sub-H4 timeframe sits below the level, so the upside break is not yet validated intraday. Support zone: 4380/4378 (recent M1 low area) then 4367-4356 (H1 swing low and reversal origin). M1 shows range contraction with 7 consecutive down bars at the close.",
+  "mechanism": "Momentum acceleration (MOM_ACCELERATION) driving price into and marginally through a prior swing level; L4 candidates breakout_pressure vs failed_breakout are UNRESOLVED. Supporting: H4 close beyond 4393.445 by ~0.30 ATR and multi-TF up agreement. Counter: no intraday reclaim (all sub-H4 closes below the level) and a fresh M1 bearish impulse at t, consistent with failed_breakout/rejection at the 4393-4404 supply zone rather than sustained acceptance. This is a genuine two-sided mechanism — the outcome depends on whether buyers reclaim 4393.445+ or sellers defend it.",
+  "primary_scenario": {
+    "scenario": "Higher-TF uptrend resumes: shallow pullback holds 4380/4378, buyers reclaim 4393.445 on an M15/H1 close, continuation targets 4404 and the 4420-4435 retest zone within the H4 leg.",
+    "confidence": 0.55,
+    "horizon": "INTRADAY",
+    "trigger": "M15/H1 close back above 4393.445 (reclaim of the swing level) while 4380/4378 support holds on M5/M15.",
+    "invalidation": "M5/M15 close below 4378, or sustained loss of 4367, breaking the recovery structure and exposing 4356.325."
+  },
+  "alternative_scenario": {
+    "scenario": "Failed breakout / rejection at 4393-4404: price is already fading (all sub-H4 closes below the level, M1 bearish at t); a break of 4380 opens a retest of 4367 then 4356.325, converting the tape into a lower-high/lower-low down-structure within the post-4434 decline.",
+    "confidence": 0.45,
+    "horizon": "INTRADAY",
+    "trigger": "M5/M15 close below 4380, confirming rejection off the level and negating the reclaim.",
+    "invalidation": "Sustained M15/H1 close above 4393.445 (reclaim succeeds), which revalidates breakout_pressure."
+  },
+  "expected_transition": "Short-term pullback/consolidation around 4380-4393, then either TREND continuation (reclaim of 4393.445+) or transition toward REJECTION/COMPRESSION. Historical analogs (state-evolution only, no returns) all start TREND and bias toward COMPRESSION/REJECTION within 4-16 steps, tempering any strong-trend extrapolation.",
+  "direction": "UP",
+  "horizon": "INTRADAY",
+  "confidence": 0.55,
+  "counter_evidence": [
+    "12:00 M1 bar is a strong bearish impulse (close at low, no lower wick, body_ratio 0.96) with M1 consecutive_down = 7 and range contracting.",
+    "All sub-H4 closes (M1/M5/M15/H1) are below the swing level 4393.445; only the H4 close is above; reclaim_status = NONE.",
+    "12:00 H4 bar tagged 4403.945 then gave back ~10 points (upper wick 10.01), i.e. rejection near the zone.",
+    "Big prior reversal from 4434.965 down to 4356.325 (H4 04:00 bar body -44.7) shows violent two-way risk; ambiguity_rate_8 = 0.5.",
+    "M15 trend_50 is -6.58 (mixed) despite H4/H1 up; M1 trend_20 only +2.58.",
+    "DXY flat near 100 and VIX low/flat provide no confirming impulse; UST10Y, news and macro data absent.",
+    "Analog state evolution biases toward later COMPRESSION/REJECTION rather than uninterrupted trend."
+  ],
+  "invalidation": "M5/M15 close below 4378, and especially below 4367, invalidates the up view (breaks the V-recovery); a sustained close below 4356.325 invalidates the higher-TF uptrend leg entirely. Conversely for the downside (alternative) view, a sustained M15/H1 close above 4393.445 invalidates rejection.",
+  "data_quality_flags": [
+    "UST10Y (^TNX) UNAVAILABLE/UNKNOWN — no long-end rate cross-check.",
+    "DXY and VIX are PROXY (Yahoo 5m, instrument definition UNKNOWN) — never treated as DIRECT.",
+    "L2 nearest level, L3/L4/L5 states, events and mechanisms are DERIVED (causal from observed prices), not raw observations.",
+    "L6 trend_20/trend_50 and L1 geometry are DERIVED (computed from observed, causal).",
+    "Historical analog is state-evolution only, no returns/PnL/labels — informational, low evidential weight.",
+    "NEWS, MACRO_EVENTS, CFTC_COT, ETF_FLOWS, GLD, GC all ABSENT (not fabricated)."
+  ],
+  "reasoning_trace": [
+    "1. Read PIT context only (as-of 2026-08-11 12:00:00Z); no other analyst view, no future data.",
+    "2. Established price location: recovering leg off 4356.325 low after a 4434.965 high and sharp H4 reversal; current intraday price 4380-4393.",
+    "3. Checked multi-TF: L6 agreement AGREE, all timeframes UP except M15 trend_50 negative; H4 trend strongest (+121/+294).",
+    "4. Evaluated L2 level 4393.445: break_status BEYOND but reclaim_status NONE, and all sub-H4 closes are below the level → upside break not yet validated intraday; 4393-4404 acts as supply.",
+    "5. Assessed immediate tape: 12:00 M1 is a decisive bearish bar (close at low) after a momentum spike → near-term pullback risk elevated.",
+    "6. Weighed L4 mechanism candidates: breakout_pressure vs failed_breakout unresolved; current evidence (no reclaim + M1 rejection) slightly favors rejection at the level short-term, but H4 trend and multi-TF agreement favor continuation medium-term.",
+    "7. Incorporated analogs (TREND → COMPRESSION/REJECTION in 4-16 steps) as a bias toward eventual transition, capping confidence.",
+    "8. Chose UP as the directional lean (higher-TF trend + AGREE) with INTRADAY horizon and confidence 0.55, explicitly flagging the immediate rejection risk and clear invalidation at 4378/4367.",
+    "9. No data invented; every flag reflecting PROXY/UNKNOWN/DERIVED/ABSENT status."
+  ]
+}

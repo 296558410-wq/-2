@@ -1,0 +1,61 @@
+{
+ "audit_id": "BA_20260823",
+ "timestamp": "2026-09-28T05:00:00Z",
+ "overall_verdict": "PARTIAL_AGREE",
+ "focus_verdicts": {
+  "OBSERVATION_DISCIPLINE": "PARTIAL_AGREE",
+  "MECHANISM_DISCIPLINE": "AGREE",
+  "COUNTER_EVIDENCE": "PARTIAL_AGREE",
+  "CONFIDENCE": "PARTIAL_AGREE",
+  "ABSTENTION": "AGREE",
+  "INVALIDATION": "PARTIAL_AGREE"
+ },
+ "over_inference": [
+  "Primary scenario asserts 'Sideways compression near 4601 with short-term downward drift' while direction_bias is NO_DIRECTIONAL_EDGE and abstain=true; BOTH scenarios are directionally down-skewed ('short-term downward drift' primary; 'Downside volatility expansion breaking 4601.875' alternative) yet the forecast claims no directional edge. Abstention is not carried through the scenario structure.",
+  "Q3: 'analog persistence supports drift down' — Analog A21233 persisting in COMPRESSION through step 16 is STATE persistence (direction-neutral, sideways), not evidence of downward drift; the drift-down attribution conflates state evolution with direction.",
+  "Evidence 'M5 ten consecutive down bars, trend_20 -20.05' is extrapolated into the lower-TF downtrend continuation mechanism despite MTF agreement=CONFLICT and H1 trend_20 +71.51 / H4 +247.96; a 10-bar M5 run inside a 38-hour stale window is used as directional support."
+ ],
+ "mechanism_jump": [
+  "possible_mechanisms[0] 'lower-TF downtrend continuation' cites 'L4 candidate' as why, but L4 candidate mechanism is generically 'trend_continuation' with supporting_evidence 'price inside level, 8-bar displacement -22.09'; the forecast reinterprets the generic candidate as specifically lower-TF and downward — a direction-and-timeframe-specific reading the L4 entry never asserts."
+ ],
+ "missing_counter_evidence": [
+  "M15 trend_50 = +19.77 (positive) is never mentioned in observations, evidence, or counter_evidence; it contradicts the 'drift down' narrative while M15 trend_20 (-12.08) is negative — a mixed-signal datum the forecast omits entirely.",
+  "M15 sequence_flags show 'range_expanding': true, 'range_contracting': false, yet evidence lists 'Range contracting' and the primary trigger is 'Range contracting, VOL_CONTRACTION persists' — M15 expansion is counter-evidence to the compression trigger and is ignored.",
+  "Level 4601.875 has touch_count_240=11, break_status INSIDE, distance_atr 0.02578 — the level has held 11 touches and is unbroken (reclaim_status NONE), but the alternative scenario asserts 'Downside volatility expansion breaking 4601.875' with no counter-evidence considered against the downside-break thesis.",
+  "L5 ambiguity_rate_8 = 0.25 and the fact that last price bar (2026-08-21 21:59) is 38 hours before as_of (2026-08-23 12:00) are acknowledged only for staleness; no consequence is drawn for the validity of any M1/M5-derived evidence."
+ ],
+ "unjustified_confidence": [
+  "evidence_strength = 0.3 despite the last price bar being 38 hours stale, all cross-market series UNKNOWN, and analogs carrying state-evolution only (no returns); there is no fresh evidence at all, so 0.3 is not calibrated to the evidence base.",
+  "Primary scenario is stated as the most likely framing ('Sideways compression near 4601 with short-term downward drift') with trigger 'Range contracting' while M15 shows range_expanding=true — the directional scenario is presented with more certainty than the conflicting data justify."
+ ],
+ "observation_as_fact": [
+  "'Range contracting' is listed as evidence and used as the primary trigger, while M15 sequence_flags show range_expanding=true — contraction observed on M1/M5 is treated as a market-wide fact.",
+  "Evidence 'VOL_CONTRACTION event and two-bar compression dwell' cites a derived label as direct fact; context L3 labelling marks event_at_t as 'DERIVED (mapped from frozen sub-labels)' and dwell comes from the min-dwell lifecycle (L5 quality_label 'DERIVED (frozen C1 ontology + min-dwell lifecycle)') — provenance is dropped when cited as evidence."
+ ],
+ "strongest_objection": "The forecast abstains (abstain=true, NO_DIRECTIONAL_EDGE, uncertainty 0.8) but then issues a directional 'primary scenario' (downward drift) and a down-skewed alternative, giving evidence_strength 0.3 on a 38-hour-stale, cross-market-absent, MTF-CONFLICT input set; the abstention is not carried through the output — directional framing leaks into the scenarios and the confidence calibration overstates what the data supports.",
+ "evidence": [
+  "Context L6: 'agreement': 'CONFLICT'; forecast direction_bias 'NO_DIRECTIONAL_EDGE' (consistent).",
+  "Context L3 labelling: event_at_t 'VOL_CONTRACTION' = 'DERIVED (mapped from frozen sub-labels)'; forecast lists it as evidence without provenance.",
+  "Context M15 sequence_flags: 'range_expanding': true, 'range_contracting': false; forecast evidence says 'Range contracting'.",
+  "Context L6 M15 trend_50: 19.770000000000437; absent from forecast observations/evidence/counter_evidence.",
+  "Context L2: level 4601.875, touch_count_240 11, break_status INSIDE, distance_atr 0.02578, reclaim_status NONE.",
+  "Context L5: 'ambiguity_rate_8': 0.25; never referenced by forecast.",
+  "Context: last price bar 2026-08-21 21:59:00+00:00 vs as_of 2026-08-23 12:00:00+00:00 (38h stale); forecast observation #4 acknowledges this correctly.",
+  "Forecast: 'abstain': true, 'abstain_reason': 'Stale price data, absent cross-market, conflicting timeframes preclude direction'.",
+  "Forecast primary_scenario: 'Sideways compression near 4601 with short-term downward drift'.",
+  "Forecast Q3: 'analog persistence supports drift down'.",
+  "Forecast alternative_scenario: 'Downside volatility expansion breaking 4601.875 level'.",
+  "Forecast invalidation: 'Decisive break of 4601.875 or 4616.7 with expansion' — 'decisive' is not operationalized (no bar count, close-vs-wick, or ATR multiple).",
+  "Context L4: candidate mechanism 'trend_continuation' with note 'mechanism CANDIDATES only; NOT asserted as fact'."
+ ],
+ "reasoning_trace": [
+  "Read prompt, PIT context, and A forecast only; no outcome/future data.",
+  "Verified A's observations against context: prices, trends, frozen state, dwell, and staleness figures all match context values.",
+  "Core defect identified: scenario direction (downward drift + downside expansion) contradicts abstain=true and NO_DIRECTIONAL_EDGE.",
+  "Found omitted counter-evidence: M15 trend_50 +19.77, M15 range_expanding=true, level unbroken after 11 touches, ambiguity_rate_8 0.25.",
+  "Found over-inference: analog state persistence (COMPRESSION) used to support a directional drift-down claim.",
+  "Found provenance issues: VOL_CONTRACTION (DERIVED) and 'Range contracting' (M1/M5 only) cited as direct evidence.",
+  "INVALIDATION 'decisive break' under-defined; evidence_strength 0.3 not calibrated to a zero-fresh-evidence input set.",
+  "Overall verdict PARTIAL_AGREE: honest abstention and conservative mechanism statuses (POSSIBLE/WEAK, nothing SUPPORTED), but directional scenario structure, missing counter-evidence, provenance lapses, and undefined invalidation prevent full agreement."
+ ]
+}

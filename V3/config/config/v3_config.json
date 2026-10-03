@@ -1,0 +1,45 @@
+{
+ "version": "v3/0.1.0",
+ "mode": "RESEARCH_READONLY",
+ "note": "V3 独立 MT5 环境 — 行情/tick/spread/latency 研究；禁止 order_send / LIVE / 自动交易。",
+ "symbol": "XAUUSD",
+ "magic": 90004,
+ "mt5": {
+  "instance": "fxtm_demo_v3calib",
+  "terminal": "C:\\AIQuant\\mt5_instances\\fxtm_demo_v3calib\\terminal64.exe",
+  "data_dir": "C:\\AIQuant\\mt5_instances\\fxtm_demo_v3calib",
+  "portable": true,
+  "server_expected": "ForexTimeFXTM-Demo01",
+  "creds_env_file": "C:\\AIQuant\\.env.mt5_v3_calib",
+  "isolation_note": "MT5-INSTANCE-ISOLATION-AUDIT-FIX-001: switched off fxtm_demo_v3 (was V1-account/shared default) to isolated instance login 160766418",
+  "account": 160766418,
+  "magic": 90004,
+  "margin_mode": "HEDGE (new demo account; previous account was NETTING)",
+  "account_epoch": {
+   "active": 160766418,
+   "retired": 160764551,
+   "migrated_utc": "2026-09-25",
+   "record": "state/V3_ACCOUNT_MIGRATION_20260925.json"
+  }
+ },
+ "safety": {
+  "V3_LIVE_ALLOWED": "NO",
+  "V3_ORDER_SEND_ALLOWED": "NO",
+  "V3_FORWARD_ALLOWED": "NO"
+ },
+ "capabilities_allowed": [
+  "quote",
+  "ticks_read",
+  "tick_collect",
+  "bidask",
+  "spread",
+  "bars_m1",
+  "latency_probe"
+ ],
+ "capabilities_forbidden": [
+  "order_send",
+  "auto_trading",
+  "live",
+  "strategy_loop"
+ ]
+}

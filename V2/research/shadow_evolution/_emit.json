@@ -1,0 +1,165 @@
+{
+ "context": {
+  "context_id": "ctx_09acb5fd2571",
+  "cycle": "2026-10-02T14:07Z",
+  "created_utc": "2026-10-02T14:20:24.310420+00:00",
+  "agent1": {
+   "snapshot_id": "2026-10-02T14:07Z",
+   "cycle": "2026-10-02T14:07Z",
+   "generated_utc": "2026-10-02T14:07:17.802339+00:00",
+   "freshness": "stale",
+   "age_seconds": 1224,
+   "path": "C:\\AIQuant\\research\\hermes\\trader_v2\\state\\agent1_latest.json",
+   "version": "agent1/0.1.0"
+  },
+  "agent2": {
+   "snapshot_id": "2026-10-02T14:07Z",
+   "cycle": "2026-10-02T14:07Z",
+   "generated_utc": "2026-10-02T14:09:17.158932+00:00",
+   "freshness": "fresh",
+   "age_seconds": 785,
+   "path": "C:\\AIQuant\\research\\hermes\\trader_v2\\state\\agent2_latest.json",
+   "version": "agent2/0.2.0-pit"
+  },
+  "market": {
+   "instrument": "XAUUSD",
+   "reference_market": "GC_F",
+   "primary_last": 4182.36,
+   "primary_source": "mt5",
+   "spread": 0.14,
+   "source_basis_usd": -1.49,
+   "basis_usd": -1.49,
+   "retrieved_at": "2026-10-02T14:20:24.310420+00:00"
+  },
+  "freshness": {
+   "agent1": {
+    "data_ts": 1790949600.0,
+    "status": "stale",
+    "age_seconds": 1224
+   },
+   "agent2": {
+    "data_ts": 1790950039.0,
+    "status": "fresh",
+    "age_seconds": 785
+   }
+  },
+  "health": {
+   "overall_status": "DEGRADED",
+   "trading_source_bad": [],
+   "technical_status": "DEGRADED",
+   "trading_source_status": "PASS",
+   "macro_status": "PASS",
+   "router_status": "PASS",
+   "pit_status": "PASS",
+   "freshness_status": "DEGRADED",
+   "price_space_status": "DISABLED",
+   "broker_status": "UNKNOWN"
+  },
+  "evidence_ids": [
+   "ev_news_20261001_3230",
+   "ev_news_20261001_3361",
+   "ev_news_20261001_3535",
+   "ev_news_20261002_0689",
+   "ev_news_20261002_0852",
+   "ev_news_20261002_1019",
+   "ev_news_20261002_1268",
+   "ev_news_20261002_1596",
+   "ev_news_20261002_1636",
+   "ev_news_20261002_1800",
+   "ev_news_20261002_1840",
+   "ev_news_20261002_1841",
+   "ev_news_20261002_1922",
+   "ev_news_20261002_2043",
+   "ev_news_20261002_2086",
+   "ev_news_20261002_2087",
+   "ev_news_20261002_2088",
+   "ev_news_20261002_2089",
+   "ev_news_20261002_2090",
+   "ev_news_20261002_2131",
+   "ev_news_20261002_2132",
+   "ev_news_20261002_2133",
+   "ev_news_20261002_2219",
+   "ev_news_20261002_2220",
+   "ev_news_20261002_2262",
+   "ev_news_20261002_2303",
+   "ev_news_20261002_2305",
+   "ev_news_20261002_2306",
+   "ev_news_20261002_2307",
+   "ev_news_20261002_2308",
+   "ev_news_20261002_2309",
+   "ev_news_20261002_2310",
+   "ev_news_20261002_2311",
+   "ev_news_20261002_2312",
+   "ev_news_20261002_2313",
+   "ev_news_20261002_2314",
+   "ev_news_20261002_2315",
+   "ev_news_20261002_2316",
+   "ev_news_20261002_2317",
+   "ev_news_20261002_2318",
+   "ev_news_20261002_2319",
+   "ev_news_20261002_2348"
+  ],
+  "config_hash": "b0cc254b809da52844778bbbb8a298df77dd2d031a8353fec3f982dac26be0e5",
+  "versions": {
+   "agent1": "agent1/0.1.0",
+   "agent2": "agent2/0.2.0-pit",
+   "hermes": "hermes2/0.1.0",
+   "prompt": "hermes2-prompt/0.1.0"
+  },
+  "context_hash": "09acb5fd25718a63d0729db3a6636e2efce456fac27d665187b08aa1cb73e8f8"
+ },
+ "candidates": [
+  {
+   "id": "opp_geo_shock",
+   "category": "geopolitical",
+   "dir_hint": "LONG",
+   "thesis": "存在 4 条地缘事件; 需判断是重新定价还是 headline spike",
+   "trigger": "新闻后黄金上冲且 yield/USD 同向确认 + 有 follow-through",
+   "invalidation": "冲高立即回吐且无后续确认",
+   "expected_R_est": 1.4,
+   "priced_in": "LOW",
+   "counter_thesis": "headline spike 已衰竭 / 已被定价 / 可信度低",
+   "evidence_ids": [
+    "ev_news_20261001_3230",
+    "ev_news_20261001_3361",
+    "ev_news_20261001_3535",
+    "ev_news_20261002_0689",
+    "ev_news_20261002_0852",
+    "ev_news_20261002_1019",
+    "ev_news_20261002_1268",
+    "ev_news_20261002_1596"
+   ],
+   "macro_align": "NEUTRAL",
+   "requires_confirmation": true
+  },
+  {
+   "id": "opp_narrative_flow_divergence",
+   "category": "narrative_flow",
+   "dir_hint": null,
+   "thesis": "叙事与真实资金流背离(见 Agent2.narrative_vs_flow)",
+   "trigger": "价格选择方向并得到资金流后续确认",
+   "invalidation": "叙事或资金流其一回归一致",
+   "expected_R_est": 1.2,
+   "priced_in": "UNKNOWN",
+   "counter_thesis": "背离为噪音 / 资金流口径滞后",
+   "evidence_ids": [
+    "ev_news_20261001_3230",
+    "ev_news_20261001_3361",
+    "ev_news_20261001_3535",
+    "ev_news_20261002_0689",
+    "ev_news_20261002_0852",
+    "ev_news_20261002_1019"
+   ],
+   "macro_align": "NEUTRAL",
+   "requires_confirmation": true
+  }
+ ],
+ "regime_tags": [
+  "GEOPOLITICAL_EVENT",
+  "RANGE"
+ ],
+ "prompt_hash": "0006cae2f11fec6be2de2e849cfc4f67ad3f16a9a23b5932a86959fe4524c48c",
+ "input_hash": "5276d098de3c131e800439e5bff784df0050e988e5aefa32965ebc96326ecadb",
+ "system": "你是 Hermes（V2）。基于冻结的 decision_context 与候选机会，做 TRADE/WAIT/REJECT 决策。铁律：不投票；WAIT 是正常结果；只产决策，不下单；不得使用未来信息；输出必须是 JSON。",
+ "model": "deepseek/deepseek-v4-flash"
+}

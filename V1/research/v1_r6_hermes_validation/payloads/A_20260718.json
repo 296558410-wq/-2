@@ -1,0 +1,101 @@
+{
+ "sample_id": "A_20260718",
+ "forecast_id": "A_20260718",
+ "timestamp": "2026-07-18T12:00:00Z",
+ "observations": [
+  "Last M1 close 4013.975 at 21:59Z, data ~14h stale vs as_of",
+  "Price rejected at 4017.9, pulled back to swing low 4014.045",
+  "H4 trend_20 -39.9, trend_50 -83.55; strong downtrend",
+  "All cross-market series UNKNOWN; no news or macro"
+ ],
+ "what_i_know": [
+  "Price sits at swing low 4014.045, 23 touches",
+  "Recent rejection at 4017.9 high, M1 down sequence",
+  "State COMPRESSION, event REJECTION, dwell 2",
+  "H4 downtrend intact; H1 trend_20 positive"
+ ],
+ "what_i_do_not_know": [
+  "Price action in the 14h gap after 21:59Z",
+  "Cross-market drivers, news, macro all absent",
+  "Whether swing low breaks or holds next",
+  "Directional resolution timing of compression"
+ ],
+ "evidence": [
+  "H4 trend_20 and trend_50 both strongly negative",
+  "M1 consecutive_down 6, range contracting",
+  "Upper wick rejection at 4017.9 on M5",
+  "Level 4014.045 already INSIDE, price below"
+ ],
+ "counter_evidence": [
+  "H1 trend_20 +30.97; M5 trend_20 +11.5",
+  "Large recovery bar 14:00Z from 3959 to 4003",
+  "Level has 23 touches, high relevance",
+  "Analog A19186 shows COMPRESSION to ACCEPTANCE"
+ ],
+ "possible_mechanisms": [
+  {
+   "mechanism": "trend_continuation",
+   "status": "POSSIBLE",
+   "why": "H4 downtrend pressing swing low"
+  },
+  {
+   "mechanism": "level_rejection_bounce",
+   "status": "POSSIBLE",
+   "why": "23-touch level may hold and bounce"
+  },
+  {
+   "mechanism": "compression_breakout",
+   "status": "POSSIBLE",
+   "why": "COMPRESSION state precedes resolution"
+  },
+  {
+   "mechanism": "unobserved_regime_change",
+   "status": "UNKNOWN",
+   "why": "14h stale window may hold new regime"
+  }
+ ],
+ "primary_scenario": {
+  "scenario": "Breakdown through swing low 4014.045 continues H4 downtrend",
+  "horizon": "Next 4-8 hours after level break",
+  "trigger": "M1 close below 4013.5, expanding range",
+  "invalidation": "Reclaim above 4017.9 rejection high"
+ },
+ "alternative_scenario": {
+  "scenario": "Level holds; bounce back toward 4017-4021",
+  "horizon": "Next 4-8 hours",
+  "trigger": "M1 close above 4015.7, no lower low",
+  "invalidation": "Close below 4013.5 confirms breakdown"
+ },
+ "expected_transition": "COMPRESSION resolving; either DECELERATION or directional break",
+ "direction_bias": "NO_DIRECTIONAL_EDGE",
+ "time_horizon": "4-8 hours",
+ "evidence_strength": 0.25,
+ "confidence": 0.2,
+ "uncertainty": 0.85,
+ "confidence_reason": "Data 14h stale, TF signals conflict, no cross-market",
+ "uncertainty_reason": "Unobserved 14h window and absent drivers dominate",
+ "invalidation": "M1 close above 4017.9 or below 4013.5 with conviction",
+ "change_my_mind": [
+  "Fresh M1 data showing level break with range expansion",
+  "DXY or UST10Y direction entering the context",
+  "State transition out of COMPRESSION in next bars",
+  "H1 close above 4021.2 swing high"
+ ],
+ "abstain": true,
+ "abstain_reason": "Price data 14h stale; gap unobserved, cross-market absent",
+ "questions": {
+  "Q1": "Last price 4013.975 at 21:59Z; swing low 4014.045; COMPRESSION state",
+  "Q2": "14h gap price action; cross-market drivers; level resolution",
+  "Q3": "H4 downtrend, rejection at 4017.9, price below level",
+  "Q4": "H1/M5 positive trends, 23-touch level, recovery bar",
+  "Q5": "Rejection bounce off 4014.045 is possible, not assertable",
+  "Q6": "Fresh bars with level break or reclaim; new cross-market data",
+  "Q7": "True; stale data and absent drivers preclude grounded forecast"
+ },
+ "reasoning_trace": [
+  "Read prompt and PIT context only; no future data",
+  "Noted 14h price-data gap vs as_of timestamp",
+  "Level at price; H4 down, H1 up: CONFLICT",
+  "Set abstain; direction bias NO_DIRECTIONAL_EDGE"
+ ]
+}

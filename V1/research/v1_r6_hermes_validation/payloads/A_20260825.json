@@ -1,0 +1,96 @@
+{
+ "forecast_id": "HERMES-A-R6-20260825-1200Z",
+ "timestamp": "2026-08-25 12:00:00+00:00",
+ "sample_id": "A_20260825",
+ "observations": [
+  "H4 range 79.82, low 4604.815, close 4635.435",
+  "Price at swing high 4642.315; INSIDE, distance 0.034 ATR",
+  "State ACCEPTANCE dwell 7; event VOL_CONTRACTION",
+  "MTF agreement CONFLICT; DXY 99.02, VIX 15.78 PROXY"
+ ],
+ "what_i_know": [
+  "H1 close 4642.185; M15 close 4642.615 at 12:00",
+  "Overnight dump 4696.635 to 4616.815; extreme volatility",
+  "Nearest level 4642.315 swing high, 65 touches in 240",
+  "Frozen label COMPRESSION; L5 ACCEPTANCE, dwell 7"
+ ],
+ "what_i_do_not_know": [
+  "News, macro events, CFTC COT, ETF flows absent",
+  "UST10Y proxy STALE; TNX UNKNOWN",
+  "DXY/VIX PROXY; Yahoo instrument definition UNKNOWN",
+  "Post-contraction direction unknown; analogs diverge"
+ ],
+ "evidence": [
+  "H4 lower wick 30.62; recovery from 4604.815",
+  "M5 trend_20 +13.77; consecutive_up 7",
+  "Price inside level 4642.315, touch_count_240 65",
+  "Vol contracting; ATR declining across timeframes"
+ ],
+ "counter_evidence": [
+  "H1 and M15 trend_20 negative; MTF CONFLICT",
+  "H1 upper wick 5.02; rejection above 4647.205",
+  "DXY change_32 +0.04; no confirming tailwind",
+  "Analog A22531 path enters REJECTION, TREND"
+ ],
+ "possible_mechanisms": [
+  {
+   "mechanism": "trend_continuation",
+   "status": "POSSIBLE",
+   "why": "L4 candidate; 8-bar displacement 12.23 inside level"
+  },
+  {
+   "mechanism": "level_rejection_mean_reversion",
+   "status": "WEAK",
+   "why": "65 touches and H1 wick imply seller presence at 4642"
+  },
+  {
+   "mechanism": "distribution_absorption",
+   "status": "UNKNOWN",
+   "why": "no order-flow or volume data to assert it"
+  }
+ ],
+ "primary_scenario": {
+  "scenario": "Acceptance holds; drift up through 4642.315",
+  "horizon": "4-8h",
+  "trigger": "M15 close above 4642.315 confirms push",
+  "invalidation": "M15 close below 4636.195"
+ },
+ "alternative_scenario": {
+  "scenario": "Rejection at level; retest 4616-4624 zone",
+  "horizon": "4-8h",
+  "trigger": "H1 close below 4636.195",
+  "invalidation": "close above 4647.205"
+ },
+ "expected_transition": "ACCEPTANCE -> ROTATION or EXPANSION",
+ "direction_bias": "NEUTRAL",
+ "time_horizon": "4-8h",
+ "evidence_strength": 0.4,
+ "confidence": 0.3,
+ "uncertainty": 0.6,
+ "confidence_reason": "State data consistent but MTF CONFLICT; level pin only",
+ "uncertainty_reason": "No news, order flow, or reliable cross-market series",
+ "invalidation": "M15 closes below 4636.195 flips primary",
+ "change_my_mind": [
+  "M15 close above 4647.205 confirms upside breakout",
+  "H1 close below 4616.815 confirms downside failure",
+  "UST10Y or news availability reduces uncertainty",
+  "DXY move beyond 0.5% aligns direction"
+ ],
+ "abstain": false,
+ "abstain_reason": "Context sufficient and internally consistent; ambiguity is directional, not epistemic",
+ "questions": {
+  "Q1_what_do_i_know": "Price at 4642 level after extreme H4 swing; ACCEPTANCE, VOL_CONTRACTION",
+  "Q2_what_do_i_not_know": "News, flow, COT absent; cross-market PROXY; post-contraction direction unknown",
+  "Q3_evidence_for_primary": "Level pin, M5 momentum up, contraction, H4 recovery",
+  "Q4_evidence_against_primary": "H1/M15 downtrend, H1 rejection wick, analog REJECTION path",
+  "Q5_mechanism_that_is_only_possible": "trend_continuation is candidate only, never asserted fact",
+  "Q6_what_would_change_my_mind": "Decisive M15 break 4647 up or 4636 down",
+  "Q7_should_i_abstain_now": "false; data sufficient, direction simply ambiguous"
+ },
+ "reasoning_trace": [
+  "Extreme H4 volatility then VOL_CONTRACTION; acceptance at level",
+  "MTF CONFLICT forbids directional claim; bias NEUTRAL",
+  "Level 4642.315 pivotal: 65 touches, distance 0.034 ATR",
+  "Absent news and PROXY markets cap confidence at 0.3"
+ ]
+}

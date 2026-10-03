@@ -1,0 +1,85 @@
+{
+ "forecast_id": "R6_A_20260912",
+ "sample_id": "A_20260912",
+ "timestamp": "2026-09-12 12:00:00+00:00",
+ "observations": [
+  "COMPRESSION state, VOL_CONTRACTION event, dwell 1",
+  "Price 4347.5 below swing high 4349.728, INSIDE",
+  "M1/M5/M15 trend_20 negative, H1 positive, CONFLICT",
+  "All cross-market series unavailable"
+ ],
+ "what_i_know": [
+  "Frozen label COMPRESSION, vol contracting",
+  "Swing high 4349.728 holds, 33 touches, near",
+  "Short timeframes drifting down, ranges shrinking",
+  "Three analogs persist compression, two exit to REJECTION"
+ ],
+ "what_i_do_not_know": [
+  "Break direction or timing unknown",
+  "Cross-market drivers absent, no macro/news",
+  "Order flow, volumes, COT unknown",
+  "Ambiguity rate 0.875, labels unstable"
+ ],
+ "evidence": [
+  "Compression label with volume contraction event",
+  "Price inside level, range_percentile low",
+  "Analog A34291 shows compression persistence",
+  "Lower timeframe downtrends near support"
+ ],
+ "counter_evidence": [
+  "H1 trend_20 positive, H4 trend_50 positive",
+  "Recent 94-point H1 bar shows extreme volatility",
+  "High ambiguity 0.875 undermines state label",
+  "Price already rejected from 4402 highs"
+ ],
+ "possible_mechanisms": [
+  {"mechanism": "trend_continuation_down", "status": "POSSIBLE", "why": "short-term trends negative, level overhead"},
+  {"mechanism": "range_persistence", "status": "SUPPORTED", "why": "compression label, contracting ranges"},
+  {"mechanism": "rejection_at_swing_high", "status": "POSSIBLE", "why": "analogs exit to REJECTION"},
+  {"mechanism": "breakout_expansion", "status": "WEAK", "why": "no trigger observed yet"}
+ ],
+ "primary_scenario": {
+  "scenario": "Continued compression below swing high",
+  "horizon": "4-12 hours",
+  "trigger": "Range contraction persists near 4347-4350",
+  "invalidation": "Decisive break above 4349.728"
+ },
+ "alternative_scenario": {
+  "scenario": "Rejection down toward 4340-4345",
+  "horizon": "4-12 hours",
+  "trigger": "Level holds, lower timeframes roll over",
+  "invalidation": "Sustained reclaim above swing high"
+ },
+ "expected_transition": "COMPRESSION to REJECTION or breakout",
+ "direction_bias": "NO_DIRECTIONAL_EDGE",
+ "time_horizon": "4-12 hours",
+ "evidence_strength": 0.35,
+ "confidence": 0.25,
+ "uncertainty": 0.85,
+ "confidence_reason": "Structure signal clear, direction unconfirmed",
+ "uncertainty_reason": "MTF conflict, no cross-market, high ambiguity",
+ "invalidation": "Break of 4349.728 or 4345.3 with expansion",
+ "change_my_mind": [
+  "Sustained close above 4349.728 with expansion",
+  "Break below 4345 with range expansion",
+  "Cross-market data flips state label",
+  "Ambiguity rate drops below 0.5"
+ ],
+ "abstain": false,
+ "abstain_reason": "Structure forecast possible; direction has no edge",
+ "questions": {
+  "Q1": "COMPRESSION state; price 4347.5 inside level",
+  "Q2": "Break direction, timing, drivers unknown",
+  "Q3": "Compression label, contracting ranges, analog persistence",
+  "Q4": "H1 uptrend, extreme volatility, high ambiguity",
+  "Q5": "Trend continuation down is only POSSIBLE",
+  "Q6": "Level break with volume would flip view",
+  "Q7": "No; abstaining not required, confidence low"
+ },
+ "reasoning_trace": [
+  "Labels say compression, level overhead",
+  "Lower timeframes down, higher timeframes conflict",
+  "Analogs lean eventual REJECTION",
+  "No edge; forecast structure only"
+ ]
+}

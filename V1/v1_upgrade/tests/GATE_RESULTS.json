@@ -1,0 +1,95 @@
+{
+ "generated_at": "2026-09-28T15:29:17.373085+00:00",
+ "tests": {
+  "test_demo_account_only": {
+   "result": "PASS",
+   "detail": "LIVE-verified DEMO login=160759434 server=ForexTimeFXTM-Demo01 currency=USD balance=1941.25 equity=1941.25"
+  },
+  "test_mt5_isolation": {
+   "result": "PASS",
+   "detail": "magic=90011 (not reserved), comment=V1UP_DEMO; account-inheritance deviation recorded; problems=['INSTANCE_DIR_MISSING']; AUTHORISED BY OPERATOR 2026-09-28: NEW V1 inherits the retired V1's demo account; account-level isolation is intentionally waived; namespace isolation retained (MAGIC=90011, COMMENT=V1UP_DEMO, own ledger)"
+  },
+  "test_old_v1_stopped": {
+   "result": "PASS",
+   "detail": "hermes-trader-m15-cycle disabled by operator; trader_v1/engine.py processes=0"
+  },
+  "test_risk_guard": {
+   "result": "PASS",
+   "detail": "clean=(True, []) spread=['SPREAD_LIMIT'] stale=['STALE_DATA'] maxpos=['MAX_POSITION']"
+  },
+  "test_duplicate_order_guard": {
+   "result": "PASS",
+   "detail": "(False, ['DUPLICATE_ORDER'])"
+  },
+  "test_kill_switch": {
+   "result": "PASS",
+   "detail": "(False, ['KILL_SWITCH'])"
+  },
+  "test_ledger_chain": {
+   "result": "PASS",
+   "detail": "chain_ok=True(5 entries), tamper_detected=True"
+  },
+  "test_replay": {
+   "result": "PASS",
+   "detail": "{'open_positions': {'X1': {'side': 'SHORT', 'qty': 0.01, 'entry': 4149.0}}, 'realized_pnl': 0.0, 'events': 5, 'sends': 1}"
+  },
+  "test_restart_recovery": {
+   "result": "PASS",
+   "detail": "reopened chain ok=True; after close pnl=4.08"
+  },
+  "test_order_send_demo_only": {
+   "result": "PASS",
+   "detail": "demo=DEMO_OK live=NOT_DEMO:REAL none=NO_ACCOUNT_INFO; ORDER_SEND stays OFF until an account is designated"
+  },
+  "test_r3_r8_immutable": {
+   "result": "PASS",
+   "detail": "content hashes match the R9 archive; mismatches=[]"
+  },
+  "test_v1_boundary": {
+   "result": "PASS",
+   "detail": "new-task writes=2 (v1_upgrade/archive); frozen-stage tracked modifications=[]; pre-existing repo dirt (not this task): trader_v1_tree=528, elsewhere=173 ['GITHUB_BASELINE_COMMIT_AUDIT.md', 'GITHUB_CLEAN_SNAPSHOT_AUDIT.md', 'GITHUB_PUBLISH_RESULT.md', 'PROJECT_COLLABORATION.md', 'PUBLISH_MANIFEST.md', 'archive/']"
+  },
+  "test_filling_mode": {
+   "result": "PASS",
+   "detail": "type_filling derived from the symbol bitmask BY NAME (bitmask 1=FOK/2=IOC vs request enum FOK=0/IOC=1/RETURN=2); the bitmask literal is never passed as type_filling"
+  },
+  "test_order_check_preflight": {
+   "result": "PASS",
+   "detail": "order_check preflight present; mt5.order_send( occurrences=1 (single, inside the guarded branch)"
+  },
+  "test_order_send_disabled": {
+   "result": "PASS",
+   "detail": "runtime_config.order_send_enabled=False -> ORDER_SEND stays OFF for this task"
+  },
+  "test_production_ledger_untouched": {
+   "result": "PASS",
+   "detail": "production ledger byte-identical across the gate self-test (size=20176; fp=54d6dd3f6c08==54d6dd3f6c08)"
+  },
+  "test_selftest_ledger_isolated": {
+   "result": "PASS",
+   "detail": "self-test ledger lives at tests/_selftest_ledger.jsonl"
+  }
+ },
+ "pass": 17,
+ "blocked": 0,
+ "fail": 0,
+ "total": 17,
+ "ALL_GATES_PASS": true,
+ "VERDICT": "START_NEW_V1_DEMO",
+ "NEW_V1": "ACTIVE",
+ "ORDER_SEND": "DEMO_ONLY",
+ "LIVE": false,
+ "REAL_MONEY": false,
+ "account": {
+  "login": 160759434,
+  "server": "ForexTimeFXTM-Demo01",
+  "demo": true,
+  "balance": 1941.25,
+  "equity": 1941.25
+ },
+ "account_inheritance_deviation": "AUTHORISED BY OPERATOR 2026-09-28: NEW V1 inherits the retired V1's demo account; account-level isolation is intentionally waived; namespace isolation retained (MAGIC=90011, COMMENT=V1UP_DEMO, own ledger)",
+ "open_positions_at_start": [],
+ "first_order_policy": "account flat",
+ "FIRST_DEMO_ORDER": "PENDING_RUNTIME",
+ "blocking_input": null
+}

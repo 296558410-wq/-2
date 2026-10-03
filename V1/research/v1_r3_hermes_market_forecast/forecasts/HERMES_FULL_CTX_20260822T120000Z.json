@@ -1,0 +1,81 @@
+{
+  "forecast_id": "HERMES_FULL_CTX_20260822T120000Z",
+  "timestamp": "2026-08-22 12:00:00+00:00",
+  "current_state": "COMPRESSION",
+  "dominant_structure": "Higher-timeframe uptrend (H4 trend_20 +247.96, H1 trend_20 +71.51) with a sharp intraday pullback from the 4631.935 session high that has stalled in a compression right at the former swing-high level 4601.875 (level_side UP, break_status INSIDE, distance_atr 0.026, 11 touches in 240 bars). Microstructure is a volume/volatility contraction pause at a key pivot; lower timeframes (M1/M5) are short-term bearish while higher timeframes remain strongly bullish (L6 agreement CONFLICT).",
+  "current_pressure": {
+    "directional": "HTF buyers (persistent uptrend, H4 consecutive_up 9) vs short-term sellers (M1 consecutive_down 7, M5 consecutive_down 10, 8-bar displacement -22.09); momentum is bearish at the immediate scale, trend is bullish at the dominant scale.",
+    "volatility": "Compressed: M1 range_contracting, last M1 bar range_percentile 0.155, M1 ATR contracting (~1.56), VOL_CONTRACTION event at t; compression implies elevated breakout/expansion risk on resolution.",
+    "liquidity_proxy": "Level 4601.875 is a liquidity anchor/stop cluster (11 touches in 240 bars, price INSIDE the level); a stop-run sweep below it then recovery is a live but unproven path; cross-market liquidity context is UNKNOWN (DXY/VIX/UST10Y unavailable)."
+  },
+  "primary_scenario": {
+    "scenario": "Pullback exhausts at swing-high support 4601.875: price bases/compresses in the 4601-4608 zone, the level holds (as it has 11 times in 240 bars), and a low-timeframe recovery reclaims 4606-4616, retesting the 4616-4624 zone as continuation of the dominant HTF uptrend.",
+    "confidence": 0.5,
+    "horizon": "INTRADAY",
+    "trigger": "M5/M15 reclaim of 4604-4606 with expanding bodies and rising range_percentile; no M15 close below 4601.875.",
+    "invalidation": "M15 closes below 4601.875 with follow-through (two consecutive M15 closes below the level)."
+  },
+  "alternative_scenario": {
+    "scenario": "Decisive breakdown: the swing-high level 4601.875 fails, the short-term downtrend (M5 trend_20 -20.05) continues, and price extends lower toward the 4588.255 H1 support zone, then 4577.785-4563.255 (H1/H4 lows), with COMPRESSION transitioning to REJECTION (analog A26956).",
+    "confidence": 0.35,
+    "horizon": "INTRADAY",
+    "trigger": "M15 close below 4601.875 with range expansion and a strong bearish body (body_ratio > 0.7).",
+    "invalidation": "M15 reclaim back above 4604.685 (last M5 open) before a second M15 close below the level; any reclaim of 4616 invalidates breakdown."
+  },
+  "third_scenario": {
+    "scenario": "Prolonged compression without resolution: price chops inside 4601-4610 for an extended period (analog A21233 stays COMPRESSION for 16 steps), neither recovering nor breaking down on the intraday horizon.",
+    "confidence": 0.15,
+    "horizon": "INTRADAY",
+    "trigger": "Ranges remain at/below current compressed percentiles (M1 range_percentile < 0.3) without expansion for several hours.",
+    "invalidation": "Any range expansion with a directional close resolves the state."
+  },
+  "direction_bias": "NEUTRAL",
+  "expected_state_transition": "COMPRESSION -> TREND (recovery/continuation of HTF uptrend) if 4601.875 holds; COMPRESSION -> REJECTION if the level breaks; otherwise extended COMPRESSION.",
+  "time_horizon": "INTRADAY",
+  "confidence": 0.5,
+  "supporting_evidence": [
+    "H4 trend_20 +247.96 and trend_50 +234.08, H4 consecutive_up 9: dominant structure is a strong uptrend (DIRECT geometry, DERIVED trend).",
+    "Price 4602.055 is 0.18 above swing-high level 4601.875 (break_status INSIDE, distance_atr 0.026, 11 touches in 240 bars): a well-tested pivot acting as support (DERIVED, causal).",
+    "Frozen state COMPRESSION with event VOL_CONTRACTION (dwell 2) after EXPANSION(10-12)->REJECTION(1-3): a pause/absorption at the level, not a resolved break (DERIVED).",
+    "Last M1 bar range_percentile 0.155 and M5 range_contracting: extreme compression, low immediate momentum (RAW_GEOMETRY).",
+    "Historical analog A32777 (exact-state match) shows COMPRESSION -> TREND -> REJECTION -> EXPANSION: compression at this label has preceded continuation (state evolution only, no returns)."
+  ],
+  "counter_evidence": [
+    "M5 consecutive_down 10 and trend_20 -20.05, M1 consecutive_down 7: the short-term downtrend is still in force at the resolving timeframes (RAW_GEOMETRY).",
+    "Current H1 (21:00) and H4 (20:00) bars are strongly bearish (body_ratio 0.94, close at lows): momentum may push through the level rather than hold it (DIRECT).",
+    "The level is a SWING_HIGH (supply origin), not a demand level; 11 touches in 240 bars also means it has been tested and held, but repeated tests can precede a break.",
+    "L4 mechanism candidate is trend_continuation of the short-term displacement (-22.09), which points down, with no counter-evidence listed (DERIVED).",
+    "L6 multi-timeframe agreement is explicitly CONFLICT; analog A26956 shows COMPRESSION -> REJECTION.",
+    "Cross-market context (DXY, VIX, UST10Y proxy) is UNKNOWN: no independent confirmation or contradiction of the directional read."
+  ],
+  "trigger": "Reclaim of 4604-4606 on M5/M15 with range expansion, or conversely an M15 close below 4601.875; resolution of the compression defines the next leg.",
+  "invalidation": "M15 close below 4601.875 with follow-through invalidates the base/recovery scenario; M15 reclaim above 4606.6 with expansion invalidates the breakdown scenario.",
+  "change_my_mind": [
+    "An M15 close below 4601.875 with expanded range and a strong bearish body would flip me to the breakdown scenario (REJECTION, targets 4588/4577.8/4563.3).",
+    "A high-range bullish M15/H1 bar reclaiming 4616.675 would flip me to a high-conviction continuation-up view.",
+    "Fresh cross-market data (DXY direction, VIX, UST10Y proxy TNX), currently UNKNOWN, would materially adjust the read: e.g., a sharp DXY rally or rising yields would strengthen the breakdown case; a soft dollar would strengthen recovery.",
+    "Sustained volatility expansion at the level (M1 ATR spiking above ~2.0 with rejection wicks) would confirm active defense of 4601.875 and raise recovery conviction."
+  ],
+  "abstain": false,
+  "abstain_reason": "",
+  "reasoning_trace": [
+    "Read PIT context v1r3-r1 as_of 2026-08-22 12:00 UTC; latest bars are 2026-08-21 21:59 UTC (M1).",
+    "Established dominant structure: strong HTF uptrend (H4/H1 trend_20 strongly positive, H4 consecutive_up 9) vs fresh short-term pullback (M1/M5 negative trends, 7-10 consecutive down bars).",
+    "Located price 4602.055 relative to the only available structure: swing-high level 4601.875, INSIDE, 0.026 ATR away, 11 touches in 240 bars — price is sitting on a well-tested pivot.",
+    "Cross-checked frozen labels: state COMPRESSION, event VOL_CONTRACTION, dwell 2, prior EXPANSION->REJECTION; L6 agreement CONFLICT; L7 cross-market all UNKNOWN; analogs split (stay COMPRESSION / ->REJECTION / ->TREND).",
+    "No future information used; quality tags respected (DIRECT/DERIVED/UNKNOWN; UST10Y not present; no fabrication).",
+    "Chose structural NEUTRAL bias: genuine decision point at the level with conflicting timeframe momentum; primary scenario (base/recovery) 0.5, breakdown 0.35, extended compression 0.15."
+  ],
+  "questions": {
+    "A": "What is happening? XAUUSD is 4602.055 after a sharp intraday pullback from the 4631.935 session high (18:00 H1 bar high) / 4631.935 H4 high. The pullback has brought price down to sit 0.18 above the swing-high level 4601.875, where it is now compressing: last M1 bar range only 0.91 (range_percentile 0.155), M5 closed 21:55 with a 0.89 body_ratio bearish bar at its low, H1 21:00 bar is a strong 14.6-point bearish body closing at 4602.055. Higher timeframes (H1 trend_20 +71.51, H4 trend_20 +247.96) remain strongly up while M1/M5 are short-term down; the frozen label is COMPRESSION with event VOL_CONTRACTION.",
+    "B": "What is the dominant structure? A higher-timeframe uptrend (H4 trend_20 +247.96, trend_50 +234.08, consecutive_up 9; H1 trend_20 +71.51) interrupted by a short-term corrective impulse that has stalled in a compression directly at the former swing-high 4601.875 (level_side UP, break_status INSIDE, 11 touches in 240 bars). The prevailing structure is 'pullback-in-uptrend pausing at a well-tested pivot' — a breakout-retest configuration on the HTF, with the microstructure frozen as COMPRESSION (VOL_CONTRACTION).",
+    "C": "What pressures are building? Directional: HTF trend-following buyers vs short-term pullback sellers (M1 consecutive_down 7, M5 consecutive_down 10, 8-bar displacement -22.09); the immediate scale is bearish, the dominant scale bullish. Volatility: contraction (M1 range_contracting, M1 ATR ~1.56 declining, last bar range_percentile 0.155) — compressed energy that typically resolves with expansion. Liquidity-proxy: the 4601.875 level is a stop/liquidity cluster (11 touches in 240 bars, price INSIDE); a sweep below it is a live path. Cross-market liquidity (DXY/VIX/UST10Y) is UNKNOWN and therefore cannot add pressure information.",
+    "D": "What mechanisms could explain it? (1) Pullback-in-uptrend / breakout retest of 4601.875: SUPPORTED — HTF trends strongly positive, price returning to a broken swing high with compression; (2) continuation of the short-term downtrend (the only L4 candidate, trend_continuation, displacement -22.09): SUPPORTED at M1/M5 scale by consecutive down bars and current H1/H4 bar bodies, but CONTRADICTED by the level directly below and HTF uptrend; (3) stop-run sweep below 4601.875 then reversal: PLAUSIBLE as a liquidity story (11-touch level) but NOT directly evidenced — kept as hypothesis only; (4) trend exhaustion/distribution at HTF top: WEAKLY supported only by the sharp rejection from 4631.935; counter-evidenced by H4 trend_50 still +234.08.",
+    "E": "What is the strongest evidence? (1) H4 trend_20 +247.96 / trend_50 +234.08 with consecutive_up 9 — the dominant timeframe is unambiguously trending up; (2) price compressing exactly at swing-high 4601.875 (break_status INSIDE, distance_atr 0.026, 11 touches in 240 bars) — a well-tested pivot being defended; (3) frozen COMPRESSION + VOL_CONTRACTION (dwell 2) following EXPANSION(10-12)->REJECTION(1-3) — an absorption pause rather than a break; (4) extreme M1 compression (range_percentile 0.155, range_contracting) — low immediate momentum, unresolved; (5) exact-state historical analog A32777 showing COMPRESSION -> TREND evolution.",
+    "F": "What is the strongest counter-evidence? (1) M5 consecutive_down 10 with trend_20 -20.05 — the resolving timeframes are still bearish; (2) the current H1 (21:00) and H4 (20:00) bars are strongly bearish-bodied (0.94) closing at their lows, showing real selling momentum that could carry through the level; (3) the level is a SWING_HIGH (supply origin) — repeated tests can also precede a break; (4) L4's only mechanism candidate is short-term trend continuation pointing down, with no counter-evidence listed; (5) L6 agreement is explicitly CONFLICT and analog A26956 evolves COMPRESSION -> REJECTION; (6) all cross-market context is UNKNOWN, so nothing externally supports the hold.",
+    "G": "What could happen next? PRIMARY: compression resolves upward — 4601.875 holds (as it has 11 times in 240 bars), price bases in 4601-4608, then a low-timeframe recovery reclaims 4606-4616 and retests the 4616-4624 zone as continuation of the HTF uptrend. Confidence 0.5, horizon INTRADAY.",
+    "H": "What is the alternative? ALTERNATIVE: breakdown — an M15 close below 4601.875 with range expansion continues the short-term downtrend toward 4588.255 (H1 12:00 close zone), then 4577.785-4563.255 (H1 11:00 low / H4 12:00 low), state COMPRESSION -> REJECTION (analog A26956). Confidence 0.35. TERTIARY: extended compression in 4601-4610 without resolution (analog A21233), confidence 0.15.",
+    "I": "What would invalidate the forecast? For the primary (base/recovery): an M15 close below 4601.875 with follow-through (a second consecutive M15 close below) invalidates the level-hold premise and switches the operative scenario to the breakdown. For the breakdown scenario: an M15 reclaim above 4604.685 (last M5 open) before a second M15 close below the level, or any reclaim of 4616, invalidates it. Both are checkable from raw closes at known levels.",
+    "J": "What would change your mind? (1) An M15 close below 4601.875 with an expanded range and strong bearish body would flip me to the breakdown view (targets 4588/4577.8/4563.3). (2) A high-range bullish M15/H1 bar reclaiming 4616.675 would flip me to high-conviction continuation-up. (3) The appearance of cross-market data (DXY, VIX, or UST10Y proxy), currently UNKNOWN, would materially change my judgement: sharp dollar strength or rising yields would strengthen the downside case; soft dollar would strengthen recovery. (4) Volatility expansion at the level with rejection wicks (M1 ATR > ~2.0) would confirm active defense of 4601.875 and raise recovery confidence."
+  }
+}

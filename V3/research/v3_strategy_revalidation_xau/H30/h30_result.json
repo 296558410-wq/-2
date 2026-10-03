@@ -1,0 +1,158 @@
+{
+ "hypothesis_id": "H30_CROSS_MARKET_AGREEMENT",
+ "frozen_definition_used": {
+  "set_a": {
+   "DXY": "down>=0.30%",
+   "UST10Y": "down>=5bp",
+   "VIX": "up>=5%"
+  },
+  "a_direction": "LONG",
+  "set_b": {
+   "DXY": "up>=0.30%",
+   "UST10Y": "up>=5bp",
+   "VIX": "down>=5%"
+  },
+  "b_direction": "SHORT",
+  "hold_days": 1,
+  "entry": "close(t+1)",
+  "exit": "close(t+2)",
+  "states": 2
+ },
+ "target_series": "V3_XAU_SPOT_DAILY (XAU spot)",
+ "data_version_id": "H30_XAU_REVALIDATION_e4d18a7dda5ba315",
+ "counts": {
+  "raw_rows": {
+   "xau": 5186,
+   "dxy": 504,
+   "ust10y": 3936,
+   "vix": 503,
+   "xau_span": [
+    "2006-09-25",
+    "2026-09-25"
+   ],
+   "aligned_rows": 497,
+   "aligned_span": [
+    "2024-09-24",
+    "2026-09-24"
+   ]
+  },
+  "aligned_rows": 497,
+  "eligible_rows": 496,
+  "signal_rows": 13
+ },
+ "effective_n": 13,
+ "overlap_ratio": 0.0,
+ "stats": {
+  "n": 13,
+  "mean": 91.753,
+  "median": 77.422,
+  "win_rate": 0.8462,
+  "gross": 1192.79,
+  "profit_factor": 5.823,
+  "max_dd": -243.66
+ },
+ "cost_stress": {
+  "cost_0x": {
+   "n": 13,
+   "mean_bp": 92.667,
+   "gross_bp": 1204.68,
+   "win_rate": 0.8462
+  },
+  "cost_1x": {
+   "n": 13,
+   "mean_bp": 91.753,
+   "gross_bp": 1192.79,
+   "win_rate": 0.8462
+  },
+  "cost_2x": {
+   "n": 13,
+   "mean_bp": 90.839,
+   "gross_bp": 1180.91,
+   "win_rate": 0.8462
+  },
+  "cost_3x": {
+   "n": 13,
+   "mean_bp": 89.925,
+   "gross_bp": 1169.03,
+   "win_rate": 0.8462
+  }
+ },
+ "walk_forward": {
+  "fold1": 26.657,
+  "fold2": 84.883,
+  "fold3": 179.995
+ },
+ "segments": {
+  "2006-2010": {
+   "n": 0,
+   "insufficient": true
+  },
+  "2011-2015": {
+   "n": 0,
+   "insufficient": true
+  },
+  "2016-2020": {
+   "n": 0,
+   "insufficient": true
+  },
+  "2021-2026": {
+   "n": 13,
+   "mean_bp": 91.753,
+   "insufficient": true
+  }
+ },
+ "regime_vol_tercile": {
+  "low": {
+   "n": 4,
+   "mean_bp": 83.645,
+   "insufficient": true
+  },
+  "mid": {
+   "n": 4,
+   "mean_bp": -3.011,
+   "insufficient": true
+  },
+  "high": {
+   "n": 5,
+   "mean_bp": 174.052,
+   "insufficient": true
+  }
+ },
+ "regime_weekday": {
+  "0": {
+   "n": 3,
+   "mean_bp": 53.683
+  },
+  "2": {
+   "n": 2,
+   "mean_bp": 185.693
+  },
+  "3": {
+   "n": 4,
+   "mean_bp": 98.903
+  },
+  "4": {
+   "n": 4,
+   "mean_bp": 66.186
+  }
+ },
+ "bootstrap_ci95": [
+  -1.985,
+  130.605
+ ],
+ "permutation_p": 0.71686,
+ "t_stat": 2.299,
+ "initial_verdict": "INSUFFICIENT_SAMPLE",
+ "initial_reason": "effective n=13 < 30 (task §13: no discussion)",
+ "p_value": 0.71686,
+ "historical_proxy_result": {
+  "source": "Round 3 (GC=F gold leg)",
+  "n": 13,
+  "mean_bp": 91.19,
+  "verdict": "INSUFFICIENT_SAMPLE",
+  "note": "must NOT be merged with the XAU result"
+ },
+ "final_status": "INSUFFICIENT_SAMPLE",
+ "fdr_applied": false,
+ "final_reason": "effective n=13 < 30 (task §13: no discussion)"
+}

@@ -1,0 +1,59 @@
+{
+ "schema": "v3_alpha_postmortem_execution_cost/1",
+ "generated_utc": "2026-09-21T20:23:19.977118+00:00",
+ "task": "V3-HFT-ALPHA-POSTMORTEM-001",
+ "cost_anchor_usd_per_rt": 0.4,
+ "cost_components": {
+  "spread_usd_rt": 0.18,
+  "commission_usd_rt": 0.22
+ },
+ "cost_bp_at_4376usd_oz": 0.914,
+ "measured_median_spread_usd": 0.15,
+ "measured_median_spread_bp": 0.343,
+ "cost_over_move": {
+  "50": {
+   "median_abs_move_bp": 0.9794614468905394,
+   "n": 2129,
+   "cost_to_move_ratio": 0.933
+  },
+  "200": {
+   "median_abs_move_bp": 0.16205199183660923,
+   "n": 1247508,
+   "cost_to_move_ratio": 5.64
+  },
+  "1000": {
+   "median_abs_move_bp": 0.3456766793830113,
+   "n": 2276477,
+   "cost_to_move_ratio": 2.644
+  },
+  "5000": {
+   "median_abs_move_bp": 0.5819150685448804,
+   "n": 2777738,
+   "cost_to_move_ratio": 1.571
+  },
+  "30000": {
+   "median_abs_move_bp": 1.2690165006778997,
+   "n": 2794486,
+   "cost_to_move_ratio": 0.72
+  },
+  "300000": {
+   "median_abs_move_bp": 4.168354908615779,
+   "n": 2783694,
+   "cost_to_move_ratio": 0.219
+  },
+  "3600000": {
+   "median_abs_move_bp": 16.064989468255185,
+   "n": 2657339,
+   "cost_to_move_ratio": 0.057
+  },
+  "86400000": {
+   "median_abs_move_bp": null,
+   "n": 0,
+   "cost_to_move_ratio": null
+  }
+ },
+ "best_gross_edge_bp_any_config": 0.096,
+ "gross_edge_shortfall_vs_cost": 9.5,
+ "verdict": "EXECUTION_COST_BOTTLENECK",
+ "verdict_note": "At h<=5s the round-trip cost is 1.5x-5.6x the median absolute move and ~9x the best estimated gross edge. Cost alone explains negative net edge for short horizons."
+}

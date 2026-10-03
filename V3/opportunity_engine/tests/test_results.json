@@ -1,0 +1,122 @@
+{
+ "schema": "v3_opportunity_tests/1",
+ "total": 11,
+ "pass": 11,
+ "fail": 0,
+ "results": [
+  {
+   "test": "test_asof_features",
+   "result": "PASS",
+   "detail": {
+    "rows_checked": 2095,
+    "max_abs_diff": 0.0
+   },
+   "sec": 0.44
+  },
+  {
+   "test": "test_no_lookahead",
+   "result": "PASS",
+   "detail": {
+    "cut": "2026-03-17 17:00:00+00:00",
+    "opps_before_cut": 656,
+    "identical": true
+   },
+   "sec": 6.74
+  },
+  {
+   "test": "test_deterministic_detection",
+   "result": "PASS",
+   "detail": {
+    "opps": 853,
+    "identical": true
+   },
+   "sec": 7.78
+  },
+  {
+   "test": "test_context_hash",
+   "result": "PASS",
+   "detail": {
+    "first_ctx": "379069c2d7175acb",
+    "reproducible": true
+   },
+   "sec": 4.0
+  },
+  {
+   "test": "test_ledger_chain",
+   "result": "PASS",
+   "detail": {
+    "chain_ok": true,
+    "tamper_detected": true
+   },
+   "sec": 0.14
+  },
+  {
+   "test": "test_replay_consistency",
+   "result": "PASS",
+   "detail": {
+    "cut": "2026-03-17 17:00:00+00:00",
+    "prefix_len": 656,
+    "consistent": true
+   },
+   "sec": 8.14
+  },
+  {
+   "test": "test_duplicate_opportunity",
+   "result": "PASS",
+   "detail": {
+    "records": 853,
+    "unique_pairs": 853,
+    "cluster_continuations": 636
+   },
+   "sec": 5.17
+  },
+  {
+   "test": "test_timestamp_alignment",
+   "result": "PASS",
+   "detail": {
+    "rows": 2992,
+    "tz": "UTC",
+    "monotonic": true,
+    "unique": true
+   },
+   "sec": 0.0
+  },
+  {
+   "test": "test_v1_isolation",
+   "result": "PASS",
+   "detail": {
+    "v1_source_or_config_modified": 0,
+    "v1_runtime_artifacts_written_by_v1": 9
+   },
+   "sec": 0.03
+  },
+  {
+   "test": "test_v2_isolation",
+   "result": "PASS",
+   "detail": {
+    "v2_source_or_config_modified": 0,
+    "v2_runtime_artifacts_written_by_v2": 117,
+    "task_footprint_inside_v2": 0,
+    "artifact_examples": [
+     "pit_store.jsonl",
+     "router_audit.jsonl",
+     "router_cache.json"
+    ]
+   },
+   "sec": 0.98
+  },
+  {
+   "test": "test_order_send_disabled",
+   "result": "PASS",
+   "detail": {
+    "engine_no_order_path": true,
+    "files_scanned": [
+     "engine.py",
+     "run_r1.py"
+    ],
+    "schema_forbids_order_fields": true
+   },
+   "sec": 0.01
+  }
+ ]
+}

@@ -1,0 +1,56 @@
+{
+ "layer": "L4_MARKET_FORECAST",
+ "version": "v1r2-mr-ontology-r1",
+ "predict_first": "NEXT_MARKET_STATE (not BUY/SELL) (task §27)",
+ "fields": [
+  "NEXT_STATE",
+  "FORECAST_HORIZON",
+  "DIRECTION",
+  "CONFIDENCE",
+  "INVALIDATION"
+ ],
+ "horizons": [
+  "M5",
+  "M15",
+  "H1",
+  "H4"
+ ],
+ "confidence_scale": [
+  "HIGH",
+  "MEDIUM",
+  "LOW",
+  "UNCERTAIN"
+ ],
+ "invalidation_is_first_class": true,
+ "evaluation_stage1_only": [
+  "STATE_PREDICTION",
+  "TRANSITION_PREDICTION",
+  "DIRECTION",
+  "TIMING"
+ ],
+ "evaluation_forbidden_stage1": [
+  "PnL",
+  "Sharpe",
+  "Profit Factor",
+  "Win Rate"
+ ],
+ "prediction_journal": {
+  "file": "ledger/v1_r2_market_reading_ledger.jsonl",
+  "fields": [
+   "timestamp",
+   "context_hash",
+   "state_vector",
+   "mechanism_hypotheses",
+   "supporting_evidence",
+   "counter_evidence",
+   "forecast",
+   "horizon",
+   "confidence",
+   "invalidation",
+   "data_quality",
+   "registry_hash"
+  ],
+  "outcome_field": "OBSERVED_OUTCOME",
+  "outcome_after_prediction_only": true
+ }
+}

@@ -1,0 +1,5433 @@
+{
+ "CURRENT_TIME_UTC": "2026-09-25T15:07:13.889944+00:00",
+ "CURRENT_TIME_LOCAL": "2026-09-25T23:07:13.889944+08:00",
+ "GATEWAY_AUTOMATION_CANDIDATES": [
+  {
+   "path": "../Users/surface/.openclaw/agents/main/agent/workshop-skills/hermes-stack-status-check/references/stack-map.md",
+   "size": 21421,
+   "matched_context": [
+    {
+     "line": 9,
+     "match": "hermes-trader-m15-cycle",
+     "context": "|---|---|---| | | V1 引擎 | OpenClaw cron `hermes-trader-m15-cycle` | agentTurn，15 分钟一轮 | | | V2 引擎 | Windows 任务 `\\OpenClaw\\hermes-v2-cycle` | 直跑 `runtime/v2_scheduled_cycle.py`（零 LLM） | | | V2 巡检 | Windows 任务 `\\OpenClaw\\hermes-v2-observer` | 只读 |"
+    },
+    {
+     "line": 62,
+     "match": "trader_v1",
+     "context": "- `DECISION` 事件的 `status` 除 `WAIT` / `TRADE` 外还有 `REJECT`（如\"风险回报不足/追空\"），那是**决策层**拒绝，不是执行层拒绝 | - V1：`research\\hermes\\trader_v1\\run_state\\workflow_latest.json`、`trader_summary.txt` | - V3：`research\\hermes\\trader_v3\\state\\V3_CALIBRATION_PILOT.json`、`V3_EXECUTION_PROFILE.json`、 | `data\\calibration\\PILOT"
+    },
+    {
+     "line": 95,
+     "match": "trader_v1",
+     "context": "- **脚本内嵌子进程的“空捕获”会造出假 FAIL**：脚本里 `openclaw …` 等命令**输出为空**时，先**直接复跑该命令**再判定失败（实测：gate 脚本内一次 `openclaw cron get` 空捕获 ⇒ 假 `SCHEDULER=FAIL`；直跑 exit=0、任务与调度都正常）。空捕获 = “没看到”，不是“失败了”。 | - **按命令行子串匹配进程会命中查询者自己与只读面板**：`CommandLine -match 'trader_v1'` 会同时命中**正在执行该查询的 PowerShell 进程本身**与只读看板 `trader_v1_panel\\se"
+    },
+    {
+     "line": 95,
+     "match": "trader_v1",
+     "context": "- **脚本内嵌子进程的“空捕获”会造出假 FAIL**：脚本里 `openclaw …` 等命令**输出为空**时，先**直接复跑该命令**再判定失败（实测：gate 脚本内一次 `openclaw cron get` 空捕获 ⇒ 假 `SCHEDULER=FAIL`；直跑 exit=0、任务与调度都正常）。空捕获 = “没看到”，不是“失败了”。 | - **按命令行子串匹配进程会命中查询者自己与只读面板**：`CommandLine -match 'trader_v1'` 会同时命中**正在执行该查询的 PowerShell 进程本身**与只读看板 `trader_v1_panel\\se"
+    }
+   ],
+   "classification": "LOADED_CANDIDATE"
+  },
+  {
+   "path": "../Users/surface/.openclaw/agents/main/agent/workshop-skills/stack-component-safe-stop/SKILL.md",
+   "size": 5430,
+   "matched_context": [
+    {
+     "line": 22,
+     "match": "hermes-trader-m15-cycle",
+     "context": "完成判据：PID → exe → 数据目录 → 账户 → magic 齐全且无未知项。 | 2. **先禁调度，再谈停进程**：V1 = OpenClaw cron `hermes-trader-m15-cycle` → `openclaw cron disable <id>`； | V2/V3 = `\\OpenClaw\\` 下的 Windows 任务 → `Disable-ScheduledTask`。 | **任务必须保留**（禁止 `openclaw cron rm` / `Unregister-ScheduledTask`），报告里写出恢复命令。"
+    }
+   ],
+   "classification": "LOADED_CANDIDATE"
+  },
+  {
+   "path": "../Users/surface/.openclaw/media/inbound/pasted-text-1789997694508---204a4008-ffe4-49a3-9464-04e970c8d68b.txt",
+   "size": 8967,
+   "matched_context": [
+    {
+     "line": 169,
+     "match": "trader_v1",
+     "context": "* V1 scheduler / cron | * trader_v1 entrypoint | * 当前运行状态 | * workflow 最新更新时间"
+    },
+    {
+     "line": 342,
+     "match": "hermes-trader-m15-cycle",
+     "context": "```text | hermes-trader-m15-cycle | ``` | "
+    },
+    {
+     "line": 434,
+     "match": "trader_v1",
+     "context": "```text | C:\\AIQuant\\research\\hermes\\trader_v1 | C:\\AIQuant\\research\\hermes\\trader_v2 | C:\\AIQuant\\research\\hermes\\trader_v3"
+    }
+   ],
+   "classification": "LOADED_CANDIDATE"
+  },
+  {
+   "path": "../Users/surface/.openclaw/media/inbound/pasted-text-1789998894340---03e5287b-2700-4b2a-81b1-cd2a62ad5778.txt",
+   "size": 11773,
+   "matched_context": [
+    {
+     "line": 19,
+     "match": "trader_v1",
+     "context": " | * `trader_v1` | * `trader_v2` | * V1/V2 策略逻辑"
+    }
+   ],
+   "classification": "LOADED_CANDIDATE"
+  },
+  {
+   "path": "../Users/surface/.openclaw/media/inbound/pasted-text-1790057549313---de9a73ed-1a99-4f85-8739-52da9f5fa835.txt",
+   "size": 17226,
+   "matched_context": [
+    {
+     "line": 1103,
+     "match": "trader_v1",
+     "context": "```text | trader_v1/** | trader_v2/** | openclaw/**"
+    }
+   ],
+   "classification": "LOADED_CANDIDATE"
+  },
+  {
+   "path": "../Users/surface/.openclaw/media/inbound/pasted-text-1790058123445---69890254-c82c-4cdf-8d77-739d96e83c4b.txt",
+   "size": 15845,
+   "matched_context": [
+    {
+     "line": 955,
+     "match": "trader_v1",
+     "context": "```text | trader_v1/** | trader_v2/** | openclaw/**"
+    }
+   ],
+   "classification": "LOADED_CANDIDATE"
+  },
+  {
+   "path": "../Users/surface/.openclaw/media/inbound/pasted-text-1790058616374---a8b7bf63-7296-4cd0-92fe-6945eaeace64.txt",
+   "size": 6089,
+   "matched_context": [
+    {
+     "line": 33,
+     "match": "trader_v1",
+     "context": " | `C:\\AIQuant\\research\\hermes\\trader_v1` |  | * V1 MT5："
+    }
+   ],
+   "classification": "LOADED_CANDIDATE"
+  },
+  {
+   "path": "../Users/surface/.openclaw/media/inbound/pasted-text-1790059064315---839ac3cf-21ba-4db5-a36e-f4459673afe1.txt",
+   "size": 7738,
+   "matched_context": [
+    {
+     "line": 216,
+     "match": "trader_v1",
+     "context": "```text | trader_v1 | V1 workspace | V1 tick collector"
+    }
+   ],
+   "classification": "LOADED_CANDIDATE"
+  },
+  {
+   "path": "../Users/surface/.openclaw/media/inbound/pasted-text-1790059414051---38fcc0b6-6b72-4831-af19-0df7c14fed27.txt",
+   "size": 4576,
+   "matched_context": [
+    {
+     "line": 31,
+     "match": "hermes-trader-m15-cycle",
+     "context": "V1 trading scheduler = DISABLED | hermes-trader-m15-cycle = DISABLED |  | V1 MT5 = RUNNING"
+    },
+    {
+     "line": 213,
+     "match": "hermes-trader-m15-cycle",
+     "context": "```text | hermes-trader-m15-cycle = DISABLED | V1 MT5 = RUNNING | ```"
+    }
+   ],
+   "classification": "LOADED_CANDIDATE"
+  },
+  {
+   "path": "../Users/surface/.openclaw/media/inbound/pasted-text-1790298887365---2d6291ea-e619-4599-9f80-3de7bd333972.txt",
+   "size": 12039,
+   "matched_context": [
+    {
+     "line": 702,
+     "match": "trader_v1",
+     "context": "```text | trader_v1 | trader_v2 | ```"
+    }
+   ],
+   "classification": "LOADED_CANDIDATE"
+  },
+  {
+   "path": "../Users/surface/.openclaw/media/inbound/pasted-text-1790300351665---d9acbb13-c006-41af-82f0-cf86a5ca7f6b.txt",
+   "size": 11464,
+   "matched_context": [
+    {
+     "line": 773,
+     "match": "trader_v1",
+     "context": "```text | import trader_v1 | import trader_v2 | ```"
+    }
+   ],
+   "classification": "LOADED_CANDIDATE"
+  },
+  {
+   "path": "../Users/surface/.openclaw/media/inbound/pasted-text-1790301819748---721128ce-ec8a-4a19-8c41-2aa195a78661.txt",
+   "size": 8150,
+   "matched_context": [
+    {
+     "line": 364,
+     "match": "trader_v1",
+     "context": "```text | trader_v1 | trader_v2 | ```"
+    },
+    {
+     "line": 371,
+     "match": "trader_v1",
+     "context": "```text | import trader_v1 | import trader_v2 | ```"
+    }
+   ],
+   "classification": "LOADED_CANDIDATE"
+  },
+  {
+   "path": "../Users/surface/.openclaw/media/inbound/pasted-text-1790343003349---186822e6-4a74-432a-ab15-72b6951cf267.txt",
+   "size": 16510,
+   "matched_context": [
+    {
+     "line": 675,
+     "match": "trader_v1",
+     "context": "```text | trader_v1 | ``` | "
+    }
+   ],
+   "classification": "LOADED_CANDIDATE"
+  },
+  {
+   "path": "../Users/surface/.openclaw/media/inbound/pasted-text-1790344528389---93c02423-eb1f-440e-8a5a-a97711d7dae0.txt",
+   "size": 13565,
+   "matched_context": [
+    {
+     "line": 236,
+     "match": "trader_v1",
+     "context": "```text | research/hermes/trader_v1/run_state/** | research/hermes/trader_v1/memory/reviews/** | research/hermes/trader_v2/observations/**"
+    },
+    {
+     "line": 237,
+     "match": "trader_v1",
+     "context": "research/hermes/trader_v1/run_state/** | research/hermes/trader_v1/memory/reviews/** | research/hermes/trader_v2/observations/** | research/hermes/trader_v2/state/decision_contexts/**"
+    },
+    {
+     "line": 263,
+     "match": "trader_v1",
+     "context": "```text | research/hermes/trader_v1/** | research/hermes/trader_v2/** | ```"
+    },
+    {
+     "line": 385,
+     "match": "trader_v1",
+     "context": "```text | research/hermes/trader_v1/run_state/... | ``` | "
+    }
+   ],
+   "classification": "LOADED_CANDIDATE"
+  },
+  {
+   "path": "../Users/surface/.openclaw/media/inbound/pasted-text-1790346855804---964c61a5-32ed-4082-857d-2265cce1d742.txt",
+   "size": 9556,
+   "matched_context": [
+    {
+     "line": 108,
+     "match": "trader_v1",
+     "context": "```text | research/hermes/trader_v1/run_state/tmp/append_summary_*.py | ``` | "
+    }
+   ],
+   "classification": "LOADED_CANDIDATE"
+  },
+  {
+   "path": "../Users/surface/.openclaw/media/inbound/pasted-text-1790347124255---7036916d-8956-41a0-ad59-d32f4334f7b2.txt",
+   "size": 7321,
+   "matched_context": [
+    {
+     "line": 7,
+     "match": "trader_v1",
+     "context": " | > `research/hermes/trader_v1/engine.py` 为什么与 MV-R1 的 V1 source/config 基线不一致？ |  | 本任务不是 M01 研究任务，也不是 V1 修复任务。"
+    },
+    {
+     "line": 7,
+     "match": "engine.py",
+     "context": " | > `research/hermes/trader_v1/engine.py` 为什么与 MV-R1 的 V1 source/config 基线不一致？ |  | 本任务不是 M01 研究任务，也不是 V1 修复任务。"
+    },
+    {
+     "line": 18,
+     "match": "engine.py",
+     "context": "```text | V1 engine.py | V1 source/config | V1 baseline hash"
+    },
+    {
+     "line": 33,
+     "match": "engine.py",
+     "context": "```text | 修改 engine.py | 恢复 engine.py | checkout engine.py"
+    }
+   ],
+   "classification": "LOADED_CANDIDATE"
+  },
+  {
+   "path": "../Users/surface/.openclaw/media/inbound/pasted-text-1790347278798---69201de0-5adb-40b0-aaf1-d53aaf04100b.txt",
+   "size": 9235,
+   "matched_context": [
+    {
+     "line": 7,
+     "match": "trader_v1",
+     "context": " | > `research/hermes/trader_v1/engine.py` 在 2026-09-25 约 14:30:30 的就地修改究竟由谁/什么机制产生。 |  | 当前事实已经冻结："
+    },
+    {
+     "line": 7,
+     "match": "engine.py",
+     "context": " | > `research/hermes/trader_v1/engine.py` 在 2026-09-25 约 14:30:30 的就地修改究竟由谁/什么机制产生。 |  | 当前事实已经冻结："
+    },
+    {
+     "line": 31,
+     "match": "engine.py",
+     "context": "```text | 修改 engine.py | 恢复 engine.py | checkout engine.py"
+    },
+    {
+     "line": 32,
+     "match": "engine.py",
+     "context": "修改 engine.py | 恢复 engine.py | checkout engine.py | 修改 baseline"
+    }
+   ],
+   "classification": "LOADED_CANDIDATE"
+  },
+  {
+   "path": "../Users/surface/.openclaw/media/inbound/pasted-text-1790347888915---1f8c2ae0-bd7b-4007-92c4-3d4177ae68c7.txt",
+   "size": 7770,
+   "matched_context": [
+    {
+     "line": 1,
+     "match": "engine.py",
+     "context": "# V1 `engine.py` 基线溯源与隔离恢复任务 |  | ## 一、任务目标"
+    },
+    {
+     "line": 7,
+     "match": "trader_v1",
+     "context": " | `research/hermes/trader_v1/engine.py` 与 MV-R1 V1 基线 SHA256 不一致。 |  | 用户已明确确认："
+    },
+    {
+     "line": 7,
+     "match": "engine.py",
+     "context": " | `research/hermes/trader_v1/engine.py` 与 MV-R1 V1 基线 SHA256 不一致。 |  | 用户已明确确认："
+    },
+    {
+     "line": 11,
+     "match": "trader_v1",
+     "context": " | > 2026-09-25 北京时间约 22:28–22:31，用户本人没有编辑过 `trader_v1/engine.py`。 |  | 当前不允许根据此事实推断“V1 自修改”。"
+    }
+   ],
+   "classification": "LOADED_CANDIDATE"
+  },
+  {
+   "path": "../Users/surface/.openclaw/media/inbound/pasted-text-1790348044088---b55af1e8-2a82-4bd7-9d83-fc8a555abc1e.txt",
+   "size": 9422,
+   "matched_context": [
+    {
+     "line": 5,
+     "match": "engine.py",
+     "context": " | 处理已经确认的 V1 `engine.py` 异常工作树修改。 |  | 当前："
+    },
+    {
+     "line": 38,
+     "match": "engine.py",
+     "context": " | * 备份当前 `engine.py` | * 读取并恢复 MV-R1 精确 baseline | * 为 V1 做必要的安全停止/启动"
+    },
+    {
+     "line": 94,
+     "match": "trader_v1",
+     "context": "```text | research/hermes/trader_v1/engine.py | ``` | "
+    },
+    {
+     "line": 94,
+     "match": "engine.py",
+     "context": "```text | research/hermes/trader_v1/engine.py | ``` | "
+    }
+   ],
+   "classification": "LOADED_CANDIDATE"
+  },
+  {
+   "path": "../Users/surface/.openclaw/media/inbound/pasted-text-1790348342250---694c8fcc-37dc-4ad6-815d-c3a57976e9eb.txt",
+   "size": 6143,
+   "matched_context": [
+    {
+     "line": 295,
+     "match": "engine.py",
+     "context": "* 重启 V1 | * 修改 `engine.py` | * 修改任何 V1 参数 | * 修改 cron"
+    }
+   ],
+   "classification": "LOADED_CANDIDATE"
+  },
+  {
+   "path": "../Users/surface/.openclaw/media/inbound/pasted-text-1790348527039---dc075e08-09e5-469f-970b-c86e110f4bce.txt",
+   "size": 8049,
+   "matched_context": [
+    {
+     "line": 34,
+     "match": "trader_v1",
+     "context": "trader | trader_v1 | engine.py | tick_collect"
+    },
+    {
+     "line": 35,
+     "match": "engine.py",
+     "context": "trader_v1 | engine.py | tick_collect | m15"
+    },
+    {
+     "line": 99,
+     "match": "engine.py",
+     "context": "trader | engine.py | ``` | "
+    },
+    {
+     "line": 126,
+     "match": "trader_v1",
+     "context": "```text | 谁启动了 trader_v1？ | 谁启动了 engine.py？ | 谁负责 M15 cycle？"
+    }
+   ],
+   "classification": "LOADED_CANDIDATE"
+  },
+  {
+   "path": "../Users/surface/.openclaw/media/inbound/pasted-text-1790348778526---c548498d-c211-4082-8f39-f771496b49bd.txt",
+   "size": 8316,
+   "matched_context": [
+    {
+     "line": 32,
+     "match": "trader_v1",
+     "context": "↓ | trader_v1/engine.py | ``` | "
+    },
+    {
+     "line": 32,
+     "match": "engine.py",
+     "context": "↓ | trader_v1/engine.py | ``` | "
+    },
+    {
+     "line": 50,
+     "match": "trader_v1",
+     "context": "```text | trader_v1 | engine.py | hermes"
+    },
+    {
+     "line": 51,
+     "match": "engine.py",
+     "context": "trader_v1 | engine.py | hermes | M15"
+    }
+   ],
+   "classification": "LOADED_CANDIDATE"
+  },
+  {
+   "path": "../Users/surface/.openclaw/workspace/hermes_plan_ledger.jsonl",
+   "size": 355296,
+   "matched_context": [
+    {
+     "line": 195,
+     "match": "trader_v1",
+     "context": "{\"type\": \"closed\", \"plan_id\": \"TP-20260910T0502Z\", \"exit_price\": 4425.21, \"reason\": \"broker_sl\", \"realized_usd\": -6.66, \"exec_mode\": \"demo\", \"broker_auto\": true, \"utc_ts\": \"2026-09-10T05:32:41.455129+00:00\", \"sha256\": \"20f6a49f46749bdc3c1b23703e9b1a4c4ec9b0c8aac5ddf7cca41a82f9d75a74\"} | {\"type\": \"re"
+    },
+    {
+     "line": 277,
+     "match": "trader_v1",
+     "context": "{\"type\": \"closed\", \"plan_id\": \"TP-20260910T1902Z\", \"exit_price\": 4333.61, \"reason\": \"broker_sl\", \"realized_usd\": -11.16, \"exec_mode\": \"demo\", \"broker_auto\": true, \"utc_ts\": \"2026-09-11T01:05:34.752545+00:00\", \"sha256\": \"ceae98b3e7ac8964ef14aaa1084b492ae21190117887faad157d8e77c76f82f2\"} | {\"type\": \"r"
+    },
+    {
+     "line": 278,
+     "match": "trader_v1",
+     "context": "{\"type\": \"registered\", \"plan_id\": \"TP-20260911T0102Z\", \"decision_id\": \"DEC-2026-09-11T01:02Z\", \"decision\": \"SHORT\", \"plan\": {\"plan_id\": \"TP-20260911T0102Z\", \"utc_ts\": \"2026-09-11T01:03Z\", \"decision_id_ref\": \"DEC-2026-09-11T01:02Z\", \"market_state\": \"4TF-below-MA (D1/H4 range er0.147/0.126; H1/M15 tre"
+    },
+    {
+     "line": 279,
+     "match": "trader_v1",
+     "context": "{\"type\": \"registered\", \"plan_id\": \"TP-20260911T0117Z\", \"decision_id\": \"DEC-2026-09-11T01:17Z\", \"decision\": \"SHORT\", \"plan\": {\"plan_id\": \"TP-20260911T0117Z\", \"utc_ts\": \"2026-09-11T01:18Z\", \"decision_id_ref\": \"DEC-2026-09-11T01:17Z\", \"market_state\": \"4TF-below-MA (D1 trend er0.354 pos42; H4 mixed er0."
+    }
+   ],
+   "classification": "LOADED_CANDIDATE"
+  },
+  {
+   "path": "../Users/surface/.openclaw/workspace/MEMORY.md",
+   "size": 13001,
+   "matched_context": [
+    {
+     "line": 5,
+     "match": "trader_v1",
+     "context": "- 用户做量化交易研究，主要工作区 `C:\\AIQuant`： | - `research/hermes/trader_v1` — Hermes 交易引擎（agent 每 M15 一轮：OBSERVE→THINK→DECIDE→PLAN→TRIGGER→EXECUTE→MANAGE→REVIEW→MEMORY） | - `research/money_hunter` — dashboard 等配套 | - `research/microstructure_memory` — 每日 tick/点差统计归档"
+    },
+    {
+     "line": 29,
+     "match": "hermes-trader-m15-cycle",
+     "context": "- 机器：DESKTOP-LQ0B8O3（Windows 11, Surface），时区 GMT+8 | - 交易引擎由 OpenClaw cron `hermes-trader-m15-cycle` 驱动（15 分钟）；tick 采集 = Windows 任务 `hermes-tick-collect` | - Hermes Studio 0.7.17 桌面应用（用户手动开的壳子，无自启配置，用户不需要加） | - 2026-09-09 早 6:07–6:12 系统自动更新重启（正常）；当天 -24.13 为计划内 1R 止损（TP-20260909T002041）"
+    },
+    {
+     "line": 45,
+     "match": "hermes-trader-m15-cycle",
+     "context": "<!-- openclaw-memory-promotion:memory:memory/2026-09-14.md:6:9 --> | - 早 06:33–06:50 全系统\"拉起来\"（用户指令）: V1 引擎 cron `hermes-trader-m15-cycle`：正常（最新 2026-09-13T22:32Z 循环，SHORT plan 已注册）。; 面板：8787(V1原) 在（200）；8788(V2)、8790(V1升级) 均**未监听**（拒绝连接）。; V2 24h BROKER_DEMO run：**未启动** —— 排程 job `hermes-v2-fixed-ru"
+    },
+    {
+     "line": 47,
+     "match": "trader_v1",
+     "context": "<!-- openclaw-memory-promotion:memory:memory/2026-09-14.md:10:13 --> | - 早 06:33–06:50 全系统\"拉起来\"（用户指令）: 动作（用户授权后）：; 起 8788 V2 面板（`.venv python trader_v2/dashboard/server.py`, `V2_DASH_PORT=8788`）；起 8790 V1 升级面板（`trader_v1_panel/server.py`, `V1_PANEL_PORT=8790`）。三端口 8787/8788/8790 均 200。; `shadow_run."
+    }
+   ],
+   "classification": "LOADED_CANDIDATE"
+  },
+  {
+   "path": "../Users/surface/.openclaw/workspace/V2_REPAIR_REPORT_20260915.md",
+   "size": 8038,
+   "matched_context": [
+    {
+     "line": 77,
+     "match": "trader_v1",
+     "context": "``` | V1_ISOLATION     PASS (V2 agents 无 trader_v1 引用；isolation.* 全 false；V1 summary 正常；MT5×2 未动；未碰 8787) | BROKER_ISOLATION PASS (仅 fxtm_demo_01/ForexTimeFXTM-Demo01, magic 90003, 独立实例) | LIVE_DISABLED    PASS (execution_mode=BROKER_DEMO, live_trading=false, allow_real_trading=false)"
+    }
+   ],
+   "classification": "LOADED_CANDIDATE"
+  }
+ ],
+ "GATEWAY_V1_AUTOMATION_FOUND": "YES",
+ "GATEWAY_V1_AUTOMATION_SOURCE": "../Users/surface/.openclaw/agents/main/agent/workshop-skills/hermes-stack-status-check/references/stack-map.md",
+ "GATEWAY_V1_AUTOMATION_ID": "UNKNOWN",
+ "GATEWAY_V1_AUTOMATION_ENABLED": "UNKNOWN",
+ "GATEWAY_V1_AUTOMATION_ACTION": "UNKNOWN",
+ "GATEWAY_V1_AUTOMATION_ARGUMENTS": "UNKNOWN",
+ "GATEWAY_V1_AUTOMATION_WORKING_DIRECTORY": "UNKNOWN",
+ "gateway_cmd": "@echo off\nrem OpenClaw Gateway\nset \"TMPDIR=C:\\Users\\surface\\AppData\\Local\\Temp\"\nset \"NODE_OPTIONS=\"\nset \"OPENCLAW_GATEWAY_PORT=18789\"\nset \"OPENCLAW_SYSTEMD_UNIT=openclaw-gateway.service\"\nset \"OPENCLAW_WINDOWS_TASK_NAME=OpenClaw Gateway\"\nset \"OPENCLAW_SERVICE_MARKER=openclaw\"\nset \"OPENCLAW_SERVICE_KIND=gateway\"\nC:\\Users\\surface\\dtlopenclaw\\tools\\node-v24.21.0-win-x64\\node.exe --max-old-space-size=8192 C:\\Users\\surface\\dtlopenclaw\\tools\\openclaw\\node_modules\\openclaw\\dist\\index.js gateway --port 18789 --task-supervisor < NUL\n",
+ "SCHEDULE_TYPE": "UNKNOWN",
+ "SCHEDULE_EXPRESSION": "UNKNOWN",
+ "TIMEZONE": "UNKNOWN",
+ "INTERVAL": "UNKNOWN",
+ "OFFSET": "UNKNOWN",
+ "V1_M15_SCHEDULE_SOURCE": "UNKNOWN",
+ "V1_M15_OFFSET": "UNKNOWN",
+ "V1_NEXT_CYCLE": "UNKNOWN",
+ "LAST_EXPECTED_V1_CYCLE": "UNKNOWN",
+ "NEXT_EXPECTED_V1_CYCLE": "UNKNOWN",
+ "MINUTES_TO_NEXT_V1_CYCLE": "UNKNOWN",
+ "schedule_note": "no V1-specific schedule definition was proven; the 15-minute cadence of hermes-v2-cycle / hermes-tick-collect is NOT used as evidence (section 2 forbids it)",
+ "RESTART_MECHANISMS": {
+  "total_hits": 423,
+  "v1_linked_hits": 12,
+  "examples": [
+   {
+    "MECHANISM": "restart",
+    "SOURCE": "research/hermes/trader_v1/position.py",
+    "line": 10,
+    "V1_LINKED": false
+   },
+   {
+    "MECHANISM": "restart",
+    "SOURCE": "research/hermes/trader_v1/run_state/tmp/append_summary_0938z.py",
+    "line": 18,
+    "V1_LINKED": true
+   },
+   {
+    "MECHANISM": "restart",
+    "SOURCE": "research/hermes/trader_v1/tests/test_faults.py",
+    "line": 3,
+    "V1_LINKED": true
+   },
+   {
+    "MECHANISM": "restart",
+    "SOURCE": "research/hermes/trader_v1/tests/test_faults.py",
+    "line": 115,
+    "V1_LINKED": true
+   },
+   {
+    "MECHANISM": "on_failure",
+    "SOURCE": "research/hermes/trader_v1/tests/test_faults.py",
+    "line": 216,
+    "V1_LINKED": true
+   },
+   {
+    "MECHANISM": "on_failure",
+    "SOURCE": "research/hermes/trader_v1/tests/test_faults.py",
+    "line": 228,
+    "V1_LINKED": true
+   },
+   {
+    "MECHANISM": "on_exit",
+    "SOURCE": "research/hermes/trader_v1/tests/test_integration.py",
+    "line": 79,
+    "V1_LINKED": true
+   },
+   {
+    "MECHANISM": "restart",
+    "SOURCE": "research/hermes/trader_v1/tests/test_integration.py",
+    "line": 94,
+    "V1_LINKED": true
+   },
+   {
+    "MECHANISM": "restart",
+    "SOURCE": "research/hermes/trader_v1/tests/test_l1_position.py",
+    "line": 132,
+    "V1_LINKED": true
+   },
+   {
+    "MECHANISM": "heartbeat",
+    "SOURCE": "research/hermes/trader_v1/tmp/_fix_summary_text.py",
+    "line": 2,
+    "V1_LINKED": true
+   },
+   {
+    "MECHANISM": "heartbeat",
+    "SOURCE": "research/hermes/trader_v1/tmp/_hb_probe_broker.py",
+    "line": 2,
+    "V1_LINKED": true
+   },
+   {
+    "MECHANISM": "heartbeat",
+    "SOURCE": "research/hermes/trader_v1/tmp/_hb_probe_broker.py",
+    "line": 3,
+    "V1_LINKED": true
+   },
+   {
+    "MECHANISM": "supervisor",
+    "SOURCE": "../Users/surface/.openclaw/gateway.cmd",
+    "line": 10,
+    "V1_LINKED": false
+   },
+   {
+    "MECHANISM": "restart",
+    "SOURCE": "../Users/surface/.openclaw/cache/control-ui-assets/5fa7c6dddf7c976d849c5d0554590c1b8423df1fb6e95ff213eda34b122c5169/assets/activity-page-BR9JJRWk.js",
+    "line": 1,
+    "V1_LINKED": false
+   },
+   {
+    "MECHANISM": "restart",
+    "SOURCE": "../Users/surface/.openclaw/cache/control-ui-assets/5fa7c6dddf7c976d849c5d0554590c1b8423df1fb6e95ff213eda34b122c5169/assets/activity-page-BR9JJRWk.js",
+    "line": 1,
+    "V1_LINKED": false
+   },
+   {
+    "MECHANISM": "retry",
+    "SOURCE": "../Users/surface/.openclaw/cache/control-ui-assets/5fa7c6dddf7c976d849c5d0554590c1b8423df1fb6e95ff213eda34b122c5169/assets/activity-page-BR9JJRWk.js",
+    "line": 1,
+    "V1_LINKED": false
+   },
+   {
+    "MECHANISM": "retry",
+    "SOURCE": "../Users/surface/.openclaw/cache/control-ui-assets/5fa7c6dddf7c976d849c5d0554590c1b8423df1fb6e95ff213eda34b122c5169/assets/activity-page-BR9JJRWk.js",
+    "line": 1,
+    "V1_LINKED": false
+   },
+   {
+    "MECHANISM": "retry",
+    "SOURCE": "../Users/surface/.openclaw/cache/control-ui-assets/5fa7c6dddf7c976d849c5d0554590c1b8423df1fb6e95ff213eda34b122c5169/assets/activity-page-BR9JJRWk.js",
+    "line": 32,
+    "V1_LINKED": false
+   },
+   {
+    "MECHANISM": "retry",
+    "SOURCE": "../Users/surface/.openclaw/cache/control-ui-assets/5fa7c6dddf7c976d849c5d0554590c1b8423df1fb6e95ff213eda34b122c5169/assets/activity-page-BR9JJRWk.js",
+    "line": 32,
+    "V1_LINKED": false
+   },
+   {
+    "MECHANISM": "restart",
+    "SOURCE": "../Users/surface/.openclaw/cache/control-ui-assets/5fa7c6dddf7c976d849c5d0554590c1b8423df1fb6e95ff213eda34b122c5169/assets/activity-page-BR9JJRWk.js",
+    "line": 308,
+    "V1_LINKED": false
+   }
+  ],
+  "v1_linked_examples": [
+   {
+    "MECHANISM": "restart",
+    "SOURCE": "research/hermes/trader_v1/run_state/tmp/append_summary_0938z.py",
+    "line": 18,
+    "V1_LINKED": true
+   },
+   {
+    "MECHANISM": "restart",
+    "SOURCE": "research/hermes/trader_v1/tests/test_faults.py",
+    "line": 3,
+    "V1_LINKED": true
+   },
+   {
+    "MECHANISM": "restart",
+    "SOURCE": "research/hermes/trader_v1/tests/test_faults.py",
+    "line": 115,
+    "V1_LINKED": true
+   },
+   {
+    "MECHANISM": "on_failure",
+    "SOURCE": "research/hermes/trader_v1/tests/test_faults.py",
+    "line": 216,
+    "V1_LINKED": true
+   },
+   {
+    "MECHANISM": "on_failure",
+    "SOURCE": "research/hermes/trader_v1/tests/test_faults.py",
+    "line": 228,
+    "V1_LINKED": true
+   },
+   {
+    "MECHANISM": "on_exit",
+    "SOURCE": "research/hermes/trader_v1/tests/test_integration.py",
+    "line": 79,
+    "V1_LINKED": true
+   },
+   {
+    "MECHANISM": "restart",
+    "SOURCE": "research/hermes/trader_v1/tests/test_integration.py",
+    "line": 94,
+    "V1_LINKED": true
+   },
+   {
+    "MECHANISM": "restart",
+    "SOURCE": "research/hermes/trader_v1/tests/test_l1_position.py",
+    "line": 132,
+    "V1_LINKED": true
+   },
+   {
+    "MECHANISM": "heartbeat",
+    "SOURCE": "research/hermes/trader_v1/tmp/_fix_summary_text.py",
+    "line": 2,
+    "V1_LINKED": true
+   },
+   {
+    "MECHANISM": "heartbeat",
+    "SOURCE": "research/hermes/trader_v1/tmp/_hb_probe_broker.py",
+    "line": 2,
+    "V1_LINKED": true
+   }
+  ]
+ },
+ "AUTO_RESTART_MECHANISM": "YES",
+ "V1_RESTART_TRIGGER": "UNKNOWN",
+ "V1_RESTART_DELAY": "UNKNOWN",
+ "V1_RESTART_RACE": "UNKNOWN",
+ "restart_note": "other tasks having restart settings is NOT treated as V1 evidence (section 3); only a V1-linked mechanism counts, and none is proven to execute",
+ "CODE_TRACE": {
+  "research/hermes/trader_v1/broker_mt5_demo.py": {
+   "functions": [
+    "_load_env",
+    "_connect",
+    "get_account",
+    "get_positions",
+    "market_order",
+    "close_position",
+    "get_trades",
+    "get_closing_deal",
+    "history_balance"
+   ],
+   "broker_api_tokens": [
+    "MetaTrader5",
+    "account_info",
+    "history_",
+    "mt5.",
+    "order_send",
+    "positions_get",
+    "symbol_info"
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/engine.py": {
+   "functions": [
+    "load_json",
+    "save_json",
+    "now_iso",
+    "_parse_ts",
+    "write_workflow",
+    "observe",
+    "validate_plan",
+    "risk_check",
+    "paper_execute",
+    "update_stats",
+    "main"
+   ],
+   "broker_api_tokens": [],
+   "state_files_referenced": [
+    "paper_positions.json",
+    "state_package_latest.json"
+   ]
+  },
+  "research/hermes/trader_v1/metrics.py": {
+   "functions": [
+    "_read",
+    "_lines",
+    "account",
+    "trades",
+    "stats_overview",
+    "positions_open",
+    "decisions_recent",
+    "market_state_summary",
+    "all_summary"
+   ],
+   "broker_api_tokens": [],
+   "state_files_referenced": [
+    "state_package_latest.json"
+   ]
+  },
+  "research/hermes/trader_v1/state_package.py": {
+   "functions": [
+    "load_ticks",
+    "resample",
+    "rsi",
+    "swing_struct",
+    "trend_range",
+    "expand_contract",
+    "build_tf",
+    "abnormal_m15",
+    "main"
+   ],
+   "broker_api_tokens": [],
+   "state_files_referenced": [
+    "state_package_latest.json"
+   ]
+  },
+  "research/hermes/trader_v1/run_state/tmp/analyze_0602Z.py": {
+   "functions": [],
+   "broker_api_tokens": [
+    "MetaTrader5",
+    "mt5.",
+    "positions_get",
+    "symbol_info"
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/run_state/tmp/analyze_0938Z.py": {
+   "functions": [
+    "true_dt",
+    "rsi",
+    "atr",
+    "ma"
+   ],
+   "broker_api_tokens": [
+    "MT5.",
+    "MetaTrader5",
+    "mt5."
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/run_state/tmp/analyze_0947Z.py": {
+   "functions": [],
+   "broker_api_tokens": [
+    "MetaTrader5",
+    "mt5.",
+    "symbol_info"
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/run_state/tmp/analyze_1002Z.py": {
+   "functions": [],
+   "broker_api_tokens": [
+    "MetaTrader5",
+    "mt5.",
+    "symbol_info"
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/run_state/tmp/analyze_1003Z.py": {
+   "functions": [],
+   "broker_api_tokens": [
+    "MetaTrader5",
+    "mt5.",
+    "symbol_info"
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/run_state/tmp/analyze_1017Z.py": {
+   "functions": [],
+   "broker_api_tokens": [
+    "MetaTrader5",
+    "mt5.",
+    "symbol_info"
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/run_state/tmp/analyze_1032Z.py": {
+   "functions": [],
+   "broker_api_tokens": [
+    "MetaTrader5",
+    "mt5.",
+    "symbol_info"
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/run_state/tmp/analyze_1217Z.py": {
+   "functions": [],
+   "broker_api_tokens": [
+    "MetaTrader5",
+    "account_info",
+    "history_",
+    "mt5.",
+    "positions_get",
+    "symbol_info"
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/run_state/tmp/analyze_1247Z.py": {
+   "functions": [],
+   "broker_api_tokens": [
+    "MetaTrader5",
+    "mt5."
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/run_state/tmp/analyze_1532Z.py": {
+   "functions": [],
+   "broker_api_tokens": [
+    "MetaTrader5",
+    "account_info",
+    "mt5.",
+    "orders_get",
+    "positions_get",
+    "symbol_info"
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/run_state/tmp/append_summary_0347.py": {
+   "functions": [],
+   "broker_api_tokens": [
+    "symbol_info"
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/run_state/tmp/append_summary_0417.py": {
+   "functions": [],
+   "broker_api_tokens": [
+    "symbol_info"
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/run_state/tmp/append_summary_0602.py": {
+   "functions": [],
+   "broker_api_tokens": [
+    "positions_get"
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/run_state/tmp/append_summary_0732.py": {
+   "functions": [],
+   "broker_api_tokens": [
+    "positions_get"
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/run_state/tmp/append_summary_0817.py": {
+   "functions": [],
+   "broker_api_tokens": [
+    "positions_get"
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/run_state/tmp/append_summary_1202Z.py": {
+   "functions": [],
+   "broker_api_tokens": [
+    "positions_get"
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/run_state/tmp/append_summary_1317.py": {
+   "functions": [],
+   "broker_api_tokens": [
+    "positions_get"
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/run_state/tmp/append_summary_1332Z.py": {
+   "functions": [],
+   "broker_api_tokens": [
+    "positions_get"
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/run_state/tmp/append_summary_1347.py": {
+   "functions": [],
+   "broker_api_tokens": [
+    "positions_get"
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/run_state/tmp/append_summary_1347Z.py": {
+   "functions": [],
+   "broker_api_tokens": [
+    "positions_get"
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/run_state/tmp/append_summary_1410Z.py": {
+   "functions": [],
+   "broker_api_tokens": [
+    "orders_get",
+    "positions_get"
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/run_state/tmp/append_summary_1432Z.py": {
+   "functions": [],
+   "broker_api_tokens": [
+    "orders_get",
+    "positions_get"
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/run_state/tmp/append_summary_1602Z.py": {
+   "functions": [],
+   "broker_api_tokens": [
+    "orders_get",
+    "positions_get"
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/run_state/tmp/append_summary_1617Z.py": {
+   "functions": [],
+   "broker_api_tokens": [
+    "orders_get",
+    "positions_get"
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/run_state/tmp/append_summary_1702Z.py": {
+   "functions": [],
+   "broker_api_tokens": [
+    "orders_get",
+    "positions_get"
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/run_state/tmp/append_summary_1717Z.py": {
+   "functions": [],
+   "broker_api_tokens": [
+    "orders_get",
+    "positions_get"
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/run_state/tmp/append_summary_2017Z.py": {
+   "functions": [],
+   "broker_api_tokens": [
+    "orders_get"
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/run_state/tmp/append_summary_2032Z.py": {
+   "functions": [],
+   "broker_api_tokens": [
+    "orders_get"
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/run_state/tmp/append_summary_2047Z.py": {
+   "functions": [],
+   "broker_api_tokens": [
+    "orders_get"
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/run_state/tmp/append_summary_2102Z.py": {
+   "functions": [],
+   "broker_api_tokens": [
+    "orders_get"
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/run_state/tmp/append_summary_2117Z.py": {
+   "functions": [],
+   "broker_api_tokens": [
+    "orders_get"
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/run_state/tmp/append_summary_2132Z.py": {
+   "functions": [],
+   "broker_api_tokens": [
+    "orders_get"
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/run_state/tmp/bars_probe_0417z.py": {
+   "functions": [],
+   "broker_api_tokens": [
+    "MetaTrader5",
+    "mt5."
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/run_state/tmp/bars_probe_0647.py": {
+   "functions": [],
+   "broker_api_tokens": [
+    "mt5.",
+    "symbol_info"
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/run_state/tmp/baserate2_0017Z.py": {
+   "functions": [
+    "ci_low",
+    "short_outcome"
+   ],
+   "broker_api_tokens": [
+    "MetaTrader5",
+    "mt5."
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/run_state/tmp/baserate2_0032Z.py": {
+   "functions": [
+    "ci_low",
+    "short_outcome",
+    "long_outcome",
+    "record"
+   ],
+   "broker_api_tokens": [
+    "MetaTrader5",
+    "mt5."
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/run_state/tmp/baserate_0002Z.py": {
+   "functions": [
+    "outcome",
+    "ci_low"
+   ],
+   "broker_api_tokens": [
+    "MetaTrader5",
+    "mt5."
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/run_state/tmp/baserate_0017Z.py": {
+   "functions": [
+    "ci_low",
+    "outcome_long",
+    "outcome_short"
+   ],
+   "broker_api_tokens": [
+    "MetaTrader5",
+    "mt5."
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/run_state/tmp/baserate_0032Z.py": {
+   "functions": [
+    "ci_low",
+    "short_outcome",
+    "record"
+   ],
+   "broker_api_tokens": [
+    "MetaTrader5",
+    "mt5."
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/run_state/tmp/baserate_0117Z.py": {
+   "functions": [
+    "ci_low",
+    "short_outcome",
+    "long_outcome",
+    "record",
+    "touches_below",
+    "touches_above"
+   ],
+   "broker_api_tokens": [
+    "MetaTrader5",
+    "mt5."
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/run_state/tmp/baserate_0132Z.py": {
+   "functions": [
+    "ci_low",
+    "short_outcome",
+    "long_outcome",
+    "record",
+    "touches_below",
+    "touches_above"
+   ],
+   "broker_api_tokens": [
+    "MetaTrader5",
+    "mt5."
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/run_state/tmp/baserate_0202Z.py": {
+   "functions": [
+    "ci_low",
+    "short_outcome",
+    "long_outcome",
+    "record",
+    "touches_below",
+    "touches_above"
+   ],
+   "broker_api_tokens": [
+    "MetaTrader5",
+    "mt5."
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/run_state/tmp/baserate_0217Z.py": {
+   "functions": [
+    "ma_series_keyed",
+    "align",
+    "ci_low",
+    "short_outcome",
+    "long_outcome",
+    "record",
+    "touches_below",
+    "touches_above"
+   ],
+   "broker_api_tokens": [
+    "MetaTrader5",
+    "mt5."
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/run_state/tmp/baserate_0232Z.py": {
+   "functions": [
+    "ma_series_keyed",
+    "align",
+    "ci_low",
+    "short_outcome",
+    "long_outcome",
+    "record",
+    "touches_below",
+    "touches_above"
+   ],
+   "broker_api_tokens": [
+    "MetaTrader5",
+    "mt5."
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/run_state/tmp/baserate_0247Z.py": {
+   "functions": [
+    "ma_series_keyed",
+    "align",
+    "ci_low",
+    "short_outcome",
+    "long_outcome",
+    "record",
+    "touches_below",
+    "touches_above"
+   ],
+   "broker_api_tokens": [
+    "MetaTrader5",
+    "mt5."
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/run_state/tmp/baserate_0302Z.py": {
+   "functions": [
+    "ma_series_keyed",
+    "align",
+    "ci_low",
+    "short_outcome",
+    "long_outcome",
+    "record",
+    "touches_below",
+    "touches_above"
+   ],
+   "broker_api_tokens": [
+    "MetaTrader5",
+    "mt5."
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/run_state/tmp/baserate_0317Z.py": {
+   "functions": [
+    "ma_series_keyed",
+    "align",
+    "ci_low",
+    "short_outcome",
+    "long_outcome",
+    "record",
+    "touches_below",
+    "touches_above"
+   ],
+   "broker_api_tokens": [
+    "MetaTrader5",
+    "mt5."
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/run_state/tmp/baserate_0332Z.py": {
+   "functions": [
+    "ma_series_keyed",
+    "align",
+    "ci_low",
+    "short_outcome",
+    "long_outcome",
+    "record",
+    "touches_below",
+    "touches_above"
+   ],
+   "broker_api_tokens": [
+    "MetaTrader5",
+    "mt5."
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/run_state/tmp/baserate_0347Z.py": {
+   "functions": [
+    "ma_series_keyed",
+    "align",
+    "ci_low",
+    "short_outcome",
+    "long_outcome",
+    "record",
+    "touches_below",
+    "touches_above"
+   ],
+   "broker_api_tokens": [
+    "MetaTrader5",
+    "mt5."
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/run_state/tmp/baserate_0417Z.py": {
+   "functions": [
+    "ma_series_keyed",
+    "align",
+    "ci_low",
+    "short_outcome",
+    "long_outcome",
+    "record",
+    "touches_below",
+    "touches_above"
+   ],
+   "broker_api_tokens": [
+    "MetaTrader5",
+    "mt5."
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/run_state/tmp/baserate_0602Z.py": {
+   "functions": [
+    "ci_low",
+    "outcome",
+    "record"
+   ],
+   "broker_api_tokens": [
+    "MetaTrader5",
+    "mt5."
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/run_state/tmp/baserate_1217Z.py": {
+   "functions": [],
+   "broker_api_tokens": [
+    "MetaTrader5",
+    "mt5."
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/run_state/tmp/baserate_1232Z.py": {
+   "functions": [
+    "ma",
+    "atr",
+    "run"
+   ],
+   "broker_api_tokens": [
+    "MetaTrader5",
+    "mt5."
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/run_state/tmp/baserate_1247Z.py": {
+   "functions": [
+    "ma",
+    "atr",
+    "run"
+   ],
+   "broker_api_tokens": [
+    "MetaTrader5",
+    "mt5."
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/run_state/tmp/baserate_1247Z_ma200.py": {
+   "functions": [
+    "ma",
+    "run"
+   ],
+   "broker_api_tokens": [
+    "MetaTrader5",
+    "mt5."
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/run_state/tmp/baserate_1332Z_pokefail.py": {
+   "functions": [
+    "ma",
+    "run"
+   ],
+   "broker_api_tokens": [
+    "MetaTrader5",
+    "mt5."
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/run_state/tmp/baserate_1332Z_swinghigh.py": {
+   "functions": [
+    "run"
+   ],
+   "broker_api_tokens": [
+    "MetaTrader5",
+    "mt5."
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/run_state/tmp/baserate_1347Z.py": {
+   "functions": [
+    "ma_arr",
+    "walk",
+    "finish",
+    "short_ma_touch",
+    "short_breakdown_retest",
+    "long_sweep_reclaim"
+   ],
+   "broker_api_tokens": [
+    "MetaTrader5",
+    "mt5."
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/run_state/tmp/baserate_1402Z.py": {
+   "functions": [
+    "ma_arr",
+    "rsi",
+    "walk",
+    "finish",
+    "long_shelf_touch",
+    "short_ma_touch",
+    "long_sweep_reclaim"
+   ],
+   "broker_api_tokens": [
+    "MetaTrader5",
+    "mt5.",
+    "symbol_info"
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/run_state/tmp/baserate_1402Z_break.py": {
+   "functions": [
+    "ma_arr",
+    "rsi",
+    "walk",
+    "tally",
+    "s1_retest_short",
+    "s2_flush_long",
+    "s3_break_short",
+    "s4_ma_short"
+   ],
+   "broker_api_tokens": [
+    "MetaTrader5",
+    "mt5.",
+    "symbol_info"
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/run_state/tmp/baserate_1402Z_deepretest.py": {
+   "functions": [
+    "ma_arr",
+    "walk_short",
+    "walk_long",
+    "events",
+    "run"
+   ],
+   "broker_api_tokens": [
+    "MetaTrader5",
+    "mt5."
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/run_state/tmp/baserate_1402Z_flushlong.py": {
+   "functions": [
+    "walk_long",
+    "run"
+   ],
+   "broker_api_tokens": [
+    "MetaTrader5",
+    "mt5."
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/run_state/tmp/baserate_1402Z_limit.py": {
+   "functions": [
+    "ma_arr",
+    "max_up",
+    "run"
+   ],
+   "broker_api_tokens": [
+    "MetaTrader5",
+    "mt5."
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/run_state/tmp/baserate_1402Z_mirror.py": {
+   "functions": [
+    "ma_arr",
+    "walk_short",
+    "run"
+   ],
+   "broker_api_tokens": [
+    "MetaTrader5",
+    "mt5."
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/run_state/tmp/baserate_1402Z_mirror2.py": {
+   "functions": [
+    "ma_arr",
+    "walk_short",
+    "run"
+   ],
+   "broker_api_tokens": [
+    "MetaTrader5",
+    "mt5."
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/run_state/tmp/baserate_1402Z_reclaimlong.py": {
+   "functions": [
+    "ma_arr",
+    "walk_long",
+    "run"
+   ],
+   "broker_api_tokens": [
+    "MetaTrader5",
+    "mt5."
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/run_state/tmp/baserate_1402Z_retest.py": {
+   "functions": [
+    "ma_arr",
+    "walk_short",
+    "run"
+   ],
+   "broker_api_tokens": [
+    "MetaTrader5",
+    "mt5."
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/run_state/tmp/baserate_1402Z_sweep.py": {
+   "functions": [
+    "ma_arr",
+    "walk",
+    "sweep_reclaim"
+   ],
+   "broker_api_tokens": [
+    "MetaTrader5",
+    "mt5."
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/run_state/tmp/baserate_1410Z_reclaimdepth.py": {
+   "functions": [
+    "ma_arr",
+    "walk_long",
+    "evs"
+   ],
+   "broker_api_tokens": [
+    "MetaTrader5",
+    "mt5."
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/run_state/tmp/baserate_1410Z_retest.py": {
+   "functions": [
+    "ma",
+    "tf_ma",
+    "walk_short",
+    "walk_long",
+    "events",
+    "run"
+   ],
+   "broker_api_tokens": [
+    "MetaTrader5",
+    "mt5.",
+    "symbol_info"
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/run_state/tmp/baserate_1447Z_failedreclaim.py": {
+   "functions": [
+    "ma",
+    "walk",
+    "scan",
+    "run"
+   ],
+   "broker_api_tokens": [
+    "MetaTrader5",
+    "mt5."
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/run_state/tmp/baserate_1502Z_mastack.py": {
+   "functions": [
+    "ma",
+    "walk",
+    "scan",
+    "run"
+   ],
+   "broker_api_tokens": [
+    "MetaTrader5",
+    "mt5."
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/run_state/tmp/baserate_1502Z_rereclaim.py": {
+   "functions": [
+    "ma",
+    "walk",
+    "scan",
+    "run"
+   ],
+   "broker_api_tokens": [
+    "MetaTrader5",
+    "mt5."
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/run_state/tmp/baserate_2247Z_mastack.py": {
+   "functions": [
+    "ma",
+    "walk",
+    "scan",
+    "run"
+   ],
+   "broker_api_tokens": [
+    "MetaTrader5",
+    "mt5."
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/run_state/tmp/baserate_2247Z_retest.py": {
+   "functions": [
+    "ma",
+    "walk",
+    "scan_retest",
+    "run"
+   ],
+   "broker_api_tokens": [
+    "MetaTrader5",
+    "mt5."
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/run_state/tmp/baserate_2302Z_b.py": {
+   "functions": [
+    "ma",
+    "walk",
+    "run"
+   ],
+   "broker_api_tokens": [
+    "MetaTrader5",
+    "mt5."
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/run_state/tmp/baserate_2302Z_break.py": {
+   "functions": [
+    "ma",
+    "atr",
+    "walk_long",
+    "run_long",
+    "run_short"
+   ],
+   "broker_api_tokens": [
+    "MetaTrader5",
+    "mt5."
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/run_state/tmp/baserate_2302Z_c.py": {
+   "functions": [
+    "ma",
+    "walk",
+    "run"
+   ],
+   "broker_api_tokens": [
+    "MetaTrader5",
+    "mt5."
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/run_state/tmp/baserate_2317Z.py": {
+   "functions": [
+    "ma",
+    "h1ma_closed_before",
+    "walk",
+    "run"
+   ],
+   "broker_api_tokens": [
+    "MetaTrader5",
+    "mt5."
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/run_state/tmp/baserate_2332Z.py": {
+   "functions": [
+    "ma",
+    "h1ma_closed_before",
+    "walk",
+    "run"
+   ],
+   "broker_api_tokens": [
+    "MetaTrader5",
+    "mt5."
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/run_state/tmp/baserate_2349Z.py": {
+   "functions": [
+    "ma",
+    "h1ma_closed_before",
+    "walk",
+    "run"
+   ],
+   "broker_api_tokens": [
+    "MetaTrader5",
+    "mt5."
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/run_state/tmp/baserate_v3_1217Z.py": {
+   "functions": [],
+   "broker_api_tokens": [
+    "MetaTrader5",
+    "mt5."
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/run_state/tmp/breakprobe_0017Z.py": {
+   "functions": [],
+   "broker_api_tokens": [
+    "MetaTrader5",
+    "mt5.",
+    "symbol_info"
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/run_state/tmp/build_0417Z.py": {
+   "functions": [],
+   "broker_api_tokens": [
+    "orders_get",
+    "positions_get"
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/run_state/tmp/build_decision_2017Z.py": {
+   "functions": [],
+   "broker_api_tokens": [
+    "MetaTrader5",
+    "orders_get",
+    "positions_get",
+    "symbol_info"
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/run_state/tmp/build_decision_2032Z.py": {
+   "functions": [],
+   "broker_api_tokens": [
+    "MetaTrader5",
+    "orders_get",
+    "positions_get",
+    "symbol_info"
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/run_state/tmp/deals_1447Z.py": {
+   "functions": [],
+   "broker_api_tokens": [
+    "MetaTrader5",
+    "history_",
+    "mt5."
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/run_state/tmp/fix_decision.py": {
+   "functions": [],
+   "broker_api_tokens": [],
+   "state_files_referenced": [
+    "run_state/decisions/20260916T2302Z.json"
+   ]
+  },
+  "research/hermes/trader_v1/run_state/tmp/levels_0002Z.py": {
+   "functions": [
+    "ema",
+    "rsi",
+    "atr"
+   ],
+   "broker_api_tokens": [
+    "MetaTrader5",
+    "account_info",
+    "mt5.",
+    "positions_get",
+    "symbol_info"
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/run_state/tmp/levels_0017Z.py": {
+   "functions": [
+    "rsi",
+    "atr"
+   ],
+   "broker_api_tokens": [
+    "MetaTrader5",
+    "account_info",
+    "mt5.",
+    "orders_get",
+    "positions_get",
+    "symbol_info"
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/run_state/tmp/levels_1410Z.py": {
+   "functions": [
+    "pull",
+    "mas",
+    "atr"
+   ],
+   "broker_api_tokens": [
+    "MetaTrader5",
+    "mt5.",
+    "symbol_info"
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/run_state/tmp/live_probe_0347.py": {
+   "functions": [
+    "rsi"
+   ],
+   "broker_api_tokens": [
+    "MetaTrader5",
+    "symbol_info"
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/run_state/tmp/live_probe_0402.py": {
+   "functions": [
+    "rsi"
+   ],
+   "broker_api_tokens": [
+    "MetaTrader5",
+    "mt5.",
+    "symbol_info"
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/run_state/tmp/live_probe_0417.py": {
+   "functions": [
+    "rsi"
+   ],
+   "broker_api_tokens": [
+    "MetaTrader5",
+    "mt5.",
+    "symbol_info"
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/run_state/tmp/live_probe_0417z.py": {
+   "functions": [
+    "rsi"
+   ],
+   "broker_api_tokens": [
+    "MetaTrader5",
+    "mt5.",
+    "symbol_info"
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/run_state/tmp/live_probe_0432.py": {
+   "functions": [
+    "rsi"
+   ],
+   "broker_api_tokens": [
+    "MetaTrader5",
+    "mt5.",
+    "symbol_info"
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/run_state/tmp/live_probe_0447.py": {
+   "functions": [
+    "rsi"
+   ],
+   "broker_api_tokens": [
+    "MetaTrader5",
+    "mt5.",
+    "symbol_info"
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/run_state/tmp/live_probe_0447z.py": {
+   "functions": [
+    "rsi"
+   ],
+   "broker_api_tokens": [
+    "MetaTrader5",
+    "mt5.",
+    "symbol_info"
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/run_state/tmp/live_probe_0532.py": {
+   "functions": [
+    "to_utc",
+    "get_tick",
+    "rsi"
+   ],
+   "broker_api_tokens": [
+    "MetaTrader5",
+    "mt5.",
+    "symbol_info"
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/run_state/tmp/live_probe_0532b.py": {
+   "functions": [],
+   "broker_api_tokens": [
+    "MetaTrader5",
+    "account_info",
+    "history_",
+    "mt5.",
+    "positions_get",
+    "symbol_info"
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/run_state/tmp/live_probe_0532c.py": {
+   "functions": [
+    "to_utc",
+    "rsi"
+   ],
+   "broker_api_tokens": [
+    "MetaTrader5",
+    "history_",
+    "mt5.",
+    "symbol_info"
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/run_state/tmp/live_probe_0547.py": {
+   "functions": [
+    "rsi"
+   ],
+   "broker_api_tokens": [
+    "MetaTrader5",
+    "mt5.",
+    "symbol_info"
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/run_state/tmp/live_probe_0602.py": {
+   "functions": [
+    "rsi"
+   ],
+   "broker_api_tokens": [
+    "MetaTrader5",
+    "history_",
+    "mt5.",
+    "symbol_info"
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/run_state/tmp/live_probe_0617.py": {
+   "functions": [
+    "rsi"
+   ],
+   "broker_api_tokens": [
+    "MetaTrader5",
+    "history_",
+    "mt5.",
+    "symbol_info"
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/run_state/tmp/live_probe_0647.py": {
+   "functions": [
+    "rsi"
+   ],
+   "broker_api_tokens": [
+    "MetaTrader5",
+    "history_",
+    "mt5.",
+    "symbol_info"
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/run_state/tmp/live_probe_0702.py": {
+   "functions": [
+    "rsi"
+   ],
+   "broker_api_tokens": [
+    "MetaTrader5",
+    "history_",
+    "mt5.",
+    "symbol_info"
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/run_state/tmp/live_probe_0732.py": {
+   "functions": [
+    "rsi"
+   ],
+   "broker_api_tokens": [
+    "MetaTrader5",
+    "history_",
+    "mt5.",
+    "symbol_info"
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/run_state/tmp/live_probe_1317.py": {
+   "functions": [
+    "rsi"
+   ],
+   "broker_api_tokens": [
+    "MetaTrader5",
+    "mt5.",
+    "symbol_info"
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/run_state/tmp/live_probe_2032.py": {
+   "functions": [
+    "rsi"
+   ],
+   "broker_api_tokens": [
+    "MetaTrader5",
+    "mt5.",
+    "symbol_info"
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/run_state/tmp/live_probe_2117.py": {
+   "functions": [
+    "rsi"
+   ],
+   "broker_api_tokens": [
+    "MetaTrader5",
+    "mt5.",
+    "symbol_info"
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/run_state/tmp/live_probe_2132.py": {
+   "functions": [
+    "rsi"
+   ],
+   "broker_api_tokens": [
+    "MetaTrader5",
+    "mt5.",
+    "symbol_info"
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/run_state/tmp/live_probe_2202.py": {
+   "functions": [
+    "rsi"
+   ],
+   "broker_api_tokens": [
+    "MetaTrader5",
+    "mt5.",
+    "symbol_info"
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/run_state/tmp/live_snap_0432.py": {
+   "functions": [],
+   "broker_api_tokens": [
+    "MetaTrader5",
+    "account_info",
+    "mt5.",
+    "positions_get",
+    "symbol_info"
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/run_state/tmp/ma_probe.py": {
+   "functions": [
+    "ma",
+    "rsi",
+    "atr_pct"
+   ],
+   "broker_api_tokens": [
+    "MetaTrader5",
+    "mt5."
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/run_state/tmp/mk_dec_0132Z.py": {
+   "functions": [],
+   "broker_api_tokens": [],
+   "state_files_referenced": [
+    "run_state/tmp/probe_ro_20260925T0132Z_out.json"
+   ]
+  },
+  "research/hermes/trader_v1/run_state/tmp/mk_dec_0347z.py": {
+   "functions": [],
+   "broker_api_tokens": [
+    "symbol_info"
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/run_state/tmp/mk_dec_0417z.py": {
+   "functions": [],
+   "broker_api_tokens": [
+    "symbol_info"
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/run_state/tmp/mk_dec_0432z.py": {
+   "functions": [],
+   "broker_api_tokens": [
+    "symbol_info"
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/run_state/tmp/mk_dec_0532z.py": {
+   "functions": [],
+   "broker_api_tokens": [
+    "symbol_info"
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/run_state/tmp/mk_dec_0732z.py": {
+   "functions": [],
+   "broker_api_tokens": [
+    "account_info",
+    "history_",
+    "positions_get"
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/run_state/tmp/mt5bars2_0447Z.py": {
+   "functions": [],
+   "broker_api_tokens": [
+    "MetaTrader5",
+    "mt5.",
+    "symbol_info"
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/run_state/tmp/mt5bars_0447Z.py": {
+   "functions": [],
+   "broker_api_tokens": [
+    "MetaTrader5",
+    "mt5.",
+    "symbol_info"
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/run_state/tmp/mtf_probe_1002.py": {
+   "functions": [
+    "ma",
+    "rsi",
+    "atr",
+    "tf_stats"
+   ],
+   "broker_api_tokens": [
+    "MetaTrader5",
+    "account_info",
+    "mt5.",
+    "positions_get",
+    "symbol_info"
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/run_state/tmp/mtf_probe_1817.py": {
+   "functions": [
+    "ma",
+    "rsi",
+    "atr",
+    "tf_stats"
+   ],
+   "broker_api_tokens": [
+    "MetaTrader5",
+    "mt5.",
+    "symbol_info"
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/run_state/tmp/mtf_probe_1832.py": {
+   "functions": [
+    "ma",
+    "rsi",
+    "atr",
+    "tf_stats"
+   ],
+   "broker_api_tokens": [
+    "MetaTrader5",
+    "mt5.",
+    "symbol_info"
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/run_state/tmp/probe2_0602Z.py": {
+   "functions": [],
+   "broker_api_tokens": [
+    "MetaTrader5"
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/run_state/tmp/probe2_1147Z.py": {
+   "functions": [],
+   "broker_api_tokens": [
+    "MetaTrader5",
+    "mt5."
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/run_state/tmp/probe3_1147Z.py": {
+   "functions": [],
+   "broker_api_tokens": [
+    "MetaTrader5",
+    "mt5."
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/run_state/tmp/probe_0047.py": {
+   "functions": [
+    "ma",
+    "rsi"
+   ],
+   "broker_api_tokens": [
+    "MetaTrader5",
+    "symbol_info"
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/run_state/tmp/probe_0047Z.py": {
+   "functions": [
+    "bars"
+   ],
+   "broker_api_tokens": [
+    "MetaTrader5",
+    "mt5.",
+    "symbol_info"
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/run_state/tmp/probe_0102Z.py": {
+   "functions": [
+    "bars"
+   ],
+   "broker_api_tokens": [
+    "MetaTrader5",
+    "account_info",
+    "mt5.",
+    "orders_get",
+    "positions_get",
+    "symbol_info"
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/run_state/tmp/probe_0117Z.py": {
+   "functions": [],
+   "broker_api_tokens": [
+    "MetaTrader5",
+    "mt5.",
+    "symbol_info"
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/run_state/tmp/probe_0119.py": {
+   "functions": [
+    "ma",
+    "rsi"
+   ],
+   "broker_api_tokens": [
+    "MetaTrader5",
+    "mt5.",
+    "symbol_info"
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/run_state/tmp/probe_0132Z.py": {
+   "functions": [],
+   "broker_api_tokens": [
+    "MetaTrader5",
+    "mt5.",
+    "symbol_info"
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/run_state/tmp/probe_0147.py": {
+   "functions": [
+    "ma",
+    "rsi"
+   ],
+   "broker_api_tokens": [
+    "MetaTrader5",
+    "mt5.",
+    "symbol_info"
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/run_state/tmp/probe_0147Z.py": {
+   "functions": [],
+   "broker_api_tokens": [
+    "MetaTrader5",
+    "mt5.",
+    "orders_get",
+    "positions_get",
+    "symbol_info"
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/run_state/tmp/probe_0202Z.py": {
+   "functions": [],
+   "broker_api_tokens": [
+    "MetaTrader5",
+    "mt5.",
+    "orders_get",
+    "positions_get",
+    "symbol_info"
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/run_state/tmp/probe_0217Z.py": {
+   "functions": [],
+   "broker_api_tokens": [
+    "MetaTrader5",
+    "mt5.",
+    "orders_get",
+    "positions_get",
+    "symbol_info"
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/run_state/tmp/probe_0232Z.py": {
+   "functions": [],
+   "broker_api_tokens": [
+    "MetaTrader5",
+    "mt5.",
+    "orders_get",
+    "positions_get",
+    "symbol_info"
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/run_state/tmp/probe_0247Z.py": {
+   "functions": [],
+   "broker_api_tokens": [
+    "MetaTrader5",
+    "mt5.",
+    "orders_get",
+    "positions_get",
+    "symbol_info"
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/run_state/tmp/probe_0302.py": {
+   "functions": [
+    "ma",
+    "rsi"
+   ],
+   "broker_api_tokens": [
+    "MetaTrader5",
+    "account_info",
+    "mt5.",
+    "symbol_info"
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/run_state/tmp/probe_0302z.py": {
+   "functions": [],
+   "broker_api_tokens": [
+    "MetaTrader5",
+    "mt5.",
+    "orders_get",
+    "positions_get",
+    "symbol_info"
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/run_state/tmp/probe_0317Z.py": {
+   "functions": [],
+   "broker_api_tokens": [
+    "MetaTrader5",
+    "mt5.",
+    "orders_get",
+    "positions_get",
+    "symbol_info"
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/run_state/tmp/probe_0332Z.py": {
+   "functions": [],
+   "broker_api_tokens": [
+    "MetaTrader5",
+    "mt5.",
+    "orders_get",
+    "positions_get",
+    "symbol_info"
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/run_state/tmp/probe_0347Z.py": {
+   "functions": [],
+   "broker_api_tokens": [
+    "MetaTrader5",
+    "mt5.",
+    "orders_get",
+    "positions_get",
+    "symbol_info"
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/run_state/tmp/probe_0402Z.py": {
+   "functions": [],
+   "broker_api_tokens": [
+    "MetaTrader5",
+    "mt5.",
+    "orders_get",
+    "positions_get",
+    "symbol_info"
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/run_state/tmp/probe_0417Z.py": {
+   "functions": [],
+   "broker_api_tokens": [
+    "MetaTrader5",
+    "mt5.",
+    "orders_get",
+    "positions_get",
+    "symbol_info"
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/run_state/tmp/probe_0432Z.py": {
+   "functions": [],
+   "broker_api_tokens": [
+    "MetaTrader5",
+    "mt5.",
+    "orders_get",
+    "positions_get",
+    "symbol_info"
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/run_state/tmp/probe_0517z.py": {
+   "functions": [],
+   "broker_api_tokens": [
+    "MetaTrader5",
+    "account_info",
+    "mt5.",
+    "positions_get",
+    "symbol_info"
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/run_state/tmp/probe_0532z.py": {
+   "functions": [],
+   "broker_api_tokens": [
+    "MetaTrader5",
+    "account_info",
+    "mt5.",
+    "positions_get",
+    "symbol_info"
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/run_state/tmp/probe_0547Z.py": {
+   "functions": [],
+   "broker_api_tokens": [
+    "MetaTrader5",
+    "account_info",
+    "mt5.",
+    "positions_get",
+    "symbol_info"
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/run_state/tmp/probe_0602Z.py": {
+   "functions": [],
+   "broker_api_tokens": [
+    "MetaTrader5",
+    "account_info",
+    "mt5.",
+    "positions_get",
+    "symbol_info"
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/run_state/tmp/probe_0617Z.py": {
+   "functions": [],
+   "broker_api_tokens": [
+    "MetaTrader5",
+    "history_",
+    "orders_get",
+    "symbol_info"
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/run_state/tmp/probe_0632Z.py": {
+   "functions": [],
+   "broker_api_tokens": [
+    "MetaTrader5",
+    "history_",
+    "orders_get",
+    "symbol_info"
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/run_state/tmp/probe_0747.py": {
+   "functions": [
+    "ma",
+    "rsi"
+   ],
+   "broker_api_tokens": [
+    "MetaTrader5",
+    "mt5.",
+    "positions_get",
+    "symbol_info"
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/run_state/tmp/probe_0847b.py": {
+   "functions": [
+    "ma",
+    "rates"
+   ],
+   "broker_api_tokens": [
+    "MetaTrader5",
+    "mt5.",
+    "symbol_info"
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/run_state/tmp/probe_0902.py": {
+   "functions": [],
+   "broker_api_tokens": [
+    "MetaTrader5",
+    "mt5.",
+    "symbol_info"
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/run_state/tmp/probe_0932.py": {
+   "functions": [
+    "rsi",
+    "ma"
+   ],
+   "broker_api_tokens": [
+    "MetaTrader5",
+    "account_info",
+    "mt5.",
+    "positions_get",
+    "symbol_info"
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/run_state/tmp/probe_0938Z.py": {
+   "functions": [],
+   "broker_api_tokens": [
+    "MetaTrader5",
+    "account_info",
+    "mt5.",
+    "positions_get",
+    "symbol_info"
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/run_state/tmp/probe_0947.py": {
+   "functions": [],
+   "broker_api_tokens": [
+    "MetaTrader5",
+    "mt5."
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/run_state/tmp/probe_0947Z.py": {
+   "functions": [],
+   "broker_api_tokens": [
+    "MetaTrader5",
+    "account_info",
+    "mt5.",
+    "orders_get",
+    "positions_get",
+    "symbol_info"
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/run_state/tmp/probe_1002Z.py": {
+   "functions": [],
+   "broker_api_tokens": [
+    "MetaTrader5",
+    "account_info",
+    "mt5.",
+    "orders_get",
+    "positions_get",
+    "symbol_info"
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/run_state/tmp/probe_1003Z.py": {
+   "functions": [],
+   "broker_api_tokens": [
+    "MetaTrader5",
+    "account_info",
+    "mt5.",
+    "orders_get",
+    "positions_get",
+    "symbol_info"
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/run_state/tmp/probe_1017Z.py": {
+   "functions": [],
+   "broker_api_tokens": [
+    "MetaTrader5",
+    "account_info",
+    "mt5.",
+    "orders_get",
+    "positions_get",
+    "symbol_info"
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/run_state/tmp/probe_1032Z.py": {
+   "functions": [],
+   "broker_api_tokens": [
+    "MetaTrader5",
+    "account_info",
+    "mt5.",
+    "orders_get",
+    "positions_get",
+    "symbol_info"
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/run_state/tmp/probe_1047.py": {
+   "functions": [],
+   "broker_api_tokens": [
+    "MetaTrader5",
+    "account_info",
+    "mt5.",
+    "symbol_info"
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/run_state/tmp/probe_1047Z.py": {
+   "functions": [],
+   "broker_api_tokens": [
+    "MetaTrader5",
+    "account_info",
+    "history_",
+    "mt5.",
+    "orders_get",
+    "positions_get",
+    "symbol_info"
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/run_state/tmp/probe_1102Z.py": {
+   "functions": [],
+   "broker_api_tokens": [
+    "MetaTrader5",
+    "account_info",
+    "history_",
+    "mt5.",
+    "orders_get",
+    "positions_get",
+    "symbol_info"
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/run_state/tmp/probe_1117Z.py": {
+   "functions": [],
+   "broker_api_tokens": [
+    "MetaTrader5",
+    "account_info",
+    "history_",
+    "mt5.",
+    "orders_get",
+    "positions_get",
+    "symbol_info"
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/run_state/tmp/probe_1147Z.py": {
+   "functions": [],
+   "broker_api_tokens": [
+    "MetaTrader5",
+    "mt5."
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/run_state/tmp/probe_1202Z.py": {
+   "functions": [],
+   "broker_api_tokens": [
+    "MetaTrader5",
+    "account_info",
+    "history_",
+    "mt5.",
+    "orders_get",
+    "positions_get",
+    "symbol_info"
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/run_state/tmp/probe_1217Z.py": {
+   "functions": [],
+   "broker_api_tokens": [
+    "MetaTrader5",
+    "account_info",
+    "history_",
+    "mt5.",
+    "orders_get",
+    "positions_get",
+    "symbol_info"
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/run_state/tmp/probe_1302Z.py": {
+   "functions": [],
+   "broker_api_tokens": [
+    "MetaTrader5",
+    "account_info",
+    "history_",
+    "mt5.",
+    "orders_get",
+    "positions_get",
+    "symbol_info"
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/run_state/tmp/probe_1817z.py": {
+   "functions": [],
+   "broker_api_tokens": [
+    "account_info",
+    "history_",
+    "mt5.",
+    "orders_get",
+    "positions_get",
+    "symbol_info"
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/run_state/tmp/probe_d1_1947.py": {
+   "functions": [
+    "rsi_simple"
+   ],
+   "broker_api_tokens": [
+    "MetaTrader5"
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/run_state/tmp/probe_exitrule2_1917Z.py": {
+   "functions": [
+    "ma",
+    "sim",
+    "agg"
+   ],
+   "broker_api_tokens": [
+    "MetaTrader5",
+    "mt5."
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/run_state/tmp/probe_exitrule_1917Z.py": {
+   "functions": [
+    "ma",
+    "sim",
+    "agg"
+   ],
+   "broker_api_tokens": [
+    "MetaTrader5",
+    "mt5."
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/run_state/tmp/probe_flat_20260924T1632Z.py": {
+   "functions": [],
+   "broker_api_tokens": [
+    "account_info",
+    "history_",
+    "mt5.",
+    "orders_get",
+    "positions_get"
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/run_state/tmp/probe_levels_0502.py": {
+   "functions": [],
+   "broker_api_tokens": [
+    "MetaTrader5",
+    "mt5."
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/run_state/tmp/probe_live.py": {
+   "functions": [],
+   "broker_api_tokens": [
+    "MetaTrader5",
+    "mt5.",
+    "symbol_info"
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/run_state/tmp/probe_live_0017.py": {
+   "functions": [
+    "ma",
+    "rsi"
+   ],
+   "broker_api_tokens": [
+    "MetaTrader5",
+    "account_info",
+    "mt5.",
+    "symbol_info"
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/run_state/tmp/probe_live_0032.py": {
+   "functions": [
+    "ma",
+    "rsi"
+   ],
+   "broker_api_tokens": [
+    "MetaTrader5",
+    "account_info",
+    "mt5.",
+    "symbol_info"
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/run_state/tmp/probe_live_0217.py": {
+   "functions": [
+    "ma",
+    "rsi"
+   ],
+   "broker_api_tokens": [
+    "MetaTrader5",
+    "account_info",
+    "mt5.",
+    "symbol_info"
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/run_state/tmp/probe_live_0617.py": {
+   "functions": [],
+   "broker_api_tokens": [
+    "account_info",
+    "mt5.",
+    "symbol_info"
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/run_state/tmp/probe_live_0817.py": {
+   "functions": [],
+   "broker_api_tokens": [
+    "MetaTrader5",
+    "mt5.",
+    "symbol_info"
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/run_state/tmp/probe_live_1147.py": {
+   "functions": [],
+   "broker_api_tokens": [
+    "MetaTrader5",
+    "account_info",
+    "mt5.",
+    "symbol_info"
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/run_state/tmp/probe_live_1647.py": {
+   "functions": [],
+   "broker_api_tokens": [
+    "account_info",
+    "mt5.",
+    "symbol_info"
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/run_state/tmp/probe_live_1702.py": {
+   "functions": [
+    "ma",
+    "rsi",
+    "atr",
+    "tf_stats"
+   ],
+   "broker_api_tokens": [
+    "MetaTrader5",
+    "account_info",
+    "mt5.",
+    "symbol_info"
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/run_state/tmp/probe_live_1802.py": {
+   "functions": [
+    "ma",
+    "rsi",
+    "atr",
+    "tf_stats"
+   ],
+   "broker_api_tokens": [
+    "MetaTrader5",
+    "account_info",
+    "mt5.",
+    "symbol_info"
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/run_state/tmp/probe_live_1817.py": {
+   "functions": [],
+   "broker_api_tokens": [
+    "MetaTrader5",
+    "account_info",
+    "mt5.",
+    "symbol_info"
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/run_state/tmp/probe_live_1832.py": {
+   "functions": [],
+   "broker_api_tokens": [
+    "MetaTrader5",
+    "account_info",
+    "mt5.",
+    "symbol_info"
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/run_state/tmp/probe_live_1847.py": {
+   "functions": [
+    "ma",
+    "rsi",
+    "atr",
+    "tf_stats"
+   ],
+   "broker_api_tokens": [
+    "MetaTrader5",
+    "account_info",
+    "mt5.",
+    "symbol_info"
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/run_state/tmp/probe_live_1917.py": {
+   "functions": [
+    "ma",
+    "rsi"
+   ],
+   "broker_api_tokens": [
+    "MetaTrader5",
+    "account_info",
+    "mt5.",
+    "symbol_info"
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/run_state/tmp/probe_live_1932.py": {
+   "functions": [
+    "ma",
+    "rsi"
+   ],
+   "broker_api_tokens": [
+    "MetaTrader5",
+    "account_info",
+    "mt5.",
+    "symbol_info"
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/run_state/tmp/probe_m15_0317b.py": {
+   "functions": [],
+   "broker_api_tokens": [],
+   "state_files_referenced": [
+    "research/hermes/trader_v1/run_state/bars_cache.json"
+   ]
+  },
+  "research/hermes/trader_v1/run_state/tmp/probe_ma_1947.py": {
+   "functions": [
+    "rsi"
+   ],
+   "broker_api_tokens": [
+    "MetaTrader5",
+    "symbol_info"
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/run_state/tmp/probe_mt5b_0547Z.py": {
+   "functions": [],
+   "broker_api_tokens": [
+    "MetaTrader5",
+    "history_",
+    "symbol_info"
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/run_state/tmp/probe_mt5ticks_1232Z.py": {
+   "functions": [
+    "touches",
+    "payoff"
+   ],
+   "broker_api_tokens": [
+    "MetaTrader5",
+    "mt5."
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/run_state/tmp/probe_mt5_0547Z.py": {
+   "functions": [],
+   "broker_api_tokens": [
+    "MetaTrader5",
+    "history_",
+    "symbol_info"
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/run_state/tmp/probe_mtf.py": {
+   "functions": [
+    "rsi",
+    "ma"
+   ],
+   "broker_api_tokens": [
+    "MetaTrader5",
+    "account_info",
+    "mt5.",
+    "positions_get",
+    "symbol_info"
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/run_state/tmp/probe_quote_0502.py": {
+   "functions": [],
+   "broker_api_tokens": [
+    "MetaTrader5",
+    "mt5.",
+    "symbol_info"
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/run_state/tmp/probe_quote_1947.py": {
+   "functions": [],
+   "broker_api_tokens": [
+    "MetaTrader5",
+    "symbol_info"
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/run_state/tmp/probe_rates_0547Z.py": {
+   "functions": [],
+   "broker_api_tokens": [
+    "MetaTrader5",
+    "symbol_info"
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/run_state/tmp/probe_ro_20260924T1332Z.py": {
+   "functions": [],
+   "broker_api_tokens": [
+    "account_info",
+    "mt5.",
+    "orders_get",
+    "positions_get",
+    "symbol_info"
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/run_state/tmp/probe_ro_20260924T1417Z.py": {
+   "functions": [],
+   "broker_api_tokens": [
+    "account_info",
+    "history_",
+    "mt5.",
+    "orders_get",
+    "positions_get",
+    "symbol_info"
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/run_state/tmp/probe_ro_20260924T1447Z.py": {
+   "functions": [],
+   "broker_api_tokens": [
+    "account_info",
+    "history_",
+    "mt5.",
+    "orders_get",
+    "positions_get",
+    "symbol_info"
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/run_state/tmp/probe_ro_20260924T1502Z.py": {
+   "functions": [],
+   "broker_api_tokens": [
+    "account_info",
+    "history_",
+    "mt5.",
+    "orders_get",
+    "positions_get",
+    "symbol_info"
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/run_state/tmp/probe_ro_20260924T1517Z.py": {
+   "functions": [],
+   "broker_api_tokens": [
+    "account_info",
+    "history_",
+    "mt5.",
+    "orders_get",
+    "positions_get",
+    "symbol_info"
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/run_state/tmp/probe_ro_20260924T1547Z.py": {
+   "functions": [],
+   "broker_api_tokens": [
+    "account_info",
+    "history_",
+    "mt5.",
+    "orders_get",
+    "positions_get",
+    "symbol_info"
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/run_state/tmp/probe_ro_20260924T1602Z.py": {
+   "functions": [],
+   "broker_api_tokens": [
+    "account_info",
+    "history_",
+    "mt5.",
+    "orders_get",
+    "positions_get",
+    "symbol_info"
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/run_state/tmp/probe_ro_20260924T1632Z.py": {
+   "functions": [],
+   "broker_api_tokens": [
+    "account_info",
+    "history_",
+    "mt5.",
+    "orders_get",
+    "positions_get",
+    "symbol_info"
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/run_state/tmp/probe_ro_20260924T1647Z.py": {
+   "functions": [],
+   "broker_api_tokens": [
+    "account_info",
+    "history_",
+    "mt5.",
+    "orders_get",
+    "positions_get",
+    "symbol_info"
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/run_state/tmp/probe_ro_20260924T1702Z.py": {
+   "functions": [],
+   "broker_api_tokens": [
+    "account_info",
+    "history_",
+    "mt5.",
+    "orders_get",
+    "positions_get",
+    "symbol_info"
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/run_state/tmp/probe_ro_20260924T1717Z.py": {
+   "functions": [],
+   "broker_api_tokens": [
+    "account_info",
+    "history_",
+    "mt5.",
+    "orders_get",
+    "positions_get",
+    "symbol_info"
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/run_state/tmp/probe_ro_20260924T1732Z.py": {
+   "functions": [],
+   "broker_api_tokens": [
+    "account_info",
+    "history_",
+    "mt5.",
+    "orders_get",
+    "positions_get",
+    "symbol_info"
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/run_state/tmp/probe_ro_20260924T1817Z.py": {
+   "functions": [],
+   "broker_api_tokens": [
+    "account_info",
+    "history_",
+    "mt5.",
+    "orders_get",
+    "positions_get",
+    "symbol_info"
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/run_state/tmp/probe_ro_20260924T1832Z.py": {
+   "functions": [],
+   "broker_api_tokens": [
+    "account_info",
+    "history_",
+    "mt5.",
+    "orders_get",
+    "positions_get",
+    "symbol_info"
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/run_state/tmp/probe_ro_20260924T1847Z.py": {
+   "functions": [],
+   "broker_api_tokens": [
+    "account_info",
+    "history_",
+    "mt5.",
+    "orders_get",
+    "positions_get",
+    "symbol_info"
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/run_state/tmp/probe_ro_20260924T1902Z.py": {
+   "functions": [],
+   "broker_api_tokens": [
+    "account_info",
+    "history_",
+    "mt5.",
+    "orders_get",
+    "positions_get",
+    "symbol_info"
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/run_state/tmp/probe_ro_20260924T1917Z.py": {
+   "functions": [],
+   "broker_api_tokens": [
+    "account_info",
+    "history_",
+    "mt5.",
+    "orders_get",
+    "positions_get",
+    "symbol_info"
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/run_state/tmp/probe_ro_20260924T1932Z.py": {
+   "functions": [],
+   "broker_api_tokens": [
+    "account_info",
+    "history_",
+    "mt5.",
+    "orders_get",
+    "positions_get",
+    "symbol_info"
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/run_state/tmp/probe_ro_20260924T1947Z.py": {
+   "functions": [],
+   "broker_api_tokens": [
+    "account_info",
+    "history_",
+    "mt5.",
+    "orders_get",
+    "positions_get",
+    "symbol_info"
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/run_state/tmp/probe_ro_20260924T2002Z.py": {
+   "functions": [],
+   "broker_api_tokens": [
+    "account_info",
+    "history_",
+    "mt5.",
+    "orders_get",
+    "positions_get",
+    "symbol_info"
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/run_state/tmp/probe_ro_20260924T2017Z.py": {
+   "functions": [],
+   "broker_api_tokens": [
+    "account_info",
+    "history_",
+    "mt5.",
+    "orders_get",
+    "positions_get",
+    "symbol_info"
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/run_state/tmp/probe_ro_20260924T2032Z.py": {
+   "functions": [],
+   "broker_api_tokens": [
+    "account_info",
+    "history_",
+    "mt5.",
+    "orders_get",
+    "positions_get",
+    "symbol_info"
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/run_state/tmp/probe_ro_20260924T2047Z.py": {
+   "functions": [],
+   "broker_api_tokens": [
+    "account_info",
+    "history_",
+    "mt5.",
+    "orders_get",
+    "positions_get",
+    "symbol_info"
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/run_state/tmp/probe_ro_20260924T2102Z.py": {
+   "functions": [],
+   "broker_api_tokens": [
+    "account_info",
+    "history_",
+    "mt5.",
+    "orders_get",
+    "positions_get",
+    "symbol_info"
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/run_state/tmp/probe_ro_20260924T2117Z.py": {
+   "functions": [],
+   "broker_api_tokens": [
+    "account_info",
+    "history_",
+    "mt5.",
+    "orders_get",
+    "positions_get",
+    "symbol_info"
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/run_state/tmp/probe_ro_20260924T2132Z.py": {
+   "functions": [],
+   "broker_api_tokens": [
+    "account_info",
+    "history_",
+    "mt5.",
+    "orders_get",
+    "positions_get",
+    "symbol_info"
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/run_state/tmp/probe_ro_20260924T2147Z.py": {
+   "functions": [],
+   "broker_api_tokens": [
+    "account_info",
+    "history_",
+    "mt5.",
+    "orders_get",
+    "positions_get",
+    "symbol_info"
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/run_state/tmp/probe_ro_20260924T2232Z.py": {
+   "functions": [],
+   "broker_api_tokens": [
+    "account_info",
+    "history_",
+    "mt5.",
+    "orders_get",
+    "positions_get",
+    "symbol_info"
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/run_state/tmp/probe_ro_20260924T2247Z.py": {
+   "functions": [],
+   "broker_api_tokens": [
+    "account_info",
+    "history_",
+    "mt5.",
+    "orders_get",
+    "positions_get",
+    "symbol_info"
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/run_state/tmp/probe_ro_20260924T2302Z.py": {
+   "functions": [],
+   "broker_api_tokens": [
+    "account_info",
+    "history_",
+    "mt5.",
+    "orders_get",
+    "positions_get",
+    "symbol_info"
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/run_state/tmp/probe_ro_20260924T2317Z.py": {
+   "functions": [],
+   "broker_api_tokens": [
+    "account_info",
+    "history_",
+    "mt5.",
+    "orders_get",
+    "positions_get",
+    "symbol_info"
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/run_state/tmp/probe_ro_20260924T2332Z.py": {
+   "functions": [],
+   "broker_api_tokens": [
+    "account_info",
+    "history_",
+    "mt5.",
+    "orders_get",
+    "positions_get",
+    "symbol_info"
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/run_state/tmp/probe_ro_20260924T2347Z.py": {
+   "functions": [],
+   "broker_api_tokens": [
+    "account_info",
+    "history_",
+    "mt5.",
+    "orders_get",
+    "positions_get",
+    "symbol_info"
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/run_state/tmp/probe_ro_20260925T0002Z.py": {
+   "functions": [],
+   "broker_api_tokens": [
+    "account_info",
+    "history_",
+    "mt5.",
+    "orders_get",
+    "positions_get",
+    "symbol_info"
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/run_state/tmp/probe_ro_20260925T0017Z.py": {
+   "functions": [],
+   "broker_api_tokens": [
+    "account_info",
+    "history_",
+    "mt5.",
+    "orders_get",
+    "positions_get",
+    "symbol_info"
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/run_state/tmp/probe_ro_20260925T0032Z.py": {
+   "functions": [],
+   "broker_api_tokens": [
+    "account_info",
+    "history_",
+    "mt5.",
+    "orders_get",
+    "positions_get",
+    "symbol_info"
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/run_state/tmp/probe_ro_20260925T0047Z.py": {
+   "functions": [],
+   "broker_api_tokens": [
+    "account_info",
+    "history_",
+    "mt5.",
+    "orders_get",
+    "positions_get",
+    "symbol_info"
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/run_state/tmp/probe_ro_20260925T0102Z.py": {
+   "functions": [],
+   "broker_api_tokens": [
+    "account_info",
+    "history_",
+    "mt5.",
+    "orders_get",
+    "positions_get",
+    "symbol_info"
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/run_state/tmp/probe_ro_20260925T0117Z.py": {
+   "functions": [],
+   "broker_api_tokens": [
+    "account_info",
+    "history_",
+    "mt5.",
+    "orders_get",
+    "positions_get",
+    "symbol_info"
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/run_state/tmp/probe_ro_20260925T0132Z.py": {
+   "functions": [],
+   "broker_api_tokens": [
+    "account_info",
+    "history_",
+    "mt5.",
+    "orders_get",
+    "positions_get",
+    "symbol_info"
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/run_state/tmp/probe_ro_20260925T0147Z.py": {
+   "functions": [],
+   "broker_api_tokens": [
+    "account_info",
+    "history_",
+    "mt5.",
+    "orders_get",
+    "positions_get",
+    "symbol_info"
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/run_state/tmp/probe_ro_20260925T0202Z.py": {
+   "functions": [],
+   "broker_api_tokens": [
+    "account_info",
+    "history_",
+    "mt5.",
+    "orders_get",
+    "positions_get",
+    "symbol_info"
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/run_state/tmp/probe_ro_20260925T0217Z.py": {
+   "functions": [],
+   "broker_api_tokens": [
+    "account_info",
+    "history_",
+    "mt5.",
+    "orders_get",
+    "positions_get",
+    "symbol_info"
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/run_state/tmp/probe_structure_1202Z.py": {
+   "functions": [],
+   "broker_api_tokens": [
+    "MetaTrader5",
+    "mt5."
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/run_state/tmp/probe_tf.py": {
+   "functions": [
+    "ma",
+    "rsi"
+   ],
+   "broker_api_tokens": [
+    "MetaTrader5",
+    "account_info",
+    "mt5."
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/run_state/tmp/probe_ticks_0547Z.py": {
+   "functions": [],
+   "broker_api_tokens": [
+    "MetaTrader5",
+    "history_"
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/run_state/tmp/probe_ticks_0617Z.py": {
+   "functions": [],
+   "broker_api_tokens": [
+    "MetaTrader5"
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/run_state/tmp/probe_wall_1132Z.py": {
+   "functions": [],
+   "broker_api_tokens": [
+    "MetaTrader5",
+    "mt5."
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/run_state/tmp/probe_wall_1132Z_v2.py": {
+   "functions": [],
+   "broker_api_tokens": [
+    "MetaTrader5",
+    "mt5."
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/run_state/tmp/quote_probe.py": {
+   "functions": [],
+   "broker_api_tokens": [
+    "MetaTrader5",
+    "mt5.",
+    "symbol_info"
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/run_state/tmp/q_20260921T1002Z.py": {
+   "functions": [],
+   "broker_api_tokens": [
+    "MetaTrader5",
+    "account_info",
+    "mt5.",
+    "positions_get",
+    "symbol_info"
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/run_state/tmp/q_20260921T1017Z.py": {
+   "functions": [],
+   "broker_api_tokens": [
+    "MetaTrader5",
+    "account_info",
+    "mt5.",
+    "positions_get",
+    "symbol_info"
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/run_state/tmp/q_20260921T1132Z.py": {
+   "functions": [],
+   "broker_api_tokens": [
+    "MetaTrader5",
+    "account_info",
+    "mt5.",
+    "positions_get",
+    "symbol_info"
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/run_state/tmp/q_20260921T1202Z.py": {
+   "functions": [],
+   "broker_api_tokens": [
+    "MetaTrader5",
+    "account_info",
+    "mt5.",
+    "positions_get",
+    "symbol_info"
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/run_state/tmp/q_20260921T1217Z.py": {
+   "functions": [],
+   "broker_api_tokens": [
+    "MetaTrader5",
+    "account_info",
+    "mt5.",
+    "positions_get",
+    "symbol_info"
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/run_state/tmp/q_20260921T1232Z.py": {
+   "functions": [],
+   "broker_api_tokens": [
+    "MetaTrader5",
+    "account_info",
+    "mt5.",
+    "positions_get",
+    "symbol_info"
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/run_state/tmp/q_20260921T1247Z.py": {
+   "functions": [],
+   "broker_api_tokens": [
+    "MetaTrader5",
+    "account_info",
+    "mt5.",
+    "positions_get",
+    "symbol_info"
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/run_state/tmp/q_20260921T1302Z.py": {
+   "functions": [],
+   "broker_api_tokens": [
+    "MetaTrader5",
+    "account_info",
+    "mt5.",
+    "positions_get",
+    "symbol_info"
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/run_state/tmp/q_20260921T1317Z.py": {
+   "functions": [
+    "bars",
+    "feat"
+   ],
+   "broker_api_tokens": [
+    "MetaTrader5",
+    "account_info",
+    "mt5.",
+    "positions_get",
+    "symbol_info"
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/run_state/tmp/q_20260921T1332Z.py": {
+   "functions": [
+    "bars",
+    "feat"
+   ],
+   "broker_api_tokens": [
+    "MetaTrader5",
+    "account_info",
+    "mt5.",
+    "positions_get",
+    "symbol_info"
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/run_state/tmp/q_20260921T1347Z.py": {
+   "functions": [
+    "bars",
+    "feat"
+   ],
+   "broker_api_tokens": [
+    "MetaTrader5",
+    "account_info",
+    "mt5.",
+    "positions_get",
+    "symbol_info"
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/run_state/tmp/q_probe.py": {
+   "functions": [],
+   "broker_api_tokens": [
+    "MetaTrader5",
+    "account_info",
+    "mt5.",
+    "positions_get",
+    "symbol_info"
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/run_state/tmp/rsi_0647.py": {
+   "functions": [
+    "rsi"
+   ],
+   "broker_api_tokens": [
+    "MetaTrader5",
+    "mt5."
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/run_state/tmp/snap_0002Z.py": {
+   "functions": [],
+   "broker_api_tokens": [
+    "MetaTrader5",
+    "account_info",
+    "mt5.",
+    "orders_get",
+    "positions_get",
+    "symbol_info"
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/run_state/tmp/snap_1402Z.py": {
+   "functions": [],
+   "broker_api_tokens": [
+    "MetaTrader5",
+    "account_info",
+    "mt5.",
+    "orders_get",
+    "positions_get",
+    "symbol_info"
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/run_state/tmp/snap_1410Z.py": {
+   "functions": [
+    "bars"
+   ],
+   "broker_api_tokens": [
+    "MetaTrader5",
+    "account_info",
+    "mt5.",
+    "orders_get",
+    "positions_get",
+    "symbol_info"
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/run_state/tmp/snap_1432Z.py": {
+   "functions": [],
+   "broker_api_tokens": [
+    "MetaTrader5",
+    "mt5.",
+    "orders_get",
+    "symbol_info"
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/run_state/tmp/snap_1447Z.py": {
+   "functions": [],
+   "broker_api_tokens": [
+    "MetaTrader5",
+    "mt5.",
+    "orders_get",
+    "symbol_info"
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/run_state/tmp/snap_1502Z.py": {
+   "functions": [],
+   "broker_api_tokens": [
+    "MetaTrader5",
+    "mt5.",
+    "orders_get",
+    "symbol_info"
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/run_state/tmp/snap_1517Z.py": {
+   "functions": [],
+   "broker_api_tokens": [
+    "MetaTrader5",
+    "mt5.",
+    "orders_get",
+    "symbol_info"
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/run_state/tmp/snap_1532Z.py": {
+   "functions": [],
+   "broker_api_tokens": [
+    "MetaTrader5",
+    "mt5.",
+    "orders_get",
+    "symbol_info"
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/run_state/tmp/snap_1547Z.py": {
+   "functions": [],
+   "broker_api_tokens": [
+    "MetaTrader5",
+    "mt5.",
+    "orders_get",
+    "symbol_info"
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/run_state/tmp/snap_1602Z.py": {
+   "functions": [],
+   "broker_api_tokens": [
+    "MetaTrader5",
+    "mt5.",
+    "orders_get",
+    "symbol_info"
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/run_state/tmp/snap_1617Z.py": {
+   "functions": [],
+   "broker_api_tokens": [
+    "MetaTrader5",
+    "mt5.",
+    "orders_get",
+    "symbol_info"
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/run_state/tmp/snap_1632Z.py": {
+   "functions": [],
+   "broker_api_tokens": [
+    "MetaTrader5",
+    "mt5.",
+    "orders_get",
+    "symbol_info"
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/run_state/tmp/snap_1647Z.py": {
+   "functions": [],
+   "broker_api_tokens": [
+    "MetaTrader5",
+    "mt5.",
+    "orders_get",
+    "symbol_info"
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/run_state/tmp/snap_1702Z.py": {
+   "functions": [],
+   "broker_api_tokens": [
+    "MetaTrader5",
+    "mt5.",
+    "orders_get",
+    "symbol_info"
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/run_state/tmp/snap_1717Z.py": {
+   "functions": [],
+   "broker_api_tokens": [
+    "MetaTrader5",
+    "mt5.",
+    "orders_get",
+    "symbol_info"
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/run_state/tmp/snap_1732Z.py": {
+   "functions": [],
+   "broker_api_tokens": [
+    "MetaTrader5",
+    "mt5.",
+    "orders_get",
+    "symbol_info"
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/run_state/tmp/snap_1747Z.py": {
+   "functions": [],
+   "broker_api_tokens": [
+    "MetaTrader5",
+    "mt5.",
+    "orders_get",
+    "symbol_info"
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/run_state/tmp/snap_1802Z.py": {
+   "functions": [],
+   "broker_api_tokens": [
+    "MetaTrader5",
+    "mt5.",
+    "orders_get",
+    "symbol_info"
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/run_state/tmp/snap_1817Z.py": {
+   "functions": [],
+   "broker_api_tokens": [
+    "MetaTrader5",
+    "mt5.",
+    "orders_get",
+    "symbol_info"
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/run_state/tmp/snap_1902Z.py": {
+   "functions": [],
+   "broker_api_tokens": [
+    "MetaTrader5",
+    "mt5.",
+    "orders_get",
+    "symbol_info"
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/run_state/tmp/snap_1917Z.py": {
+   "functions": [],
+   "broker_api_tokens": [
+    "MetaTrader5",
+    "mt5.",
+    "orders_get",
+    "symbol_info"
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/run_state/tmp/snap_1932Z.py": {
+   "functions": [],
+   "broker_api_tokens": [
+    "MetaTrader5",
+    "mt5.",
+    "orders_get",
+    "symbol_info"
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/run_state/tmp/snap_1947Z.py": {
+   "functions": [],
+   "broker_api_tokens": [
+    "MetaTrader5",
+    "mt5.",
+    "orders_get",
+    "symbol_info"
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/run_state/tmp/snap_2002Z.py": {
+   "functions": [],
+   "broker_api_tokens": [
+    "MetaTrader5",
+    "mt5.",
+    "orders_get",
+    "symbol_info"
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/run_state/tmp/snap_2017Z.py": {
+   "functions": [],
+   "broker_api_tokens": [
+    "MetaTrader5",
+    "mt5.",
+    "orders_get",
+    "symbol_info"
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/run_state/tmp/snap_2032Z.py": {
+   "functions": [],
+   "broker_api_tokens": [
+    "MetaTrader5",
+    "mt5.",
+    "orders_get",
+    "symbol_info"
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/run_state/tmp/snap_2047Z.py": {
+   "functions": [],
+   "broker_api_tokens": [
+    "MetaTrader5",
+    "mt5.",
+    "orders_get",
+    "symbol_info"
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/run_state/tmp/snap_2102Z.py": {
+   "functions": [],
+   "broker_api_tokens": [
+    "MetaTrader5",
+    "mt5.",
+    "orders_get",
+    "symbol_info"
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/run_state/tmp/snap_2117Z.py": {
+   "functions": [],
+   "broker_api_tokens": [
+    "MetaTrader5",
+    "mt5.",
+    "orders_get",
+    "symbol_info"
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/run_state/tmp/snap_2132Z.py": {
+   "functions": [],
+   "broker_api_tokens": [
+    "MetaTrader5",
+    "mt5.",
+    "orders_get",
+    "symbol_info"
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/run_state/tmp/snap_2147Z.py": {
+   "functions": [],
+   "broker_api_tokens": [
+    "MetaTrader5",
+    "mt5.",
+    "orders_get",
+    "symbol_info"
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/run_state/tmp/snap_2202Z.py": {
+   "functions": [],
+   "broker_api_tokens": [
+    "MetaTrader5",
+    "mt5.",
+    "orders_get",
+    "symbol_info"
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/run_state/tmp/snap_2217Z.py": {
+   "functions": [],
+   "broker_api_tokens": [
+    "MetaTrader5",
+    "mt5.",
+    "orders_get",
+    "symbol_info"
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/run_state/tmp/snap_2232Z.py": {
+   "functions": [],
+   "broker_api_tokens": [
+    "MetaTrader5",
+    "mt5.",
+    "orders_get",
+    "symbol_info"
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/run_state/tmp/snap_2247Z.py": {
+   "functions": [],
+   "broker_api_tokens": [
+    "MetaTrader5",
+    "mt5.",
+    "orders_get",
+    "symbol_info"
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/run_state/tmp/snap_2302Z.py": {
+   "functions": [],
+   "broker_api_tokens": [
+    "MetaTrader5",
+    "mt5.",
+    "orders_get",
+    "symbol_info"
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/run_state/tmp/snap_2317Z.py": {
+   "functions": [],
+   "broker_api_tokens": [
+    "MetaTrader5",
+    "mt5.",
+    "orders_get",
+    "symbol_info"
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/run_state/tmp/snap_2332Z.py": {
+   "functions": [],
+   "broker_api_tokens": [
+    "MetaTrader5",
+    "mt5.",
+    "orders_get",
+    "symbol_info"
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/run_state/tmp/snap_2349Z.py": {
+   "functions": [],
+   "broker_api_tokens": [
+    "MetaTrader5",
+    "mt5.",
+    "orders_get",
+    "symbol_info"
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/run_state/tmp/structure_1402Z.py": {
+   "functions": [],
+   "broker_api_tokens": [
+    "MetaTrader5",
+    "mt5.",
+    "symbol_info"
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/run_state/tmp/ts_probe.py": {
+   "functions": [],
+   "broker_api_tokens": [
+    "mt5.",
+    "symbol_info"
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/run_state/tmp/verify_20260925T0117Z.py": {
+   "functions": [],
+   "broker_api_tokens": [
+    "account_info",
+    "history_",
+    "mt5.",
+    "orders_get",
+    "positions_get",
+    "symbol_info"
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/run_state/tmp/verify_20260925T0132Z.py": {
+   "functions": [],
+   "broker_api_tokens": [
+    "account_info",
+    "history_",
+    "mt5.",
+    "orders_get",
+    "positions_get",
+    "symbol_info"
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/run_state/tmp/verify_20260925T0147Z.py": {
+   "functions": [],
+   "broker_api_tokens": [
+    "account_info",
+    "history_",
+    "mt5.",
+    "orders_get",
+    "positions_get",
+    "symbol_info"
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/run_state/tmp/write_decision_0032Z.py": {
+   "functions": [],
+   "broker_api_tokens": [
+    "account_info",
+    "mt5.",
+    "orders_get",
+    "positions_get"
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/run_state/tmp/write_decision_1202Z.py": {
+   "functions": [],
+   "broker_api_tokens": [
+    "positions_get"
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/run_state/tmp/write_decision_2032Z.py": {
+   "functions": [],
+   "broker_api_tokens": [
+    "orders_get"
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/run_state/tmp/write_decision_2047Z.py": {
+   "functions": [],
+   "broker_api_tokens": [
+    "orders_get"
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/run_state/tmp/write_decision_2102Z.py": {
+   "functions": [],
+   "broker_api_tokens": [
+    "orders_get"
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/run_state/tmp/write_decision_2117Z.py": {
+   "functions": [],
+   "broker_api_tokens": [
+    "orders_get"
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/run_state/tmp/write_dec_0938z.py": {
+   "functions": [],
+   "broker_api_tokens": [
+    "symbol_info"
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/run_state/tmp/write_dec_1117z.py": {
+   "functions": [],
+   "broker_api_tokens": [
+    "history_"
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/run_state/tmp/_append_0317Z.py": {
+   "functions": [],
+   "broker_api_tokens": [
+    "orders_get"
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/run_state/tmp/_append_summary_0032Z.py": {
+   "functions": [],
+   "broker_api_tokens": [
+    "account_info",
+    "mt5.",
+    "orders_get",
+    "positions_get"
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/run_state/tmp/_append_summary_0102Z.py": {
+   "functions": [],
+   "broker_api_tokens": [
+    "orders_get",
+    "positions_get"
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/run_state/tmp/_append_summary_0147Z.py": {
+   "functions": [],
+   "broker_api_tokens": [
+    "orders_get",
+    "positions_get"
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/run_state/tmp/_append_summary_0217Z.py": {
+   "functions": [],
+   "broker_api_tokens": [
+    "orders_get"
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/run_state/tmp/_append_summary_0232Z.py": {
+   "functions": [],
+   "broker_api_tokens": [
+    "orders_get"
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/run_state/tmp/_append_summary_0247Z.py": {
+   "functions": [],
+   "broker_api_tokens": [
+    "orders_get"
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/run_state/tmp/_append_summary_0617Z.py": {
+   "functions": [],
+   "broker_api_tokens": [
+    "symbol_info"
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/run_state/tmp/_append_summary_1732.py": {
+   "functions": [],
+   "broker_api_tokens": [
+    "orders_get",
+    "positions_get"
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/run_state/tmp/_append_summary_1917.py": {
+   "functions": [],
+   "broker_api_tokens": [
+    "orders_get",
+    "positions_get"
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/run_state/tmp/_append_summary_1932.py": {
+   "functions": [],
+   "broker_api_tokens": [
+    "orders_get",
+    "positions_get"
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/run_state/tmp/_append_summary_1947.py": {
+   "functions": [],
+   "broker_api_tokens": [
+    "orders_get",
+    "positions_get"
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/run_state/tmp/_append_summary_2017.py": {
+   "functions": [],
+   "broker_api_tokens": [
+    "orders_get",
+    "positions_get"
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/run_state/tmp/_append_summary_2032.py": {
+   "functions": [],
+   "broker_api_tokens": [
+    "orders_get",
+    "positions_get"
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/run_state/tmp/_append_summary_2047.py": {
+   "functions": [],
+   "broker_api_tokens": [
+    "orders_get",
+    "positions_get"
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/run_state/tmp/_append_summary_2147.py": {
+   "functions": [],
+   "broker_api_tokens": [
+    "orders_get",
+    "positions_get"
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/run_state/tmp/_append_summary_2202.py": {
+   "functions": [],
+   "broker_api_tokens": [
+    "orders_get",
+    "positions_get"
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/run_state/tmp/_append_summary_2247.py": {
+   "functions": [],
+   "broker_api_tokens": [
+    "orders_get",
+    "positions_get"
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/run_state/tmp/_append_summary_2317.py": {
+   "functions": [],
+   "broker_api_tokens": [
+    "orders_get",
+    "positions_get"
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/run_state/tmp/_append_summary_2332.py": {
+   "functions": [],
+   "broker_api_tokens": [
+    "orders_get",
+    "positions_get"
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/run_state/tmp/_probe_0317.py": {
+   "functions": [],
+   "broker_api_tokens": [
+    "MetaTrader5",
+    "mt5.",
+    "symbol_info"
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/run_state/tmp/_probe_1317Z.py": {
+   "functions": [],
+   "broker_api_tokens": [
+    "MetaTrader5",
+    "mt5.",
+    "symbol_info"
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/run_state/tmp/_probe_2202Z.py": {
+   "functions": [],
+   "broker_api_tokens": [
+    "MetaTrader5",
+    "mt5.",
+    "orders_get",
+    "symbol_info"
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/run_state/tmp/_probe_2217Z.py": {
+   "functions": [],
+   "broker_api_tokens": [
+    "MetaTrader5",
+    "mt5.",
+    "orders_get",
+    "symbol_info"
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/run_state/tmp/_summ_1802Z.py": {
+   "functions": [],
+   "broker_api_tokens": [
+    "orders_get",
+    "positions_get"
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/run_state/tmp/_summ_1902Z.py": {
+   "functions": [],
+   "broker_api_tokens": [
+    "orders_get",
+    "positions_get"
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/run_state/tmp/_write_dec_0147Z.py": {
+   "functions": [],
+   "broker_api_tokens": [
+    "orders_get"
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/run_state/tmp/_write_dec_2147Z.py": {
+   "functions": [],
+   "broker_api_tokens": [
+    "orders_get"
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/tmp/append_summary_0902.py": {
+   "functions": [],
+   "broker_api_tokens": [
+    "positions_get"
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/tmp/bars_peek.py": {
+   "functions": [],
+   "broker_api_tokens": [
+    "MetaTrader5",
+    "mt5.",
+    "symbol_info"
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/tmp/build_2347Z.py": {
+   "functions": [],
+   "broker_api_tokens": [
+    "symbol_info"
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/tmp/build_decision_1232Z.py": {
+   "functions": [],
+   "broker_api_tokens": [],
+   "state_files_referenced": [
+    "state_package_latest.json"
+   ]
+  },
+  "research/hermes/trader_v1/tmp/cyc_probe2_0332.py": {
+   "functions": [],
+   "broker_api_tokens": [
+    "MetaTrader5",
+    "history_",
+    "mt5.",
+    "symbol_info"
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/tmp/cyc_probe_0332.py": {
+   "functions": [],
+   "broker_api_tokens": [
+    "MetaTrader5",
+    "mt5.",
+    "symbol_info"
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/tmp/e2e_driver.py": {
+   "functions": [
+    "fresh_sandbox",
+    "load_real_pkg",
+    "write_pkg",
+    "run_engine",
+    "ledger_events",
+    "stats",
+    "positions",
+    "reviews",
+    "decision",
+    "write_dec",
+    "check",
+    "scenario1_fill_then_hard_stop",
+    "scenario2_risk_veto_terminal",
+    "scenario3_short_partial_tp",
+    "scenario4_qty_default_and_busy",
+    "scenario5_illegal_state_crash_proof",
+    "main"
+   ],
+   "broker_api_tokens": [],
+   "state_files_referenced": [
+    "state_package_latest.json"
+   ]
+  },
+  "research/hermes/trader_v1/tmp/fix_0532z_reconcile_bug.py": {
+   "functions": [],
+   "broker_api_tokens": [
+    "history_",
+    "mt5."
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/tmp/live_probe_2102.py": {
+   "functions": [
+    "rsi"
+   ],
+   "broker_api_tokens": [
+    "MetaTrader5",
+    "symbol_info"
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/tmp/live_snap.py": {
+   "functions": [
+    "rsi",
+    "atr",
+    "ma"
+   ],
+   "broker_api_tokens": [
+    "MetaTrader5",
+    "mt5.",
+    "symbol_info"
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/tmp/live_snapshot.py": {
+   "functions": [],
+   "broker_api_tokens": [
+    "MetaTrader5",
+    "mt5.",
+    "positions_get",
+    "symbol_info"
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/tmp/m15_probe_1047.py": {
+   "functions": [
+    "ma",
+    "dump"
+   ],
+   "broker_api_tokens": [
+    "MetaTrader5",
+    "mt5."
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/tmp/mas_1102.py": {
+   "functions": [
+    "sma",
+    "rng"
+   ],
+   "broker_api_tokens": [
+    "MetaTrader5",
+    "mt5."
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/tmp/mk_1947.py": {
+   "functions": [],
+   "broker_api_tokens": [],
+   "state_files_referenced": [
+    "run_state/decisions/20260910T1947Z.json"
+   ]
+  },
+  "research/hermes/trader_v1/tmp/mk_dec_0632z.py": {
+   "functions": [],
+   "broker_api_tokens": [
+    "symbol_info"
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/tmp/mk_dec_0717.py": {
+   "functions": [],
+   "broker_api_tokens": [
+    "symbol_info"
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/tmp/probe2.py": {
+   "functions": [],
+   "broker_api_tokens": [
+    "MetaTrader5",
+    "account_info",
+    "history_",
+    "mt5.",
+    "symbol_info"
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/tmp/probe3.py": {
+   "functions": [
+    "rates"
+   ],
+   "broker_api_tokens": [
+    "MetaTrader5",
+    "mt5."
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/tmp/probe_0002Z.py": {
+   "functions": [],
+   "broker_api_tokens": [
+    "MetaTrader5",
+    "mt5.",
+    "orders_get",
+    "positions_get",
+    "symbol_info"
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/tmp/probe_0347.py": {
+   "functions": [],
+   "broker_api_tokens": [
+    "MetaTrader5",
+    "mt5.",
+    "orders_get",
+    "positions_get",
+    "symbol_info"
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/tmp/probe_0517.py": {
+   "functions": [],
+   "broker_api_tokens": [
+    "MetaTrader5",
+    "mt5.",
+    "symbol_info"
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/tmp/probe_0717.py": {
+   "functions": [],
+   "broker_api_tokens": [
+    "MetaTrader5",
+    "history_",
+    "mt5."
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/tmp/probe_0747.py": {
+   "functions": [],
+   "broker_api_tokens": [
+    "MetaTrader5",
+    "mt5.",
+    "symbol_info"
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/tmp/probe_0802.py": {
+   "functions": [],
+   "broker_api_tokens": [
+    "MetaTrader5",
+    "mt5.",
+    "symbol_info"
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/tmp/probe_0817.py": {
+   "functions": [],
+   "broker_api_tokens": [
+    "MetaTrader5",
+    "mt5.",
+    "symbol_info"
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/tmp/probe_0832.py": {
+   "functions": [],
+   "broker_api_tokens": [
+    "MetaTrader5",
+    "mt5.",
+    "symbol_info"
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/tmp/probe_1102.py": {
+   "functions": [],
+   "broker_api_tokens": [
+    "MetaTrader5",
+    "mt5.",
+    "positions_get",
+    "symbol_info"
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/tmp/probe_1147.py": {
+   "functions": [],
+   "broker_api_tokens": [
+    "MetaTrader5",
+    "account_info",
+    "mt5.",
+    "orders_get",
+    "positions_get",
+    "symbol_info"
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/tmp/probe_bars.py": {
+   "functions": [
+    "ts"
+   ],
+   "broker_api_tokens": [
+    "MetaTrader5",
+    "mt5.",
+    "symbol_info"
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/tmp/probe_bars_1947.py": {
+   "functions": [],
+   "broker_api_tokens": [
+    "MetaTrader5",
+    "mt5."
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/tmp/probe_live.py": {
+   "functions": [],
+   "broker_api_tokens": [
+    "MetaTrader5",
+    "account_info",
+    "mt5.",
+    "orders_get",
+    "positions_get",
+    "symbol_info"
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/tmp/probe_live_0032z.py": {
+   "functions": [
+    "ma",
+    "rsi"
+   ],
+   "broker_api_tokens": [
+    "MetaTrader5",
+    "account_info",
+    "mt5.",
+    "symbol_info"
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/tmp/probe_live_0632.py": {
+   "functions": [
+    "ma",
+    "rsi"
+   ],
+   "broker_api_tokens": [
+    "MetaTrader5",
+    "account_info",
+    "mt5.",
+    "symbol_info"
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/tmp/probe_m5.py": {
+   "functions": [
+    "bars"
+   ],
+   "broker_api_tokens": [
+    "MetaTrader5",
+    "mt5."
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/tmp/probe_ma.py": {
+   "functions": [
+    "rsi14"
+   ],
+   "broker_api_tokens": [
+    "MetaTrader5",
+    "symbol_info"
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/tmp/probe_ma_2002.py": {
+   "functions": [
+    "rsi"
+   ],
+   "broker_api_tokens": [
+    "MetaTrader5",
+    "symbol_info"
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/tmp/probe_now.py": {
+   "functions": [
+    "ts"
+   ],
+   "broker_api_tokens": [
+    "MetaTrader5",
+    "account_info",
+    "mt5.",
+    "orders_get",
+    "positions_get",
+    "symbol_info"
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/tmp/probe_state.py": {
+   "functions": [],
+   "broker_api_tokens": [
+    "MetaTrader5",
+    "symbol_info"
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/tmp/probe_tick.py": {
+   "functions": [],
+   "broker_api_tokens": [
+    "MetaTrader5",
+    "mt5.",
+    "symbol_info"
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/tmp/quote_peek.py": {
+   "functions": [],
+   "broker_api_tokens": [
+    "MetaTrader5",
+    "mt5.",
+    "positions_get",
+    "symbol_info"
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/tmp/rates_peek.py": {
+   "functions": [
+    "rsi",
+    "pull"
+   ],
+   "broker_api_tokens": [
+    "MetaTrader5",
+    "mt5.",
+    "positions_get",
+    "symbol_info"
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/tmp/_bars_0632.py": {
+   "functions": [
+    "ts"
+   ],
+   "broker_api_tokens": [
+    "MetaTrader5",
+    "mt5.",
+    "symbol_info"
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/tmp/_bars_probe_1732.py": {
+   "functions": [],
+   "broker_api_tokens": [
+    "MetaTrader5",
+    "mt5.",
+    "symbol_info"
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/tmp/_ctx_1902.py": {
+   "functions": [
+    "dt"
+   ],
+   "broker_api_tokens": [
+    "MetaTrader5",
+    "mt5."
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/tmp/_dbg_deals.py": {
+   "functions": [
+    "probe"
+   ],
+   "broker_api_tokens": [
+    "MetaTrader5",
+    "history_"
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/tmp/_dbg_deals2.py": {
+   "functions": [
+    "probe"
+   ],
+   "broker_api_tokens": [
+    "MetaTrader5",
+    "account_info",
+    "history_",
+    "orders_get"
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/tmp/_dbg_deals3.py": {
+   "functions": [
+    "probe"
+   ],
+   "broker_api_tokens": [
+    "MetaTrader5",
+    "history_"
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/tmp/_hb_quick_probe.py": {
+   "functions": [
+    "ts"
+   ],
+   "broker_api_tokens": [
+    "MetaTrader5",
+    "account_info",
+    "mt5.",
+    "positions_get"
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/tmp/_live_ctx_0317.py": {
+   "functions": [
+    "stats"
+   ],
+   "broker_api_tokens": [
+    "MetaTrader5",
+    "mt5.",
+    "symbol_info"
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/tmp/_live_probe_1732.py": {
+   "functions": [],
+   "broker_api_tokens": [
+    "MetaTrader5",
+    "mt5.",
+    "symbol_info"
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/tmp/_m15_probe.py": {
+   "functions": [
+    "show"
+   ],
+   "broker_api_tokens": [
+    "MetaTrader5",
+    "mt5.",
+    "symbol_info"
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/tmp/_m15_probe_0632.py": {
+   "functions": [],
+   "broker_api_tokens": [
+    "MetaTrader5",
+    "mt5.",
+    "symbol_info"
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/tmp/_probe_0117.py": {
+   "functions": [],
+   "broker_api_tokens": [
+    "MetaTrader5",
+    "mt5.",
+    "symbol_info"
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/tmp/_probe_0132.py": {
+   "functions": [],
+   "broker_api_tokens": [
+    "MetaTrader5",
+    "mt5.",
+    "symbol_info"
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/tmp/_probe_0217.py": {
+   "functions": [],
+   "broker_api_tokens": [
+    "MetaTrader5",
+    "mt5.",
+    "orders_get",
+    "symbol_info"
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/tmp/_probe_0432.py": {
+   "functions": [],
+   "broker_api_tokens": [
+    "MetaTrader5",
+    "mt5.",
+    "positions_get",
+    "symbol_info"
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/tmp/_probe_0517.py": {
+   "functions": [],
+   "broker_api_tokens": [
+    "MetaTrader5",
+    "account_info",
+    "mt5.",
+    "positions_get",
+    "symbol_info"
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/tmp/_probe_0547.py": {
+   "functions": [
+    "ts",
+    "rates",
+    "ma",
+    "rsi"
+   ],
+   "broker_api_tokens": [
+    "MetaTrader5",
+    "account_info",
+    "mt5.",
+    "positions_get",
+    "symbol_info"
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/tmp/_probe_0632.py": {
+   "functions": [
+    "ts",
+    "rates",
+    "ma",
+    "rsi"
+   ],
+   "broker_api_tokens": [
+    "MetaTrader5",
+    "account_info",
+    "mt5.",
+    "positions_get",
+    "symbol_info"
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/tmp/_probe_0647.py": {
+   "functions": [
+    "ts"
+   ],
+   "broker_api_tokens": [
+    "MetaTrader5",
+    "mt5.",
+    "symbol_info"
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/tmp/_probe_1132.py": {
+   "functions": [],
+   "broker_api_tokens": [
+    "MetaTrader5",
+    "mt5.",
+    "symbol_info"
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/tmp/_probe_1147.py": {
+   "functions": [
+    "ts",
+    "rsi",
+    "ma",
+    "atr"
+   ],
+   "broker_api_tokens": [
+    "MetaTrader5",
+    "account_info",
+    "mt5.",
+    "orders_get",
+    "positions_get",
+    "symbol_info"
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/tmp/_probe_1202.py": {
+   "functions": [],
+   "broker_api_tokens": [
+    "MetaTrader5",
+    "orders_get",
+    "symbol_info"
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/tmp/_probe_1347.py": {
+   "functions": [
+    "ma",
+    "get"
+   ],
+   "broker_api_tokens": [
+    "MetaTrader5",
+    "mt5.",
+    "symbol_info"
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/tmp/_probe_1402.py": {
+   "functions": [],
+   "broker_api_tokens": [
+    "MetaTrader5",
+    "account_info",
+    "symbol_info"
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/tmp/_probe_1402b.py": {
+   "functions": [
+    "rsi"
+   ],
+   "broker_api_tokens": [
+    "MetaTrader5"
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/tmp/_probe_1417.py": {
+   "functions": [],
+   "broker_api_tokens": [
+    "MetaTrader5",
+    "account_info",
+    "symbol_info"
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/tmp/_probe_1432.py": {
+   "functions": [],
+   "broker_api_tokens": [
+    "MetaTrader5",
+    "account_info",
+    "orders_get",
+    "positions_get",
+    "symbol_info"
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/tmp/_probe_1617.py": {
+   "functions": [],
+   "broker_api_tokens": [
+    "MetaTrader5",
+    "account_info",
+    "symbol_info"
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/tmp/_probe_1717.py": {
+   "functions": [
+    "ts",
+    "ma",
+    "rsi"
+   ],
+   "broker_api_tokens": [
+    "MetaTrader5",
+    "account_info",
+    "mt5.",
+    "orders_get",
+    "positions_get",
+    "symbol_info"
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/tmp/_probe_1902.py": {
+   "functions": [
+    "dt",
+    "ma",
+    "rsi",
+    "atr"
+   ],
+   "broker_api_tokens": [
+    "MetaTrader5",
+    "mt5.",
+    "positions_get",
+    "symbol_info"
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/tmp/_probe_2017.py": {
+   "functions": [
+    "dt",
+    "ma",
+    "rsi",
+    "atr"
+   ],
+   "broker_api_tokens": [
+    "MetaTrader5",
+    "account_info",
+    "mt5.",
+    "positions_get",
+    "symbol_info"
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/tmp/_probe_2047.py": {
+   "functions": [
+    "dt",
+    "ma",
+    "rsi",
+    "atr"
+   ],
+   "broker_api_tokens": [
+    "MetaTrader5",
+    "account_info",
+    "mt5.",
+    "positions_get",
+    "symbol_info"
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/tmp/_probe_2117.py": {
+   "functions": [],
+   "broker_api_tokens": [
+    "MetaTrader5",
+    "mt5.",
+    "symbol_info"
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/tmp/_probe_2332.py": {
+   "functions": [],
+   "broker_api_tokens": [
+    "MetaTrader5",
+    "mt5.",
+    "symbol_info"
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/tmp/_probe_bars.py": {
+   "functions": [],
+   "broker_api_tokens": [
+    "MetaTrader5",
+    "mt5.",
+    "symbol_info"
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/tmp/_probe_m15_1202.py": {
+   "functions": [],
+   "broker_api_tokens": [
+    "symbol_info"
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/tmp/_probe_m15_1847.py": {
+   "functions": [],
+   "broker_api_tokens": [
+    "MetaTrader5",
+    "mt5.",
+    "symbol_info"
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/tmp/_probe_ma.py": {
+   "functions": [],
+   "broker_api_tokens": [
+    "MetaTrader5",
+    "mt5.",
+    "symbol_info"
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/tmp/_probe_ma_0432.py": {
+   "functions": [
+    "rsi"
+   ],
+   "broker_api_tokens": [
+    "MetaTrader5",
+    "mt5."
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/tmp/_probe_mtf_0917.py": {
+   "functions": [
+    "rsi",
+    "ma",
+    "atr"
+   ],
+   "broker_api_tokens": [
+    "MetaTrader5",
+    "mt5.",
+    "symbol_info"
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/tmp/_probe_now.py": {
+   "functions": [
+    "ts"
+   ],
+   "broker_api_tokens": [
+    "MetaTrader5",
+    "account_info",
+    "mt5.",
+    "orders_get",
+    "positions_get",
+    "symbol_info"
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/tmp/_tmp_probe2.py": {
+   "functions": [],
+   "broker_api_tokens": [
+    "MetaTrader5",
+    "account_info",
+    "mt5.",
+    "orders_get",
+    "positions_get",
+    "symbol_info"
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/tmp/_tmp_probe3.py": {
+   "functions": [
+    "rsi"
+   ],
+   "broker_api_tokens": [
+    "MetaTrader5",
+    "mt5."
+   ],
+   "state_files_referenced": []
+  },
+  "research/hermes/trader_v1/tmp/_verify.py": {
+   "functions": [],
+   "broker_api_tokens": [],
+   "state_files_referenced": [
+    "run_state/plan_ledger.jsonl"
+   ]
+  }
+ },
+ "V1_POSITION_SOURCE": "MT5 (code reads positions via broker API)",
+ "V1_PENDING_ORDER_SOURCE": "MT5 (orders_get)",
+ "V1_EXECUTION_STATE_SOURCE": "UNKNOWN",
+ "V1_REQUEST_STATE_SOURCE": "UNKNOWN",
+ "V1_FILL_STATE_SOURCE": "UNKNOWN",
+ "MT5_READ_CONTEXT": {
+  "READ_SOURCE": "MT5",
+  "READ_ONLY": "YES",
+  "TERMINAL": "UNKNOWN",
+  "ACCOUNT": "UNKNOWN",
+  "SYMBOL": "UNKNOWN"
+ },
+ "OPEN_POSITIONS": "UNKNOWN",
+ "PENDING_ORDERS": "UNKNOWN",
+ "ACTIVE_ORDER_ACTION": "UNKNOWN",
+ "ORDER_REQUEST_IN_FLIGHT": "UNKNOWN",
+ "BROKER_OPERATION_IN_FLIGHT": "UNKNOWN",
+ "TRADE_STATE_CONFIRMED": "NO",
+ "trade_state_note": "state source not proven; no MetaTrader5 read attempted because the source chain is not established (and no trading interface is used by this audit)",
+ "CYCLE_OBSERVATION_SECONDS": 75,
+ "CYCLE_OBSERVATION_COVERED_A_FULL_BOUNDARY": "NO",
+ "files_changed_in_observation": [],
+ "CYCLE_START": "UNKNOWN",
+ "ENGINE_START": "UNKNOWN",
+ "DECISION_TIME": "UNKNOWN",
+ "PLAN_TIME": "UNKNOWN",
+ "EXECUTION_TIME": "UNKNOWN",
+ "LEDGER_WRITE_TIME": "UNKNOWN",
+ "STATE_WRITE_TIME": "UNKNOWN",
+ "ENGINE_EXIT": "UNKNOWN",
+ "FINAL_WRITE_TIME": "UNKNOWN",
+ "WRITE_AFTER_ENGINE_EXIT": "UNKNOWN",
+ "STATE_WRITE_IN_FLIGHT": "UNKNOWN",
+ "CURRENT_CYCLE": "UNKNOWN",
+ "OUTSIDE_TRADING_WINDOW": "UNKNOWN",
+ "cycle_note": "only a bounded 75s observation was performed; per section 6 a short no-change sample cannot prove absence, and NEXT_EXPECTED_V1_CYCLE is UNKNOWN so a real boundary could not be targeted",
+ "SAFETY_CHECKS": {
+  "V1_PID_CONFIRMED": false,
+  "PRIMARY_TASK_CONFIRMED": false,
+  "OPEN_POSITIONS_0": false,
+  "PENDING_ORDERS_0": false,
+  "ACTIVE_ORDER_ACTION_NO": false,
+  "ORDER_REQUEST_IN_FLIGHT_NO": false,
+  "BROKER_OPERATION_IN_FLIGHT_NO": false,
+  "STATE_WRITE_IN_FLIGHT_NO": false,
+  "V1_RESTART_RACE_NO": false,
+  "OUTSIDE_TRADING_WINDOW_YES": false,
+  "CURRENT_CYCLE_FINISHED": false
+ },
+ "SAFETY_WINDOW": "NOT_PROVEN",
+ "NEXT_STAGE_AUTHORIZED": "NO",
+ "TASK_STATUS": "V1_GATEWAY_SAFETY_AUDIT_COMPLETE",
+ "V1_MODIFIED": "NO",
+ "V2_MODIFIED": "NO",
+ "V3_MODIFIED": "NO",
+ "ORDER_SEND": 0,
+ "COMMIT": "NONE",
+ "ts_utc": "2026-09-25T15:07:13.889944+00:00",
+ "research_immutability": {
+  "M01_event": "ca44fd2c02afd867b9c66cb5da463eb0283fef6c31ba4e7c20fc988a1c9e2621",
+  "R1_ledger": "d9cd67757e501c3e550338da4228d67c0132ea293f28bce031b1cf010790f4ed",
+  "M01_audit": "a3bee5375f318ceb8bdd3144a0ac2639b88e2c5932a3e33c563c72b2c0c9f17d",
+  "R2_canonical": "20913b986890b1c593a63d1dfa7d6e1d90ad0b71db7b5134132f3ecfd7e72624"
+ }
+}

@@ -1,0 +1,260 @@
+{
+ "version": "HF-R2.0.0",
+ "task": "V3_MARKET_OPPORTUNITY_DISCOVERY_R2_HIGH_FREQUENCY",
+ "forbidden": {
+  "m03_rediscovery": true,
+  "m03_commit": "5ff2aad",
+  "cross_market_shock_family": "FORBIDDEN",
+  "future_return_in_detection": true,
+  "engineering_liquidity_from_price": true
+ },
+ "data_sources": {
+  "XAUUSD": "HistData M1 (BID)",
+  "DXY": "Yahoo DX-Y.NYB",
+  "VIX": "Yahoo ^VIX",
+  "UST10Y": "Yahoo ^TNX PROXY (never official)"
+ },
+ "semantics_frozen": {
+  "XAUUSD_DEFINITION": "UNKNOWN",
+  "BAR_OPEN_CLOSE_SEMANTICS": "UNKNOWN",
+  "LICENSE": "UNKNOWN",
+  "TNX": "PROXY"
+ },
+ "grids": {
+  "primary": [
+   "1m",
+   "5m",
+   "15m",
+   "30m"
+  ],
+  "background_only": [
+   "1h"
+  ],
+  "note": "1h is state background only; R2 high-frequency opportunities must not come mainly from 1h"
+ },
+ "timestamp_policy": {
+  "normalization": "UTC",
+  "grid_alignment": "exact bucket label (floor)",
+  "audit": [
+   "exact",
+   "floor",
+   "nearest"
+  ],
+  "adopted_for_detection": "floor",
+  "note": "the adopted method is frozen here; nearest is never used"
+ },
+ "families": {
+  "F1_SHORT_STATE_JUMP": {
+   "definition": "vol compression -> expansion or range -> directional move",
+   "features": [
+    "vol_pct_120",
+    "range_expansion_ratio"
+   ],
+   "threshold": {
+    "vol_pct_before_max": 0.2,
+    "range_ratio_min": 1.8
+   },
+   "forbidden": "no future return may define the state"
+  },
+  "F2_SHORT_SHOCK_STRUCTURE": {
+   "definition": "short-horizon price shock and its immediate structure",
+   "features": [
+    "return_abs_z_120"
+   ],
+   "threshold": {
+    "abs_z_min": 3.0
+   },
+   "holding_context": "1m..30m, NOT the 6h M03 horizon"
+  },
+  "F3_PRICE_ACTIVITY_PROXY": {
+   "definition": "price-activity acceleration (NOT real liquidity)",
+   "features": [
+    "activity_ratio_5_60",
+    "range_expansion_ratio"
+   ],
+   "threshold": {
+    "activity_ratio_min": 2.0,
+    "range_ratio_min": 1.5
+   },
+   "label": "PRICE_ACTIVITY_PROXY",
+   "liquidity_claim_forbidden": true
+  },
+  "F4_CROSSMARKET_LEADING_ASSOCIATION": {
+   "definition": "an external source moves strictly before the XAU response window",
+   "sources": [
+    "DXY",
+    "VIX",
+    "UST10Y_PROXY"
+   ],
+   "threshold": {
+    "source_abs_z_min": 2.0,
+    "min_lead_minutes": 5
+   },
+   "wording": "leading association (never causality)",
+   "requires_source_time_lt_response_time": true,
+   "available_window": "5m cross-market covers 63 days only"
+  },
+  "F5_SHORT_EXTENSION_REVERSION": {
+   "definition": "short-horizon extension beyond a rolling envelope",
+   "features": [
+    "envelope_excursion_atr"
+   ],
+   "threshold": {
+    "atr_multiple_min": 2.0
+   },
+   "must_not_repeat": "R1 failed rules (breakout60 / impulse5 / reversion3)"
+  },
+  "F6_STATE_CONDITIONAL_HF": {
+   "definition": "high-frequency behaviour conditioned on a state built from data <= t",
+   "states": [
+    "HIGH_VOL",
+    "LOW_VOL",
+    "TREND",
+    "RANGE",
+    "XM_ACTIVE",
+    "XM_QUIET"
+   ],
+   "threshold": {
+    "abs_z_min": 2.5
+   }
+  }
+ },
+ "detection_rules": {
+  "vol_baseline_bars": 120,
+  "envelope_bars": 60,
+  "atr_bars": 14,
+  "activity_fast": 5,
+  "activity_slow": 60,
+  "asof_only": true,
+  "winsorization": "OFF",
+  "manual_removal": "OFF",
+  "missing_data_policy": "record DATA_GAP, never fill/splice"
+ },
+ "episode_rules": {
+  "same_family_same_grid_within_bars": 30,
+  "cross_grid_merge_within_minutes": 30,
+  "cross_grid_parent_id": "required",
+  "raw_vs_independent_reported_separately": true
+ },
+ "frequency_rules": {
+  "report": [
+   "RAW_OPPORTUNITY_FREQUENCY",
+   "INDEPENDENT_EVENT_FREQUENCY"
+  ],
+  "independent_unit": "episode",
+  "HIGH_FREQUENCY": "independent events per week >= 2",
+  "MEDIUM_FREQUENCY": ">= 1 and < 2",
+  "LOW_FREQUENCY": "< 1",
+  "note": "the weekly floor is an OPPORTUNITY DISCOVERY screen, not an alpha gate"
+ },
+ "lifecycle": {
+  "target": "duration <= 30m preferred",
+  "allow": "30m..1h as background",
+  "over_1h": "LOW_FREQUENCY_HORIZON",
+  "measurement_only": true,
+  "fields": [
+   "detection_time",
+   "response_start",
+   "response_end",
+   "duration",
+   "time_to_peak",
+   "time_to_decay"
+  ],
+  "no_lookahead": "these are MEASUREMENT fields; they never enter detection or priority"
+ },
+ "priority": {
+  "registry": "high_frequency_priority_registry.json",
+  "weights": {
+   "frequency": 0.35,
+   "independence": 0.25,
+   "data_quality": 0.2,
+   "novelty": 0.2,
+   "cross_market_information": 0.0,
+   "state_change": 0.0,
+   "duration": 0.0
+  },
+  "excluded_weights": {
+   "duration": "measured duration is a future quantity -> excluded for PIT safety",
+   "cross_market_information": "subsumed by independence in this round",
+   "state_change": "subsumed by novelty in this round"
+  },
+  "forbidden_inputs": [
+   "future_return",
+   "future_pnl",
+   "win_rate"
+  ],
+  "frozen_before_results": true
+ },
+ "hermes_budget": {
+  "MAX_HERMES_INVESTIGATIONS": 300,
+  "selection": "top-N by frozen priority",
+  "no_reordering_after_results": true
+ },
+ "quality_classes": [
+  "QUALITY_HIGH",
+  "QUALITY_MEDIUM",
+  "QUALITY_LOW"
+ ],
+ "data_quality_levels": [
+  "VERIFIED",
+  "PARTIAL",
+  "UNKNOWN"
+ ],
+ "no_upgrade": true,
+ "negative_control": {
+  "method": "random_time_control",
+  "runs": 200,
+  "seed": 20260925,
+  "pass_if": "random-time detections <= observed detections * 0.5"
+ },
+ "ablation": [
+  "remove_crossmarket",
+  "remove_volatility",
+  "remove_state",
+  "remove_price_shock"
+ ],
+ "overlap_audit": {
+  "metric": "pairwise Jaccard on episode sets",
+  "merge_if_jaccard_ge": 0.6
+ },
+ "concentration": {
+  "top_10_episode_share": true,
+  "top_20_episode_share": true,
+  "CONCENTRATION_HIGH_if": "top_10_share >= 0.50"
+ },
+ "status_classes": [
+  "HIGH_FREQUENCY",
+  "MEDIUM_FREQUENCY",
+  "LOW_FREQUENCY",
+  "REJECTED",
+  "INSUFFICIENT"
+ ],
+ "next_stage_gate": {
+  "requires": [
+   "frequency sufficient",
+   "short lifecycle",
+   "independent",
+   "PIT valid",
+   "data quality acceptable",
+   "mechanism traceable"
+  ],
+  "target": "NEXT_MECHANISM_VALIDATION",
+  "not": "TRADING_CANDIDATE"
+ },
+ "hard_bounds": {
+  "CANDIDATE_RESEARCH": 0,
+  "ORDER_SEND": 0,
+  "V3_FORWARD": "OFF",
+  "V3_SHADOW": "OFF",
+  "V3_LIVE": "OFF"
+ },
+ "forbidden_identifiers": [
+  "order_send",
+  "order_check",
+  "metatrader5",
+  "broker",
+  "execution_engine"
+ ],
+ "FREEZE_HASH": "7da599cdb6858ac624f9929d427c634187d257f8adb91d300b9fe33300aecb2f",
+ "frozen_at_utc": "2026-09-25T12:41:26.152803+00:00"
+}

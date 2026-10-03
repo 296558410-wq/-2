@@ -1,0 +1,105 @@
+{
+ "forecast_id": "A_20260804_H4",
+ "sample_id": "A_20260804",
+ "timestamp": "2026-08-04T00:00:00Z",
+ "horizon": 4,
+ "scenario_family": "RANGE",
+ "scenario_alternative": "QUIET",
+ "scenario_abstain": false,
+ "observations": [
+  "State COMPRESSION, VOL_CONTRACTION event, dwell 16 bars.",
+  "H1 bar range percentile 0.025, extreme contraction.",
+  "Price 4052 near swing low 4051.815, break BEYOND, no reclaim.",
+  "H4 whipsaw 4042-4069 with dual wicks; multi-TF conflict."
+ ],
+ "what_i_know": [
+  "Frozen label COMPRESSION with VOL_CONTRACTION at t.",
+  "Nearest level 4051.815 swing low, 0.1654 ATR beyond.",
+  "H1 trend_20 -11.06, H4 trend_50 -59.8, agreement CONFLICT.",
+  "DXY flat 99.98; analogs exit compression by step 4."
+ ],
+ "what_i_do_not_know": [
+  "Breakout direction and sustained acceptance unknown.",
+  "News, macro, VIX, UST10Y absent or UNKNOWN.",
+  "Base bar timeframe for state machine unclear.",
+  "Catalyst for expansion within horizon unknown."
+ ],
+ "evidence": [
+  "Compression dwell 16 bars with contraction event.",
+  "H1 range percentile 0.025 near cycle low.",
+  "Two analogs show non-directional exit at step 4.",
+  "Marginal break beyond level without reclaim."
+ ],
+ "counter_evidence": [
+  "H4 range_expanding flag, 26.7 range bar.",
+  "One analog enters TREND at step 4.",
+  "H4 close 4058.7 above open, net bullish body.",
+  "breakout_pressure candidate has no counter-evidence."
+ ],
+ "possible_mechanisms": [
+  {
+   "mechanism": "breakout_pressure",
+   "status": "POSSIBLE",
+   "why": "close 0.1654 ATR beyond level, no reclaim yet"
+  },
+  {
+   "mechanism": "failed_breakout_rejection",
+   "status": "POSSIBLE",
+   "why": "H4 dual wicks and TF conflict suggest rejection"
+  },
+  {
+   "mechanism": "volatility_expansion",
+   "status": "POSSIBLE",
+   "why": "contraction events often precede expansion"
+  },
+  {
+   "mechanism": "exhaustion_reversal",
+   "status": "WEAK",
+   "why": "16-bar dwell alone is weak signal"
+  }
+ ],
+ "primary_scenario": {
+  "scenario": "RANGE",
+  "horizon": 4,
+  "trigger": "compression resolves into oscillation around 4051.8 zone",
+  "invalidation": "sustained close beyond 4042 or 4069 confirms direction"
+ },
+ "alternative_scenario": {
+  "scenario": "QUIET",
+  "horizon": 4,
+  "trigger": "compression persists, volatility stays contracted",
+  "invalidation": "range percentile expansion above 0.5"
+ },
+ "expected_transition": "COMPRESSION to REJECTION or NO_DEFINED_STATE",
+ "direction_bias": "NEUTRAL",
+ "time_horizon": "4H",
+ "evidence_strength": 0.35,
+ "confidence": 0.38,
+ "uncertainty": 0.6,
+ "confidence_reason": "Analogs and contraction support non-directional bounded move.",
+ "uncertainty_reason": "Timeframe conflict, proxy data, unknown catalysts limit edge.",
+ "invalidation": "sustained close beyond 4042 or 4069 flips to DIRECTIONAL",
+ "change_my_mind": [
+  "Sustained close beyond 4069 with expanding range.",
+  "Confirmed reclaim of 4051.8 then hold above.",
+  "VIX or news catalyst appears within horizon.",
+  "State transitions to TREND or ACCEPTANCE by step 4."
+ ],
+ "abstain": false,
+ "abstain_reason": "Context sufficient; abstaining not required despite uncertainty.",
+ "questions": {
+  "Q1": "State COMPRESSION, event VOL_CONTRACTION, dwell 16, H1 range percentile 0.025.",
+  "Q2": "Break direction, catalysts, VIX, news, macro, base timeframe, horizon bar unit.",
+  "Q3": "Rejection analogs, level proximity, wicks both sides, TF conflict.",
+  "Q4": "Extreme H1 contraction, VOL_CONTRACTION event, one trend analog.",
+  "Q5": "Failed breakout driving range oscillation post-compression.",
+  "Q6": "Expanding range with sustained close beyond 4069 flips DIRECTIONAL.",
+  "Q7": "No; context sufficient despite noise and conflicts."
+ },
+ "reasoning_trace": [
+  "Compression plus contraction event favors bounded outcome.",
+  "Analogs mostly exit compression non-directionally by step 4.",
+  "Marginal breakout without reclaim favors rejection over trend.",
+  "TF conflict and absent catalysts block DIRECTIONAL call."
+ ]
+}

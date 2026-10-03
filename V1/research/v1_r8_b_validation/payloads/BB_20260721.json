@@ -1,0 +1,54 @@
+{
+ "audit_id": "BB_20260721",
+ "timestamp": "2026-07-21T00:00:00+00:00",
+ "current_state": "COMPRESSION (dwell 6 bars) with REJECTION event at t; frozen label REJECTION; price basing in 3999.3-4003 just below the active swing-low level 4003.005 after a decline from the 4040.4 H1 high; M1 and H1 range contracting",
+ "structure": "Active level: SWING_LOW_36497 @ 4003.005 (side DN, origin SWING_LOW, age 15 bars, 45 touches/240 bars, break_status INSIDE, reclaim NONE); M1 close 4000.245 is inside/below the level, distance ~0.03 ATR. Support below: 3999.3 (recent lows 3999.285/3999.535), then 3993.2 (07-19 low), 3987.6 (07-17 H4 low). Resistance above: 4003.005 level, 4008-4010 (M15 23:15 high 4010.495 / H1 23:00 high 4010.495), 4017.9 (H1 20:00 high). Multi-TF trend_20: M1 -3.46, M5 -4.21, M15 -9.04, H1 -14.11 (all negative), H4 +6.51; trend_50: H1 +29.95 vs H4 -69.86 -> agreement CONFLICT.",
+ "mechanism": "Downward displacement (-4.61 over 8 bars) into and through a high-touch swing low; REJECTION event at t followed by COMPRESSION (6 dwell bars, range contracting on M1/H1) - consistent with a pause/coil inside a down-leg. L4 offers a single candidate mechanism, trend_continuation (candidate only, not asserted). No macro/news/calendar input available; DXY flat (100.949, change_8 -0.045%, change_32 +0.013%) provides no cross-market push. Historical analogs (state-evolution only, no returns) show COMPRESSION typically exits to TREND or REJECTION within 12-16 steps, direction unknown.",
+ "primary_scenario": {
+  "scenario": "Compression resolves downward: price fails to reclaim 4003.005, breaks 3999.3, and extends toward the 3993-3995 zone (07-19 low area), with 3987-3988 as the outer target",
+  "confidence": 0.38,
+  "horizon": "SHORT_TERM",
+  "trigger": "M1/M5 close below 3999.3 with range expansion and sustained hold below 4003.005",
+  "invalidation": "Decisive hourly close back above 4003.005 (reclaim of the active swing-low level) or a push above 4008-4010"
+ },
+ "alternative_scenario": {
+  "scenario": "The 45-touch swing low holds as defended support; compression resolves upward with a reclaim of 4003.005, squeezing shorts toward 4010-4017.9 (H1 20:00 high / H1 13:00 zone)",
+  "confidence": 0.32,
+  "horizon": "SHORT_TERM",
+  "trigger": "Strong M1/M5 close above 4003.005 with range expansion and follow-through above 4004.6",
+  "invalidation": "Fresh low below 3999.3 before any reclaim of the level"
+ },
+ "expected_transition": "COMPRESSION -> REJECTION (downside resolution) as primary; COMPRESSION -> TREND (upside resolution) as alternative; state machine shows no exit from COMPRESSION after 6 dwell bars, so resolution timing is pending and the only prior transition in the window is REJECTION->COMPRESSION",
+ "direction": "DOWN",
+ "horizon": "SHORT_TERM",
+ "confidence": 0.38,
+ "counter_evidence": [
+  "Active swing-low level 4003.005 has 45 touches in 240 bars - heavily defended support that has not yet produced a cascade below it",
+  "M1 and H1 show range_contracting: compression/coiling can precede snap moves in either direction",
+  "Multi-TF agreement = CONFLICT: H4 trend_20 positive (+6.51) and H1 trend_50 positive (+29.95) argue against a clean downtrend",
+  "DXY roughly flat: no dollar strength to push gold lower",
+  "Historical analogs (state-evolution only) end in TREND in 2 of 3 cases - breakout, not continuation, is the modal outcome, with direction unknown",
+  "M5 current bar (contaminated) and M15/H1 current-bar geometry hint at possible early upside in the immediate post-cutoff period, but these are excluded as evidence due to inconsistency"
+ ],
+ "invalidation": "Hourly close above 4003.005 (reclaim of the active swing-low level) or any close above 4010 invalidates the downside bias; a decisive break below 3999.3 confirms it",
+ "data_quality_flags": [
+  "DXY: PROXY (Yahoo 5m, instrument definition UNKNOWN) - never upgraded to DIRECT",
+  "UST10Y_PROXY_TNX: UNKNOWN/absent - no rate input available",
+  "VIX: UNKNOWN/absent (stale or not covered)",
+  "CROSS_MARKET: only DXY present; NEWS/MACRO_EVENTS/CALENDAR/CFTC_COT/ETF_FLOWS/GLD/GC all absent - no fundamental catalyst input",
+  "M5/M15/H1/H4 'current' bars (00:00) contain OHLC inconsistent with the completed M1 tape (e.g., H4 current bar implies a 4044.7 high while M1 sits at ~4000.2 at 00:00:00) - suspected post-cutoff contamination; excluded from directional evidence",
+  "MULTI_TIMEFRAME agreement: CONFLICT",
+  "HISTORICAL_ANALOGS: state-evolution only, no returns/labels - direction not inferable from them",
+  "L2/L3/L4/L5 quality: DERIVED (causal computations), not raw observation"
+ ],
+ "reasoning_trace": [
+  "1. Read PIT context only; no other analyst's forecast consulted (blind).",
+  "2. Established reference price from the self-consistent completed M1 tape: close 4000.245, ATR 1.92, range contracting, consecutive_up 6 / consecutive_down 5.",
+  "3. Detected internal inconsistency: M5/M15/H1/H4 00:00 'current' bars show highs/closes (4004.6/4009.3/4010.3/4044.7) unreachable from the M1 tape at 00:00:00; treated as look-ahead contamination and excluded from evidence (flagged in data_quality_flags).",
+  "4. Trend read on completed data: trend_20 negative on M1/M5/M15/H1; price declined from 4040.4 (H1 12:00 high) to 3999.3 (M15 23:45 low) - a down-leg with a recent stall.",
+  "5. Structure: price sits inside/below the 4003.005 swing low (45 touches, break_status INSIDE, reclaim NONE); L4 candidate mechanism trend_continuation with -4.61 displacement; frozen label REJECTION at t.",
+  "6. State: COMPRESSION dwell 6; M1/H1 range contracting; transition history shows REJECTION->COMPRESSION - market is coiling after rejection, resolution pending.",
+  "7. Cross-market: DXY flat (PROXY), VIX and TNX absent; no external push in either direction.",
+  "8. Synthesized: mild downside bias (momentum down, price below the level, REJECTION label, continuation candidate) but low confidence due to CONFLICT multi-TF agreement, heavily defended support, compression uncertainty, and data-quality gaps; chose DOWN/SHORT_TERM at 0.38 as a modest lean rather than NO_DIRECTIONAL_EDGE because the completed-tape weight of evidence leans down."
+ ]
+}

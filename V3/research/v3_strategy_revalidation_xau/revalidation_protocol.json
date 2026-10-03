@@ -1,0 +1,29 @@
+{
+ "schema": "v3_revalidation_protocol/1",
+ "ts_utc": "2026-09-25T02:18:14.000857+00:00",
+ "scope": "prepared for a future, separately-authorised recomputation; NOT executed by this task",
+ "methods_must_equal_round3": {
+  "cost": "0.914 bp anchor; stress 0/1/2/3x",
+  "oos": "time-ordered 3-fold walk-forward (0-40/40-70/70-100%)",
+  "bootstrap": "block bootstrap (block=5, 2000 iters) CI95",
+  "permutation": "1500 iters vs unconditional pool",
+  "regime": "volatility tercile + weekday",
+  "multiple_testing": "BH-FDR q=0.05, cumulative count preserved",
+  "entry_exit": "signal from bar t (available t+1 00:00Z) -> entry close(t+1) -> exit close(t+2)"
+ },
+ "forbidden": [
+  "parameter re-tuning",
+  "threshold re-selection",
+  "cost-anchor changes",
+  "adding favourable regimes",
+  "deleting unfavourable years"
+ ],
+ "segment_stability_audit": [
+  "2006-2010",
+  "2011-2015",
+  "2016-2020",
+  "2021-2026"
+ ],
+ "segment_policy": "stability audit ONLY; segments are never used to cherry-pick; insufficient segments are reported as INSUFFICIENT_SAMPLE, never deleted",
+ "output_dir": "research/v3_strategy_revalidation_xau/"
+}

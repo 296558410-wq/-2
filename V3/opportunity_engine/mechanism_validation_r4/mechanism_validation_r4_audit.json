@@ -1,0 +1,41 @@
+{
+ "schema": "v3_mechanism_validation_r4_audit/1",
+ "ts_utc": "2026-09-25T12:01:28.740830+00:00",
+ "version": "MV-R4.0.0",
+ "git_head_start": null,
+ "input_hashes": {
+  "opportunity_1h": "614822c367bffc74241fcbdce1add8124183f58ef45a564fe35da8009a246155",
+  "opportunity_5m": "d6190a3a2b638b7a60cb4387676ad87b4d1c4a150e7eb2264cb1855bf200ac03",
+  "quality": "2bd86dcf681e3d6f13324825cf0a8d630ac2e1c7162a4500ab0f3261fb281da2",
+  "hermes": "2084d031c97c6c59d150bca8465df2ab3ab95b3037cc9cfa420e48d9e46c4188"
+ },
+ "inputs_unchanged": true,
+ "R3_METHOD_HASH": "571bad8fd9621780d676bfbd97b0687a1fa9c87e365311827456093969f36394",
+ "R3_registry_hash": "9913dd6d9860f5e0fb3b519de08c362234e1e711d6e6efb8154601ac6cc2b305",
+ "METHOD_CHANGED": false,
+ "R4_INPUT_HASH": "614822c367bffc74241fcbdce1add8124183f58ef45a564fe35da8009a246155+d6190a3a2b638b7a60cb4387676ad87b4d1c4a150e7eb2264cb1855bf200ac03",
+ "R4_OUTPUT_HASH": "2c4610d37bace801a573a6b2b2a449b404cf0bd9a6e3ca12cda91c0ee02cdd5b",
+ "ledger_hash": {
+  "rows": 131,
+  "chain_ok": true,
+  "bad_seq": null
+ },
+ "synthetic_isolated": true,
+ "synthetic_events_used_for_real_decision": 0,
+ "lookahead_policy": "mechanism identification uses only bars <= detected_at; post-event responses excluded",
+ "future_return_used_in_identification": false,
+ "pnl_used_in_decision": false,
+ "trading_status": {
+  "ORDER_SEND": 0,
+  "V3_FORWARD": "OFF",
+  "V3_SHADOW": "OFF",
+  "V3_LIVE": "OFF"
+ },
+ "field_correction": {
+  "field": "INPUT_UNEXPECTED",
+  "old_value": 1595,
+  "new_value": 0,
+  "reason": "section 5 defines INPUT_UNEXPECTED for undeclared records inside the 404 input set; the previous value counted source-ledger rows outside the INVESTIGATE scope (1_999 - 404 = 1_595), which are expected and are now reported as out_of_scope_records",
+  "method_impact": "none (reporting field only; no rule, threshold or input changed)"
+ }
+}

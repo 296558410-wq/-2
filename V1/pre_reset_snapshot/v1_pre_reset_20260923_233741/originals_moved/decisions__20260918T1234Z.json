@@ -1,0 +1,88 @@
+{
+ "schema": "hermes_decision_v1",
+ "utc_ts": "2026-09-18T12:34:30Z",
+ "cycle": "2026-09-18T12:34Z",
+ "decision_id": "DEC-2026-09-18T12:34Z",
+ "symbol": "XAUUSD",
+ "decision": "LONG",
+ "plan_id": "TP-20260918T1234Z",
+ "confidence": 0.5,
+ "bias": "LONG-lean 0.50 - with-trend PULLBACK-BUY on the retest of the 4360-4364 shelf that was just swept. The 12:15Z M15 bar flushed 4376.95->4353.80 (took out the 4370.58 range floor AND the 4360 ledge AND our prior SL 4357; POS-20260918T1102Z stopped @4356.79), then was V-bought back to 4371 (+17pt in ~10min) = demand. Broker MAs: H1 up (4372.17 > MA20 4364.96 > MA50 4338.25), H4 up (4372.17 > MA50 4343.68 > MA20 4324.09); M15 rolled below its MA20 4381.82 and is sitting on its MA50 4372.06; D1 still below MA20 4421.17 = background caution. Triple top 4399.70 caps the upside. Buy the retrace into 4358.5-4364.0 (swept shelf, just under H1 MA20), SL 4350.0 below the sweep low, T1 4382.0 / T2 4397.4.",
+ "mtf_agreement": "mixed-but-lean-long (2/4 aligned): H4 up + H1 up (broker), M15 rolled short-term (price 4372.17 < MA20 4381.82, on MA50 4372.06), D1 below MA20 (range/recovery) = caution. Net: higher-TF uptrend supports buying the pullback; M15 weakness is why size/edge stay small (p 0.45).",
+ "state_summary": "pkg 2026-09-18T12:34Z: live_days 10, live_ticks 1,955,274, gaps []. m15_live last_mid 4370.26, spread 0.32bps, tick 140/min, last6_max_move 13.1bps vs base 10.18 z 0.28 = vol normal. Broker (execution truth): bid 4371.00 / ask 4371.13 mid 4371.07 spread 0.30bps; positions [] margin_free 1992.78 = slot FREE (12:19Z LONG 0.01@4373.43 was SL-hit @4356.79, realized -16.64USD, reconciled). Broker MAs: D1 4372.17 < MA20 4421.17 (mixed/down) / H4 4372.17 > MA50 4343.68 > MA20 4324.09 (up) / H1 4372.17 > MA20 4364.96 > MA50 4338.25 (up) / M15 4372.17 ~ MA50 4372.06 < MA20 4381.82 (rolled). Session: day low 4334.35 (03:00Z), high 4399.70 triple-tested (07:00/08:00/09:00Z), pullback low 4372.57 (11:00Z), sweep low 4353.80 (12:15Z), V-recovery to 4371. Data caveat: pkg bar feed is +3h offset (pkg '12:00' M15 = broker 09:00 bar, 4394.64 vs broker 4394.57) so pkg MA/RSI are ~3.5h stale; used broker rates/tick as truth; candle_latest.json stale (2026-09-07) ignored.",
+ "m15_change": "vs 12:17Z (mid 4372.4): decisive change. The 12:15Z M15 bar printed O4373.71 H4376.95 L4353.80 C4358.44 = a 23pt flush that broke the 4370.58 range floor, the 4360 ledge and our prior SL 4357 (POS-20260918T1102Z stopped). The 12:30Z bar then opened 4358.08 and recovered to 4371.00 = the swept low was bought. So: shelf broken but immediately reclaimed; H1 printed a lower low (4372.57->4353.80) = short-term structure damage; overhead 4399.70 triple top intact.",
+ "opportunity": "actionable with-trend PULLBACK-BUY: retest of 4358.5-4364.0 (the swept 4360 shelf + just under H1 MA20 4364.96), trigger {zone_touch [4358.5,4364.0]} fires intra-bar at market. SL 4350.0 (below the 4353.80 sweep low). T1 4382.0 (M15 MA20 4381.82 / 12:30 bar high 4382.92), T2 4397.4 (triple-top). R 2.53 at entry-mid 4361.25.",
+ "opportunity_mechanism": "The 12:15Z flush swept the 4360-4370 shelf (stop run) and was immediately bought back (4353.80 -> 4371, +17pt) = demand at the sweep. With H4/H1 up-legs intact, a retrace into the swept shelf 4358.5-4364 should find the same buyers who defended 4353.80; holding it rotates price up to the M15 MA20 4381.8 -> range top 4382 -> triple top 4397.4. Invalidation = losing the sweep low -> hard SL 4350.0.",
+ "answers_14": {
+  "1_market_state": "Gate: Fri 12:34Z / 20:34 CST, armed=true open=true reason=open (exit 0). pkg 12:34Z: live_days 10, live_ticks 1,955,274, gaps []. m15_live mid 4370.26, spread 0.32bps, tick 140/min, last6_max 13.1bps z 0.28 vs base 10.18 = vol normal. Broker tick bid 4371.00/ask 4371.13 mid 4371.07 spread 0.30bps; positions [] margin_free 1992.78 = slot FREE. Broker MAs: D1 4372.17 < MA20 4421.17 mixed / H4 4372.17 > MA50 4343.68 > MA20 4324.09 up / H1 4372.17 > MA20 4364.96 > MA50 4338.25 up / M15 4372.17 ~ MA50 4372.06 < MA20 4381.82 rolled. Day low 4334.35, triple-top 4399.70, pullback low 4372.57, sweep low 4353.80 (12:15Z). Caveat: pkg bar feed +3h offset -> used broker rates/tick; candle_latest stale ignored.",
+  "2_consistency": "mixed-but-lean-long (2/4): H4 up (4341.62->4399.70 leg, price > MA50 4343.68) and H1 up (price > MA20 4364.96) support the pullback-buy; M15 rolled (price < MA20 4381.82) and D1 below MA20 4421.17 = caution. Net: buying the retrace aligns with the higher-TF up-legs; M15/D1 weakness caps conviction at p 0.45.",
+  "3_m15_change": "vs 12:17Z (mid 4372.4): the 12:15Z bar flushed to 4353.80 (broke 4370.58 floor + 4360 ledge + prior SL 4357; POS-1102Z stopped @4356.79) then the 12:30Z bar recovered to 4371.00 (sweep bought). H1 lower-low 4372.57->4353.80 = short-term damage; 4399.70 triple top overhead intact; vol normal (z 0.28).",
+  "4_opportunity": "with-trend PULLBACK-BUY into 4358.5-4364.0 (swept 4360 shelf / just under H1 MA20 4364.96), trigger zone_touch [4358.5,4364.0] (intra-bar, market fill); SL 4350.0; T1 4382.0 / T2 4397.4; R 2.53.",
+  "5_mechanism": "12:15Z flush = stop-run below the 4360-4370 shelf; the 4353.80 low was immediately bought (+17pt to 4371) = demand. H4/H1 up-legs intact -> a retrace into the swept shelf finds buyers -> rotate to M15 MA20 4381.8 -> 4382 range top -> 4397.4 triple top. Invalidation = losing the sweep low -> hard SL 4350.0.",
+  "6_trigger_condition": "{\"zone_touch\": [4358.5,4364.0]} - broker mid 4371.07 is 7.1pt ABOVE zone_hi 4364.0, so this is PENDING until the retrace touches 4364.0; it then fills at market intra-bar (no close-wait). Staleness/cancel line ~4400 (mid leaving the setup higher).",
+  "7_invalidation": "{\"price_cross_down\": 4350.0} (hard SL; below the 4353.80 sweep low -> the demand thesis is void). Pre-trigger this doubles as the setup-left price, but the fill zone sits above it so a normal walk-down fills first.",
+  "8_expected_return_R": "entry-mid 4361.25, blended target (4382.0 0.5 / 4397.4 0.5) = 4389.7 -> +28.45pt; SL 4350.0 -> risk 11.25pt; expected_R = 28.45/11.25 = 2.53R.",
+  "9_expected_loss_R": "1R = 11.25pt (4361.25 -> 4350.0). Max loss on 0.01 lot = 11.25pt * 0.01 * 100oz = 11.25USD ~ 0.56% of the 1992.78USD demo equity.",
+  "10_cost_value": "spread 0.32bps (~0.14pt @4371) + slippage 0.30bps (~0.13pt) = 0.62bps roundtrip ~ 0.27pt ~ 0.024R on the 11.25pt 1R.",
+  "11_net_EV_formula": "EV = p*R - (1-p)*1.0 - cost = 0.45*2.53 - 0.55*1.0 - 0.024 = 1.139 - 0.550 - 0.024 = +0.565R ~ +0.56R. Positive -> LONG authorised (cost 0.6bps is not the constraint).",
+  "12_recurrence": "Recurrent with-trend dip-buy family on the 4360-4370 shelf; today 0347Z LONG banked broker TP, 0647Z stopped -1R and 1102Z stopped -1R on a SL that sat INSIDE today's sweep. This plan re-arms the same family with the SL BELOW the sweep low (4350) and requires the retest instead of chasing, which addresses the exact failure mode of the last two stops.",
+  "13_decision": "LONG - with-trend pullback-buy on the retest of the swept 4360 shelf (4353.80 sweep low bought back to 4371). Entry zone 4358.5-4364.0, trigger zone_touch, SL 4350.0, T1 4382.0 (0.5) / T2 4397.4 (0.5), qty 0.01, EV +0.56R, bias LONG-lean 0.50.",
+  "14_reason": "12:15Z扫破4370/4360至4353.8被买回(+17pt)显承接; H1/H4升势未破; 回踩4358.5-4364挂多, SL4350(扫低下方), T4382/4397.4, EV+0.56R; 不追高"
+ },
+ "plan": {
+  "plan_id": "TP-20260918T1234Z",
+  "direction": "LONG",
+  "entry_zone": {
+   "low": 4358.5,
+   "high": 4364.0
+  },
+  "trigger_condition": {
+   "zone_touch": [
+    4358.5,
+    4364.0
+   ]
+  },
+  "invalidation_condition": {
+   "price_cross_down": 4350.0
+  },
+  "stop_logic": {
+   "type": "structure",
+   "level_price": 4350.0
+  },
+  "target_logic": {
+   "levels": [
+    {
+     "price": 4382.0,
+     "frac": 0.5
+    },
+    {
+     "price": 4397.4,
+     "frac": 0.5
+    }
+   ]
+  },
+  "expected_R": 2.53,
+  "expected_win_probability": 0.45,
+  "probability_source": "empirical: with-trend dip-buy/pullback-retest family on the 10 live-days sample; set to 0.45 (below the prior 0.48) because M15 has rolled below its MA20 and H1 just printed a lower low, while D1 remains below its MA20; only 2/4 TFs aligned.",
+  "estimated_cost": {
+   "spread_bps": 0.32,
+   "slippage_bps": 0.3,
+   "total_bps": 0.62,
+   "note": "0.62bps roundtrip ~ 0.27pt ~ 0.024R on the 11.25pt 1R"
+  },
+  "spread_bps": 0.32,
+  "slippage_bps": 0.3,
+  "expected_net_EV": {
+   "value": 0.56,
+   "units": "R",
+   "note": "0.45*2.53 - 0.55*1.0 - 0.024 = +0.565R"
+  },
+  "maximum_holding_time": "M15*12",
+  "qty_lots": 0.01
+ },
+ "gap_to_tradable": "LOCAL: broker mid 4371.07 sits 7.1pt ABOVE zone_hi 4364.0 -> a ~7pt retrace fires {zone_touch [4358.5,4364.0]} and auto-fills at market intra-bar; slot is FREE (broker positions [], equity 1992.78). What is missing right now: only the retrace itself - H4/H1 up-legs, the swept-shelf confluence and the risk geometry are all armed. If price instead runs straight up without retracing, the plan simply expires unfilled (price_left_setup) - acceptable, no chasing. ENVIRONMENTAL: nothing blocks (demo account live, AutoTrading on).",
+ "cost_note": "spread 0.32bps (0.14pt @4371) + slippage 0.30bps (0.13pt) = 0.62bps roundtrip (~0.27pt ~ 0.024R on the 11.25pt 1R)",
+ "ev_note": "EV = 0.45*2.53 - 0.55*1.0 - 0.024 = +0.565R. Positive -> LONG authorised.",
+ "model": "deepseek/deepseek-v4-flash",
+ "prompt_version": "hermes-trader-m15-cycle/2026-09-12"
+}

@@ -1,0 +1,107 @@
+{
+ "decision_id": "DEC-2026-09-21T13:47Z",
+ "cycle": "2026-09-21T13:47Z",
+ "utc_ts": "2026-09-21T13:47:00Z",
+ "symbol": "XAUUSD",
+ "decision": "SHORT",
+ "confidence": 0.62,
+ "bias": "SHORT-lean 0.62: price is back UNDER the whole M15 MA stack (MA20 4355.378 / MA50 4357.15 / MA200 4362.956) after the 13:30Z bar swept the session double bottom 4351.11/4351.47 to 4349.09 and closed back above it; the measured side is to sell the FIRST touch of the M15 MA20 from below (3000-bar probe run this cycle: p 0.709, n=79, SL+6/TP-6) - NOT to buy the swept floor (sweep-reclaim long p 0.489 = negative).",
+ "opportunity": "ma_retest_fade (first touch of M15 MA20 from below, capped by MA50/MA200 above)",
+ "opportunity_mechanism": "The 4354.5-4357.5 shelf is the M15 MA20 4355.378 (with the M15 MA50 4357.15 capping it) and price is below it. After the 11:30Z impulse to 4374.95 the failed poke above the 4362.7-4364.3 cluster, the 13:15Z poke high 4369.52 and the 13:30Z sweep of the double bottom to 4349.09 (vol 3239 = session max), the box's upper half is supply again: the M15 MA20 is the first level any bounce must reclaim, and the last three M15 closes (4359.59 / 4363.24 / 4352.88 / 4353.37) sit at or under it. Measured read (read-only probe baserate_1347Z.py, 3000 MT5 XAUUSD M15 bars 2026-08-05 -> 2026-09-21, non-overlapping, intrabar ambiguity -> SL, horizon 8): event = bar high >= M15 MA20 while the previous close < MA20 (first touch from below), entry at the MA20 level: A) SL +5.0/TP -5.0 n=139 96tp/43sl p 0.691 (gross +0.382R); A2) SL +5.0/TP -6.0 n=139 88tp/50sl/1open p 0.638 (gross +0.404R); A3) SL +6.0/TP -6.0 restricted to previous close below the M15 MA200 (today's capped regime) n=79 56tp/23sl p 0.709 (gross +0.418R). Same-bar cross-checks: B) M15 MA50 first touch SL+5/TP-6 n=83 p 0.671 (+0.476R gross); B2) MA50 SL+7/TP-10 n=83 p 0.519 (+0.261R); C) breakdown-then-retest of a broken 20-bar low SL+5/TP-5 n=65 p 0.677 (not today's shape: the 13:30Z bar broke the swing low with a WICK, its close 4352.88 stayed above it, so no decisive close-below); D) sweep-reclaim LONG (bar low < prior-20-bar low, close back above) SL 1.5 under the sweep/TP +6.0 n=91 p 0.489 = gross -0.022R and D2 (-9.0 target) p 0.425 = NEGATIVE, which is why the just-swept 4349.09 floor is deliberately NOT bought. The 6.0pt stop is what keeps the stop out of the M15 MA50 4357.15 and just under the MA200 4362.956.",
+ "mtf_agreement": "short_at_the_level_only (H4 constructive is the counterweight)",
+ "answers_14": {
+  "1": "Market state: pkg 13:47Z - D1 range (er 0.091, close 4378.645 under MA20 4419.985, RSI 45.4, pos_in_range 51.4, hi60 4696.87/lo60 4042.58); H4 mixed (er 0.302, RSI 65.1, pos 57.4); H1 trend (er 0.438, RSI 28.1, ll6 = lagged washout read); M15 range (er 0.048, RSI 47.6, pos_in_range 21.8, hi60 4391.0/lo60 4340.05); m15_live last_mid 4354.34, spread 0.32bps, tick 147/min, abnormal z 0.75 (normal). Fresh MT5 read 13:47:49Z (server 16:47): bid 4353.37/ask 4353.50, mid 4353.435, spread 0.13pt = 0.299bps; M15 close 4353.37, MA20 4355.378 / MA50 4357.15 / MA200 4362.956, ATR14 10.068, RSI14 51.54, hi20 4374.95, lo20 = lo60 4339.98, hi60 4383.42; H1 close 4353.37 < MA20 4363.615 and < MA50 4362.962, > MA200 4343.279, ATR14 16.223, RSI 41.62; H4 close 4353.37 > MA20 4347.858 > MA50 4340.622, RSI 59.37, ATR14 32.836 (constructive); D1 close 4353.37 < MA20 4406.601, RSI 51.88, Monday o4380.36 h4383.42 l4339.98 = 43.44pt, price at 30.9% of the day. Book: FLAT - MT5 positions_get [] and demo160759434 balance = equity = margin_free 1971.70, so the single-position slot is FREE (POS-20260921T1147Z LONG 0.01 @4358.29 was closed by the broker TP @4368.29 for +10.00 USD at 13:35Z; the engine reconciled it).",
+  "2": "Consistency: partially aligned on the short side - M15 price is under all three M15 MAs and the M15/M15-MA20 first-touch analog is the positive read, H1 is capped under MA20/MA50 (RSI 41.62) and D1 is 53pt under its MA20; the counterweight is H4, which is still constructive (close > MA20 4347.858 > MA50 4340.622, RSI 59.37), so this is a fade at the level with a mechanical 6pt stop, not a trend short.",
+  "3": "M15 change vs 13:32Z: the 13:30Z bar (server 16:30: o4364.41 h4364.75 l4349.09 c4352.88 vol 3239 = session-max volume) swept through the session double bottom 4351.11/4351.47 down to 4349.09 (stopping 1.2pt above the H4 MA20 4347.858) and closed back ABOVE both lows at 4352.88 - a liquidity sweep, not a decisive break (no close below the lows) - and it also closed back below the whole MA cluster, undoing the 13:15Z poke (c4364.38 above the cluster). The forming 13:45Z bar is holding the swept floor: o4352.64 h4355.12 l4349.70 c4353.37, i.e. price is now 1.9pt under the M15 MA20 4355.378 after having been 3.6pt above it 15 minutes ago. Net change: the box top (4374.95) was rejected, the box floor was swept and reclaimed, and the MA stack above is untested supply again.",
+  "4": "Opportunity: SHORT the first touch of the M15 MA20 4355.378 from below, as a 3.0pt band [4354.5, 4357.5] that also contains the M15 MA50 4357.15 - i.e. the whole first shelf above price. Concrete: trigger zone_touch [4354.5, 4357.5] (fills at market on the first sample inside, no M15 close needed), stop 4361.5 (level + 6.1pt, the measured A3 offset, 1.5pt under the M15 MA200 4362.956), target 4349.5 (the measured -6pt offset; sits 0.4pt above the just-swept 4349.09), then 4344.0 (0.7pt above the H1 MA200 4343.279) and 4339.5 (the day low 4339.98 / H4 MA50 4340.622 shelf). Measured p 0.709 (n=79), headline EV +0.39R.",
+  "5": "Mechanism: the M15 MA20 as first-touch supply from below in a capped regime. Price is under the M15 MA20/MA50/MA200 stack and under the H1 MA20/MA50, so any bounce must first eat the MA20 (4355.378) and then the MA50 (4357.15) before it can re-enter the 4362.7-4364.3 cluster that rejected four times (4363.35/4363.65/4364.36/4369.52). The measured base rate for exactly this event (bar high >= MA20 with the previous close below it, capped regime filter close < MA200) is 56 wins / 23 losses = p 0.709 with a symmetric 6pt stop/target, i.e. the touch is where the bounce is sold rather than chased. The 13:30Z sweep of the double bottom to 4349.09 gives the target shelf: the same low is 0.4pt under T1 4349.5, and the H4 MA20 4347.858 / H1 MA200 4343.279 / day low 4339.98 cluster underneath stops the target ladder running away.",
+  "6": "Trigger conditions in concrete prices: {zone_touch: [4354.5, 4357.5]} - the engine fills at market on the first cycle sample whose mid is inside; mid 4353.435 (pkg sample 4354.34) is 1.1pt below the band, i.e. the trade needs a rise of about 0.11x the M15 ATR14 10.068. One plan this cycle; no other plan is active (TP-20260921T1332Z was cancelled by the engine's anti-zombie guard at 13:35Z and TP-20260921T1247Z earlier at 13:18Z).",
+  "7": "Invalidation in concrete prices: {price_cross_up: 4360.5} - acceptance above the M15 MA50 4357.15 and the 4360.0 half-level kills the fade before the fill (that opens the 4362.956 MA200 cluster and then 4374.95); once filled, the broker stop 4361.5 governs and the thesis is dead on a close back above 4362.956. Downside structure for the ladder: 4349.09 (swept low) / 4347.858 (H4 MA20) / 4343.279 (H1 MA200) / 4340.622 (H4 MA50) / 4339.98 (day low).",
+  "8": "Expected return: headline frame = fill at the zone centre 4356.0 -> 1R = 4361.5 - 4356.0 = 5.5pt and T1 4349.5 = 6.5pt = 1.18R. Level frame = fill at the MA20 4355.378 -> 1R 6.12pt, T1 5.88pt = 0.96R (this is exactly the geometry the probe measured). Deeper rungs: T2 4344.0 = 12.0pt = 2.18R, T3 4339.5 = 16.5pt = 3.00R, quoted as geometry only - the demo banks tp_levels[0] = 4349.5.",
+  "9": "Expected loss: 1R = 5.5pt = 5.50 USD = 0.279% of the 1971.70 balance at the zone-centre fill (zone-low fill 4354.5 -> 7.0pt = 7.00 USD = 0.355%), under the 1% per-trade cap; notional = 0.01 lot x 100 oz x 4356 = about 4356 USD, far under the 25000 USD cap; no add, no averaging, no re-sizing after today's earlier stop-outs.",
+  "10": "Cost: live spread 0.13pt on mid 4353.435 = 0.299bps (tick 16:47:49.573 server) + 0.30bps modelled slippage = 0.599bps round trip = about 0.26 USD per 0.01 lot = 0.047R of the headline 5.5pt 1R; far below the 1.0bps entry ceiling, so cost is not the obstacle.",
+  "11": "Net EV: 0.66 x 1.18 - 0.34 - 0.047 = +0.39R (breakeven p = 0.480); the measured p is 0.709, and even at the conservative p 0.66 used here the plan is far above breakeven. Frames: level fill 4355.378 (1R 6.12pt, R_T1 0.96, p 0.68) -> 0.68 x 0.96 - 0.32 - 0.043 = +0.29R; zone-low fill 4354.5 (1R 7.0pt, R_T1 0.714, p 0.63) -> +0.043R (still positive); zone-high fill 4357.5 (1R 4.0pt, R_T1 2.0, p 0.72) -> +1.10R. Worst in-zone fill breakeven p = 0.605, so the only frame that is thin is a fill at the very bottom of the band - which is also the frame where the filler is closest to the measured MA20 level.",
+  "12": "Reproducibility: read-only probes run this cycle - run_state/tmp/q_20260921T1347Z.py (live MT5 tick + account + positions + 300 M15 / 300 H1 / 200 H4 / 60 D1 bars with MA20/50/200, ATR14, RSI14, hi/lo20-60, day range) and run_state/tmp/baserate_1347Z.py (3000 MT5 XAUUSD M15 bars, span 1785972600 -> 1790009100, non-overlapping, intrabar ambiguity -> SL, horizon 8; A/A2/A3 = MA20 first-touch fade, B/B2 = MA50 first-touch fade, C = breakdown-then-retest, D/D2/D3 = sweep-reclaim long). No orders, no registry changes, no manual ledger surgery; this cycle writes only this decision file.",
+  "13": "Decision: SHORT - positive EV (+0.39R headline, +0.043R even at the worst in-zone fill), slot FREE (book FLAT, balance 1971.70), qty 0.01 inside [0.01,0.05], spread 0.299bps << the 1.0bps ceiling, and the zone sits only 1.1pt above the live mid.",
+  "14": "SHORT the first touch of M15 MA20 4355.378 (band 4354.5-4357.5), SL 4361.5, T1 4349.5; measured p 0.709 (n=79), EV +0.39R; buying the swept 4349.09 floor measured negative (p 0.489)."
+ },
+ "plan": {
+  "plan_id": "TP-20260921T1347Z",
+  "direction": "SHORT",
+  "entry_zone": {
+   "low": 4354.5,
+   "high": 4357.5
+  },
+  "trigger_condition": {
+   "zone_touch": [
+    4354.5,
+    4357.5
+   ]
+  },
+  "invalidation_condition": {
+   "price_cross_up": 4360.5
+  },
+  "stop_logic": {
+   "type": "M15_MA20_4355.378_+_6.1pt_(the_exact_offset_of_the_measured_A3_variant_SL=level+6.0);_clears_the_M15_MA50_4357.15_by_4.35pt_and_sits_1.46pt_under_the_M15_MA200_4362.956_cluster_so_a_run_to_the_cluster_is_a_deliberate_stop",
+   "level_price": 4361.5
+  },
+  "target_logic": {
+   "levels": [
+    {
+     "price": 4349.5,
+     "frac": 0.5
+    },
+    {
+     "price": 4344.0,
+     "frac": 0.3
+    },
+    {
+     "price": 4339.5,
+     "frac": 0.2
+    }
+   ]
+  },
+  "expected_R": 1.18,
+  "expected_win_probability": 0.66,
+  "probability_source": "Read-only geometry-matched base-rate probe run this cycle: run_state/tmp/baserate_1347Z.py over 3000 MT5 XAUUSD M15 bars (span 2026-08-05 -> 2026-09-21, non-overlapping, intrabar ambiguity -> SL, horizon 8 bars). Headline event = bar high >= M15 MA20 while the previous close < MA20 (first touch from below), entry at the MA20 level, SL +6.0pt / TP -6.0pt, restricted to bars whose previous close is also below the M15 MA200 (today's capped regime): n=79, 56 tp / 23 sl -> p 0.709, gross +0.418R. Unfiltered MA20 first-touch: SL+5/TP-5 n=139 p 0.691 (gross +0.382R); SL+5/TP-6 n=139 88tp/50sl/1open p 0.638 (gross +0.404R). Cross-checks on the same bars: M15 MA50 first-touch SL+5/TP-6 n=83 p 0.671 (+0.476R) and SL+7/TP-10 n=83 p 0.519 (+0.261R); breakdown-then-retest of a broken 20-bar low SL+5/TP-5 n=65 p 0.677 (flagged but NOT the live shape - the 13:30Z bar broke the double bottom with a wick and closed above it); sweep-reclaim LONG SL 1.5 under the sweep/TP +6.0 n=91 43tp/45sl/3open p 0.489 = gross -0.022R and TP +9.0 p 0.425 = negative. p held to 0.66 (well below the measured 0.709) for: the H4 still being constructive (close > MA20 > MA50, RSI 59.37), the wider T1 (R_T1 1.18 vs the probe's measured 1.0), the possibility of an adverse fill inside the 3pt band (zone-low fill frame needs p > 0.605 just to break even) and the general box regime (M15 er 0.048).",
+  "estimated_cost": {
+   "spread_bps": 0.299,
+   "slippage_bps": 0.3,
+   "roundtrip_bps": 0.599,
+   "roundtrip_usd_per_0.01lot": 0.26
+  },
+  "spread_bps": 0.299,
+  "slippage_bps": 0.3,
+  "expected_net_EV": {
+   "value": 0.39,
+   "units": "R",
+   "note": "Headline frame: fill at the zone centre 4356.0, 1R = 5.5pt (stop 4361.5), R_T1 = 1.18 (T1 4349.5), p = 0.66, c = 0.047R -> EV = 0.66 x 1.18 - 0.34 - 0.047 = +0.39R; breakeven p = 0.480 (measured p 0.709). Sensitivity: p 0.709 (measured analog) -> +0.45R; p 0.60 -> +0.28R; p 0.480 -> 0.000R. Level frame (fill 4355.378, 1R 6.12pt, R_T1 0.96, p 0.68, c 0.043R) -> +0.29R. Zone-low frame (fill 4354.5, 1R 7.0pt, R_T1 0.714, p 0.63, c 0.037R) -> +0.043R (breakeven p 0.605 - the thin frame). Zone-high frame (fill 4357.5, 1R 4.0pt, R_T1 2.0, p 0.72, c 0.065R) -> +1.10R. Demo banks tp_levels[0] = 4349.5 only; the 4344.0 / 4339.5 rungs are geometry."
+  },
+  "maximum_holding_time": "M15*8",
+  "qty_lots": 0.01
+ },
+ "gap_to_tradable": "PRICE only, 1.1pt of it - and nothing else. The armed band [4354.5, 4357.5] sits 1.1pt above the live mid 4353.435 (the pkg sample mid 4354.34 is 0.16pt below the band), so the trigger is a small bounce into the M15 MA20 4355.378 / MA50 4357.15 shelf and the engine fills at market on the first sample inside - no M15 close confirmation required. Everything else is already satisfied: spread 0.299bps << the 1.0bps ceiling, data fresh (pkg live_days 11, live_ticks 2,177,291, context_days 35, gaps[]), qty 0.01 inside [0.01,0.05], notional about 4356 USD << the 25000 USD cap, 1R 5.5-7.0 USD = 0.28-0.36% of the 1971.70 balance, and the POSITION SLOT IS FREE (broker positions_get []; POS-20260921T1147Z was closed at broker TP 4368.29, +10.00 USD, and the engine reconciled it). Anti-zombie headroom: the engine cancels a SHORT only if mid < zone_lo - 2 x band = 4354.5 - 6.0 = 4348.5, so the plan survives even a 5.8pt dip to the swept low 4349.09. If instead price runs away upward through 4360.5 without touching the band, the plan is invalidated and ages out - no trade.",
+ "bench_not_registered": [
+  "LONG the just-swept floor (entry 4349.5-4352.5, stop under the sweep low 4349.09 / H4 MA20 4347.858, target the MA20 4355.378): REJECTED on this cycle's measurement. Sweep-reclaim analog (bar low < prior-20-bar low, close back above) n=91: SL 1.5 under the sweep / TP +6.0 -> 43tp/45sl/3open p 0.489, gross -0.022R; same with TP +9.0 -> p 0.425, gross -0.134R. The 13:30Z bar is that exact shape and it is a coin-flip at best, against H1 RSI 41.62 and a stack of MAs overhead. (The SL 3.0-under-sweep variant D3 was p 0.545 with a ~1R-to-2R target, i.e. roughly breakeven-to-thin, not better than the short.)",
+  "SHORT the M15 MA50 4357.15 first touch (band 4356.5-4358.5, SL 4362.5, T1 4351.0): positive but weaker - n=83 p 0.671 at SL+5/TP-6, p 0.519 at SL+7/TP-10 - and its stop 4362.5 sits exactly on the M15 MA200 4362.956, the worst place for a stop. The MA20 band pays a higher p (0.709) for a lower level.",
+  "SHORT the M15 MA200 4362.956 / H1 MA50 4362.962 cluster first touch from below (the 12:47Z plan shape): n=41 p 0.564 in the older read, but the shape-matched poke-fail subset measured 0.333 last cycle - and it cannot be registered anyway, the band would have to sit 9.5pt above the mid, far outside the engine's 2 x band anti-zombie radius. Not armed.",
+  "SHORT at market 4353.435: the stop has to clear the MA20 4355.378 + MA50 4357.15 shelf at 4361.5 (8.1pt) while T1 4349.5 is only 3.9pt away -> R_T1 0.48, negative at p 0.709. The trade only pays at the touch; chasing the mid is exactly what the 12:32Z and 11:32Z stop-outs were.",
+  "LONG breakout above 4357.5 (chase the reclaim of the MA shelf): chase-at-close measured 0/8 in the earlier probe sets, and the target would be the 4362.7-4364.3 cluster that rejected four times today. Rejected.",
+  "SHORT the breakdown below 4349.09: the earlier chase-the-breakdown read was 0/8 and the H4 MA20 4347.858 shelf is 1.2pt under the sweep low, so the first target is against the trigger. Rejected.",
+  "SHORT the 4374.0-4375.5 swing high (last cycle's armed plan): unchanged thesis, but mid 4353.435 is 20.5pt away, far outside the engine's 2 x band registration radius (a 1.5pt band would need mid >= 4370.0), so it cannot be re-armed from here.",
+  "LONG the 4343.279 H1 MA200 / 4339.98 day low floor: session record for filled floor buys is 0/3 with MFE only +2.9/+3.1pt, and today's broker-tick dip-buy tape measured p 0.022 at the 4351.5-4353.5 band. Rejected."
+ ],
+ "risk_discipline": "qty_lots 0.01 (inside 0.01-0.05, default); ONE plan this cycle (single-position rule: broker positions_get [] -> slot FREE); no add, no averaging, no manual close, no SL move (stop_authority=initial); 1R 5.5pt = 5.50 USD = 0.279% of the 1971.70 balance at the zone-centre fill (7.00 USD = 0.355% at the zone low), under the 1% cap; notional about 4356 USD << the 25000 USD cap; demo exec only, real account untouched, registry unmodified. Disclosed fill-quality risk: the engine's trigger samples the pkg mid, and the demo broker fills at the live price - the 11:32Z cycle filled 1.95pt adverse on a 3pt band, so a fast rally through the band can produce a fill above the zone (that frame is the zone-high frame, R_T1 2.0, and remains positive; a fill at the zone low is the thin frame with breakeven p 0.605). No ledger surgery in any case.",
+ "data_quality_note": "pkg live_days 11, live_ticks 2,177,291, context_days 35, gaps[]; spread 0.299bps measured on the 16:47:49.573 server tick. run_state/candle_latest.json is STALE (last bar 2026-09-07 12:15Z, bearish engulfing pair) and was ignored - no fresh candle patterns, so every structure call comes from the fresh MT5 bars read at 13:47:49Z plus the pkg regime fields. Known drift: the pkg M15/H1 snapshots lag live MT5 by 1-2 M15 bars (pkg M15 last_bar 13:15Z close 4351.14 vs fresh MT5 13:30Z close 4352.88 and forming 13:45Z), so the pkg is used for regime framing and for the engine's trigger sample only, while every execution level quoted here is in fresh-MT5 space (M15 MA20 4355.378, MA50 4357.15, MA200 4362.956; swept low 4349.09; H4 MA20 4347.858, MA50 4340.622; H1 MA200 4343.279). Note that MT5 bar timestamps print in broker server time (GMT+3): the '16:30' M15 bar is the 13:30Z bar. The live_fxtm tick parquet lags in 15-min batches and was not used for execution levels.",
+ "model": "deepseek/deepseek-v4-flash",
+ "prompt_version": "hermes_trader_m15_v1",
+ "engine": {
+  "plan_id": "TP-20260921T1347Z",
+  "registered": true,
+  "ledger_sha": "12296971b0d4",
+  "validation": "OK",
+  "outcome": "PLAN REGISTERED valid=OK, TRIGGER_CHECK -> PENDING (pkg sample mid 4354.34 vs zone_lo 4354.5, 0.16pt shy), CYCLE_DONE 2026-09-21T13:47Z, no fill. The plan survived the anti-zombie guard (cancel threshold zone_lo - 2 x band = 4354.5 - 6.0 = 4348.5; mid 4354.34 >= 4348.5) - this is the opposite of the 13:32Z geometric death, where the band sat 17.7pt above the mid.",
+  "consequence": "armed and waiting for a bounce into the M15 MA20 4355.378 / MA50 4357.15 shelf; the next engine pass fills at market on the first sample inside [4354.5,4357.5], or invalidates on price_cross_up 4360.5, or ages out. No manual intervention, no ledger surgery.",
+  "book_after": "FLAT - demo160759434 balance = equity = 1971.70, MT5 positions_get [], exactly one plan active (TP-20260921T1347Z)"
+ }
+}

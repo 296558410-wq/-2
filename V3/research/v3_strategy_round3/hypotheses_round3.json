@@ -1,0 +1,284 @@
+{
+ "schema": "v3_hypothesis_registry_round3/1",
+ "round": 3,
+ "ts_utc": "2026-09-25T01:43:03.937861+00:00",
+ "frozen_before_any_evaluation": true,
+ "count": 8,
+ "timeframe": "DAILY",
+ "gold_leg": "GC_FUTURES_PROXY",
+ "gold_leg_caveat": "GC=F (COMEX gold futures) is used as the gold leg because XAUUSD spot daily bars are not obtainable in a PIT-safe way (Yahoo XAUUSD=X/XAU=X -> 404; stooq throttled). The venue-correct FXTM sample is only ~26 daily bars (< 30). Transferability of any result to the FXTM spot execution venue is NOT established.",
+ "max_allowed": 8,
+ "no_parameter_scanning": true,
+ "no_combinatorial_enumeration": true,
+ "prior_rounds": {
+  "round1_count": 12,
+  "round2_count": 11,
+  "round1_hash": "1650e065911e72c93f85cf26d51cdb179f252b089eb4a2c86ad8be2c7682c52d",
+  "round2_hash": "5f135bfe60a2c0c0f53ce785046af2759eec69a75f92d6fb21b908910688ecef"
+ },
+ "note": "H21/H22/H23 are NOT modified and stay NOT_TESTABLE. All Round 3 hypotheses are new ids.",
+ "hypotheses": [
+  {
+   "hypothesis_id": "H24_DXY_INVERSE_STATE",
+   "mechanism_bucket": "DXY_INVERSE",
+   "hypothesis": "a decisive DXY daily move is followed by an opposite-direction gold move on the next day",
+   "mechanism": "dollar-priced asset arithmetic: a large same-day dollar impulse pushes the USD price of gold the other way; if part of that impulse is flow rather than information, the next session partially continues",
+   "signal_definition": {
+    "dxy_move_threshold_pct": 0.3,
+    "direction": "inverse",
+    "hold_days": 1,
+    "entry": "close(t+1)",
+    "exit": "close(t+2)"
+   },
+   "invalid_condition": "DXY reverses its state on the next bar",
+   "expected_horizon": "1 day",
+   "cost_assumption": "0.914 bp round trip, stress 0/1/2/3x",
+   "parent_hypothesis": null,
+   "novelty_reason": "NEW: daily cross-market state (no intraday analogue in H01-H23)",
+   "independence": "INDEPENDENT",
+   "status_tested": true,
+   "mechanism_fingerprint": "8ba44c54026ef47e",
+   "duplicate_check": {
+    "fingerprint": "8ba44c54026ef47e",
+    "duplicate_of_prior": false,
+    "prior_ids_seen": [
+     "H01_1M_SIGMA_FADE",
+     "H02_5M_RANGE_BREAKOUT",
+     "H03_LONDON_OPEN_MOMENTUM"
+    ],
+    "action": "ADMIT"
+   }
+  },
+  {
+   "hypothesis_id": "H25_UST_YIELD_STATE",
+   "mechanism_bucket": "UST_STATE",
+   "hypothesis": "a decisive daily change in the 10Y Treasury yield is followed by an opposite gold move",
+   "mechanism": "discount-rate channel: yields are the opportunity cost of a non-yielding asset; a decisive daily yield move re-rates gold with a one-session lag",
+   "signal_definition": {
+    "ust10y_change_bp_threshold": 5.0,
+    "direction": "inverse",
+    "hold_days": 1,
+    "entry": "close(t+1)",
+    "exit": "close(t+2)"
+   },
+   "invalid_condition": "yield retraces within the session",
+   "expected_horizon": "1 day",
+   "cost_assumption": "0.914 bp round trip, stress 0/1/2/3x",
+   "parent_hypothesis": null,
+   "novelty_reason": "NEW: official-yield cross-market state; no intraday analogue",
+   "independence": "INDEPENDENT",
+   "status_tested": true,
+   "mechanism_fingerprint": "27d89e6b93426f23",
+   "duplicate_check": {
+    "fingerprint": "27d89e6b93426f23",
+    "duplicate_of_prior": false,
+    "prior_ids_seen": [
+     "H01_1M_SIGMA_FADE",
+     "H02_5M_RANGE_BREAKOUT",
+     "H03_LONDON_OPEN_MOMENTUM"
+    ],
+    "action": "ADMIT"
+   }
+  },
+  {
+   "hypothesis_id": "H26_VIX_RISK_STATE",
+   "mechanism_bucket": "VIX_STATE",
+   "hypothesis": "a decisive VIX jump is followed by a same-direction gold move (safe-haven bid)",
+   "mechanism": "risk aversion: a decisive volatility repricing coincides with a flight to hedges; the gold bid persists into the next session if the risk shock is not immediately reversed",
+   "signal_definition": {
+    "vix_log_change_pct_threshold": 5.0,
+    "direction": "follow",
+    "hold_days": 1,
+    "entry": "close(t+1)",
+    "exit": "close(t+2)"
+   },
+   "invalid_condition": "VIX retraces below its prior level",
+   "expected_horizon": "1 day",
+   "cost_assumption": "0.914 bp round trip, stress 0/1/2/3x",
+   "parent_hypothesis": null,
+   "novelty_reason": "NEW: risk-state cross-market relation (the relation is pre-declared and falsifiable, not assumed)",
+   "independence": "INDEPENDENT",
+   "status_tested": true,
+   "mechanism_fingerprint": "8faa1b8777ace974",
+   "duplicate_check": {
+    "fingerprint": "8faa1b8777ace974",
+    "duplicate_of_prior": false,
+    "prior_ids_seen": [
+     "H01_1M_SIGMA_FADE",
+     "H02_5M_RANGE_BREAKOUT",
+     "H03_LONDON_OPEN_MOMENTUM"
+    ],
+    "action": "ADMIT"
+   }
+  },
+  {
+   "hypothesis_id": "H27_GC_XAUUSD_CONFIRMATION",
+   "mechanism_bucket": "CROSS_CONFIRMATION",
+   "hypothesis": "a GC/XAUUSD divergence is resolved in favour of XAUUSD on the next day",
+   "mechanism": "same-underlying arbitrage pressure should close a temporary basis divergence",
+   "signal_definition": {
+    "needs": "XAUUSD spot DAILY",
+    "hold_days": 1
+   },
+   "invalid_condition": "divergence widens",
+   "expected_horizon": "1 day",
+   "cost_assumption": "0.914 bp round trip, stress 0/1/2/3x",
+   "parent_hypothesis": null,
+   "novelty_reason": "NEW: basis divergence between gold futures and spot",
+   "independence": "INDEPENDENT",
+   "status_tested": false,
+   "blocked_reason": "DATA-BLOCKED: XAUUSD spot daily is unavailable (Yahoo 404 / stooq throttled); the venue-correct FXTM daily sample is ~26 bars (< 30). Target S1 cannot be built without violating the no-proxy-substitution rule for this specific hypothesis.",
+   "mechanism_fingerprint": "a42a21a3c75a032f",
+   "duplicate_check": {
+    "fingerprint": "a42a21a3c75a032f",
+    "duplicate_of_prior": false,
+    "prior_ids_seen": [
+     "H01_1M_SIGMA_FADE",
+     "H02_5M_RANGE_BREAKOUT",
+     "H03_LONDON_OPEN_MOMENTUM"
+    ],
+    "action": "ADMIT"
+   }
+  },
+  {
+   "hypothesis_id": "H28_DXY_UST_DOUBLE_STATE",
+   "mechanism_bucket": "DOUBLE_CONFIRM",
+   "hypothesis": "when DXY and the 10Y yield move decisively in the SAME direction, gold moves opposite the next day",
+   "mechanism": "two independent price channels agreeing (currency + discount rate) makes the re-rating more likely to persist for one session",
+   "signal_definition": {
+    "dxy_move_threshold_pct": 0.3,
+    "ust10y_change_bp_threshold": 5.0,
+    "require_same_sign": true,
+    "direction": "inverse",
+    "hold_days": 1,
+    "entry": "close(t+1)",
+    "exit": "close(t+2)"
+   },
+   "invalid_condition": "the two signals disagree on the next bar",
+   "expected_horizon": "1 day",
+   "cost_assumption": "0.914 bp round trip, stress 0/1/2/3x",
+   "parent_hypothesis": null,
+   "novelty_reason": "NEW: two-channel agreement; exactly ONE combination frozen (no enumeration)",
+   "independence": "INDEPENDENT",
+   "status_tested": true,
+   "mechanism_fingerprint": "ef83027321ec51ef",
+   "duplicate_check": {
+    "fingerprint": "ef83027321ec51ef",
+    "duplicate_of_prior": false,
+    "prior_ids_seen": [
+     "H01_1M_SIGMA_FADE",
+     "H02_5M_RANGE_BREAKOUT",
+     "H03_LONDON_OPEN_MOMENTUM"
+    ],
+    "action": "ADMIT"
+   }
+  },
+  {
+   "hypothesis_id": "H29_DXY_VIX_STRESS_COMBO",
+   "mechanism_bucket": "DOUBLE_STATE",
+   "hypothesis": "when DXY rises decisively AND VIX jumps decisively, gold rises the next day",
+   "mechanism": "simultaneous dollar strength and risk repricing is a stress signature in which the hedge bid usually dominates the dollar channel for one session",
+   "signal_definition": {
+    "dxy_move_threshold_pct": 0.3,
+    "vix_log_change_pct_threshold": 5.0,
+    "direction": "follow_gold_up",
+    "hold_days": 1,
+    "entry": "close(t+1)",
+    "exit": "close(t+2)"
+   },
+   "invalid_condition": "either leg reverses",
+   "expected_horizon": "1 day",
+   "cost_assumption": "0.914 bp round trip, stress 0/1/2/3x",
+   "parent_hypothesis": null,
+   "novelty_reason": "NEW: stress co-occurrence; exactly ONE combo frozen",
+   "independence": "INDEPENDENT",
+   "status_tested": true,
+   "mechanism_fingerprint": "b6489cb927612d7e",
+   "duplicate_check": {
+    "fingerprint": "b6489cb927612d7e",
+    "duplicate_of_prior": false,
+    "prior_ids_seen": [
+     "H01_1M_SIGMA_FADE",
+     "H02_5M_RANGE_BREAKOUT",
+     "H03_LONDON_OPEN_MOMENTUM"
+    ],
+    "action": "ADMIT"
+   }
+  },
+  {
+   "hypothesis_id": "H30_CROSS_MARKET_AGREEMENT",
+   "mechanism_bucket": "AGREEMENT_DIVERGENCE",
+   "hypothesis": "a three-variable macro agreement (DXY down, 10Y down, VIX up) is followed by a gold rise (and the mirror by a fall)",
+   "mechanism": "a coherent macro state (easier dollar + easier rates + rising risk premia) is the canonical gold-supportive backdrop; the mirror state is the canonical gold-negative backdrop",
+   "signal_definition": {
+    "set_a": {
+     "DXY": "down>=0.30%",
+     "UST10Y": "down>=5bp",
+     "VIX": "up>=5%"
+    },
+    "a_direction": "LONG",
+    "set_b": {
+     "DXY": "up>=0.30%",
+     "UST10Y": "up>=5bp",
+     "VIX": "down>=5%"
+    },
+    "b_direction": "SHORT",
+    "hold_days": 1,
+    "entry": "close(t+1)",
+    "exit": "close(t+2)",
+    "states": 2
+   },
+   "invalid_condition": "the macro state breaks up on the next bar",
+   "expected_horizon": "1 day",
+   "cost_assumption": "0.914 bp round trip, stress 0/1/2/3x",
+   "parent_hypothesis": null,
+   "novelty_reason": "NEW: exactly TWO pre-declared states (no combinatorial enumeration); note: distinct from H21 (intraday, and H21 stays NOT_TESTABLE/unchanged)",
+   "independence": "INDEPENDENT",
+   "status_tested": true,
+   "mechanism_fingerprint": "14bfe0c56b3658e4",
+   "duplicate_check": {
+    "fingerprint": "14bfe0c56b3658e4",
+    "duplicate_of_prior": false,
+    "prior_ids_seen": [
+     "H01_1M_SIGMA_FADE",
+     "H02_5M_RANGE_BREAKOUT",
+     "H03_LONDON_OPEN_MOMENTUM"
+    ],
+    "action": "ADMIT"
+   }
+  },
+  {
+   "hypothesis_id": "H31_CROSS_MARKET_STATE_TRANSITION",
+   "mechanism_bucket": "STATE_TRANSITION",
+   "hypothesis": "a DXY state FLIP between t-1 and t (down->up or up->down) is followed by an opposite-direction gold move on t+1",
+   "mechanism": "regime flips in the dollar are the moments when positioning is least settled; the gold reaction to a fresh dollar regime is more informative than the level itself",
+   "signal_definition": {
+    "state_definition": "DXY daily return sign with a 0.30% dead-band",
+    "transition": "sign(t) != sign(t-1) and |move| >= 0.30% at t",
+    "direction": "inverse_of_new_state",
+    "hold_days": 1,
+    "entry": "close(t+1)",
+    "exit": "close(t+2)"
+   },
+   "invalid_condition": "the new DXY state reverses again on t+1",
+   "expected_horizon": "1 day",
+   "cost_assumption": "0.914 bp round trip, stress 0/1/2/3x",
+   "parent_hypothesis": null,
+   "novelty_reason": "NEW: uses only state(t-1) and state(t) to trade at t+1 (never state(t+1))",
+   "independence": "INDEPENDENT",
+   "status_tested": true,
+   "mechanism_fingerprint": "da943dcb2a4d3355",
+   "duplicate_check": {
+    "fingerprint": "da943dcb2a4d3355",
+    "duplicate_of_prior": false,
+    "prior_ids_seen": [
+     "H01_1M_SIGMA_FADE",
+     "H02_5M_RANGE_BREAKOUT",
+     "H03_LONDON_OPEN_MOMENTUM"
+    ],
+    "action": "ADMIT"
+   }
+  }
+ ],
+ "registry_hash": "a0626d344a31bf4d06fe72d480da215878ebc4d74fc8a0aabd87b2538c233dac"
+}

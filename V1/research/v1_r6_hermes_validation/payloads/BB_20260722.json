@@ -1,0 +1,53 @@
+{
+ "audit_id": "BB_20260722",
+ "timestamp": "2026-07-22T12:00:00Z",
+ "current_state": "ROTATION (V2, min-dwell lifecycle), event NONE, dwell 8 bars, ambiguity_rate_8=0.625; frozen label NO_DEFINED_STATE. Price 4116-4119 (M1/M5 close), inside nearest swing-high level 4121.715 (0.42 ATR below, INSIDE, not reclaimed). Higher timeframe trend strongly up (H1 trend_20 +48.3, trend_50 +103.6; H4 trend_20 +147.4) after a ~4000->4141 rally, with a pullback to 4109.025 that has been bought back.",
+ "structure": "Nearest level: SWING_HIGH_36649 @ 4121.715 (UP side, INSIDE, age 3 bars, 20 touches/240, distance 0.42 ATR). Above: H1 04:00 rejection zone 4130-4141 (huge 10.89 upper wick at 4141.465). Below: H1 support cluster 4109.025-4113.195, then 4076-4080 (H1 01:00 low / H4 structure). MTF agreement = CONFLICT: M1 flat (+0.24), M5 short-term down (-1.68), M15 up (+1.80), H1/H4 strongly up. Intraday range since 09:00 roughly 4109-4123; price mid-range.",
+ "mechanism": "Candidates only (not asserted): (1) trend_continuation - price inside level, 8-bar displacement -2.42 on M15, invalidation = decisive break of active level; (2) exhaustion - state dwell 8 bars, but dwell alone is weak. My read: the early-session up-leg (07:00-11:20 push into 4121.715) has stalled into rotation after the 4141.465 rejection; the active question is whether the pullback is a higher-timeframe continuation dip (buyers defended 4109-4115, M5 current bar long lower wick 1.80) or the start of a deeper exhaustion correction.",
+ "primary_scenario": {
+  "scenario": "Rotation resolves UP: continuation of the higher-timeframe rally resumes after the 4109-4115 dip is bought; price reclaims 4121.715 swing-high level and extends toward 4130-4141 supply, with rotation state transitioning to EXPANSION.",
+  "confidence": 0.45,
+  "horizon": "SHORT_TERM",
+  "trigger": "M15 (or M5) close above 4121.715 with range expansion and hold above 4115; DXY remains soft/flat and VIX does not spike.",
+  "invalidation": "Decisive M5/M15 close below 4109.025 (H1 08:00 low) on expansion, or failure at 4121.715 followed by lower highs under 4113."
+ },
+ "alternative_scenario": {
+  "scenario": "Exhaustion confirmed: the 4141.465 rejection (10.89 upper wick doji) marks the top of the impulsive leg; the bounce off 4109 fails at 4121.715-4123, price rolls over through 4109 and corrects toward 4076-4080 (H1 01:00 low / prior H4 support), state DECELERATION -> REJECTION as in analog A28241.",
+  "confidence": 0.3,
+  "horizon": "SHORT_TERM",
+  "trigger": "Upper-wick rejection at 4121.715-4123 with M5 close below 4113, then loss of 4109 on expanding range.",
+  "invalidation": "Sustained reclaim above 4123.005 (H1 current high) negates the rejection; price above 4130 confirms continuation."
+ },
+ "expected_transition": "ROTATION -> EXPANSION (upward attempt) with a material chance of extended ROTATION; residual risk of DECELERATION/REJECTION if 4109 breaks. Historical analogs (state-only, similarity 1.0 by exact state + dwell bucket) diverge: A25403 -> EXPANSION at step 8; A28241 -> DECELERATION -> EXPANSION -> REJECTION; A33183 -> persistent ROTATION. No consensus, consistent with ambiguity_rate 0.625.",
+ "direction": "UP",
+ "horizon": "SHORT_TERM",
+ "confidence": 0.45,
+ "counter_evidence": [
+  "H1 04:00 bar: 10.89 upper wick rejection at 4141.465, body 0.09 - clear supply overhead that ended the impulsive leg",
+  "M5 trend_20 negative (-1.68) and price sits below the active swing-high level (INSIDE, reclaim_status NONE) - near-term momentum not yet up",
+  "MTF agreement = CONFLICT (M5 down vs H1/H4 up) and state ambiguity_rate_8 = 0.625",
+  "Analog A28241 path includes DECELERATION -> REJECTION, so exhaustion is a live alternative",
+  "No macro/news/UST10Y input available to confirm the supportive backdrop; UST10Y_PROXY_TNX UNKNOWN/absent",
+  "L4 mechanism candidates are explicitly NOT asserted; 8-bar dwell alone is a weak exhaustion signal"
+ ],
+ "invalidation": "M5 or M15 close below 4109.025 on expanding range (breaks the dip-bought support and H1 08:00 low), or a decisive level break downward of the 4121.715 swing-high structure. Conversely for the UP view, failure to hold 4113 on a retest also downgrades the bias.",
+ "data_quality_flags": [
+  "L1 klines RAW_GEOMETRY + DERIVED; geometry only, no volume/flow",
+  "Cross-timeframe closes at 12:00 do not reconcile (M1 4116.685 vs H1 current 4122.355 vs H4 current 4148.285) - likely aggregation artifact; H4 current bar (high 4163.325, close 4148.285) is inconsistent with H1/M15 highs (<=4123.005) and is treated with caution, lowering confidence",
+  "L2 level DERIVED (causal pivot swings), break_status INSIDE, reclaim NONE",
+  "L3/L5 labels DERIVED from frozen C1 ontology + min-dwell lifecycle; event_at_t NONE",
+  "L4 mechanism candidates DERIVED, not asserted facts",
+  "DXY and VIX are PROXY (Yahoo 5m, instrument definition UNKNOWN); UST10Y_PROXY_TNX UNKNOWN (STALE_OR_NOT_COVERED); GLD/GC/COT/ETF_FLOWS/NEWS/MACRO absent - never fabricated",
+  "Historical analogs state-evolution only (no returns/labels), similarity by exact state + dwell bucket"
+ ],
+ "reasoning_trace": [
+  "1. Read PIT context only: L1-L7 + analogs; no other analyst output seen.",
+  "2. Higher-timeframe context: XAUUSD rallied ~4000 (Jul 20) to 4141.465 (Jul 22 04:00) with strong H1/H4 trend_20/50; 04:00 H1 printed a doji with a 10.89 upper wick (rejection), followed by a pullback to 4109.025 (08:00 low) and recovery into a 4109-4123 range by 12:00.",
+  "3. Current micro-structure: price ~4116.7-4119, inside swing-high 4121.715 (20 touches, 0.42 ATR below), M5 bar at 12:00 had a 1.80 lower wick (dip-buying near 4115), M15 trend_20 positive, M5 trend_20 negative.",
+  "4. State machine: ROTATION dwell 8, no event, ambiguity 0.625 - no clean directional regime signal; mechanism candidates (continuation vs exhaustion) both weak.",
+  "5. Cross-market: DXY flat-to-soft (change_8 -0.028) mildly supportive; VIX +0.27 mild risk-off, not extreme; UST10Y absent so yield tailwind unverifiable.",
+  "6. Analogs diverge (EXPANSION / DECELERATION->REJECTION / persistent ROTATION) - no consensus, keeps confidence capped.",
+  "7. Weighed: dominant HTF up-trend + defended dip + soft DXY vs supply at 4130-4141 + M5 downtick + CONFLICT/ambiguity. Concluded weak UP bias (0.45), SHORT_TERM, contingent on reclaiming 4121.715; invalidation below 4109.025.",
+  "8. Data inconsistencies (H4/H1 current-bar closes vs M1) noted and reflected in confidence, not used to force a view."
+ ]
+}

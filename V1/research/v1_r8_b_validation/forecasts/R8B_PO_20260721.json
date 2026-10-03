@@ -1,0 +1,23 @@
+{
+  "audit_id": "PO_20260721",
+  "forecast_id": "R8B_A_20260721",
+  "outcome_ts": "2026-07-21T00:00:00Z",
+  "horizon": 4,
+  "outcome_alignment_verdict": "ALIGNED",
+  "judged_element": "scenario_call_at_H4",
+  "forecast_scenario_family": "RANGE",
+  "forecast_scenario_alternative": "DIRECTIONAL",
+  "forecast_expected_transition": "COMPRESSION persists, bounded oscillation",
+  "outcome_family_at_H": "QUIET",
+  "outcome_state_at_H": "COMPRESSION",
+  "alignment_basis": [
+    "Hermes-A primary scenario RANGE expected COMPRESSION to persist (state COMPRESSION dwell 6, bounded oscillation 3999-4045, direction_bias NO_DIRECTIONAL_EDGE, confidence 0.45)",
+    "Realized outcome at H=4 records state_at_H=COMPRESSION and family_at_H=QUIET",
+    "State-level and family-level outcome both match the forecast primary scenario call; no directional break materialized"
+  ],
+  "process_defects": [
+    "Outcome record contains only state/family labels, no price path or level touches, so the forecast range bounds (3999-4045) and invalidation thresholds cannot be independently verified; verdict rests on state/family alignment only",
+    "Forecast invalidation referenced H1 close below 3999 / above 4045, but outcome data does not expose H1 closes across the horizon for a direct check"
+  ],
+  "note": "Scenario call ALIGNED with realised state/family at H=4; price-level verification limited by outcome record granularity."
+}

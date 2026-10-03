@@ -1,0 +1,191 @@
+{
+ "schema": "v3_mechanism_tests/1",
+ "total": 17,
+ "pass": 17,
+ "fail": 0,
+ "results": [
+  {
+   "test": "test_mechanism_deterministic",
+   "result": "PASS",
+   "detail": {
+    "events": 127,
+    "mechanisms": 4,
+    "identical": true
+   },
+   "sec": 0.04
+  },
+  {
+   "test": "test_mechanism_no_lookahead",
+   "result": "PASS",
+   "detail": {
+    "frac": 0.7,
+    "cut": "2026-08-19 15:50:00+00:00",
+    "closed_events": 97
+   },
+   "sec": 0.02
+  },
+  {
+   "test": "test_mechanism_replay",
+   "result": "PASS",
+   "detail": {
+    "replays": [
+     {
+      "frac": 0.7,
+      "cut": "2026-08-19 15:50:00+00:00",
+      "closed_events": 97
+     },
+     {
+      "frac": 0.8,
+      "cut": "2026-08-31 12:50:00+00:00",
+      "closed_events": 106
+     },
+     {
+      "frac": 0.9,
+      "cut": "2026-09-10 12:40:00+00:00",
+      "closed_events": 118
+     }
+    ],
+    "all_identity_stable": true
+   },
+   "sec": 0.07
+  },
+  {
+   "test": "test_mechanism_registry_hash",
+   "result": "PASS",
+   "detail": {
+    "registry_hash": "9dd16f2d293a066e1f84",
+    "matches_written_and_audit": true
+   },
+   "sec": 0.0
+  },
+  {
+   "test": "test_immutable_opportunity_ledger",
+   "result": "PASS",
+   "detail": {
+    "opportunity_ledgers_unchanged": true
+   },
+   "sec": 0.01
+  },
+  {
+   "test": "test_immutable_quality_ledger",
+   "result": "PASS",
+   "detail": {
+    "quality_ledger_unchanged": true
+   },
+   "sec": 0.0
+  },
+  {
+   "test": "test_cross_grid_dedup",
+   "result": "PASS",
+   "detail": {
+    "cross_grid_events": 1,
+    "merged": 1
+   },
+   "sec": 0.0
+  },
+  {
+   "test": "test_independent_event_count",
+   "result": "PASS",
+   "detail": {
+    "independent_events": 127,
+    "opportunities": 404,
+    "merged_reported": 277
+   },
+   "sec": 0.01
+  },
+  {
+   "test": "test_mechanism_cluster_stability",
+   "result": "PASS",
+   "detail": {
+    "clusters": 61,
+    "mechanisms": 4,
+    "one_to_one": true
+   },
+   "sec": 0.0
+  },
+  {
+   "test": "test_counter_evidence_aggregation",
+   "result": "PASS",
+   "detail": {
+    "mechanisms": 4,
+    "strongest_present": true
+   },
+   "sec": 0.0
+  },
+  {
+   "test": "test_artifact_detection",
+   "result": "PASS",
+   "detail": {
+    "artifact_high": 3,
+    "proxy_flagged": true
+   },
+   "sec": 0.0
+  },
+  {
+   "test": "test_negative_control",
+   "result": "PASS",
+   "detail": {
+    "status": "FAIL",
+    "real": {
+     "MECHANISM_REJECTED": 4
+    },
+    "shuffled": {
+     "MECHANISM_SUPPORTED": 2,
+     "MECHANISM_REJECTED": 1,
+     "MECHANISM_UNCERTAIN": 1
+    },
+    "method_validity": "INVALID_NEGATIVE_CONTROL_FAILED",
+    "handled_correctly": true
+   },
+   "sec": 0.0
+  },
+  {
+   "test": "test_hermes_cache",
+   "result": "PASS",
+   "detail": {
+    "mechanisms": 4,
+    "subsequent_events": 123,
+    "compression": true
+   },
+   "sec": 0.0
+  },
+  {
+   "test": "test_candidate_gate",
+   "result": "PASS",
+   "detail": {
+    "candidates": 0,
+    "gate_conditions_enforced": true
+   },
+   "sec": 0.0
+  },
+  {
+   "test": "test_v1_isolation",
+   "result": "PASS",
+   "detail": {
+    "v1_source_modified": 0,
+    "v1_runtime_files": 12
+   },
+   "sec": 0.03
+  },
+  {
+   "test": "test_v2_isolation",
+   "result": "PASS",
+   "detail": {
+    "v2_source_modified": 0,
+    "v2_runtime_files": 217,
+    "task_footprint_in_v2": 0
+   },
+   "sec": 0.72
+  },
+  {
+   "test": "test_order_send_disabled",
+   "result": "PASS",
+   "detail": {
+    "ast_clean": true,
+    "registry_declares_forbidden": true,
+    "scanned": 2
+   },
+   "sec": 0.02
+  }
+ ]
+}

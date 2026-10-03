@@ -1,0 +1,42 @@
+{
+ "audit_id": "HB_POST_20260912",
+ "timestamp": "2026-09-27T14:54:00+00:00",
+ "correct_calls": [
+  "Bearish alternative scenario (conf 0.45): rejection at the swing high, breakdown, DOWN continuation - this is exactly the realized path (actual_next_state REJECTION, actual_direction DOWN); hermes_scenario_covered_actual=true confirms the outcome was inside the emitted scenario set",
+  "Identification of 4349.728 (swing high, 33 touches/240 bars, INSIDE) as the decision level - the resolution was a rejection of that supply zone, not a break/reclaim of it",
+  "State evolution endpoint set 'REJECTION or TREND upon resolution' contained the actual next state (REJECTION)",
+  "Current-state label at t was correct: COMPRESSION (baseline_persistence_state=COMPRESSION matches the frozen label)",
+  "Bullish resolution (break and reclaim of 4349.728 toward 4353.6-4364.5) did NOT occur - correct in not choosing the upside as primary",
+  "Honest treatment of UNKNOWN cross-market series (DXY/VIX/UST10Y): no fabricated macro support; nothing contradicted by outcome"
+ ],
+ "wrong_calls": [
+  "Primary scenario (conf 0.55): COMPRESSION persists 'several more bars' with state analogs showing 4-16 steps of persistence - actual_transition=1, the state left COMPRESSION immediately; the most-weighted scenario failed on its core claim",
+  "Expected transition path 'COMPRESSION -> COMPRESSION (persists) -> REJECTION or TREND' - the intermediate persistence leg (4-16 steps) did not occur at all",
+  "Confidence allocation inverted: 0.55 on persistence vs 0.45 on immediate bearish resolution - the realized path was the lower-weighted scenario",
+  "direction_bias NO_DIRECTIONAL_EDGE - ex-post there WAS an edge: a decisive DOWN resolution at the first bar; the compression did not stay directionally ambiguous for multiple bars",
+  "Primary trigger framing assumed the first meaningful resolution attempt would be a test of 4349.728 from below; instead the state transitioned DOWN at t+1 without the scenario's stated level-touch precondition being met (per the transition=1 and DOWN outcome)"
+ ],
+ "right_but_wrong_reason": [
+  "Bearish outcome (DOWN/REJECTION) was right, but part of the cited support - 'REJECTION following COMPRESSION in 2 of 3 analogs' - came from the SAME analog family (A22271/A28461/A34291, similarity 1.0) that was simultaneously used in the primary to argue 4-16 steps of persistence; the analog evidence base carried contradictory weight, and its persistence-timing prediction was wrong. The bearish resolution is better explained by the rejected 4401-4402 breakout and the H4 shock-bar structure than by the analog argument",
+  "The 0.31-ATR-under-the-level geometry was used to justify a level-test-first expectation; the realized downside break made that reading directionally convenient but the persistence/timing inference drawn from it was unsupported"
+ ],
+ "direction_ok_state_wrong": "Not cleanly applicable: the bearish alternative had direction DOWN correct AND state REJECTION correct (the realized next state). The failed primary scenario claimed no direction at all, so there is no case of direction-right/state-wrong.",
+ "state_ok_direction_wrong": "COMPRESSION as the t-state was correctly labeled (baseline_persistence_state=COMPRESSION) but Hermes-A extrapolated the correct current label into a multi-bar forward persistence claim - state label right at t, forward-state expectation wrong. No case of state-right/direction-wrong exists: the realized DOWN matches the state (REJECTION) of the scenario that was right.",
+ "should_have_abstained": true,
+ "invalidation_occurred": true,
+ "prior_concerns_materialised": null,
+ "hindsight_detected": false,
+ "hindsight_evidence": [],
+ "outcome_alignment_verdict": "PARTIALLY_CORRECT",
+ "reasoning_trace": [
+  "Outcome facts: actual_next_state=REJECTION, actual_transition=1, actual_direction=DOWN, hermes_scenario_covered_actual=true, baseline_persistence_state=COMPRESSION.",
+  "Invalidation check: Hermes-A's invalidation included 'the frozen state leaving COMPRESSION (transition to TREND or REJECTION)'. The state left COMPRESSION to REJECTION at t+1, and direction DOWN implies a close below the 4342.5-4353.6 band with follow-through. The invalidation condition DID occur - the primary scenario was formally invalidated on its own terms.",
+  "Scenario coverage vs weighting: the realized path was inside the emitted scenario set (the bearish alternative), so the forecast was not INCORRECT overall; but the primary (0.55) failed within one bar, the persistence timing (analog-derived 4-16 steps) was wrong, and the direction-neutral stance underweighted the bearish resolution. PARTIALLY_CORRECT.",
+  "Abstention judgment: direction was properly hedged (NO_DIRECTIONAL_EDGE, explicit invalidation and change-my-mind), but the primary scenario's persistence-timing assertion at 0.55 confidence was an unhedged, testable claim built on 3 state-only analogs (no returns/PnL) under 0.875 ambiguity with MTF CONFLICT and zero cross-market confirmation; it failed at the first bar. That specific claim should have been abstained/UNKNOWN rather than weighted at 0.55.",
+  "Prior-concerns check: no earlier adversarial auditor's report was included in the payload, so prior_concerns_materialised is null (cannot be assessed).",
+  "Hindsight check: no forecast claim references post-context information; every cited bar/level (H4 shock bar 4291.951-4402.268, 4401-4402 rejection, band 4342.5-4353.6, swing high 4349.728) is inside the PIT window. hindsight_detected=false.",
+  "Data-vintage observation (not hindsight): the last L1 bar is 2026-09-11 21:59 UTC while as_of_utc is 2026-09-12 12:00 UTC (~14h gap, likely a weekend close); the forecast describes the 21:59 close as current ('now sits 0.31 ATR under the swing-high'). The actual outcome may reflect the first post-gap session rather than intraday continuation, and actual_transition=1 is measured from that gap point. The forecast treated stale bars as present-tense data; this should be flagged for the payload generator, though it does not change the verdict.",
+  "Weighting critique: the evidence Hermes-A itself listed for the bearish case (negative M15 trend_20 -13.6, H4 trend_20 -27.9, post-shock drift, rejection after failed breakout) was arguably stronger than the persistence evidence (3 state-only analogs + ambiguity), yet persistence received the higher weight; the realized outcome is consistent with that evidence being underweighted.",
+  "What would have made it CORRECT: persist-and-then-resolve over multiple bars (did not happen), or a bullish resolution (did not happen). What keeps it from INCORRECT: the bearish alternative explicitly covered the realized REJECTION/DOWN path with correct level and direction."
+ ]
+}

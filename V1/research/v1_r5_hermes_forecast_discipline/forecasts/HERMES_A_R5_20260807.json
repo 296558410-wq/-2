@@ -1,0 +1,126 @@
+{
+  "forecast_id": "HERMES_A_R5_20260807",
+  "timestamp": "2026-08-07 12:00:00+00:00",
+  "observations": [
+    "XAUUSD M1 current bar (2026-08-07 12:00Z) close 4319.205, strong bullish body (range_percentile 0.915, body_ratio 0.752) after 7 consecutive down M1 bars.",
+    "M1 sequence_flags: consecutive_up=4, consecutive_down=7, range_expanding=true.",
+    "M5 current bar close 4323.285, range_percentile 0.94, body_ratio 0.873; M5 trend_20 = 16.66.",
+    "M15 current bar close 4320.055, range_percentile 0.615, upper_wick 6.03; M15 trend_20 = 36.86, range_expanding.",
+    "H1 current bar close 4320.995, range_percentile 0.295, range_contracting=true; H1 trend_20 = 87.44, consecutive_up=8.",
+    "H4 current bar close 4341.305, range 70.87 (range_percentile 0.945), large upper_wick 30.39, lower_wick 15.92; H4 trend_20 = 287.69, range_expanding.",
+    "L2 nearest level: SWING_HIGH_37751 at 4320.585, side UP, origin SWING_HIGH, age 5 bars, touch_count_240=4, break_status INSIDE, reclaim_status NONE, distance_atr 0.05881.",
+    "L3 frozen behavior label ACCEPTANCE; state_v2 EXPANSION; event_at_t ACCEPTANCE.",
+    "L4 mechanism candidates: only trend_continuation, supporting evidence 'price inside level, 8-bar displacement 14.12'; invalidation 'decisive break of the active level'.",
+    "L5 state history: current_state EXPANSION, dwell 4, current_event ACCEPTANCE, ambiguity_rate_8 = 0.5, transition REJECTION->EXPANSION in last 8.",
+    "L6 multi-timeframe: all five timeframes (M1-M5-M15-H1-H4) show positive trend_20 and trend_50; agreement label AGREE.",
+    "L7 cross-market: DXY 99.853 (change_8 -0.069, PROXY Yahoo 5m, instrument definition UNKNOWN), VIX 15.2 (PROXY Yahoo 5m, UNKNOWN definition), UST10Y_PROXY_TNX unavailable (UNKNOWN, STALE_OR_NOT_COVERED).",
+    "Absent series: GLD, GC, CFTC_COT, ETF_FLOWS, NEWS, MACRO_EVENTS (recorded absent, never fabricated).",
+    "Historical analogs A11710, A20151, A28608: all t0_state EXPANSION, all remain EXPANSION through step 8, then diverge to REJECTION/TREND by steps 12-16; state-evolution only, no returns/PnL/labels.",
+    "data_quality_legend: DIRECT raw observed, DERIVED computed causal, PROXY substitute never upgraded, UNKNOWN not available.",
+    "forbidden_included: false."
+  ],
+  "what_i_know": [
+    "Price structure at 2026-08-07 12:00Z is in EXPANSION state with ACCEPTANCE event, 4-bar dwell.",
+    "All observed timeframes (M1..H4) carry positive trend_20 and trend_50 (L6 AGREE).",
+    "Price is INSIDE the nearest swing-high level at 4320.585 (M1 close 4319.205 just under, M5/M15/H1 closes above), level touched 4 times in 240 bars.",
+    "Current M1/M5 bars are strong bullish with high range percentiles after a period of M1 down-consecutive bars.",
+    "Frozen C1 labeler at t produced ACCEPTANCE; mechanism module lists ONLY a candidate (trend_continuation), explicitly not asserted as fact.",
+    "DXY 99.853 and VIX 15.2 are PROXY series from Yahoo with UNKNOWN instrument definitions; UST10Y proxy unavailable.",
+    "No macro/news/flow/COT data available at this PIT snapshot (absent series).",
+    "Three historical analogs share exact state+dwell bucket; all stay in EXPANSION to step 8; outcomes after step 8 differ (REJECTION or TREND)."
+  ],
+  "what_i_do_not_know": [
+    "Fundamental/macro catalyst context: NEWS, MACRO_EVENTS, CFTC_COT, ETF_FLOWS, GLD, GC all absent.",
+    "UST10Y tenor structure: UNKNOWN (STALE_OR_NOT_COVERED).",
+    "True definition of DXY and VIX instruments from Yahoo (PROXY, UNKNOWN definition) — correlation reading is only indicative.",
+    "Future state after the 8-step window: analogs disagree at steps 12-16 (REJECTION vs TREND), so medium-horizon path is genuinely open.",
+    "Whether the current ACCEPTANCE/EXPANSION persists or reverts: ambiguity_rate_8 = 0.5 and mechanism remains a candidate, not a fact.",
+    "Order-flow / liquidity / L2 DOM detail behind the displacement (L2 here is swing levels only, not depth).",
+    "Why M1 shows 7 consecutive down bars while higher TFs are up — micro-noise vs macro-structure separation is not resolvable from this snapshot."
+  ],
+  "evidence": [
+    "All timeframes positive trend_20/trend_50 and L6 agreement AGREE (DERIVED, causal).",
+    "H4 range_expanding with current close well above open and rising H4 trend_20 (287.69) supports upside continuation (DERIVED).",
+    "H1 consecutive_up=8 with price holding above the swing level (DERIVED).",
+    "Current M1/M5 strong bullish bars (range_percentile 0.915 / 0.94) after a down sequence suggest short-term acceptance higher (DIRECT/DERIVED).",
+    "L4 candidate trend_continuation: 'price inside level, 8-bar displacement 14.12' (DERIVED, candidate only).",
+    "DXY slightly down (change_8 -0.069) is mildly consistent with gold strength but is PROXY/UNKNOWN definition (PROXY).",
+    "State transition REJECTION->EXPANSION and 4-bar EXPANSION dwell are consistent with an acceptance/expansion regime (DERIVED)."
+  ],
+  "counter_evidence": [
+    "M1 consecutive_down=7 immediately before the current strong bar — higher-frequency momentum was down, which could cap upside (DIRECT).",
+    "H4 current bar has a large upper_wick (30.39) vs body 24.56 — rejection at higher prices is present (DIRECT).",
+    "H1 bar shows range_contracting=true — upside may be stalling at the level (DERIVED).",
+    "M1 close 4319.205 is still just below the swing-high level 4320.585; failure to reclaim/clear the level would negate upside (DIRECT).",
+    "ambiguity_rate_8 = 0.5 and analogs diverge after step 8 (REJECTION or TREND), so persistence of EXPANSION is not certain (DERIVED).",
+    "Cross-market inputs are PROXY with UNKNOWN definitions and UST10Y is missing — supporting macro read is weak (PROXY/UNKNOWN)."
+  ],
+  "possible_mechanisms": [
+    {
+      "mechanism": "trend_continuation",
+      "status": "POSSIBLE",
+      "why": "L4 lists it only as a candidate ('mechanism CANDIDATES only; NOT asserted as fact'). All-TF positive trend_20 and ACCEPTANCE/EXPANSION are consistent but not proof; M1 down-sequence and H4 upper wick leave room for reversal."
+    },
+    {
+      "mechanism": "acceptance_into_new_range (expansion continuation)",
+      "status": "POSSIBLE",
+      "why": "Frozen ACCEPTANCE label and REJECTION->EXPANSION transition with expanding ranges on M5/M15/H4 suggest price is being accepted higher; yet ambiguity_rate_8=0.5 means this is not established."
+    },
+    {
+      "mechanism": "swing_high_rejection / mean_reversion",
+      "status": "POSSIBLE",
+      "why": "M1 consecutive_down=7, H4 large upper wick, and price sitting just under the swing high (M1 close below 4320.585) allow a rejection scenario that analogs (A11710, A28608) also reach at step 12-16."
+    }
+  ],
+  "primary_scenario": {
+    "scenario": "Upside continuation: price clears/reclaims the swing-high level 4320.585 and EXPANSION persists, with H4/H1 trend legs extending.",
+    "horizon": "short-to-medium (hours to a few sessions; within the 8-16 step analog window)",
+    "trigger": "decisive close above 4320.585 with expanding range on M15/H1 and continuation of ACCEPTANCE/EXPANSION (or transition to TREND).",
+    "invalidation": "decisive break back below the level (e.g., sustained M5 close below ~4316) or a labeled REJECTION that re-engages prior rejection structure."
+  },
+  "alternative_scenario": {
+    "scenario": "Rejection at the swing high: price fails above 4320.585 and reverts into the expansion range or prior rejection zone, matching analog branches to REJECTION at steps 12-16.",
+    "horizon": "short-to-medium (within the analog window)",
+    "trigger": "failure to close above 4320.585 followed by an M15/H1 down bar with increasing lower-wick/body and range contraction.",
+    "invalidation": "a sustained move above the swing high that extends with range expansion and keeps ACCEPTANCE/EXPANSION labeled."
+  },
+  "expected_transition": "EXPANSION -> (ACCEPTANCE continuing) then TREND (upside) if the level clears, or EXPANSION -> REJECTION if the swing high holds; analogs give both branches after step 8.",
+  "direction_bias": "UP",
+  "time_horizon": "short-to-medium (hours to a few sessions)",
+  "evidence_strength": 0.55,
+  "confidence": 0.55,
+  "uncertainty": 0.45,
+  "confidence_reason": "All observed timeframes agree on positive trend_20/50 and the frozen labeler says ACCEPTANCE/EXPANSION with a trend_continuation candidate; however the mechanism is only POSSIBLE, M1 micro-momentum was down, the level sits almost exactly at price (distance_atr 0.059), and analogs diverge after step 8.",
+  "uncertainty_reason": "Macro/news/flow/COT/UST10Y inputs are absent or PROXY with UNKNOWN definitions; ambiguity_rate_8=0.5; analog outcomes split (REJECTION vs TREND); H4 upper wick and M1 down-sequence show competing pressure.",
+  "invalidation": "Sustained M5 close below ~4316 (decisive break of the active level zone) or a labeled REJECTION event; alternatively, if price keeps failing to clear 4320.585 while H1 range contracts, the upside bias is invalidated.",
+  "change_my_mind": [
+    "A decisive M5/M15 close above 4320.585 with range expansion and continued ACCEPTANCE would raise confidence in the upside scenario.",
+    "A decisive M5 close below ~4316 with a REJECTION label would flip the bias toward downside/neutral.",
+    "Fresh DIRECT macro/news/UST10Y data replacing the absent/UNKNOWN series would materially change the assessment.",
+    "A labeled TREND event on H1 or H4 (rather than continued EXPANSION) would confirm the continuation branch.",
+    "If ambiguity_rate_8 drops below ~0.3 (more deterministic labeling) or the level touch behavior breaks (e.g., level lost on H1), the view would strengthen or flip respectively."
+  ],
+  "abstain": false,
+  "abstain_reason": "Context is sufficient and internally consistent enough to state a candidate view: all observed price timeframes are directionally aligned, and a clear nearest level gives a checkable trigger/invalidation. Abstention is not forced, but confidence is intentionally moderate and the view is conditional on the level resolution given missing macro/news inputs.",
+  "questions": {
+    "Q1": "I know the PIT snapshot at 2026-08-07 12:00Z: XAUUSD is in EXPANSION state with ACCEPTANCE event (4-bar dwell), all five price timeframes show positive trend_20/50, price is INSIDE the nearest swing-high level at 4320.585 (M1 close 4319.205, higher TFs above), DXY/VIX are PROXY (UNKNOWN definitions), UST10Y and macro/news/COT/flow series are absent, and three analogs keep EXPANSION to step 8 then diverge.",
+    "Q2": "I do not know: any macro/news/COT/flow/UST10Y catalyst (absent/UNKNOWN), the true Yahoo instrument definitions for DXY/VIX (PROXY), the future state after step 8 (analogs split REJECTION vs TREND), and whether current ACCEPTANCE persists (ambiguity_rate_8=0.5). M1 data are DIRECT but micro-scale; cross-market are PROXY; UST10Y and macro series are UNKNOWN/stale.",
+    "Q3": "Evidence for the primary (upside) scenario: all-TF positive trend_20/50 with L6 AGREE, ACCEPTANCE/EXPANSION labels, H1 consecutive_up=8, strong current M1/M5 bullish bars, H4 trend_20 rising with range expansion, and a trend_continuation candidate (price inside level, displacement 14.12).",
+    "Q4": "Evidence against the primary: M1 consecutive_down=7 just before the strong bar, H4 current bar large upper wick (30.39), H1 range_contracting, M1 close still below the swing high 4320.585, ambiguity_rate_8=0.5, analogs diverge to REJECTION after step 8, and macro corroboration is PROXY/UNKNOWN or absent.",
+    "Q5": "The mechanism I am NOT entitled to assert is trend_continuation — L4 explicitly marks it 'mechanism CANDIDATES only; NOT asserted as fact (§13)', so it remains POSSIBLE, not SUPPORTED, until the level breaks decisively with consistent acceptance.",
+    "Q6": "What would change my mind: a decisive M5/M15 close above 4320.585 with range expansion (raises upside confidence); a decisive M5 close below ~4316 or a REJECTION label (flips to downside/neutral); arrival of DIRECT macro/UST10Y/news data (recalibrates); or a labeled TREND event on H1/H4 (confirms continuation).",
+    "Q7": "abstain_now = false: the context provides enough internally consistent, causal price structure (all-TF trends, frozen labels, a concrete nearest level with trigger/invalidation, and analog state paths) to form a conditional, moderate-confidence view; I abstain from asserting certainty, not from giving a disciplined forecast."
+  },
+  "reasoning_trace": [
+    "Loaded PIT context CTX_20260807T120000Z; verified forbidden_included=false and quality legend (DIRECT/DERIVED/PROXY/UNKNOWN).",
+    "Established regime: L3/L5 EXPANSION + ACCEPTANCE, dwell 4, transition REJECTION->EXPANSION, ambiguity_rate_8=0.5.",
+    "Aligned timeframes: L6 all positive trend_20/50, agreement AGREE — supports but does not by itself raise confidence (per prompt rule).",
+    "Located anchor: L2 swing-high 4320.585, break_status INSIDE, distance_atr 0.05881 — price at decision point on the level.",
+    "Kept mechanism as POSSIBLE (L4 candidates only, never asserted as fact).",
+    "Weighed counter-evidence: M1 7-down sequence, H4 upper wick, H1 range contraction, level not yet cleared on M1.",
+    "Noted data gaps: macro/news/COT/flows absent, DXY/VIX PROXY, UST10Y UNKNOWN — capped confidence.",
+    "Checked analogs: EXPANSION through step 8 for all three, then REJECTION or TREND — open medium-horizon path.",
+    "Set direction_bias=UP conditional on level resolution; invalidation = decisive break below ~4316 or REJECTION label.",
+    "Decided abstain=false with moderate evidence_strength 0.55 / confidence 0.55 / uncertainty 0.45."
+  ]
+}

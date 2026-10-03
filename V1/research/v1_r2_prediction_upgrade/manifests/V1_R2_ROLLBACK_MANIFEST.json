@@ -1,0 +1,21 @@
+{
+ "baseline_version": "V1-MV-R1",
+ "rollback_target_engine_hash": "7d95645678cf0615c77c0d1c91177cf1652ca1fa6b1f509ec99e415dba55c25d",
+ "rollback_source_engine_file": "archive/v1_pre_reset_20260923_233741/v1_root/engine.py",
+ "rollback_source_engine_hash": "7d95645678cf0615c77c0d1c91177cf1652ca1fa6b1f509ec99e415dba55c25d",
+ "method": "hash-verified restore",
+ "steps": [
+  "1) 校验 archive 基线 engine.py 的 sha256 == 7d956456…（不等则 STOP）",
+  "2) 用 os.replace 同卷原子替换 trader_v1/engine.py（不使用 git checkout）",
+  "3) 替换后校验 engine.py sha256 == 7d956456…",
+  "4) 删除/忽略 v1_r2_prediction_upgrade/（本任务全部改动仅在该目录 + engine.py 若被改）",
+  "5) 重跑 source_tree_hash 对比 baseline 值"
+ ],
+ "verification": {
+  "engine_hash_expected": "7d95645678cf0615c77c0d1c91177cf1652ca1fa6b1f509ec99e415dba55c25d",
+  "baseline_source_tree_hash": "47f6212b40df992f86bb3dc2467ab743ef33724e9a65194de14972f57f8bd88c",
+  "baseline_config_hash": "35f40aeb237b89733e0531d608d9fbe9c471422b3e5d0de046b0dae78f80fa3a",
+  "baseline_runtime_hash": "bbe88992a399d25e275d68c0a624e3e3533bd4b6e543148b65fbd9cbfb9097fb"
+ },
+ "timestamp_utc": "2026-09-26T11:24:27.796058+00:00"
+}

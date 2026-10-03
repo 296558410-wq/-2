@@ -1,0 +1,213 @@
+{
+ "version": "MV-R2.0.0",
+ "reuses_R1_clustering": true,
+ "taxonomy": {
+  "M01": "PRICE_STATE_TRANSITION",
+  "M02": "VOLATILITY_REGIME_TRANSITION",
+  "M03": "CROSS_MARKET_SHOCK",
+  "M04": "CROSS_MARKET_DIVERGENCE",
+  "M05": "LIQUIDITY_REPRICING",
+  "M06": "RISK_SENTIMENT_TRANSMISSION",
+  "M07": "EXTREME_REVERSION",
+  "M08": "STATE_BREAK_MOMENTUM",
+  "M09": "EVENT_REPRICING",
+  "M10": "DATA_MEASUREMENT_ARTIFACT",
+  "M11": "UNKNOWN_MECHANISM"
+ },
+ "event_separation_window": {
+  "unit": "bars_on_the_records_own_grid",
+  "value": 6,
+  "cross_grid_merge": {
+   "rule": "same mechanism_id and |dt| <= 2h -> one cross_grid_event",
+   "value_hours": 2
+  }
+ },
+ "duplicate_detection_stage": "EVENT_LEVEL",
+ "duplicate_counted_once": true,
+ "minimum_independent_events": 8,
+ "random_seed": 20260925,
+ "permutation_count": 500,
+ "null_runs": 20,
+ "stability_statistics": {
+  "TIME_STABILITY": {
+   "statistic": "coefficient_of_variation of inter-event intervals",
+   "null": "event times drawn uniformly over the mechanism's own observation span, same count",
+   "tail": "one_sided_lower_tail",
+   "alpha": 0.05,
+   "labels": {
+    "HIGH": "p <= alpha (more clustered than random)",
+    "MEDIUM": "alpha < p < 1-alpha",
+    "LOW": "p >= 1-alpha (more uniform than random)"
+   },
+   "rationale": "uniform random placement gives CV near the null median, so randomness cannot earn a HIGH label; only genuine burstiness can"
+  },
+  "SESSION_STABILITY": {
+   "statistic": "max session share",
+   "null": "session labels shuffled across the mechanism's events",
+   "tail": "two_sided",
+   "alpha": 0.05,
+   "labels": {
+    "HIGH": "not extreme vs null (p in (alpha, 1-alpha))",
+    "LOW": "more concentrated than null (p >= 1-alpha)",
+    "NOT_INFORMATIVE": "indistinguishable from null (p <= alpha)"
+   }
+  },
+  "STATE_STABILITY": {
+   "statistic": "max vol-state share",
+   "null": "state labels shuffled across events",
+   "tail": "two_sided",
+   "alpha": 0.05,
+   "labels": {
+    "HIGH": "less concentrated than null",
+    "LOW": "more concentrated than null",
+    "NOT_INFORMATIVE": "indistinguishable from null"
+   }
+  }
+ },
+ "artifact_classes": [
+  "DATA_ARTIFACT",
+  "TIMESTAMP_ARTIFACT",
+  "PROXY_ARTIFACT",
+  "DUPLICATION_ARTIFACT",
+  "SELECTION_ARTIFACT",
+  "UNKNOWN_ARTIFACT"
+ ],
+ "fatal_artifact_rule": "FATAL_ARTIFACT = TRUE only when the record set itself proves the mechanism is produced by data construction (degenerate identical rows inside one event, or a mechanism whose ONLY confirmation is the ^TNX proxy). Non-fatal artifacts only lower the evidence level.",
+ "counter_evidence_levels": [
+  "FATAL",
+  "STRONG",
+  "MODERATE",
+  "WEAK",
+  "UNKNOWN"
+ ],
+ "counter_evidence_rules": {
+  "FATAL": "proven data-construction origin",
+  "STRONG": "a large share of random nulls reproduces the structure",
+  "MODERATE": "highly session-dependent",
+  "WEAK": "missing periods only",
+  "UNKNOWN": "unclassified",
+  "parent_dedup": "codes describing the same underlying fact share a counter_evidence_parent_id and are counted once"
+ },
+ "counter_evidence_parents": {
+  "CE_P_DATA": [
+   "C01"
+  ],
+  "CE_P_TIMESTAMP": [
+   "C02"
+  ],
+  "CE_P_PROXY": [
+   "C03"
+  ],
+  "CE_P_RECURRENCE": [
+   "C04"
+  ],
+  "CE_P_REGIME": [
+   "C05"
+  ],
+  "CE_P_SESSION": [
+   "C06"
+  ],
+  "CE_P_CROSSMARKET": [
+   "C07"
+  ],
+  "CE_P_DUP": [
+   "C08"
+  ],
+  "CE_P_ALT": [
+   "C09"
+  ],
+  "CE_P_UNKNOWN": [
+   "C10"
+  ]
+ },
+ "evidence_dimensions": [
+  "E1_TRIGGER",
+  "E2_RECURRENCE",
+  "E3_TEMPORAL",
+  "E4_SESSION",
+  "E5_STATE",
+  "E6_CROSSMARKET",
+  "E7_COUNTER",
+  "E8_ARTIFACT"
+ ],
+ "evidence_dependency_rule": "two dimensions are DEPENDENT_EVIDENCE when they are computed from the same underlying variable (e.g. E3 and E4 both derived from the mechanism's own event set); the flag is reported, never used to inflate or deflate a decision",
+ "decision_rule_ordered": [
+  {
+   "id": "B1",
+   "if": "FATAL_ARTIFACT",
+   "then": "MECHANISM_REJECTED",
+   "why": "artifact first, and provably fatal"
+  },
+  {
+   "id": "B2",
+   "if": "counter_evidence == FATAL",
+   "then": "MECHANISM_REJECTED",
+   "why": "fatal counter-evidence"
+  },
+  {
+   "id": "B3",
+   "if": "independent_events < minimum",
+   "then": "MECHANISM_UNCERTAIN",
+   "why": "below the frozen minimum"
+  },
+  {
+   "id": "B4",
+   "if": "TIME_STABILITY != HIGH",
+   "then": "MECHANISM_UNCERTAIN",
+   "why": "cannot show temporal structure beyond a random null"
+  },
+  {
+   "id": "B5",
+   "if": "trigger_consistency >= MEDIUM and counter_evidence_level in (WEAK, UNKNOWN)",
+   "then": "MECHANISM_SUPPORTED",
+   "why": "beats the random null on time structure with acceptable counter-evidence"
+  },
+  {
+   "id": "B6",
+   "if": "otherwise",
+   "then": "MECHANISM_UNCERTAIN",
+   "why": "structure present but not decisive"
+  }
+ ],
+ "positive_control": {
+  "pre_registered": true,
+  "definition": "a synthetic mechanism with a planted repeat structure: 30 events, one identical trigger/state/session/cross-market signature, evenly spaced (no returns, no PnL)",
+  "expected_detection": "MECHANISM_SUPPORTED",
+  "failure_meaning": "validator too strict -> METHOD_INVALID"
+ },
+ "negative_controls": {
+  "pre_registered": true,
+  "NC_A": "random time labels across opportunities",
+  "NC_B": "permute event times inside each mechanism",
+  "NC_C": "permute mechanism labels across events",
+  "pass_criterion": "NULL_SUPPORTED_RATE <= max_null_rate",
+  "max_null_rate": 0.25,
+  "rationale": "a random null may occasionally land one SUPPORTED; a rate above the frozen ceiling means the validator rewards randomness"
+ },
+ "method_validity_rule": "VALID only if: negative controls PASS (all three) AND positive control PASS AND replay PASS AND deterministic PASS AND no-lookahead PASS",
+ "candidate_gate": {
+  "requires": [
+   "METHOD_VALIDITY == VALID",
+   "MECHANISM_SUPPORTED",
+   "independent_event_count >= minimum_independent_events",
+   "FATAL_ARTIFACT == False"
+  ]
+ },
+ "forbidden_identifiers": [
+  "future_return",
+  "future_pnl",
+  "pnl",
+  "win_rate",
+  "sharpe",
+  "profit_factor",
+  "expected_profit",
+  "expected_return",
+  "profit_score",
+  "win_probability",
+  "order_send",
+  "order_check",
+  "metatrader5",
+  "broker",
+  "execution"
+ ]
+}

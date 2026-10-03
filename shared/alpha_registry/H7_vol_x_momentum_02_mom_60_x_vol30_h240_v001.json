@@ -1,0 +1,75 @@
+{
+  "hypothesis": "波动 regime 下 momentum 是否变化？",
+  "features": "mom_60_x_vol30",
+  "parameters": {
+    "holding": 240,
+    "feature_params": {}
+  },
+  "dataset": "XAUUSD_M1_MT5-FXTM-Live_20260904_v001",
+  "train_period": "2026-05-26 03:43:00+00:00→2026-07-27 06:53:00+00:00",
+  "test_period": "2026-07-27 06:53:00+00:00→2026-09-04 11:22:00+00:00",
+  "OOS": {
+    "ic": 0.025069954506667998,
+    "p": 0.0
+  },
+  "FDR": {
+    "q": 0.0,
+    "reject": true
+  },
+  "WF": {
+    "folds_ic": [
+      0.0068,
+      0.0295,
+      -0.0127,
+      -0.0565,
+      0.0721
+    ],
+    "positive_frac": 0.6,
+    "n_folds": 5
+  },
+  "cost_stress": {
+    "1x": -2.2353,
+    "2x": -2.6905,
+    "3x": -3.1448,
+    "net_total": -0.1235820901312722,
+    "n_trades": 211,
+    "subperiod": {
+      "n_parts": 4,
+      "parts": [
+        {
+          "segment": 1,
+          "n": 24985,
+          "sharpe": -0.159,
+          "mean": -4.513040836946395e-06
+        },
+        {
+          "segment": 2,
+          "n": 24985,
+          "sharpe": 0.061,
+          "mean": 1.645006923185091e-06
+        },
+        {
+          "segment": 3,
+          "n": 24985,
+          "sharpe": -0.047,
+          "mean": -1.0518740194354308e-06
+        },
+        {
+          "segment": 4,
+          "n": 24985,
+          "sharpe": -0.045,
+          "mean": -1.0366272537147406e-06
+        }
+      ],
+      "sharpe_positive_frac": 0.25,
+      "sharpe_min": -0.159,
+      "sharpe_max": 0.061,
+      "note": "子段 Sharpe 一致性低 → 结果可能依赖特定时期"
+    }
+  },
+  "subperiod": null,
+  "status": "REJECTED",
+  "git_commit": "c1d84d3",
+  "alpha_id": "H7_vol_x_momentum_02_mom_60_x_vol30_h240_v001",
+  "created_at": "2026-09-04T11:58:36.093344+00:00"
+}

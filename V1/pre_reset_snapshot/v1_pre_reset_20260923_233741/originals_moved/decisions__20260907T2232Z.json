@@ -1,0 +1,151 @@
+{
+ "schema": "hermes_decision_v1",
+ "decision_id": "DEC-2026-09-07T22:32Z",
+ "utc_ts": "2026-09-07T22:32:00+00:00",
+ "symbol": "XAUUSD",
+ "cycle": "2026-09-07T22:32Z",
+ "market_state": {
+  "d1": {
+   "tf": "D1",
+   "last_close": 4399.05,
+   "last_bar": "2026-09-04",
+   "ma20": 4464.43,
+   "price_vs_ma20": -146.4,
+   "rsi14": 49.14,
+   "structure": {
+    "hhish": 4,
+    "llish": 5,
+    "last_vs_5ago": "down"
+   },
+   "trend_range": {
+    "cat": "range",
+    "er": 0.017
+   },
+   "s_r": {
+    "high60": 4696.87,
+    "low60": 4042.58,
+    "pos_in_range": 54.5
+   },
+   "recent_move_bps": -125.0
+  },
+  "h4": {
+   "tf": "H4",
+   "last_close": 4414.385,
+   "last_bar": "2026-09-07 16:00",
+   "ma20": 4415.09,
+   "ma50": 4470.91,
+   "price_vs_ma20": -1.6,
+   "rsi14": 53.07,
+   "structure": {
+    "hhish": 5,
+    "llish": 4,
+    "last_vs_5ago": "up"
+   },
+   "trend_range": {
+    "cat": "range",
+    "er": 0.061
+   },
+   "s_r": {
+    "high60": 4696.87,
+    "low60": 4282.53,
+    "pos_in_range": 31.8
+   },
+   "recent_move_bps": 34.9
+  },
+  "h1": {
+   "tf": "H1",
+   "last_close": 4406.99,
+   "last_bar": "2026-09-07 20:00",
+   "ma20": 4406.28,
+   "ma50": 4441.79,
+   "ma200": 4480.93,
+   "price_vs_ma20": 1.6,
+   "rsi14": 51.37,
+   "structure": {
+    "hhish": 4,
+    "llish": 5,
+    "last_vs_5ago": "up"
+   },
+   "trend_range": {
+    "cat": "range",
+    "er": 0.027
+   },
+   "s_r": {
+    "high60": 4511.01,
+    "low60": 4371.78,
+    "pos_in_range": 25.3
+   },
+   "recent_move_bps": 23.3
+  },
+  "m15": {
+   "tf": "M15",
+   "last_close": 4404.825,
+   "last_bar": "2026-09-07 21:00",
+   "ma20": 4410.61,
+   "ma50": 4404.16,
+   "ma200": 4442.3,
+   "price_vs_ma20": -13.1,
+   "rsi14": 34.87,
+   "structure": {
+    "hhish": 4,
+    "llish": 5,
+    "last_vs_5ago": "down"
+   },
+   "trend_range": {
+    "cat": "mixed",
+    "er": 0.303
+   },
+   "s_r": {
+    "high60": 4423.96,
+    "low60": 4381.09,
+    "pos_in_range": 55.4
+   },
+   "recent_move_bps": -21.7
+  },
+  "m15_live": {
+   "last_mid": 4409.09,
+   "spread_bps_now": 0.52,
+   "tick_rate_per_min_15m": 93,
+   "quote_source": "quote_latest",
+   "abnormal": {
+    "last6_max_move_bps": 9.5,
+    "z_vs_baseline": -0.06,
+    "baseline_mean_move_bps": 10.2
+   }
+  }
+ },
+ "data_quality": {
+  "live_days": 1,
+  "live_ticks": 165477,
+  "context_days": 25,
+  "gaps": [],
+  "notes": "quote层二动回落: mid 4412.66→4409.09(-3.57pt, 22:17Z→22:32Z), 22:17Z墙中poke被拒确证4411-4416墙压真实; bar/tick层仍全冻(tick 165477连续第6轮零新增自21:47Z, M15 bar止21:00收4404.825陈旧~92min, 21:15-22:30七根未推送); 真价介于bar 4404.8与mid 4409.09之间, 以mid为当前观测(可信度打折); spread 0.52bps持平; candle_latest.json stale@12:15Z不采信; z-0.06/tick93正常无异常脉冲"
+ },
+ "mtf_agreement": "neutral_lean_short_wall_rejection_confirmed_quote_2nd_move_bars_still_frozen",
+ "state_summary": "XAUUSD quote二动: mid 4412.66→4409.09(-3.57pt, 22:17Z墙中4412.66 poke被拒回落至墙底4411下方1.9pt); M15 bar仍止21:00收4404.825(陈旧~92min, 21:15-22:30七根未推), tick 165477零新增第6轮; 现价4409.09夹于三重支撑4404.8-4406(21:00收/MA50 4404.16)与墙4411-4416(M15 MA20 4410.61/H4 MA20 4415.09)之间中位; 在册三空书: floor TP-182005R[4398.5,4401.5]止4406(live等触, 00:21Z到期)+墙fade TP-1947Z[4411,4415.5]止4418与zone TP-210349R[4409,4416]止4426(均triggered-zombie: risk拦截后状态机死锁不可再trigger, 01:52Z/03:05Z到期自清); mid 4409.09在TP-210349R带下沿→engine本轮将报RISK BLOCK噪音; 新注册=第四同向叠单否决+多头无confirm否决; 无持仓; 差什么=bar解冻close confirm/floor触≤4401.5/zombie到期后同构重建时机; 执行层: risk notional模型(ref×100/dist=33k-93k>>max5000)与qty0.01不匹配致在册书全机械拦截、fill路径未接通→报人工, 不改risk policy",
+ "m15_change": "从22:17Z: 唯一实质变化=quote mid 4412.66→4409.09(-3.57pt): 22:17Z触及墙中4412.66被拒、回落至墙底4411下方, quote层二次移动确证4411-4416墙压力(第8叩后lower-high再拒); tick 165477→165477零新增(第6轮), M15 bar仍止21:00收4404.825不变(未推根数6→7: 21:15-22:30), spread 0.52bps持平; 其余可观测(RSI34.9/er0.303/pos55.4/exp0.79/结构down)均21:00 bar口径不变. 定性: 半解冻持续(quote动bar冻), 方向信息=墙压确证+价格回落中段, 无close级confirm; 信息增量未达注册阈值(新setup边际EV≤0且与在册书叠单), 亦未触在册书失效线(mid≥4417/4425/收>4406)",
+ "opportunity": "no_new_setup_standing_books_cover_both_outcomes_execution_layer_mechanical_block",
+ "opportunity_mechanism": "本cycle新注册=零: ①墙fade(4411-4416第8-9叩)已由双书覆盖但均处triggered-zombie态——上一轮risk拦截(notional 92911/32685>max5000)后状态机 registered→triggered, PLAN_FLOW不允许二次trigger, 实际不可执行, 只能等01:52Z/03:05Z年龄到期自清; ②floor破位空TP-182005R[4398.5,4401.5]止4406仍live(00:21Z到期), 现价距带顶7.6pt, 若回落破4404-4406三重支撑即触发; ③多头否决: bar层冻无close佐证+上压密集(M15 MA20 4410.61/墙4411-4416/MA200 4442.3)+与空书同域冲突, 无confirm突破多EV≈-0.3R; ④再注册同向fade=第四叠单(同论点超暴露, 名义EV被zombie与风险层归零); 机制主轴: 17:00Z起8叩墙拒→21:00收破墙底+MA20→4404.8测MA50三重支撑→quote两轮承接反弹(4406.61→4412.66→4409.09)=lower-high回墙再拒→现回落中段待裁决(破4404-4406续跌 or 再上攻≥4417证伪); 执行注意: risk_check以固定$100预算换算lots致notional=ref×100/dist(floor 73k/墙93k/zone 33k)>>max5000, 与plan qty 0.01(真实notional≈$4413<5000)不匹配→在册书全部机械拦截且fill路径(open_position_from_plan)未在engine接通→demo永不成交, 此为执行层问题非结构问题, 报人工处置(Hermes无权改risk policy)",
+ "decision": "WAIT",
+ "confidence": 0.5,
+ "answers_14": {
+  "1": "市场状态: XAUUSD quote二动回落: mid 4412.66→4409.09(-3.57pt, 22:17Z墙中poke被拒退至墙底4411下1.9pt); bar/tick层仍冻(M15止21:00收4404.825陈旧~92min, 21:15-22:30七根未推, tick 165477第6轮零增, candle_latest stale@12:15Z不采信); D1收4399.05<MA20 4464(-146pt)RSI49.1 ER0.017 range pos54.5中性; H4收4414.385贴MA20 4415.09下方、<MA50 4470.9, pos31.8; H1收4406.99贴MA20 4406.28、<MA50 4441.79/MA200 4480.93, pos25.3低区; M15(21:00)收4404.825<MA20 4410.61贴MA50 4404.16, RSI34.9, er0.303, 结构down; 现价夹于支撑4404.8-4406与墙4411-4416中位; spread 0.52bps, tick93/min, z-0.06正常",
+  "2": "一致性: neutral-lean-short维持(与22:17Z同权). 同向: 17:00Z起8叩4411-4416墙全拒(含22:17Z 4412.66 poke即刻回落=lower-high再拒)+D1/H4<MA20空排+H1 pos25.3低位区+M15 21:00收破MA20/墙底rollover+现价退回墙底下方; 反向: 4404-4406三重支撑两次承接(quote快速反弹4-6pt)、M15 RSI34.9(陈旧)超卖位、D1中性range、H4结构计数偏多(5hh/4ll); 空侧证伪线: mid≥4417(墙破)/4425(zone破); 多侧确认线: mid≤4401.5 floor触发或bar解冻收<4404",
+  "3": "较22:17Z: 唯一实质变化=quote mid 4412.66→4409.09(-3.57pt): 墙中poke被拒回落, quote层第二次移动确证4411-4416墙压(4412.66为第8叩后lower-high); tick 165477→165477零增(第6轮), M15 bar仍止21:00收4404.825不变(未推7根), spread 0.52bps持平; 其余指标为21:00口径不变. 定性: 半解冻持续(quote动bar冻), 方向信息=墙拒再确认+回落中段, 但无close confirm; 增量不足注册新单(叠单/无边际EV), 亦未触在册书失效(mid≥4417/4425); 风险=quote伪值判位偏移±1pt级, 不改变结构",
+  "4": "机会: 本cycle无边际正EV新setup: ①墙fade(4411-4416第8-9叩)双书在册但zombie(TP-1947Z/TP-210349R: 上一轮triggered后risk拦截, 状态机不许二次trigger→不可执行, 01:52Z/03:05Z到期自清); ②floor空TP-182005R[4398.5,4401.5]止4406 live, 现价距触发带7.6pt, 00:21Z到期——破4404-4406支撑即接空腿; ③多头否决(无bar confirm+上压三层+EV≈-0.3R); ④第四同向叠单否决; 差什么=bar解冻(close confirm真价)/floor破位触≤4401.5/墙再触≥4411时机(zombie到期后同构重建), 三者任一发生才有新注册价值; 另报: 执行层risk notional模型与fill通道问题(见#11/#13)使在册书实际零成交, 需人工",
+  "5": "机制: 主轴不变——17:00Z起8叩4411-4416墙(4416尖峰+4423.96+M15 MA20 4410.61三层压, D1/H4<MA20空排)全拒→21:00首收破墙底4411+MA20(RSI50→34.9, er0.303)→4404.8测MA50 4404.16三重支撑→quote两轮承接反弹(4406.61→4412.66→回落4409.09)=lower-high回墙再拒、现回落中段; 两结局: ①回落再破4404-4406→floor书在4401.5下方接空续跌4394-4381; ②再上攻mid≥4417/4425→fade证伪、转多评估4426.5突破或4404-4407承接; 裁决条件全部具体在册, 半解冻仅延迟可见性不破坏结构; 执行层附加: risk_check以$100预算反推lots致notional 33k-93k>>max5000→触发即拦截, fill未接通→结构对但通道不通, 属人工域",
+  "6": "触发具体价(本cycle零新注册, 动作面全在册): ①floor空TP-182005R: mid≤4401.5(触[4398.5,4401.5])自动trigger, 止4406, 目标4394/4385.5/4364.5, 00:21Z到期; ②TP-1947Z墙fade带[4411,4415.5]止4418: mid 4409.09未入带, zombie态不可再trigger, 01:52Z到期; ③TP-210349R zone带[4409,4416]止4426: mid 4409.09刚入带下沿→engine本轮报trigger但risk拦截(zombie, 不可成交), 03:05Z到期; ④多头预案(未注册): price_cross_up 4426.5(突破)或回撤承接[4404,4407], 需bar解冻close佐证; ⑤墙fade同构重建: 等zombie到期(01:52Z后)注册[4411,4415.5]止4418, 触发前置=mid再触≥4411",
+  "7": "失效: 在册书: TP-182005R若收价上>4406(收MA簇上方=破位证伪)即失效(注: 其invalidation为字符串engine不解析, 实际靠00:21Z到期与stale规则); TP-1947Z/TP-210349R zombie到期01:52Z/03:05Z自清; 空侧整体证伪线: mid≥4417(墙破)或>4425(zone破)→撤全部fade逻辑、转多评估(候选4426.5突破多/4404-4407承接多); 若bar解冻显示21:00后真价已≥4417(breakout迟到可见)→同转多; 本cycle零新注册=零新增失效面; 结构性风险=quote伪值判位偏移±1pt, 只影响触发带边沿判定(4409.09恰在TP-210349R带下沿, 若伪值略低则engine不报trigger), 失效线不受影响",
+  "8": "预期收益(在册口径): floor TP-182005R(entry中位4400, 风险6pt至4406): TP1 4394=1.0R@0.4+TP2 4385.5=2.42R@0.35+TP3 4364.5=5.92R@0.25→加权2.72R×p0.42=毛+1.14R, 扣成本后按书EV≈+0.45R>0, 触发即执行(若风险层放行); 墙双fade名义(TP-1947Z 3.2R/p0.42、TP-210349R 1.6R/p0.43)但zombie不可成交→实现预期0; 多头(否决)无confirm突破多≈0.30×1.5-0.70×1-0.05≈-0.30R; 本cycle新注册边际EV≤0→不注册为EV最优",
+  "9": "预期损失: 在册floor书1R=6pt(止4406, 0.01lot≈$6 demo级); zombie双书名义止损4418/4426但不可成交=零实损(仅账本噪音); 最坏=floor触假破位止损-6pt或到期未触零损; 纪律: 亏损不加仓、不叠第四同向单(单论点超暴露)、quote半解冻期不追价、不因'成本低'为摊薄叠单; 附加执行风险=若人工放行risk后zombie复活路径不清(状态机已triggered), 需人工重置或重建, 非本轮可解; 本cycle WAIT零新敞口",
+  "10": "成本: spread 0.52bps(持平)+slippage 0.1-1.1bps≈roundtrip 1.2-2.2bps≈0.5-1.0pt@4409≈0.08-0.17R(相对floor风险6pt基数), 0.01lot成交成本<$1, 非决策障碍; 本cycle WAIT零新成本; 真障碍=风险层notional模型: risk_check以固定$100预算反推lots(=100/(dist×100)), notional=ref×100/dist → floor 4400×100/6≈73k、墙4413×100/4.75≈93k、zone 4412.5×100/13.5≈33k, 全>>max5000; 而plan qty 0.01真实notional≈$4413<5000——sizing模型与qty声明不匹配致在册书机械全拦, 属人工域(Hermes不改risk policy/registry)",
+  "11": "净EV算式: 新注册面: 同向第四fade名义=0.42×2.72-0.58×1-cost≈+0.5R, 但①与zombie双书同setup同域=叠单暴露 ②risk层必拦无执行路径→实现EV=0且账本污染→否决; 无confirm突破多=0.30×1.5-0.70×1.0-0.05≈-0.30R→否决; WAIT=0成本0风险, 在册floor书EV+0.45R>0待触(00:21Z前), 墙/zone书到期后同构重建仍正EV; 故本cycle净EV最优=WAIT+在册书待触发, 等bar解冻/floor破位/墙再触/失效线任一; 执行层EV归零问题(risk拦截+fill未接通)报人工, 不改策略不改policy",
+  "12": "再现: '墙8叩全拒→21:00收破墙底+MA20(RSI50→34.9)→4404.8测MA50三重支撑→quote两轮承接(4406.61/4412.66)均回墙再拒→回落中段'演化链完整可复述、轮轮同构; 两结局机械覆盖: 破4404-4406→floor书4401.5下方接空续跌4394/4381; 上攻≥4417/4425→fade证伪转多(4426.5突破/4404-4407承接); zombie到期(01:52Z/03:05Z)后墙fade同构重建[4411,4415.5]; 触发/失效价全部具体可判, 结构在bar解冻前不破坏; 半解冻期间以quote mid为观测锚、以4411/4417/4425/4401.5为不变裁决线, 再现性完备",
+  "13": "WAIT(立场neutral-lean-short, conf0.50): 增量=quote二动4412.66→4409.09确证墙压但无新边际setup: 墙fade双书zombie(01:52Z/03:05Z到期自清)、floor书live等破4404-4406(00:21Z到期)、多头无confirm否决、第四叠单否决——在册书已机械覆盖两结局, 零新注册为EV最优; 等: ①bar解冻confirm ②mid≤4401.5 floor触发 ③zombie到期后同构重建(墙再触≥4411) ④mid≥4417/4425撤fade转多(4426.5/4404-4407); 另: risk notional模型与qty0.01不匹配+fill路径未接通→在册书demo零成交, 报人工裁决, 不改risk policy/registry",
+  "14": "quote二动4412.66回落-3.6pt确证4411-4416墙压, 但无新边际setup: 墙fade双书zombie、floor在册等破4404-4406、多头无confirm否决、叠单否决; 就差bar解冻/floor触≤4401.5/墙再触时机; engine风险层拦截致在册书不可成交, 报人工"
+ },
+ "cost_note": "spread_bps_now=0.52持平; slippage_bps~0.1-1.1(paper); roundtrip~1.2-2.2bps≈0.5-1.0pt@4409≈0.08-0.17R; 本cycle WAIT零新成本; 执行层阻塞=risk notional模型(33k-93k>max5000)与qty0.01不匹配→在册书机械拦截, 人工域",
+ "ev_note": "本cycle新注册边际EV≤0(第四叠单名义+0.5R但实现=0且污染/多头-0.3R); WAIT=0成本0风险为EV最优; 在册floor书EV+0.45R>0待触(00:21Z到期); zombie到期后墙fade同构重建仍正EV; 差什么=bar解冻confirm/floor触≤4401.5/墙再触≥4411/失效线≥4417-4425",
+ "model": "deepseek/deepseek-v4-flash",
+ "prompt_version": "hermes-trader-v1-p0-m15-14Q 2026-09-07"
+}

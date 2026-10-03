@@ -1,0 +1,105 @@
+{
+  "forecast_id": "R8B_A_20260717",
+  "sample_id": "A_20260717",
+  "timestamp": "2026-07-17T00:00:00Z",
+  "horizon": 4,
+  "scenario_family": "RANGE",
+  "scenario_alternative": "DIRECTIONAL",
+  "scenario_abstain": false,
+  "observations": [
+    "M1 range percentile 0.97, long lower wick 2.34",
+    "8 consecutive up bars M1, range expanding",
+    "Price at swing low level 3979.775, break INSIDE",
+    "State REJECTION dwell 7, MTF agreement CONFLICT"
+  ],
+  "what_i_know": [
+    "Current M1 bar closed 3976.895 after 3974.555 low",
+    "Level 3979.775 swing low, 12 touches, price inside",
+    "H1 and H4 trend_20 strongly negative",
+    "Frozen label ROTATION, state REJECTION, event NONE"
+  ],
+  "what_i_do_not_know": [
+    "Next 4 bars direction or exact path",
+    "Cross-market data all absent, VIX stale",
+    "Whether 3974.5 support or 3980 level breaks first",
+    "News and macro events unknown"
+  ],
+  "evidence": [
+    "Expansion bar then contraction typically follows",
+    "Overhead swing-low level caps upside at 3979.8",
+    "H4 upper wick 17.07 shows supply overhead",
+    "Dwell 7 in REJECTION suggests range persistence"
+  ],
+  "counter_evidence": [
+    "8 consecutive M1 up bars show momentum",
+    "M1/M5 trend_20 positive, MTF CONFLICT",
+    "Analog A34888 shows EXPANSION path possible",
+    "Range percentile 0.97 may precede breakout"
+  ],
+  "possible_mechanisms": [
+    {
+      "mechanism": "range_rotation_around_level",
+      "status": "SUPPORTED",
+      "why": "State REJECTION dwell 7, price inside level"
+    },
+    {
+      "mechanism": "rejection_extension_down",
+      "status": "POSSIBLE",
+      "why": "H4/H1 downtrends, overhead wick supply"
+    },
+    {
+      "mechanism": "breakout_continuation_up",
+      "status": "WEAK",
+      "why": "M1 momentum but level unbroken"
+    },
+    {
+      "mechanism": "trend_continuation",
+      "status": "UNKNOWN",
+      "why": "Candidate only, not asserted"
+    }
+  ],
+  "primary_scenario": {
+    "scenario": "RANGE",
+    "horizon": 4,
+    "trigger": "Price oscillates between 3974.5 and 3980.0",
+    "invalidation": "Decisive break of level 3979.775 or 3974.5"
+  },
+  "alternative_scenario": {
+    "scenario": "DIRECTIONAL",
+    "horizon": 4,
+    "trigger": "Rejection down from 3979.8 level toward 3974",
+    "invalidation": "Sustained close above 3980.3"
+  },
+  "expected_transition": "REJECTION continues with range rotation",
+  "direction_bias": "NEUTRAL",
+  "time_horizon": "4 bars",
+  "evidence_strength": 0.35,
+  "confidence": 0.4,
+  "uncertainty": 0.6,
+  "confidence_reason": "Structure coherent but MTF conflict and ambiguity 0.5",
+  "uncertainty_reason": "Level duel unresolved, no cross-market confirmation",
+  "invalidation": "Close above 3980.3 or below 3974.5 within 4 bars",
+  "change_my_mind": [
+    "Sustained close above 3980.3 flips to DIRECTIONAL up",
+    "M1 close below 3974.5 flips to DIRECTIONAL down",
+    "Range contraction below 1.5 ATR supports QUIET",
+    "New level break with expansion supports DIRECTIONAL"
+  ],
+  "abstain": false,
+  "abstain_reason": "Sufficient PIT structure despite MTF conflict",
+  "questions": {
+    "Q1": "Only context-stated facts: klines, levels, states, analogs",
+    "Q2": "Cross-market, news, order flow, and future path unknown",
+    "Q3": "Range rotation supported by dwell and level presence",
+    "Q4": "Momentum and positive M1/M5 trends argue against",
+    "Q5": "Rejection extension down is only possible, not asserted",
+    "Q6": "Decisive level break either way would flip my view",
+    "Q7": "No abstain; structure sufficient for low-confidence call"
+  },
+  "reasoning_trace": [
+    "Expansion bar at percentile 0.97 then mean reversion bias",
+    "Price at swing level 3979.775 with 12 touches caps upside",
+    "REJECTION dwell 7 and rotation label favor range",
+    "MTF conflict caps confidence at 0.4"
+  ]
+}

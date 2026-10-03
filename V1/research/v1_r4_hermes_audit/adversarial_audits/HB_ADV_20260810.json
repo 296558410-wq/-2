@@ -1,0 +1,103 @@
+{
+ "audit_id": "HB_ADV_20260810",
+ "timestamp": "2026-09-27T22:45:00+08:00",
+ "overall_verdict": "PARTIAL_AGREE",
+ "dimension_verdicts": {
+  "CURRENT_STATE": "AGREE",
+  "STRUCTURE": "PARTIAL_AGREE",
+  "MECHANISM": "PARTIAL_AGREE",
+  "PRIMARY_SCENARIO": "PARTIAL_AGREE",
+  "ALTERNATIVE_SCENARIO": "PARTIAL_AGREE",
+  "EXPECTED_TRANSITION": "AGREE",
+  "DIRECTION": "AGREE",
+  "HORIZON": "AGREE",
+  "CONFIDENCE": "PARTIAL_AGREE",
+  "INVALIDATION": "AGREE",
+  "ABSTENTION": "PARTIAL_AGREE"
+ },
+ "factual_errors": [
+  "Primary scenario states the 4331.265 swing-low 'holds (as suggested by the long lower wicks on the H1 and M15 12:00 bars)' — but those same bars violated the level intra-bar: H1 12:00 low 4328.655 and M15 12:00 low 4329.285 both traded BELOW 4331.265, and H1 12:00 closed below its open (4334.805 < 4335.565, bearish, close in lower half of range). The cited bars are breakdown probes, not proof of defense.",
+  "Supporting evidence cites H4 12:00 bar 'long lower wick 19.26 down to 4316.305' and 'close 4345.185' as current buyer-defense evidence, but H4 12:00 close 4345.185 is inconsistent with every simultaneous L1 close (M1 4335.295, M5 4334.355, M15 4331.425, H1 4334.805) — ~10 points above them. The H4 'current' bar snapshot is internally contradictory (its close also disagrees with the H1 11:00 close 4335.535 that precedes it) and cannot be treated as reliable evidence of what happened at 12:00.",
+  "Primary scenario and question G both claim upward resolution is 'consistent with analogs A35249/A36614 (COMPRESSION -> TREND)' — the analog payload carries STATE EVOLUTION ONLY (note: 'no returns/PnL/labels ever included'; A35249 and A36614 both only specify state 'TREND', not its direction). 'TREND' with unspecified direction cannot support an UPWARD resolution; the claim mischaracterizes the evidence."
+ ],
+ "insufficient_evidence": [
+  "Direction of the resolution: no volume, order-flow, or cross-market corroboration exists (DXY/VIX are PROXY, UST10Y UNKNOWN, GLD/GC/news/macro absent). A correctly records this, then still tilts the primary scenario upward — the tilt itself lacks supporting evidence.",
+  "'Buyers defending' / 'buyers defend': long lower wicks are geometry only; nothing in the context establishes defending intent (no flow, no volume, no bid-side data).",
+  "Confidence ordering 0.44 (up) vs 0.38 (down): no differential evidence justifies a 6-point gap; with MTF CONFLICT and symmetric-ish evidence the probabilities are effectively a coin flip at the level."
+ ],
+ "missed_counter_evidence": [
+  "H1 12:00 bar low 4328.655 and M15 12:00 bar low 4329.285 both pierced the 22-touch level 4331.265 intra-bar — the level is NOT unambiguously 'holding'; it was violated in the very bars A cites as defense.",
+  "M15 12:00 close 4331.425 sits 0.16 above the level (distance_atr 0.02544) — effectively ON the level, which is a decision point, not a defense/reclaim. Close-to-level proximity cuts against 'support holds' as a settled fact.",
+  "At t the immediate tape is uniformly down: M1 consecutive_down 5, M5 consecutive_down 5, M15 consecutive_down 8, H1 consecutive_down 7; M5 11:55 bar strong bearish body 2.62 closing 4335.535; M5 trend_50 -23.48; M15 12:00 bar is a strong bearish body (4.14) closing near its lows. Only H4 is positive. A lists much of this in counter_evidence but does not let it inform the scenario probabilities.",
+  "M5 sequence_flags show range_contracting true at t while A leans on 'M1/H4 range_expanding true' as 'expansion dynamics present' — the expansion flags are mixed across timeframes; citing only the expanding ones is selective.",
+  "DXY change_32 +0.084 (mild USD firming over 32 bars, PROXY quality) is present in context and only surfaces in A's hypothetical change_my_mind, never as a live headwind against the bullish primary."
+ ],
+ "mechanism_jumps": [
+  "Long lower wicks -> 'buyers defending' -> 'the 4331.265 swing-low holds' -> upward expansion: leaps from K-line geometry to intent to a directional outcome with no flow/volume/order evidence.",
+  "'Liquidity-proxy: price pinned at a 22-touch swing-low ... tends to attract stops/protection, raising the odds of a sharp resolution once it breaks or holds' — 'raising the odds of a sharp resolution' is asserted without any base-rate or level-touch statistics in the context; a level with 22 touches could equally be exhausted (more likely to break) or defended.",
+  "State-only analogs (COMPRESSION -> TREND) are used as support for the upward primary: the jump from 'state will become TREND' to 'price goes up' is unsupported because the analog note explicitly excludes direction and returns."
+ ],
+ "over_inference": [
+  "'Imminent expansion from the compression' — the timing claim comes from the frozen lifecycle (VOL_CONTRACTION -> EXPANSION), not from any evidence of imminent resolution; ambiguity_rate_8 0.125 measures labeler confidence in the LABEL, not timing of a transition.",
+  "Primary confidence 0.44 vs alternative 0.38: the upward tilt is inferred from H4 trend + wicks + analogs while the four intraday timeframes are all in consecutive-down — the tilt over-infers from HTF context.",
+  "Using H4 12:00 bar close 4345.185 / lower wick 19.26 (an internally inconsistent snapshot, see data_quality) as live evidence over-infers from a suspect data point."
+ ],
+ "time_window_issues": [
+  "Scale mismatch: H4 trend_20 +101.24 / trend_50 +238.74 describe a multi-day (8+ day) uptrend, but are used to tilt an INTRADAY horizon scenario; HTF trend justifies HTF context, not the direction of the next intraday resolution — the intraday evidence (M1-M15) is uniformly negative.",
+  "Level age/evidence window is fine (22 touches in 240 bars, level_age_bars 22 are context-supplied); no other time-window problem found — no claims require history longer than available."
+ ],
+ "data_quality_issues": [
+  "H4 12:00 'current' bar is internally inconsistent: close 4345.185 contradicts simultaneous L1 closes (M1 4335.295 / M5 4334.355 / M15 4331.425 / H1 4334.805) and the preceding H1 11:00 close 4335.535; its high 4351.435/low 4316.305 cannot both belong to a 12:00-stamped bar consistent with the L1 tape. A built its 'buyer defense' evidence on this bar.",
+  "DXY/VIX are PROXY (instrument definition UNKNOWN) — A labels them correctly, but still uses hypothetical DXY behavior ('DXY proxy strengthening materially ... would support the bearish reading') in change_my_mind as if interpretable; acceptable only as a conditional, which A keeps it as.",
+  "A's liquidity-proxy argument is derived from level geometry (touch_count) treated as a behavioral fact ('tends to attract stops/protection') — a DERIVED quantity promoted to a market-behavior claim."
+ ],
+ "hindsight_flags": [],
+ "explanation_not_prediction_flags": [
+  "expected_state_transition 'COMPRESSION -> EXPANSION' restates the frozen lifecycle (VOL_CONTRACTION maps to EXPANSION next); it describes the labeler's expectation rather than an independent falsifiable prediction. A mitigates this by withholding direction (NO_DIRECTIONAL_EDGE), which is the correct handling.",
+  "'Price coiling at a multi-touch decision level rather than trending outright' is a description of the present; acceptable as CURRENT_STATE but it is not a forecast."
+ ],
+ "kline_overreliance_flags": [
+  "Every directional input in the primary scenario is K-line geometry: lower wicks, bodies, trend_20/50 deltas, range percentiles, consecutive counts. No volume/flow exists in context, and A acknowledges the absent series — yet the primary scenario's 'buyers defend -> support holds' case is built entirely on wick shape, the weakest of these signals.",
+  "Wick-based 'defense' claims are especially fragile here because the very bars cited (H1/M15 12:00) closed weak or on the level after piercing it."
+ ],
+ "mtf_conflict_ignored_flags": [
+  "A correctly declares L6 agreement = CONFLICT and DIRECTION = NO_DIRECTIONAL_EDGE, then constructs a primary scenario that quietly resolves the conflict in favor of H4 (up 0.44) against four lower timeframes in consecutive-down. The conflict is acknowledged in prose but not honored in the probability assignment — M1/M5/M15/H1's uniform down-pressure never moves the primary/alternative ordering.",
+  "Mixed expansion flags (M1/H4 range_expanding true vs M5 range_contracting true) are resolved selectively in A's supporting evidence ('expansion dynamics present')."
+ ],
+ "evidence": [
+  {
+   "claim": "'The 4331.265 swing-low holds (as suggested by the long lower wicks on the H1 and M15 12:00 bars)'",
+   "contradicting_evidence": "H1 12:00 low 4328.655 and M15 12:00 low 4329.285 traded below 4331.265 intra-bar; H1 12:00 closed 4334.805 below its open 4335.565 (bearish, lower half of range); M15 12:00 closed 4331.425, only 0.16 above the level. The cited bars evidence violation/decision, not defense."
+  },
+  {
+   "claim": "'H4 12:00 bar has long lower wick 19.26 down to 4316.305 (buyers defended the low)' with close 4345.185",
+   "contradicting_evidence": "H4 12:00 close 4345.185 is ~10 points above every simultaneous L1 close (M1 4335.295, M5 4334.355, M15 4331.425, H1 4334.805) and disagrees with the preceding H1 11:00 close 4335.535; the H4 12:00 snapshot is internally inconsistent, so the wick/close evidence built on it is unreliable."
+  },
+  {
+   "claim": "Upward resolution 'consistent with analogs A35249/A36614 (COMPRESSION -> TREND)'",
+   "contradicting_evidence": "The analog payload contains state evolution only — 'no returns/PnL/labels ever included'; 'TREND' carries no direction. State-only analogs support 'COMPRESSION -> some TREND', not an upward one."
+  },
+  {
+   "claim": "Primary 0.44 upward vs alternative 0.38 downward",
+   "contradicting_evidence": "Immediate tape is uniformly down at t: consecutive_down M1 5 / M5 5 / M15 8 / H1 7; M5 trend_50 -23.48; M5 11:55 bearish body 2.62; M15 12:00 bearish body 4.14. No intraday bullish evidence of comparable recency exists to justify the 6-point upward gap."
+  },
+  {
+   "claim": "'Imminent expansion' / 'expansion dynamics present' (M1 and H4 range_expanding true)",
+   "contradicting_evidence": "M5 range_contracting true at t; expansion flags are mixed across timeframes. Imminence is inferred from the lifecycle (VOL_CONTRACTION), not from observed expansion; ambiguity_rate_8 0.125 is label confidence, not timing."
+  }
+ ],
+ "strongest_objection": "The primary scenario's bullish justification is contradicted by the very bars it cites: H1 12:00 (low 4328.655) and M15 12:00 (low 4329.285) pierced the 22-touch level 4331.265 intra-bar, H1 closed bearish below its open, M15 closed 0.16 above the level (on it), the four intraday timeframes are all in consecutive-down, and the H4 12:00 'buyer defense' bar has a close (4345.185) that contradicts every simultaneous L1 close — while the analogs invoked for the upward TREND carry no direction at all (state-only, no returns). Read at face value, A's own evidence base is a coin-flip at the level, so the upward tilt (0.44 vs 0.38) and its wick/analog justification are the forecast's weakest links; the scenario machinery (triggers, invalidation, change_my_mind) is otherwise well-constructed.",
+ "reasoning_trace": [
+  "Read the audit prompt (HERMES-B role, 11 dimensions, flaw categories) and the ADV_20260810 payload (PIT context + Hermes-A forecast) only.",
+  "Verified A's CURRENT_STATE against L3/L5/L2: COMPRESSION, VOL_CONTRACTION, dwell 8, ambiguity 0.125, level 4331.265 INSIDE 0.025 ATR — accurate; AGREE.",
+  "Cross-checked A's STRUCTURE claims: H4 uptrend (trend_20 +101.24, trend_50 +238.74) and pullback into the swing-low are supported; the 'support holds / buyers defend' framing is interpretive and the H4 12:00 bar used for it is internally inconsistent with L1 closes — PARTIAL_AGREE.",
+  "Audited MECHANISM: A correctly keeps L4 candidates as candidates and asserts only the state-machine compression->expansion; but wick->intent->'holds' is a mechanism jump and the state-only analogs cannot carry directional weight — PARTIAL_AGREE.",
+  "Stress-tested PRIMARY_SCENARIO: found the cited 'defense' bars actually pierced the level intra-bar (H1 4328.655, M15 4329.285) and closed weak/on-level; the analog support (A35249/A36614) is direction-free; the 0.44 upward tilt lacks differential evidence — PARTIAL_AGREE with the strongest objection.",
+  "Stress-tested ALTERNATIVE_SCENARIO: well-specified and its trigger/invalidation are checkable; it is arguably at least as well supported as the primary given the uniformly down intraday tape, so the probability ordering is questionable — PARTIAL_AGREE.",
+  "Checked EXPECTED_TRANSITION and DIRECTION: COMPRESSION->EXPANSION is the lifecycle's own expectation (AGREE, flagged as quasi-descriptive); NO_DIRECTIONAL_EDGE is the right call under L6 CONFLICT (AGREE), though the tilted scenario probabilities sit awkwardly with it.",
+  "Checked HORIZON/INVALIDATION: INTRADAY with M5/M15 expansion triggers and explicit symmetric invalidation are checkable — AGREE both.",
+  "Checked CONFIDENCE/ABSTENTION: 0.44 vs 0.38 gap is unjustified by the evidence (PARTIAL_AGREE); non-abstention is defensible because A gives falsifiable scenarios, but with CONFLICT and no cross-market corroboration an equal-probability or abstention framing would be more internally consistent (PARTIAL_AGREE).",
+  "Assembled flaw arrays with concrete quotes from the payload; every entry is tied to specific numbers/timestamps; no future data was consulted; no hindsight flags found.",
+  "Overall: PARTIAL_AGREE — honest, well-structured, PIT-clean forecast whose weakest components are the upward tilt of the primary scenario, the wick/analog justification, and reliance on an internally inconsistent H4 12:00 snapshot."
+ ]
+}

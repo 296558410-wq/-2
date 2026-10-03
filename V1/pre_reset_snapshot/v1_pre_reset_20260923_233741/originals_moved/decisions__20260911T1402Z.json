@@ -1,0 +1,98 @@
+{
+ "cycle": "2026-09-11T14:02Z",
+ "symbol": "XAUUSD",
+ "decision_id": "DEC-2026-09-11T14:02Z",
+ "utc_ts": "2026-09-11T14:02Z",
+ "generated_utc": "2026-09-11T14:02Z",
+ "decision": "SHORT",
+ "confidence": 0.58,
+ "bias": "SHORT-lean 0.58 — 顺势 fade: D1 close4386.63<MA20 4464.64(结构down), H4 price<MA50 4394.12; 现价 4384 刚从 4402.5 反弹顶被拒回落, 反弹进 4393.5-4400.0 HTF MA簇即卖。",
+ "opportunity": "retrace_fade_at_htf_ma_cluster",
+ "opportunity_mechanism": "XAUUSD 12:30Z 数据尖峰扫低 4292.60 后 V 修复 +110pt 冲至 4402.52, 正撞 HTF 阻力簇(H4 MA50 4394.12 / H1 MA200 4396.91 / 整数 4400 / 本地拒绝高 4402.52), 16:45srv(13:45Z) 触 4402.52 后 17:00srv(14:00Z) 大上影回落至 4385.78 (我们 4395.43 的空单已随 SL4401 被扫, -5.58USD)。现价 4384: HTF(D1<MA20)偏空 + 顶被拒 → 顺 HTF 在 4393.5-4400.0 簇内卖反弹; 断 4404.5 = 结构转多作废。",
+ "mtf_agreement": "conflict",
+ "state_summary": "XAUUSD broker mid 4383.47 (bid4383.40/ask4383.53, spread 0.297bps); pkg m15_live last_mid 4384.77, tick_rate 135/min, z -0.13; data_quality ok (live_days5, live_ticks932785, context_days29, gaps[])。当前 FLAT (POS-20260911T1302Z SHORT0.01@4395.43 已由 broker 随单 SL 4401.01 平仓 @13:59:36Z, realized -5.58USD; 引擎本轮 reconcile 回收)。MT5 broker MAs: D1 close4386.63 < MA20 4464.64 > MA50 4269.49; H4 close4386.63 > MA20 4376.37 < MA50 4394.12 > MA200 4366.35; H1 close4386.63 > MA20 4340.66 > MA50 4373.65 < MA200 4396.91; M15 close4386.63 > MA20 4356.43 > MA50 4344.27 > MA200 4373.69。结构: 4292.60→4402.52 反弹后在 HTF 簇被拒回落。",
+ "data_note": "state_package parquet OHLC 源与 MT5 broker 实时源仍有偏差(m15 last_close 4345.4 vs broker ~4386.6, 约 +41pt); 触发用 pkg.m15_live(quote_latest, broker 一致), 结构位/MA 以 MT5 server bars 为准。",
+ "m15_change": "vs 13:47Z(前轮 mid~4399.8): -15.8pt 回落。最新两 M15(srv): 16:45 O4394.91 H4402.52 L4387.15 C4401.71; 17:00 O4401.36 H4402.27 L4381.91 C4385.78(大上影阴, 正在形成)。支撑 4381.9/4376.4/4373.7/4366.4; 阻力 4394.12(H4 MA50)/4396.91(H1 MA200)/4400(整数)/4402.5(拒绝高)。",
+ "answers_14": {
+  "1": "市场状态: XAUUSD broker mid 4383.47 (spread 0.297bps, tick135/min); data_quality ok (live_days5, ticks932785, context_days29, gaps[]); 当前 FLAT(空单 POS-1302Z 已被 broker SL 4401.01 扫, -5.58USD)。HTF: D1 close4386.63<MA20 4464.64(结构down, 偏空); H4 >MA20 4376.37 但 <MA50 4394.12; H1 >MA20/MA50 但 <MA200 4396.91; M15 >全部 MA。4292.60→4402.52 反弹后撞 HTF 簇被拒。",
+  "2": "一致性: conflict — HTF(D1<MA20 结构down, H4<MA50)偏空; 日内(M15/H1 在 MA20/MA50 上方)偏多。4400-4402.5 是 HTF 阻力簇(整数+H1 MA200+H4 MA50), 顺势 fade 与日内动能摊牌点。净 SHORT-lean 0.58。",
+  "3": "M15 变化 vs 13:47Z(~4399.8): -15.8pt。16:45srv O4394.91 H4402.52 L4387.15 C4401.71; 17:00srv O4401.36 H4402.27 L4381.91 C4385.78(上影阴)。顶被拒下跌, 支撑 4381.9/4376.4/4366.4, 阻力 4394.12/4396.91/4400/4402.5。",
+  "4": "机会/离可交易差什么: 已空仓(单仓约束解除)→ 可新开。离'可交易'只差一次反弹: 现价 4384 在簇下方 ~10-16pt, 只差价格反抽进 4393.5-4400.0 阻力簇即自动成交 fade。不追空、不在簇下方裸空; 若直接续跌则本计划作废, 由新轮重建。",
+  "5": "机制: 4292.60 扫低后 V 修复 +110pt 冲 4402.52 撞入 HTF 阻力簇(H4 MA50 4394.12 / H1 MA200 4396.91 / 整数 4400 / 拒绝高 4402.52)并被大上影拒绝回落; 顺 D1<MA20 + H4<MA50 的 HTF 偏空方向, 在簇内卖反弹 = 高再现性 retrace-fade。",
+  "6": "触发条件 [具体价]: SHORT {and:[{zone_touch:[4393.5,4400.0]},{spread_under_bps:0.8}]} — 现价 4384.5 在带下方, 只有反抽进 4393.5-4400.0 才成交(触价自动)。",
+  "7": "失效 [具体价]: invalidation {price_cross_up:4403.0}(簇顶/拒绝高 4402.52 之上) → fade 作废取消; 成交后硬止损 level_price 4404.5。",
+  "8": "预期收益 R: ref entry 4396.75, SL 4404.5 -> 1R=7.75pt。T1 4377.0=2.55R x0.40; T2 4366.0=3.97R x0.35; T3 4352.0=5.77R x0.25; 加权=0.40*2.55+0.35*3.97+0.25*5.77=3.85R。",
+  "9": "预期损失 R: 硬止损 4404.5 = -7.75pt = -1.0R (0.01手 ≈ -7.75USD)。亏损绝不加仓摊平。",
+  "10": "成本数值: spread 0.297bps + slippage 0.30bps ≈ 往返 0.60bps ≈ 0.264pt (0.01手 ≈ 0.26USD); 1R=7.75pt → cost 0.034R。成本极低, 非障碍。",
+  "11": "净 EV 算式: EV_R = p*R - (1-p)*1 - cost = 0.42*3.85 - 0.58*1.00 - 0.034 = 1.617 - 0.614 = +1.003R (>0)。p=0.42 为 retrace-fade 子家族基准。",
+  "12": "再现性: 家族 'HTF 偏空 + 顺趋势卖反弹至 HTF MA 簇' (TP-1102Z/1132Z/1217Z/1247Z/1302Z/1317Z/1334Z); 本轮为顶被拒后的同族重建。铁律: 卖反弹不追高、不摊平、破位即离。",
+  "13": "SHORT",
+  "14": "空头:HTF(D1<MA20)偏空, 4402.5 顶被拒回落, 价 4384。反抽 4393.5-4400.0 簇即卖, SL4404.5, T1-3 4377/4366/4352, 1R7.75pt, EV+1.0R, qty0.01。"
+ },
+ "cost_note": "spread_bps=0.297, slippage_bps=0.30, round_trip=0.60bps (=0.264pt ~0.26USD on 0.01 lot; 1R=7.75pt -> cost_in_R 0.034).",
+ "ev_note": "EV_R = 0.42*(0.40*2.55+0.35*3.97+0.25*5.77) - 0.58*1.00 - 0.034 = 0.42*3.85 - 0.614 = +1.003R (1R=7.75pt @ref 4396.75, SL 4404.5).",
+ "plan": {
+  "plan_id": "TP-20260911T1402Z",
+  "direction": "SHORT",
+  "entry_zone": {
+   "low": 4393.5,
+   "high": 4400.0
+  },
+  "trigger_condition": {
+   "and": [
+    {
+     "zone_touch": [
+      4393.5,
+      4400.0
+     ]
+    },
+    {
+     "spread_under_bps": 0.8
+    }
+   ]
+  },
+  "invalidation_condition": {
+   "price_cross_up": 4403.0
+  },
+  "stop_logic": {
+   "type": "hard_sl",
+   "level_price": 4404.5
+  },
+  "target_logic": {
+   "levels": [
+    {
+     "price": 4377.0,
+     "frac": 0.4
+    },
+    {
+     "price": 4366.0,
+     "frac": 0.35
+    },
+    {
+     "price": 4352.0,
+     "frac": 0.25
+    }
+   ]
+  },
+  "expected_R": 3.85,
+  "expected_win_probability": 0.42,
+  "probability_source": "retrace-fade 子家族基准 (TP-1102Z..1334Z 系列, n≈8)",
+  "estimated_cost": {
+   "spread_bps": 0.297,
+   "slippage_bps": 0.3,
+   "round_trip_bps": 0.6,
+   "round_trip_price": 0.264
+  },
+  "spread_bps": 0.297,
+  "slippage_bps": 0.3,
+  "expected_net_EV": {
+   "value": 1.003,
+   "units": "R",
+   "note": "0.42*3.85 - 0.58*1.00 - 0.034"
+  },
+  "maximum_holding_time": "M15*8",
+  "qty_lots": 0.01
+ },
+ "model": "deepseek/deepseek-v4-flash",
+ "prompt_version": "hermes_trader_v1_active_hunter"
+}

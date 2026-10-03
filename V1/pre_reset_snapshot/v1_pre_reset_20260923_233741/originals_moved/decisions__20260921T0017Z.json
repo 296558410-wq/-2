@@ -1,0 +1,90 @@
+{
+ "cycle": "2026-09-21T00:17Z",
+ "decision_id": "DEC-2026-09-21T00:17Z",
+ "decision": "LONG",
+ "confidence": 0.53,
+ "opportunity": "New LONG dip-buy into the 4343.0-4350.0 four-MA confluence shelf (M15 MA200 4342.15 / M15 low60 4342.68 / H4 MA50 4343.61 / H1 MA200 4348.65) after the -20pt week-open gap; slot freeing (broker SL just closed POS-20260920T2332Z).",
+ "opportunity_mechanism": "With-trend (H4 up) pullback-to-MA-confluence support shelf + week-open gap mean-reversion; structure stop under the shelf, targets back to H1 MA20 4371.56 / M15 MA50 4375.13, then M15 MA20 4381.42, then Fri high 4397.15. Laddered under the still-pending shallow rung TP-20260920T2317Z zone[4361.0,4367.0].",
+ "mtf_agreement": "LOW",
+ "answers_14": {
+  "1": "D1 4341.74 < MA20 4431.29 (RSI42.3, bearish-lean, pos_in_range 45.7) / H4 4382.76 > MA20 4330.00 > MA50 4343.61 < MA200 4402.89 (RSI57.9, hh6/ll3, last_vs_5ago up - the only clean up-TF) / H1 4376.68 ~ MA20 4371.56 > MA200 4348.65 > MA50 4341.57 (RSI49.8, er0.005 range, hi60 4399.77) / M15 4380.87 < MA20 4381.42 > MA50 4375.13 > MA200 4342.15 (RSI44.1, er0.119 range). Overall RANGE/chop; bias NEUTRAL-lean-BULLISH. (TF bar closes are Fri; live mid 4360.93.)",
+  "2": "MTF agreement LOW: D1 bearish-lean (below MA20), H4 up (sole clean directional), H1 and M15 both range. No clean alignment; H4 up is the only directional support, D1 caps the upside.",
+  "3": "M15 last close 4380.87 (Fri 2026-09-18 23:30Z). Live mid 4360.93 - the Sun/Mon week-open gapped ~-20.0pt (-45.6bps); price surrendered H1 MA20 4371.56 and the 61.8% retr 4363.5, and now sits between overhead 4371.56/4375.13 and the 4342.15-4348.65 shelf below. Tape thin: spread 0.41bps, tick 84/min, abnormal z 0.07 = normal, last6 max move 10.9bps, no fresh impulse.",
+  "4": "Actionable NEW setup: LONG dip-buy zone_touch[4343.0,4350.0] into the four-MA shelf (M15 MA200 4342.15 / M15 low60 4342.68 / H4 MA50 4343.61 / H1 MA200 4348.65). Needs ~-11 to -18pt dip from live 4360.93 to trigger; fills on touch. This is the with-trend (H4 up) pullback into a strong support stack.",
+  "5": "With-trend (H4 up) pullback-to-MA-confluence + week-open gap mean-reversion at a 4-MA support shelf; structure stop, laddered targets.",
+  "6": "Trigger = {\"zone_touch\":[4343.0,4350.0]}. Shallow rung already armed TP-20260920T2317Z {\"zone_touch\":[4361.0,4367.0]} SL4358.0 remains PENDING (mid 4360.7 just 0.3pt under its band low).",
+  "7": "Invalidation = {\"price_cross_down\":4335.0} (structure stop below the 4342-4349 shelf; a decisive loss of H4 MA20 4330.0 would void the H4-up thesis outright).",
+  "8": "Expected gain: blended +2.65R from ref 4346.5 (1R 12.5pt) - T1 4371.56 x0.50 = +25.1pt = 2.01R; T2 4381.42 x0.30 = +34.9pt = 2.79R; T3 4397.15 x0.20 = +50.7pt = 4.06R.",
+  "9": "Expected loss: 1.0R (SL 4334.0 = -12.5pt from ref 4346.5).",
+  "10": "spread 0.41bps + slippage 0.30bps = 0.71bps roundtrip ~= 0.31pt ~= 0.0248R (1R 12.5pt).",
+  "11": "EV = 0.45*2.65 - 0.55*1.00 - 0.0248 = +0.618R (breakeven p ~0.386). Positive -> LONG.",
+  "12": "with-trend dip-buy / pullback-to-MA-confluence family on the 10 live-days sample; realised base rate ~0.42-0.48; held at 0.45 (H4-up pullback into a 4-MA shelf, but D1 below MA20 4431.29 + thin week-open tape + a fresh -20pt gap cap the odds).",
+  "13": "LONG - register TP-20260921T0017Z and let the engine arm it.",
+  "14": "slot将随broker SL平仓(POS-2332Z@4361.38 -9.28USD)释放; 周开缺口-20pt回落至4343-4350四MA支撑架, H4仍向上; 挂限价触价买入, 结构止损4334, 目标4371.6/4381.4/4397.2, EV+0.62R。"
+ },
+ "plan": {
+  "plan_id": "TP-20260921T0017Z",
+  "direction": "LONG",
+  "opportunity_type": "pullback",
+  "entry_style": "limit_at_zone",
+  "entry_zone": {
+   "low": 4343.0,
+   "high": 4350.0
+  },
+  "trigger_condition": {
+   "zone_touch": [
+    4343.0,
+    4350.0
+   ]
+  },
+  "invalidation_condition": {
+   "price_cross_down": 4335.0
+  },
+  "stop_logic": {
+   "type": "structure",
+   "level_price": 4334.0,
+   "reason": "below the 4342.15/4342.68/4343.61/4348.65 four-MA shelf (M15 MA200 / M15 low60 / H4 MA50 / H1 MA200) and above H4 MA20 4330.0 (the H4-up invalidation)"
+  },
+  "target_logic": {
+   "type": "structure",
+   "levels": [
+    {
+     "price": 4371.56,
+     "frac": 0.5
+    },
+    {
+     "price": 4381.42,
+     "frac": 0.3
+    },
+    {
+     "price": 4397.15,
+     "frac": 0.2
+    }
+   ],
+   "reason": "T1 = H1 MA20 4371.56 / M15 MA50 4375.13 overhead band reclaim; T2 = M15 MA20 4381.42; T3 = Fri high 4397.15 / M15-H1 high60 4399.77"
+  },
+  "expected_R": 2.65,
+  "expected_win_probability": 0.45,
+  "probability_source": "with-trend dip-buy / pullback-to-MA-confluence family on the 10 live-days sample; realised base rate ~0.42-0.48; held at 0.45 (H4-up pullback into the M15 MA200/H4 MA50/H1 MA200 shelf, but D1 below MA20 4431.29 + thin week-open tape cap it)",
+  "estimated_cost": {
+   "spread_bps": 0.41,
+   "slippage_bps": 0.3,
+   "total_roundtrip_bps": 0.71,
+   "roundtrip_pt": 0.31,
+   "cost_in_R": 0.0248,
+   "note": "0.71bps roundtrip ~= 0.31pt ~= 0.0248R on the 12.5pt 1R"
+  },
+  "spread_bps": 0.41,
+  "slippage_bps": 0.3,
+  "expected_net_EV": {
+   "value": 0.618,
+   "units": "R",
+   "note": "0.45*2.65 - 0.55*1.0 - 0.0248 = +0.618R (breakeven p ~0.386)"
+  },
+  "maximum_holding_time": "M15*8",
+  "qty_lots": 0.01,
+  "risk_level": "medium",
+  "reason": "Buy the with-trend (H4 up) week-open pullback into the 4343-4350 four-MA confluence shelf (M15 MA200 4342.15 / M15 low60 4342.68 / H4 MA50 4343.61 / H1 MA200 4348.65); structure stop under 4334; laddered targets back to H1 MA20 4371.56 / M15 MA20 4381.42 / Fri high 4397.15. Deeper rung under the pending shallow plan TP-20260920T2317Z [4361.0,4367.0]."
+ },
+ "model": "deepseek/deepseek-v4-flash"
+}

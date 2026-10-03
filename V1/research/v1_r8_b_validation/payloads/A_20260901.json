@@ -1,0 +1,105 @@
+{
+ "sample_id": "A_20260901",
+ "horizon": 4,
+ "scenario_family": "RANGE",
+ "scenario_alternative": "DIRECTIONAL",
+ "scenario_abstain": false,
+ "forecast_id": "A_20260901_H4",
+ "timestamp": "2026-09-01T00:00:00Z",
+ "observations": [
+  "State COMPRESSION dwell 12 VOL_CONTRACTION at t",
+  "Price 4446 inside swing high 4443.525 touch 27",
+  "M5 M15 close down near level; H1 up",
+  "Multi-TF CONFLICT; H4 trend_20 -186"
+ ],
+ "what_i_know": [
+  "M1 M5 range contracting flags true",
+  "Frozen label COMPRESSION at t0",
+  "Nearest level 4443.525 UP side INSIDE",
+  "DXY 99.425 flat PROXY only"
+ ],
+ "what_i_do_not_know": [
+  "News and macro events absent",
+  "VIX UST10Y unavailable UNKNOWN",
+  "Level break outcome at H4",
+  "Future price unknown by design"
+ ],
+ "evidence": [
+  "Range contracting true on M1 M5",
+  "VOL_CONTRACTION event at t",
+  "Analogs A35796 A37109 compression at step4",
+  "Ambiguity rate 0.375 moderate"
+ ],
+ "counter_evidence": [
+  "M5 M15 down bars into level",
+  "H4 trend_20 -186 downside pressure",
+  "H1 recovery up bar conflicts",
+  "Analog A38092 TREND at step4"
+ ],
+ "possible_mechanisms": [
+  {
+   "mechanism": "compression_continuation",
+   "status": "SUPPORTED",
+   "why": "label plus contraction flags coherent"
+  },
+  {
+   "mechanism": "exhaustion_reversal",
+   "status": "POSSIBLE",
+   "why": "dwell 12 alone is weak"
+  },
+  {
+   "mechanism": "level_breakout",
+   "status": "POSSIBLE",
+   "why": "price 0.05 ATR from level"
+  },
+  {
+   "mechanism": "trend_continuation_down",
+   "status": "WEAK",
+   "why": "H4 down but H1 up"
+  }
+ ],
+ "primary_scenario": {
+  "scenario": "RANGE",
+  "horizon": 4,
+  "trigger": "price holds 4443.525 compression persists",
+  "invalidation": "decisive break of 4443.525 level"
+ },
+ "alternative_scenario": {
+  "scenario": "DIRECTIONAL",
+  "horizon": 4,
+  "trigger": "level break on M5 M15 momentum",
+  "invalidation": "level holds range persists"
+ },
+ "expected_transition": "COMPRESSION continues through step4",
+ "direction_bias": "NEUTRAL",
+ "time_horizon": "4h",
+ "evidence_strength": 0.5,
+ "confidence": 0.45,
+ "uncertainty": 0.55,
+ "confidence_reason": "State label and analogs agree but multi-TF conflict",
+ "uncertainty_reason": "Level at 0.05 ATR absent cross-market news",
+ "invalidation": "decisive break of 4443.525 swing high level",
+ "change_my_mind": [
+  "M5 close above 4448 confirms range hold",
+  "M5 close below 4441.5 confirms break",
+  "M1 volatility expansion event appears",
+  "Material news absent but would flip"
+ ],
+ "abstain": false,
+ "abstain_reason": "Context sufficient; compression evidence coherent",
+ "questions": {
+  "Q1": "Compression label dwell 12 vol contraction at t",
+  "Q2": "Level outcome news flow true intent unknown",
+  "Q3": "Contraction flags analog step4 compression support",
+  "Q4": "Current down bars H4 downtrend conflict primary",
+  "Q5": "Level breakout mechanism not entitled to assert",
+  "Q6": "Decisive 4443.525 break or M1 expansion",
+  "Q7": "No abstain; evidence derived but coherent"
+ },
+ "reasoning_trace": [
+  "Read prompt and PIT context only",
+  "State compression dwell 12 contraction flags",
+  "Analogs 2 of 3 compression at step4",
+  "Primary RANGE alternative DIRECTIONAL"
+ ]
+}

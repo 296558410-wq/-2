@@ -1,0 +1,88 @@
+{
+ "schema": "v3_tradability_input_manifest/1",
+ "ts_utc": "2026-09-25T14:11:31.681826+00:00",
+ "R2_COMMIT": "bdd3d7d",
+ "MV_R1_COMMIT": "641c7f1",
+ "R2_FREEZE_HASH": "7da599cdb6858ac624f9929d427c634187d257f8adb91d300b9fe33300aecb2f",
+ "R2_CANONICAL_HASH": "20913b986890b1c593a63d1dfa7d6e1d90ad0b71db7b5134132f3ecfd7e72624",
+ "R2_INPUT_HASH": "704e1cfa8960cee881c5efccb1f23fe9679fa262da5770e82fe99d7338f9ac53",
+ "MV_R1_METHOD_POLICY_HASH": "9ed578dda3331db90e20ddcdb5388d548621cf4e110b57e81548982b9d89334e",
+ "TRADABILITY_FREEZE_HASH": "e4d9fe592ab3f493e6ef5cbd49198d4ad620479ac0107f74fac905dc63c4acc6",
+ "BOUNDARY_POLICY_HASH": "b1b199d2f4f230a57eb82863f79389a29c4b4d5e3891f5ef5ad731e834b53204",
+ "M1_source": "xauusd_m1_histdata.parquet",
+ "M1_sha256": "dd633889fa63586baae9a726079c1643f9671c20895306f49f284d57783601dd",
+ "unit_audit": {
+  "M01": {
+   "raw_opportunities": 28817,
+   "tradability_events": 6798,
+   "families": [
+    "F1_SHORT_STATE_JUMP",
+    "F2_SHORT_SHOCK_STRUCTURE"
+   ],
+   "grids": [
+    "15m",
+    "1m",
+    "30m",
+    "5m"
+   ],
+   "events_spanning_multiple_grids": 1580,
+   "events_spanning_multiple_families": 1666
+  },
+  "M02": {
+   "raw_opportunities": 7241,
+   "tradability_events": 3634,
+   "families": [
+    "F6_STATE_CONDITIONAL_HF"
+   ],
+   "grids": [
+    "15m",
+    "1m",
+    "30m",
+    "5m"
+   ],
+   "events_spanning_multiple_grids": 586,
+   "events_spanning_multiple_families": 0
+  },
+  "M07": {
+   "raw_opportunities": 473,
+   "tradability_events": 436,
+   "families": [
+    "F5_SHORT_EXTENSION_REVERSION"
+   ],
+   "grids": [
+    "15m",
+    "1m",
+    "30m",
+    "5m"
+   ],
+   "events_spanning_multiple_grids": 23,
+   "events_spanning_multiple_families": 0
+  },
+  "M01_F1_F2": {
+   "F1_only": 2803,
+   "F2_only": 2329,
+   "F1_and_F2_same_episode": 1666,
+   "M01_independent_episode_count": 6798
+  }
+ },
+ "overlap": {
+  "M01_M02": {
+   "count": 2738,
+   "rate": 0.75344
+  },
+  "M01_M07": {
+   "count": 356,
+   "rate": 0.816514
+  },
+  "M02_M07": {
+   "count": 264,
+   "rate": 0.605505
+  },
+  "M01_M02_M07": {
+   "count": 243
+  },
+  "union_count": 7753,
+  "pairwise_overlap_count": 3358
+ },
+ "multi_mechanism_episodes": 2872
+}

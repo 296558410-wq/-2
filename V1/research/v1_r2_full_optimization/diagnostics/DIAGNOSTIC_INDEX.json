@@ -1,0 +1,22 @@
+{
+ "task": "V1_R2_FULL_AUTONOMOUS_OPTIMIZATION",
+ "stage": "DIAGNOSTIC",
+ "ts_utc": "2026-09-27T12:56:01.389234+00:00",
+ "question": "Why is State duration = 1 bar? (§9)",
+ "files": {
+  "V1_R2_R1_PHASE1_DIAGNOSIS_SHORT.json": "fdeeba22bbf4d1d2d87a208a5b9f811656941c805f5edf1841fb9410829e6bf9",
+  "V1_R2_R1_PHASE1_DIAGNOSIS_LONG.json": "e057f76525cf2d6ed77d93006a44ee691eb41b21aff8fb6aeef03171c7484c65",
+  "v1_r2_r1_phase1_preregistration.json": "a1d97d4f23a746ab72c7a844f5d6ff89284b6789c1e58397addef45e5da980d6"
+ },
+ "AH_mapping": {
+  "A_ontology_too_fine": "PARTIAL",
+  "B_behavior_mistaken_for_state": "CONFIRMED (§9-B: the frozen MARKET_BEHAVIOR is a per-bar classifier, not a lifecycle state)",
+  "C_transition_too_sensitive": "CONFIRMED (no dwell/hysteresis)",
+  "D_threshold_boundary_churn": "WEAK (noise 0.01*ATR -> 0.9418 agreement)",
+  "E_horizon_mismatch": "REJECTED (churn ~0.61-0.67 at M5/M15/H1)",
+  "F_market_genuine_high_freq_switch": "REJECTED (surrogate churn ~= observed)",
+  "G_mtf_fusion_label_jitter": "NOT_THE_CAUSE (single-TF labeler)",
+  "H_lifecycle_design": "CONFIRMED (dominant: k=2 -> churn 0.647->0.151)"
+ },
+ "root_cause": "the frozen labeler is memoryless per-bar; no lifecycle constraint (H) and the labeler's own randomness (F-rejected as market property) drive 1-bar duration"
+}

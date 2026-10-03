@@ -1,0 +1,92 @@
+{
+ "schema": "hermes_decision_v1",
+ "utc_ts": "2026-09-18T14:48:00Z",
+ "cycle": "2026-09-18T14:48Z",
+ "decision_id": "DEC-2026-09-18T14:48Z",
+ "symbol": "XAUUSD",
+ "decision": "LONG",
+ "plan_id": "TP-20260918T1448Z",
+ "confidence": 0.45,
+ "bias": "LEAN-LONG 0.45 - with-trend PULLBACK-BUY at the RECLAIMED shelf 4347.5-4353.5 (H1 MA200 4347.57 / H4 MA50 4342.79). The 14:32Z SHORT thesis is DEAD: the 14:30Z server (17:30 GMT+3) M15 bar printed a bullish outside/engulfing bar - O 4343.16, L 4342.62, H 4355.15, C 4353.79 - i.e. it undercut the prior 4342.91 low, tapped the H4 MA50 4342.79, then closed back at the top of the broken shelf (4353.79), reclaiming it. The 4342.62 low is a clean H4-MA50 touch-and-hold, and H4 remains UP (4353.56 > MA20 4328.45 > MA50 4342.79, RSI 55.2). Drags: M15 still below its MA20 4367.99/MA50 4372.54 (RSI 40.7) and D1 below MA20 4420.23 (RSI 48.4) - hence lean 0.45, not full conviction.",
+ "mtf_agreement": "long-lean (~2.5/4): H4 UP (4353.56 > MA20 4328.45 > MA50 4342.79, RSI 55.2) with the 4342.62 low tagging H4 MA50 and holding (+); H1 reclaiming (4353.56 > MA200 4347.57, still < MA20 4363.75, RSI 46.0) (+); M15 DOWN (4353.56 < MA20 4367.99 < MA50 4372.54, RSI 40.7) (-) and D1 below MA20 4420.23 (RSI 48.4) (-). Net: buy the reclaimed shelf on a shallow retest, do not chase into 4355-4363 resistance.",
+ "state_summary": "Gate 14:48Z Fri: armed=true open=true reason=open (exit 0). pkg 2026-09-18T14:48Z: live_days 10, live_ticks ~1,976,260, gaps []. m15_live last_mid 4352.62, spread 0.32bps, tick 175/min, last6_max 24.0bps z 1.3 vs base 10.17 (vol mildly elevated, normalising). Broker demo tick 14:52Z bid 4352.08/ask 4352.21 mid 4352.145, spread 0.13pt (0.30bps); positions [] -> FLAT, single-position slot FREE; balance/equity/margin_free 1980.63 USD. Live broker MTF (server GMT+3): D1 4353.56 < MA20 4420.23 > MA50 4287.86 (RSI 48.4) mixed / H4 4353.56 > MA20 4328.45 > MA50 4342.79 < MA200 4406.34 (RSI 55.2) up-pullback / H1 4353.56 < MA20 4363.75 > MA50 4338.45 > MA200 4347.57 (RSI 46.0) reclaiming / M15 4353.56 < MA20 4367.99 < MA50 4372.54 > MA200 4338.35 (RSI 40.7) down-but-basing. Day high 4399.70 / day low 4334.35. Tape (GMT+3): 4399.70/4398.27 double top -> flush 4347.29 -> 4342.62 low (tags H4 MA50 4342.79) -> BULLISH ENGULFING close 4353.79 reclaiming 4347.5-4353.5 -> 4354.25 then easing to ~4352.1-4352.6. Data caveat: pkg m15 bar feed offset/stale (last_close 4377.64 vs live ~4352) -> levels & triggers anchored to live broker MT5 feed + pkg m15_live last_mid. ENV: terminal trade_allowed=False again at the 14:52Z probe (flapping) -> a fill this cycle may reject retcode 10027 (same as 13:17/14:02/14:32Z); plan registered regardless, cancels exec_fail with no zombie if rejected.",
+ "m15_change": "vs 14:32Z (mid ~4345.3): REVERSAL + RECLAIM. The 14:32Z short thesis (shelf 4347.5-4353.5 broken and flipping to resistance) was INVALIDATED within two bars: the 17:15 bar set the low 4342.91, then the 17:30 bar undercut to 4342.62 (tagging H4 MA50 4342.79) and reversed hard to close 4353.79 (engulfing the prior bar) = a bullish outside bar reclaiming the shelf. 17:45 is holding 4351.57-4355.37 near 4353.5. So instead of LL/LH continuation, we now have a failed breakdown / spring at H4 MA50. Read: dip-buy the reclaimed shelf, not sell it.",
+ "opportunity": "with-trend PULLBACK-BUY (failed-breakdown reclaim): entry zone 4347.5-4352.0 = reclaimed shelf top / H1 MA200 4347.57, immediately under live mid 4352.62, so a tiny dip fires {zone_touch [4347.5,4352.0]} at market (no close-wait). SL 4340.5 (below the 4342.62 spring low and H4 MA50 4342.79). T1 4363.8 (H1 MA20 4363.75), T2 4372.5 (M15 MA50 4372.54 / prior lower-high), T3 4388.7 (M15 hi20 4388.66). Entry-mid 4349.75, risk 9.25pt, blended target 4373.07 -> R 2.52; EV +0.56R. Slot FREE (broker positions []), only sibling = TP-20260918T1417Z (LONG 4348.0-4353.5) still pending - same shelf, cannot both hold a position (single-position constraint).",
+ "opportunity_mechanism": "XAUUSD topped at 4399.70/4398.27, flushed to 4347.29, made a lower low 4342.62 - and that low tagged the H4 MA50 4342.79 and held, producing a bullish engulfing bar that closed back at 4353.79, reclaiming the 4347.5-4353.5 shelf (H1 MA200 4347.57). With H4 still UP (above MA20 4328.45 and MA50 4342.79), the failed breakdown / spring at H4 MA50 is the with-trend long trigger: buyers stepped in exactly at the H4 MA50. Path of least resistance now back up to the M15 MA cluster 4368-4372.5 and then the 4388.7 swing high. Invalidation = a decisive break and hold below 4340.5 (below the spring low 4342.62 / H4 MA50), which re-opens the 4334.35 day low and voids the reclaim.",
+ "answers_14": {
+  "1_market_state": "Gate 14:48Z Fri armed=true open=true reason=open (exit 0). pkg 14:48Z: live_days 10, live_ticks ~1,976,260, gaps []. m15_live mid 4352.62, spread 0.32bps, tick 175/min, last6_max 24.0bps z 1.3 vs base 10.17 = vol mildly elevated, normalising. Broker demo tick 14:52Z bid 4352.08/ask 4352.21 mid 4352.145 spread 0.30bps; positions [] balance/equity/margin_free 1980.63 USD = FLAT, slot FREE. Live broker MTF (GMT+3): D1 4353.56 < MA20 4420.23 > MA50 4287.86 (RSI 48.4) mixed / H4 4353.56 > MA20 4328.45 > MA50 4342.79 < MA200 4406.34 (RSI 55.2) up-pullback / H1 4353.56 < MA20 4363.75 > MA50 4338.45 > MA200 4347.57 (RSI 46.0) reclaiming / M15 4353.56 < MA20 4367.99 < MA50 4372.54 > MA200 4338.35 (RSI 40.7, hi20 4388.66, lo20 4342.62, hi60 4399.70, lo60 4334.35) down but basing. Day high 4399.70 / day low 4334.35. ENV: terminal trade_allowed=False at the 14:52Z probe (flapping - was True at 14:18Z, off since) -> a fill this cycle may reject retcode 10027. Data caveat: pkg m15 bar feed offset/stale (last_close 4377.64) ignored; levels from live broker MT5 feed.",
+  "2_consistency": "long-lean (~2.5/4): H4 UP + the 4342.62 low tagging/ holding H4 MA50 4342.79 + H1 back above MA200 4347.57 support the reclaim dip-buy; M15 still below MA20 4367.99/MA50 4372.54 (RSI 40.7) and D1 below MA20 4420.23 are the drags. Net: BUY the reclaimed shelf retest 4347.5-4352.0, conviction 0.45, qty 0.01.",
+  "3_m15_change": "vs 14:32Z: the shelf BREAKDOWN read reversed - 17:15 low 4342.91, 17:30 undercut 4342.62 (tags H4 MA50 4342.79) then closed 4353.79 (bullish engulfing / outside bar) reclaiming the 4347.5-4353.5 shelf; 17:45 holding 4351.57-4355.37. Failed breakdown at H4 MA50 = spring. Read: dip-buy the reclaim, not sell.",
+  "4_opportunity": "with-trend PULLBACK-BUY / failed-breakdown reclaim - entry 4347.5-4352.0 (just under live mid 4352.62) fires {zone_touch [4347.5,4352.0]} on a tiny dip; SL 4340.5; T1 4363.8 / T2 4372.5 / T3 4388.7; R 2.52; p 0.45; EV +0.56R; slot FREE.",
+  "5_mechanism": "4399.70/4398.27 double top -> flush 4347.29 -> lower low 4342.62 tagging H4 MA50 4342.79 and HOLDING -> bullish engulfing close 4353.79 reclaims the 4347.5-4353.5 shelf / H1 MA200 4347.57. With H4 UP (MA20 4328.45 / MA50 4342.79) the failed breakdown is the with-trend long trigger; next liquidity up is the M15 MA cluster 4368-4372.5 then 4388.7. Invalidation = break/hold below 4340.5 (spring low + H4 MA50), re-opening 4334.35.",
+  "6_trigger_condition": "{\"zone_touch\": [4347.5, 4352.0]} - live mid 4352.62 sits 0.6pt above zone_hi, so a small dip fires it at market (no close-wait). Staleness line (LONG): if unfilled and mid > zone_hi + 2*band = 4361.0 -> plan expires unfilled, re-built by the next cycle; no chasing into 4355-4363 resistance.",
+  "7_invalidation": "{\"price_cross_down\": 4340.5} (hard SL; below the 4342.62 spring low and H4 MA50 4342.79). A decisive break/hold under 4340.5 voids the reclaim and re-opens the 4334.35 day low - stand down.",
+  "8_expected_return_R": "entry-mid 4349.75, blended target (4363.8 x0.4 / 4372.5 x0.35 / 4388.7 x0.25) = 4373.07 -> +23.32pt; SL 4340.5 -> risk 9.25pt; expected_R = 23.32/9.25 = 2.52R. (Filled at zone top 4352.0: risk 11.5pt, +21.1pt -> 1.83R; filled at zone bottom 4347.5: risk 7.0pt, +25.6pt -> 3.65R - all positive.)",
+  "9_expected_loss_R": "1R = 9.25pt = 9.25 USD on 0.01 lot ~ 0.47% of the 1980.63 USD demo balance. No position open (slot free).",
+  "10_cost_value": "live spread 0.30bps (~0.13pt @4352) + slippage 0.30bps (~0.13pt) = 0.60bps roundtrip ~ 0.26pt ~ 0.028R on the 9.25pt 1R.",
+  "11_net_EV_formula": "EV = p*R - (1-p)*1.0 - cost = 0.45*2.52 - 0.55*1.0 - 0.028 = 1.134 - 0.550 - 0.028 = +0.556R ~ +0.56R. Positive -> LONG authorised (0.6bps cost is not the constraint).",
+  "12_recurrence": "Continuation of the with-trend dip-buy / support-retest family (0347Z LONG banked broker TP +2.78R; 0647Z/1102Z/1302Z/1402Z stopped -1R as the 4399.70 top chopped longs). Now re-armed by the FAILED-BREAKDOWN reclaim at the H4 MA50 4342.79 (new info vs the 14:32Z short which tried to sell the same shelf). Same shelf as the pending 1417Z LONG, re-anchored to the live spring low with SL 4340.5; never averaging.",
+  "13_decision": "LONG - with-trend pullback-buy into 4347.5-4352.0 (reclaimed shelf / H1 MA200 4347.57) after the 17:30 GMT+3 bullish engulfing that undercut to 4342.62, tagged the H4 MA50 4342.79 and closed back at 4353.79; trigger zone_touch, SL 4340.5, T1 4363.8 (0.4) / T2 4372.5 (0.35) / T3 4388.7 (0.25), qty 0.01, expR 2.52, p 0.45, EV +0.56R, bias lean-long 0.45.",
+  "14_reason": "14:32Z short is dead: 17:30 bar undercut to 4342.62 (tagging H4 MA50 4342.79) and closed 4353.79 = bullish engulfing reclaiming the 4347.5-4353.5 shelf. H4 up (4353.6>MA20 4328>MA50 4342.8) -> buy the shelf retest 4347.5-4352.0, SL 4340.5, T 4363.8/4372.5/4388.7, R2.52, EV+0.56R; drags: M15<MA20/MA50, D1<MA20; slot FREE. ENV: trade_allowed flapping off (may reject 10027)."
+ },
+ "plan": {
+  "plan_id": "TP-20260918T1448Z",
+  "direction": "LONG",
+  "entry_zone": {
+   "low": 4347.5,
+   "high": 4352.0
+  },
+  "trigger_condition": {
+   "zone_touch": [
+    4347.5,
+    4352.0
+   ]
+  },
+  "invalidation_condition": {
+   "price_cross_down": 4340.5
+  },
+  "stop_logic": {
+   "type": "structure",
+   "level_price": 4340.5
+  },
+  "target_logic": {
+   "levels": [
+    {
+     "price": 4363.8,
+     "frac": 0.4
+    },
+    {
+     "price": 4372.5,
+     "frac": 0.35
+    },
+    {
+     "price": 4388.7,
+     "frac": 0.25
+    }
+   ]
+  },
+  "expected_R": 2.52,
+  "expected_win_probability": 0.45,
+  "probability_source": "empirical: with-trend dip-buy / support-retest family on the 10 live-days sample; held at 0.45 because H4 is up (MA20 4328.45 / MA50 4342.79) and the 4342.62 low tagged-and-held H4 MA50 with a bullish engulfing reclaim (+), while M15 is still under its MA20 4367.99/MA50 4372.54 (RSI 40.7) and D1 is below its MA20 4420.23 (-), i.e. only ~2.5/4 TFs aligned and the family has been chopped under the 4399.70 top -> no uplift above 0.45.",
+  "estimated_cost": {
+   "spread_bps": 0.3,
+   "slippage_bps": 0.3,
+   "total_bps": 0.6,
+   "note": "0.60bps roundtrip ~ 0.26pt ~ 0.028R on the 9.25pt 1R"
+  },
+  "spread_bps": 0.3,
+  "slippage_bps": 0.3,
+  "expected_net_EV": {
+   "value": 0.56,
+   "units": "R",
+   "note": "0.45*2.52 - 0.55*1.0 - 0.028 = +0.556R"
+  },
+  "maximum_holding_time": "M15*8",
+  "qty_lots": 0.01
+ },
+ "gap_to_tradable": "LOCAL: only a ~0.6-4.5pt dip from live mid 4352.62 into entry 4347.5-4352.0 -> {zone_touch [4347.5,4352.0]} fires on a small pullback (auto-fill at market, no close-wait). Slot FREE (broker positions [], equity 1980.63). What still must hold: the reclaimed shelf 4347.5-4353.5 and the 4342.62 spring low must not give way (mid stays > 4340.5). ENVIRONMENTAL: MT5 terminal trade_allowed=False at the 14:52Z probe (flapping) -> a new demo fill may be rejected retcode 10027 (as at 13:17Z/14:02Z/14:32Z). Plan is registered anyway; if AutoTrading is on it auto-fills, else it cancels exec_fail with no zombie and the next cycle re-evaluates. Sibling: TP-20260918T1417Z (LONG 4348.0-4353.5) still pending - same shelf; single-position constraint prevents a double hold.",
+ "cost_note": "spread 0.30bps (0.13pt @4352) + slippage 0.30bps (0.13pt) = 0.60bps roundtrip (~0.26pt ~ 0.028R on the 9.25pt 1R).",
+ "ev_note": "EV = 0.45*2.52 - 0.55*1.0 - 0.028 = +0.556R. Positive -> LONG authorised.",
+ "model": "deepseek/deepseek-v4-flash",
+ "prompt_version": "hermes-trader-m15-cycle/2026-09-12"
+}

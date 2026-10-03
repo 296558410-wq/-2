@@ -1,0 +1,388 @@
+{
+ "task": "V1_R5_1_SUBAGENT_PERSISTENCE_REPAIR",
+ "ts_utc": "2026-09-27T23:41:09.720141+00:00",
+ "registry_hash": "4f7905f3e627413f8fc37f22b82b2cd49a7af814fa58f0267237d88bdb3bfc2d",
+ "root_causes": [
+  {
+   "id": "RC1",
+   "name": "SUBOUTPUT_PERSISTENCE_FAILURE",
+   "detail": "subagent runs frequently completed WITHOUT persisting their file writes; large payloads were the worst case",
+   "evidence": "R3: 38 calls -> low write yield; R4: 54 calls -> adv 5/18, post 8/18; R5: 9 calls -> 3 then 6-7 persisted after retries"
+  },
+  {
+   "id": "RC2",
+   "name": "CONCURRENCY_LIMIT_EXCEEDED",
+   "detail": "agents.defaults.subagents.maxChildrenPerAgent = 5. Batches of 18/38/54 far exceeded it; spawns were rejected (forbidden) or queued under pressure",
+   "evidence": "sessions_spawn error: 'reached max active children for this session (5/5)'"
+  },
+  {
+   "id": "RC3",
+   "name": "VALIDATOR_HASH_BASIS_MISMATCH",
+   "detail": "the first parent validator compared an indent-formatted byte hash against a canonical-object hash, so HASH always failed",
+   "evidence": "R5.1 probe run 1: 3/3 rejected with HASH failing; fixed by using one canonical hash basis"
+  },
+  {
+   "id": "RC4",
+   "name": "IMPLICIT_SUCCESS_CONDITION",
+   "detail": "the pipeline treated 'the child wrote a file' as success; nothing verified parent-side receipt",
+   "evidence": "no parent-side read-back/sha256 existed before R5.1"
+  }
+ ],
+ "fix": [
+  "SUBAGENT",
+  "RETURN_PAYLOAD",
+  "PARENT_VALIDATOR",
+  "SCHEMA_VALIDATION",
+  "ATOMIC_WRITE",
+  "READ_BACK",
+  "SHA256",
+  "LEDGER"
+ ],
+ "fix_summary": "parent-authoritative persistence + single canonical hash basis + per-sample failure recording + batch size <= 5",
+ "chain_20_of_20": {
+  "passed": 20,
+  "longest_consecutive": 20,
+  "per_sample": {
+   "C01": {
+    "all_checks_pass": true,
+    "checks": {
+     "RETURN": true,
+     "SCHEMA": true,
+     "WRITE": true,
+     "READBACK": true,
+     "HASH": true
+    },
+    "payload_hash": "0a4e56525cab330882b665969569e91b5a4c1004e5020200bbc94b7ff25ad689",
+    "attempt": 1
+   },
+   "C02": {
+    "all_checks_pass": true,
+    "checks": {
+     "RETURN": true,
+     "SCHEMA": true,
+     "WRITE": true,
+     "READBACK": true,
+     "HASH": true
+    },
+    "payload_hash": "4227136e86daae9d565625b556d44efbc1f7a732dff4a6af822476b911782d06",
+    "attempt": 1
+   },
+   "C03": {
+    "all_checks_pass": true,
+    "checks": {
+     "RETURN": true,
+     "SCHEMA": true,
+     "WRITE": true,
+     "READBACK": true,
+     "HASH": true
+    },
+    "payload_hash": "7a139cfd016ac84a9ce8d4e5f9a2326ec0abcccd468a71163cd446cd4ad4ecd9",
+    "attempt": 1
+   },
+   "C04": {
+    "all_checks_pass": true,
+    "checks": {
+     "RETURN": true,
+     "SCHEMA": true,
+     "WRITE": true,
+     "READBACK": true,
+     "HASH": true
+    },
+    "payload_hash": "f0dceb78540fd6bc7d376278c1a3c75afd2ed914003630f5d363bacf7a0d7256",
+    "attempt": 1
+   },
+   "C05": {
+    "all_checks_pass": true,
+    "checks": {
+     "RETURN": true,
+     "SCHEMA": true,
+     "WRITE": true,
+     "READBACK": true,
+     "HASH": true
+    },
+    "payload_hash": "988487b47327b9094d588348cb1d17781e7eb8422d66a77480ab1d74bed5f9e5",
+    "attempt": 1
+   },
+   "C06": {
+    "all_checks_pass": true,
+    "checks": {
+     "RETURN": true,
+     "SCHEMA": true,
+     "WRITE": true,
+     "READBACK": true,
+     "HASH": true
+    },
+    "payload_hash": "237d5c28dc7d67e332f6fa993a7bd1c3be4453ce4e7ecc48041040a8599edb63",
+    "attempt": 1
+   },
+   "C07": {
+    "all_checks_pass": true,
+    "checks": {
+     "RETURN": true,
+     "SCHEMA": true,
+     "WRITE": true,
+     "READBACK": true,
+     "HASH": true
+    },
+    "payload_hash": "f38674d33ba431e0144e11488df93bfa7749cba80ba0950b844c32087d2f813c",
+    "attempt": 1
+   },
+   "C08": {
+    "all_checks_pass": true,
+    "checks": {
+     "RETURN": true,
+     "SCHEMA": true,
+     "WRITE": true,
+     "READBACK": true,
+     "HASH": true
+    },
+    "payload_hash": "57de3d0fe269b49de34a1e03bafb5aa2cb7999fd37e74eb917c4976170a5702d",
+    "attempt": 1
+   },
+   "C09": {
+    "all_checks_pass": true,
+    "checks": {
+     "RETURN": true,
+     "SCHEMA": true,
+     "WRITE": true,
+     "READBACK": true,
+     "HASH": true
+    },
+    "payload_hash": "8c9c221e887d38eff4a5dec783c0e21a7b2f3a4900bb8305e2934fb01cd85e13",
+    "attempt": 1
+   },
+   "C10": {
+    "all_checks_pass": true,
+    "checks": {
+     "RETURN": true,
+     "SCHEMA": true,
+     "WRITE": true,
+     "READBACK": true,
+     "HASH": true
+    },
+    "payload_hash": "dd7e76f2f75580e55ddc75ea8b93bb42a9df838cb86284b9be7d7c9469fa3d3b",
+    "attempt": 1
+   },
+   "C11": {
+    "all_checks_pass": true,
+    "checks": {
+     "RETURN": true,
+     "SCHEMA": true,
+     "WRITE": true,
+     "READBACK": true,
+     "HASH": true
+    },
+    "payload_hash": "d9aba4f680fbedfade8165af9604128e763aaeaccb20587f6c813d836c4e793f",
+    "attempt": 1
+   },
+   "C12": {
+    "all_checks_pass": true,
+    "checks": {
+     "RETURN": true,
+     "SCHEMA": true,
+     "WRITE": true,
+     "READBACK": true,
+     "HASH": true
+    },
+    "payload_hash": "3c9ea13d48755816edf9aeeaa8f5f56b7bb1639b4d955744317318f7b49157fa",
+    "attempt": 1
+   },
+   "C13": {
+    "all_checks_pass": true,
+    "checks": {
+     "RETURN": true,
+     "SCHEMA": true,
+     "WRITE": true,
+     "READBACK": true,
+     "HASH": true
+    },
+    "payload_hash": "342443976b7627d6d9638d1ec68754d590108027cea7998ffb966482b60ec5f2",
+    "attempt": 1
+   },
+   "C14": {
+    "all_checks_pass": true,
+    "checks": {
+     "RETURN": true,
+     "SCHEMA": true,
+     "WRITE": true,
+     "READBACK": true,
+     "HASH": true
+    },
+    "payload_hash": "d700e4c5b52c0684171b4e03afe27fc9d402d6864cc9313359effc5124d483fd",
+    "attempt": 1
+   },
+   "C15": {
+    "all_checks_pass": true,
+    "checks": {
+     "RETURN": true,
+     "SCHEMA": true,
+     "WRITE": true,
+     "READBACK": true,
+     "HASH": true
+    },
+    "payload_hash": "0260fa26fced7d4fe37da732afae156b1fc7a40d24ab5505c2d1bb77ed5a4b09",
+    "attempt": 1
+   },
+   "C16": {
+    "all_checks_pass": true,
+    "checks": {
+     "RETURN": true,
+     "SCHEMA": true,
+     "WRITE": true,
+     "READBACK": true,
+     "HASH": true
+    },
+    "payload_hash": "d6d9f0444d023ad60437cbfc0fdcad34c58e3d2f34a9e00e5bae39fe836d2074",
+    "attempt": 1
+   },
+   "C17": {
+    "all_checks_pass": true,
+    "checks": {
+     "RETURN": true,
+     "SCHEMA": true,
+     "WRITE": true,
+     "READBACK": true,
+     "HASH": true
+    },
+    "payload_hash": "8c7909a87b8cfdd7ab93b895437f311ca3de0873b4c9ffdd482c30d57c978dfb",
+    "attempt": 1
+   },
+   "C18": {
+    "all_checks_pass": true,
+    "checks": {
+     "RETURN": true,
+     "SCHEMA": true,
+     "WRITE": true,
+     "READBACK": true,
+     "HASH": true
+    },
+    "payload_hash": "968758bcd6202db444fb7d38101d6af2888e28bea5046ad37730ae81ae9ec1d2",
+    "attempt": 1
+   },
+   "C19": {
+    "all_checks_pass": true,
+    "checks": {
+     "RETURN": true,
+     "SCHEMA": true,
+     "WRITE": true,
+     "READBACK": true,
+     "HASH": true
+    },
+    "payload_hash": "c49135e1ea64d219c1b85eb92c91788e24ece0eef441e30a93f65b5b7ba5f677",
+    "attempt": 1
+   },
+   "C20": {
+    "all_checks_pass": true,
+    "checks": {
+     "RETURN": true,
+     "SCHEMA": true,
+     "WRITE": true,
+     "READBACK": true,
+     "HASH": true
+    },
+    "payload_hash": "99ea54919f1984c91f682cc4994789537265d4ee89f45cb8dbefbd1945358350",
+    "attempt": 1
+   }
+  }
+ },
+ "fault_injection": {
+  "scenarios": {
+   "empty_response": {
+    "detected": true,
+    "error_type": "SUBAGENT_PERSISTENCE_FAILURE",
+    "detail": "RETURN_FAILED",
+    "accepted": false
+   },
+   "malformed_response": {
+    "detected": true,
+    "error_type": "SUBAGENT_PERSISTENCE_FAILURE",
+    "detail": "MALFORMED_JSON:no_object",
+    "accepted": false
+   },
+   "write_failure": {
+    "detected": true,
+    "error_type": "SUBAGENT_PERSISTENCE_FAILURE",
+    "detail": "WRITE_FAILED:injected write failure",
+    "accepted": false
+   },
+   "partial_write": {
+    "detected": true,
+    "error_type": "SUBAGENT_PERSISTENCE_FAILURE",
+    "detail": "CHECKS_FAILED:READBACK,HASH",
+    "accepted": false
+   },
+   "duplicate_response": {
+    "detected": true,
+    "first_accepted": true,
+    "second_error": null,
+    "third_error": "DUPLICATE_REJECTED"
+   },
+   "timeout": {
+    "detected": true,
+    "error_type": "SUBAGENT_PERSISTENCE_FAILURE",
+    "detail": "RETURN_FAILED",
+    "accepted": false
+   },
+   "retry": {
+    "detected": true,
+    "attempt1_accepted": false,
+    "attempt1_error": "SUBAGENT_PERSISTENCE_FAILURE",
+    "attempt2_accepted": true,
+    "exactly_one_accepted": true
+   },
+   "late_response": {
+    "detected": true,
+    "error_type": "DUPLICATE_REJECTED"
+   }
+  },
+  "all_detected": true,
+  "DUPLICATE_ACCEPTED": 0,
+  "SILENT_DROP": 0,
+  "CORRUPTED_PAYLOAD": 0,
+  "injection_accepted_samples": [
+   "I5_DUP",
+   "I5_DUP_1790552445",
+   "I7_RETRY",
+   "I7_RETRY_1790552445"
+  ],
+  "ledger_entries": 71,
+  "ledger_chain_ok": true,
+  "note": "only I5_DUP and I7_RETRY are legitimately accepted; the rest must remain failures"
+ },
+ "replay": {
+  "payload_hash_reproduced": true,
+  "schema_result_reproduced": true,
+  "rewrite_idempotent": true
+ },
+ "ledger": {
+  "entries": 71,
+  "chain_ok": true,
+  "unique_accepted": 27,
+  "duplicate_accepted": 0
+ },
+ "immutability": {
+  "R3_ok": true,
+  "R4_ok": true,
+  "R5_ok": true
+ },
+ "safety": {
+  "ORDER_SEND": 0,
+  "ORDER_CHECK": 0,
+  "BROKER_WRITE": 0,
+  "FORWARD": "OFF",
+  "SHADOW": "OFF",
+  "LIVE": "OFF",
+  "BOUNDARY_VIOLATION": 0,
+  "MT5_CALLS": 0
+ },
+ "tests": {
+  "pass": 15,
+  "fail": 0,
+  "total": 15
+ },
+ "git_head": "9e8c4f94089c5700ade3b08ec528e14d83821b2e",
+ "COMPLETION_GATE": "PASS",
+ "DUPLICATE_ACCEPTED": 0,
+ "SILENT_DROP": 0,
+ "CORRUPTED_PAYLOAD": 0
+}

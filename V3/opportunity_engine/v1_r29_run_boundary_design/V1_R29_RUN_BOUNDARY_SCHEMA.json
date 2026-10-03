@@ -1,0 +1,284 @@
+{
+ "schema_name": "V1_RUN_BOUNDARY_SCHEMA",
+ "version": 1,
+ "status": "DESIGN_ONLY_NOT_APPLIED",
+ "not_written_to_v1": true,
+ "run_identity": {
+  "run_id": "string, immutable, unique, never reused",
+  "run_start_utc": "ISO8601 UTC, immutable",
+  "run_end_utc": "ISO8601 UTC or null until close",
+  "run_status": [
+   "CREATED",
+   "OPEN",
+   "CLOSED",
+   "ABORTED"
+  ],
+  "runtime_version": "string, immutable",
+  "config_hash": "sha256, immutable",
+  "source_hash": "sha256 of the source snapshot used, immutable",
+  "transitions": {
+   "allowed": [
+    "CREATED->OPEN",
+    "OPEN->CLOSED",
+    "OPEN->ABORTED"
+   ],
+   "forbidden": [
+    "CLOSED->OPEN",
+    "run_id reuse across runs"
+   ]
+  }
+ },
+ "run_manifest": {
+  "file": "runs/<run_id>/manifest.json",
+  "fields": [
+   "run_id",
+   "run_start_utc",
+   "run_end_utc",
+   "run_status",
+   "runtime_version",
+   "source_hash",
+   "config_hash",
+   "opening_balance",
+   "opening_equity",
+   "closing_balance",
+   "closing_equity",
+   "parent_run_id",
+   "manifest_hash"
+  ],
+  "immutability": "run_id/run_start_utc/runtime_version/source_hash/config_hash are write-once",
+  "manifest_hash": "sha256 over all fields except manifest_hash"
+ },
+ "opening_accounting_boundary": {
+  "required": [
+   "opening_balance",
+   "opening_equity",
+   "opening_timestamp",
+   "source"
+  ],
+  "source_enum": [
+   "BROKER_OBSERVED",
+   "PAPER_LEDGER",
+   "OTHER"
+  ],
+  "if_broker": [
+   "observation_timestamp",
+   "account_identifier_hash",
+   "balance",
+   "equity"
+  ],
+  "forbidden": "deriving opening state from the previous run's closing PnL"
+ },
+ "counter_schema": {
+  "file": "runs/<run_id>/counter_schema.json",
+  "per_counter": [
+   "json_path",
+   "semantic_type",
+   "initialization_rule",
+   "run_scope",
+   "aggregation_rule"
+  ],
+  "semantic_types": [
+   "RUN_SCOPED",
+   "ACCOUNT_SCOPED",
+   "LIFETIME_SCOPED",
+   "DERIVED"
+  ],
+  "rule": "ACCOUNT_LIFETIME counters must never be zeroed into run statistics"
+ },
+ "pnl_boundary": {
+  "event_schema": {
+   "event_id": "",
+   "run_id": "",
+   "position_id": "",
+   "deal_id": "",
+   "realized_pnl": 0,
+   "commission": 0,
+   "swap": 0,
+   "fee": 0,
+   "net_pnl": 0,
+   "timestamp": ""
+  },
+  "binding_rule": "explicit run_id on every PnL event; no inference from co-location",
+  "scopes": {
+   "REALIZED_PNL": "RUN_SCOPED",
+   "UNREALIZED_PNL": "ACCOUNT_SCOPED",
+   "COMMISSION": "RUN_SCOPED",
+   "SWAP": "RUN_SCOPED",
+   "FEE": "RUN_SCOPED",
+   "NET_PNL": "RUN_SCOPED_DERIVED"
+  },
+  "forbidden": "ACCOUNT_BALANCE treated as RUN_PNL"
+ },
+ "broker_baseline": {
+  "required_before_run_open": [
+   "timestamp",
+   "balance",
+   "equity",
+   "open_positions",
+   "pending_orders"
+  ],
+  "if_open_position": {
+   "position_baseline_fields": [
+    "ticket",
+    "symbol",
+    "side",
+    "volume",
+    "open_price",
+    "sl",
+    "tp",
+    "magic"
+   ],
+   "default_action": "NEW_RUN_START = BLOCKED"
+  },
+  "deal_mapping": "broker_deal_id -> exactly one run; same deal must never map to >1 run",
+  "recommended_policy": "block a new run while the previous run has any open position"
+ },
+ "ledger_boundary": {
+  "mode": "append-only",
+  "record_fields": [
+   "event_id",
+   "run_id",
+   "event_type",
+   "timestamp",
+   "payload_hash",
+   "previous_hash",
+   "record_hash"
+  ],
+  "chain_rule": "record[n].previous_hash == record[n-1].record_hash",
+  "closed_run_rule": "no ordinary events may be appended after RUN_CLOSE"
+ },
+ "run_closeout": {
+  "event": "RUN_CLOSE",
+  "fields": [
+   "run_id",
+   "close_timestamp",
+   "final_counter_snapshot",
+   "final_pnl_snapshot",
+   "final_balance",
+   "final_equity",
+   "ledger_head_hash",
+   "statistics_hash"
+  ],
+  "produces": "RUN_CLOSE_HASH",
+  "effect": "run becomes immutable"
+ },
+ "new_run_open_event": {
+  "event": "RUN_OPEN",
+  "fields": [
+   "run_id",
+   "opening_balance",
+   "opening_equity",
+   "opening_counter_snapshot",
+   "broker_baseline_hash",
+   "previous_run_id"
+  ],
+  "note": "previous_run_id is lineage only; it does not imply PnL inheritance"
+ },
+ "statistics_layout": {
+  "required": "per-run namespace",
+  "example": "runs/<run_id>/{manifest.json, statistics.json, ledger.jsonl, closeout.json}",
+  "forbidden": "a single fixed statistics.json shared by all runs"
+ },
+ "snapshot_hashes": [
+  "manifest_hash",
+  "statistics_hash",
+  "ledger_head_hash",
+  "RUN_CLOSE_HASH"
+ ],
+ "replay_specification": {
+  "steps": [
+   "LOAD RUN",
+   "READ OPENING SNAPSHOT",
+   "REPLAY EVENTS",
+   "RECONSTRUCT COUNTERS",
+   "RECONSTRUCT PNL",
+   "COMPARE CLOSING SNAPSHOT"
+  ],
+  "success": "REPLAY_MATCH = TRUE",
+  "failure": "RUN_INVALID"
+ },
+ "cross_run_isolation": {
+  "requirements": [
+   "RUN_A events intersect RUN_B events = empty",
+   "RUN_A PnL intersect RUN_B PnL = empty"
+  ],
+  "exception": "account-lifetime state must be tagged ACCOUNT_SCOPE, not RUN_SCOPE"
+ },
+ "balance_vs_pnl": {
+  "separate_concepts": [
+   "balance_delta",
+   "realized_pnl"
+  ],
+  "reason": "deposits/withdrawals/fees/swaps/commissions/adjustments break the identity"
+ },
+ "account_events": {
+  "schema": "ACCOUNT_EVENT",
+  "kinds": [
+   "deposit",
+   "withdrawal",
+   "credit",
+   "fee",
+   "adjustment"
+  ]
+ },
+ "reset_safety_gate": {
+  "preconditions": [
+   "OLD_RUN_STATUS = CLOSED",
+   "OLD_RUN_CLOSEOUT = VERIFIED",
+   "OLD_LEDGER_HASH = VERIFIED",
+   "OLD_STATISTICS_HASH = VERIFIED",
+   "OLD_PNL_SNAPSHOT = VERIFIED",
+   "NO_OPEN_POSITION",
+   "NO_PENDING_ORDER",
+   "NEW_RUN_MANIFEST = CREATED",
+   "NEW_RUN_OPENING_SNAPSHOT = VERIFIED"
+  ],
+  "otherwise": "RESET_ALLOWED = NO"
+ },
+ "reset_not_delete": {
+  "model": "CLOSE OLD RUN -> FREEZE OLD RUN -> CREATE NEW RUN",
+  "forbidden": [
+   "delete old ledger",
+   "truncate old ledger",
+   "overwrite old statistics"
+  ]
+ },
+ "automation_boundary": {
+  "allowed": [
+   "START_RUN",
+   "RUN_V1",
+   "CLOSE_RUN"
+  ],
+  "forbidden": [
+   "rewrite statistics",
+   "truncate ledger",
+   "change run_id"
+  ],
+  "authority": "a deterministic Run Manager performs the accounting operations"
+ },
+ "hermes_boundary": {
+  "may_read": "run context",
+  "must_not_be": "accounting authority"
+ },
+ "git_boundary": {
+  "git_role": "version control only",
+  "allowed": [
+   "schema",
+   "code",
+   "configuration",
+   "audit reports"
+  ],
+  "forbidden": "git history as the only ledger storage"
+ },
+ "v1_compatibility": {
+  "requirement": "strategy/execution/risk logic unchanged",
+  "decoupling": "run accounting is a separate layer",
+  "no_change_list": [
+   "entry logic",
+   "exit logic",
+   "risk logic",
+   "order logic",
+   "strategy parameters"
+  ]
+ }
+}

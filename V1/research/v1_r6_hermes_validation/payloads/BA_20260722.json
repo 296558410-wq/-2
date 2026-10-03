@@ -1,0 +1,56 @@
+{
+ "audit_id": "BA_20260722",
+ "timestamp": "2026-07-22T12:00:00+00:00",
+ "overall_verdict": "DISAGREE",
+ "focus_verdicts": {
+  "OBSERVATION_DISCIPLINE": "PARTIAL_AGREE",
+  "MECHANISM_DISCIPLINE": "DISAGREE",
+  "COUNTER_EVIDENCE": "PARTIAL_AGREE",
+  "CONFIDENCE": "PARTIAL_AGREE",
+  "ABSTENTION": "PARTIAL_AGREE",
+  "INVALIDATION": "DISAGREE"
+ },
+ "over_inference": [
+  "Forecast cites 'Analog A25403 shows rotation to expansion' as evidence, but L7 similarity_method is only 'exact_state + dwell_bucket' - state+dwell match alone is ultra-weak, so extrapolating to 'expansion' overreaches the analog's informational content.",
+  "Forecast: 'Level INSIDE with twenty touches in 240 bars' treated as evidence for range behavior; touch_count_240 semantics/overlap are not established and a raw touch count does not by itself establish level significance for a 1-4h range.",
+  "Forecast counter_evidence: 'H4 current bar ranges 4107 to 4163' implies relevance to the near-term range/upside read, but it never resolves that this single high-volatility bar already contains price above the pivotal level 4121.715 it anchors its whole scenario on."
+ ],
+ "mechanism_jump": [
+  "Forecast asserts 'range_rotation' with status SUPPORTED, but L4 lists only two mechanism candidates (trend_continuation, exhaustion) and its note states 'mechanism CANDIDATES only; NOT asserted as fact (§13)'. Inventing a third mechanism absent from L4 and grading it SUPPORTED is a mechanism status fabrication.",
+  "Forecast: 'trend_continuation POSSIBLE, why: H1 uptrend intact' - L6 explicitly reports agreement CONFLICT; assigning mechanism status on 'uptrend intact' while ignoring the context's own CONFLICT flag overstates mechanism support.",
+  "Forecast treats 'range_rotation SUPPORTED' as consistent with direction_bias NO_DIRECTIONAL_EDGE; a SUPPORTED mechanism is a directional structural claim and contradicts claiming no directional edge."
+ ],
+ "missing_counter_evidence": [
+  "Forecast ignores that price already trades/ closes ABOVE the active level 4121.715 on higher timeframes (L6 H1 close 4122.355 > 4121.715; H4 close 4148.285 >> 4121.715). It treats 4121.715 as the pivotal range ceiling / invalidation level without flagging the higher-TF breach.",
+  "Forecast cites only analog A25403 (ROTATION->EXPANSION) as evidence and omits A28241 (ROTATION->DECELERATION->REJECTION) and A33183 (stays ROTATION) - cherry-picking the one analog that fits its range/expansion framing while ignoring the REJECTION path.",
+  "Forecast does not reconcile flat/short-side lower-TF reads (M1 trend_50 -0.34, M5 trend_20 -1.68, M1 trend_20 +0.24) against its range framing beyond a passing 'M5 negative, M1 flattish' bullet; these undercut both 'range' and any single-direction read and were not weighed.",
+  "Forecast's change_my_mind condition 'Clear close above 4121.715' is already met on H1 (close 4122.355) at the forecast moment; this self-contradiction was not detected by the model."
+ ],
+ "unjustified_confidence": [
+  "Forecast confidence_reason: 'State and level clear but agreement conflict' - 'level clear' is unjustified because break_status INSIDE, reclaim_status NONE, and H1/H4 already exceed 4121.715; the level is not 'clear' at all.",
+  "Forecast abstain_reason: 'Sufficient structure basis' while evidence_strength is only 0.35, ambiguity_rate_8 is 0.625, and it acknowledges 'no news, no order flow, proxies only' - claiming sufficient basis to decline abstention is not supported by its own low confidence and missing data.",
+  "Forecast assigns confidence 0.3 / uncertainty 0.7 but then states 'expected_transition: ROTATION continues or expands' and a SUPPORTED range_rotation mechanism - a near-two-sided expected transition plus a SUPPORTED mechanism is inconsistent with uncertainty 0.7 and NO_DIRECTIONAL_EDGE."
+ ],
+ "observation_as_fact": [
+  "Forecast counter_evidence: 'H1 trend_20 +48.3, strong uptrend momentum' - 'strong uptrend momentum' is an interpretation presented as if it were a fact; the raw observation is only trend_20 +48.3 with L6 agreement CONFLICT.",
+  "Forecast observation: 'DXY flat 101.14' - context change_8 is -0.028; 'flat' is a characterization presented as a bare observation (mild).",
+  "Forecast observation: 'VIX 17.69 slightly up' - change_8 +0.27 on a PROXY series with UNKNOWN instrument definition; directional characterization presented as observation."
+ ],
+ "strongest_objection": "The forecast builds its entire range scenario, primary scenario 'range rotation around 4116-4122', and invalidation on the single level 4121.715 ('decisive break of active level 4121.715'; change_my_mind 'Clear close above 4121.715'), yet the PIT context shows price already closing above that level on H1 (4122.355) and H4 (4148.285) with L2 break_status INSIDE / reclaim NONE. The pivotal condition is already satisfied/contradicted at forecast time, making the invalidation non-checkable and the range ceiling already breached; this is compounded by asserting a third mechanism 'range_rotation' as SUPPORTED when L4 lists only trend_continuation and exhaustion as candidates explicitly 'NOT asserted as fact (§13)'.",
+ "evidence": [
+  "L2_PRICE_STRUCTURE: level_id SWING_HIGH_36649, level_price 4121.715, break_status INSIDE, reclaim_status NONE, touch_count_240 20.",
+  "L6_MULTI_TIMEFRAME per_timeframe: H1 last_close 4122.355 (>4121.715); H4 last_close 4148.285 (>>4121.715); M1 last_close 4116.685; agreement CONFLICT.",
+  "L4_MARKET_MECHANISM candidates: only trend_continuation and exhaustion; note 'mechanism CANDIDATES only; NOT asserted as fact (§13)'.",
+  "L7 historical_analog: similarity_method 'exact_state + dwell_bucket'; A28241 path ROTATION->DECELERATION->REJECTION; A33183 stays ROTATION.",
+  "Forecast quotes: 'decisive break of active level 4121.715'; 'possible_mechanisms: range_rotation SUPPORTED'; change_my_mind 'Clear close above 4121.715'; abstain_reason 'Sufficient structure basis, no directional edge claimed'; confidence_reason 'State and level clear but agreement conflict'.",
+  "L5_STATE_HISTORY: current_state ROTATION, current_dwell_bars 8, ambiguity_rate_8 0.625."
+ ],
+ "reasoning_trace": [
+  "Checked the forecast's pivotal level 4121.715 against all timeframes in L6: H1 close 4122.355 and H4 close 4148.285 are above it - the 'active level' is already breached at higher TFs, contradicting the range ceiling and the invalidation/change_my_mind conditions.",
+  "Compared possible_mechanisms in the forecast to L4 candidates: only trend_continuation and exhaustion exist; 'range_rotation SUPPORTED' is a fabricated third mechanism, and L4 explicitly forbids asserting candidates as fact.",
+  "Checked analog selection: forecast cites only A25403 (to EXPANSION) and ignores A28241 (to REJECTION) and A33183 (stays ROTATION) - selective evidence.",
+  "Scored confidence/abstention: numeric separation of evidence_strength 0.35 / confidence 0.3 / uncertainty 0.7 is present, but the stated justifications ('level clear', 'sufficient structure basis') contradict the context (level broken on H1/H4, ambiguity 0.625, no order flow/news).",
+  "Scored invalidation: 'decisive break' is undefined (which timeframe? what bar count?) and is already violated on H1 close - not checkable.",
+  "Concluded DISAGREE: honest low-confidence framing does not outweigh material mechanism fabrication and an internally contradictory, already-breached invalidation anchor."
+ ]
+}

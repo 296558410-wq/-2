@@ -1,0 +1,51 @@
+{
+  "audit_id": "HB_BLIND_20260912",
+  "timestamp": "2026-09-12T12:00:00Z",
+  "current_state": "COMPRESSION (VOL_CONTRACTION, dwell=1 bar) at 4347.5, formed at the base of a 6-hour post-spike grind lower. Price sits INSIDE the nearest level: SWING_HIGH_40043 at 4349.728 (UP side, 33 touches in 240 bars, distance 0.31 ATR, break_status=INSIDE, reclaim_status=NONE). The immediate context follows a violent H1 spike bar (13:00 UTC, range 94.6, low 4291.95, close 4386.5 with a 41-point lower wick), a rejection from 4402.3 (14:00), and a monotone drift down to the current zone. Ambiguity is extreme: ambiguity_rate_8=0.875, MTF agreement=CONFLICT, all cross-market series UNKNOWN.",
+  "structure": "Higher-timeframe downtrend intact: H4 trend_20=-27.9, H4 sequence 5up/6down, H1 trend_50=-68.3, M15 trend_20=-13.6. The 4402 rejection marks a lower high vs the 4420-4435 H4 zone; price has spent ~6h bleeding from 4402 to 4347, now coiling in a tight compression (M5 range_contracting=true, H1/H4 range_contracting=true, M1 range_expanding=true with 6 consecutive up-bars at the micro level). The compression sits directly under a heavily-tested swing-high resistance (33 touches/240 bars), with near-term support at 4345.3-4346.1 (compression low / recent M15 swing lows) and 4342.5, then 4336/4333/4329 (H1 swing lows) and 4313-4318 (H4 zone). This is a high-level consolidation after a failed upside thrust: structurally a continuation/flag pattern within the dominant H4 downtrend rather than a reversal base.",
+  "mechanism": "Volatility contraction inside a well-defined, heavily-tested resistance level (L3 COMPRESSION / VOL_CONTRACTION) — the pre-breakout coil. L4 candidate mechanism is trend_continuation (8-bar displacement 0.723 inside level); given the level is UP-side and the dominant H4 trend is DOWN, the base-rate continuation is a downside resolution (failed upside attempt at 4349.7 -> continuation of the H4 downtrend). Historical analogs (3 exact-state matches at similarity 1.0) all start in COMPRESSION: A22271 -> REJECTION by step 12, A28461 -> REJECTION by step 16, A34291 -> extended COMPRESSION — i.e., the modal resolution is a REJECTION at the level (a failed break) or prolonged compression; none resolve immediately into a clean TREND breakout. REJECTION against an UP-side level implies a failed upside break, consistent with the bearish structural lean.",
+  "primary_scenario": {
+    "scenario": "Downside resolution of the coil: price makes a shallow attempt at 4349.7, fails (or never reaches it), loses the compression floor near 4345.3-4346.1, and the H4 downtrend continues toward 4336-4329, then the 4313-4318 demand zone.",
+    "confidence": 0.4,
+    "horizon": "SHORT_TERM",
+    "trigger": "Loss of the 4345.3-4346.1 compression low on an expanding M15 down-bar after a failed probe of 4349.7, with M5/M15 trend_20 diverging further negative.",
+    "invalidation": "Decisive break and hold above 4349.73 (SWING_HIGH_40043) with a close above 4351.3 on the H1 — the heavily-tested level is the line in the sand."
+  },
+  "alternative_scenario": {
+    "scenario": "Upside break: the strong dip-buying demonstrated by the 41-point lower wick of the 13:00 spike bar resumes; price decisively clears the 33-touch swing high 4349.7 and 4351.3, converting the coil into a base and retracing toward 4370 and the 4386-4402 rejection zone.",
+    "confidence": 0.35,
+    "horizon": "SHORT_TERM",
+    "trigger": "H1 candle closes above 4351.3 with range expansion and M1/M5 momentum confirmation (break_status flips to BREAK/RECLAIM).",
+    "invalidation": "Rejection below 4349.7 with lower highs and a return under 4346 — the attempt fails and the downside scenario reasserts."
+  },
+  "expected_transition": "COMPRESSION (dwell 1) -> short compression extension (analog-consistent dwell of roughly 4-8 bars, A34291 path) -> REJECTION (modal, 2/3 analogs) or TREND. A REJECTION here is a failed upside break at 4349.7, which resolves bearish; only a decisive TREND state above 4351.3 flips the read to bullish. The near-term watch is whether price probes 4349.7 first (upside attempt to be rejected) or loses 4345.3 first (direct downside continuation).",
+  "direction": "DOWN",
+  "horizon": "SHORT_TERM",
+  "confidence": 0.35,
+  "counter_evidence": [
+    "M1 shows 6 consecutive up-bars with range_expanding=true and trend_20=-0.38 (near flat) — a live short-term bid at the micro level, suggesting an upside attempt may be underway now.",
+    "H1 trend_20=+18.25 is positive, and the 13:00 spike bar's 41-point lower wick shows aggressive dip-buying demand in the 4292-4330 zone.",
+    "break_status=INSIDE means price has NOT been rejected at 4349.7 yet; the level test outcome is genuinely unresolved.",
+    "ambiguity_rate_8=0.875 and MTF agreement=CONFLICT (H1 trend_20 positive vs H4/M15 negative) — this is an objectively low-conviction moment; the last 8-bar state history is 87.5% ambiguous.",
+    "All cross-market series (DXY, VIX, UST10Y/TNX) are UNKNOWN/absent — no macro confirmation for either side; gold's dollar/real-yield drivers cannot be verified."
+  ],
+  "invalidation": "A decisive H1 (or stronger) close above 4351.3 after clearing 4349.73 invalidates the bearish read and flips the structure to an upside break; conversely, a clean loss of 4313-4318 on expanding range would strongly confirm it. Until the compression resolves, directional edge is genuinely limited.",
+  "data_quality_flags": [
+    "L1 price: RAW_GEOMETRY + DERIVED (DIRECT bars, derived trend/ATR)",
+    "L2 level SWING_HIGH_40043: DERIVED (causal pivot swing levels), not raw",
+    "L3/L5 state labels COMPRESSION/VOL_CONTRACTION: DERIVED (frozen C1 labeler + min-dwell lifecycle)",
+    "L4 mechanism candidates: DERIVED candidates only, not asserted",
+    "L7 cross-market DXY/VIX/UST10Y(TNX): UNKNOWN (STALE_OR_NOT_COVERED) — UST10Y would be PROXY at best, never DIRECT",
+    "Absent series (GLD, GC, COT, ETF flows, NEWS, MACRO): recorded absent, not fabricated",
+    "Historical analogs: DERIVED, state-evolution only — no returns/PnL used",
+    "MTF: CONFLICT — timeframes reported separately, never merged"
+  ],
+  "reasoning_trace": [
+    "1. State: L3/L5 say COMPRESSION with VOL_CONTRACTION at dwell=1; price 4347.5 is 0.31 ATR below a 33-touch swing high (4349.73) — a coil under heavily-tested resistance.",
+    "2. Trend context: H4 trend_20=-27.9 and H1 trend_50=-68.3 dominate the larger picture; the 4402 rejection created a lower high, and the 6h drift from 4402 to 4347 is a grind, not accumulation.",
+    "3. Mechanism: compression-under-resistance after a failed thrust is structurally a continuation setup; L4's only candidate (trend_continuation) with displacement inside the level supports a pending resolution rather than an established trend.",
+    "4. Analogs: 3/3 exact COMPRESSION matches; modal evolution is REJECTION (2/3) or extended COMPRESSION (1/3), none immediate TREND — the base-rate outcome is a failed upside attempt at the level, which is bearish against an UP-side level.",
+    "5. Cross-check against upside: H1 trend_20 positive, M1 expanding up-streak, and a massive dip-buying wick keep the upside break (4349.7/4351.3) as a live, similarly-weighted alternative — hence low confidence.",
+    "6. Verdict: slight structural lean DOWN (H4 downtrend + rejection-mode coil under tested resistance + analog modal REJECTION), but ambiguity 0.875, MTF CONFLICT and zero cross-market data cap confidence at 0.35; the level at 4349.73 is the clean invalidation."
+  ]
+}

@@ -1,0 +1,105 @@
+{
+  "sample_id": "A_20260810",
+  "horizon": 4,
+  "scenario_family": "RANGE",
+  "scenario_alternative": "DIRECTIONAL",
+  "scenario_abstain": false,
+  "forecast_id": "R8B_A_20260810",
+  "timestamp": "2026-08-10T00:00:00Z",
+  "observations": [
+    "REJECTION dwell 15 bars, VOL_CONTRACTION event at t",
+    "H4 strong uptrend trend_20 +190.5, price fell to 4319.405",
+    "Swing high 4343.045 broken beyond by 0.26 ATR, reclaim none",
+    "M1/M5/M15 rebound to ~4345, H1/H4 close ~4332/4319"
+  ],
+  "what_i_know": [
+    "XAUUSD 00:00 UTC, state REJECTION dwell 15",
+    "Nearest level swing high 4343.045, touched 29 times",
+    "H1/H4 trend_20 positive, broad uptrend intact",
+    "Ambiguity rate 0.75, analogs stay REJECTION at step 4"
+  ],
+  "what_i_do_not_know": [
+    "True current price, M1/M5 vs H1/H4 snapshot conflict",
+    "VIX, UST10Y, news, macro unavailable UNKNOWN",
+    "Direction of expansion after compression",
+    "Whether 4343 reclaim or 4313 support holds"
+  ],
+  "evidence": [
+    "Defined 4343.045 resistance touched 29 times",
+    "Recent H4 low 4312.935 provides support zone",
+    "Vol contraction plus compression favor bounded oscillation",
+    "Higher timeframe uptrend limits sustained downside"
+  ],
+  "counter_evidence": [
+    "M1/M5 range expanding, late rebound toward 4345",
+    "Breakout_pressure candidate, close beyond 4343",
+    "Strong H4 uptrend could resume directionally",
+    "Analogs diverge after step 4 across families"
+  ],
+  "possible_mechanisms": [
+    {
+      "mechanism": "breakout_pressure",
+      "status": "POSSIBLE",
+      "why": "close beyond 4343 by 0.26 ATR"
+    },
+    {
+      "mechanism": "failed_breakout",
+      "status": "POSSIBLE",
+      "why": "no reclaim, price back below level"
+    },
+    {
+      "mechanism": "exhaustion",
+      "status": "WEAK",
+      "why": "dwell 15 alone is weak evidence"
+    },
+    {
+      "mechanism": "compression_resolution",
+      "status": "UNKNOWN",
+      "why": "post-compression direction not knowable"
+    }
+  ],
+  "primary_scenario": {
+    "scenario": "RANGE",
+    "horizon": 4,
+    "trigger": "oscillation between 4313 support and 4343 resistance",
+    "invalidation": "sustained close beyond 4343 or below 4313"
+  },
+  "alternative_scenario": {
+    "scenario": "DIRECTIONAL",
+    "horizon": 4,
+    "trigger": "reclaim and hold 4343 or break 4313",
+    "invalidation": "repeated rejection at both boundaries"
+  },
+  "expected_transition": "REJECTION to RANGE oscillation under compression",
+  "direction_bias": "NEUTRAL",
+  "time_horizon": "H4",
+  "evidence_strength": 0.3,
+  "confidence": 0.35,
+  "uncertainty": 0.72,
+  "confidence_reason": "Two-sided structure and compression, but snapshot conflict and high ambiguity",
+  "uncertainty_reason": "M1/M5 vs H1/H4 price conflict, VIX/news absent, compression direction unknown",
+  "invalidation": "sustained close beyond 4343 or below 4312.935",
+  "change_my_mind": [
+    "Price reclaims and holds 4343 with expansion",
+    "Price breaks 4313 on rising volume",
+    "Consistent H1/H4 closes above 4350",
+    "Volatility expands beyond recent ATR 41"
+  ],
+  "abstain": false,
+  "abstain_reason": "Context sufficient for bounded family call despite ambiguity",
+  "questions": {
+    "Q1": "REJECTION dwell 15, VOL_CONTRACTION, 4343.045 broken beyond, broad H4 uptrend",
+    "Q2": "True current price TF conflict, VIX/news absent, expansion direction, level durability",
+    "Q3": "Defined 4343 resistance plus 4313 support, compression, uptrend floor",
+    "Q4": "M1/M5 expansion, breakout pressure, strong uptrend could go directional",
+    "Q5": "Compression resolving into directional breakout, not assertable now",
+    "Q6": "Reclaim above 4343 or break 4313 with volume expansion",
+    "Q7": "false, two-sided structure supports bounded RANGE family"
+  },
+  "reasoning_trace": [
+    "H4 uptrend +190.5 but rejection at 4343 swing high",
+    "Compression and high ambiguity favor bounded oscillation",
+    "Snapshot conflict materially lowers confidence",
+    "RANGE most robust central family at horizon 4"
+  ]
+}

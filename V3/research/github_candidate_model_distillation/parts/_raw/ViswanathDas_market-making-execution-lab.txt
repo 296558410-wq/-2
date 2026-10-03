@@ -1,0 +1,246 @@
+### FILE README.md
+# Market Making and Execution Lab
+
+A small, self-contained Python lab for studying two questions a trading desk
+cares about:
+
+1. **How should a market maker quote when it has to hold inventory?**
+2. **How fast should a large order be executed given market impact?**
+
+Everything runs from simulated data with seeded random paths, so results are
+reproducible and the moving parts are visible.
+
+## What is inside
+
+```
+market-making-execution-lab/
+├── src/
+│   ├── market_sim.py     # mid-price (arithmetic Brownian motion) + order-flow fill model
+│   ├── market_maker.py   # symmetric baseline + Avellaneda-Stoikov inventory-aware quoting
+│   ├── backtest.py       # event loop: quote, fill, update cash and inventory, mark to mid
+│   ├── execution.py      # TWAP schedule, temporary market impact, implementation shortfall
+│   └── metrics.py        # PnL, max drawdown, fill rate, inventory risk
+├── configs/base.yaml     # all parameters in one place
+├── run_market_making.py  # compares the two makers over many paths, saves figures + CSV
+├── run_execution.py      # execution speed vs impact cost, saves figure + CSV
+├── tests/test_metrics.py # sanity tests
+└── results/              # generated CSVs and PNGs
+```
+
+## The models
+
+**Order flow.** Market orders arrive with intensity `lambda = A * exp(-k * d)`,
+where `d` is the distance of a quote from the mid-price. Tighter quotes fill
+more often. This is the fill model from Avellaneda and Stoikov (2008).
+
+**Inventory-aware quoting.** Instead of quoting symmetrically around the mid,
+the maker quotes around a *reservation price* that shifts away from its current
+inventory, `r = mid - q * gamma * sigma^2 * (T - t)`, and sets its spread from
+risk aversion `gamma` and the order-flow decay `k`. When the maker is long it
+lowers its quotes to sell down; when short it raises them to buy back.
+
+**Execution.** A parent order is sliced by TWAP. Each child pays the mid-price
+plus a temporary impact proportional to its size relative to available depth,
+so trading faster costs more. Implementation shortfall is measured against the
+arrival (decision) price.
+
+## Results (500 paths, seed 0)
+
+| strategy           | mean PnL | std PnL | mean drawdown | inventory std |
+|--------------------|---------:|--------:|--------------:|--------------:|
+| symmetric          |    59.0  |   13.0  |          6.1  |          3.19 |
+| inventory-aware    |    56.8  |    6.5  |          1.2  |          1.36 |
+
+The inventory-aware maker gives up a little mean PnL but roughly halves PnL
+volatility and cuts mean drawdown about 5x by holding far less inventory. Its
+Sharpe-like ratio (mean/std) is about 8.7 versus 4.6.
+
+Execution: implementation shortfall falls from ~100 bps for a single large
+order to ~3 bps sliced into 80 children, while timing risk (the error bars)
+grows as execution slows. That is the impact-versus-timing-risk trade-off.
+
+## Run it
+
+```bash
+pip install -r requirements.txt
+python run_market_making.py     # writes results/summary.csv + two figures
+python run_execution.py         # writes results/execution.csv + one figure
+python -m pytest -q             # sanity tests
+```
+
+## Reference
+
+Avellaneda, M. and Stoikov, S. (2008). *High-frequency trading in a limit order
+book.* Quantitative Finance, 8(3), 217-224.
+
+
+### CODE src/execution.py
+"""Execution algorithms and implementation shortfall.
+
+A parent order to buy ``total_qty`` shares is sliced into child orders.
+``twap`` spreads the order evenly across the horizon. Each child pays the
+mid-price plus a temporary impact proportional to its participation rate,
+so trading faster costs more. Implementation shortfall is measured against
+the arrival (decision) mid-price.
+"""
+from __future__ import annotations
+
+import numpy as np
+
+from .market_sim import MarketSimulator
+
+
+def twap(total_qty, n_slices):
+    """Even TWAP schedule: equal child size in each slice."""
+    base = total_qty // n_slices
+    sched = np.full(n_slices, base, dtype=float)
+    sched[: total_qty - base * n_slices] += 1  # spread the remainder
+    return sched
+
+
+def execute(schedule, mid, impact_coeff=0.02, adv_per_slice=200.0):
+    """Execute a buy schedule and return fills and average price.
+
+    Temporary impact per child = impact_coeff * (child_qty / adv_per_slice),
+    added to the mid-price at that slice.
+    """
+    n = len(schedule)
+    idx = np.linspace(0, len(mid) - 1, n).astype(int)
+    fill_prices = np.empty(n)
+    for i, q in enumerate(schedule):
+        impact = impact_coeff * (q / adv_per_slice)
+        fill_prices[i] = mid[idx[i]] + impact
+    filled = float(np.sum(schedule))
+    avg_price = float(np.sum(fill_prices * schedule) / filled)
+    return {"avg_price": avg_price, "fill_prices": fill_prices,
+            "schedule": schedule, "slice_idx": idx}
+
+
+def implementation_shortfall(avg_price, arrival_price, total_qty):
+    """Cost vs. trading the whole order at the arrival price (price units)."""
+    return (avg_price - arrival_price) * total_qty
+
+
+### CODE src/market_maker.py
+"""Inventory-aware market-making strategies.
+
+Two quoting policies are implemented:
+
+* ``SymmetricMarketMaker`` posts a fixed half-spread around the mid-price and
+  ignores inventory. It is the naive baseline.
+
+* ``AvellanedaStoikovMarketMaker`` skews its quotes using a reservation price
+  that shifts away from the current inventory, and sets the spread from the
+  risk-aversion and the order-flow decay. This is the classic inventory-aware
+  policy and is the strategy the lab is built to study.
+"""
+from __future__ import annotations
+
+import numpy as np
+
+
+class SymmetricMarketMaker:
+    """Fixed half-spread around the mid, no inventory control."""
+
+    def __init__(self, half_spread=0.6):
+        self.half_spread = half_spread
+
+    def quotes(self, mid, inventory, time_left):
+        return mid - self.half_spread, mid + self.half_spread
+
+
+class AvellanedaStoikovMarketMaker:
+    """Inventory-aware quoting (Avellaneda & Stoikov, 2008).
+
+    Parameters
+    ----------
+    gamma : float
+        Risk aversion. Higher gamma skews quotes harder against inventory.
+    sigma : float
+        Mid-price volatility (same units as the simulator).
+    k : float
+        Order-flow decay used by the simulator's fill model.
+    """
+
+    def __init__(self, gamma=0.1, sigma=2.0, k=1.5):
+        self.gamma = gamma
+        self.sigma = sigma
+        self.k = k
+
+    def reservation_price(self, mid, inventory, time_left):
+        """Inventory-adjusted fair value the maker actually quotes around."""
+        return mid - inventory * self.gamma * self.sigma ** 2 * time_left
+
+    def optimal_spread(self, time_left):
+        """Total bid-ask spread from risk aversion and order-flow decay."""
+        return (self.gamma * self.sigma ** 2 * time_left
+                + (2.0 / self.gamma) * np.log(1.0 + self.gamma / self.k))
+
+    def quotes(self, mid, inventory, time_left):
+        r = self.reservation_price(mid, inventory, time_left)
+        half = 0.5 * self.optimal_spread(time_left)
+        return r - half, r + half
+
+
+### CODE src/backtest.py
+"""Event loop that runs a quoting policy over a simulated session."""
+from __future__ import annotations
+
+import numpy as np
+
+from .market_sim import MarketSimulator
+
+
+def run_session(maker, sim: MarketSimulator, max_inventory=20):
+    """Run one market-making session.
+
+    At each step the maker posts a bid and an ask. Each side may be filled
+    independently according to the simulator's distance-based fill model.
+    Cash and inventory are updated on fills; the maker is prevented from
+    quoting a side that would breach the inventory limit. PnL is marked to
+    the mid-price (cash + inventory * mid).
+    """
+    mid = sim.mid_price_path()
+    dt = sim.dt
+    n = sim.n_steps
+
+    cash = 0.0
+    inventory = 0
+    equity = np.empty(n + 1)
+    inv_path = np.empty(n + 1)
+    equity[0] = 0.0
+    inv_path[0] = 0
+    n_quotes = 0
+    n_fills = 0
+
+    for t in range(n):
+        time_left = (n - t) * dt
+        bid, ask = maker.quotes(mid[t], inventory, time_left)
+
+        # Buy side (our bid). Skip if it would breach the long limit.
+        if inventory < max_inventory:
+            n_quotes += 1
+            if sim.draw_fill(mid[t] - bid):
+                cash -= bid
+                inventory += 1
+                n_fills += 1
+        # Sell side (our ask). Skip if it would breach the short limit.
+        if inventory > -max_inventory:
+            n_quotes += 1
+            if sim.draw_fill(ask - mid[t]):
+                cash += ask
+                inventory -= 1
+                n_fills += 1
+
+        equity[t + 1] = cash + inventory * mid[t + 1]
+        inv_path[t + 1] = inventory
+
+    return {
+        "mid": mid,
+        "equity": equity,
+        "inventory_path": inv_path,
+        "n_quotes": n_quotes,
+        "n_fills": n_fills,
+        "final_cash": cash,
+        "final_inventory": inventory,
+    }

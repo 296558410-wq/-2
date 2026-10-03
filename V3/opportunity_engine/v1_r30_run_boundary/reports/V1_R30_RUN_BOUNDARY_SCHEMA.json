@@ -1,0 +1,94 @@
+{
+ "schema_name": "V1_RUN_BOUNDARY_SCHEMA_R30",
+ "status": "IMPLEMENTED_OFFLINE_NOT_APPLIED_TO_V1",
+ "applies_to_v1": false,
+ "schemas": {
+  "manifest.json": {
+   "required": [
+    "run_id",
+    "run_status",
+    "run_start_utc",
+    "runtime_version",
+    "source_hash",
+    "config_hash",
+    "manifest_hash"
+   ],
+   "enums": {
+    "run_status": [
+     "CREATED",
+     "OPEN",
+     "CLOSED",
+     "ABORTED"
+    ]
+   },
+   "immutable": [
+    "run_id",
+    "run_start_utc",
+    "runtime_version",
+    "source_hash",
+    "config_hash"
+   ]
+  },
+  "counter_schema.json": {
+   "types": [
+    "RUN_SCOPED",
+    "ACCOUNT_SCOPED",
+    "LIFETIME_SCOPED",
+    "DERIVED"
+   ],
+   "rule": "RUN_SCOPED counters require explicit initial_value (0 unless schema overrides); ACCOUNT/LIFETIME counters are never zeroed into run statistics"
+  },
+  "pnl_event.json": {
+   "required": [
+    "event_id",
+    "run_id",
+    "event_type",
+    "position_id",
+    "deal_id",
+    "realized_pnl",
+    "commission",
+    "swap",
+    "fee",
+    "net_pnl",
+    "timestamp"
+   ],
+   "formula": "net_pnl = realized_pnl + commission + swap + fee"
+  },
+  "ledger_record.json": {
+   "required": [
+    "event_id",
+    "run_id",
+    "event_type",
+    "timestamp",
+    "payload_hash",
+    "previous_hash",
+    "record_hash"
+   ],
+   "genesis": "previous_hash of record[0] = GENESIS",
+   "chain": "record[n].previous_hash == record[n-1].record_hash"
+  },
+  "closeout.json": {
+   "required": [
+    "run_id",
+    "close_timestamp",
+    "final_counter_snapshot",
+    "final_pnl_snapshot",
+    "final_balance",
+    "final_equity",
+    "ledger_head_hash",
+    "statistics_hash",
+    "run_close_hash"
+   ]
+  },
+  "account_event.json": {
+   "kinds": [
+    "DEPOSIT",
+    "WITHDRAWAL",
+    "CREDIT",
+    "FEE",
+    "ADJUSTMENT"
+   ],
+   "rule": "account events never become run PnL automatically"
+  }
+ }
+}

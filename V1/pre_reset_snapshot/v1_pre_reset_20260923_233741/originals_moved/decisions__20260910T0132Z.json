@@ -1,0 +1,102 @@
+{
+ "cycle": "2026-09-10T01:32Z",
+ "decision_id": "DEC-2026-09-10T01:32Z",
+ "decision": "LONG",
+ "confidence": 0.48,
+ "opportunity": "回踩承接做多(续 0117Z 同题但按当前价复位): 现价 4409.5 贴带上沿, 等回落 ~1.5pt 入 4404.0-4408.0 (破位供区 4402-4407 转支撑 + M15 MA20 4406.4/MA50 4405.1 汇合 + H4 MA20 4404.5) 承接; 触价即市价多, SL 4397.5",
+ "opportunity_mechanism": "breakout_retest_long_v1: 价格自 4395 低点上破 4402-4407 供区并冲至 ~4414(quote), 现回落至 4409.5 贴近承接带; 4404-4408 为破位供区 + 日内多条均线(MA20/MA50/H4 MA20)汇合 = 回踩承接位; 触及即建多, SL 4397.5(M15 MA200 4398.4 下方 = 承接结构失效), 分批 T1 4418.9 / T2 4434.0 / T3 4443.0",
+ "mtf_agreement": "neutral_bullish_lean",
+ "answers_14": {
+  "1": "市场状态: D1 range 偏空 (close 4400.485 < MA20 4464.19, RSI 42.7, llish5); H4 range er0.016 极低=纯震荡 (close 4400.5 < MA20 4404.5/MA50 4417.2, pos 32.7); H1 range (close ~4400 贴 MA20 4399.1/MA50 4399.0, <MA200 4429.9); M15 mixed/contracting (exp_cont 0.49, RSI 37.2, MA20 4406.4/MA50 4405.1/MA200 4398.4, 高60 4434.2/低60 4375.2). live mid 4409.5(quote_latest 01:32Z, spread 0.41bps, tick 96/min). 综合 = 区间震荡, 价位于区间中偏上; 短线为 4395 反弹后的回踩期. [数据质量] parquet tick 滞后约 8min(末 tick 01:24 mid 4401.4); 实时价以 quote_latest(MT5 直连)为准, 已核 4409.12/4409.54",
+  "2": "一致性: 部分→neutral-bullish lean. D1 在 MA20 下(偏空)与 H1/M15 短线回到 MA20/MA50 上方(修复)不共振; H4 贴 MA20 且 er0.016 表明无方向. 故不取高 confidence(0.48), 按区间回踩承接处理, 非趋势追多",
+  "3": "M15变化: 自 4395 低点反弹至 ~4414(quote 01:17)后回落, 现 4409.5; M15 exp_cont contracting 0.49 = 动量收敛待方向; 高60 4434.2 / 低60 4375.2, pos 47.4 中位",
+  "4": "机会: 回踩 4404.0-4408.0 承接做多 (破位供区 4402-4407 转支撑 + 日内均线汇合 4405-4406), 不追高; 现价 4409.5 距带顶 4408.0 仅 ~1.5pt, 距带底 4404.0 ~5.5pt = 贴近边界即计划",
+  "5": "机制: breakout_retest_long_v1 — 上破供区/平台后回踩承接; 触及即市价成交, SL 于承接结构下方, 分批止盈于前高/上压",
+  "6": "触发条件[具体价]: {\"and\":[{\"zone_touch\":[4404.0,4408.0]},{\"spread_under_bps\":0.8}]} — 现价 4409.5 仅需回落 ~1.5pt 入带即自动成交",
+  "7": "失效[具体价]: {\"price_cross_down\":4397.0} (跌破 M15 MA200 4398.4 承接层 → 回踩承接结构失效, 引擎自动取消)",
+  "8": "预期收益R: 2.64R (加权; ref fill ~4406.0, R=8.5pt: T1 4418.9=1.52R / T2 4434.0=3.29R / T3 4443.0=4.35R @ frac 0.40/0.35/0.25)",
+  "9": "预期损失R: -1.0R (SL 4397.5, 风险 ~8.5pt)",
+  "10": "成本数值: spread 0.41bps + slippage 0.3bps = 往返 1.42bps ≈ 0.63pt ≈ 0.07R (成本极低, 非障碍)",
+  "11": "净EV算式: 0.43×2.64 − 0.57×1.0 − 0.07 = 1.135 − 0.640 = +0.50R (>0 可执行)",
+  "12": "再现: 中高 — 今日 4400-4408 承接带多次被验证(破位供区反复回踩承接), 4395 反弹确立后回踩该带即经典 retest",
+  "13": "决策: LONG (回踩 4404.0-4408.0 承接做多, 触价自动成交)",
+  "14": "理由: 4395 反弹后回踩, 4404-4408 为破位供区+日内均线汇合承接带, 现价贴带上沿仅~1.5pt; 触价即多, SL4397.5 结构失效, T 4418.9/4434/4443, EV+0.50R; D1 在 MA20 下为上方压力(4411-4416 墙), 到位分批止盈不恋战。现离可交易只差回落 ~1.5pt 入带(spread 0.41<<0.8)"
+ },
+ "plan": {
+  "plan_id": "TP-20260910T0132Z",
+  "direction": "LONG",
+  "opportunity_type": "breakout_retest_long_v1",
+  "entry_style": "market_on_trigger",
+  "entry_zone": {
+   "low": 4404.0,
+   "high": 4408.0
+  },
+  "trigger_condition": {
+   "and": [
+    {
+     "zone_touch": [
+      4404.0,
+      4408.0
+     ]
+    },
+    {
+     "spread_under_bps": 0.8
+    }
+   ]
+  },
+  "invalidation_condition": {
+   "price_cross_down": 4397.0
+  },
+  "stop_logic": {
+   "type": "stop_market",
+   "level_price": 4397.5
+  },
+  "target_logic": {
+   "type": "price_levels",
+   "levels": [
+    {
+     "price": 4418.9,
+     "frac": 0.4
+    },
+    {
+     "price": 4434.0,
+     "frac": 0.35
+    },
+    {
+     "price": 4443.0,
+     "frac": 0.25
+    }
+   ]
+  },
+  "expected_R": 2.64,
+  "expected_win_probability": 0.43,
+  "probability_source": "subjective",
+  "expected_loss": {
+   "units": "R",
+   "value": 1.0
+  },
+  "estimated_cost": {
+   "spread_bps": 0.41,
+   "slippage_bps": 0.3,
+   "total_bps_rt": 1.42,
+   "cost_in_R": 0.07
+  },
+  "expected_net_EV": {
+   "value": 0.5,
+   "units": "R",
+   "note": "0.43×(0.40×1.52+0.35×3.29+0.25×4.35) − 0.57×1.0 − 0.07 = 0.43×2.64 − 0.64 = +0.50R (1R=8.5pt @ref fill 4406.0, SL 4397.5); 未触发零成本, 120min 自动清理; FLAT 时成立; qty 0.01 合规"
+  },
+  "maximum_holding_time": "M15*8",
+  "cancel_conditions": [
+   "触发前 mid <= 4397.0 (price_cross_down invalidation = 跌破 MA200 4398.4 承接层, 结构失效) → 引擎零成本取消",
+   "触发前 mid > 4416.0 (price_left_setup, 价格跑离回踩带 2×band, 机会已走) → 由新轮重评",
+   "未触发 age > 120min (M15*8) 过期清理 → 下轮重评",
+   "成交失败(仓位忙/broker 拒绝) → 计划即时作废不留痕, 不追单",
+   "已成交 → SL 4397.5 broker 随单 -1R 有界; 亏损不加仓不反手; 持仓中不注册新开仓计划(单仓约束)"
+  ],
+  "risk_level": "medium",
+  "reason": "现价 4409.5 贴回踩带顶; 4404.0-4408.0 为破位供区(4402-4407)+M15 MA20/MA50/H4 MA20 汇合承接位, 触价即自动建多; SL 4397.5(MA200 下方)结构有界, 分批 T 4418.9/4434.0/4443.0, 净 EV +0.50R; 不追高, 只等 1.5pt 回落触发; 与在册 TP-0117Z 同区(引擎幂等, 双 fill 时后单作废, 不叠仓)",
+  "qty_lots": 0.01
+ },
+ "model": "deepseek/deepseek-v4-flash"
+}

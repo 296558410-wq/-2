@@ -1,0 +1,54 @@
+{
+  "audit_id": "BB_20260823",
+  "timestamp": "2026-08-23T12:00:00+00:00",
+  "current_state": "COMPRESSION (VOL_CONTRACTION, dwell 2, ambiguity 0.25) after EXPANSION->REJECTION. Price 4602.055 sits on the heavily-tested swing-high support 4601.875 after a ~-30pt pullback from the 4631.935 high; H1/H4 trend structure strongly up.",
+  "structure": "Multi-timeframe conflict (L6 agreement=CONFLICT): H1/H4 strongly bullish (trend_20 +71.5 / +248.0 over the 4484->4632 rally), while M1/M5/M15 are bearish short-term (trend_20 -6.6 / -20.0 / -12.1 with 7-10 consecutive down bars). The pullback retraces only ~20% of the rally - shallow in the context of the trend. L2 nearest level SWING_HIGH_38669 at 4601.875 (UP side, 11 touches/240 bars, 0.026 ATR away, break_status INSIDE) - a prior swing high now acting as support. Below it, structural references are 4577-4580 and the H1 swing low 4563.255.",
+  "mechanism": "L4 candidate (not asserted): trend_continuation, evidence 'price inside level, 8-bar displacement -22.09' - a downward displacement consistent with a corrective pullback within the H1/H4 uptrend rather than a reversal. The immediate mechanism is a selling impulse decelerating into a high-quality support and coiling (COMPRESSION). Mechanism direction is unresolved until the 4601.875 decision point resolves.",
+  "primary_scenario": {
+    "scenario": "The 4601.875 swing-high support holds; the shallow pullback exhausts in the coil and the dominant H1/H4 uptrend resumes with a bounce toward a retest of the 4627-4632 rejection zone, extending higher if 4631.935 is reclaimed (COMPRESSION->EXPANSION to the upside).",
+    "confidence": 0.47,
+    "horizon": "SHORT_TERM",
+    "trigger": "Reclaim of ~4608-4610 on M5/M15 with a bullish M15 close above the coil and upside range expansion; a defended 4601.875-4600 zone on repeated tests.",
+    "invalidation": "Decisive M15/H1 close below 4601.875 and hold below ~4596 with range expansion: the swing-high-as-support fails and the correction extends."
+  },
+  "alternative_scenario": {
+    "scenario": "Failure at the 4601.875 level: the rejection from 4631.935 extends, the swing-high-as-support breaks, and the correction targets 4577-4580 then the H1 swing low 4563.255, consistent with the persistent M1/M5/M15 down-momentum and the strong bearish closing H1/H4 candles.",
+    "confidence": 0.38,
+    "horizon": "SHORT_TERM",
+    "trigger": "M15/H1 close below 4601.875 with expanding range; follow-through below ~4596.",
+    "invalidation": "Quick reclaim of 4608-4610 and failure to follow through below 4596; bounce back above 4620."
+  },
+  "expected_transition": "COMPRESSION -> EXPANSION (a vol contraction following a rejection typically resolves into a directional expansion). Resolution bias: upward if the 4601.875 support holds (aligning with the intact H1/H4 uptrend and shallow-retracement structure); downward if the level breaks. Analog A21233 (stays COMPRESSION through step 16) leaves a non-trivial chance of extended sideways drift with no clean breakout.",
+  "direction": "UP",
+  "horizon": "SHORT_TERM",
+  "confidence": 0.47,
+  "counter_evidence": [
+    "Persistent short-term selling: M1/M5/M15 trend_20 negative; 7-10 consecutive down bars; the last H1 (-14.62 body, ratio 0.94) and H4 (-22.22 body, ratio 0.94) candles are near-full-body bearish closes at the lows - no reversal signal has printed yet.",
+    "Frozen state is COMPRESSION/VOL_CONTRACTION, which carries no directional bias; historical analogs are mixed (A21233 stays compressed, A26956 -> REJECTION, A32777 -> TREND then REJECTION).",
+    "Level distance is only ~0.026 ATR: a break of 4601.875 is trivially close and would flip the structure immediately.",
+    "L6 multi-timeframe agreement = CONFLICT; the short-term stack (M1/M5/M15) openly disagrees with the higher-TF stack (H1/H4).",
+    "L7 cross-market (DXY, VIX, UST10Y proxy) all UNKNOWN - no macro/risk confirmation for either direction.",
+    "Data staleness: L1 klines end 2026-08-21 21:59Z while the context is as_of 2026-08-23 12:00Z (~38h gap) - the 'current' price/state readings may be stale."
+  ],
+  "invalidation": "Decisive break and hold below 4601.875 (M15/H1 close below ~4596 with range expansion) invalidates the bounce/continuation thesis and makes DOWN the operative direction; conversely, reclaim of 4627-4632 invalidates the deeper-correction thesis.",
+  "data_quality_flags": [
+    "L1_PRICE_KLINE: RAW_GEOMETRY + DERIVED (DIRECT bars, derived metrics)",
+    "PRICE_DATA_STALE: klines end 2026-08-21 21:59Z vs as_of 2026-08-23 12:00Z (~38h gap; freshness UNKNOWN)",
+    "L2_PRICE_STRUCTURE: DERIVED (causal pivot swing levels), not DIRECT",
+    "L3/L5_STATE: DERIVED (frozen C1 ontology + min-dwell lifecycle), not DIRECT",
+    "L4_MARKET_MECHANISM: candidate only, not asserted as fact",
+    "L7_CROSS_MARKET: UNKNOWN - DXY/VIX/UST10Y_PROXY absent (UST10Y would be PROXY via ^TNX, never DIRECT)",
+    "HISTORICAL_ANALOG: state evolution only, no returns/PnL; similarity = exact_state + dwell_bucket"
+  ],
+  "reasoning_trace": [
+    "Context as_of 2026-08-23 12:00Z but L1 price data ends 2026-08-21 21:59Z: ~38h staleness noted and lowers confidence.",
+    "Higher-TF: H1 trend_20 +71.5 / trend_50 +115.5, H4 trend_20 +248.0 / trend_50 +234.1 over the 4484->4632 rally; the last H1/H4 candles are large bearish bodies - an aggressive but ~20% (shallow) retracement of the rally.",
+    "Short-TF: M1/M5/M15 trend_20 negative with 7-10 consecutive down bars and M1/M5 range contraction - active selling impulse pressing into the level.",
+    "L2: price 4602.055 is 0.026 ATR above SWING_HIGH_38669 (4601.875), 11 touches in 240 bars, break_status INSIDE - a heavily-trafficked prior high now acting as support; next references below are 4577-4580 and 4563.255.",
+    "L3/L5: EXPANSION -> REJECTION -> COMPRESSION (VOL_CONTRACTION, dwell 2, ambiguity 0.25) - the rejection from 4631.935 has decelerated into a coil at support; compression usually resolves into expansion, direction unknown a priori.",
+    "L4 candidate trend_continuation cites 8-bar displacement -22.09 (downward) - consistent with a corrective pullback inside an uptrend rather than a trend change.",
+    "Historical analogs show mixed resolutions (compression, rejection, trend) - no strong prior for breakout direction; supports only modest confidence.",
+    "Cross-market entirely absent - cannot confirm macro alignment; treat any directional call with caution.",
+    "Judgement: lean UP (bounce/continuation) on structure - shallow retracement, high-quality multi-touch support, intact H1/H4 uptrend - with modest confidence 0.47, valid unless 4601.875 breaks decisively."
+  ]
+}

@@ -1,0 +1,49 @@
+{
+  "audit_id": "BB_20260822",
+  "timestamp": "2026-08-22 00:00:00+00:00",
+  "current_state": "COMPRESSION",
+  "structure": "Higher-timeframe uptrend intact: H4 trend_20 +247.96, H1 trend_20 +71.51; price rallied from ~4484 (Aug 20) to local high 4631.935 (Aug 21 18:00) before pulling back to 4602.055. Lower-timeframe momentum is down (M1 trend_20 -6.65, M5 -20.05, M15 -12.08) consistent with a contained pullback. Price sits at the 4601.875 swing-high level (SWING_HIGH_38669, touch_count_240=11, distance_atr 0.026, break_status INSIDE). Multi-timeframe agreement: CONFLICT.",
+  "mechanism": "trend_continuation candidate: price holding inside the prior swing-high level during an 8-bar downward displacement (-22.09) within a strong HTF uptrend; the pullback is compressing (L3 VOL_CONTRACTION, dwell 2) at a level that previously capped price, which now acts as support. Compression at a broken level inside an uptrend favors eventual continuation, but the mechanism is only a candidate (DERIVED), not asserted.",
+  "primary_scenario": {
+    "scenario": "Consolidation at 4601.875 resolves upward: after the compression, price breaks above the recent 4631.935 local high and resumes the HTF uptrend.",
+    "confidence": 0.42,
+    "horizon": "INTRADAY",
+    "trigger": "Sustained (M15/H1) close above the 4601.875-4632 zone, specifically a decisive move above the 4631.935 swing high with expanding range.",
+    "invalidation": "A decisive break and sustained trade below 4601.875 (H1 close), turning the level into resistance."
+  },
+  "alternative_scenario": {
+    "scenario": "Rejection at 4601.875: the compression resolves downward as a deeper correction within the HTF uptrend, with price failing to reclaim the level.",
+    "confidence": 0.33,
+    "horizon": "INTRADAY",
+    "trigger": "A decisive close below 4601.875 followed by expansion (range_expanding) on M15/H1, confirming the level as resistance.",
+    "invalidation": "Price reclaims and holds above 4601.875, resuming the upward bias."
+  },
+  "expected_transition": "COMPRESSION resolving after dwell 2; historical analogs are mixed (A21233 stays COMPRESSION, A26956 -> REJECTION, A32777 -> TREND->REJECTION->EXPANSION), giving no strong state-evolution bias. Net: compression persists near-term, with resolution triggered by a range expansion either way.",
+  "direction": "UP",
+  "horizon": "INTRADAY",
+  "confidence": 0.38,
+  "counter_evidence": [
+    "Lower-timeframe momentum is negative (M1/M5/M15 trend_20 all down), and M5 shows 10 consecutive down bars - a near-term seller bias at the level.",
+    "Multi-timeframe agreement is CONFLICT, not aligned, so the HTF uptrend is not confirmed by lower-timeframe structure at this instant.",
+    "Frozen state is COMPRESSION with VOL_CONTRACTION - compression implies no directional edge until resolution; range_percentile on M1 (0.155) and M5 (0.14) is very low (dead market).",
+    "All cross-market series (DXY, VIX, UST10Y/TNX) are absent (UNKNOWN), so no external confirmation of risk-on/off or rates support."
+  ],
+  "invalidation": "Decisive break and sustained trade below 4601.875 (SWING_HIGH_38669) on H1; alternatively a clean reclaim and push above 4631.935 without follow-through that stalls back inside the range.",
+  "data_quality_flags": [
+    "L1 price klines: RAW_GEOMETRY + DERIVED",
+    "L2 levels: DERIVED (pivot swing levels, causal)",
+    "L3 behavior: OBSERVED frozen label + DERIVED sub-labels",
+    "L4 mechanism: DERIVED candidate only",
+    "L5 state history: DERIVED (frozen C1 ontology + min-dwell)",
+    "L7 cross-market: DXY/VIX/UST10Y_PROXY_TNX all UNKNOWN (STALE_OR_NOT_COVERED); GLD/GC/CFTC/NEWS/MACRO absent - never fabricated"
+  ],
+  "reasoning_trace": [
+    "Read only PIT context CTX_20260822T000000Z.json and the HERMES-B blind prompt; no other analyst forecast consulted.",
+    "H4/H1 trend_20 strongly positive and recent price action (4484->4631) confirms an HTF uptrend in force.",
+    "The 8-bar pullback to 4602 sits exactly at the 4601.875 swing-high level (distance_atr 0.026, INSIDE, 11 touches/240 bars), a high-probability pivot zone.",
+    "L3/L5 label price action as COMPRESSION (VOL_CONTRACTION, dwell 2) - consistent with a coiled pullback rather than a trend reversal; no range expansion yet.",
+    "Historical analog state evolutions are mixed, so I do not lean on them for direction.",
+    "Directional bias UP is conditional and horizon-limited: it only makes sense if the level holds. Given absent cross-market data, low volatility, and TF conflict, I cap confidence at ~0.38 and define crisp invalidation at 4601.875.",
+    "I record the counter-evidence honestly and do not force a strong directional call in a compressed, low-information context."
+  ]
+}

@@ -1,0 +1,78 @@
+{
+  "schema": "account_mapping/1",
+  "code_commit": "2b6a14d454ff6130661e21ef490d03169bab25e1",
+  "accounts": [
+    {
+      "account": 160759434,
+      "server": "ForexTimeFXTM-Demo01",
+      "project": "V1 / V1_OLD",
+      "magic": 90002,
+      "execution": "MT5_DEMO",
+      "real_trades": 109
+    },
+    {
+      "account": 160759434,
+      "server": "ForexTimeFXTM-Demo01",
+      "project": "V1_NEW (upgrade)",
+      "magic": 90011,
+      "execution": "MT5_DEMO",
+      "real_trades": 32
+    },
+    {
+      "account": 160761384,
+      "server": "ForexTimeFXTM-Demo01",
+      "project": "V2",
+      "magic": 90003,
+      "execution": "PAPER_LOCAL (no broker)",
+      "real_trades": 0
+    },
+    {
+      "account": 160766418,
+      "server": "ForexTimeFXTM-Demo01",
+      "project": "V3 calibration",
+      "magic": 90004,
+      "execution": "DEMO_CALIBRATION (gated)",
+      "real_trades": 0
+    },
+    {
+      "account": 160759434,
+      "server": "ForexTimeFXTM-Demo01",
+      "project": "collect",
+      "magic": 90001,
+      "execution": "MT5_DEMO",
+      "real_trades": 0
+    }
+  ],
+  "findings": {
+    "claim": "2026-09-23 V2 drawdown near -20%",
+    "v2_executed_trades": 0,
+    "v2_real_broker_trades": 0,
+    "v2_paper_account": {
+      "initial_balance": 200.0,
+      "balance": 150,
+      "drawdown_usd": 50.21,
+      "drawdown_pct_of_initial": 25.11,
+      "backend": "paper_local",
+      "created_utc": "2026-09-12T23:49:50.538386+00:00",
+      "note": "paper_local synthetic account (no broker); drawdown 25.11% != -20%; dated 2026-09-12, not 2026-09-23"
+    },
+    "v2_ledger_events": {
+      "?": 12
+    },
+    "v1_old_cum_net_at_2026_09_23_reset": {
+      "n": 91,
+      "cum_net_after_cost": -26.55,
+      "cum_net_before_cost": -8.0,
+      "last_entry": "2026-09-22T09:06:34+00:00"
+    },
+    "v1_old_cum_net_full": {
+      "n": 110,
+      "cum_net_after_cost": -42.92,
+      "cum_net_before_cost": -20.43,
+      "last_entry": "2026-09-28T11:51:31+00:00"
+    },
+    "candidate_alternative": "No matching account found within +/-12 of -20.",
+    "verdict": "UNRESOLVED_ACCOUNT_MAPPING",
+    "reason": "V2 executed 0 trades; there is no V2 broker P&L or ledger that can carry a -20% drawdown. The claim cannot be attributed to V2. The nearest real figure is the V1_OLD cumulative net at the 2026-09-23 reset (see candidate_alternative)."
+  }
+}

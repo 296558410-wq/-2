@@ -1,0 +1,53 @@
+{
+ "quarantined_at_utc": "2026-09-28T15:29:07.425723+00:00",
+ "archive_file": "ledger\\archive\\v1_upgrade_ledger_pre_quarantine_20260928T152907Z.jsonl",
+ "original_entries": 34,
+ "quarantined_synthetic": 7,
+ "preserved_real": 27,
+ "synthetic_records": [
+  {
+   "orig_seq": 1,
+   "event": "DECISION",
+   "order_id": null,
+   "orig_hash": "51f297de631f02b6cad9ff1ffcda7d507070b463a78516e2a445c4fa8a791989"
+  },
+  {
+   "orig_seq": 2,
+   "event": "ORDER_REQUEST",
+   "order_id": "X1",
+   "orig_hash": "6360b6395951efc7705916c166ce8000da9449eb6cdd8e878d177fb5af3ab4ad"
+  },
+  {
+   "orig_seq": 3,
+   "event": "ORDER_SEND",
+   "order_id": "X1",
+   "orig_hash": "8f419f2c1a8d98a4d42de7022b5540883849b75582d59017bd42595239af5a86"
+  },
+  {
+   "orig_seq": 4,
+   "event": "FILL",
+   "order_id": "X1",
+   "orig_hash": "a5c60e57223d87b2d6065d55fe0a2be37fa4ca0085a3ace84d813ff014484a82"
+  },
+  {
+   "orig_seq": 5,
+   "event": "POSITION",
+   "order_id": "X1",
+   "orig_hash": "c5ea0a0ee1489aa93acc33f660d1ce70ad0d112e60ccb22df280092159b23921"
+  },
+  {
+   "orig_seq": 6,
+   "event": "CLOSE",
+   "order_id": "X1",
+   "orig_hash": "9099d4b09cbdabc4854cb089cd27fc589eaf9d0152a105e9527fd2f3acb00424"
+  },
+  {
+   "orig_seq": 7,
+   "event": "PNL",
+   "order_id": "X1",
+   "orig_hash": "28b01949ee1decbe123acb9ef0ad72cf4e05108d7f913d6df91be330635ba7bc"
+  }
+ ],
+ "reason": "gate self-test wrote synthetic X1 events into the production ledger; not real trades",
+ "note": "no order ever reached the broker (0 successful ORDER_SEND), so no real trade history was lost"
+}

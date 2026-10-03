@@ -1,0 +1,51 @@
+{
+  "audit_id": "BB_20260818",
+  "timestamp": "2026-08-18T00:00:00+00:00",
+  "current_state": "COMPRESSION (dwell 3 bars, event ACCEPTANCE) after EXPANSION->REJECTION->COMPRESSION lifecycle. Price ~4411-4414 (M1/M5/M15 closes) sitting just below the heavily-touched swing level 4416.235 (22 touches/240 bars, distance ~0.28 ATR, status INSIDE, reclaim NONE). Immediate candles show lower-wick stabilization (M1/M5/M15 all closed above their lows, M15 bullish body 3.5) after a ~4408.9-4411 low.",
+  "structure": "Higher timeframes remain in an intact uptrend: H4 trend_50 +143.8 (price well above its 50-bar mean) and H1 trend_20 +29.0 / trend_50 +75.7; the run advanced from ~4335 (Aug 14) to 4427-4428 highs (Aug 17 16:00-17:00) and an H4-bar high of 4435.9. Since then a pullback: H1 23:00 bar down (4417.3->4410.9), M1/M5/M15 short-term trend_20 all negative, H4 trend_20 -7.1. Lower-timeframe structure is down but stabilizing; the 4416.2 level is the immediate pivot between continuation and deeper retrace. L6 MULTI_TIMEFRAME flagged CONFLICT (lower TFs short-term down, upper TFs up).",
+  "mechanism": "Pullback-within-uptrend / compression at a pivot. L4 candidate is trend_continuation (price inside level, 8-bar displacement -3.13), i.e., the pullback into the 4416.2 zone is the expected precursor to a resumption attempt, not a reversal. COMPRESSION + ACCEPTANCE at a 22-touch level is consistent with absorption/re-accumulation ahead of a directional resolution. No cross-market impulse: DXY ~99.53 flat-to-soft (change_8 -0.05), no VIX or UST10Y input, no news/macro available.",
+  "primary_scenario": {
+    "scenario": "Base/continuation: price holds the 4408.9-4411 support zone, the compression resolves with ACCEPTANCE back above the 4416.235 swing level, and the H1/H4 uptrend resumes toward 4425-4428 and retest of 4435.9.",
+    "confidence": 0.45,
+    "horizon": "SHORT_TERM",
+    "trigger": "Reclaim and hold above 4416.2 (level acceptance) with momentum; H1 trend_20 staying positive.",
+    "invalidation": "Decisive break below 4408.9 (latest swing low); a daily-close-style break under 4393.7 would shift the structure to a deeper retrace."
+  },
+  "alternative_scenario": {
+    "scenario": "Rejection: the 4435.9 H4 upper-wick rejection (24.9 wick, close 4399.7 on the H4 bar) marks distribution; price fails at 4416.2, breaks 4408.9, and retraces toward 4393.7-4399.7, then 4376.8 (Aug 17 low) / 4370.",
+    "confidence": 0.35,
+    "horizon": "SHORT_TERM",
+    "trigger": "Failure to reclaim 4416.2 followed by a decisive hourly close below 4408.9.",
+    "invalidation": "Sustained acceptance above 4416.2-4417 without a lower high."
+  },
+  "expected_transition": "COMPRESSION resolving to a directional state (EXPANSION up if 4416.2 is reclaimed, REJECTION/DOWN if 4408.9 breaks). Historical analogs are split: A25759 stays COMPRESSION for 16 steps (extended coiling is a live third path, ~20%), A19195 and A31804 pass through REJECTION before re-coiling. Near-term the market is likely to remain bounded 4408.9-4417 until the level resolves.",
+  "direction": "UP",
+  "horizon": "SHORT_TERM",
+  "confidence": 0.45,
+  "counter_evidence": [
+    "H1 current bar (close 4425.605) and H4 current bar (close 4399.665) are mutually inconsistent at the same timestamp label; H4 shows a large bearish rejection (upper wick 24.9) while H1 shows a strong bullish body 14.6 - the freshest aligned data (M1/M5/M15) sits at 4411-4414, so higher-TF 'current' bars contain intra-bar movement beyond the 00:00:00 anchor and cannot both be trusted",
+    "L6 MULTI_TIMEFRAME = CONFLICT: M1/M5/M15 trend_20 negative vs H1 strongly positive vs H4 trend_20 negative",
+    "L4 mechanism is only a CANDIDATE (not asserted), and 'trend_continuation' is weakly supported (no momentum, no volume/flow data)",
+    "DXY flat (PROXY, instrument definition UNKNOWN) gives no confirmation; VIX and UST10Y/TNX are UNKNOWN/STALE, so no macro/risk input",
+    "NEWS/MACRO_EVENTS absent - no visibility into a catalyst behind the 4435.9 spike-and-reject",
+    "Ambiguity rate 0.375 on state labelling adds noise to the COMPRESSION read"
+  ],
+  "invalidation": "The UP view is invalidated by a decisive break and hold below 4408.9 (M1/M5 swing low), which would activate the alternative downside path toward 4393.7 then 4376.8; conversely, acceptance above 4435.9 would upgrade the scenario.",
+  "data_quality_flags": [
+    "DERIVED: L3/L4/L5 state labels from frozen labeler + min-dwell lifecycle, not raw observation",
+    "PROXY: DXY from Yahoo 5m, instrument definition UNKNOWN",
+    "UNKNOWN/STALE: VIX and UST10Y_PROXY_TNX not covered; UST10Y never treated as DIRECT",
+    "INCONSISTENT: H1 vs H4 current-bar closes at same label (4425.6 vs 4399.7); H1/H4 current bars imply data beyond the M1-anchored 00:00:00 snapshot",
+    "ABSENT: GLD, GC, COT, ETF flows, NEWS, MACRO_EVENTS recorded absent, never fabricated",
+    "M15 sequence gap (no bars listed between 21:45 and 23:00) limits intraday continuity read"
+  ],
+  "reasoning_trace": [
+    "1. Anchored on freshest mutually-consistent data: M1/M5/M15 closes 4411.365/4412.675/4414.515, all with bullish bodies and 2.09 lower wicks - price stabilized off the 4408.9 low.",
+    "2. Immediate context: price is 0.28 ATR below the 4416.235 swing-high level (22 touches, INSIDE status) - a well-tested pivot, not a random level.",
+    "3. State machine: EXPANSION(8-9) -> REJECTION(3) -> COMPRESSION(3) with ACCEPTANCE event; compression at a pivot after rejection favors a base, not a breakdown, but confidence is capped by ambiguity_rate 0.375.",
+    "4. Trend stack: H4 trend_50 +143.8 and H1 trend_20/50 strongly positive argue the Aug 14-17 rally (4335->4427/4435.9) is the dominant regime; short-TF negatives are the pullback leg.",
+    "5. Trusted the direction of the 4435.9 H4 rejection (spike-and-dump) but not its close level; both UP continuation and DOWN retrace are live, so assigned 0.45/0.35 with ~0.20 residual for extended compression (analog A25759).",
+    "6. Cross-market adds nothing: DXY flat, no VIX/yield/news - no reason to override the price-structure read.",
+    "7. Declared UP with SHORT_TERM horizon as the higher-probability branch given intact HTF uptrend and level-adjacent stabilization, with explicit invalidation at 4408.9."
+  ]
+}

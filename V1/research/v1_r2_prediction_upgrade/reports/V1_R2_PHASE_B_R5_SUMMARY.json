@@ -1,0 +1,393 @@
+{
+ "task": "V1_R2_PHASE_B_R5",
+ "path": "PATH_A_TICK_ONLY_D5",
+ "status": "COMPLETE",
+ "DATASET_VARIANT": "TICK_ONLY",
+ "ALIGNMENT_CONVENTION": "DECISION_AT_BAR_CLOSE_STRICT: only bars with bar_close <= decision_time (label=bar open, close=label+15min)",
+ "TICK_DATA_MIN": "2026-09-07 01:00:00+00:00",
+ "TICK_DATA_MAX": "2026-09-25 23:45:00+00:00",
+ "TICK_M15_BARS": 1328,
+ "MISSING_M15_SLOTS": 492,
+ "TICK_DUPLICATES": 0,
+ "INTEGRITY": {
+  "source_parquet": "research/hermes/trader_v1/v1_r2_prediction_upgrade/v1_r2_research_runs/V1_R2_RUN_B4_20260926T123252/m15_tick_bid.parquet",
+  "parquet_sha256": "aafbb44803555c1bae96d74360c4e1e88753d000e9b83aa095bab7ef6dd30739",
+  "DATASET_VARIANT": "TICK_ONLY",
+  "price_source": "BID",
+  "price_source_reason": "MT5 copy_rates(default) returns bid series; the historical M1 export pipeline used the same terminal path",
+  "bin": "15min UTC (floor)",
+  "empty_bucket_rule": "NO BAR + DATA_GAP (no ffill/synthetic)",
+  "reconstruction_version": "v1r2-m15-recon-r1",
+  "reconstruction_hash": "9ed53f6de257ff94aad665706dd1bd1f249a1bb8ae3a89debedf0799b24c273b",
+  "ROWS": 1328,
+  "MIN_TIMESTAMP": "2026-09-07 01:00:00+00:00",
+  "MAX_TIMESTAMP": "2026-09-25 23:45:00+00:00",
+  "DUPLICATE_INDEX": 0,
+  "TICK_FILES": 15,
+  "TICK_ROWS_RAW": 3097912,
+  "TICK_ROWS_CLEAN": 3096657,
+  "TICK_DUPLICATES_TOTAL": 0,
+  "TICK_MIN": "2026-09-07 01:05:00.047000+00:00",
+  "TICK_MAX": "2026-09-25 23:54:59.914000+00:00",
+  "missing_slots_declared": 492,
+  "volume_available": false,
+  "volume_zero_pct": 1.0,
+  "volume_usable": false,
+  "volume_note": "tick volume column is all-zero; NOT interpreted as real traded volume",
+  "bid_available": true,
+  "ask_available": true,
+  "spread_available": true,
+  "ABSORPTION": "PROXY",
+  "LIQUIDITY_WITHDRAWAL": "PROXY",
+  "SOURCE_DATA_CONFLICT_B_R4_PRESERVED": "REVIEW",
+  "join_manifest_selected_authority": "HISTORICAL_IN_OVERLAP; TICK_ONLY_AFTER_HIST_END",
+  "join_manifest_note": "NOT USED in B-R5 (no historical fusion); recorded for provenance only",
+  "M15_SLOTS_IN_SPAN": 1820,
+  "MISSING_M15_SLOTS": 492,
+  "MISSING_M15_SAMPLE": [
+   "2026-09-07 21:30:00+00:00",
+   "2026-09-07 21:45:00+00:00",
+   "2026-09-07 22:00:00+00:00",
+   "2026-09-07 22:15:00+00:00",
+   "2026-09-07 22:30:00+00:00",
+   "2026-09-07 22:45:00+00:00",
+   "2026-09-07 23:00:00+00:00",
+   "2026-09-07 23:15:00+00:00",
+   "2026-09-07 23:30:00+00:00",
+   "2026-09-07 23:45:00+00:00",
+   "2026-09-08 00:00:00+00:00",
+   "2026-09-08 00:15:00+00:00"
+  ]
+ },
+ "V1_DECISIONS": 142,
+ "VALID_PIT_ALIGNED": 140,
+ "OUT_OF_DATASET": 0,
+ "ALIGNMENT_ERROR": 0,
+ "DUPLICATE_TIMESTAMP": 2,
+ "V1_DIRECTIONAL_COUNT": 64,
+ "V2_DIRECTIONAL_COUNT": 11,
+ "AGREEMENT_COUNT": 71,
+ "DISAGREEMENT_COUNT": 69,
+ "AGREEMENT_RATE": 0.5071,
+ "DIRECTIONAL_AGREEMENT_COUNT": 2,
+ "DIRECTIONAL_AGREEMENT_RATE": 0.0312,
+ "RAW_142_AGREEMENT_COUNT": 71,
+ "UNKNOWN_RATE": 0.5071,
+ "CONTINUATION_RATE": 0.1286,
+ "REVERSION_RATE": 0.0214,
+ "BREAKOUT_RATE": 0.0786,
+ "BREAKDOWN_RATE": 0.0214,
+ "HOLD_RATE": 0.2429,
+ "MISMATCH_REASONS": {
+  "UNKNOWN_NEXT_STATE": 34,
+  "CONFLICTING_EVIDENCE": 13,
+  "INSUFFICIENT_CONTEXT": 13,
+  "V1_WAIT_V2_DIRECTIONAL": 7,
+  "DIRECTION_OPPOSITE": 2
+ },
+ "NEXT_STATE_COUNTS_DECISIONS": {
+  "UNKNOWN": 71,
+  "BREAKOUT": 11,
+  "HOLD": 34,
+  "REVERSION": 3,
+  "BREAKDOWN": 3,
+  "CONTINUATION": 18
+ },
+ "SAMPLE_STRUCTURE": {
+  "DECISIONS_TOTAL": 142,
+  "EVALUATED": 140,
+  "unique_days": 3,
+  "unique_hours": 24,
+  "unique_clusters": 84,
+  "unique_regimes": 7,
+  "max_decisions_per_day": 83,
+  "max_decisions_per_cluster": 5,
+  "days": {
+   "2026-09-23": 2,
+   "2026-09-24": 83,
+   "2026-09-25": 57
+  },
+  "hours": {
+   "00": 8,
+   "01": 8,
+   "02": 6,
+   "03": 4,
+   "04": 7,
+   "05": 8,
+   "06": 5,
+   "07": 4,
+   "08": 4,
+   "09": 6,
+   "10": 9,
+   "11": 8,
+   "12": 8,
+   "13": 8,
+   "14": 7,
+   "15": 8,
+   "16": 4,
+   "17": 4,
+   "18": 4,
+   "19": 4,
+   "20": 4,
+   "21": 4,
+   "22": 4,
+   "23": 6
+  },
+  "top_clusters": [
+   {
+    "cluster": [
+     "BREAKOUT",
+     "COMPRESSION",
+     "NORMAL",
+     "FIRST_TOUCH",
+     "ELEVATED"
+    ],
+    "n": 5
+   },
+   {
+    "cluster": [
+     "UNKNOWN",
+     "TREND",
+     "DECELERATING",
+     "FIRST_TOUCH",
+     "ELEVATED"
+    ],
+    "n": 5
+   },
+   {
+    "cluster": [
+     "HOLD",
+     "RANGE",
+     "SLOW",
+     "NO_TOUCH",
+     "NORMAL"
+    ],
+    "n": 5
+   },
+   {
+    "cluster": [
+     "UNKNOWN",
+     "COMPRESSION",
+     "NORMAL",
+     "FIRST_TOUCH",
+     "ELEVATED"
+    ],
+    "n": 4
+   },
+   {
+    "cluster": [
+     "HOLD",
+     "RANGE",
+     "NORMAL",
+     "NO_TOUCH",
+     "LOW"
+    ],
+    "n": 4
+   },
+   {
+    "cluster": [
+     "UNKNOWN",
+     "RANGE",
+     "NORMAL",
+     "FIRST_TOUCH",
+     "ELEVATED"
+    ],
+    "n": 4
+   },
+   {
+    "cluster": [
+     "UNKNOWN",
+     "RANGE",
+     "DECELERATING",
+     "FIRST_TOUCH",
+     "ELEVATED"
+    ],
+    "n": 4
+   },
+   {
+    "cluster": [
+     "CONTINUATION",
+     "TREND",
+     "ACCELERATING",
+     "NO_TOUCH",
+     "NORMAL"
+    ],
+    "n": 3
+   }
+  ],
+  "regimes": {
+   "TREND": 44,
+   "RANGE": 38,
+   "COMPRESSION": 23,
+   "UNKNOWN": 12,
+   "EXPANSION": 10,
+   "REVERSAL": 9,
+   "EVENT_DRIVEN": 4
+  }
+ },
+ "SAMPLE_SELECTION_RISK": {
+  "sample_count": 140,
+  "directional_base_rate_v2": 0.0786,
+  "UNKNOWN_rate_decisions": 0.5071,
+  "duplicate_state": [
+   {
+    "timestamp": "2026-09-25 10:47:00+00:00",
+    "classification": "LEGITIMATE_MULTIPLE_DECISION"
+   }
+  ],
+  "decision_clustering": {
+   "max_per_day": 83,
+   "unique_days": 3,
+   "max_per_cluster": 5,
+   "unique_clusters": 84
+  },
+  "same_regime_concentration": 0.3142857142857143,
+  "SAMPLE_SELECTION_RISK": "MODERATE",
+  "note": "agreement is descriptive only; it cannot by itself establish predictive ability"
+ },
+ "REACHABILITY": {
+  "HISTORICAL_DATASET_REACHABILITY": {
+   "DATASET_VARIANT": "HISTORICAL_M1",
+   "BARS": 40546,
+   "source": "V1_R2_RUN_B2_* v1_r2_states_v2.jsonl (frozen evidence)",
+   "LONG_reachable": 2378,
+   "SHORT_reachable": 1480,
+   "directional": 3858,
+   "directional_rate": 0.0952,
+   "next_state_counts": {
+    "UNKNOWN": 14110,
+    "HOLD": 21944,
+    "CONTINUATION": 4170,
+    "BREAKOUT": 170,
+    "REVERSION": 113,
+    "BREAKDOWN": 39
+   },
+   "next_state_rates": {
+    "CONTINUATION": 0.1028,
+    "BREAKOUT": 0.0042,
+    "BREAKDOWN": 0.001,
+    "REVERSION": 0.0028,
+    "HOLD": 0.5412,
+    "UNKNOWN": 0.348
+   },
+   "unknown_rate": 0.348,
+   "rule_variants": {
+    "B": 3858,
+    "C": 13,
+    "D": 3831
+   }
+  },
+  "TICK_ONLY_DATASET_REACHABILITY": {
+   "DATASET_VARIANT": "TICK_ONLY",
+   "BARS": 1328,
+   "LONG_reachable": 42,
+   "SHORT_reachable": 42,
+   "directional": 84,
+   "directional_rate": 0.0633,
+   "next_state_counts": {
+    "UNKNOWN": 710,
+    "HOLD": 398,
+    "CONTINUATION": 136,
+    "BREAKOUT": 49,
+    "BREAKDOWN": 15,
+    "REVERSION": 20
+   },
+   "next_state_rates": {
+    "CONTINUATION": 0.1024,
+    "BREAKOUT": 0.0369,
+    "BREAKDOWN": 0.0113,
+    "REVERSION": 0.0151,
+    "HOLD": 0.2997,
+    "UNKNOWN": 0.5346
+   },
+   "unknown_rate": 0.5346,
+   "rule_variants": {
+    "B": 84,
+    "C": 2,
+    "D": 70
+   },
+   "states_hash": "39f12c3a27ec78a059443c641489b3327864f5f6acb84ad6e71d6e059e56e45a"
+  }
+ },
+ "HASHES": {
+  "DATASET_VARIANT": "TICK_ONLY",
+  "states_hash": "39f12c3a27ec78a059443c641489b3327864f5f6acb84ad6e71d6e059e56e45a",
+  "context_hash": "0cad9dd019db51bde25e66bd42c7c4d4d0049dfc1cc2c4fb543625b7bf0f86a3",
+  "output_hash": "c2055b3b7fec782033ae87ffa3bb52db71855c1d50b61d55013e25ccbb978201",
+  "tick_parquet_sha256": "aafbb44803555c1bae96d74360c4e1e88753d000e9b83aa095bab7ef6dd30739",
+  "reconstruction_hash": "9ed53f6de257ff94aad665706dd1bd1f249a1bb8ae3a89debedf0799b24c273b",
+  "registry_hash": "014de1664566613f8038884a71e34e41bb0a2ce89315f0682cebfe4a2c51b7ed",
+  "rules_version": "v1r2-r1-rules-v3",
+  "note": "all hashes regenerated for the TICK_ONLY dataset variant; no old hash reused"
+ },
+ "D5_TICK_ONLY": "EVALUATED",
+ "D5_STATUS_REASON": "ALL_142_RECORDS_ACCOUNTED_VALID=140_DUPLICATE=2_OUT_OF_DATASET=0_ALIGNMENT_ERROR=0",
+ "D5_DIAGNOSTIC": null,
+ "DUPLICATE_INVESTIGATION": [
+  {
+   "timestamp": "2026-09-25 10:47:00+00:00",
+   "records": [
+    {
+     "decision_id": "2026-09-25T1047Z.json",
+     "sha256": "d0cb4431a190ad13ad04c252aa80904823bfadbbe37d209cad9f08bb702efd38"
+    },
+    {
+     "decision_id": "20260925T1047Z.json",
+     "sha256": "e9605b84c5c526a2433f5dd6b85a97810519b6f1320439d937c361df9917eea2"
+    }
+   ],
+   "classification": "LEGITIMATE_MULTIPLE_DECISION",
+   "dedup_rule": "keep first by decision_id (documented); originals preserved"
+  }
+ ],
+ "PRESERVED": {
+  "B_R4_SOURCE_DATA_CONFLICT": "SOURCE_DATA_CONFLICT",
+  "H1_SHIFT_HYPOTHESIS": "SOURCE_DATA_CONFLICT",
+  "H2": "UNTESTED",
+  "H3": "UNTESTED",
+  "FORMAL_AXIS_RULE_FROZEN": "NO",
+  "HISTORICAL_FUSION_STATUS": "PROHIBITED_UNCHANGED",
+  "note": "B-R5 does NOT resolve/override/reinterpret SOURCE_DATA_CONFLICT; no historical M1+tick join was performed"
+ },
+ "REGISTRY_VERSION": "v1r2-r3",
+ "REGISTRY_HASH": "014de1664566613f8038884a71e34e41bb0a2ce89315f0682cebfe4a2c51b7ed",
+ "REGISTRY_HASH_RECOMPUTED": "014de1664566613f8038884a71e34e41bb0a2ce89315f0682cebfe4a2c51b7ed",
+ "REGISTRY_INTEGRITY": "PASS",
+ "RULES_VERSION": "v1r2-r1-rules-v3",
+ "RULES_HASH": "69db133a7b879c2785d4dd4353c5280185167d3d21063bf5b286cb9bb9ab2f4a",
+ "NS_V3_REFACTOR": {
+  "SEMANTIC_EQUIVALENCE": "PASS",
+  "refactor_audit": "reports/V1_R2_NS_V3_REFACTOR_AUDIT.json"
+ },
+ "checks": {
+  "PIT_ALIGNMENT": "PASS",
+  "D5_AUDIT_COMPLETE": "PASS",
+  "NO_FUTURE_DATA": "PASS",
+  "NO_RULE_CHANGE": "PASS",
+  "REGISTRY_INTEGRITY": "PASS",
+  "NS_V3_SEMANTIC_EQUIVALENCE": "PASS",
+  "SAFETY_BOUNDARY": "PASS"
+ },
+ "safety": {
+  "ORDER_SEND": 0,
+  "ORDER_CHECK": 0,
+  "BROKER_WRITE": 0,
+  "FORWARD": "OFF",
+  "SHADOW": "OFF",
+  "LIVE": "OFF",
+  "V2_WRITE": 0,
+  "V3_WRITE": 0,
+  "RUN_BOUNDARY_WRITE": 0,
+  "V1_STOP": 0,
+  "V1_RESTART": 0,
+  "AUTOMATION_RUN": 0,
+  "BOUNDARY_VIOLATION": 0
+ },
+ "run_dir": "research/hermes/trader_v1/v1_r2_prediction_upgrade/v1_r2_research_runs/V1_R2_RUN_B5_20260926T150917",
+ "artifacts": {
+  "alignment": "research/hermes/trader_v1/v1_r2_prediction_upgrade/reports/V1_R2_D5_TICK_ONLY_ALIGNMENT.jsonl",
+  "direction_audit": "research/hermes/trader_v1/v1_r2_prediction_upgrade/reports/V1_R2_D5_TICK_ONLY_DIRECTION_AUDIT.jsonl",
+  "reachability": "research/hermes/trader_v1/v1_r2_prediction_upgrade/reports/V1_R2_D5_TICK_ONLY_REACHABILITY.json"
+ },
+ "ts_utc": "2026-09-26T15:09:07.330381+00:00"
+}

@@ -1,0 +1,95 @@
+{
+ "schema": "hermes_decision_v1",
+ "utc_ts": "2026-09-21T07:47Z",
+ "cycle": "2026-09-21T07:47Z",
+ "decision_id": "DEC-2026-09-21T07:47Z",
+ "symbol": "XAUUSD",
+ "mid": 4347.68,
+ "decision": "SHORT",
+ "confidence": 0.55,
+ "bias": "NEUTRAL-lean-SHORT 0.55 (有立场, 非观望): 上一笔 POS-20260921T0717Z SHORT 0.01@4351.63 已由 broker TP 4346.45 成交(+5.18USD = +0.476R, 07:41Z, reason_code 5), 槽位释放 -> 本轮为【新开仓猎手轮】. 日内方向: 高点序列单调下移 4383.42->4362.42->4362.15->4356.26->4355.03->4349.91, 低点 4355.06->4352.06->4349.06->4341.88 同步下移; M15 4347.68 < M15MA20 4355.63 < M15MA50 4367.27, H1 4347.61 < H1MA50 4357.71 < H1MA20 4367.20, D1 深度在 MA20 下方约 58pt. 唯一反向证据 = H4 建设性(4347.68 > H4MA20 4344.55 > H4MA50 4341.90)且 07:30Z 新低 4341.88 被 +5.18pt 长下影收回 -> 故只做'反弹回抽到 M15MA20/H1MA50 墙'的空, 不在现价追空, 也不买破位低点.",
+ "mtf_agreement": "mixed_range_lean_SHORT (3:1): D1 RANGE 但价格在 MA20 下方(空背景, pkg 4419.985 / live~4406.5, RSI45.4, er0.091); H4 RANGE-偏多(4347.68 > MA20 4344.55 > MA50 4341.90, 被 MA200 压顶, er0.061) = 本轮最大逆风; H1 偏空(4347.61 < MA20 4367.20 < ... 且 < MA50 4357.71, er0.077); M15 偏空(4347.61 < MA20 4355.63 < MA50 4367.27, 刚创 60 根新低 4341.88, er0.089, exp_cont expanding 1.39 提示压缩待解). 四时段 er 全 <0.20 => 区间机制, 只做边缘 fade, 不追单边; 因此空点选在边缘(墙上沿), 不在中轨. 与 H4 的冲突用'止损放在墙外 + 近端目标'处理, 不重仓押趋势.",
+ "opportunity": "本轮唯一主动机会 = 回抽空: 07:30Z 那根 M15 扫破 4345.80 至新低 4341.88(触及 H4MA50 4341.90 后)被立刻收回, 收 4347.06 (v2383, 当日第二大量) -> 破位未续跌; 同时上方 4353.5-4357.5 是当日六次反抽全部夭折的墙(M15MA20 4355.63 + H1MA50 4357.71 + 破位平台 4355.95/4356.26), 破位后的第一次回抽该带 = 教科书式'破位回抽 + 均线墙'续跌入场. 触发用 zone_touch 实时判定(不需等收盘确认). 现价 4347.68 距带上沿 4357.5 约 9.8pt / 带下沿 4353.5 约 5.8pt = 约 0.85-1.4x M15 ATR14(6.9pt), 属'贴边即计划, 触价自动成交'. gap-to-tradable = 0 除价格: 槽位 FREE(0/1), 数据新鲜(pkg 07:47:07Z + MT5 tick 07:47:53Z), spread 0.322bps << 1.0bps 上限, qty 0.01 在 0.01-0.05 区间, notional ≈4355 USD << 25000, margin_free 1957.90, 时段 OPEN, broker 0 持仓/0 挂单. 备选(同轮未注册, 因与主计划同向冗余): 破位追空 {price_cross_down:4341.5}; 反向货架 LONG {zone_touch:[4341.5,4345.5]} SL 4337.5 —— 该货架本轮已被扫至 4341.88, 且本 session 买它三笔全止损(-20.91USD, MFE 仅 +3pt), 故不注册.",
+ "opportunity_mechanism": "【M15 破位回抽空 —— 用'边缘 fade + 近端目标'取概率优势】机制三层: (1) 结构层: 07:30Z 扫破 4345.80(前 4 小时地板)至 4341.88 后收 4347.06 = 破位无跟随; 破位平台 4345.80-4352.06 翻为上方阻力, 而 M15MA20 4355.63 / H1MA50 4357.71 与其重叠 = 回抽带 4353.5-4357.5. (2) 行为层: 当日六次反抽(4362.42 / 4362.15 / 4356.26 / 4355.95 / 4355.03 / 4355.74)全部在 4355-4357 之下熄火, 高点序列机械下移, 且上一个空单正是从该带下方 4351.63 进场、TP 4346.45 命中 = 同一机制本 session 已验证付费一次(+5.18USD). (3) 概率层: 四时段 er 全 <0.20 = 区间; 区间内回抽到均线墙 + 当日已证伪的买盘(两笔多单 MFE 仅 +3.07/+2.90pt) => 空方边缘 p 高于 0.50. 目标取 4343.0(破位低点 4341.88 之上, 距 H4MA50 4341.90 一步)而非更深, 因为 H4 仍建设性; 止损 4362.5 放在当日摆动高 4362.42/4362.15 之外 = 需要实体突破墙 + 站上 2h 高点才触损(迄今未发生). 盈亏平衡 p* ≈ 0.476 vs 估计 p 0.55 => 正 EV.",
+ "answers_14": {
+  "1": "市场状态: XAUUSD mid 4347.68 (MT5 tick 07:47:53Z bid 4347.61 / ask 4347.75, spread 0.14pt = 0.322bps; pkg m15_live quote_latest last_mid 4347.13, spread_bps_now 0.32, tick_rate 114/min, abnormal z 0.83 正常, last6_max_move 19.0bps vs baseline 10.15). data_quality ok: live_days 11, live_ticks 2,124,860, context_days 35, gaps[] (STATE_PACKAGE 07:47:07Z). 时段 OPEN (前置门 armed=true / open=true, 周一 15:47 CST, exit 0). 账户 demo 160759434 (FXTM-Demo01): balance 1957.90 / equity 1957.90 / margin 0.0 / margin_free 1957.90, 0 持仓 0 挂单 = FLAT. 上一笔 POS-20260921T0717Z SHORT 0.01@4351.63 已由 broker TP 平于 4346.45 (07:41Z, reason_code 5 = TP, profit +5.18USD = +5.18pt = +0.476R, 1R=10.87pt), 槽位释放. MT5 重算 07:47Z: M15 c4347.61 MA20 4355.63 / MA50 4367.27, hi60 4397.07, lo60 4341.88, low_recent20 4341.88; H1 MA20 4367.20 / MA50 4357.71; H4 MA20 4344.55 / MA50 4341.90; D1 MA20 ~4406.5. 阻力(入场/风险侧): 4349.91 (07:45Z 形成中 高) -> 4352.06 (07:30Z 前低) -> 4353.5-4355.0 (计划带上沿以下) -> 4355.03 (07:30Z 高) -> 4355.63 (M15MA20) -> 4356.26 (破位平台上沿) -> 4357.5 (计划带下沿/上沿段) -> 4357.71 (H1MA50) -> 4362.15/4362.42 (当日摆动高) -> 4362.5 (SL) -> 4367.20 (H1MA20) -> 4367.27 (M15MA50). 支撑(目标侧): 4345.39 (07:45Z 低) -> 4344.55 (H4MA20) -> 4341.88 (新低/lo60) -> 4341.90 (H4MA50) -> 4343.0 (T1) -> 4338.0 (T2) -> 4332.0 (T3).",
+  "2": "一致性: MIXED_RANGE, 日内偏空但不构成趋势共振. pkg er: D1 0.091 / H4 0.061 / H1 0.077 / M15 0.089 —— 四时段全 < 0.20 = 区间机制, 只做边缘 fade, 不追单边. 位置读数: D1 空背景(价在 MA20 下方约 58pt, RSI 45.4, pos 51.4); H4 偏多(4347.68 > MA20 4344.55 > MA50 4341.90, 被 MA200 压顶, RSI 53.0) = 唯一多头时段, 本单最大逆风; H1 偏空(< MA50 4357.71 < MA20 4367.20); M15 偏空(< MA20 4355.63 < MA50 4367.27, 创新低 4341.88, exp_cont expanding 1.39). 结论: 空头方向与 M15/H1/D1 一致、与 H4 轻微背离(但 H4 距 MA20 仅 3.1pt 且 MA200 压顶) -> 只做墙上沿回抽, 止损留墙外, 目标压近端.",
+  "3": "M15 变化 (自上一轮 07:32Z 决策以来; MT5 服务端时 = UTC+3, 全部换算为 UTC 标签): 07:30Z bar o4350.52 h4355.03 l4341.88 c4347.06 v2383 —— 扫破 4345.80 地板至 4341.88 (新低, 距 H4MA50 4341.90 仅 -0.02) 后收回 +5.18pt, 量能 2383 为当日第二高 = 真实扫损而非崩盘; 07:45Z 形成中 o4346.96 h4349.91 l4345.39 c4347.61 v476 —— 在扫低后窄幅盘整, 未持续下探. 三点读数: (a) 高点序列 4362.42->4362.15->4356.26->4355.03->4349.91 连续五级下移, 墙仍在 4355-4357 一带; (b) 低点序列 4355.06->4352.06->4349.06->4341.88 同步下移 = 下行结构未破, 但最新一根是长下影回收; (c) 上一笔空单在本轮内被 TP 4346.45 命中平仓(+5.18USD) = 同一 fade 机制已兑现; 槽位因此释放, 本轮可注册新计划.",
+  "4": "机会 / gap-to-tradable: 本轮机会 = 回抽到 4353.5-4357.5 墙(M15MA20 4355.63 / H1MA50 4357.71 / 破位平台 4355.95-4356.26)做空. 对在案交易: gap = 价格 (现 4347.68 距带下沿 4353.5 约 5.8pt, 距带上沿 4357.5 约 9.8pt, ≈0.85-1.4x M15 ATR14 6.9pt). 槽位、数据、成本、时段全部就绪: 0 持仓 0 挂单, pkg 07:47:07Z + tick 07:47:53Z, spread 0.322bps << 1.0bps, qty 0.01 在区间内, notional ≈4355 USD << 25000, margin_free 1957.90, 时段 OPEN, 触发用实时 zone_touch(不等收盘). 也就是: 现在离可交易只差'价格回到墙内'. 备选(本轮不注册): (a) 破位追空 {price_cross_down:4341.5} SL 4346.0 目标 4335/4330 —— 需先实体跌破 4341.88, 避免在扫损后立刻追; (b) 反向货架 LONG {zone_touch:[4341.5,4345.5]} SL 4337.5 目标 4355.5/4362.0 —— 结构上与主计划互斥, 且该货架本 session 接多三连亏, 优先级最低.",
+  "5": "机制: 【M15 破位回抽空】08:30Z(=07:30Z) 扫破 4345.80 至 4341.88 后收回 = 破位无跟随; 破位平台 4345.80-4352.06 与 M15MA20 4355.63 / H1MA50 4357.71 重叠成墙 4353.5-4357.5; 当日六次反抽(4362.42/4362.15/4356.26/4355.95/4355.03/4355.74)全在该带熄火, 高点五级下移; 买盘已证伪(本 session 三笔多单全止损, 两笔 MFE 仅 +3.07/+2.90pt). 触发用实时 zone_touch; 越 4362.8 = 墙被实体突破, 计划失效优先. 目标 4343.0 取在破位低点 4341.88 之上一步(H4MA50 4341.90 前), 止损 4362.5 在当日摆动高之外, 构成'近端目标/远端止损'的持有结构, 概率优势来自屏障距离比与墙上沿的六次拒绝记录.",
+  "6": "触发条件[具体价]: SHORT 计划 TP-20260921T0747Z, trigger_condition = {\"zone_touch\": [4353.5, 4357.5]} —— 即 MT5 实时 mid 落入 4353.5-4357.5 立即触发(engine ctx.last_mid 判定, 不要求下一根 M15 收盘确认); 从现价 4347.68 需 +5.8pt(至带下沿)或 +9.8pt(至带上沿). 失效条件 = {\"price_cross_up\": 4362.8}. 止损 broker 随单 4362.5, 目标 4343.0(0.40)/4338.0(0.35)/4332.0(0.25). 触发即自动成交, 无需人工.",
+  "7": "失效[具体价]: (a) 计划失效/逻辑反转 = MT5 mid 上穿 4362.8(当日摆动高 4362.42/4362.15 之上) -> 空头结构被实体突破, 本计划作废(不逆势硬扛); (b) 硬止损 = 4362.5(broker 侧, 位于墙 4357.5 之上 5.0pt、摆动高 4362.42 之上 0.08pt, 需实体突破墙并站上 2h 高点才可能触及, 迄今未发生); (c) 入场机会失效(未触发先消失) = mid 跌至 4345.5 以下(带下沿 4353.5 - 2x带宽 8pt) -> engine 以 price_left_setup 自动撤销, 由新轮按新结构重建; (d) 时间失效 = 注册后 2h(M15*8) 未触发自动撤销. 亏损不加仓、不摊平、不向亏损方向补单.",
+  "8": "预期收益R: 保守按成交在带下沿 4353.5 计, 1R = 4362.5 - 4353.5 = 9.0pt (= 9.0 USD on 0.01 手 = 余额 1957.90 的 0.46%). 阶梯: T1 4343.0 = +10.5pt = +1.167R (frac 0.40); T2 4338.0 = +15.5pt = +1.722R (0.35); T3 4332.0 = +21.5pt = +2.389R (0.25); 全部阶梯加权 = 0.40*1.167 + 0.35*1.722 + 0.25*2.389 = 0.467 + 0.603 + 0.597 = 1.667R (≈ +15.0pt ≈ +15.0 USD). 实现口径修正(沿用 07:17Z 的发现): trader_core.manage_positions 在 EXEC_MODE=='demo' 时对 hard_tp 强制 full=True 全平, 而 open_position_from_plan 把 broker TP 放在 tp_levels[0] (= T1) -> demo 现实收益 = R_T1 = 1.167R; T2/T3 只能在本地下单模型里兑现, 本单不靠它们. 故 expected_R 取保守 1.167R.",
+  "9": "预期损失R: 满额止损 = 1R = 9.0pt = 9.0 USD = 余额 1957.90 的 0.46% (qty 0.01, notional ≈4355 USD << 25000 上限, margin ≈8.7). 本 session 已实现: 上一笔 POS-20260921T0717Z SHORT +5.18USD (TP), 之前三笔多单止损 -10.77 / -7.36 / -2.78 USD; 连续亏损计数已由上任盈利单清零. 纪律: 亏损不加仓 / 不摊平 / 不向亏损方向补单 (position.py 对 ADD 直接报错); 持仓期间不注册任何新计划(单仓约束); 止损随单(broker 硬 SL 4362.5), stop_authority=initial, 不手动移动止损、不手动平仓.",
+  "10": "成本数值: spread 0.322bps (4347.68 上约 0.14pt) + slippage 0.30bps (约 0.13pt) = 0.622bps 往返 ≈ 0.27pt ≈ 0.27 USD per 0.01 手 ≈ 0.030R (1R = 9.0pt); 入场端已计入触发成交价, 剩余出场端约 0.14pt ≈ 0.015R. spread 0.322bps 远低于 risk_check 的 1.0bps 上限, 不构成障碍; demo 执行成本可忽略, 已计入 EV.",
+  "11": "净EV算式: 1R = 9.0pt, demo 口径收益 = R_T1 = 1.167R, 止损 = -1.000R, 成本 ≈ 0.030R. EV = p*1.167R - (1-p)*1.000R - 0.030R; 盈亏平衡 p* = (1.000+0.030)/(1.167+1.000) = 1.030/2.167 = 0.476. 取 p = 0.55(墙六次拒绝 + M15/H1 空头 + 买盘已证伪, 但计入 H4 建设性折价) -> EV = 0.642 - 0.450 - 0.030 = +0.162R > 0. 敏感性: p 0.60 -> +0.220R; p 0.52 -> +0.127R; p 0.48 -> +0.080R; 破平衡需 p < 0.476. 若改用全部阶梯加权 1.667R 且 p 0.50: EV = +0.304R(仅纸面口径, 不用于决策). 反向(等更近的追空或无立场观望)不注册: 现价 4347.68 处于带外中轨, 追空 1R 会被压到 15pt 级别而目标不变 -> EV 转负.",
+  "12": "再现: 同族样本(当日 4355-4357 墙的反抽全部熄火) —— 05:30Z 高 4362.15 -> 收 4354.74; 06:00Z 高 4355.95 -> 收 4352.95; 06:45Z 高 4354.92 -> 收 4353.30; 07:00Z 高 4356.26 -> 低 4345.80; 07:15Z 高 4355.74 -> 收 4350.52; 07:30Z 高 4355.03 -> 低 4341.88 —— 六次全部未站上 4355-4357, 墙成立. 同机制付费样本: 本轮 07:17Z 注册的 SHORT(带 4354.5-4355.5)于 4351.63 成交, TP 4346.45 命中 +5.18USD. 反向教训(必须记住): 本 session 在 4342-4376 带接多三笔全止损(-20.91USD, MFE 仅 +3pt), 教训复用: (a) 同一逻辑连续失败三次后改站卖方; (b) 空点选在墙内/墙下而非追在支撑带上方; (c) 止损放墙外 + 摆动高外(本单 9.0pt ≈ 1.3x M15 ATR); (d) 目标压近端, 不赌破位延伸.",
+  "13": "SHORT (主动猎手轮, 槽位 FREE): 注册回抽空 TP-20260921T0747Z {zone_touch:[4353.5,4357.5]} SL 4362.5 失效 {price_cross_up:4362.8} 目标 4343.0/4338.0/4332.0 qty 0.01 expR 1.167R(demo R_T1) p 0.55 EV +0.162R. 理由: 破位无跟随(4341.88 扫后收回) + 破位平台与 M15MA20/H1MA50 重叠成墙 + 当日六次反抽熄火 + 同机制本 session 已盈利一次 + 买盘已证伪. 触价自动成交, 不需要收盘确认.",
+  "14": "注册回抽空 4353.5-4357.5(墙上沿) SL 4362.5 目标 4343.0, 1R 9.0pt, p 0.55, EV +0.162R>0; 依据: 07:30Z 扫破 4345.80 至新低 4341.88 被 +5.18pt 收回 = 破位无跟随, 上方 4355.63/4357.71 均线墙当日六次反抽全熄火, M15/H1/D1 三时空同向偏空, H4 建设性仅折价不加仓; 不追现价、不买破位低点; 亏损不加仓, 触价自动成交, 止损随单."
+ },
+ "state_summary": "XAUUSD mid 4347.68 (MT5 tick 07:47:53Z bid 4347.61/ask 4347.75, spread 0.322bps = 0.14pt; pkg m15_live quote_latest last_mid 4347.13, tick_rate 114/min, abnormal z 0.83 normal). data_quality ok (live_days 11, live_ticks 2,124,860, context_days 35, gaps[]). MARKET OPEN (gate armed=true/open=true, Mon 15:47 CST, exit 0). BOOK: FLAT — demo 160759434 (FXTM-Demo01) balance 1957.90 / equity 1957.90 / margin 0.0 / margin_free 1957.90, 0 broker positions. Prior POS-20260921T0717Z SHORT 0.01@4351.63 closed by broker TP @4346.45 (07:41Z, reason_code 5, +5.18USD = +0.476R, 1R = 10.87pt) -> slot FREE this cycle. MT5 levels 07:47Z: M15 c4347.61 MA20 4355.63 / MA50 4367.27, hi60 4397.07, lo60 4341.88, low_recent20 4341.88; H1 MA20 4367.20 / MA50 4357.71; H4 MA20 4344.55 / MA50 4341.90; D1 MA20 ~4406.5. M15 bars (server = UTC+3): 10:30srv=07:30Z o4350.52 h4355.03 l4341.88 c4347.06 v2383 (swept the 4345.80 floor to a NEW session low 4341.88 = -0.02 vs H4MA50 4341.90, then reclaimed +5.18pt on the day's 2nd heaviest volume); 10:45srv=07:45Z forming o4346.96 h4349.91 l4345.39 c4347.61 v476. High sequence still mechanically lower (4362.42->4362.15->4356.26->4355.03->4349.91), lows lower too (4355.06->4352.06->4349.06->4341.88). Plan: SHORT zone_touch [4353.5,4357.5] (M15MA20 4355.63 + H1MA50 4357.71 + broken-shelf 4355.95/4356.26), SL 4362.5, invalidation price_cross_up 4362.8, targets 4343.0x0.40 / 4338.0x0.35 / 4332.0x0.25, qty 0.01, 1R 9.0pt conservative, p 0.55, EV +0.162R.",
+ "data_note": "所有触发/止损/目标价取自 MT5 LIVE-QUOTE 空间 (执行场所, demo 账户 160759434), 来自本轮只读 MT5 探针 07:47:53Z (tick, M15 80 根 OHLC+tick_volume, M15/H1/H4 MA 重算, positions_get, history deals). WORKFLOW CAVEAT (沿用): run_state/state_package_latest.json 的 MA/结构序列源自 data/live_fxtm/ticks_*.parquet, 与 MT5 执行源在同一时间戳上相差约 +3..+18pt, 故本决策不使用任何 pkg 派生的价位; pkg 的 m15_live overlay (quote_latest 10s 线程) 与 MT5 一致, 且正是 engine.py 喂给触发判定的 ctx.last_mid (本轮 4347.13). run_state/candle_latest.json 已过期 (last ts 2026-09-07 12:15Z) —— 忽略, 不使用 close_above/close_below/m15_close_in_zone 类触发. 持仓状态: run_state/positions/POS-20260921T0717Z.json 本地仍写 OPEN, 但 broker positions_get = 0 且 history 确认 TP 4346.45 @07:41Z —— 本轮 engine 开始时会先 RECONCILE_CLOSE 回收幻影持仓再注册新计划.",
+ "gap_to_tradable": "对在案交易: gap = 价格. 现价 4347.68 距触发带下沿 4353.5 约 5.8pt / 上沿 4357.5 约 9.8pt(≈0.85-1.4x M15 ATR14 6.9pt). 其余条件全就绪: 槽位 0/1 FREE (broker 0 持仓 0 挂单), 数据新鲜(pkg 07:47:07Z + MT5 tick 07:47:53Z), spread 0.322bps << 1.0bps, qty 0.01 在 0.01-0.05, notional ≈4355 USD << 25000, margin_free 1957.90, 时段 OPEN, 触发用实时 zone_touch. 也就是说: 现在离可交易只差'价格回到墙内'. 备选(本轮不注册)各自缺什么: (a) 破位追空 {price_cross_down:4341.5} —— 缺 4341.88 被实体跌破(避免扫损后立即追); (b) 反向货架 LONG {zone_touch:[4341.5,4345.5]} SL 4337.5 —— 不缺价格, 缺'买盘不再被扫'的证据(本 session 接多三连亏), 优先级最低.",
+ "position_note": "FLAT at decision time — POS-20260921T0717Z SHORT 0.01@4351.63 exited by broker TP @4346.45 at 07:41Z (reason_code 5, +5.18USD = +0.476R); demo 160759434 balance 1957.90 / equity 1957.90 / margin 0.0, 0 positions, 0 orders. 本轮唯一新风险 = TP-20260921T0747Z SHORT 0.01, 触发即自动成交, 止损随单.",
+ "cost_note": "spread 0.322bps (0.14pt) + slippage 0.30bps (0.13pt) = 0.622bps roundtrip ≈ 0.27pt ≈ 0.27 USD per 0.01 手 ≈ 0.030R (1R = 9.0pt); 出场端剩余 ≈ 0.14pt ≈ 0.015R. risk_check 1.0bps 上限未破; EV 已计入该成本; demo 执行成本可忽略.",
+ "ev_note": "EV = p*R_T1 - (1-p)*1R - cost, 保守成交价 = 带下沿 4353.5, 1R = 9.0pt, R_T1(T1 4343.0) = 1.167R (demo 在 T1 全平). p = 0.55(墙六次拒绝/M15-H1 空头/买盘已证伪, 对 H4 建设性折价) -> EV = 0.642 - 0.450 - 0.030 = +0.162R; 盈亏平衡 p* = 0.476. 敏感性 p 0.52 -> +0.127R; p 0.60 -> +0.220R. 全阶梯加权(非 demo 口径) 1.667R @p0.50 -> +0.304R, 仅备注不计入决策. 现价追空不注册: 中轨入场会把 1R 抬到 ~15pt 而目标不变 -> EV 转负.",
+ "active_plan_id": "TP-20260921T0747Z",
+ "plan_source": "new_hunter_cycle: slot FREE (POS-20260921T0717Z closed by broker TP 4346.45) -> 注册回抽空 TP-20260921T0747Z.",
+ "plan": {
+  "plan_id": "TP-20260921T0747Z",
+  "direction": "SHORT",
+  "entry_zone": {
+   "low": 4353.5,
+   "high": 4357.5
+  },
+  "trigger_condition": {
+   "zone_touch": [
+    4353.5,
+    4357.5
+   ]
+  },
+  "invalidation_condition": {
+   "price_cross_up": 4362.8
+  },
+  "stop_logic": {
+   "type": "above_session_swing_highs_and_m15ma20_h1ma50_wall",
+   "level_price": 4362.5
+  },
+  "target_logic": {
+   "levels": [
+    {
+     "price": 4343.0,
+     "frac": 0.4
+    },
+    {
+     "price": 4338.0,
+     "frac": 0.35
+    },
+    {
+     "price": 4332.0,
+     "frac": 0.25
+    }
+   ]
+  },
+  "expected_R": 1.167,
+  "expected_win_probability": 0.55,
+  "probability_source": "Range regime on all four TFs (pkg er D1 0.091 / H4 0.061 / H1 0.077 / M15 0.089, all < 0.20) => edge-fade base rate at a structure edge. The entry band 4353.5-4357.5 is a three-fold confluence: M15 MA20 4355.63, H1 MA50 4357.71, and the broken intraday shelf 4355.95/4356.26; today's six counter-bounces (4362.42 / 4362.15 / 4356.26 / 4355.95 / 4355.03 / 4355.74) all died under it with a mechanically lower high sequence, and the same fade already paid once this session (TP-20260921T0717Z filled 4351.63 -> TP 4346.45, +5.18 USD). The 07:30Z M15 bar swept the 4345.80 floor to a new session low 4341.88 (-0.02 vs H4 MA50 4341.90) and closed back +5.18pt on the day's 2nd heaviest volume = broken level with no follow-through, so the first retest is the continuation entry. Discounted from a ~0.60-0.65 wall-rejection hold rate for (a) H4 structure still constructive (4347.68 > H4 MA20 4344.55 > H4 MA50 4341.90) = counter-trend for this short, (b) the D1 backdrop being a range with RSI 45.4 giving no directional tailwind, and (c) the intraday proof that the sell side has been patient: the day's rejection legs ran only ~10pt (4362.15->4352.06; 4356.26->4345.80) so T1 is set at the near end of that measured move.",
+  "estimated_cost": {
+   "spread_bps": 0.322,
+   "slippage_bps": 0.3,
+   "roundtrip_bps": 0.622,
+   "roundtrip_usd_per_0.01lot": 0.27
+  },
+  "spread_bps": 0.322,
+  "slippage_bps": 0.3,
+  "expected_net_EV": {
+   "value": 0.162,
+   "units": "R",
+   "note": "Demo-realistic (trader_core forces a full close at T1 when EXEC_MODE=='demo', and open_position_from_plan puts the broker TP at tp_levels[0] = 4343.0): EV = 0.55*1.167R - 0.45*1.000R - 0.030R = +0.162R (breakeven p 0.476). Conservative fill at the zone low 4353.5 vs stop 4362.5 => 1R = 9.0pt = 9.00 USD on 0.01 lot = 0.46% of the 1957.90 demo balance; the T2 4338.0 (1.722R) / T3 4332.0 (2.389R) ladder is NOT counted. Sensitivity: p 0.52 -> +0.127R, p 0.60 -> +0.220R; the plan turns negative below p 0.476. Alternatives rejected: chasing the current 4347.68 mid (1R inflates to ~15pt against the same near target -> negative EV), breakdown continuation {price_cross_down:4341.5} (needs an entity break of 4341.88 first, and its T1 squeezes R to ~1.0R), and re-buying the 4341.5-4345.5 shelf (three consecutive intraday losses on that pattern, -20.91 USD, MFE only +3pt)."
+  },
+  "maximum_holding_time": "M15*8",
+  "qty_lots": 0.01
+ },
+ "model": "deepseek/deepseek-v4-flash",
+ "prompt_version": "hermes-trader-m15-cycle/2026-09-12"
+}

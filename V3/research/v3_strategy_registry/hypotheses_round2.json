@@ -1,0 +1,292 @@
+{
+ "schema": "v3_hypothesis_registry_round2/1",
+ "frozen_utc": "2026-09-25T00:59:12.374404+00:00",
+ "frozen_before_any_evaluation": true,
+ "count": 11,
+ "round1_registry_hash": "1650e065911e72c93f85cf26d51cdb179f252b089eb4a2c86ad8be2c7682c52d",
+ "round1_untouched": true,
+ "note": "Round-2 hypotheses are NEW ids (H13+). H01–H12 are never modified. Thresholds fixed a-priori; no parameter search.",
+ "dedup": {
+  "H13_EXEC_REGIME_GATED_BREAKOUT": {
+   "dup": false,
+   "versus": null,
+   "action": "ADMIT"
+  },
+  "H14_LIQUIDITY_VACUUM_REVERSAL": {
+   "dup": false,
+   "versus": null,
+   "action": "ADMIT"
+  },
+  "H15_VOL_TRANSITION_EXPANSION": {
+   "dup": false,
+   "versus": null,
+   "action": "ADMIT"
+  },
+  "H16_VOL_TRANSITION_CONTRACTION": {
+   "dup": false,
+   "versus": null,
+   "action": "ADMIT"
+  },
+  "H17_SESSION_HANDOFF_CONTINUATION": {
+   "dup": false,
+   "versus": null,
+   "action": "ADMIT"
+  },
+  "H18_ASIA_RANGE_FAKEBREAK": {
+   "dup": false,
+   "versus": null,
+   "action": "ADMIT"
+  },
+  "H19_COST_GATED_MOMENTUM": {
+   "dup": false,
+   "versus": null,
+   "action": "ADMIT"
+  },
+  "H20_CTRL_RANGE_BREAKOUT_RETEST": {
+   "dup": true,
+   "versus": "H02_5M_RANGE_BREAKOUT",
+   "action": "REJECT_DUPLICATE_HYPOTHESIS",
+   "why": "explicit control; mechanism+params identical to H02_5M_RANGE_BREAKOUT"
+  },
+  "H21_CROSS_ASSET_DIVERGENCE": {
+   "dup": false,
+   "versus": null,
+   "action": "ADMIT"
+  },
+  "H22_MACRO_REPRICING_WINDOW": {
+   "dup": false,
+   "versus": null,
+   "action": "ADMIT"
+  },
+  "H23_NEWS_NARRATIVE_SHIFT": {
+   "dup": false,
+   "versus": null,
+   "action": "ADMIT"
+  }
+ },
+ "hypotheses": [
+  {
+   "hypothesis_id": "H13_EXEC_REGIME_GATED_BREAKOUT",
+   "bucket": "F_LIQUIDITY_EXECUTION_REGIME",
+   "hypothesis": "a range breakout only continues when the execution environment is favourable",
+   "mechanism": "execution-regime gate: the same price pattern has different payoff when spreads are tight and quote churn is normal; round 1 tested the pattern, never the gate",
+   "signal_definition": {
+    "range_window": 20,
+    "hold_bars": 10,
+    "gate": "spread_z<=0 AND tick_z<1"
+   },
+   "invalid_condition": "close back inside range within hold",
+   "expected_horizon": "10m",
+   "parent_hypothesis": null,
+   "novelty_reason": "NEW: execution-environment GATE as the primary mechanism; H02 traded the breakout unconditionally",
+   "independence": "INDEPENDENT",
+   "data_required": [
+    "live_fxtm 1m bars+ticks"
+   ],
+   "status_tested": true
+  },
+  {
+   "hypothesis_id": "H14_LIQUIDITY_VACUUM_REVERSAL",
+   "bucket": "F_LIQUIDITY_EXECUTION_REGIME",
+   "hypothesis": "after a tick-rate collapse (z < -2) the next bar reverts",
+   "mechanism": "liquidity vacuum: when quote churn collapses, the last printed move is unrepresentative and refills",
+   "signal_definition": {
+    "rate_z_threshold": -2.0,
+    "hold_bars": 5,
+    "side": "fade"
+   },
+   "invalid_condition": "no refill within hold",
+   "expected_horizon": "5m",
+   "parent_hypothesis": null,
+   "novelty_reason": "NEW: uses tick-rate COLLAPSE; H11 used tick-rate SPIKE",
+   "independence": "INDEPENDENT",
+   "data_required": [
+    "live_fxtm ticks"
+   ],
+   "status_tested": true
+  },
+  {
+   "hypothesis_id": "H15_VOL_TRANSITION_EXPANSION",
+   "bucket": "D_VOLATILITY_STATE_TRANSITION",
+   "hypothesis": "a low-vol -> expansion transition continues in the expansion direction for 8 bars",
+   "mechanism": "volatility state transition: compression resolves into a directional leg; the entry is the STATE CHANGE, not a level test",
+   "signal_definition": {
+    "low_quantile": 0.3,
+    "expand_ratio": 1.5,
+    "hold_bars": 8,
+    "side": "follow"
+   },
+   "invalid_condition": "no expansion",
+   "expected_horizon": "8m",
+   "parent_hypothesis": null,
+   "novelty_reason": "NEW: entry condition is a state TRANSITION (compression->expansion). H01/H04 fade WITHIN a vol state; H08 used Bollinger levels",
+   "independence": "INDEPENDENT",
+   "data_required": [
+    "live_fxtm 1m bars"
+   ],
+   "status_tested": true
+  },
+  {
+   "hypothesis_id": "H16_VOL_TRANSITION_CONTRACTION",
+   "bucket": "D_VOLATILITY_STATE_TRANSITION",
+   "hypothesis": "after a volatility climax the market quiets and mean-reverts for 8 bars",
+   "mechanism": "post-climax exhaustion: a vol spike consumes inventory; the follow-through is a quiet reversion",
+   "signal_definition": {
+    "climax_quantile": 0.9,
+    "hold_bars": 8,
+    "side": "fade"
+   },
+   "invalid_condition": "volatility re-expands",
+   "expected_horizon": "8m",
+   "parent_hypothesis": null,
+   "novelty_reason": "NEW: high-vol CLIMAX regime; round 1 never conditioned on the top vol decile",
+   "independence": "INDEPENDENT",
+   "data_required": [
+    "live_fxtm 1m bars"
+   ],
+   "status_tested": true
+  },
+  {
+   "hypothesis_id": "H17_SESSION_HANDOFF_CONTINUATION",
+   "bucket": "A_SESSION_STRUCTURE",
+   "hypothesis": "the London leg continues for 6 bars after the 13:00 UTC handoff",
+   "mechanism": "session handoff: NY desks inherit London positioning; the inherited leg persists briefly",
+   "signal_definition": {
+    "handoff_hour": 13,
+    "leg_lookback_bars": 60,
+    "hold_bars": 6,
+    "side": "follow"
+   },
+   "invalid_condition": "leg reverses on the handoff bar",
+   "expected_horizon": "6m",
+   "parent_hypothesis": null,
+   "novelty_reason": "NEW: handoff continuation of a PRIOR session leg; H03 only used the first bar of its own session",
+   "independence": "INDEPENDENT",
+   "data_required": [
+    "live_fxtm 1m bars"
+   ],
+   "status_tested": true
+  },
+  {
+   "hypothesis_id": "H18_ASIA_RANGE_FAKEBREAK",
+   "bucket": "A_SESSION_STRUCTURE",
+   "hypothesis": "an Asia-range extreme broken during London and reclaimed fades for 6 bars",
+   "mechanism": "stop-run then reclaim: trapped breakout traders provide the fuel for the fade",
+   "signal_definition": {
+    "asia_hours_utc": [
+     0,
+     6
+    ],
+    "hold_bars": 6,
+    "side": "fade"
+   },
+   "invalid_condition": "range extreme holds",
+   "expected_horizon": "6m",
+   "parent_hypothesis": null,
+   "novelty_reason": "NEW: cross-session fake-break (Asia range vs London break); round 1 had only a rolling 20-bar range in H02",
+   "independence": "INDEPENDENT",
+   "data_required": [
+    "live_fxtm 1m bars"
+   ],
+   "status_tested": true
+  },
+  {
+   "hypothesis_id": "H19_COST_GATED_MOMENTUM",
+   "bucket": "F_LIQUIDITY_EXECUTION_REGIME",
+   "hypothesis": "short-horizon momentum is only net-positive when realised spread is below the cost anchor",
+   "mechanism": "cost-aware execution gate: the sign of the gross edge is stable but its net sign flips with the cost level, so the gate is the tradable content",
+   "signal_definition": {
+    "ret_lookback": 3,
+    "spread_below_bp": 0.914,
+    "hold_bars": 6,
+    "side": "follow"
+   },
+   "invalid_condition": "momentum absent",
+   "expected_horizon": "6m",
+   "parent_hypothesis": null,
+   "novelty_reason": "NEW: gates on the COST LEVEL itself rather than on price/vol structure",
+   "independence": "INDEPENDENT",
+   "data_required": [
+    "live_fxtm 1m bars+spread"
+   ],
+   "status_tested": true
+  },
+  {
+   "hypothesis_id": "H20_CTRL_RANGE_BREAKOUT_RETEST",
+   "bucket": "CONTROL_DUPLICATE",
+   "hypothesis": "(CONTROL) a close beyond the prior 20-bar high continues 10 bars",
+   "mechanism": "same as H02 (range breakout continuation)",
+   "signal_definition": {
+    "range_window": 20,
+    "hold_bars": 10,
+    "side": "follow"
+   },
+   "invalid_condition": "same as H02",
+   "expected_horizon": "10m",
+   "parent_hypothesis": "H02_5M_RANGE_BREAKOUT",
+   "novelty_reason": "CONTROL: intentionally reproduces H02 to exercise REJECT_DUPLICATE_HYPOTHESIS",
+   "independence": "REUSED(CONTROL)",
+   "data_required": [
+    "live_fxtm 1m bars"
+   ],
+   "status_tested": false
+  },
+  {
+   "hypothesis_id": "H21_CROSS_ASSET_DIVERGENCE",
+   "bucket": "C_CROSS_MARKET_DIVERGENCE",
+   "hypothesis": "a Gold/DXY/UST10Y/VIX state combination precedes a repeatable gold move",
+   "mechanism": "cross-asset disagreement indicates flow-driven rather than macro-driven pricing",
+   "signal_definition": {
+    "state_combo": "frozen at definition time",
+    "hold_bars": 6
+   },
+   "invalid_condition": "state combo resolves with agreement",
+   "expected_horizon": "6m",
+   "parent_hypothesis": null,
+   "novelty_reason": "NEW: cross-asset state combination (no price-only analogue)",
+   "independence": "INDEPENDENT",
+   "data_required": [
+    "PIT DXY/UST10Y/VIX"
+   ],
+   "status_tested": false
+  },
+  {
+   "hypothesis_id": "H22_MACRO_REPRICING_WINDOW",
+   "bucket": "B_MACRO_REPRICING",
+   "hypothesis": "after a macro release the repricing window is tradable for 6 bars",
+   "mechanism": "information diffusion: prices reprice in stages after a release",
+   "signal_definition": {
+    "hold_bars": 6,
+    "needs": "true publication_time"
+   },
+   "invalid_condition": "immediate full repricing",
+   "expected_horizon": "6m",
+   "parent_hypothesis": null,
+   "novelty_reason": "NEW: event-driven repricing (round 1 was price-only)",
+   "independence": "INDEPENDENT",
+   "data_required": [
+    "PIT macro releases with publication_time"
+   ],
+   "status_tested": false
+  },
+  {
+   "hypothesis_id": "H23_NEWS_NARRATIVE_SHIFT",
+   "bucket": "B_MACRO_REPRICING",
+   "hypothesis": "a narrative shift (LLM-classified) precedes a repeatable gold move",
+   "mechanism": "narrative repricing",
+   "signal_definition": {
+    "needs": "PIT news with publication_timestamp"
+   },
+   "invalid_condition": "narrative unchanged",
+   "expected_horizon": "6m",
+   "parent_hypothesis": null,
+   "novelty_reason": "NEW: narrative-based (research evidence, not a trading signal)",
+   "independence": "INDEPENDENT",
+   "data_required": [
+    "PIT news corpus"
+   ],
+   "status_tested": false
+  }
+ ],
+ "registry_hash": "5f135bfe60a2c0c0f53ce785046af2759eec69a75f92d6fb21b908910688ecef"
+}

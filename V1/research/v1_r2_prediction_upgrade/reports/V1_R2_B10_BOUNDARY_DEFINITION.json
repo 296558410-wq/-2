@@ -1,0 +1,60 @@
+{
+ "definition_id": "V1_R2_B10_BOUNDARY_DEFINITION",
+ "definition_version": "v1r2-b10-boundary-def-r1",
+ "PRE_REGISTERED": true,
+ "frozen_before_full_data_run": true,
+ "DIAGNOSTIC_ONLY": true,
+ "NO_SELECTION_OF_WINNER": true,
+ "TARGET_DISTRIBUTION": null,
+ "loads_b_r9_state_definition": {
+  "path": "reports/V1_R2_B9_STATE_DEFINITION.json",
+  "expected_sha256_prefix": "f1c550975409752e7b8224e7e43c30f9",
+  "rule": "loaded AS-IS; the formal state definition is NEVER modified in B-R10"
+ },
+ "formal_boundaries_under_audit": {
+  "TOUCH_TOL_ATR": 0.25,
+  "PENETRATION_ATR": 0.30,
+  "BREAK_CLOSE_ATR": 0.15,
+  "BREAK_CONFIRM_BARS": 2,
+  "RECLAIM_WINDOW_BARS": 8,
+  "note": "all four remain UNCHANGED; B-R10 only measures around them"
+ },
+ "pre_registered_reference_points_touch_penetration": [0.20, 0.25, 0.30, 0.35, 0.40, 0.50, 0.75, 1.00],
+ "pre_registered_reference_points_break_persistence": [1, 2, 3, 4, 5, 6, 8, 10],
+ "pre_registered_sensitivity_grid_break_confirm_bars": [1, 2, 3, 4, 5],
+ "penetration_definition_diagnostic": {
+  "penetration_ratio": "penetration_distance / ATR20 at the same bar",
+  "penetration_distance": "max(high - level_price, level_price - low) while in the touch band",
+  "event_level_value": "MAX over the band episode (primary), plus the ENTER-bar value (secondary)",
+  "SAMPLE_SCOPE": "ALL touch events (never only the already-labelled PENETRATION subset) - task 10",
+  "selection_bias_guard": "the continuous statistic is recomputed from the raw band geometry for every touch event"
+ },
+ "separation_criteria_preregistered": {
+  "histogram_bin_width_atr": 0.05,
+  "bimodality_rule": "NATURAL_SEPARATION only if two local maxima exist, are >= 0.15 ATR apart, each carries >= 5% of the sample mass, and a separating local minimum has density <= 0.5 x min(peak_left, peak_right)",
+  "no_separation_rule": "NO_NATURAL_SEPARATION if the density is unimodal or monotonically non-increasing over the support",
+  "otherwise": "INCONCLUSIVE",
+  "applies_to": ["TOUCH->PENETRATION penetration_ratio", "BREAK persistence consecutive_bars_beyond"]
+ },
+ "first_touch_sparsity_test": {
+  "method": "SHADOW_BOUNDARY_CLASSIFICATION: re-run the frozen lifecycle with ONLY the penetration gate replaced by each pre-registered reference point",
+  "report": "FIRST_TOUCH / REPEATED_TOUCH / PENETRATION counts per shadow boundary",
+  "forbidden": "choosing any shadow boundary as a formal rule"
+ },
+ "reclaim_audit": {
+  "FORMAL_RECLAIM": "count produced by the frozen rule (RECLAIM_WINDOW_BARS=8)",
+  "DIAGNOSTIC_RECLAIM_REACHABILITY": "for each BREAK_CONFIRMED run, whether the close EVER returns to the original side afterwards (unbounded horizon) and within 1/2/3/5/8 bars",
+  "note": "diagnostic reachability never enters the formal state machine"
+ },
+ "ambiguity_categories": {
+  "A": "same timestamp genuinely satisfies two structural states (intrinsic)",
+  "B": "state-definition boundary overlap",
+  "C": "level identity problem",
+  "D": "event lifecycle problem",
+  "E": "data missing",
+  "F": "implementation problem (B10 script only; ENGINE_PY untouched)",
+  "G": "unresolved"
+ },
+ "lookahead_rule": "S(t) uses only data <= t; S(t+1) may be used ONLY as a post-hoc transition label",
+ "null_shuffle_purpose": "sanity only; never used to pick a boundary"
+}

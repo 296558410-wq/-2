@@ -1,0 +1,81 @@
+{
+  "forecast_id": "HERMES_FULL_CTX_20260801T120000Z",
+  "timestamp": "2026-08-01T12:00:00Z",
+  "current_state": "ROTATION (dwell 4) with a bearish near-term impulse leg into a high-confluence swing-low support at 4041.035; frozen event label ACCEPTANCE; multi-timeframe agreement CONFLICT (H1 trend_20 -42.22 vs H4 trend_20 +19.16); ambiguity_rate_8 0.75; all cross-market series UNKNOWN.",
+  "dominant_structure": "Rotation range ~4035-4055 with a downward impulse into the 35-touch swing low 4041.035 (SWING_LOW_37318, DN side, break_status INSIDE, distance_atr 0.17). Short timeframes (M1/M5/M15/H1) are all net down over 20 bars while H4 is net up over 20 bars, so the dominant near-term structure is a bearish leg inside a higher-timeframe rotation, sitting at a heavily-traded decision level.",
+  "current_pressure": "Downside momentum pressure: H1 consecutive_down 8, H1 trend_20 -42.22, 8-bar displacement -8.54, range_expanding true on all timeframes. Liquidity-proxy pressure: price is 1.0 above a level touched 35 times in 240 bars, and the last M1 bar already swept 4035.085 (below the level) before closing back at 4042.025, suggesting stop/order flow around 4035-4041. Countervailing bid pressure: long lower wicks (6.94 on M1/M5/M15/H1 final bars) show aggressive buying into the sweep.",
+  "primary_scenario": {
+    "scenario": "Downside continuation: the bearish impulse (H1 trend_20 -42.22, 8 consecutive down bars) presses through the swing-low 4041.035; a decisive M5/H1 close below the level extends price toward the 4020-4026 zone (2026-07-31 low 4020.545), consistent with the L4 trend_continuation candidate and analog A4173 path ROTATION->NO_DEFINED_STATE->REJECTION->TREND.",
+    "confidence": 0.5,
+    "horizon": "SHORT_TERM, next 1-4 hours (intraday)",
+    "trigger": "M5 close below 4041.035 with follow-through (range expansion down on the next bar) or a break of 4035.085 confirmed by an M5 close below it.",
+    "invalidation": "M5 closes back above 4046-4048 (reclaim of the mid-rotation zone) or H1 closes above 4051-4052.7 (pre-drop consolidation / recent swing high), which would void the continuation premise."
+  },
+  "alternative_scenario": {
+    "scenario": "Acceptance at support / bounce: the 35-touch swing low 4041.035 holds (frozen label ACCEPTANCE, long lower wicks showing bids at 4035-4041), price rotates back up toward 4050-4055.5 (recent swing highs), consistent with H4 trend_20 +19.16 and analog A14240 (ROTATION->ROTATION->REJECTION).",
+    "confidence": 0.35,
+    "horizon": "SHORT_TERM, next 1-4 hours (intraday)",
+    "trigger": "M5 close above 4046.025 or H1 close above 4050.5 with the level 4041.035 unbroken.",
+    "invalidation": "M5 close below 4041.035, i.e., a genuine break of the support rather than a wick."
+  },
+  "third_scenario": {
+    "scenario": "Continued rotation/compression: price chops between ~4035 and ~4051 with no decisive break either way, matching the ROTATION state, 0.75 ambiguity rate, and analog A25116 (ROTATION->COMPRESSION->COMPRESSION).",
+    "confidence": 0.15,
+    "horizon": "INTRADAY, next 2-6 hours",
+    "trigger": "Repeated M5 closes inside 4035-4051 with range contraction and no sustained break of 4041.035 or 4051.",
+    "invalidation": "A decisive M5/H1 close outside the 4035-4051 band."
+  },
+  "direction_bias": "DOWN",
+  "expected_state_transition": "ROTATION -> REJECTION at 4041.035 (level test) or continued ROTATION; a decisive downside break would transition toward TREND (down) / NO_DEFINED_STATE per analog A4173.",
+  "time_horizon": "SHORT_TERM (1-4 hours, intraday)",
+  "confidence": 0.5,
+  "supporting_evidence": [
+    "H1 trend_20 = -42.22 with 8 consecutive down bars (DIRECT geometry, DERIVED trend)",
+    "8-bar displacement -8.54 cited in the L4 trend_continuation candidate (DERIVED)",
+    "Nearest level 4041.035 (SWING_LOW_37318, DN) touched 35 times in 240 bars, distance_atr 0.17 - price is right at a high-confluence support (DERIVED, causal)",
+    "Range expansion flagged on all timeframes (M1/M5/M15/H1/H4) with M1 ATR rising 1.119 -> 2.23 and volatility 0.00013 -> 0.00028 (DERIVED)",
+    "Frozen event label ACCEPTANCE at t and L4 mechanism candidate trend_continuation (DERIVED)",
+    "M1/M5/M15/H1 trend_20 all negative (-8.73 / -6.86 / -4.11 / -42.22), i.e., near-term alignment to the downside (DERIVED)"
+  ],
+  "counter_evidence": [
+    "Final bars across M1/M5/M15/H1 carry long lower wicks (6.94), showing price was bought back aggressively off 4035.085 - argues against a clean breakdown",
+    "H4 trend_20 = +19.16 (positive) conflicts with the short-term down read; multi-timeframe agreement is explicitly CONFLICT and timeframes are never merged (L6 note)",
+    "The swing low has 35 touches in 240 bars - historically well defended; break_status INSIDE with reclaim_status NONE means the level has not actually been closed below",
+    "ambiguity_rate_8 = 0.75 - the state labelling itself is highly uncertain",
+    "The last M1 bar closed at 4042.025, above the 4041.035 level, despite the intra-bar sweep to 4035.085",
+    "All cross-market series (DXY, VIX, UST10Y proxy) are UNKNOWN/absent - no confirmation of macro downside pressure"
+  ],
+  "trigger": "M5/H1 close below 4041.035 with follow-through, or M5 close below 4035.085.",
+  "invalidation": "M5 close above 4046-4048 or H1 close above 4051-4052.7 invalidates the downside continuation.",
+  "change_my_mind": [
+    "Cross-market data (DXY, VIX, UST10Y proxy) becoming available: e.g., sharp dollar weakness or falling yields would flip me toward the bounce scenario; sharp dollar strength would raise downside confidence",
+    "Frozen label at the level changing from ACCEPTANCE to REJECTION would flip me toward the bounce/rotation reading",
+    "H4 trend_20 turning negative would confirm all-timeframe downside alignment and raise my downside confidence",
+    "A decisive M5/H1 close above 4051 (structure reclaim) would flip my bias to NEUTRAL/bounce",
+    "A decisive M5/H1 close below 4035.085 with no reclaim within a few bars would confirm downside extension toward 4020-4026"
+  ],
+  "abstain": false,
+  "abstain_reason": "",
+  "reasoning_trace": [
+    "Read PIT context as of 2026-08-01 12:00:00Z; latest market bar is 2026-07-31 21:58Z (XAUUSD 4042.025).",
+    "Noted near-term negative trends: M1 -8.73, M5 -6.86, M15 -4.11, H1 -42.22 over 20 bars; H4 +19.16 -> multi-timeframe CONFLICT (L6, never merged).",
+    "Located nearest level 4041.035 (SWING_LOW_37318, DN, 35 touches/240, INSIDE, distance_atr 0.17) - price within ~1.0 of it.",
+    "Observed final-bar long lower wick 6.94 at all timeframes with low 4035.085: an intra-bar sweep below the level that was bought back - bid presence at 4035-4041.",
+    "Used frozen labels as given: state ROTATION (dwell 4), event ACCEPTANCE, ambiguity 0.75; L4 candidate trend_continuation retained as candidate only.",
+    "Cross-market all UNKNOWN -> no macro evidence; kept PROXY/UNKNOWN tags, never fabricated series.",
+    "Weighed scenarios: downside continuation 0.5 (H1 momentum + displacement), acceptance/bounce 0.35 (level confluence + lower wicks + H4 +19.16), rotation/compression 0.15 (state + ambiguity + analog A25116).",
+    "Set direction_bias DOWN (short-term, into the level test) with confidence 0.5, explicit invalidation and change-of-mind conditions."
+  ],
+  "questions": {
+    "A": "What is happening? XAUUSD fell from the ~4051-4055 area (21:47-21:52 consolidation high 4051.8; earlier H1 high 4055.5) to a low of 4035.085 in the 21:58 M1 bar, closing 4042.025. All short timeframes show negative 20-bar trends (M1 -8.73, M5 -6.86, M15 -4.11, H1 -42.22). The final M1 bar is the largest of the window (range 9.05, range_percentile 1.0) with a long lower wick (6.94), indicating buyers stepped in near 4035. Price sits ~1.0 above a swing low at 4041.035 touched 35 times in 240 bars. Frozen event label ACCEPTANCE, state ROTATION, ambiguity 0.75. Cross-market series (DXY, VIX, UST10Y proxy) are UNKNOWN; no macro context available.",
+    "B": "What is the dominant structure? A rotation range (~4035-4055) containing a short-term bearish impulse leg that has driven price down into a high-confluence swing-low support (SWING_LOW_37318 at 4041.035, DN side, 35 touches, break_status INSIDE). The state machine says ROTATION (dwell 4). Multi-timeframe agreement is CONFLICT: M1/M5/M15/H1 are net down over 20 bars while H4 is net up (+19.16), so the dominant read is a bearish leg inside a higher-timeframe rotation, now at a decisive support decision point.",
+    "C": "What pressures are building? (1) Directional downside pressure: H1 consecutive_down 8, H1 trend_20 -42.22, 8-bar displacement -8.54. (2) Volatility pressure: range_expanding true on all timeframes; M1 ATR 1.12 -> 2.23, volatility 0.00013 -> 0.00028 over the sequence. (3) Liquidity-proxy pressure: price probing a 35-touch level; the 4035.085 sweep below 4041 suggests resting orders/stops just below the level. (4) Counter-pressure: aggressive bid/wick buying at 4035-4041 (lower wicks 6.94 on final M1/M5/M15/H1 bars) and H4's positive 20-bar trend.",
+    "D": "What mechanisms could explain it? (1) trend_continuation (L4 candidate): supported by price inside the level with 8-bar displacement -8.54 and H1 trend_20 -42.22; would require a decisive break of 4041.035 to confirm. (2) Mean-reversion/bounce at the high-confluence support: supported by 35 touches, the long lower-wick sweep-and-recover, and H4 trend_20 +19.16 (higher-timeframe bid context). (3) Rotation/range continuation: supported by the ROTATION state and 0.75 ambiguity. (4) Stop-hunt/liquidity sweep below 4035 followed by reversal: plausible given the wick shape but NOT directly supported - no order-flow data in context, so left unverified. All cross-market/macro mechanisms (dollar, yields, risk) are unsupported because those series are UNKNOWN.",
+    "E": "What is the strongest evidence? (1) H1 trend_20 -42.22 with 8 consecutive down bars - a strong, direct near-term downtrend. (2) The 4041.035 swing low with 35 touches in 240 bars and distance_atr 0.17 - price is exactly at a heavily-traded, causally-derived level. (3) The final M1 bar's lower wick of 6.94 with range_percentile 1.0 - visible aggressive buying into 4035. (4) Frozen label ACCEPTANCE at t, indicating the price action at the level is being classified as acceptance (not rejection). (5) H4 trend_20 +19.16 - the higher timeframe has been bid over the last 20 bars, giving the bounce scenario a footing.",
+    "F": "What is the strongest counter-evidence? Actively searched against my own DOWN reading: (1) Long lower wicks (6.94) on the final M1/M5/M15/H1 bars show price was bought back hard off 4035.085 - a clean breakdown is not confirmed by the tape. (2) H4 trend_20 is positive (+19.16) and L6 flags CONFLICT - the higher timeframe is not aligned down. (3) The level has 35 touches and break_status INSIDE with reclaim_status NONE: price has not closed below it. (4) ambiguity_rate_8 = 0.75 - even the frozen labeler is highly uncertain here. (5) The close (4042.025) is above the level (4041.035). (6) Every cross-market confirmation series is UNKNOWN, so there is no external support for the downside thesis.",
+    "G": "What could happen next? PRIMARY: downside continuation into/through the 4041.035 swing low. The established H1 momentum (-42.22 trend_20, 8 consecutive down bars) presses price through the level; a decisive M5/H1 close below 4041.035 extends toward the 4020-4026 zone (2026-07-31 low 4020.545), consistent with the trend_continuation candidate and analog A4173's ROTATION->...->TREND path. Confidence 0.5.",
+    "H": "What is the alternative? ALTERNATIVE: acceptance at the support - the 35-touch level holds, the sweep to 4035 is bought (as the wicks show), and price rotates back up toward 4050-4055.5, consistent with the frozen ACCEPTANCE label, H4 trend_20 +19.16, and analog A14240 (ROTATION->ROTATION->REJECTION). Confidence 0.35. THIRD: continued rotation/compression between ~4035 and ~4051 with elevated ambiguity (0.75), matching analog A25116 (ROTATION->COMPRESSION). Confidence 0.15.",
+    "I": "What would invalidate the forecast? The DOWN forecast is invalidated if M5 closes back above 4046-4048 (mid-rotation reclaim) or H1 closes above 4051-4052.7 (pre-drop consolidation/recent swing high) - that would show the impulse failed and the level held. Conversely, the forecast is validated/strengthened only by a decisive M5/H1 close below 4041.035 with follow-through, then below 4035.085 toward 4020-4026.",
+    "J": "What would change your mind? (1) DXY/VIX/UST10Y-proxy data becoming available: sharp dollar weakness or falling yields flips me to the bounce scenario; sharp dollar strength raises downside confidence. (2) The frozen label at the level changing from ACCEPTANCE to REJECTION flips me toward bounce/rotation. (3) H4 trend_20 turning negative aligns all timeframes down and raises my downside confidence. (4) A decisive M5/H1 close above 4051 (structure reclaim) flips my bias to NEUTRAL/bounce. (5) A decisive close below 4035.085 with no reclaim confirms downside extension."
+  }
+}

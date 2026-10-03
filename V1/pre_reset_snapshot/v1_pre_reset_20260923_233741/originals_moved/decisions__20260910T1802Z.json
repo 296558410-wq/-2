@@ -1,0 +1,118 @@
+{
+ "cycle": "2026-09-10T18:02Z",
+ "symbol": "XAUUSD",
+ "decision_id": "DEC-2026-09-10T18:02Z",
+ "utc_ts": "2026-09-10T18:02Z",
+ "generated_utc": "2026-09-10T18:02Z",
+ "decision": "SHORT",
+ "confidence": 0.56,
+ "bias": "SHORT-lean 0.65",
+ "opportunity": "Fresh SHORT setup with slot FREE: HTF 4TF bearish-aligned; price just broke the 4352.5-4376.1 post-flush range floor (fresh M15/H1 low 4348.92) and now sits 4350.24-4350.69. POS-133408 SHORT closed at broker TP 4352.00 (+19.55USD=+1.86R realized) -> single-position slot is free again. Setup = fade the RETEST of the broken floor 4352.5-4357.0 (support->resistance) with stop 4361.5 (above 4360.42 swing). Zone only ~2pt above current, so any minor bounce triggers auto-fill. What-blocks-trade: need mid to tick UP into [4352.5,4357.0] to fire; if price instead dives straight to <4343.5 the retest is missed -> switch next cycle to alt breakdown-continuation (zone 4343.0-4348.5). Not chasing at fresh lows; selling a bounce into aligned downtrend.",
+ "opportunity_mechanism": "broken_range_floor_retest_fade_v1 -- price flushed 4434.99->4323.99, V-recovered to 4376.1, then chopped 4352.5-4376.1 for hours under all HTF MAs; floor at 4352.5 has now given way (fresh lows 4348.92). Sell the retest of the broken floor into HTF bearish supply; continuation leg of the day's resistance-fade chain.",
+ "mtf_agreement": "bearish (4TF aligned down). Live mid4350.24/4350.69: D1 close4400.485<MA20 4464.19 (range er0.147, llish5>hhish4, RSI42.7, pos54.7); H4 close4340.22<MA20 4397.36&MA50 4405.30 (trend er0.37, pos16.5, RSI31.5, recent-157.7bps); H1 close4365.595<MA20 4399.05&MA50 4393.76&MA200 4413.90 (mixed er0.165, llish7, RSI41.7, pos35.5); M15 close4356.69<MA20 4370.41&MA50 4395.17&MA200 4393.43 (mixed er0.293, RSI35.4, pos29.4, exp_cont expanding1.84). No bullish TF opposition -> aligned.",
+ "position_note": "MT5 demo: positions=0, pending=0, active_plans=0. POS-20260910T133408 (SHORT 0.01@4371.51 ticket2375427187) auto-closed by broker TP at 4351.96 on 20:57:55Z server (17:57:55Z UTC), profit+19.55, comm-0.11 -> realized +1.86R. Balance 2032.26, equity 2032.26. Slot free -> new registration allowed this cycle.",
+ "answers_14": {
+  "1": "Market state: XAUUSD live mid4350.24 (probe tick bid4350.16/ask4350.31, spread0.15pt=0.345bps); state_pkg m15_live last_mid4350.69, spread0.34bps, tick_rate224/min, z_vs_baseline2.03 abnormal(last6_max_move31.4bps, baseline_mean10.09bps). 4TF: D1 close4400.485<MA20 4464.19 (range er0.147, llish5, RSI42.7, pos54.7); H4 close4340.22<MA20 4397.36&MA50 4405.30 (trend er0.37, pos16.5, RSI31.5); H1 close4365.595<MA20 4399.05&MA50 4393.76&MA200 4413.90 (mixed er0.165, RSI41.7, pos35.5); M15 close4356.69<MA20 4370.41&MA50 4395.17&MA200 4393.43 (mixed er0.293, RSI35.4, pos29.4, exp_cont expanding1.84). data_quality ok (live_days=4, live_ticks=749690, gaps=[], context_days=28).",
+  "2": "Agreement: D1/H4/H1/M15 all below their key MAs -> HTF bearish shared, no bullish TF opposition; M15 near lower band (pos29.4) with expanding continuation (1.84). Net aligned bearish = SHORT. Bias SHORT-lean 0.65.",
+  "3": "M15 change: post-flush range 4352.5-4376.1 chopped for hours; last bars broke floor: 20:45Z(17:45UTC) L4351.15, 21:00Z(18:00UTC) O4352.47 H4356.18 L4348.92 C4350.39 -> fresh local low 4348.92 and close 4350.39. Price now 4350.24-4350.69, ~2pt below broken floor 4352.5. Resistance above: 4352.5(broken floor)/4356.2/4360.4/4365.7-4367.9; support below: 4348.9(fresh low)/4336.3/4324.0(intraday low & M15 low60).",
+  "4": "Tradeable now? Setup exists but needs a small bounce: price is mid-breakdown at 4350.24, so the high-R entry is the retest of the broken floor 4352.5-4357.0, not chasing at fresh lows. Slot is free (POS-133408 closed +1.86R). Register SHORT zone_touch[4352.5,4357.0], stop4361.5, targets4345.0/4336.3/4324.0, qty0.01, EV+0.63R. If price dives <4343.5 without retest -> plan stale, switch to alt breakdown continuation. Confidence 0.56.",
+  "5": "Mechanism: broken_range_floor_retest_fade_v1 -- the 4352.5-4376.1 post-flush consolidation floor broke; classic continuation = sell the first retest of broken support (now resistance) into an aligned HTF downtrend. Same day-chain as the 12:33Z/14:34Z/17:03Z resistance fades that all worked.",
+  "6": "Trigger [specific price]: SHORT entry_zone{4352.5,4357.0}, trigger {\"zone_touch\":[4352.5,4357.0]} (mid ticks up into zone -> auto-fill at market). Stop/invalid before entry {\"price_cross_up\":4361.5}. Alt breakdown-continuation (not registered): entry_zone{4343.0,4348.5}, trigger {\"price_cross_down\":4348.5}, inval {\"price_cross_up\":4353.5}.",
+  "7": "Invalidation [specific price]: plan invalid = {\"price_cross_up\":4361.5} (reclaim above broken floor + 4360.42 swing high + buffer -> retest-fade failed). Post-entry hard stop = 4361.5 (-1R). If price instead breaks below 4343.5 without retest -> retest missed, cancel and rebuild as breakdown continuation.",
+  "8": "Expected return R: entry ref ~4355 (zone mid), risk 6.5pt to stop4361.5. T1 4345.0(+10.0pt=1.54R, frac0.4)/T2 4336.3(+18.7pt=2.88R, frac0.35)/T3 4324.0(+31.0pt=4.77R, frac0.25) -> weighted expected_R = 0.4*1.54+0.35*2.88+0.25*4.77 = +2.82R. Just-realized: POS-133408 +1.86R.",
+  "9": "Expected loss R: -1.0R bounded (stop4361.5, risk6.5pt ~14.9bps@4355). No averaging down, no counter-trend LONG in bearish regime. Single position; if a trade is open no new plans.",
+  "10": "Cost numbers: spread now 0.15pt=0.345bps (state_pkg 0.34bps) + slippage 0.30bps = one-way ~0.64bps, round-trip ~1.28bps ~0.56pt ~0.086R (1R=6.5pt). Demo execution cost negligible, not a barrier.",
+  "11": "Net EV formula: EV_R = p*expected_R - (1-p)*1.0 - cost = 0.45*2.82 - 0.55*1.0 - 0.086 = 1.269 - 0.550 - 0.086 = +0.633R (>0; breakeven p~0.39). Positive -> register SHORT.",
+  "12": "Reproducibility: today's resistance/floor fades repeatedly worked -- 12:33Z fade@4391.68 -> 13:03Z SL -5.82; 14:34Z fade@4386.83 -> 14:50Z TP +7.20; 17:03Z fade@4371.51 -> 17:57Z TP +19.55(+1.86R). Same broken-structure continuation chain, now expressing via the freshly broken range floor.",
+  "13": "Decision: SHORT, stance SHORT-lean 0.65, confidence 0.56. Register retest-fade SHORT zone[4352.5,4357.0], stop4361.5, targets4345.0/4336.3/4324.0, qty0.01, EV+0.63R. Slot free after POS-133408 TP (+1.86R).",
+  "14": "HTF 4TF bearish; slot free after TP +1.86R; floor 4352.5 broke (low 4348.92). Register SHORT retest-fade 4352.5-4357.0, stop4361.5, T4345/4336.3/4324, qty0.01, EV+0.63R; invalid>4361.5."
+ },
+ "plan": {
+  "plan_id": "TP-20260910T1802Z",
+  "direction": "SHORT",
+  "entry_zone": {
+   "low": 4352.5,
+   "high": 4357.0
+  },
+  "trigger_condition": {
+   "zone_touch": [
+    4352.5,
+    4357.0
+   ]
+  },
+  "invalidation_condition": {
+   "price_cross_up": 4361.5
+  },
+  "stop_logic": {
+   "type": "structure",
+   "level_price": 4361.5
+  },
+  "target_logic": {
+   "levels": [
+    {
+     "price": 4345.0,
+     "frac": 0.4
+    },
+    {
+     "price": 4336.3,
+     "frac": 0.35
+    },
+    {
+     "price": 4324.0,
+     "frac": 0.25
+    }
+   ]
+  },
+  "expected_R": 2.82,
+  "expected_win_probability": 0.45,
+  "probability_source": "broken-range-floor retest fade inside an aligned 4TF downtrend; today's resistance-fade recurrence (2 TP wins) + structural continuation base p~0.45",
+  "estimated_cost": {
+   "one_way_bps": 0.64,
+   "round_trip_bps": 1.28
+  },
+  "spread_bps": 0.34,
+  "slippage_bps": 0.3,
+  "expected_net_EV": {
+   "value": 0.63,
+   "units": "R",
+   "note": "0.45*2.82 - 0.55*1.0 - 0.086 = +0.63R"
+  },
+  "maximum_holding_time": "M15*12",
+  "qty_lots": 0.01
+ },
+ "contingent_setup_alt": {
+  "note": "ALT only if price breaks fresh low 4348.92 and holds below without retesting 4352.5; NOT registered this cycle.",
+  "direction": "SHORT",
+  "entry_zone": {
+   "low": 4343.0,
+   "high": 4348.5
+  },
+  "trigger_condition": {
+   "price_cross_down": 4348.5
+  },
+  "invalidation_condition": {
+   "price_cross_up": 4353.5
+  },
+  "stop_logic": {
+   "type": "structure",
+   "level_price": 4353.5
+  },
+  "target_logic": {
+   "levels": [
+    {
+     "price": 4336.3,
+     "frac": 0.5
+    },
+    {
+     "price": 4324.0,
+     "frac": 0.5
+    }
+   ]
+  },
+  "expected_R": 2.0,
+  "expected_win_probability": 0.45,
+  "qty_lots": 0.01
+ },
+ "model": "deepseek/deepseek-v4-flash",
+ "data_quality_note": "data_quality ok (live_days=4, live_ticks=749690, gaps=[], context_days=28). Live probe tick 21:02:19 srv (18:02Z UTC) bid4350.16/ask4350.31 mid4350.24, spread0.15pt=0.345bps. state_pkg m15_live last_mid4350.69. candle_latest.json frozen at 09-07 12:15 ignored. MT5 demo positions=0 (POS-133408 closed at broker TP 4352.00, +1.86R), pending=0, active_plans=0."
+}

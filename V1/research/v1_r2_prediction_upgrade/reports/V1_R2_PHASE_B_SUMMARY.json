@@ -1,0 +1,490 @@
+{
+ "phase": "B",
+ "dataset": {
+  "source": "research/v3_alpha_discovery_r1/xauusd_m1_histdata.parquet",
+  "m15_bars": 40546,
+  "range": [
+   "2025-01-01 23:00:00+00:00",
+   "2026-09-18 21:45:00+00:00"
+  ]
+ },
+ "engines": {
+  "REGIME": "ON",
+  "KEY_LEVEL": "ON",
+  "TOUCH_EXHAUSTION": "ON",
+  "ABSORPTION": "PROXY_BAR",
+  "LIQUIDITY": "PROXY_UNAVAILABLE_IN_LONG_HISTORY(仅 tick 窗口可算)",
+  "BREAK_RISK": "ON",
+  "MOMENTUM": "ON",
+  "FAILED_EVENT": "ON_simplified",
+  "STATE_TRANSITION": "ON",
+  "COUNTER_EVIDENCE": "ON",
+  "NEXT_STATE": "ON"
+ },
+ "states_written": 40546,
+ "parallel_replay_records": 142,
+ "DETERMINISTIC_TEST": "PASS",
+ "hash_run1": "b5075222caca4f86",
+ "hash_run2": "b5075222caca4f86",
+ "TRUNCATION_TEST": "PASS",
+ "truncation_samples": [
+  {
+   "i": 3036,
+   "match": true,
+   "full": {
+    "regime": "TREND",
+    "momentum": "SLOW",
+    "next_state": {
+     "state": "UNKNOWN",
+     "direction": "NONE",
+     "confidence": "LOW",
+     "counter_count": 2,
+     "support_count": 1
+    },
+    "break_risk": {
+     "state": "ELEVATED",
+     "evidence": {
+      "E1_repeated_test": true,
+      "E2_response_decay": true,
+      "E5_penetration": true
+     },
+     "count": 3
+    },
+    "absorption": {
+     "state": "NONE",
+     "source": "PROXY_BAR",
+     "direct_orderbook": false
+    },
+    "transition": "TOUCH_STATE_CHANGED"
+   },
+   "truncated": {
+    "regime": "TREND",
+    "momentum": "SLOW",
+    "next_state": {
+     "state": "UNKNOWN",
+     "direction": "NONE",
+     "confidence": "LOW",
+     "counter_count": 2,
+     "support_count": 1
+    },
+    "break_risk": {
+     "state": "ELEVATED",
+     "evidence": {
+      "E1_repeated_test": true,
+      "E2_response_decay": true,
+      "E5_penetration": true
+     },
+     "count": 3
+    },
+    "absorption": {
+     "state": "NONE",
+     "source": "PROXY_BAR",
+     "direct_orderbook": false
+    },
+    "transition": "TOUCH_STATE_CHANGED"
+   }
+  },
+  {
+   "i": 4367,
+   "match": true,
+   "full": {
+    "regime": "EXPANSION",
+    "momentum": "NORMAL",
+    "next_state": {
+     "state": "UNKNOWN",
+     "direction": "NONE",
+     "confidence": "LOW",
+     "counter_count": 2,
+     "support_count": 0
+    },
+    "break_risk": {
+     "state": "ELEVATED",
+     "evidence": {
+      "E1_repeated_test": true,
+      "E2_response_decay": true,
+      "E5_penetration": true
+     },
+     "count": 3
+    },
+    "absorption": {
+     "state": "NONE",
+     "source": "PROXY_BAR",
+     "direct_orderbook": false
+    },
+    "transition": "MOMENTUM_CHANGED"
+   },
+   "truncated": {
+    "regime": "EXPANSION",
+    "momentum": "NORMAL",
+    "next_state": {
+     "state": "UNKNOWN",
+     "direction": "NONE",
+     "confidence": "LOW",
+     "counter_count": 2,
+     "support_count": 0
+    },
+    "break_risk": {
+     "state": "ELEVATED",
+     "evidence": {
+      "E1_repeated_test": true,
+      "E2_response_decay": true,
+      "E5_penetration": true
+     },
+     "count": 3
+    },
+    "absorption": {
+     "state": "NONE",
+     "source": "PROXY_BAR",
+     "direct_orderbook": false
+    },
+    "transition": "MOMENTUM_CHANGED"
+   }
+  },
+  {
+   "i": 5039,
+   "match": true,
+   "full": {
+    "regime": "EXPANSION",
+    "momentum": "NORMAL",
+    "next_state": {
+     "state": "UNKNOWN",
+     "direction": "NONE",
+     "confidence": "LOW",
+     "counter_count": 0,
+     "support_count": 0
+    },
+    "break_risk": {
+     "state": "NORMAL",
+     "evidence": {
+      "E5_penetration": true
+     },
+     "count": 1
+    },
+    "absorption": {
+     "state": "NONE",
+     "source": "PROXY_BAR",
+     "direct_orderbook": false
+    },
+    "transition": "TOUCH_STATE_CHANGED"
+   },
+   "truncated": {
+    "regime": "EXPANSION",
+    "momentum": "NORMAL",
+    "next_state": {
+     "state": "UNKNOWN",
+     "direction": "NONE",
+     "confidence": "LOW",
+     "counter_count": 0,
+     "support_count": 0
+    },
+    "break_risk": {
+     "state": "NORMAL",
+     "evidence": {
+      "E5_penetration": true
+     },
+     "count": 1
+    },
+    "absorption": {
+     "state": "NONE",
+     "source": "PROXY_BAR",
+     "direct_orderbook": false
+    },
+    "transition": "TOUCH_STATE_CHANGED"
+   }
+  },
+  {
+   "i": 6778,
+   "match": true,
+   "full": {
+    "regime": "COMPRESSION",
+    "momentum": "SLOW",
+    "next_state": {
+     "state": "HOLD",
+     "direction": "NONE",
+     "confidence": "LOW",
+     "counter_count": 2,
+     "support_count": 0
+    },
+    "break_risk": {
+     "state": "ELEVATED",
+     "evidence": {
+      "E1_repeated_test": true,
+      "E5_penetration": true
+     },
+     "count": 2
+    },
+    "absorption": {
+     "state": "NONE",
+     "source": "PROXY_BAR",
+     "direct_orderbook": false
+    },
+    "transition": "TOUCH_STATE_CHANGED"
+   },
+   "truncated": {
+    "regime": "COMPRESSION",
+    "momentum": "SLOW",
+    "next_state": {
+     "state": "HOLD",
+     "direction": "NONE",
+     "confidence": "LOW",
+     "counter_count": 2,
+     "support_count": 0
+    },
+    "break_risk": {
+     "state": "ELEVATED",
+     "evidence": {
+      "E1_repeated_test": true,
+      "E5_penetration": true
+     },
+     "count": 2
+    },
+    "absorption": {
+     "state": "NONE",
+     "source": "PROXY_BAR",
+     "direct_orderbook": false
+    },
+    "transition": "TOUCH_STATE_CHANGED"
+   }
+  },
+  {
+   "i": 14112,
+   "match": true,
+   "full": {
+    "regime": "COMPRESSION",
+    "momentum": "DECELERATING",
+    "next_state": {
+     "state": "HOLD",
+     "direction": "NONE",
+     "confidence": "LOW",
+     "counter_count": 4,
+     "support_count": 0
+    },
+    "break_risk": {
+     "state": "ELEVATED",
+     "evidence": {
+      "E1_repeated_test": true,
+      "E2_response_decay": true,
+      "E5_penetration": true
+     },
+     "count": 3
+    },
+    "absorption": {
+     "state": "NONE",
+     "source": "PROXY_BAR",
+     "direct_orderbook": false
+    },
+    "transition": "SAME_STATE"
+   },
+   "truncated": {
+    "regime": "COMPRESSION",
+    "momentum": "DECELERATING",
+    "next_state": {
+     "state": "HOLD",
+     "direction": "NONE",
+     "confidence": "LOW",
+     "counter_count": 4,
+     "support_count": 0
+    },
+    "break_risk": {
+     "state": "ELEVATED",
+     "evidence": {
+      "E1_repeated_test": true,
+      "E2_response_decay": true,
+      "E5_penetration": true
+     },
+     "count": 3
+    },
+    "absorption": {
+     "state": "NONE",
+     "source": "PROXY_BAR",
+     "direct_orderbook": false
+    },
+    "transition": "SAME_STATE"
+   }
+  },
+  {
+   "i": 17010,
+   "match": true,
+   "full": {
+    "regime": "RANGE",
+    "momentum": "NORMAL",
+    "next_state": {
+     "state": "HOLD",
+     "direction": "NONE",
+     "confidence": "LOW",
+     "counter_count": 1,
+     "support_count": 1
+    },
+    "break_risk": {
+     "state": "NORMAL",
+     "evidence": {
+      "E5_penetration": true
+     },
+     "count": 1
+    },
+    "absorption": {
+     "state": "NONE",
+     "source": "PROXY_BAR",
+     "direct_orderbook": false
+    },
+    "transition": "REGIME_CHANGED"
+   },
+   "truncated": {
+    "regime": "RANGE",
+    "momentum": "NORMAL",
+    "next_state": {
+     "state": "HOLD",
+     "direction": "NONE",
+     "confidence": "LOW",
+     "counter_count": 1,
+     "support_count": 1
+    },
+    "break_risk": {
+     "state": "NORMAL",
+     "evidence": {
+      "E5_penetration": true
+     },
+     "count": 1
+    },
+    "absorption": {
+     "state": "NONE",
+     "source": "PROXY_BAR",
+     "direct_orderbook": false
+    },
+    "transition": "REGIME_CHANGED"
+   }
+  },
+  {
+   "i": 35135,
+   "match": true,
+   "full": {
+    "regime": "UNKNOWN",
+    "momentum": "DECELERATING",
+    "next_state": {
+     "state": "REVERSION",
+     "direction": "SHORT",
+     "confidence": "HIGH",
+     "counter_count": 3,
+     "support_count": 0
+    },
+    "break_risk": {
+     "state": "CRITICAL",
+     "evidence": {
+      "E1_repeated_test": true,
+      "E2_response_decay": true,
+      "E5_penetration": true,
+      "E6_momentum_fast": true
+     },
+     "count": 4
+    },
+    "absorption": {
+     "state": "NONE",
+     "source": "PROXY_BAR",
+     "direct_orderbook": false
+    },
+    "transition": "REGIME_CHANGED"
+   },
+   "truncated": {
+    "regime": "UNKNOWN",
+    "momentum": "DECELERATING",
+    "next_state": {
+     "state": "REVERSION",
+     "direction": "SHORT",
+     "confidence": "HIGH",
+     "counter_count": 3,
+     "support_count": 0
+    },
+    "break_risk": {
+     "state": "CRITICAL",
+     "evidence": {
+      "E1_repeated_test": true,
+      "E2_response_decay": true,
+      "E5_penetration": true,
+      "E6_momentum_fast": true
+     },
+     "count": 4
+    },
+    "absorption": {
+     "state": "NONE",
+     "source": "PROXY_BAR",
+     "direct_orderbook": false
+    },
+    "transition": "REGIME_CHANGED"
+   }
+  },
+  {
+   "i": 40422,
+   "match": true,
+   "full": {
+    "regime": "EXPANSION",
+    "momentum": "DECELERATING",
+    "next_state": {
+     "state": "REVERSION",
+     "direction": "SHORT",
+     "confidence": "MED",
+     "counter_count": 3,
+     "support_count": 0
+    },
+    "break_risk": {
+     "state": "CRITICAL",
+     "evidence": {
+      "E1_repeated_test": true,
+      "E2_response_decay": true,
+      "E5_penetration": true,
+      "E6_momentum_fast": true
+     },
+     "count": 4
+    },
+    "absorption": {
+     "state": "NONE",
+     "source": "PROXY_BAR",
+     "direct_orderbook": false
+    },
+    "transition": "SAME_STATE"
+   },
+   "truncated": {
+    "regime": "EXPANSION",
+    "momentum": "DECELERATING",
+    "next_state": {
+     "state": "REVERSION",
+     "direction": "SHORT",
+     "confidence": "MED",
+     "counter_count": 3,
+     "support_count": 0
+    },
+    "break_risk": {
+     "state": "CRITICAL",
+     "evidence": {
+      "E1_repeated_test": true,
+      "E2_response_decay": true,
+      "E5_penetration": true,
+      "E6_momentum_fast": true
+     },
+     "count": 4
+    },
+    "absorption": {
+     "state": "NONE",
+     "source": "PROXY_BAR",
+     "direct_orderbook": false
+    },
+    "transition": "SAME_STATE"
+   }
+  }
+ ],
+ "rules_hash": "5905bdc047b2f22b29ec23191d9b643a5f53647590d9ea781ede37ac6ed35c80",
+ "run_dir": "research/hermes/trader_v1/v1_r2_prediction_upgrade/v1_r2_research_runs/V1_R2_RUN_20260926T120857",
+ "safety": {
+  "ORDER_SEND": 0,
+  "ORDER_CHECK": 0,
+  "V2_WRITE": 0,
+  "V3_WRITE": 0
+ },
+ "pending": [
+  "walk-forward/时间切分评估",
+  "ablation",
+  "redundancy",
+  "26 tests",
+  "final report/verdict"
+ ],
+ "ts_utc": "2026-09-26T12:08:57.175569+00:00"
+}

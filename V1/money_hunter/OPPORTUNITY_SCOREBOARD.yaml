@@ -1,0 +1,14 @@
+# OPPORTUNITY SCOREBOARD — 活榜（MONEY HUNTER §38; 2026-09-06 初始化, 全天证据合成）
+# Status: DISCOVERY/TESTING/OOS/FORWARD/MONEY_CANDIDATE/KILLED/DATA_GATE/EXECUTION_GATE/REGIME_DEPENDENT/UNKNOWN
+scoreboard:
+  - {id: S-01, opportunity: "日内方向(任意尺度 tick-D1 无条件)", mechanism: "价格延续/反转", frequency: 高, net_ev: "≤0(成本后)", oos: 否, forward: 未测, cross_regime: "2011-26 否", execution: 不可行, status: KILLED, ref: "F-R/P1-P7/Breaker/D1R/MTF"}
+  - {id: S-02, opportunity: "vol 条件反转/极端回复", mechanism: "高波动后回复", frequency: 中, net_ev: ≤0, cross_regime: "regime 不一致", status: KILLED, ref: "S2b/T-b"}
+  - {id: S-03, opportunity: "慢 SMA regime 流程(日频)", mechanism: "趋势跟随/状态暴露", frequency: 低(48 仓/3.7y), net_ev: "2023-26 +34%名义=B 类 drift", cross_regime: "2011-22 全段负", status: REGIME_DEPENDENT, ref: "T-c/审计"}
+  - {id: S-04, opportunity: "执行/成本层(spread 择时等)", mechanism: "成本状态", frequency: 高, net_ev: "上界 0.1bps<成本", status: KILLED, ref: "RQ-H1/S7"}
+  - {id: S-05, opportunity: "GVZ 期权代理增量", mechanism: "隐含波动信息", frequency: 日, net_ev: "非稳健", cross_regime: "不复现", status: KILLED(UNPROVEN→非稳健), ref: "CAND-01/T-d"}
+  - {id: S-06, opportunity: "细尺度 vol 信息(风险层)", mechanism: "vol 聚集(跨 15y 普适)", frequency: 高, net_ev: "信息层, 无交易规则", status: "INFORMATION_ONLY(非钱)", ref: "T-a/E5"}
+  - {id: S-07, opportunity: "GC 期货深度/流 → spot 信息", mechanism: "价格发现/流(未测层)", frequency: 未知, net_ev: unknown, status: DATA_GATE, ref: "ACCESS LAB; $25+, 待批"}
+  - {id: S-08, opportunity: "前瞻 live 数据中的新结构(未来)", mechanism: 未知, frequency: 未知, net_ev: unknown, status: "FORWARD(采集运行中 2026-09-27 已 15 完整交易日 09-07..09-25; 3-6 月后复跑冻结探测器)", ref: "self_collect; weekly-review 2026-09-20"}
+  - {id: S-09, opportunity: "demo 实测成本下的执行层重估", mechanism: "成本测量", frequency: 高, net_ev: "2026-09-07 FXTM demo 实测: 20/20 fills(FOK), XAUUSD spread≈0.13-0.14USD(~0.3bps), 滑点±0.7bps, latency 0.33-0.98s; 2026-09-13 周评审裁决=NO_CHANGE(实测成本≈0.3bps+滑点0.7~0.96bps ≥ 净提取上界0.1bps/笔 → 无新净EV)", status: EXECUTION_GATE, ref: "demo_exec_instrument; exec_20260907_130655.json; commit 1d21f8e; weekly-review 2026-09-13"}
+  - {id: S-10, opportunity: "期权曲面/skew 风险层", mechanism: "demand skew", frequency: 低, net_ev: unknown, status: DATA_GATE(贵, 非 HF), ref: "D5"}
+verdict: "当前无 MONEY_CANDIDATE; 活跃 = S-08(前瞻积累 15 交易日) + S-09(FXTM demo 已实测 20/20 fills, 周评审裁决=NO_CHANGE, 维持 EXECUTION_GATE) + S-07(待批准); 其余 KILLED/DATA_GATE 不重开。周评审 2026-09-27: drift findings=0(两引擎均 OK), 无新候选/提交, 无变化。"

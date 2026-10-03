@@ -1,0 +1,222 @@
+{
+ "task": "V1_R3_HERMES_MARKET_FORECAST_ENGINE",
+ "stage": "GT_BASELINES_ABLATION",
+ "ts_utc": "2026-09-27T13:44:21.306116+00:00",
+ "H": 8,
+ "n_dev_full": 33114,
+ "n_blind_full": 7306,
+ "n_blind_sample": 20,
+ "crossmarket_start": "2026-07-16 00:00:00+00:00",
+ "effect_floor_bits": 0.01,
+ "safety": {
+  "ORDER_SEND": 0,
+  "BROKER_WRITE": 0,
+  "FORWARD": "OFF",
+  "LIVE": "OFF",
+  "FUTURE_RETURN_USED": "NO",
+  "PNL_USED": "NO"
+ },
+ "baselines_blind_window": {
+  "MAJORITY": {
+   "n": 7306,
+   "accuracy": 0.2472,
+   "majority_accuracy": 0.2472,
+   "balanced_accuracy": 0.125,
+   "macro_f1": 0.0496
+  },
+  "PERSISTENCE": {
+   "n": 7306,
+   "accuracy": 0.343,
+   "majority_accuracy": 0.2472,
+   "balanced_accuracy": 0.2641,
+   "macro_f1": 0.2641
+  },
+  "PREVIOUS_STATE": {
+   "n": 7306,
+   "accuracy": 0.3144,
+   "majority_accuracy": 0.2472,
+   "balanced_accuracy": 0.2355,
+   "macro_f1": 0.2355
+  },
+  "SIMPLE_TRANSITION": {
+   "n": 7306,
+   "accuracy": 0.372,
+   "majority_accuracy": 0.2472,
+   "balanced_accuracy": 0.2952,
+   "macro_f1": 0.2952
+  },
+  "FROZEN_NEXT_STATE_MODEL": {
+   "n": 7306,
+   "accuracy": 0.4173,
+   "majority_accuracy": 0.2472,
+   "balanced_accuracy": 0.2632,
+   "macro_f1": 0.2223,
+   "dll": 0.47433,
+   "log_loss_bits": 2.26417,
+   "ECE": 0.031,
+   "coverage_at_0.5": 0.2483,
+   "accuracy_on_covered": 0.6808
+  }
+ },
+ "baselines_blind_sample20": {
+  "MAJORITY": {
+   "n": 20,
+   "accuracy": 0.15,
+   "majority_accuracy": 0.15,
+   "balanced_accuracy": 0.1667,
+   "macro_f1": 0.0435
+  },
+  "PERSISTENCE": {
+   "n": 20,
+   "accuracy": 0.3,
+   "majority_accuracy": 0.15,
+   "balanced_accuracy": 0.1319,
+   "macro_f1": 0.1052
+  },
+  "PREVIOUS_STATE": {
+   "n": 20,
+   "accuracy": 0.4,
+   "majority_accuracy": 0.15,
+   "balanced_accuracy": 0.2431,
+   "macro_f1": 0.1815
+  },
+  "SIMPLE_TRANSITION": {
+   "n": 20,
+   "accuracy": 0.3,
+   "majority_accuracy": 0.15,
+   "balanced_accuracy": 0.1319,
+   "macro_f1": 0.1052
+  },
+  "FROZEN_NEXT_STATE_MODEL": {
+   "n": 20,
+   "accuracy": 0.35,
+   "majority_accuracy": 0.15,
+   "balanced_accuracy": 0.1528,
+   "macro_f1": 0.1469,
+   "dll": -0.2176,
+   "log_loss_bits": 2.85907,
+   "ECE": 0.2378,
+   "coverage_at_0.5": 0.45,
+   "accuracy_on_covered": 0.4444
+  }
+ },
+ "information_content_matrix": {
+  "PRICE": {
+   "n": 7306,
+   "accuracy": 0.3846,
+   "majority_accuracy": 0.2472,
+   "balanced_accuracy": 0.2265,
+   "macro_f1": 0.1629,
+   "dll": 0.30493,
+   "log_loss_bits": 2.43358,
+   "ECE": 0.0204,
+   "coverage_at_0.5": 0.1584,
+   "accuracy_on_covered": 0.6724,
+   "split": "main (dev < 2026-06-01, blind >= 2026-06-01)"
+  },
+  "PRICE+KLINE": {
+   "n": 7306,
+   "accuracy": 0.3843,
+   "majority_accuracy": 0.2472,
+   "balanced_accuracy": 0.2264,
+   "macro_f1": 0.1635,
+   "dll": 0.30475,
+   "log_loss_bits": 2.43376,
+   "ECE": 0.02,
+   "coverage_at_0.5": 0.1592,
+   "accuracy_on_covered": 0.6741,
+   "split": "main (dev < 2026-06-01, blind >= 2026-06-01)"
+  },
+  "PRICE+STRUCTURE": {
+   "n": 7306,
+   "accuracy": 0.3853,
+   "majority_accuracy": 0.2472,
+   "balanced_accuracy": 0.2269,
+   "macro_f1": 0.1632,
+   "dll": 0.30512,
+   "log_loss_bits": 2.43338,
+   "ECE": 0.02,
+   "coverage_at_0.5": 0.1588,
+   "accuracy_on_covered": 0.6724,
+   "split": "main (dev < 2026-06-01, blind >= 2026-06-01)"
+  },
+  "PRICE+STATE": {
+   "n": 7306,
+   "accuracy": 0.4035,
+   "majority_accuracy": 0.2472,
+   "balanced_accuracy": 0.2483,
+   "macro_f1": 0.2282,
+   "dll": 0.4021,
+   "log_loss_bits": 2.33641,
+   "ECE": 0.0189,
+   "coverage_at_0.5": 0.2226,
+   "accuracy_on_covered": 0.6907,
+   "split": "main (dev < 2026-06-01, blind >= 2026-06-01)"
+  },
+  "PRICE+EVENT": {
+   "n": 7306,
+   "accuracy": 0.4031,
+   "majority_accuracy": 0.2472,
+   "balanced_accuracy": 0.2413,
+   "macro_f1": 0.2115,
+   "dll": 0.37966,
+   "log_loss_bits": 2.35885,
+   "ECE": 0.0127,
+   "coverage_at_0.5": 0.2168,
+   "accuracy_on_covered": 0.6629,
+   "split": "main (dev < 2026-06-01, blind >= 2026-06-01)"
+  },
+  "PRICE+MTF": {
+   "n": 7306,
+   "accuracy": 0.3938,
+   "majority_accuracy": 0.2472,
+   "balanced_accuracy": 0.2362,
+   "macro_f1": 0.1784,
+   "dll": 0.35407,
+   "log_loss_bits": 2.38443,
+   "ECE": 0.0215,
+   "coverage_at_0.5": 0.1712,
+   "accuracy_on_covered": 0.6603,
+   "split": "main (dev < 2026-06-01, blind >= 2026-06-01)"
+  },
+  "PRICE+MECHANISM": {
+   "n": 7306,
+   "accuracy": 0.4125,
+   "majority_accuracy": 0.2472,
+   "balanced_accuracy": 0.2573,
+   "macro_f1": 0.2408,
+   "dll": 0.42381,
+   "log_loss_bits": 2.31469,
+   "ECE": 0.0182,
+   "coverage_at_0.5": 0.2512,
+   "accuracy_on_covered": 0.667,
+   "split": "main (dev < 2026-06-01, blind >= 2026-06-01)"
+  },
+  "PRICE+CROSSMARKET": {
+   "n": 1721,
+   "accuracy": 0.3144,
+   "majority_accuracy": 0.2411,
+   "balanced_accuracy": 0.2105,
+   "macro_f1": 0.1783,
+   "dll": -0.21092,
+   "log_loss_bits": 2.97586,
+   "ECE": 0.18,
+   "coverage_at_0.5": 0.405,
+   "accuracy_on_covered": 0.4319,
+   "split": "window-internal 60/40 (cross-market coverage starts 2026-07-16)"
+  },
+  "FULL": {
+   "n": 1721,
+   "accuracy": 0.3417,
+   "majority_accuracy": 0.2411,
+   "balanced_accuracy": 0.24,
+   "macro_f1": 0.2081,
+   "dll": -0.25062,
+   "log_loss_bits": 3.01555,
+   "ECE": 0.2037,
+   "coverage_at_0.5": 0.5044,
+   "accuracy_on_covered": 0.4332,
+   "split": "window-internal 60/40 (cross-market coverage starts 2026-07-16)"
+  }
+ }
+}

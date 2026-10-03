@@ -1,0 +1,50 @@
+{
+  "audit_id": "BB_20260914",
+  "timestamp": "2026-09-14T12:00:00+00:00",
+  "current_state": "TREND (dwell 3, event ACCEPTANCE, prior DECELERATION x4 after ROTATION x15). Price 4294.2 (M1) sits BELOW the broken swing low 4300.495 (break_status BEYOND, ~1 ATR, reclaim NONE). Higher timeframes M15/H1/H4 trend_20 all deeply negative (-38/-80/-139), H4 printed a large-range bar with a 25.9-point lower wick to 4253.4. A strong M5 recovery off 4281.4 (11:05) to 4296.6 (12:00) is in progress and approaching the broken level from below.",
+  "structure": "Downside breakout of swing low 4300.495 (L2, DERIVED, 4 touches/240) is confirmed BEYOND with no reclaim; the broken level now acts as resistance. Beneath price, the 4253.4-4283 zone shows demand (H4 long lower wick, 11:00 H1 bar low 4278.1 with strong recovery close). Above: 4300.5 then 4310-4316 (M15/H1 supply). Multi-timeframe structure is CONFLICT: M1/M5 momentum up vs M15/H1/H4 trend down - higher timeframes dominate the regime.",
+  "mechanism": "breakout_pressure (continuation below the broken level, supported by close beyond 4300.495 by ~1 ATR) vs failed_breakout (no reclaim yet). The live process is a retest of the broken level from below: if supply holds at 4300.5 the downside mechanism is confirmed; if price accepts above it, the breakdown fails. UST10Y absent so the yield driver is unobservable; DXY flat-slightly-down is mildly consistent with a pause in the selloff rather than a reversal trigger.",
+  "primary_scenario": {
+    "scenario": "Counter-trend bounce stalls at/below the broken 4300.495 level; rejection resumes the established downside trend toward a retest of the 4253-4280 zone (H4 lower-wick lows), likely with TREND/EXPANSION continuation on M15/H1.",
+    "confidence": 0.55,
+    "horizon": "SHORT_TERM",
+    "trigger": "M5/M15 rejection at the 4300.5 zone (upper wick or bearish close below ~4290-4296) with range contraction resuming; DXY firming",
+    "invalidation": "Sustained M5/M15 close above 4300.495 (reclaim) before a new low is made"
+  },
+  "alternative_scenario": {
+    "scenario": "Failed breakdown: the bounce accepts above 4300.495, the BEYOND break is reclaimed, and price retraces toward 4316 then 4330-4340 (H1/M15 supply), the H4 long lower wick proving to be a double-bottom demand pivot at 4253-4283.",
+    "confidence": 0.35,
+    "horizon": "INTRADAY",
+    "trigger": "Expanding-range M5/M15 close above 4300.5 with consecutive_up extension and UST10Y/dovish tailwind",
+    "invalidation": "Rejection below 4290 before reclaim, or a fresh low under 4283.4/4278.1"
+  },
+  "expected_transition": "DECELERATION->TREND already fired; expect the retest to resolve as either continued TREND (downside acceptance, possible EXPANSION on H1) or a ROTATION around the 4290-4301 zone. Analogs (state-evolution only) are split: TREND->EXPANSION, TREND->ROTATION, TREND->EXPANSION->REJECTION - no directional signal from them.",
+  "direction": "DOWN",
+  "horizon": "SHORT_TERM",
+  "confidence": 0.55,
+  "counter_evidence": [
+    "M5 strong rally: consecutive_up 8, +15 points from 4281.4 to 4296.6, current M5 bar closed at its high (no upper wick)",
+    "H4 current bar long lower wick (25.9) and H1 11:00 bar low 4278.1 with positive close - visible buying at lows",
+    "M1/M5 trend_20 positive (+0.17/+8.81) - near-term momentum is up",
+    "DXY slightly down on change_32 (-0.067) - mild tailwind for gold",
+    "VIX calm (17.69, change_32 -0.48) - no crisis bid, but also no liquidation pressure"
+  ],
+  "invalidation": "Sustained close above 4300.495 (the broken swing low) on M15/H1 invalidates the downside-continuation thesis and flips the read to failed-breakout recovery.",
+  "data_quality_flags": [
+    "UST10Y_PROXY_TNX UNKNOWN/absent - rates driver unobservable",
+    "DXY and VIX are PROXY (Yahoo, instrument definition UNKNOWN)",
+    "L2 levels DERIVED (pivot swing, causal); L3/L4 labels DERIVED, mechanism candidates only",
+    "L6 MULTI_TIMEFRAME = CONFLICT",
+    "Absent series: GLD, GC, CFTC_COT, ETF_FLOWS, NEWS, MACRO_EVENTS",
+    "Historical analogs are state-evolution only; no returns/PnL"
+  ],
+  "reasoning_trace": [
+    "Regime read: H4 trend_20 -139, H1 -80, M15 -38 - unambiguous higher-timeframe downtrend from the 4402 high (Sep 11).",
+    "Key structural fact: swing low 4300.495 broken with close ~1 ATR beyond it and reclaim_status NONE - a downside breakout, so the level flips to resistance.",
+    "Near-term conflict: M5/M1 show a vigorous bounce off 4278-4283; this is the retest leg of a breakdown, not yet a reversal.",
+    "The 4300.5 zone is the decision point: stall/reject there -> breakout_pressure continuation (primary); acceptance above -> failed_breakout recovery (alternative).",
+    "H4 lower-wick support at 4253-4283 caps the downside target for the primary scenario and is the base for the alternative double-bottom.",
+    "Cross-market is thin (no UST10Y, DXY/VIX PROXY only) and provides no decisive confirmation, capping confidence at 0.55.",
+    "Direction: DOWN (higher-TF structure dominates), horizon SHORT_TERM, invalidation = sustained close above 4300.495."
+  ]
+}

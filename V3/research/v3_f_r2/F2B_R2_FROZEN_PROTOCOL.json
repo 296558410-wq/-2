@@ -1,0 +1,196 @@
+{
+ "schema": "v3_f2b_r2_protocol_draft/1",
+ "task_id": "V3-F2B-R2",
+ "status": "FROZEN",
+ "draft_created_utc": "2026-10-01T15:50:00+00:00",
+ "awaiting": "operator confirmation (plan: formal run on 2026-10-02)",
+ "supersedes": "F2b_MA_REVERSION inside V3-PHASE2-F-R1 (protocol b0f20e66...)",
+ "why_a_new_protocol": "The F-R1 F2b trigger used a mis-scaled denominator, so |zma|>=2 selected ~3.6-sigma outliers instead of 2-sigma. This is a NEW pre-registered protocol with the corrected standardisation; F-R1 itself is NOT edited and its verdict stands.",
+ "bounds": {
+  "v1_v2_modified": "NO",
+  "order_send": "NO",
+  "execution": "NO",
+  "future_data": "NO",
+  "protocol_r2_edit_of_r1": "NO",
+  "parameter_sweep": "NO",
+  "thresholds_declared_a_priori": "one cut (|z|>=2) plus the pre-flight calibration assertions below",
+  "live": "NO",
+  "v1_read_as_input": "NO",
+  "v2_read_as_input": "NO"
+ },
+ "data": {
+  "SNAPSHOT_ID": "V3-SNAP-20260922T025312Z",
+  "tick_dir": "research/hermes/trader_v3/data/snapshots/V3-SNAP-20260922T025312Z",
+  "files": 36,
+  "ticks": 7285000,
+  "span_utc": [
+   "2026-08-04T01:05:00.093Z",
+   "2026-09-22T02:39:05.572Z"
+  ],
+  "tick_sha256_verify": "36/36 MATCH",
+  "manifest_sha256": "13fb5d1720a3b25768d0bca59eda897e85e66ba6d7741d538fc32ed33ef8eb54",
+  "bars": "1m bars per segment; a bar is usable at its close ts (PIT)",
+  "bars_measured": 47963,
+  "segments": 1055
+ },
+ "corrected_definition": {
+  "feature": "zma = (close_t - SMA_20(close)_t) / ( close_t * sigma_ret_20_t * K_20 )",
+  "K_20": 2.484955,
+  "K_n_closed_form": "K_n = sqrt( (n-1)(2n-1) / (6n) )",
+  "K_n_derivation": "D_t = close_t - SMA_n = (1/n) * sum_{k=1..n-1} (close_t - close_{t-k}); for iid increments with per-bar price variance s_p^2, Cov(close_t-close_{t-k}, close_t-close_{t-l}) = min(k,l) s_p^2, so Var(D) = [sum_{k,l=1..n-1} min(k,l) / n^2] s_p^2 = [(n-1)(2n-1)/(6n)] s_p^2, giving std(D) = s_p * K_n.",
+  "sigma_ret_20": "trailing 20-bar std of 1-bar returns, shifted by 1 bar (causal)",
+  "units": "numerator is price; denominator is close (price) x dimensionless return-sigma x dimensionless K => the ratio is dimensionless. Units were already consistent in F-R1; ONLY the scale constant was wrong.",
+  "frozen_definition_for_comparison": "F-R1 used K = sqrt(20) = 4.472136, i.e. the denominator was 1.799685x too wide (80.0% too wide).",
+  "limits": [
+   "assumes locally iid, zero-drift increments and a constant sigma across the 20-bar window",
+   "sigma is estimated from returns but applied to a price-scale deviation; a Student-t style adjustment for the sigma-estimation error is NOT included (kept simple and pre-registered)"
+  ]
+ },
+ "pre_flight_assertions": {
+  "mandatory_before_any_verdict": true,
+  "A1_synthetic_scale": "on 200k iid Gaussian returns, std(zma) must land in [0.95, 1.08]; measured 1.0445 (PASS). The F-R1 scale gives 0.5804 (FAIL) - this assertion would have caught the defect.",
+  "A2_synthetic_rate": "on the same synthetic series, P(|zma|>=2) must land in [4.0%, 6.5%]; measured 5.619% (PASS); the F-R1 scale gives 0.126% (FAIL).",
+  "A3_real_rate_reported": "the realised trigger rate on the snapshot must be reported next to the theoretical rate BEFORE any edge verdict. Measured (corrected): 5.1567% = 2374/46037; theoretical Gaussian 4.55%; fat-tail inflation vs Gaussian ~1.13x (synthetic-with-rolling-sigma) to ~1.13x.",
+  "A4_no_silent_rescale": "if A1/A2 fail, the run aborts and reports; no threshold may be re-tuned to make them pass."
+ },
+ "frozen_thresholds": {
+  "abs_z": 2.0,
+  "bar_minutes": 1,
+  "sigma_window_bars": 20,
+  "sma_window_bars": 20,
+  "horizons_min": [
+   1,
+   5,
+   15,
+   30,
+   60
+  ],
+  "min_effective_n": 30,
+  "alpha": 0.05
+ },
+ "hypotheses": [
+  {
+   "id": "F2bR2_MA_REVERSION_FADE",
+   "kind": "directional",
+   "statement": "a price that sits >= 2 corrected sigma away from its 20-bar mean reverts toward that mean",
+   "trigger": "|zma_corrected| >= 2.0 at a bar close",
+   "direction": "fade sign(zma)",
+   "entry": "first tick with ts > the trigger bar's close ts; at ask (long) / bid (short)",
+   "exit": "mid at the first tick with ts >= entry_ts + h",
+   "holding_min": [
+    1,
+    5,
+    15,
+    30,
+    60
+   ]
+  },
+  {
+   "id": "F2bR2_MA_MOMENTUM_CONT",
+   "kind": "directional",
+   "statement": "the mirror control: the same trigger followed in the direction of the deviation",
+   "trigger": "|zma_corrected| >= 2.0",
+   "direction": "follow sign(zma)",
+   "holding_min": [
+    1,
+    5,
+    15,
+    30,
+    60
+   ]
+  }
+ ],
+ "cost_model": {
+  "COST_MODEL_VERSION": "CALIBRATION_20RT_20260921",
+  "REAL_RT_COST_BP": 0.914,
+  "stress": [
+   0.0,
+   1.0,
+   2.0,
+   3.0
+  ],
+  "rule": "0.314bp must not be used (HISTORICAL_INVALID_FOR_CURRENT_RESEARCH)"
+ },
+ "validation": {
+  "train_test_isolation": "time-ordered 70/30 by event time; no shuffle",
+  "oos": "final 30% of event time reported separately",
+  "permutation": "sign-flip, n=2000, two-sided",
+  "bootstrap": "block bootstrap over events, n=2000, 50 blocks",
+  "overlap_check": "raw n, overlap ratio, effective_n = greedy non-overlapping count; floor 30",
+  "robustness": [
+   "sub-segment by session (ASIA/LONDON/NY)",
+   "sub-segment by trailing volatility tercile",
+   "cost stress 0/1/2/3x",
+   "sign stability IS vs OOS and across sub-segments"
+  ],
+  "ladder": [
+   "INSUFFICIENT_SAMPLE",
+   "COST_INSUFFICIENT",
+   "REJECT",
+   "EDGE_UNCERTAIN",
+   "EXECUTION_UNREALISTIC",
+   "CANDIDATE"
+  ],
+  "VALIDATED_EDGE_requires": "cost-adjusted positive on IS AND OOS at 1x, permutation p<0.05, bootstrap CI excluding 0, effective_n>=30, sign stable across sub-segments, survives 2x cost, AND A1-A4 all PASS"
+ },
+ "expected_numbers": {
+  "before_fix_actual": {
+   "trigger_rate": 0.002216,
+   "events": 102,
+   "valid_bars": 46037,
+   "effective_n_at_5m": 68,
+   "note": "F-R1 F2b, threshold effectively |z|>=3.599"
+  },
+  "before_fix_theory": {
+   "gaussian_rate_at_the_frozen_scale": 0.000319,
+   "observed_over_theory": 6.95,
+   "note": "rolling-sigma noise + fat tails make the tail ~7x fatter than the normal table"
+  },
+  "after_fix_measured_distribution_only": {
+   "trigger_rate": 0.051567,
+   "events": 2374,
+   "valid_bars": 46037,
+   "note": "distribution-only measurement; no forward returns computed"
+  },
+  "after_fix_expected_effective_n_at_5m": {
+   "point_estimate": 1300,
+   "band": [
+    1000,
+    2000
+   ],
+   "derivation": "2374 raw events x the 0.673 overlap-efficiency observed in F-R1 at 5m (68/101); the refractory approximation N*p/(1+(h-1)p) gives 1968 raw-adjacent, x0.673 = 1325 - consistent",
+   "note": "EXPECTATION only; to be measured in the run. Comfortably above the effective_n floor of 30 either way."
+  },
+  "scale_error": {
+   "K_correct": 2.484955,
+   "K_frozen": 4.472136,
+   "ratio": 1.799685,
+   "frozen_denominator_too_wide_pct": 80.0,
+   "verified_by": [
+    "closed-form algebra",
+    "synthetic iid Gaussian (std 0.5804 vs 1.0445, ratio 0.5557 = 1/1.799685 exactly)",
+    "real snapshot (std ratio 0.5557, identical)"
+   ]
+  }
+ },
+ "frozen_at_utc": "2026-10-02T00:25:00+00:00",
+ "frozen_before_evaluation": true,
+ "run_order": "A1 -> A2 -> A3 -> A4 -> (only if all PASS) return validation; A1 or A2 FAIL => STATUS=PROTOCOL_VALIDATION_FAILED and STOP",
+ "verdict_rule": {
+  "VALIDATED_EDGE": "A1-A4 PASS AND cost-adjusted positive on IS AND OOS at 1x AND permutation p<0.05 AND bootstrap CI excludes 0 AND effective_n>=30 AND not dependent on a single session or a single volatility tercile AND the FADE direction has independent evidence",
+  "NO_VALIDATED_EDGE": "anything else, after A1-A4 PASS",
+  "DATA_BLOCKED": "the data or protocol cannot complete the validation",
+  "PROTOCOL_VALIDATION_FAILED": "A1 or A2 FAIL (pre-flight abort; no return is computed)"
+ },
+ "session_definition": {
+  "ASIA": "00:00-07:59 UTC",
+  "LONDON": "08:00-15:59 UTC",
+  "NY": "16:00-23:59 UTC"
+ },
+ "fdr": {
+  "method": "Benjamini-Hochberg",
+  "alpha": 0.05,
+  "family": "all R2 directional tests (2 directions x 5 horizons = 10 permutation p-values)"
+ },
+ "registry_hash_sha256": "4d45154f17d891424004727cebc91775bdccd1c850493502395e812165ddf0fe"
+}

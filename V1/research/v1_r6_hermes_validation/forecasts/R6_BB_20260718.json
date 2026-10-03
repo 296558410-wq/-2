@@ -1,0 +1,52 @@
+{
+  "audit_id": "BB_20260718",
+  "timestamp": "2026-07-18T12:00:00Z",
+  "current_state": "COMPRESSION at the high-traffic swing-low pivot 4014.045 (23 touches in 240 bars, price within 0.07 of it, break_status INSIDE, reclaim NONE), immediately after a REJECTION event from the 4017.9 zone. M1 range contracting (range_percentile 0.035, ATR building 1.2->1.6), M5/M15 show expanding ranges with large upper wicks (rejection). Multi-timeframe agreement explicitly CONFLICT.",
+  "structure": "Post-crash V-recovery: H4/H1 show a deep selloff from 4061 (7/16) to a 3959.5 low (7/17 13:00-14:00), an aggressive reversal (H4 12:00 bar lower wick 31.15; H1 14:00 bar 43.96 range, strong up body), then an advance to 4021.2-4023.6 that was rejected. Price now consolidates in an approximate 4008-4023 band, sitting exactly on the SWING_LOW_36088 pivot at 4014.045 (side DN, age 327 bars). Higher-TF trend negative: H4 trend_20 -39.9, trend_50 -83.55; H1 trend_50 -48.16. Lower-TF short-term recovery positive: M1 trend_20 +2.94, M5 trend_20 +11.5. The 8-bar displacement is small (2.86), consistent with coiling rather than trending.",
+  "mechanism": "Compression at a high-traffic pivot before expansion: overhead supply at 4017.9-4023.6 (repeated rejection wicks) vs. underlying demand at 4008.4-4002.1 (H1 current bar lower wick 5.6; H4 12:00 bar huge lower wick). The frozen event sequence REJECTION -> ROTATION -> COMPRESSION (current dwell 2) indicates the rejection was absorbed and price is coiling around the 4014 fulcrum. L4 candidate mechanism is trend_continuation (supporting: price inside level, 8-bar displacement 2.86), invalidated by a decisive break of the active level — i.e., the down-leg that brought price to this pivot resumes only if 4014.045 breaks with follow-through; until then the level's 23-touch history argues for two-sided trade. State evolution analogs (COMPRESSION -> ACCEPTANCE / DECELERATION / continued COMPRESSION) are split and provide no clean resolution, consistent with genuine uncertainty.",
+  "primary_scenario": {
+    "scenario": "Downside resolution / higher-TF trend continuation: compression resolves downward. Price fails to reclaim 4017.9-4018.0, breaks the 4014.045 pivot decisively on M5 (range expansion down), and retests 4008.4 then 4002.1; if momentum builds, extension toward the 3987-3964 zone where the prior crash low and demand cluster sit.",
+    "confidence": 0.4,
+    "horizon": "INTRADAY",
+    "trigger": "Decisive M5 break and hold below 4013.5-4014.0 with range expansion (M1/M5 range_percentile rising off the floor) and an inability to reclaim the level on the retest; M15 printing a new leg low below 4011.8.",
+    "invalidation": "Reclaim and sustain above 4018.0 (M5 close basis), which converts the structure back to a hold-and-bounce at the pivot; a close above 4021.2-4023.6 would negate the downside thesis outright."
+  },
+  "alternative_scenario": {
+    "scenario": "Upside resolution / pivot holds and bounce: the 4014.045 level (23-touch support, never reclaimed-break) holds the first test, compression resolves upward, price reclaims 4017.9-4018.0 and retests 4021.2-4023.6, with extension toward H4 supply 4031-4037 — consistent with analog A19186 (COMPRESSION -> ACCEPTANCE at step 16).",
+    "confidence": 0.32,
+    "horizon": "INTRADAY",
+    "trigger": "M1/M5 hold above 4014 with range expansion up (contracting ranges releasing to the upside), a positive M5 close above 4018.0, or a sweep of 4011.8-4008.4 that is quickly reclaimed (demand absorption).",
+    "invalidation": "Break and hold below 4008.4 (M5 close basis), which opens 4002.1 and then the 3964-3959.5 lows, turning the whole recovery into a bear-flag continuation."
+  },
+  "expected_transition": "COMPRESSION -> EXPANSION (direction-resolving break of the 4008-4018 band), with the 4014.045 pivot as the fulcrum: a sustained close materially away from it defines the side. Pending the break, expect continued two-sided whipsaw with contracting ranges (ambiguity_rate_8 0.25, current dwell 2 bars suggests the coiling phase is early-to-mid).",
+  "direction": "DOWN",
+  "horizon": "INTRADAY",
+  "confidence": 0.4,
+  "counter_evidence": [
+    "Level SWING_LOW_36088 at 4014.045 has 23 touches in 240 bars (327-bar age) and break_status INSIDE / reclaim NONE — a heavily negotiated support that has historically held; price sits essentially on it (distance_atr 0.0119).",
+    "Aggressive dip-buying signature: H4 7/17 12:00 bar lower wick 31.15 on 44.6 range and H1 14:00 reversal bar (43.96 range, 30.67 body) show real demand near 3959-3964.",
+    "Lower-TF short-term momentum is up: M1 trend_20 +2.94, M5 trend_20 +11.5, 5-6 consecutive up bars into the 4017.9 high before the rejection; H1 current bar lower wick 5.6 shows buyers defending 4008.",
+    "Historical analogs are split: A24676 stays COMPRESSION, A30595 goes to DECELERATION, A19186 goes to ACCEPTANCE — no dominant resolution path.",
+    "Multi-timeframe agreement is explicitly CONFLICT (M1/M5 short-term up vs H4/H1 50-bar down), and cross-market series (DXY, VIX, UST10Y proxy) are all absent, removing confirmation sources."
+  ],
+  "invalidation": "If M5 closes and holds above 4018.0 (or the pivot fails to break on a genuine expansion attempt and 4021.2-4023.6 is reclaimed), the DOWN view is invalid and the structure resolves as a hold-and-bounce at the 4014 pivot.",
+  "data_quality_flags": [
+    "MULTI_TIMEFRAME_CONFLICT (L6 agreement=CONFLICT, never merged per rule)",
+    "CROSS_MARKET_UNAVAILABLE (DXY, VIX, UST10Y_PROXY_TNX all UNKNOWN/STALE; GLD, GC, CFTC_COT, ETF_FLOWS, NEWS, MACRO_EVENTS absent)",
+    "L2_LEVEL_DERIVED_ONLY (pivot swing levels, causal, not raw order book)",
+    "L4_MECHANISM_CANDIDATE_ONLY (trend_continuation not asserted as fact)",
+    "L5_STATE_LABELS_DERIVED (frozen C1 ontology + min-dwell lifecycle)",
+    "UST10Y_ABSENT (never upgraded to DIRECT; PROXY rule applies)",
+    "VOLATILITY_COMPRESSED (M1 range_percentile 0.035; ATR rising inside contraction)"
+  ],
+  "reasoning_trace": [
+    "Read PIT context only; no other analyst forecast accessed.",
+    "Established the big picture from H4/H1: 4061 -> 3959.5 crash low, violent V-reversal, rally to 4021-4024 rejected; H4 trend_20 -39.9 / trend_50 -83.55 keeps the higher-TF bias down.",
+    "Located price relative to L2: current close 4013.975 sits 0.07 above SWING_LOW_36088 (4014.045), 23 touches/240 bars, INSIDE, reclaim NONE -> high-traffic pivot, not a clean support.",
+    "Read L3/L5 event tape: REJECTION (from 4017.9) -> ROTATION -> COMPRESSION (dwell 2); M15 current bar upper wick 3.96 confirms overhead rejection; M1 range contracting confirms coiling.",
+    "Weighed L6 conflict: short-TF up (M1/M5 trend_20 positive, consecutive up streaks) vs long-TF down (H4/H1 trend_50 deeply negative) -> no merged direction; both resolutions plausible.",
+    "Checked analogs: split outcomes (hold COMPRESSION / DECELERATION / ACCEPTANCE) -> cannot use them to break the tie.",
+    "Chose DOWN (INTRADAY, confidence 0.4) on the higher-TF downtrend + REJECTION event + trend_continuation candidate, conditional on a decisive break of the 4014 pivot; kept a well-specified upside alternative at 0.32 because of the 23-touch support and aggressive dip-buying evidence.",
+    "Kept confidence low (<0.5) per rules: context is self-contradictory (TF conflict) and incomplete (no cross-market, no news/macro, no L2 depth)."
+  ]
+}

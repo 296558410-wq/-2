@@ -1,0 +1,78 @@
+{
+  "forecast_id": "HERMES_FULL_CTX_20260723T120000Z",
+  "timestamp": "2026-07-23T12:00:00Z",
+  "current_state": "XAUUSD is mid-sharp-intraday-selloff after peaking near 4165.8 (H4 high 2026-07-22 16:00). H1 shows 8 consecutive down bars (trend_20 -73.58, range expanding), H4 shows 7 consecutive down bars (trend_20 +33.79, range expanding), while M1/M5 are flat-to-up (trend_20 +4.17 / +0.57). The 12:00 H1 bar (open 4093.135, low 4072.755, close 4085.535) and the 12:00 H4 bar (low 4039.685, close 4057.715) carry very long lower wicks, showing aggressive rejection of the lows. Price sits just above a heavily-touched swing low at 4086.785 (19 touches in 240 bars, age 9 bars, break_status INSIDE, reclaim NONE), with a fresh ACCEPTANCE state label (dwell 1) after a long REJECTION run. Cross-market (all PROXY): DXY 101.291 (+0.06/+0.15 mildly firmer), VIX 18.15 (+0.27/+0.55 mildly firmer) - modest headwinds only; UST10Y UNKNOWN (stale); news/macro/ETF/COT absent.",
+  "dominant_structure": "Bearish intraday impulse (H1: 8 consecutive down, trend_20 -73.58, expanding range) pressing into a high-confluence swing-low support at 4086.785 (19 touches/240 bars, fresh ACCEPTANCE) - a 'down-impulse into major support' configuration, with the H4 uptrend (trend_20 +33.79) still intact above, so the higher-timeframe regime is unresolved and explicitly CONFLICT.",
+  "current_pressure": "Directional: net-down pressure from H1/M15 impulse (M15 trend_20 -34.44) partially absorbed at the 4086.785 level. Volatility: H1 and H4 ranges expanding (range_percentile 0.795 / 0.81), ATR elevated (H1 14.30). Liquidity-proxy: DXY mildly firmer (PROXY) and VIX mildly firmer (PROXY) are slight headwinds for gold; UST10Y unavailable (UNKNOWN).",
+  "primary_scenario": {
+    "scenario": "Support-defense at 4086.785: price retests the swing-low zone; given 19 touches in 240 bars, long lower-wick rejections at 4072.755/4039.685, and a fresh ACCEPTANCE label, the level holds and price rotates/consolidates in a 4086-4095 band, with bounces capped near 4095.185-4099.315 (recent session highs).",
+    "confidence": 0.55,
+    "horizon": "INTRADAY to SHORT_TERM (next several hours to ~1-2 sessions)",
+    "trigger": "Continued pressure below 4093-4095 with repeated intraday probes of 4086.785 that fail to close decisively below it; lower-wick rejections repeat.",
+    "invalidation": "A decisive close (beyond roughly one M15 ATR ~7.4) below 4086.785, and especially a close below the 4072.755 H1 low, with H1/H4 ranges still expanding; or a fast reclaim above 4099.315 that converts the structure to upside."
+  },
+  "alternative_scenario": {
+    "scenario": "Downside continuation / level breakdown: the intraday impulse extends; 4086.785 fails (consistent with the L4 trend_continuation candidate and H1's 8-down-bar momentum), targeting 4072.755 (H1 low) then the 4039.685-4057.715 H4 zone.",
+    "confidence": 0.3,
+    "horizon": "INTRADAY to SHORT_TERM",
+    "trigger": "Loss of 4086.785 with range expansion and no reclaim (reclaim_status remains NONE); momentum favors the L4 candidate (8-bar displacement -7.15, price inside level).",
+    "invalidation": "A quick reclaim of 4086.785 within a couple of bars plus fresh lower-wick rejection; or H1/M15 trend_20 turning positive."
+  },
+  "third_scenario": {
+    "scenario": "Upside rejection-bounce: the 4086.785 defense sparks a recovery leg back through 4095.185 toward 4099.315 (10:00 session high) and beyond, powered by short-covering, consistent with H4 uptrend (trend_20 +33.79) and the 18.03 lower wick on the H4 bar.",
+    "confidence": 0.15,
+    "horizon": "SHORT_TERM",
+    "trigger": "Strong bullish M1/M5 sequence from the 4086-4092 zone with M15 trend_20 flipping positive; reclaim of 4095.185.",
+    "invalidation": "Failure at 4093-4095 with renewed distribution and new lows below 4086.785."
+  },
+  "direction_bias": "NEUTRAL",
+  "expected_state_transition": "ACCEPTANCE -> ROTATION (most likely per historical analogs A310/A12220 which evolve from ACCEPTANCE into ROTATION, and A23519 which holds ACCEPTANCE then EXPANSION); REJECTION is the breakdown branch if 4086.785 breaks decisively; TREND continuation is only supported by the L4 candidate and requires the level break with expansion.",
+  "time_horizon": "SHORT_TERM",
+  "confidence": 0.55,
+  "supporting_evidence": [
+    "Swing low 4086.785 with 19 touches in 240 bars (DERIVED): repeatedly defended, high-confluence support; break_status INSIDE, reclaim NONE.",
+    "H1 sequence_flags: 8 consecutive down, range expanding, trend_20 -73.58 (RAW_GEOMETRY + DERIVED) - clear near-term down momentum.",
+    "Long lower wicks at 12:00 H1 (12.78) and 12:00 H4 (18.03): strong intra-bar rejection of the lows, i.e., active buyers near 4072.7 / 4039.7.",
+    "Fresh ACCEPTANCE label (dwell 1) after a long REJECTION run; L4 candidate trend_continuation with 8-bar displacement -7.15, price inside level (DERIVED).",
+    "H4 trend_20 +33.79 and trend_50 +42.70: higher-timeframe uptrend intact, so the selloff reads as a pullback until proven otherwise."
+  ],
+  "counter_evidence": [
+    "M1/M5 trend_20 are positive (+4.17 / +0.57): short-timeframe bounce already in progress, contradicting a pure continuation read.",
+    "H1 trend_50 +22.93 vs H4 trend_20 +33.79: the down-move is contained within an up regime; L6 explicitly flags CONFLICT, never merged into one direction.",
+    "Very long lower wicks (H1 12.78, H4 18.03) argue FOR buyers defending the lows, against a clean continuation breakdown.",
+    "ambiguity_rate_8 = 0.625: the frozen labeler itself is highly uncertain at this point.",
+    "Historical analogs from ACCEPTANCE (A310, A12220, A23519) evolve to ROTATION/REJECTION/EXPANSION, none to TREND - the only candidate mechanism (trend_continuation) is not corroborated by the state-lifecycle history.",
+    "DXY (PROXY) mildly firmer and VIX (PROXY) mildly firmer are only weak headwinds; with UST10Y UNKNOWN and no news/macro data, external confirmation is entirely absent."
+  ],
+  "trigger": "Repeated probes of the 4086.785 swing-low zone under continued sub-4093 pressure; watch whether each probe produces a lower-wick rejection (defense) or an expanding-range close below (breakdown).",
+  "invalidation": "Primary scenario (support-hold/rotation) is invalidated by a decisive close below 4086.785 - especially below 4072.755 - with H1/H4 range still expanding and no reclaim; also invalidated by an upside break above 4099.315 converting to trend-up.",
+  "change_my_mind": [
+    "A close below 4086.785 with expansion (beyond ~1 M15 ATR) and no reclaim flips me to DOWN (breakdown continuation toward 4072.755, then 4039.7-4057.7).",
+    "Reclaim and hold of 4095.185-4099.315 with H1/M15 trend_20 turning positive flips me to UP (rejection-bounce / H4 trend resumption).",
+    "UST10Y or news/macro data becoming available that shows a clear yield/rate direction would materially change the liquidity-proxy read (currently UNKNOWN)."
+  ],
+  "abstain": false,
+  "abstain_reason": "",
+  "reasoning_trace": [
+    "Read prompt and PIT context only; no other files accessed.",
+    "Mapped multi-timeframe: M1/M5 flat-to-up, M15/H1 down (8 consecutive down H1, trend_20 -73.58), H4 up (trend_20 +33.79) -> L6 CONFLICT, no merged direction.",
+    "Key anchor: swing low 4086.785, 19 touches/240 bars, INSIDE, no reclaim, fresh ACCEPTANCE after long REJECTION run.",
+    "Long lower wicks at H1 (12.78) and H4 (18.03) indicate strong rejection of lows - evidence against clean continuation.",
+    "L4 candidate trend_continuation is the only mechanism listed, but analogs and wicks counter it; ambiguity_rate_8 = 0.625.",
+    "Cross-market (PROXY): DXY and VIX mildly firmer = modest headwinds; UST10Y UNKNOWN; no news/macro - no external confirmation.",
+    "Chose NEUTRAL bias: momentum down vs major defended support vs intact H4 uptrend. Primary = support-defense/rotation (0.55), alternative = breakdown (0.30), third = rejection-bounce (0.15).",
+    "Set explicit, checkable invalidation conditions on the 4086.785 level and 4072.755/4099.315 extremes."
+  ],
+  "questions": {
+    "A": "What is happening? XAUUSD is in a sharp intraday selloff (H1 8 consecutive down bars, trend_20 -73.58, expanding range) that has carried price from the mid-4130s/4165.8 H4 peak down to a 12:00 H1 low of 4072.755 and an H4 low of 4039.685. The current bars show very long lower wicks (buyers rejecting the lows), and price is sitting just above a swing-low support at 4086.785 that has been touched 19 times in 240 bars. The frozen state labeler just flipped from a long REJECTION run to a fresh ACCEPTANCE (dwell 1), with an 8-bar ambiguity rate of 0.625. DXY and VIX (both PROXY) are mildly firmer; UST10Y and news/macro are unavailable.",
+    "B": "What is the dominant structure? A bearish intraday impulse (H1: 8 consecutive down, expanding range, trend_20 -73.58; M15 trend_20 -34.44) pressing into a high-confluence swing-low support at 4086.785 (19 touches, age 9 bars, INSIDE, no reclaim). This is a 'down-impulse into major support' configuration. The H4 timeframe remains up (trend_20 +33.79, trend_50 +42.70), so the structure is multi-timeframe CONFLICT: the selloff is a pullback within an H4 uptrend unless the level breaks.",
+    "C": "What pressures are building? Directional: net-down pressure from the H1/M15 impulse, partially absorbed at 4086.785 - each touch adds fuel for either a breakdown or a snap-back. Volatility: H1 and H4 ranges expanding (range_percentile 0.795/0.81) with elevated ATR (H1 14.30, H4 31.18), implying larger expected moves. Liquidity-proxy: DXY 101.29 (+0.06/+0.15) and VIX 18.15 (+0.27/+0.55), both PROXY and only mildly firmer - modest headwinds, not decisive; UST10Y UNKNOWN, no macro/news data to confirm.",
+    "D": "What mechanisms could explain it? (1) trend_continuation (L4 candidate, DERIVED): supported by 8-bar displacement -7.15 and price inside the active level; invalidated only by a decisive break of the level. Partially supported but contested - the lower wicks and the H4 uptrend argue against it. (2) Mean-reversion/rotation at support: consistent with 19 touches, fresh ACCEPTANCE, and long lower wicks, and with analogs A310/A12220 evolving to ROTATION; plausible but not listed as a formal candidate. (3) H4-trend resumption after pullback: consistent with H4 trend_20 +33.79; plausible if 4086.785 holds. No single mechanism is asserted; L4 note says candidates only.",
+    "E": "What is the strongest evidence? (1) Swing low 4086.785 with 19 touches in 240 bars - a well-defined, repeatedly defended level, currently INSIDE with no reclaim (DERIVED). (2) H1 8 consecutive down bars with expanding range and trend_20 -73.58 - unambiguous near-term down momentum (RAW_GEOMETRY + DERIVED). (3) Long lower wicks on the 12:00 H1 (12.78) and H4 (18.03) bars - aggressive rejection of the lows. (4) Fresh ACCEPTANCE state at the level after a long REJECTION run. (5) H4 trend_20 +33.79 / trend_50 +42.70 keeping the higher-timeframe regime up.",
+    "F": "What is the strongest counter-evidence? (1) M1/M5 trend_20 are positive (+4.17/+0.57) - a bounce is already underway against continuation. (2) The huge lower wicks themselves are evidence buyers defend the lows. (3) H4/H1 trends are CONFLICT: the down move sits inside an up regime; labeling it continuation may be wrong-regime. (4) ambiguity_rate_8 = 0.625 - the frozen labeler is uncertain. (5) All three historical analogs from ACCEPTANCE evolve to ROTATION/REJECTION/EXPANSION, none to TREND, so the only formal mechanism candidate lacks life-cycle corroboration. (6) DXY/VIX headwinds are too mild to confirm a risk-off gold selloff.",
+    "G": "What could happen next? PRIMARY: support-defense at 4086.785 - repeated probes fail to close decisively below it, price rotates/consolidates in the 4086-4095 band, with bounces capped near 4095.185-4099.315 (session highs). Confidence 0.55, horizon INTRADAY to SHORT_TERM, invalidated by a decisive expanding-range close below 4086.785 (or a break above 4099.315).",
+    "H": "What is the alternative? (1) Breakdown continuation: 4086.785 fails with expansion and no reclaim, targeting 4072.755 (H1 low) then the 4039.685-4057.715 H4 zone (confidence 0.30) - the branch the L4 trend_continuation candidate supports. (2) Upside rejection-bounce: defense of the level sparks a recovery through 4095.185 toward 4099.315+ (confidence 0.15), consistent with the intact H4 uptrend and the H4 bar's 18.03 lower wick.",
+    "I": "What would invalidate the forecast? For the primary support-hold/rotation scenario: a decisive close below 4086.785 (roughly one M15 ATR, ~7.4) with H1/H4 ranges still expanding and reclaim_status staying NONE - especially a close below 4072.755 - or conversely an upside conversion with a close above 4099.315. Any of these means the stated scenario (defense + rotation) is wrong.",
+    "J": "What would change your mind? A close below 4086.785 with expansion and no reclaim flips me to DOWN (targets 4072.755, then 4039.7-4057.7). A reclaim-and-hold of 4095.185-4099.315 with H1/M15 trend_20 turning positive flips me to UP (H4 trend resumption). If UST10Y or news/macro data became available (currently UNKNOWN/absent) showing a clear yield or risk direction, I would re-weight the liquidity-proxy argument accordingly."
+  }
+}

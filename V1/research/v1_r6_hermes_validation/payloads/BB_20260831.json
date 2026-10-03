@@ -1,0 +1,51 @@
+{
+ "audit_id": "BB_20260831",
+ "timestamp": "2026-08-31T12:00:00+00:00",
+ "current_state": "COMPRESSION with REJECTION event at t (dwell 3 bars); price probing swing-high resistance SWING_HIGH_39224 at 4453.465 (level_side UP, break_status INSIDE, 25 touches in 240 bars) after a ~200-point H4 selloff from ~4612 to 4396 low and a recovery into the 4453-4463 zone",
+ "structure": "Multi-timeframe CONFLICT: M1/M5 (and M15 trend_20) bullish short-term impulse (consecutive_up 6/8, range expanding) against strongly bearish H1/H4 (trend_20 -69.0 / -171.2, trend_50 -143.8 / -63.4). Retracement from the 4396 low is stalling under the heavily-tested swing high 4453.465: M15 current bar shows a large upper wick (3.79) with near-zero body (rejection), H1 current bar upper wick 8.76 rejecting at 4463.855. H4 shows an intact down-leg sequence (consecutive_down 7, range_expanding). L6 agreement = CONFLICT; higher timeframes dominate the frame.",
+ "mechanism": "trend_continuation candidate (L4, DERIVED, not asserted): price inside the active swing-high level after an 8-bar displacement of 10.83 suggests the bounce is a corrective retracement within the higher-timeframe downtrend; the REJECTION event at a 25-touch level in a downtrend context is consistent with a lower-high formation. Compression state means resolution is pending; the higher-TF bearish bias conditions the expected break direction.",
+ "primary_scenario": {
+  "scenario": "DOWN: rejection at the 4453-4463 resistance zone holds; price rolls over from the lower high and resumes the H1/H4 downtrend, targeting retest of the 4396 low and below",
+  "confidence": 0.55,
+  "horizon": "INTRADAY",
+  "trigger": "loss of the M15/M1 support shelf near 4452-4453 with a decisive hourly close back under 4453.465 level zone, or a fresh lower high under 4463.855 followed by downside momentum expansion",
+  "invalidation": "hourly close above 4463.855 (H1 high) — the retracement extends instead of rolling over"
+ },
+ "alternative_scenario": {
+  "scenario": "UP: compression resolves upward — the worn 25-touch level breaks, momentum carries the recovery through 4463.855 toward the 4471-4472 Aug-31 high and beyond as a deeper retracement of the H4 down-leg",
+  "confidence": 0.45,
+  "horizon": "INTRADAY",
+  "trigger": "decisive break of 4463.855 on range expansion (M1/M5 momentum already expanding; M5 consecutive_up 8)",
+  "invalidation": "rejection under 4453.465 with expanding M15/M5 downside ranges before any break above 4463.855"
+ },
+ "expected_transition": "COMPRESSION -> directional break within a few bars; the REJECTION event at a heavily-tested swing high inside a higher-TF downtrend makes a downward resolution the higher-probability outcome, but the level's 25 touches and short-term upward momentum keep the alternative live",
+ "direction": "DOWN",
+ "horizon": "INTRADAY",
+ "confidence": 0.55,
+ "counter_evidence": [
+  "Level SWING_HIGH_39224 has 25 touches in 240 bars — a heavily-tested level is prone to wearing out and breaking, which would favor the UP scenario",
+  "M1/M5 momentum is strongly positive (consecutive_up 6/8, range expanding) and has been pushing price up through the session",
+  "DXY flat/neutral (99.542, change_8 +0.028) and VIX low (15.28) provide no bearish cross-market tailwind for gold",
+  "Historical analogs are mixed: A19754 stays COMPRESSION into REJECTION, A26216 transitions to TREND, A32609 to ROTATION then TREND — no dominant resolution direction",
+  "State ambiguity is low (0.125) but the event is DERIVED from the frozen C1 labeler, not directly observed"
+ ],
+ "invalidation": "Hourly close above 4463.855 invalidates the bearish lower-high thesis; conversely, a decisive H1 close below 4452.255 would confirm the DOWN scenario early. UST10Y proxy is unavailable, so rate-driven repricing cannot be monitored.",
+ "data_quality_flags": [
+  "UST10Y_PROXY_TNX UNKNOWN (STALE_OR_NOT_COVERED) — rate context absent, never fabricated",
+  "DXY and VIX are PROXY (Yahoo 5m, instrument definition UNKNOWN) — treat as secondary only",
+  "L2 level DERIVED (pivot swing, causal) — geometry-based, not order-flow",
+  "L3/L4 state and mechanism labels DERIVED (frozen C1 labeler / candidate list), not asserted fact",
+  "L6 multi-timeframe agreement CONFLICT — no merged direction per §15",
+  "GLD/GC/COT/ETF_FLOWS/NEWS/MACRO_EVENTS absent per §16/§75"
+ ],
+ "reasoning_trace": [
+  "1. Read only the PIT context CTX_20260831T120000Z.json; no other analyst output seen (blind).",
+  "2. Established the dominant frame: H4 down-leg from ~4612 (Aug 28) to 4396 (Aug 31 03:00), trend_20 -171; H1 also deeply negative — the higher-timeframe regime is bearish.",
+  "3. Located price: recovering from 4396 into 4453-4463, now sitting INSIDE the swing-high level 4453.465 with 25 touches — a lower-high retracement context.",
+  "4. Read the t-bar event: REJECTION at M15 (upper wick 3.79, body 0.11) and H1 (upper wick 8.76) — active supply at the zone.",
+  "5. Weighed the compression state (dwell 3, only 8-bar state window) — direction pending, but the rejection-at-resistance-in-downtrend configuration skews resolution downward.",
+  "6. Checked cross-market: no confirming bearish driver (DXY flat, VIX low) and UST10Y missing — this caps confidence.",
+  "7. Checked analogs: mixed paths (compression persistence vs trend up) — further caps confidence and keeps UP alive.",
+  "8. Concluded: DOWN bias, INTRADAY horizon, confidence 0.55, with the hourly close above 4463.855 as the clean invalidation."
+ ]
+}

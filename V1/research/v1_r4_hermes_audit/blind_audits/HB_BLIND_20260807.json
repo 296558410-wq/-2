@@ -1,0 +1,55 @@
+{
+  "audit_id": "HB_20260807T120000Z",
+  "timestamp": "2026-08-07 12:00:00+00:00",
+  "current_state": "EXPANSION with ACCEPTANCE event (L3/L5), dwell 4 bars, prior state REJECTION for 4 bars (transition REJECTION->EXPANSION). Price 4319.2 (M1 close) sitting INSIDE swing high 4320.585 (touch_count_240=4, distance_atr=0.059). M5 12:00 bar closed 4323.285 (body_ratio 0.87, range_percentile 0.94) marginally above the level; M1 close 4319.205 below it. All timeframes trend_20 positive and increasing (M1 3.27 / M5 16.66 / M15 36.86 / H1 87.44 / H4 287.69), MTF agreement AGREE.",
+  "structure": "Multi-timeframe up-alignment: every TF shows positive trend_20/trend_50 with H1 at 8 consecutive up bars, M5/M15 range_expanding with bullish momentum at the bar of the snapshot (M5 body_ratio 0.87). Key resistance: swing high 4320.585 (DERIVED, 4 touches in 240 bars, break_status INSIDE, reclaim NONE) — price is exactly at the decision level. Below: H1 11:00 bar low 4307.835 and 08:00 low 4282.735; M15 support zone 4302-4305. Immediate support 4316-4317. H1 current bar shows upper wick 6.65 with range_contracting flag; H1 11:00 bar was a doji (body_ratio 0.063) with a large 8.01 lower wick — intraday indecision beneath the level. CAVEAT: the H4 current bar (high 4371.695, low 4300.825, close 4341.305) is internally inconsistent with aligned M1/M5/H1 bars (max H1 high 4327.645) and is treated as unreliable geometry.",
+  "mechanism": "Candidate mechanism (L4, DERIVED, candidates only — not asserted): trend_continuation, supported by 'price inside level, 8-bar displacement 14.12'; invalidation per candidate: decisive break of the active level. Cross-check: DXY drifting lower (change_8 -0.069, PROXY) is mildly supportive for gold; VIX 15.2 falling (PROXY) implies no fear premium; UST10Y unavailable (UNKNOWN). Historical analogs (state evolution only) show EXPANSION persisting through steps 4-8 in all three analogs, then REJECTION at step 12 (A11710, A28608) or REJECTION->TREND at step 16 (A20151), consistent with a continuation-with-late-stage-rejection-risk reading.",
+  "primary_scenario": {
+    "scenario": "Upside continuation/expansion: price accepts above the 4320.585 swing high on M5/H1, breaks the level decisively and extends the intraday up-leg toward the upper reaches of the current H1/H4 expansion (target area beyond 4327-4340, with H4 upper structure ~4371 flagged as unreliable).",
+    "confidence": 0.55,
+    "horizon": "INTRADAY",
+    "trigger": "M5/M15 close above 4320.585 with follow-through (no immediate rejection candle), sustained acceptance above 4323-4325, ideally accompanied by a further DXY decline.",
+    "invalidation": "Decisive downside break/rejection: a close back below 4307.8-4308 (H1 11:00 low) or loss of the 4313-4316 zone with momentum (a failed test of 4320.585 followed by a strong bearish M5 bar) invalidates the continuation and flips the frame to rejection/mean-reversion."
+  },
+  "alternative_scenario": {
+    "scenario": "Rejection at the 4320.585 level: the 4-touch resistance holds, the M5 poke above is faded (H1 doji at 11:00, ambiguity_rate_8 0.5, price INSIDE the level on M1), and price mean-reverts into the 4302-4308 support zone, re-entering REJECTION state consistent with the pre-expansion state history and analog late-stage rejections.",
+    "confidence": 0.4,
+    "horizon": "INTRADAY",
+    "trigger": "Failure to hold a break of 4320.585: a rejection wick or bearish engulfing on M5/M15 at/above the level, or an immediate loss of 4316-4317 after touching the level.",
+    "invalidation": "M1/M5 close above 4323-4325 with subsequent higher lows (no retest below 4316) — a confirmed acceptance above the level invalidates the rejection view."
+  },
+  "expected_transition": "EXPANSION -> TREND if the 4320.585 level is accepted (break-and-hold, higher lows), or EXPANSION -> REJECTION if the level rejects. The near-term expected path is continued EXPANSION for a few more bars (analogs show EXPANSION at steps 4-8) resolving at the level; outcome uncertainty is high because price is exactly at a 4-touch swing with an ambiguity rate of 0.5.",
+  "direction": "UP",
+  "horizon": "INTRADAY",
+  "confidence": 0.55,
+  "counter_evidence": [
+    "Price is INSIDE swing high 4320.585 (M1 close 4319.205 below it) with 4 touches in 240 bars — a well-tested resistance directly overhead.",
+    "H1 11:00 bar is a doji (body_ratio 0.063) with a large 8.01 lower wick — selling/rejection into the highs on the completed H1 bar.",
+    "ambiguity_rate_8 = 0.5 — half of the last 8 bars' state history is ambiguous; state history shows 4 bars of REJECTION immediately before this expansion.",
+    "All three historical analogs eventually transition to REJECTION (A11710 at step 12, A28608 at step 16; A20151 at 12 then TREND at 16) — expansion may be late-stage.",
+    "H4 current bar is internally inconsistent with aligned M1/M5/H1 data (high 4371.695 / low 4300.825 / close 4341.305 not reproducible from lower TF bars) — degrades confidence in H4-level geometry.",
+    "UST10Y (a PROXY series, ^TNX) is UNKNOWN/STALE — no rate-side confirmation; DXY and VIX are PROXY (Yahoo, instrument definition UNKNOWN)."
+  ],
+  "invalidation": "For the UP view: a decisive rejection of 4320.585 — a strong bearish M5/M15 close back below 4313-4316 or a close below 4307.8 (H1 11:00 low) with range expansion to the downside. For the DOWN/rejection view: confirmed acceptance above 4323-4325 with higher lows (no retest of 4316).",
+  "data_quality_flags": [
+    "RAW_GEOMETRY + DERIVED (L1 klines)",
+    "DERIVED (L2 swing levels, causal)",
+    "DERIVED (L3/L5 frozen behavior label and lifecycle states)",
+    "DERIVED (L4 mechanism candidates — candidates only, not asserted fact)",
+    "PROXY (DXY, VIX — Yahoo, instrument definition UNKNOWN)",
+    "PROXY (UST10Y = ^TNX per rules) — unavailable, recorded UNKNOWN/STALE_OR_NOT_COVERED",
+    "UNKNOWN/ABSENT (GLD, GC, CFTC_COT, ETF_FLOWS, NEWS, MACRO_EVENTS — never fabricated)",
+    "CONTRADICTION: H4 current bar geometry not reproducible from aligned M1/M5/H1 bars (high 4371.695, low 4300.825, close 4341.305) — treated as unreliable; confidence reduced accordingly"
+  ],
+  "reasoning_trace": [
+    "Read only the PIT context (CTX_20260807T120000Z.json) and the HERMES-B prompt; no other analyst output or future data consulted.",
+    "Established the regime: L3/L5 EXPANSION + ACCEPTANCE, dwell 4, preceded by 4 bars of REJECTION; ambiguity_rate_8 0.5.",
+    "Checked MTF alignment (L6): trend_20 positive and monotonically increasing across M1->H4, agreement AGREE -> structural up bias.",
+    "Located the decision level: swing high 4320.585 (DERIVED, 4 touches, INSIDE, distance 0.059 ATR); noted M5 12:00 close 4323.285 marginally above while M1 close 4319.205 sits below — price straddling the level.",
+    "Weighed momentum evidence: M5 12:00 bar strong bullish (body_ratio 0.87, range_percentile 0.94, range_expanding) vs completed H1 doji with 8.01 lower wick at 11:00 (indecision at highs).",
+    "Checked cross-market (L7): DXY mildly down (supportive, PROXY), VIX low and falling (no fear premium, PROXY), UST10Y unavailable (UNKNOWN) -> no strong independent confirmation; kept macro influence neutral-to-mildly-supportive.",
+    "Reviewed historical analogs (state evolution only): EXPANSION persists through steps 4-8 then REJECTION/TREND at 12-16 -> continuation likely short-term but with late-stage rejection risk.",
+    "Detected and flagged the H4 current-bar inconsistency vs lower TFs; excluded its extreme geometry (4371.695) from the primary target read and lowered confidence.",
+    "Synthesized: primary UP continuation above 4320.585 (confidence 0.55, INTRADAY) with an explicit rejection alternative (0.40); not forced to be directional but evidence (MTF agreement + M5 momentum + weak DXY) leans up at this snapshot; invalidation defined at both 4307.8/4313-4316 (down) and 4323-4325 (up)."
+  ]
+}

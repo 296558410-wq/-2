@@ -1,0 +1,52 @@
+{
+  "audit_id": "BB_20260910",
+  "timestamp": "2026-09-10T12:00:00Z",
+  "current_state": "DECELERATION (dwell 2) following a 6-dwell REJECTION sequence; frozen behavior label TREND; multi-timeframe bearish alignment (trend_20 negative on all of M1/M5/M15/H1/H4; H4 trend_50 = -73.57). Price is coiling just below overhead swing-high resistance 4384.335 after recovering from lows near 4323-4375.",
+  "structure": "Unanimous downtrend across all timeframes (M1 trend_20 -3.74, M5 -9.14/-41.34, M15 -34.10, H1 -23.95/-19.62, H4 -33.59/-73.57; L6 agreement=AGREE, never merged). Nearest level is SWING_HIGH 4384.335 on the UP side, distance only 0.13 ATR, touch_count_240=21, break_status INSIDE, reclaim NONE - i.e. price sits directly beneath a heavily-tested supply shelf. Intraday texture: H4 current bar has a large lower wick (low 4323.915, close 4357.925) showing buyers defending the lows, but H1 closed below open with an 11.8 upper wick (4384.335 area rejected). M1 range_expanding with consecutive_up=4 vs consecutive_down=7; M5/M15 contracting.",
+  "mechanism": "Candidates in context: trend_continuation (supporting: 8-bar displacement -11.51; price inside level). Bearish interpretation: established downtrend with a coiling/decelerating phase underneath an overhead supply level; the dominant risk is rejection at 4384.335 and resumption of the downtrend. DECELERATION state cuts momentum but the frozen label remains TREND, so the default expectation is trend resumption absent a decisive break.",
+  "primary_scenario": {
+    "scenario": "Downside continuation: price is rejected at the 4384.335 swing-high shelf (21 touches, only 0.13 ATR away), deceleration resolves as bearish trend resumption, targeting retest of recent lows (4374-4375) then the 4358/4323 zone seen on H4.",
+    "confidence": 0.5,
+    "horizon": "SHORT_TERM",
+    "trigger": "A bearish rejection candle at 4384.335 followed by a decisive move below 4375 (M1/M5 recent lows), ideally with range expansion.",
+    "invalidation": "A sustained close above 4384.335 (SWING_HIGH reclaimed) would negate the continuation thesis and shift structure toward an upside breakout."
+  },
+  "alternative_scenario": {
+    "scenario": "Upside breakout / short-covering bounce: DECELERATION resolves as a squeeze through the 4384.335 shelf (touch_count 21 = many failed attempts, coil now tight at 0.13 ATR), lifting price toward 4390-4400+ as a counter-trend move within the larger downtrend. Consistent with analog A967 (DECELERATION -> BREAKOUT_ATTEMPT).",
+    "confidence": 0.3,
+    "horizon": "SHORT_TERM",
+    "trigger": "Sustained break and hold above 4384.335 with range expansion and positive momentum at M1/M5.",
+    "invalidation": "Failure to hold above 4384.335 and a rollover below 4374-4375 (rejection confirmed)."
+  },
+  "expected_transition": "DECELERATION -> TREND (bearish resumption) if the 4384.335 shelf holds; alternatively DECELERATION -> BREAKOUT_ATTEMPT/EXPANSION if 4384.335 breaks with conviction. Historical analogs from this exact state are split (A967 to BREAKOUT_ATTEMPT; A12762 to TREND then ROTATION; A27168 to TREND then REJECTION/EXPANSION), so transition is genuinely two-sided.",
+  "direction": "DOWN",
+  "horizon": "SHORT_TERM",
+  "confidence": 0.45,
+  "counter_evidence": [
+    "state_v2 = DECELERATION (downward momentum is decelerating, not accelerating); H4 current bar shows a large lower wick (34.01) indicating buyer defense near the lows.",
+    "M1 is range_expanding with consecutive_up=4 - short-term buying pressure is building under the resistance.",
+    "L2 nearest level is a SWING_HIGH at only 0.13 ATR above; touch_count_240=21 suggests a heavily-tested shelf that could snap in a squeeze (breakout risk to the upside).",
+    "Historical analog A967 resolves from this exact DECELERATION state to BREAKOUT_ATTEMPT (upside path).",
+    "UST10Y proxy unavailable (STALE_OR_NOT_COVERED) - the dominant macro driver is missing, so rate-driven gold impulse cannot be assessed."
+  ],
+  "invalidation": "A decisive, sustained close above 4384.335 (SWING_HIGH reclaim) combined with a state transition away from bearish TREND would invalidate the DOWN call; conversely, only a confirmed acceleration below 4374-4375 strengthens it.",
+  "data_quality_flags": [
+    "UST10Y_PROXY_TNX UNKNOWN (stale/not covered) - rate driver absent, never fabricated.",
+    "DXY and VIX are PROXY (Yahoo 5m, instrument definition UNKNOWN); not upgraded to DIRECT.",
+    "L2 level is DERIVED (pivot swing levels, causal), not raw order-book fact.",
+    "L4 mechanism is a DERIVED candidate only, explicitly not asserted as fact (section 13).",
+    "Absent series (GLD, GC, CFTC_COT, ETF_FLOWS, NEWS, MACRO_EVENTS) recorded as absent; no fabrication.",
+    "Historical analogs provide state-evolution only; no returns/labels are implied.",
+    "Context version v1r3-r1; symbol XAUUSD; price geometry RAW + DERIVED."
+  ],
+  "reasoning_trace": [
+    "All five timeframes (M1/M5/M15/H1/H4) show negative trend_20 and negative trend_50 (H4 trend_50 = -73.57): unambiguous multi-timeframe bearish alignment.",
+    "Frozen behavior label is TREND and the L4 candidate mechanism is trend_continuation (8-bar displacement -11.51) - the context itself leans bearish continuation.",
+    "Price sits at 4379-4384, directly under the 4384.335 SWING_HIGH supply shelf at only 0.13 ATR distance; until that level breaks, the path of least resistance is down.",
+    "DECELERATION (dwell 2, after 6 REJECTION bars) tells me downside momentum is fading, which lowers my directional conviction and opens the door to a squeeze, but does not flip the multi-TF trend.",
+    "H4's large lower wick shows dip-buying; H1's large upper wick shows supply at 4384. Both are consistent with a tight coil at a decision point rather than a clean trend day.",
+    "Historical analogs from this exact state are split (upside breakout vs trend resumption), so I assign a meaningful weight to the alternative and keep confidence moderate.",
+    "Missing UST10Y and all macro/news series means I cannot rule out a rate-driven impulse; this further caps confidence.",
+    "Verdict: DOWN (trend continuation) primary at moderate-low confidence, with a live upside-breakout alternative; direction is structural (multi-TF), not a momentum call."
+  ]
+}

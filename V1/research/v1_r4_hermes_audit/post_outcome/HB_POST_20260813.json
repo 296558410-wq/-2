@@ -1,0 +1,43 @@
+{
+  "audit_id": "HB_POST_20260813",
+  "timestamp": "2026-09-27T22:52:00+08:00",
+  "correct_calls": [
+    "The compression would resolve this session (state would leave COMPRESSION): actual transitioned COMPRESSION->REJECTION (transition 1).",
+    "Identification of the swing-low level 4393.565 as the key battleground: the outcome resolved around this level (downward rejection).",
+    "Flagging H1/H4 down-drift (H1 trend_20 -33.46, consecutive_down 8) as the dominant counter-pressure: the downside materialized.",
+    "The L4 'trend_continuation' candidate being the principal risk: the bearish resolution is what actually occurred."
+  ],
+  "wrong_calls": [
+    "direction_bias UP: actual direction was DOWN.",
+    "Primary scenario (hold 4388-4390, reclaim 4393.565, press to 4400-4401): did not occur; hermes_scenario_covered_actual = false.",
+    "Expected state transition COMPRESSION -> EXPANSION (analog A20861): actual next state was REJECTION; the A20861 REJECTION step was cited in passing but not adopted as the expected path.",
+    "Trigger 'decisive M15 close above 4393.565': never triggered; the level resolved on the DN side instead."
+  ],
+  "right_but_wrong_reason": [
+    "Called the H4 12:00 bar a decisive, significant candle: correct that it mattered, but it was read as a bullish recovery ('buyers defended deeply' off 4352.755) whereas its thrust was bearish and the market continued down.",
+    "Judged the setup a coiling point about to resolve into a directional move: correct that state resolved (COMPRESSION->REJECTION), but argued the wrong side (UP/EXPANSION vs actual DOWN/REJECTION)."
+  ],
+  "direction_ok_state_wrong": true,
+  "state_ok_direction_wrong": false,
+  "should_have_abstained": true,
+  "invalidation_occurred": true,
+  "prior_concerns_materialised": null,
+  "hindsight_detected": true,
+  "hindsight_evidence": [
+    "H4 bar labeled 2026-08-13 12:00 (open-labeled, spans 12:00-16:00) low 4352.755 / close 4383.485 used as observed 'strongest evidence' (buyers defended deeply): these extremes printed after as_of 12:00:00Z and were unknowable at forecast time.",
+    "H1 bar labeled 12:00 low 4382.715 cited in counter-evidence and change_my_mind as a known level: post-as_of extreme.",
+    "Intraday support 4388.265 taken from M5/M15 12:00-labeled bars (spans 12:00-12:05 / 12:00-12:15): post-as_of extreme used as a current level.",
+    "The claim of a 'bearish high-to-low reversal within the H4 12:00 bar' requires the bar's full range, which was not knowable at 12:00:00Z."
+  ],
+  "outcome_alignment_verdict": "INCORRECT",
+  "reasoning_trace": [
+    "Read PIT context as_of 2026-08-13 12:00:00Z and Hermes-A forecast; actual_outcome shows next state REJECTION, direction DOWN, transition 1, hermes_scenario_covered_actual=false.",
+    "Direction check: Hermes-A primary bias was UP (reclaim 4393.565, target 4400-4401); actual direction DOWN -> primary direction wrong.",
+    "Scenario check: no Hermes-A scenario covered the actual path; primary (recovery) failed, alternative (bearish continuation) matched direction but the outcome state is REJECTION, not the continued down-TREND/retest path described -> direction_ok_state_wrong=true, state_ok_direction_wrong=false.",
+    "Invalidation check: primary invalidation was a decisive DN break of 4393.565 plus loss of 4388.265 / 4368-4370 with retest of 4352.755; actual DOWN/REJECTION indicates the level broke downward and the recovery thesis invalidated -> invalidation_occurred=true (full retest depth not independently verified from payload).",
+    "Hindsight check: bars labeled 12:00 are open-labeled and span forward in time (H4 12:00 spans to 16:00; H1 to 13:00; M15 to 12:15; M5 to 12:05); Hermes-A cited their extremes (4352.755 low, 4382.715 low, 4388.265 low, closes) as observed current data, which only makes sense knowing the post-12:00Z present -> hindsight_detected=true.",
+    "Abstention check: with hindsight evidence stripped, the call rested on a genuine multi-TF conflict (H1 down vs M5/M15 up), confidence 0.42, uninformative cross-market, and no clean low-TF confirmation; an independent auditor should have abstained rather than commit UP -> should_have_abstained=true.",
+    "No prior adversarial auditor concerns were present in the payload -> prior_concerns_materialised=null.",
+    "Verdict: primary direction and state both wrong, scenario uncovered, hindsight present -> INCORRECT."
+  ]
+}

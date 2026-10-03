@@ -1,0 +1,96 @@
+{
+ "schema": "hermes_decision_v1",
+ "utc_ts": "2026-09-21T07:02Z",
+ "cycle": "2026-09-21T07:02Z",
+ "decision_id": "DEC-2026-09-21T07:02Z",
+ "symbol": "XAUUSD",
+ "mid": 4350.01,
+ "decision": "SHORT",
+ "confidence": 0.45,
+ "bias": "SHORT-lean 0.45 for NEW risk —— 四档全区间 (er 0.061-0.169) 里卖上沿, 不是追空趋势。理由不是'跌得多', 而是买盘被证伪: 本 session 两笔已平多单的 MFE 仅 +3.07 / +2.90 点 (入场后根本没有顺向延伸), 且 M15 高点机械下移 4362.15->4355.95->4354.72->4354.92->4353.42。现价 4350.01 距均线墙上沿 4355.0 仅 5.0pt, 涨进 [4355.0,4359.5] 即触价成交。",
+ "opportunity": "本轮唯一可执行动作 = 在 M15 MA200 4356.584 / H1 MA50 4357.761 / M15 MA20 4358.226 三线重叠的均线墙上注册 fade SHORT (slot 空: broker positions_get = 0)。新计划: SHORT {zone_touch:[4355.0,4359.5]}, SL 4362.5 (08:30 服务器时摆动高 4362.15 之上 0.35pt), 目标 4346.5 x0.40 / 4342.0 x0.35 / 4335.0 x0.25, qty 0.01, expR 1.73 (保守按 zone 下沿 4355.0 成交), p 0.45, EV +0.19R。gap-to-tradable = 只有价格: pkg m15_live last_mid 4348.37 (MT5 mid 4350.01) 需上涨 6.6pt (pkg) / 5.0pt (MT5) 触及 zone 下沿 4355.0 (≈0.11-0.15% = 0.7-0.9x M15 ATR 0.161%), 一个正常 M15 小时内可达; 其余条件全就绪 (数据新鲜、spread 0.322bps << 1.0bps 上限、qty 0.01 在 0.01-0.05、notional ≈4357 USD << 25000、margin_free 1952.94、时段 OPEN、slot 1/1 free)。台面备选(本轮不注册): (i) 直接放空破位 {price_cross_down:4342.5} (破 H4 MA20 4344.667/H1 MA200 4344.026/09-18 前低 4342.62 四重支撑) —— 结构上更干净但保守成交口径 (zone 下沿) 下加权仅 1.4R 左右, EV 边际, 且需先破今日低点 4345.80, 未发生; (ii) 继续接多 —— 本 session 已在 4376.17/4359.79/4351.74 三次接多全部被 3-8pt 下影扫掉 (-20.91 USD), 且两单 MFE 仅 +3 点 = 买盘已被市场证伪, 不再重复同一错误。",
+ "opportunity_mechanism": "【区间内的低位反抽 + 均线墙拒绝: 卖'动能枯竭的反弹'】。结构面: 今日自 4383.42 单边阴跌至 4345.80 (-37.6pt), M15 高点机械下移 (4362.15 -> 4355.95 -> 4354.72 -> 4354.02 -> 4354.92 -> 4353.42), M15 完全处于三条均线之下 (4350 < MA20 4358.226 < MA200 4356.584 < MA50 4369.827), RSI14 37.77, pos_in_range 8.1, 且刚创出 60 根新低 4345.80; H1 连续 8 根收低 (4366.75 -> 4377.35 -> 4364.05 -> 4359.23 -> 4356.05 -> 4351.08 -> 4353.30 -> 4349.94), 收于 MA20 4367.312 / MA50 4357.761 之下, 仅靠 MA200 4344.026 支撑。买方证据缺失是关键: 本 session 两笔已平多单 POS-20260921T0248Z (entry 4359.79) 与 POS-20260921T053913 (entry 4351.74) 的 mfe 分别只有 +2.90 / +3.07 点 —— 在支撑带入场后价格几乎没有顺向延伸, 说明 4342-4352 这条'需求带'目前只提供缓冲、不提供推力。而上方 4355.0-4358.5 是 M15 MA200 4356.584 + H1 MA50 4357.761 + M15 MA20 4358.226 的三线重叠墙, 今日 06:00Z/06:45Z 两次反弹 (高点 4355.95 / 4354.92) 均在该墙下沿被压回。四档 er 全 < 0.20 = 区间机制, 因此正确动作是在该墙的下沿 fade 做空、止损压在墙外 + 摆动高 4362.15 之上 4362.5、目标回区间下沿与四重支撑 (4346.5/4342.0/4335.0)。触发用实时 zone_touch, 触价即由 engine 市价成交, 不等收盘确认; 若价格越过 4362.8 (结构失效) 则 invalidation 先行取消, 不逆势硬扛。",
+ "mtf_agreement": "mixed_range, 偏空但不构成趋势共振: M15 空头排列 (4350 < MA20 4358.226 < MA200 4356.584 < MA50 4369.827; RSI 37.77; pos_in_range 8.1; 刚出 60 根新低 4345.80) —— 最空; H1 偏空 (收 4349.94 < MA20 4367.312 / MA50 4357.761, 但 > MA200 4344.026; RSI 42.89; pos 69.7), 连续 8 根收低; H4 中性 (4349.94 > MA20 4344.667 > MA50 4341.943, 被 MA200 4412.126 压顶; RSI 50.64; pos 55.2); D1 中性偏空 (4349.94 < MA20 4406.43, > MA50 4295.34; RSI 49.0; pos 54.0)。四档 er (pkg): D1 0.091 / H4 0.061 / H1 0.131 / M15 0.169 —— 全部 < 0.20 = 区间, 无趋势对齐。结论: 只在结构边缘 fade, 不追单边; 卖 4355-4359.5 的墙、目标封在 4346.5-4335.0, 不指染 4330 以下。",
+ "answers_14": {
+  "1": "市场状态: XAUUSD mid 4350.01 (MT5 tick 07:02:50Z, bid 4349.94 / ask 4350.08, spread 0.14pt = 0.322bps; pkg m15_live quote_latest last_mid 4348.37, spread_bps_now 0.32, tick_rate 155/min, abnormal z 0.84 正常)。data_quality ok: live_days 11, live_ticks 2,114,263, context_days 35, gaps[]。时段 OPEN (前置门 armed=true / open=true, 周一 15:02 CST, exit 0)。仓位: 0 OPEN (broker positions_get 空), demo 160759434 balance 1952.94 / equity 1952.94 / margin 0 / margin_free 1952.94。MT5 重算 07:02Z: M15 c4349.94 MA20 4358.226 / MA50 4369.827 / MA200 4356.584 (RSI14 37.77, hi60 4397.07, lo60 4345.80, pos 8.1, ATR14 0.161%, high_recent20 4372.59, low_recent20 4345.80); H1 MA20 4367.312 / MA50 4357.761 / MA200 4344.026 (RSI 42.89, hi60 4399.70, lo60 4235.21, pos 69.7, ATR 0.278%, low_recent20 4342.62); H4 MA20 4344.667 / MA50 4341.943 / MA200 4412.126 (RSI 50.64, hi60 4443.01, lo60 4235.21, pos 55.2, ATR 0.812%); D1 MA20 4406.43 / MA50 4295.34 / MA200 4541.478 (RSI 49.0, hi60 4696.78, lo60 3942.72, pos 54.0, ATR 2.239%)。阻力(入场/风险侧): 4355.0 (M15 近两小时高点密集区 4354.02-4355.95 上沿) -> 4356.58 (M15 MA200) -> 4357.76 (H1 MA50) -> 4358.23 (M15 MA20) -> 4362.15 (08:30 服务器时摆动高) -> 4367.31 (H1 MA20) -> 4369.83 (M15 MA50) -> 4372.59 (M15 high_recent20)。支撑(目标侧): 4348.37 (pkg 现价) -> 4345.80 (今日低点 = M15 lo60) -> 4344.67 (H4 MA20) -> 4344.03 (H1 MA200) -> 4342.62 (09-18 17:00Z H1 前低) -> 4341.94 (H4 MA50) -> 4339.67 / 4334.35 (09-17/09-18 H4 前低群) -> 4235.21 (H1 lo60)。",
+  "2": "一致性: MIXED / 区间主导, 无趋势对齐。pkg er: D1 0.091 / H4 0.061 / H1 0.131 / M15 0.169 —— 全部 < 0.20 = 区间。方向读数分歧但位置干净: M15 最空 (价在三条均线之下、RSI 37.77、pos 8.1、刚出 60 根新低), H1 偏空 (连续 8 根收低、在 MA20/MA50 之下、仅靠 MA200 4344.03), H4 中性偏多 (价 > MA20 > MA50), D1 中性 (pos 54.0, RSI 49.0, 价在 MA20 之下 56.5pt)。故第 13 项取【区间上沿 fade SHORT】而非趋势追空 —— 卖的是 4355.0-4358.5 三线重叠墙, 目标只到区间下沿 4346.5-4335.0。H4 结构仍偏多是本单最大逆风, 因此止损放在摆动高 4362.15 之上 (4362.5) 并在 4362.8 设 invalidation。",
+  "3": "M15变化: 自上一轮 06:47Z 以来 (MT5 服务器时 = UTC+3): 09:45Z(=06:45Z) o4351.91 h4354.92 l4350.10 c4353.30 v2185 —— 上一轮注册 LONG 时的反弹高点 4354.92 仍被压在 M15 MA200 4356.58 之下; 10:00Z(=07:00Z, 形成中) o4353.42 h4353.42 l4345.80 c4349.94 v538 —— 开盘即最高, 随后直落 7.6pt 创出 60 根新低 4345.80 (低于 06:15Z 的 4346.16), 尾段收回 4349.94。读数: (a) 高点序列继续下移 (4354.92 -> 4353.42), 且新 bar 开盘即最高 = 卖压前置; (b) 低点被刷新 (4346.16 -> 4345.80) = 4342-4348 需求带持续被消耗而非被争夺; (c) 但 4345.80 亦被立刻收回 4.1pt, 说明下沿仍是缓冲区、不是破位 —— 这正是本单选择'卖上方墙'而非'追空破位'的原因; (d) 上一轮 LONG 计划 TP-20260921T0647Z (zone[4342.5,4346.5]) 尚未触发 (07:02Z mid 4348.37 高于 zone 上沿 4346.5), 本单与其不重叠、不冲突 (单仓约束下先触者成交)。",
+  "4": "机会 / gap-to-tradable: 只有一件事可做 —— 在均线墙下沿注册 fade SHORT (slot 空, 0 持仓, 单仓约束满足)。缺口 = 价格位移: pkg m15_live 4348.37 需上涨 6.63pt 触及 zone 下沿 4355.0 (≈0.15% = 0.9x M15 ATR14 0.161%; 按 MT5 mid 4350.01 则差 5.0pt = 0.11%) —— 一个正常 M15 小时内可达; 一旦 mid 落入 [4355.0,4359.5] 即由 engine 市价成交, 不要求收盘确认。其余全就绪: 数据新鲜 (pkg m15_live + MT5 tick 07:02:50Z)、spread 0.322bps vs 1.0bps 上限、qty 0.01 在 0.01-0.05、notional ≈4357 USD vs 25000 上限、margin_free 1952.94、时段 OPEN、slot 1/1 free、invariants 每轮由 engine 校验。台面备选(本轮不注册): (i) 破位追空 {price_cross_down:4342.5} SL 4347.0 —— 需先破今日低 4345.80 与 H4 MA20/H1 MA200/09-18 前低三重支撑, 未发生, 且保守成交口径下 R 仅 ~1.4, EV 边际; (ii) 继续在 4342.5-4346.5 接多 —— 本 session 三次接多全灭且两笔 MFE 仅 +3 点, 买盘已被证伪, 不重复。",
+  "5": "机制: 【低位反抽撞上三线重叠墙, 且反弹是动能枯竭型】。今日单边阴跌 -37.6pt (4383.42 -> 4345.80), M15 高点机械下移; 关键在于买方证据缺失 —— 本 session 两笔已在支撑带入场的多单 MFE 仅 +2.90 / +3.07 点 (POS-20260921T0248Z entry 4359.79、POS-20260921T053913 entry 4351.74), 即 4342-4352 这条'需求带'只提供缓冲不提供推力, 反弹一次次在 M15 MA200/H1 MA50/M15 MA20 (4356.58/4357.76/4358.23) 之下熄火 (06:00Z 高点 4355.95、06:45Z 高点 4354.92、07:00Z 高点 4353.42)。四档 er 全 < 0.20 = 区间机制, 于是正确动作是在该墙下沿卖、止损压在墙外与摆动高 4362.15 之上 (4362.5)、目标回区间下沿与四重支撑 (4346.5/4342.0/4335.0)。触发用实时 zone_touch 触价即成交; 若价格收上 4362.8 则该墙被实体突破、结构失效, invalidation 先行取消, 不逆势硬扛。",
+  "6": "触发条件[具体价]: SHORT {zone_touch:[4355.0,4359.5]} —— mid 进入即市价成交。当前 pkg mid 4348.37 (MT5 mid 4350.01), 距下沿 4355.0 差 6.63pt (MT5 差 5.0pt)。计划参数: SL 4362.5, 目标 4346.5 x0.40 / 4342.0 x0.35 / 4335.0 x0.25, qty 0.01, max hold M15*8 (2h)。注: zone 宽 4.5pt 是刻意设计 —— engine 的僵尸清扫对 SHORT 判据为 mid < zone_lo - 2*band = 4355.0 - 9.0 = 4346.0, 现价 4348.37 通过 (余量 2.37pt); 若 zone 收窄到 4356.0-4358.5 (band 2.5) 则阈值 = 4351.0, 现价会立即被误判 price_left_setup 作废, 故不采用窄 zone。",
+  "7": "失效[具体价]: (a) 计划失效条件 = price_cross_up 4362.8 —— 越过 08:30 服务器时摆动高 4362.15, 说明均线墙被实体突破、'高点下移'结构被打破, 计划即时取消, 不做逆势接刀; (b) 结构失效 = 4369.83 (M15 MA50) / 4372.59 (M15 high_recent20) 被收上 -> 立场必须由 SHORT-lean 转回多头修复; (c) 机会失效(不是本单失效) = mid < 4346.0 (引擎 stale 阈值): 价格直接破位下行而未先反抽到 4355.0, 本墙 fade 机会已过, 计划机械作废, 由下一轮以破位逻辑重建, 不追价补空。",
+  "8": "预期收益R: 保守按 zone 下沿 (对空单最差价) 4355.0 成交, 1R = 4362.5 - 4355.0 = 7.5pt (= 7.50 USD on 0.01 手 = 余额 1952.94 的 0.38%)。阶梯 (0.40/0.35/0.25): T1 4346.5 = +8.5pt = 1.13R; T2 4342.0 = +13.0pt = 1.73R; T3 4335.0 = +20.0pt = 2.67R -> 加权 = 0.4*8.5 + 0.35*13.0 + 0.25*20.0 = +12.95pt = 1.73R (≈ +12.95 USD)。若成交落在 zone 中部 4357.2 (1R 5.03pt), 同一阶梯 = 2.13R/3.02R/4.41R -> 加权 2.97R; 故报告 R 取最保守口径 1.73。",
+  "9": "预期损失R: 满额止损 = 1R = 7.5pt = 7.50 USD = 余额 1952.94 的 0.38% (qty 0.01, notional ≈4357 USD << 25000 上限)。本 session 已实现三笔止损: POS-20260921T0132Z -10.77 USD、POS-20260921T0248Z -7.36 USD、POS-20260921T053913 -2.78 USD (06:19:55Z broker_sl @4348.96, ticket 2376622197); 连续亏损计数 = 3, 若本单再亏则达 4 (risk 层阈值), 因此本轮仍只用 0.01 手最小档, 不加码。纪律: 亏损不加仓 / 不摊平 / 不向亏损方向补单; 持仓期间不再注册任何新计划(单仓约束); 止损随单 (broker 硬 SL), stop_authority=initial, 不手动移止损、不手动平仓。",
+  "10": "成本数值: spread 0.322bps (4350 上约 0.14pt ≈ 0.14 USD/oz) + slippage 0.30bps (约 0.13pt) = 0.622bps 往返 ≈ 0.27pt ≈ 0.27 USD per 0.01 手 = 0.036R (按 1R 7.5pt)。demo 执行成本可忽略; spread 0.322bps 远低于 risk_check 的 1.0bps 上限, 不构成决策障碍。EV 已计入该成本。",
+  "11": "净EV算式: EV = p*1.73R - (1-p)*1.00R - 0.036R (成本)。取 p = 0.45 (四档全区间 er 0.061-0.169 = 边缘 fade 基础胜率; 入场带 4355.0-4358.5 为 M15 MA200 + H1 MA50 + M15 MA20 三线重叠墙, 今日两次反弹 (4355.95 / 4354.92) 均在该墙下方熄火; M15 空头排列 + H1 连续 8 根收低 + 刚创 60 根新低支持下行动能; 折价来自 H4 结构仍偏多 (价 > H4 MA20 > H4 MA50) 与 D1 区间中部无方向) -> EV = 0.7785 - 0.5500 - 0.0360 = +0.19R > 0, 盈亏平衡 p = (1+0.036)/(1+1.73) = 0.380。敏感性: p = 0.50 -> +0.31R; p = 0.42 -> +0.14R; p = 0.40 -> +0.10R (仍为正)。故本单为正 EV 边缘交易, 只做 0.01 手最小档, 不加码。",
+  "12": "再现: 同族样本 (今日 4340-4376 区间内, 两次向 4355-4358 墙反弹均失败): 09:00Z(06:00Z) bar 高点 4355.95 -> 收 4352.95; 09:45Z(06:45Z) 高点 4354.92 -> 收 4353.30; 10:00Z(07:00Z) 开盘即最高 4353.42 -> 直落 4345.80 —— 三次反抽均未站上 4355, 墙成立。反向样本(必须记住的教训): 本 session 三次在 4342-4376 '需求带'接多 (0132Z@4376.17 -10.77 USD、0248Z@4359.79 -7.36 USD、0539Z@4351.74 -2.78 USD) 全部被 3-8pt 下影扫掉, 且后两单 MFE 仅 +2.90 / +3.07 点 = 接多方在当下节奏里没有跟随盘。教训复用: (a) 同一逻辑连续第三次失败后不再重复, 改为站在卖方一侧; (b) 卖点选在均线墙下沿而非追在支撑带上方; (c) 止损必须放在摆动高 4362.15 之外 (7.5pt = 1.07x M15 ATR), 不再重复 2.7pt 级别的过窄止损; (d) 若价格先破 4345.80/4342.62 下行, 本机会作废, 下一轮改用破位逻辑重建, 不追价。",
+  "13": "SHORT (主动注册新计划; slot 已空, 0 持仓)。决策依据: 4TF 区间机制下, 价格反抽至 M15 MA200/H1 MA50/M15 MA20 三线重叠墙 (4355.0-4358.5) 即 fade 做空, 触价即成交的 zone_touch 计划带硬 SL 4362.5 与阶梯目标 4346.5/4342.0/4335.0, 保守口径 EV +0.19R > 0 (p 0.45, 盈亏平衡 p 0.380)。不选 LONG 的理由: 4342-4352 '需求带'已被本 session 三次证伪 (三笔多单止损 -20.91 USD, 两单 MFE 仅 +3 点), 且 M15 高点仍在机械下移、刚创 60 根新低。不做 WAIT 的理由: 不是为了等收盘确认才观望 —— 触发价已写死在 4355.0, 涨到就机械成交, 现在离可交易只差 5-6.6pt 的价格位移。",
+  "14": "空仓。在 M15MA200/H1MA50/M15MA20 三线墙注册 SHORT zone_touch[4355.0,4359.5], SL4362.5 目标 4346.5/4342.0/4335.0, expR1.73 p0.45 EV+0.19R, 0.01手, 现价距触发 5.0pt; 理由: 三次接多被证伪+高点下移, 卖反弹不追空。"
+ },
+ "state_summary": "XAUUSD mid 4350.01 (MT5 tick 07:02:50Z bid 4349.94/ask 4350.08, spread 0.322bps = 0.14pt; pkg m15_live quote_latest last_mid 4348.37, tick_rate 155/min, abnormal z 0.84 normal), data_quality ok (live_days 11, live_ticks 2,114,263, context_days 35, gaps[]), MARKET OPEN (gate armed=true/open=true, Mon 15:02 CST, exit 0). POSITIONS: 0 OPEN (broker positions_get empty). Last session events: POS-20260921T0132Z -10.77 USD, POS-20260921T0248Z -7.36 USD (broker_sl 4352.43), POS-20260921T053913 -2.78 USD (broker_sl 4348.96 @06:19:55Z); account 160759434 balance 1952.94 / equity 1952.94 / margin 0 / margin_free 1952.94. MT5 levels 07:02Z: M15 c4349.94 MA20 4358.226/MA50 4369.827/MA200 4356.584 RSI 37.77 hi60 4397.07 lo60 4345.80 pos 8.1 ATR14 0.161%; H1 MA20 4367.312/MA50 4357.761/MA200 4344.026 RSI 42.89 pos 69.7 ATR 0.278% low_recent20 4342.62; H4 MA20 4344.667/MA50 4341.943/MA200 4412.126 RSI 50.64 pos 55.2; D1 MA20 4406.43/MA50 4295.34 RSI 49.0 pos 54.0. M15 bars (server=UTC+3): 08:30 o4357.66 h4362.15 l4352.06 c4354.74 v2405; 08:45 o4354.82 h4356.09 l4349.06 c4351.08 v2182; 09:00 o4350.94 h4355.95 l4349.42 c4352.95 v2417; 09:15 o4353.01 h4354.72 l4346.16 c4347.30 v2284; 09:30 o4347.32 h4354.02 l4347.01 c4351.68 v2183; 09:45 o4351.91 h4354.92 l4350.10 c4353.30 v2185; 10:00 forming o4353.42 h4353.42 l4345.80 c4349.94 v538. NEW PLAN this cycle: SHORT zone_touch[4355.0,4359.5], SL 4362.5, invalidation price_cross_up 4362.8, targets 4346.5x0.40/4342.0x0.35/4335.0x0.25, qty 0.01, expR 1.73, p 0.45, EV +0.19R, max hold M15*8. Coexisting plan TP-20260921T0647Z (LONG zone[4342.5,4346.5], not overlapping, still PENDING at mid 4348.37).",
+ "data_note": "所有触发/止损/目标价均取 MT5 LIVE-QUOTE 空间报价 (执行场所, demo 账户 160759434), 来自本轮只读 MT5 探针 07:02:50Z (tick, M15/H1/H4/D1 OHLC+tick_volume, MA-RSI-hi60-lo60-pos_in_range-ATR, positions_get, account_info, history_deals_get)。方法与前几轮一致。注意: MT5 服务器时 = UTC+3 (探针标签 '10:02' 为服务器时, 对应 07:02Z)。WORKFLOW CAVEAT (沿用上一轮结论): run_state/state_package_latest.json 的 MA/结构序列源自 data/live_fxtm/ticks_*.parquet, 与 MT5 执行源在相同时间戳上相差约 +7..+18pt (例: pkg M15 last_close 4364.14 vs MT5 07:00Z 4349.94), 因此本决策不使用任何 pkg 派生价格做价位; pkg 的 m15_live overlay (quote_latest) 与 MT5 一致 (4348.37 vs 4350.01), 是 engine.py 喂给触发判定与持仓管理的 ctx.last_mid。run_state/candle_latest.json 已过期 (last ts 2026-09-07 12:15) —— 忽略, 不使用 close_above/close_below/m15_close_in_zone 类触发。仓位状态: broker positions_get()=0, run_state/positions 下两单均已 CLOSED, slate 视为空。",
+ "position_note": "FLAT at decision time: 0 broker positions, margin 0. 本周期注册新计划 (单仓槽位 1/1 free): SHORT 0.01 手, 不加仓不摊平, 不手动干预 bracket, stop_authority=initial。若同轮另有 TP-20260921T0647Z (LONG) 先触发, 单仓约束会使本单在触发时以 exec_fail:position_busy 作废, 属预期行为。",
+ "m15_change": "自上一轮 06:47Z 以来 (MT5 服务器时 09:45/10:00): 09:45Z(=06:45Z) o4351.91 h4354.92 l4350.10 c4353.30 v2185 —— 高点 4354.92 仍被压于 M15 MA200 4356.58 之下; 10:00Z(=07:00Z, 形成中) o4353.42 h4353.42 l4345.80 c4349.94 v538 —— 开盘即最高, 直落 7.6pt 刷新 60 根新低 (4345.80 < 06:15Z 的 4346.16), 尾段收回 4.1pt。读数: (a) 高点序列继续下移 (4354.92 -> 4353.42) 且 07:00Z bar 开盘即最高 = 卖压前置; (b) 低点被刷新 = 需求带被持续消耗; (c) 下沿仍被收回 = 缓冲区未破, 故本单卖上方墙而非追空; (d) 上一轮 LONG 计划 zone[4342.5,4346.5] 未触发 (07:02Z mid 4348.37 高于上沿), 本单与其不重叠。",
+ "gap_to_tradable": "唯一缺口 = 价格位移: pkg mid 4348.37 需上涨 6.63pt 进入 zone 下沿 4355.0 (≈0.15% = 0.9x M15 ATR14 0.161%; MT5 mid 4350.01 则差 5.0pt)。触价即由 engine 市价成交 (zone_touch, 不等收盘确认)。其余条件全就绪: 数据新鲜、spread 0.322bps vs 1.0bps 上限、qty 0.01 在 0.01-0.05 区间、notional ≈4357 USD vs 25000 上限、margin_free 1952.94、时段 OPEN、slot 1/1 free。反向情形: 若价格直接下行跌破 4346.0, 引擎 stale 判据 (mid < zone_lo-2*band) 机械作废本计划, 本轮不再有可交易 setup, 由下一轮以破位逻辑重建; 若价格上破 4362.8, invalidation 先行取消, 不逆势硬扛。",
+ "cost_note": "spread 0.322bps (0.14pt) + slippage 0.30bps (0.13pt) = 0.622bps 往返 ≈ 0.27pt ≈ 0.27 USD per 0.01 手 ≈ 0.036R (1R = 7.5pt, 保守按 zone 下沿 4355.0 成交计)。risk_check 1.0bps 上限未被突破。demo 执行成本可忽略; EV 已计入。",
+ "ev_note": "新计划 EV = 0.45*1.73R - 0.55*1.00R - 0.036R = +0.19R > 0 (盈亏平衡 p 0.380); 敏感性: p 0.50 -> +0.31R, p 0.42 -> +0.14R, p 0.40 -> +0.10R。取 p = 0.45 的理由: 四档全区间 (er 0.061-0.169) + 入场带为 M15 MA200/H1 MA50/M15 MA20 三线重叠墙且今日两次反抽 (4355.95 / 4354.92) 均在其下熄火 + M15 空头排列与连续 8 根 H1 收低 + 刚创 60 根新低; 折价来自 H4 结构仍偏多 (价 > H4 MA20 > H4 MA50) 与 D1 区间中部无方向。若成交落在 zone 中部 4357.2 (1R 5.03pt), 加权 R 升至 2.97, EV +0.78R。亏损不加仓: 本 session 已三连止损 -20.91 USD, 本轮仍只 0.01 手最小档。",
+ "plan": {
+  "direction": "SHORT",
+  "entry_zone": {
+   "low": 4355.0,
+   "high": 4359.5
+  },
+  "trigger_condition": {
+   "zone_touch": [
+    4355.0,
+    4359.5
+   ]
+  },
+  "invalidation_condition": {
+   "price_cross_up": 4362.8
+  },
+  "stop_logic": {
+   "type": "above_0818_swing_high_and_three_ma_wall",
+   "level_price": 4362.5
+  },
+  "target_logic": {
+   "levels": [
+    {
+     "price": 4346.5,
+     "frac": 0.4
+    },
+    {
+     "price": 4342.0,
+     "frac": 0.35
+    },
+    {
+     "price": 4335.0,
+     "frac": 0.25
+    }
+   ]
+  },
+  "expected_R": 1.73,
+  "expected_win_probability": 0.45,
+  "probability_source": "Range regime on all four TFs (pkg er D1 0.091 / H4 0.061 / H1 0.131 / M15 0.169, all < 0.20) => edge-fade base rate at a structure edge; the entry band 4355.0-4358.5 is a three-MA confluence (M15 MA200 4356.584 / H1 MA50 4357.761 / M15 MA20 4358.226) and today's two counter-bounces both died under it (06:00Z high 4355.95 -> close 4352.95; 06:45Z high 4354.92 -> close 4353.30; 07:00Z bar opened at its high 4353.42 and dropped to 4345.80); M15 is below all three MAs with RSI 37.77 and just made a fresh 60-bar low, and H1 printed 8 consecutive lower closes. Discounted from a ~0.50-0.55 wall-rejection hold rate for (a) the H4 structure still constructive (4349.94 > H4 MA20 4344.667 > H4 MA50 4341.943), (b) D1 mid-range with RSI 49.0 (pos 54.0) giving no directional tailwind, and (c) the session's live proof that the buy side is exhausted: both closed longs had MFE of only +3.07 / +2.90 pt (entries 4351.74 / 4359.79).",
+  "estimated_cost": {
+   "spread_bps": 0.322,
+   "slippage_bps": 0.3,
+   "roundtrip_bps": 0.622,
+   "roundtrip_usd_per_0.01lot": 0.27
+  },
+  "spread_bps": 0.322,
+  "slippage_bps": 0.3,
+  "expected_net_EV": {
+   "value": 0.19,
+   "units": "R",
+   "note": "0.45*1.73R - 0.55*1.00R - 0.036R = +0.19R (breakeven p 0.380); 1R = 7.5pt (conservative fill at zone low 4355.0 vs stop 4362.5) = 7.50 USD on 0.01 lot = 0.38% of the 1952.94 demo balance; sensitivity p 0.50 -> +0.31R, p 0.42 -> +0.14R, p 0.40 -> +0.10R. LONG alternative (re-buying the 4342-4346 shelf) rejected: that shelf has now failed three times this session (-20.91 USD total) with MFE only +3pt, so p there is ~0.40 and EV ~ +0.09R while repeating a proven-losing pattern. Breakdown SHORT {price_cross_down 4342.5} noted as the next-cycle fallback, not registered now (needs 4345.80/4342.62 to break first; conservative fill gives only ~1.4R)."
+  },
+  "maximum_holding_time": "M15*8",
+  "qty_lots": 0.01,
+  "plan_id": "TP-20260921T0702Z"
+ },
+ "plan_id": "TP-20260921T0702Z",
+ "plan_source": "new_registration: slot free (broker 0 positions); coexisting TP-20260921T0647Z (LONG zone[4342.5,4346.5]) left intact - it was registered by the prior cycle, does not overlap this zone, and is still PENDING at mid 4348.37. This cycle's plan is the sell-side fade of the three-MA wall, deliberately given a 4.5pt-wide zone so it survives the engine's staleness sweep (SHORT stale iff mid < zone_lo - 2*band = 4346.0; current mid 4348.37 passes with 2.37pt to spare).",
+ "model": "deepseek/deepseek-v4-flash",
+ "prompt_version": "hermes-trader-m15-cycle/2026-09-12"
+}

@@ -1,0 +1,30 @@
+{
+ "schema": "v3_execution_mode/1",
+ "ts_utc": "2026-09-24T17:00:49.280531+00:00",
+ "active_mode": "DEMO_CALIBRATION",
+ "modes": {
+  "RESEARCH_READONLY": {
+   "order_send": "blocked",
+   "live": false,
+   "note": "research read-only; order_send and order_check hard-blocked in code"
+  },
+  "DEMO_CALIBRATION": {
+   "order_send": "allowed",
+   "live": false,
+   "account": 160766418,
+   "server": "ForexTimeFXTM-Demo01",
+   "symbol": "XAUUSD",
+   "magic": 90004,
+   "note": "explicit demo-calibration mode; every send re-validated by assert_demo_calibration_safe()"
+  },
+  "LIVE": {
+   "order_send": "blocked",
+   "note": "not implemented in this task; assert_live_disabled() always enforced"
+  }
+ },
+ "invariants": {
+  "LIVE_CANNOT_BE_ENABLED_BY_ORDER_SEND": true,
+  "NO_FALLBACK_ACCOUNT": true,
+  "RETIRED_ACCOUNT_IS_NOT_A_FALLBACK": 160764551
+ }
+}

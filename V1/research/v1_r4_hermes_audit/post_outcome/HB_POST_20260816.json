@@ -1,0 +1,38 @@
+{
+ "audit_id": "POST_20260816",
+ "timestamp": "2026-09-27T22:52:00+08:00",
+ "correct_calls": [
+  "State call CORRECT: COMPRESSION persisted (actual_next_state COMPRESSION, actual_transition 0), matching Hermes-A's frozen label and its third scenario (prolonged COMPRESSION, no resolution).",
+  "Third scenario (Prolonged COMPRESSION, direction undefined, 0.2 confidence) was the one that covered the actual outcome (hermes_scenario_covered_actual = true).",
+  "Structural read CORRECT: post-trend consolidation rather than reversal base - no state transition occurred, so the 'consolidation after an up-move' framing survived.",
+  "2-of-3-analogs-persist-in-COMPRESSION reasoning was consistent with the outcome: the compression did not resolve into a new state."
+ ],
+ "wrong_calls": [
+  "direction_bias = UP was WRONG: actual_direction = DOWN.",
+  "Primary scenario (upside skew: hold above 4373.145, re-inflation, grind toward 4376-4386, possible ~4396) did NOT materialise - no upside resolution.",
+  "The breakout_pressure/ACCEPTANCE read as a basis for upside was not validated by the outcome."
+ ],
+ "right_but_wrong_reason": [
+  "COMPRESSION persistence was predicted (third scenario) but Hermes-A's main narrative treated the state as a springboard for UP; the persistence actually accompanied a DOWN drift, so the correct state call rested on the wrong directional rationale.",
+  "The 'volatility contracting / pent-up expansion' framing was direction-neutral yet was used to justify an UP lean; contraction did lead to movement, but DOWN."
+ ],
+ "direction_ok_state_wrong": false,
+ "state_ok_direction_wrong": true,
+ "should_have_abstained": true,
+ "invalidation_occurred": false,
+ "prior_concerns_materialised": true,
+ "hindsight_detected": false,
+ "hindsight_evidence": [],
+ "outcome_alignment_verdict": "PARTIALLY_CORRECT",
+ "reasoning_trace": [
+  "PIT read: only PAYLOAD_POST_20260816.json used; Hermes-A saw COMPRESSION + ACCEPTANCE, close 4374.205 above swing-high 4373.145, H4 up-context, all cross-market series absent.",
+  "Actual: COMPRESSION -> COMPRESSION (transition 0), direction DOWN; hermes_scenario_covered_actual = true, i.e. the third (prolonged-compression) scenario covered the outcome, not the primary UP scenario.",
+  "State dimension: Hermes-A's state call (COMPRESSION persists, no imminent resolution) was correct; actual_transition 0 confirms no TREND/REJECTION breakout.",
+  "Direction dimension: bias UP contradicted by actual_direction DOWN; the alternative REJECTION branch directionally anticipated down but its trigger (reclaim + rejection bar, retest ~4365/4350s) is unconfirmed at state level since COMPRESSION held.",
+  "Internal tension: forecast claimed bias UP while its own third scenario said 'direction remains undefined' at 0.2 confidence - with CONFLICT multi-TF agreement, absent externals and a coin-flip directional signal, directional abstention was warranted even though the state call was sound.",
+  "Invalidation: no state transition and no downside expansion into a new state occurred, so the ~4370 downside-expansion invalidation is treated as NOT triggered (payload lacks price resolution to verify a close-reclaim of 4373.145; treated conservatively as false given transition 0).",
+  "Prior concerns: the counter-evidence Hermes-A itself logged (negative M1/M5/M15 trends_20, sharp 21:58 down-wick at the level, marginal 0.215-ATR acceptance) materialised in the DOWN direction.",
+  "No hindsight: all claims traceable to the PIT snapshot; no post-hoc justification found.",
+  "Verdict: PARTIALLY_CORRECT - correct state persistence and honest uncertainty framing, but the headline directional call (UP) was wrong."
+ ]
+}

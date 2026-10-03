@@ -1,0 +1,185 @@
+{
+ "inputs_rows": {
+  "M5": 3945,
+  "M15": 1328,
+  "H1": 335
+ },
+ "H_instrument": {
+  "published": {
+   "persistence_M15": 0.1447,
+   "churn_M15": 0.6473,
+   "dur_median_M15": 1.0,
+   "dur_mean_M15": 1.544,
+   "trans_entropy_M15": 3.0114
+  },
+  "reproduced": {
+   "persistence_M15": 0.1447,
+   "churn_M15": 0.6473,
+   "dur_median_M15": 1.0,
+   "dur_mean_M15": 1.544,
+   "trans_entropy_M15": 3.0114
+  },
+  "abs_diff": {
+   "persistence_M15": 0.0,
+   "churn_M15": 0.0,
+   "dur_median_M15": 0.0,
+   "dur_mean_M15": 0.0,
+   "trans_entropy_M15": 0.0
+  },
+  "INSTRUMENT_GATE": "PASS"
+ },
+ "B_granularity": {
+  "M5": {
+   "bars": 3945,
+   "distinct_states": 11,
+   "label_entropy": 2.8759,
+   "churn": 0.6126,
+   "dur_bars_median": 1.0,
+   "dur_bars_mean": 1.632,
+   "dur_hours_median": 0.083,
+   "persistence": 0.1136,
+   "no_defined_rate": 0.0596
+  },
+  "M15": {
+   "bars": 1328,
+   "distinct_states": 11,
+   "label_entropy": 3.0087,
+   "churn": 0.6473,
+   "dur_bars_median": 1.0,
+   "dur_bars_mean": 1.544,
+   "dur_hours_median": 0.25,
+   "persistence": 0.1447,
+   "no_defined_rate": 0.067
+  },
+  "H1": {
+   "bars": 335,
+   "distinct_states": 11,
+   "label_entropy": 3.1269,
+   "churn": 0.6707,
+   "dur_bars_median": 1.0,
+   "dur_bars_mean": 1.489,
+   "dur_hours_median": 1.0,
+   "persistence": 0.1954,
+   "no_defined_rate": 0.0687
+  }
+ },
+ "A_ontology_conflict": {
+  "assignment_source_counts_M15": {
+   "REJECTION": 363,
+   "EXPANSION": 199,
+   "COMPRESSION": 172,
+   "TREND": 141,
+   "ROTATION": 133,
+   "ACCEPTANCE": 108,
+   "NO_DEFINED_STATE": 89,
+   "DECELERATION": 60,
+   "BREAKOUT_ATTEMPT": 39,
+   "BREAKOUT_CONFIRMATION": 15,
+   "BREAKOUT_FAILURE": 9
+  },
+  "source_switch_churn": 0.6473,
+  "trend_or_expansion_with_rejection_bars": 154,
+  "dead_branch_reversal_attempt_hits": 0,
+  "note": "REVERSAL_ATTEMPT branch is unreachable because the frozen labeler never emits REGIME=REVERSAL"
+ },
+ "C_boundary_aliasing": {
+  "day_boundary_bars": 14,
+  "boundary_churn": 0.7143,
+  "interior_churn": 0.6466,
+  "boundary_over_interior_ratio": 1.105
+ },
+ "D_measurement_noise": {
+  "noise_frac_atr": 0.01,
+  "per_seed": {
+   "seed_20260927": {
+    "label_agreement": 0.9608,
+    "churn": 0.6496,
+    "dur_median": 1.0
+   },
+   "seed_20260928": {
+    "label_agreement": 0.9315,
+    "churn": 0.6473,
+    "dur_median": 1.0
+   },
+   "seed_20260929": {
+    "label_agreement": 0.933,
+    "churn": 0.639,
+    "dur_median": 1.0
+   }
+  },
+  "mean_agreement": 0.9418,
+  "baseline_churn": 0.6473
+ },
+ "E_genuine_market_churn": {
+  "observed_churn": 0.6473,
+  "observed_dur_median": 1.0,
+  "surrogates": {
+   "iid_gaussian": {
+    "churn": 0.6244,
+    "dur_median": 1.0,
+    "label_entropy": 3.1879
+   },
+   "block_bootstrap": {
+    "churn": 0.6184,
+    "dur_median": 1.0,
+    "label_entropy": 3.0608
+   }
+  },
+  "interpretation_rule": "surrogate churn >= observed - margin => churn not market-specific"
+ },
+ "F_no_hysteresis": {
+  "baseline": {
+   "churn": 0.6473,
+   "dur_median": 1.0,
+   "dur_mean": 1.544
+  },
+  "k=2": {
+   "churn": 0.1507,
+   "dur_median": 5.0,
+   "dur_mean": 6.607,
+   "delta_churn": 0.4966,
+   "delta_dur_median": 4.0
+  },
+  "k=3": {
+   "churn": 0.0497,
+   "dur_median": 13.0,
+   "dur_mean": 19.821,
+   "delta_churn": 0.5976,
+   "delta_dur_median": 12.0
+  },
+  "k=5": {
+   "churn": 0.0106,
+   "dur_median": 56.0,
+   "dur_mean": 88.533,
+   "delta_churn": 0.6367,
+   "delta_dur_median": 55.0
+  }
+ },
+ "G_unknown_leakage": {
+  "no_defined_bars": 89,
+  "no_defined_rate": 0.067,
+  "churn_if_carry_forward": 0.5787,
+  "delta_churn": 0.0686,
+  "dur_median_if_carry": 1.0
+ },
+ "task": "V1_R2_FULL_AUTONOMOUS_OPTIMIZATION_R1",
+ "phase": "PHASE_1_AUTONOMOUS_DIAGNOSIS",
+ "mode": "short",
+ "preregistration_hash": "a1d97d4f23a746ab72c7a844f5d6ff89284b6789c1e58397addef45e5da980d6",
+ "ts_utc": "2026-09-27T12:16:46.141760+00:00",
+ "search_space_hash": "65096b8997b25b6b4dacc9dd6ac254a8f8f067483ac33ff53d4a49e1a41937dc",
+ "safety": {
+  "ORDER_SEND": 0,
+  "ORDER_CHECK": 0,
+  "BROKER_WRITE": 0,
+  "FORWARD": "OFF",
+  "SHADOW": "OFF",
+  "LIVE": "OFF",
+  "FROZEN_ARTIFACT_WRITE": 0,
+  "ONTOLOGY_MODIFIED": 0,
+  "PARAM_MODIFIED": 0,
+  "FUTURE_RETURN_USED": "NO",
+  "PNL_USED": "NO",
+  "WIN_RATE_USED": "NO"
+ }
+}

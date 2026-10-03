@@ -1,0 +1,65 @@
+{
+ "audit_id": "BA_20260818",
+ "sample_id": "A_20260818",
+ "timestamp": "2026-09-28T11:29:00Z",
+ "overall_verdict": "DISAGREE",
+ "focus_verdicts": {
+  "OBSERVATION_DISCIPLINE": "PARTIAL_AGREE",
+  "MECHANISM_DISCIPLINE": "DISAGREE",
+  "COUNTER_EVIDENCE": "PARTIAL_AGREE",
+  "CONFIDENCE": "DISAGREE",
+  "ABSTENTION": "PARTIAL_AGREE",
+  "INVALIDATION": "PARTIAL_AGREE"
+ },
+ "over_inference": [
+  "Rated level_rejection_mean_reversion SUPPORTED with why '22 touches plus H4 upper wick rejection' — the H4 rejection occurred at high 4435.905, ~19.7 points ABOVE the level 4416.235, and the same H4 bar closed 4399.665 BELOW the level; touch count alone (break_status INSIDE, reclaim_status NONE per context) does not establish rejection at the level.",
+  "Primary scenario trigger 'price stays inside 4408-4420 around level 4416' asserts band boundaries 4408/4420 with no supporting level — nearest level is 4416.235 (distance 0.28 ATR); 4408 and 4420 correspond to no level in L2_PRICE_STRUCTURE.",
+  "Evidence item 'Analogs A25759 persist COMPRESSION five steps' is used to support a RANGE price forecast, but the context note says 'STATE EVOLUTION ONLY; no returns/PnL/labels ever included (§18/§72)' — state persistence is over-inferred into a price-band expectation.",
+  "Reasoning_trace 'Analog mean stays COMPRESSION to step 8' — of 3 analogs, A31804 is REJECTION at step 4 and A19195 is NO_DEFINED_STATE at step 8; the 'mean' characterization overstates persistence."
+ ],
+ "mechanism_jump": [
+  "Mechanism 'level_rejection_mean_reversion' (SUPPORTED) does not appear in the context's L4 candidate list — the only candidate is trend_continuation ('price inside level, 8-bar displacement -3.13'), which Hermes-A downgraded to POSSIBLE while upgrading its own invented mechanism to SUPPORTED.",
+  "The H4 upper wick at 4435.905 is attributed as rejection evidence for a mean-reversion story anchored at 4416.235 even though the wick is ~19.7 pts above the anchor; mechanism attribution does not match the price zones.",
+  "H4 close 4399.665 is already below the level 4416.235, yet the forecast keeps RANGE/level-anchor as primary and rates break_and_hold_level only WEAK ('reclaim NONE, break INSIDE only') — the data supports 'level broken at H4 scale', not 'level holds'.",
+  "expected_transition 'COMPRESSION persists or drifts to REJECTION' grafts analog A31804's REJECTION path onto the forecast without stating any mechanism by which compression transitions to rejection rather than persisting."
+ ],
+ "missing_counter_evidence": [
+  "Cross-timeframe close contradiction at the same timestamp 2026-08-18 00:00:00 was never raised: M1 close 4411.365, M5 close 4412.675, M15 close 4414.515, H1 close 4425.605, H4 close 4399.665 — mutually exclusive closes; Hermes-A recorded the H1 close as an observation and the H4 bar as counter_evidence without flagging the inconsistency.",
+  "Did not list 'H1 close 4425.605 exceeds the RANGE trigger upper bound 4420 and equals the 4425 invalidation threshold' as counter-evidence — by its own observation the RANGE scenario is already invalidated at t0.",
+  "Did not list 'H4 close 4399.665 is within 6.7 pts of the downside invalidation 4393' as counter-evidence against RANGE.",
+  "Did not list 'DXY quality PROXY, instrument definition UNKNOWN' (context L7) as a caveat on the 'DXY soft' support."
+ ],
+ "unjustified_confidence": [
+  "evidence_strength 0.45 / confidence 0.4 assigned to a RANGE scenario whose trigger band 4408-4420 excludes the forecast's own observation 'H1 bullish bar 4425.605' — confidence is not discounted for the internal contradiction.",
+  "confidence_reason 'COMPRESSION plus level anchor support RANGE, direction unresolved' ignores that H4 close 4399.665 already traded below the level anchor 4416.235.",
+  "Q7 abstention answer 'sufficient state context despite uncertainty' is asserted without addressing the contradictory closes, MTF CONFLICT agreement, and absent VIX/UST/news; the abstain=false decision is not argued.",
+  "confidence 0.4 + uncertainty 0.55 = 0.95 with no statement of the residual; the two quantities are not coherently reconciled."
+ ],
+ "observation_as_fact": [
+  "Observation 'H4 large upper wick rejection at 4435.905' — 'rejection' is an interpretation; the raw facts are high 4435.905, upper_wick 24.89, close 4399.665.",
+  "Observation 'H1 bullish bar 4425.605' — 'bullish' plus the close value treated as fact despite contradicting M1/H4 closes at the identical timestamp; a data anomaly was recorded as fact instead of being flagged.",
+  "Observation 'DXY soft' — judgment; raw fact is change_8 -0.053 on a PROXY-quality series."
+ ],
+ "strongest_objection": "The forecast contradicts itself: it lists observation 'H1 bullish bar 4425.605' while forecasting RANGE with trigger 'price stays inside 4408-4420' and invalidation 'decisive 4h close beyond 4425' — the observed H1 close already exceeds the scenario band and sits at the invalidation threshold, while the H4 close 4399.665 sits just 6.7 pts above the downside invalidation and below the asserted level anchor 4416.235. Cross-timeframe closes at 2026-08-18 00:00:00 are mutually exclusive (4411.365 / 4412.675 / 4414.515 / 4425.605 / 4399.665). A forecast cannot be RANGE in a band that its own observations have already exited; either the data is anomalous (which should have forced a flag/abstention) or the RANGE scenario was already invalid at t0.",
+ "evidence": [
+  "Context H1 current bar: timestamp 2026-08-18 00:00:00, open 4411.015, high 4425.705, low 4408.925, close 4425.605",
+  "Context H4 current bar: timestamp 2026-08-18 00:00:00, open 4411.015, high 4435.905, low 4393.675, close 4399.665, upper_wick 24.89",
+  "Context M1 current bar close 4411.365 at same timestamp; M5 close 4412.675; M15 close 4414.515",
+  "Context nearest_level 4416.235, touch_count_240 22, break_status INSIDE, reclaim_status NONE, distance_atr 0.27954",
+  "Context L4 candidates contains only trend_continuation; note 'mechanism CANDIDATES only; NOT asserted as fact (§13)'",
+  "Context historical_analog note: 'STATE EVOLUTION ONLY; no returns/PnL/labels ever included (§18/§72)'",
+  "Context L7: DXY quality PROXY, 'instrument definition UNKNOWN'; VIX/UST10Y absent; absent_series includes NEWS, MACRO_EVENTS",
+  "Forecast primary_scenario.trigger: 'price stays inside 4408-4420 around level 4416'",
+  "Forecast invalidation: 'decisive 4h close beyond 4425 or below 4393'",
+  "Forecast possible_mechanisms[0]: level_rejection_mean_reversion SUPPORTED, why '22 touches plus H4 upper wick rejection'",
+  "Forecast Q7: 'false - sufficient state context despite uncertainty'"
+ ],
+ "reasoning_trace": [
+  "Checked PIT closes across all five timeframes at the same timestamp — they are mutually inconsistent (spread ~26 pts), which Hermes-A never acknowledged.",
+  "Checked the RANGE trigger band 4408-4420 against Hermes-A's own observation 'H1 bullish bar 4425.605' — the observation is outside the band and at the 4425 invalidation level.",
+  "Checked mechanism statuses against context: level_rejection_mean_reversion rated SUPPORTED despite being absent from L4 candidates and contradicted by break_status INSIDE / reclaim NONE and by H4 close 4399.665 below the level.",
+  "Checked counter_evidence for completeness: omitted the strongest items (own-data contradiction; H4 close near 4393 invalidation; DXY PROXY quality).",
+  "Checked confidence/abstention: evidence_strength 0.45, confidence 0.4, uncertainty 0.55 with an internal contradiction uncounted; abstain=false asserted without justification.",
+  "Verdict: DISAGREE — forecast is internally inconsistent and its primary mechanism is unsupported by the context it cites."
+ ]
+}

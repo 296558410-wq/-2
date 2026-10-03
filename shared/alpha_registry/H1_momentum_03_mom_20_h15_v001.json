@@ -1,0 +1,75 @@
+{
+  "hypothesis": "过去收益是否预测未来收益？",
+  "features": "mom_20",
+  "parameters": {
+    "holding": 15,
+    "feature_params": {}
+  },
+  "dataset": "XAUUSD_M1_Dukascopy-HTTP_20260904_v001",
+  "train_period": "2023-09-01 00:00:00+00:00→2024-01-07 09:36:00+00:00",
+  "test_period": "2024-01-07 09:36:00+00:00→2024-03-16 23:59:00+00:00",
+  "OOS": {
+    "ic": -0.04784324210270117,
+    "p": 0.0
+  },
+  "FDR": {
+    "q": 0.0,
+    "reject": true
+  },
+  "WF": {
+    "folds_ic": [
+      -0.0616,
+      -0.0067,
+      -0.0861,
+      -0.0416,
+      -0.037
+    ],
+    "positive_frac": 0.0,
+    "n_folds": 5
+  },
+  "cost_stress": {
+    "1x": -22.8619,
+    "2x": -42.059,
+    "3x": -57.2973,
+    "net_total": -0.7619276473057425,
+    "n_trades": 4683,
+    "subperiod": {
+      "n_parts": 4,
+      "parts": [
+        {
+          "segment": 1,
+          "n": 57235,
+          "sharpe": -0.559,
+          "mean": -6.641337775747404e-06
+        },
+        {
+          "segment": 2,
+          "n": 57235,
+          "sharpe": -0.467,
+          "mean": -5.689718320164261e-06
+        },
+        {
+          "segment": 3,
+          "n": 57235,
+          "sharpe": -0.613,
+          "mean": -5.523804349181031e-06
+        },
+        {
+          "segment": 4,
+          "n": 57235,
+          "sharpe": -0.449,
+          "mean": -7.141720935171878e-06
+        }
+      ],
+      "sharpe_positive_frac": 0.0,
+      "sharpe_min": -0.613,
+      "sharpe_max": -0.449,
+      "note": "子段 Sharpe 一致性低 → 结果可能依赖特定时期"
+    }
+  },
+  "subperiod": null,
+  "status": "REJECTED",
+  "git_commit": "47602de",
+  "alpha_id": "H1_momentum_03_mom_20_h15_v001",
+  "created_at": "2026-09-04T12:42:15.112819+00:00"
+}

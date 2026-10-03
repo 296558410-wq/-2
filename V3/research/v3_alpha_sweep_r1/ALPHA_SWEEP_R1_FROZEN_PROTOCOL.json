@@ -1,0 +1,553 @@
+{
+ "schema": "v3_alpha_sweep_r1_protocol/1",
+ "task_id": "V3-ALPHA-SWEEP-R1",
+ "ts_utc": "2026-10-02T07:30:00+08:00",
+ "frozen_before_evaluation": true,
+ "objective": "mechanism-level, broad-coverage, strictly frozen XAUUSD high-frequency alpha sweep. Not parameter tuning.",
+ "bounds": {
+  "order_send": "NO",
+  "live": "NO",
+  "execution": "NO",
+  "demo_shadow_live": "NO",
+  "v1_v2_read_as_input": "NO",
+  "v1_v2_modified": "NO",
+  "historical_profit_used": "NO",
+  "lookahead": "NO",
+  "future_function": "NO",
+  "retune_after_results": "NO",
+  "delete_unfavourable_samples": "NO",
+  "subsamples_for_selection": "NO (robustness audit only)",
+  "closed_f2b_repackaged": "NO",
+  "closed_dr1_er1_fr1_failures_used_as_sample_or_label": "NO",
+  "global_fdr": "BH across the whole sweep at alpha=0.05"
+ },
+ "data": {
+  "TICK": {
+   "snapshot": "V3-SNAP-20260922T025312Z",
+   "files": 36,
+   "ticks": 7285000,
+   "span_utc": [
+    "2026-08-04T01:05:00.093Z",
+    "2026-09-22T02:39:05.572Z"
+   ],
+   "sha256_verify": "36/36 MATCH",
+   "manifest_sha256": "13fb5d1720a3b25768d0bca59eda897e85e66ba6d7741d538fc32ed33ef8eb54",
+   "timestamp_field": "ts_utc",
+   "unit": "ms",
+   "tz": "UTC",
+   "volume": "DATA_GAP (identically 0) => every flow feature is a quote-based _PROXY"
+  },
+  "BAR": {
+   "derived_from": "TICK snapshot, 1m bars per segment",
+   "bars": "MEASURED_AT_RUN"
+  },
+  "EVENT": {
+   "snapshot": "V3-SNAP-PIT2-20261001T131500Z",
+   "ticks": 1712560,
+   "span_utc": [
+    "2026-09-21T01:08:06.326Z",
+    "2026-10-01T12:54:06.646Z"
+   ],
+   "calendar_vintages": [
+    "JIN10_CALENDAR_20261001T130733Z.json (283 events, captured 2026-10-01T13:07:33Z)",
+    "V3_JIN10_EVENT_PIT.json (158 events, captured 2026-09-25T09:05:59Z)"
+   ],
+   "pit_rule": "availability = the event's own pub_time (Asia/Shanghai - 8h); nothing later may be used at T"
+  }
+ },
+ "cost_model": {
+  "COST_MODEL_VERSION": "CALIBRATION_20RT_20260921",
+  "REAL_RT_COST_BP": 0.914,
+  "stress": [
+   0.0,
+   1.0,
+   2.0,
+   3.0
+  ],
+  "rule": "0.314bp is HISTORICAL_INVALID and must not be used"
+ },
+ "frozen_thresholds": {
+  "abs_z_2": 2.0,
+  "abs_z_1": 1.0,
+  "abs_z_3": 3.0,
+  "ti_window_ticks": 100,
+  "pressure_window_ticks": 200,
+  "pressure_ratio": 0.85,
+  "shock_window_ticks": 500,
+  "sd_window_ticks": 3000,
+  "micro_window_ticks": 100,
+  "spread_ratio_1p5": 1.5,
+  "spread_ratio_1p2": 1.2,
+  "sigma_window_bars": 20,
+  "impulse_window_bars": 5,
+  "donchian_bars": 20,
+  "h2_bars": 60,
+  "segment_gap_ms": 60000,
+  "min_effective_n": 30,
+  "alpha": 0.05,
+  "quantiles": {
+   "tercile": [
+    0.33,
+    0.67
+   ],
+   "quintile_low": 0.2
+  }
+ },
+ "execution_model": {
+  "entry": "first tick with ts > the signal tick/bar-close; long at ask, short at bid",
+  "exit": "mid at the first tick with ts >= entry_ts + h",
+  "censoring": "HORIZON_CENSORED when the forward window leaves the segment (tick gap > 60s) or the sample ends",
+  "mid_markout": "dir*(future_mid - entry_mid)",
+  "cost_adjusted": "mid_markout_bp - 0.914 * stress_mult"
+ },
+ "hypotheses": [
+  {
+   "id": "T1_TICK_IMBALANCE",
+   "family": "F1_tick_microstructure",
+   "corpus": "TICK",
+   "kind": "directional",
+   "feature": "TI = sum(sign(dmid), 100 ticks)/sqrt(100)",
+   "trigger": "|TI|>=2 onset",
+   "direction": "follow",
+   "horizons": [
+    100,
+    250,
+    500,
+    1000,
+    2000,
+    5000
+   ],
+   "note": "quote-based _PROXY (volume identically 0)"
+  },
+  {
+   "id": "T2_PRESSURE_PERSIST",
+   "family": "F1_tick_microstructure",
+   "corpus": "TICK",
+   "kind": "directional",
+   "feature": "sign agreement ratio of dmid over 200 ticks",
+   "trigger": ">=0.85 same-sign, onset",
+   "direction": "follow",
+   "horizons": [
+    100,
+    250,
+    500,
+    1000,
+    2000,
+    5000
+   ],
+   "note": ""
+  },
+  {
+   "id": "T3_LIQUIDITY_SHOCK",
+   "family": "F1_tick_microstructure",
+   "corpus": "TICK",
+   "kind": "directional",
+   "feature": "z(ret over 500 ticks) vs trailing 3000-tick std",
+   "trigger": "|z|>=2 onset",
+   "direction": "fade",
+   "horizons": [
+    100,
+    250,
+    500,
+    1000,
+    2000,
+    5000
+   ],
+   "note": "liquidity shock / replenishment"
+  },
+  {
+   "id": "T4_SPREAD_STRESS",
+   "family": "F1_tick_microstructure",
+   "corpus": "TICK",
+   "kind": "directional",
+   "feature": "spread >= 1.5x trailing 3000-tick median AND |z(ret100)|>=1",
+   "trigger": "joint onset",
+   "direction": "follow",
+   "horizons": [
+    100,
+    250,
+    500,
+    1000,
+    2000,
+    5000
+   ],
+   "note": "spread x pressure interaction"
+  },
+  {
+   "id": "T5_MICRO_REVERSAL",
+   "family": "F1_tick_microstructure",
+   "corpus": "TICK",
+   "kind": "directional",
+   "feature": "z(ret over 100 ticks)",
+   "trigger": "|z|>=2 onset",
+   "direction": "fade",
+   "horizons": [
+    100,
+    250,
+    500,
+    1000,
+    2000,
+    5000
+   ],
+   "note": ""
+  },
+  {
+   "id": "P1_IMPULSE",
+   "family": "F2_price_structure",
+   "corpus": "BAR",
+   "kind": "directional",
+   "feature": "z5 = ret5/(sigma20*sqrt5)",
+   "trigger": "|z5|>=2",
+   "direction": "follow",
+   "horizons": [
+    1,
+    5,
+    15,
+    30,
+    60
+   ],
+   "note": ""
+  },
+  {
+   "id": "P2_ABNORMAL_REVERSAL",
+   "family": "F2_price_structure",
+   "corpus": "BAR",
+   "kind": "directional",
+   "feature": "z1 = ret1/sigma20",
+   "trigger": "|z1|>=3",
+   "direction": "fade",
+   "horizons": [
+    1,
+    5,
+    15,
+    30,
+    60
+   ],
+   "note": ""
+  },
+  {
+   "id": "P3_VOL_EXPANSION_DIR",
+   "family": "F2_price_structure",
+   "corpus": "BAR",
+   "kind": "directional",
+   "feature": "rv5 crossing above trailing q67",
+   "trigger": "high-vol regime onset",
+   "direction": "follow sign(ret1)",
+   "horizons": [
+    1,
+    5,
+    15,
+    30,
+    60
+   ],
+   "note": ""
+  },
+  {
+   "id": "P4_BREAKOUT",
+   "family": "F2_price_structure",
+   "corpus": "BAR",
+   "kind": "directional",
+   "feature": "close > max(close of prior 20 bars)",
+   "trigger": "20-bar Donchian breakout",
+   "direction": "follow",
+   "horizons": [
+    1,
+    5,
+    15,
+    30,
+    60
+   ],
+   "note": ""
+  },
+  {
+   "id": "P5_FAILED_BREAKOUT",
+   "family": "F2_price_structure",
+   "corpus": "BAR",
+   "kind": "directional",
+   "feature": "made a 20-bar high then closed back below the prior 20-bar high",
+   "trigger": "failed breakout",
+   "direction": "fade",
+   "horizons": [
+    1,
+    5,
+    15,
+    30,
+    60
+   ],
+   "note": ""
+  },
+  {
+   "id": "P6_RANGE_COMPRESSION",
+   "family": "F2_price_structure",
+   "corpus": "BAR",
+   "kind": "non_directional",
+   "feature": "rv5 in the trailing bottom quintile",
+   "trigger": "compression onset",
+   "direction": "n/a",
+   "horizons": [
+    1,
+    5,
+    15,
+    30,
+    60
+   ],
+   "note": "forward |move| vs baseline (range expansion after compression)"
+  },
+  {
+   "id": "X1_SCALE_AGREEMENT",
+   "family": "F3_cross_scale",
+   "corpus": "BAR",
+   "kind": "directional",
+   "feature": "sign(ret5) == sign(60-bar change), z5 trigger",
+   "trigger": "|z5|>=2 AND agreement",
+   "direction": "follow",
+   "horizons": [
+    1,
+    5,
+    15,
+    30,
+    60
+   ],
+   "note": ""
+  },
+  {
+   "id": "X2_SCALE_DISAGREEMENT",
+   "family": "F3_cross_scale",
+   "corpus": "BAR",
+   "kind": "directional",
+   "feature": "sign(ret5) != sign(60-bar change), z5 trigger",
+   "trigger": "|z5|>=2 AND disagreement",
+   "direction": "follow",
+   "horizons": [
+    1,
+    5,
+    15,
+    30,
+    60
+   ],
+   "note": ""
+  },
+  {
+   "id": "X3_HTF_REGIME_COND",
+   "family": "F3_cross_scale",
+   "corpus": "BAR",
+   "kind": "directional",
+   "feature": "1m impulse z5 inside an up-trending 60m regime",
+   "trigger": "|z5|>=2 AND 60m trend up",
+   "direction": "follow",
+   "horizons": [
+    1,
+    5,
+    15,
+    30,
+    60
+   ],
+   "note": "short signal x higher-timeframe regime"
+  },
+  {
+   "id": "S1_VOL_TERCILE",
+   "family": "F4_state_conditioning",
+   "corpus": "BAR",
+   "kind": "directional",
+   "feature": "follow sign(ret5) with |z5|>=2, evaluated inside each volatility tercile bucket",
+   "trigger": "|z5|>=2 AND bucket",
+   "direction": "follow",
+   "horizons": [
+    1,
+    5,
+    15,
+    30,
+    60
+   ],
+   "note": "bucket must also be reported separately"
+  },
+  {
+   "id": "S2_SPREAD_TERCILE",
+   "family": "F4_state_conditioning",
+   "corpus": "BAR",
+   "kind": "directional",
+   "feature": "follow sign(ret5) with |z5|>=2, evaluated inside each spread tercile bucket",
+   "trigger": "|z5|>=2 AND bucket",
+   "direction": "follow",
+   "horizons": [
+    1,
+    5,
+    15,
+    30,
+    60
+   ],
+   "note": "bucket must also be reported separately"
+  },
+  {
+   "id": "S3_ACTIVITY_TERCILE",
+   "family": "F4_state_conditioning",
+   "corpus": "BAR",
+   "kind": "directional",
+   "feature": "follow sign(ret5) with |z5|>=2, evaluated inside each tick-count-per-bar tercile bucket",
+   "trigger": "|z5|>=2 AND bucket",
+   "direction": "follow",
+   "horizons": [
+    1,
+    5,
+    15,
+    30,
+    60
+   ],
+   "note": "bucket must also be reported separately"
+  },
+  {
+   "id": "S4_SESSION",
+   "family": "F4_state_conditioning",
+   "corpus": "BAR",
+   "kind": "directional",
+   "feature": "follow sign(ret5) with |z5|>=2, evaluated inside each session bucket",
+   "trigger": "|z5|>=2 AND bucket",
+   "direction": "follow",
+   "horizons": [
+    1,
+    5,
+    15,
+    30,
+    60
+   ],
+   "note": "bucket must also be reported separately"
+  },
+  {
+   "id": "S5_TREND_RANGE",
+   "family": "F4_state_conditioning",
+   "corpus": "BAR",
+   "kind": "directional",
+   "feature": "follow sign(ret5) with |z5|>=2, evaluated inside each trend/range state (efficiency ratio) bucket",
+   "trigger": "|z5|>=2 AND bucket",
+   "direction": "follow",
+   "horizons": [
+    1,
+    5,
+    15,
+    30,
+    60
+   ],
+   "note": "bucket must also be reported separately"
+  },
+  {
+   "id": "E1_EVENT_X_MICRO",
+   "family": "F5_event_interaction",
+   "corpus": "EVENT",
+   "kind": "directional",
+   "feature": "event proximity (<=5 min after a PIT calendar event) AND tick imbalance |TI|>=2",
+   "trigger": "joint",
+   "direction": "follow",
+   "horizons": [
+    1,
+    5,
+    15
+   ],
+   "note": ""
+  },
+  {
+   "id": "E2_EVENT_X_VOL",
+   "family": "F5_event_interaction",
+   "corpus": "EVENT",
+   "kind": "directional",
+   "feature": "pre-event 60s return, taken at the event",
+   "trigger": "event",
+   "direction": "follow",
+   "horizons": [
+    1,
+    5,
+    15
+   ],
+   "note": "event x volatility response"
+  },
+  {
+   "id": "E3_EVENT_X_SPREAD",
+   "family": "F5_event_interaction",
+   "corpus": "EVENT",
+   "kind": "directional",
+   "feature": "event AND spread at the event >= 1.2x trailing median",
+   "trigger": "joint",
+   "direction": "fade",
+   "horizons": [
+    1,
+    5,
+    15
+   ],
+   "note": ""
+  },
+  {
+   "id": "E4_POST_EVENT_CONT",
+   "family": "F5_event_interaction",
+   "corpus": "EVENT",
+   "kind": "directional",
+   "feature": "first 1m move after the event",
+   "trigger": "event + first 1m close",
+   "direction": "follow",
+   "horizons": [
+    1,
+    5,
+    15
+   ],
+   "note": ""
+  },
+  {
+   "id": "E5_POST_EVENT_FADE",
+   "family": "F5_event_interaction",
+   "corpus": "EVENT",
+   "kind": "directional",
+   "feature": "first 1m move after the event",
+   "trigger": "event + first 1m close",
+   "direction": "fade",
+   "horizons": [
+    1,
+    5,
+    15
+   ],
+   "note": ""
+  }
+ ],
+ "hypothesis_count": 24,
+ "mirror_rule": "every directional hypothesis is reported BOTH ways; the mirror is NOT independent evidence",
+ "validation": {
+  "is_oos": "time-ordered 70/30 by event time, no shuffle",
+  "permutation": "sign-flip n=2000 two-sided; PRE-REGISTERED adaptive rule for very large event counts: reps = min(2000, max(500, floor(2e7 / n))). The point estimate, CI, effective_n and the ladder use the FULL sample; only the permutation repetition count adapts.",
+  "bootstrap": "block bootstrap over events n=2000, 50 blocks",
+  "overlap": "raw n, overlap ratio, effective_n = greedy non-overlapping count, floor 30",
+  "cost_ladder": [
+   0.0,
+   1.0,
+   2.0,
+   3.0
+  ],
+  "robustness": [
+   "session",
+   "volatility tercile",
+   "spread tercile",
+   "activity tercile",
+   "trend/range state"
+  ],
+  "multiple_testing": "BH-FDR at 0.05 over the WHOLE sweep",
+  "taxonomy": [
+   "VALIDATED_EDGE",
+   "EDGE_UNCERTAIN",
+   "COST_INSUFFICIENT",
+   "DATA_BLOCKED",
+   "INVALID_IMPLEMENTATION"
+  ],
+  "VALIDATED_EDGE_requires": "preflight valid + cost-adjusted positive on IS AND OOS at 1x + permutation p<0.05 + bootstrap CI excluding 0 + effective_n>=30 + not reliant on a single bucket + survives 2x cost + survives global BH-FDR. The standard is NOT lowered for a small count.",
+  "ladder": [
+   "INSUFFICIENT_SAMPLE",
+   "COST_INSUFFICIENT",
+   "REJECT",
+   "EDGE_UNCERTAIN",
+   "EXECUTION_UNREALISTIC",
+   "CANDIDATE"
+  ]
+ },
+ "preflight": {
+  "mandatory": true,
+  "P1_synthetic_scale": "for every standardised feature used (TI, z500, z100, z5, z1, zma), on 200k iid Gaussian ticks/bars the empirical std must land in [0.85, 1.15]",
+  "P2_synthetic_rate": "the synthetic trigger rate must be within a factor 3 of the Gaussian-implied rate for the same cut",
+  "P3_failure_action": "a feature failing P1/P2 => every hypothesis using it is INVALID_IMPLEMENTATION and no return is computed for it"
+ },
+ "registry_hash_sha256": "45598674ab8645a12cf71b18629fcb6d4f3796285c6074cb1746258d9433460f"
+}

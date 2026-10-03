@@ -1,0 +1,190 @@
+{
+ "task": "V1_R8_TARGET_REDESIGN_A",
+ "registry_id": "v1r8-target-registry-r2",
+ "frozen_at_utc": "2026-09-28T10:47:20.540486+00:00",
+ "frozen_before_any_validation": true,
+ "read_only_on": [
+  "R3",
+  "R4",
+  "R5",
+  "R5_1",
+  "R6",
+  "R7"
+ ],
+ "scenario_definition": {
+  "families": {
+   "TREND": "DIRECTIONAL",
+   "BREAKOUT_ATTEMPT": "DIRECTIONAL",
+   "EXPANSION": "DIRECTIONAL",
+   "ROTATION": "RANGE",
+   "REJECTION": "RANGE",
+   "DECELERATION": "RANGE",
+   "COMPRESSION": "QUIET",
+   "ACCEPTANCE": "QUIET",
+   "NO_DEFINED_STATE": "QUIET"
+  },
+  "boundary_variants": {
+   "V1_ACCEPTANCE_TO_RANGE": {
+    "ACCEPTANCE": "RANGE"
+   },
+   "V2_BREAKATTEMPT_TO_RANGE": {
+    "BREAKOUT_ATTEMPT": "RANGE"
+   },
+   "V3_REJECTION_TO_DIRECTIONAL": {
+    "REJECTION": "DIRECTIONAL"
+   },
+   "V4_DECELERATION_TO_QUIET": {
+    "DECELERATION": "QUIET"
+   },
+   "V5_COMPRESSION_TO_RANGE": {
+    "COMPRESSION": "RANGE"
+   },
+   "V6_NODEF_TO_RANGE": {
+    "NO_DEFINED_STATE": "RANGE"
+   }
+  },
+  "horizon": "4",
+  "label_rules": "family(state at t+H) via FAMILY map",
+  "neutral_rules": "QUIET is the neutral family; no extra neutral",
+  "abstention_rules": "ABSTAIN if max_family_prob - second_family_prob < 0.10",
+  "uncertainty_rules": "PRIMARY = argmax prob; ALTERNATIVE = 2nd family; band = top2_mass; ABSTAIN per ABSTAIN_RULE",
+  "evaluation_metrics": [
+   "balanced_accuracy",
+   "macro_f1",
+   "abstention_rate",
+   "top2_coverage",
+   "primary_accuracy",
+   "ece"
+  ],
+  "minimum_sample": {
+   "dev": 5000,
+   "blind": 1000
+  }
+ },
+ "scenario_definition_hash": "e51a5fdea95535e5d0c87c0de2d0586c4d5a8424432ee1250501132b9b1a5222",
+ "feature_definition": {
+  "PRICE_ONLY": [
+   "f_atr_pctl",
+   "f_er10",
+   "f_slope5",
+   "f_rng_exp",
+   "f_vel4",
+   "f_acc",
+   "f_eff3",
+   "f_act3"
+  ],
+  "MTF": [
+   "mtf_0",
+   "mtf_1",
+   "mtf_2",
+   "mtf_3",
+   "mtf_4",
+   "mtf_5"
+  ],
+  "STATE_HISTORY": [
+   "state",
+   "state.shift(1)",
+   "state.shift(2)",
+   "dwell",
+   "nod8"
+  ],
+  "EVENT_HISTORY": [
+   "event",
+   "event.shift(1)",
+   "event change flags(1,2,4,8)"
+  ],
+  "VOLATILITY": [
+   "ret.rolling(5).std",
+   "ret.rolling(20).std",
+   "ratio"
+  ],
+  "CROSS_MARKET": "DATA_LIMITATION",
+  "MACRO": "DATA_LIMITATION"
+ },
+ "horizon_set": [
+  4,
+  8,
+  16
+ ],
+ "selected_horizon": "4",
+ "selection_rule": "SELECTED_HORIZON = argmax over the pre-registered set {4,8,16} of stability_score, tie-broken by information_score, where stability_score = mean(1-boundary_disagreement, 1-TV(dev,blind), min(1, min_class_share_blind/0.25)) and information_score = max(0, balanced_acc - chance).",
+ "targets_deprecated": {
+  "TIMING": "post-hoc censored quantity; balanced accuracy at chance in R7"
+ },
+ "prohibited": [
+  "complex model training",
+  "prompt tuning",
+  "parameter tuning to improve metrics",
+  "sample cherry-picking",
+  "dropping failed samples",
+  "adding horizons after seeing results",
+  "modifying any frozen artifact",
+  "reading validation results before freeze"
+ ],
+ "stability_verdict": {
+  "stable_if": "boundary_disagreement <= 0.15 AND min_class_share_blind >= 0.15 AND TV(dev,blind) <= 0.10",
+  "observed": {
+   "mean_boundary_disagreement": 0.0974,
+   "min_class_share_blind": 0.285,
+   "TV_dev_blind": 0.0191
+  }
+ },
+ "frozen_hashes": {
+  "R3": "ae444baaa0a97e84a72290be9e50b096ad0dd1a0ae0133734a74934deea27b14",
+  "R4": "d2a5c0444576f5b22650ed7218290e841f026020ed6af8fc82024ab28dd3d36a",
+  "R5": "35d1f083b453cf6778a58eada2da813cec20b0dbdadfbb5ee0da6c8e9342c889",
+  "R5_1": "a022da021c5e350db7f99a0088a578818753809769631c9519c55393cb2a450a",
+  "R6": "7a058b4b76644b57fb57ca64f2817a9df9d672a6d4c70aa5d1fb3d2d35550677",
+  "R7": "99c47151456671dfac56d59147268a5ceef9c5a4cf8e80dc5256c6f6ad5cf683"
+ },
+ "amendments": [
+  {
+   "task": "V1_R8_TARGET_REDESIGN_A",
+   "amendment": 1,
+   "ts_utc": "2026-09-28T10:48:23.294797+00:00",
+   "made_before_validation": true,
+   "validation_started": false,
+   "reason": "the original rule ranked ONLY by stability_score, but the three stability scores are within 0.0003 (a numerical tie), so it selected the lowest-information horizon. The pre-registration text says to compare stability AND information.",
+   "original_rule": "SELECTED_HORIZON = argmax over the pre-registered set {4,8,16} of stability_score, tie-broken by information_score, where stability_score = mean(1-boundary_disagreement, 1-TV(dev,blind), min(1, min_class_share_blind/0.25)) and information_score = max(0, balanced_acc - chance).",
+   "original_selected_horizon": 16,
+   "original_registry_hash": "7ac48d2adefbbc26c5774149f1c19d3f712acf143b68b1f450ae3b9a243f4dc7",
+   "stability_tie_tolerance": 0.005,
+   "stability_tied_horizons": [
+    "16",
+    "4",
+    "8"
+   ],
+   "amended_rule": "SELECTED_HORIZON = among horizons whose stability_score is within 0.005 of the maximum, argmax information_score, tie-broken by stability_score.",
+   "amended_selected_horizon": "4",
+   "selection_trace": {
+    "16": {
+     "stability_score": 0.9612,
+     "information_score": 0.1454,
+     "balanced_acc": 0.4787,
+     "chance": 0.3333,
+     "min_class_share_blind": 0.285,
+     "stable": true
+    },
+    "4": {
+     "stability_score": 0.9609,
+     "information_score": 0.2244,
+     "balanced_acc": 0.5577,
+     "chance": 0.3333,
+     "min_class_share_blind": 0.2858,
+     "stable": true
+    },
+    "8": {
+     "stability_score": 0.961,
+     "information_score": 0.2049,
+     "balanced_acc": 0.5382,
+     "chance": 0.3333,
+     "min_class_share_blind": 0.2854,
+     "stable": true
+    }
+   },
+   "no_validation_peek": "R8-B blind validation has not been run; no outcome information was consulted",
+   "amendment_hash": "e624c9605c75bc430d1e93efe4cfc6b30e49ce93b7158ab05b671f4ed4bb7291"
+  }
+ ],
+ "registry_hash": "368392de43aeafa821e788ea1b5957d5ad72d09e5768e4515a9a062d91ba21a4"
+}

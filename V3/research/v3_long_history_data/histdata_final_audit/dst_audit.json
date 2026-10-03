@@ -1,0 +1,33 @@
+{
+ "schema": "v3_histdata_dst_audit/1",
+ "ts_utc": "2026-09-25T10:01:01.105602+00:00",
+ "documented": "NOT_APPLICABLE - the vendor states the data is in EST WITHOUT daylight savings",
+ "empirical_winter": {
+  "downloaded": true,
+  "rows": 28827,
+  "sha256": "496bbc7d723f67876bc0f35b96ceedaa7b20ec034167e17ebc223816bea70182",
+  "daily_gap_hour_histogram": {
+   "16->18": 15,
+   "14->18": 1
+  },
+  "friday_last_minute": "16:58:00",
+  "sunday_first_minute": "18:00:00",
+  "first_ts": "2026-01-01 18:00:00",
+  "last_ts": "2026-01-30 16:58:00"
+ },
+ "empirical_summer": {
+  "downloaded": true,
+  "rows": 29437,
+  "sha256": "b6bdb6989098437df2df11cb2e0f16d145c138f66425b0848bd6ce575626fd77",
+  "daily_gap_hour_histogram": {
+   "16->18": 17
+  },
+  "friday_last_minute": "16:59:00",
+  "sunday_first_minute": "18:00:00",
+  "first_ts": "2026-08-02 18:00:00",
+  "last_ts": "2026-08-31 23:58:00"
+ },
+ "interpretation": "the daily gap sits at the same stamped hour (16->18) in both a winter and a summer month, consistent with a frame that does not shift with DST",
+ "expected_vs_observed": "documented EST-no-DST + constant break hour => CONSISTENT",
+ "DST_STATUS": "VERIFIED_NOT_APPLICABLE"
+}

@@ -1,0 +1,159 @@
+{
+ "schema": "f5_r4_protocol/1",
+ "task_id": "V3-R4-F5",
+ "ts_utc": "2026-10-02T12:00:00+08:00",
+ "frozen_before_computation": true,
+ "premise": "If we knew NOTHING about the R1 F5 results, does the repaired F5 hypothesis set still hold?",
+ "inheritance": {
+  "from": "R1 Alpha Sweep F5_event_interaction (hypothesis DEFINITIONS only)",
+  "inherited_definitions": true,
+  "inherited_return_statistics": false,
+  "thresholds_changed": "NO",
+  "directions_changed": "NO",
+  "holding_periods_changed": "NO",
+  "cost_anchor_changed": "NO",
+  "sample_filter_changed": "NO",
+  "events_deleted": "NO",
+  "horizon_selected_using_R1": "NO (the horizon set [1,5,15] min is inherited verbatim from the R1 F5 definition)",
+  "r1_significance_used_as_prior": "NO",
+  "r1_and_r4_samples_merged_into_one_result": "NO (R4 is computed standalone on the repaired sample)"
+ },
+ "bounds": {
+  "order_send": "NO",
+  "live": "NO",
+  "execution": "NO",
+  "v1_v2_touched": "NO",
+  "v1_v2_results_read": "NO",
+  "r1_r2_r3_results_modified": "NO",
+  "cost_anchor_modified": "NO",
+  "future_data": "NO",
+  "unfavourable_periods_deleted": "NO",
+  "new_alpha_sweep_hypothesis": "NO",
+  "x3_studied": "NO",
+  "ofi_studied": "NO"
+ },
+ "data": {
+  "SNAPSHOT_ID": "V3-SNAP-FXTM-R4",
+  "dir": "research/hermes/trader_v3/research/v3_r4_temporal_f5/SNAPSHOT_FXTM_R4",
+  "ticks": 8911447,
+  "sources": [
+   "staging_fxtm(24 files)",
+   "live_fxtm(20 files)"
+  ],
+  "span_utc": [
+   "2026-08-04T01:05:00.093Z",
+   "2026-10-02T03:39:06.819Z"
+  ],
+  "calendar_days": 59.11,
+  "manifest_sha256": "3417edf9814f9b0f5e38259940449d7eec205fbd2e4ca5ca3630dba9d58f8a14",
+  "excluded": "staging_duka (different source AND schema) - forbidden to splice",
+  "volume": "0 on 100% of rows in both sources => quote-based proxies only"
+ },
+ "event_source": {
+  "vintage": "JIN10_CALENDAR_20261001T130733Z.json (283 rows)",
+  "unique_key": "(pub_time_utc, title, source_file)",
+  "row_vs_timestamp_rule": "event_rows and independent_timestamps are reported SEPARATELY; event_rows may NEVER be used as independent_n"
+ },
+ "cost_model": {
+  "COST_MODEL_VERSION": "CALIBRATION_20RT_20260921",
+  "REAL_RT_COST_BP": 0.914,
+  "stress": [
+   0.0,
+   1.0,
+   2.0,
+   3.0
+  ],
+  "rule": "UNCHANGED"
+ },
+ "hypotheses": [
+  {
+   "id": "E1_EVENT_X_MICRO",
+   "definition": "event proximity (<=5 min after a PIT event) AND tick imbalance |TI(100)|>=2 onset",
+   "direction": "follow sign(TI)",
+   "horizons_min": [
+    1,
+    5,
+    15
+   ]
+  },
+  {
+   "id": "E2_EVENT_X_VOL",
+   "definition": "pre-event 60s return, taken at the event",
+   "direction": "follow",
+   "horizons_min": [
+    1,
+    5,
+    15
+   ]
+  },
+  {
+   "id": "E3_EVENT_X_SPREAD",
+   "definition": "event AND spread at the event >= 1.2x the trailing median",
+   "direction": "fade",
+   "horizons_min": [
+    1,
+    5,
+    15
+   ]
+  },
+  {
+   "id": "E4_POST_EVENT_CONT",
+   "definition": "first 1m move after the event",
+   "direction": "follow",
+   "horizons_min": [
+    1,
+    5,
+    15
+   ]
+  },
+  {
+   "id": "E5_POST_EVENT_FADE",
+   "definition": "first 1m move after the event",
+   "direction": "fade",
+   "horizons_min": [
+    1,
+    5,
+    15
+   ]
+  }
+ ],
+ "validation": {
+  "must_report": [
+   "raw event n",
+   "independent timestamp n",
+   "effective_n",
+   "gross edge",
+   "net edge at 0/1/2/3x cost",
+   "IS/OOS",
+   "block bootstrap",
+   "permutation",
+   "session split",
+   "volatility split",
+   "spread split",
+   "temporal blocks",
+   "BH-FDR"
+  ],
+  "is_oos": "time-ordered 70/30 by event time",
+  "permutation": "sign-flip n=2000 two-sided",
+  "bootstrap": "block bootstrap n=2000, 50 blocks",
+  "overlap": "greedy non-overlapping effective_n, floor 30",
+  "mirror": "the opposite direction is reported as a CONTROL only and is NOT independent evidence",
+  "multiple_testing": "BH-FDR at 0.05 over the F5_R4 directional tests"
+ },
+ "temporal_gate": {
+  "G1": ">= 90 calendar days",
+  "G2": ">= 40 active trading days",
+  "G3": "time-block stability",
+  "fail_any": "TEMPORAL_EVIDENCE_INSUFFICIENT - hard block on VALIDATED_EDGE"
+ },
+ "VALIDATED_EDGE_requires": "cost-positive at 1x AND stable positive OOS AND bootstrap support AND permutation support AND effective_n>=30 AND survives BH-FDR AND temporal gate G1/G2/G3 all pass AND no implementation defect AND no evident beta/exposure confound AND the bidirectional control is not a mirror artefact",
+ "verdicts": [
+  "VALIDATED_EDGE",
+  "COST_INSUFFICIENT",
+  "EDGE_UNCERTAIN",
+  "TEMPORAL_EVIDENCE_INSUFFICIENT",
+  "DATA_BLOCKED",
+  "INVALID_IMPLEMENTATION"
+ ],
+ "registry_hash_sha256": "adc5a94d7c12d384199931dfb2346484eb053fe7355c0c48e73e6d0777d8b9c6"
+}

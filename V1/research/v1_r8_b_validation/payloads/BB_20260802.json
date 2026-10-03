@@ -1,0 +1,51 @@
+{
+ "audit_id": "BB_20260802",
+ "timestamp": "2026-08-02T00:00:00Z",
+ "current_state": "XAUUSD closed at 4042.025 (2026-07-31 21:58 UTC). Last M1 bar: wide-range bar (9.05, range_percentile 1.0) that flushed to 4035.085 then closed back at 4042.025 with a large lower wick (6.94) - a sharp downward thrust into a key level with visible absorption beneath. M1 trend_20 -8.73, M5 trend_20 -6.86, M15 trend_20 -4.11, H1 trend_20 -42.22 (strong short-term displacement), H4 trend_20 +19.16. Multi-timeframe agreement is CONFLICT. Frozen behaviour label ACCEPTANCE, state_v2 ROTATION, dwell 4 bars, ambiguity_rate_8 0.75. All cross-market series (DXY, VIX, UST10Y proxy) unavailable; no news/macro in context.",
+ "structure": "Price is sitting on a heavily-tested swing low: SWING_LOW_37318 at 4041.035 (side DN), 35 touches in 240 bars, age 17 bars, distance only 0.17 ATR, break_status INSIDE. The 4035.085 low pierced this level intraday but the close (4042.025) reclaimed back above it; reclaim_status is still NONE (unconfirmed). Above, the 4050-4055 zone acted as supply through the evening (multiple wicks). H1 sequence shows 8 consecutive down bars with expanding range; H4 trend_50 is deeply negative (-37.13) while H4 trend_20 is positive - structure is congested/transitional around this level, not a clean one-sided regime.",
+ "mechanism": "trend_continuation candidate (per L4): short-term bearish displacement (8-bar displacement -8.54, H1 trend_20 -42) pushing into the active level, with the question being whether the level yields. Counter-mechanism: a 35-touch support acting as an absorption zone, where the long lower wick and the reclaim of 4041 suggest rejection/mean-reversion pressure. State is ROTATION with ACCEPTANCE event - no confirmed TREND, so the continuation mechanism is a candidate, not an established fact.",
+ "primary_scenario": {
+  "scenario": "Level-break continuation: a decisive break below SWING_LOW 4041.035 (with follow-through under the 4035.085 flush low) releases the H1 displacement, extending the short-term down-move toward the 4025-4021 zone (prior H1 reaction lows) and potentially the 4020.545 low.",
+  "confidence": 0.45,
+  "horizon": "INTRADAY",
+  "trigger": "M1/M5 close decisively below 4041.035 with expanding range and no reclaim within a few bars; acceptance below the flush low 4035.085.",
+  "invalidation": "Reclaim and hold above 4050-4055 (the evening supply zone) - a sustained move back through that zone invalidates the continuation and shifts structure to range/reversal."
+ },
+ "alternative_scenario": {
+  "scenario": "Level rejection / failed breakdown: the 35-touch level at 4041 holds (as hinted by the long lower wick), price rotates back up toward 4050-4055 supply, consistent with ROTATION state and the A4173/A14240 analogs that evolve from ROTATION toward REJECTION before any trend.",
+  "confidence": 0.4,
+  "horizon": "INTRADAY",
+  "trigger": "Higher-low hold above 4035.085 followed by a reclaim of 4045+ and acceptance above the M5/M15 midpoints; the H4 trend_20 positive bias (the only positive trend_20) lending support.",
+  "invalidation": "A sustained break of 4035.085 with momentum (range expansion on break) - that removes the absorption thesis and confirms the downside continuation instead."
+ },
+ "expected_transition": "ROTATION/ACCEPTANCE -> TREND (down) if the level breaks decisively, or -> REJECTION then range/recovery if the level holds. The 0.75 ambiguity rate and CONFLICT multi-timeframe agreement make the near-term transition genuinely two-sided; a TREND state is not yet established.",
+ "direction": "DOWN",
+ "horizon": "INTRADAY",
+ "confidence": 0.45,
+ "counter_evidence": [
+  "Last M1 bar closed with a 6.94 lower wick after the flush to 4035.085 - visible buying/absorption at the level, arguing for rejection rather than continuation.",
+  "SWING_LOW_37318 at 4041.035 has 35 touches in 240 bars and price closed back inside/above it (break_status INSIDE, reclaim pending) - a heavily validated support.",
+  "State is ROTATION (dwell 4) with ambiguity_rate_8 0.75 and transitions including NO_DEFINED_STATE - no confirmed trend regime.",
+  "Multi-timeframe agreement is CONFLICT: H4 trend_20 is positive (+19.16) while lower timeframes are negative.",
+  "Historical analogs from identical ROTATION state diverge: A4173 and A14240 evolve toward REJECTION before any TREND; A25116 goes to prolonged COMPRESSION - none support immediate continuation.",
+  "All cross-market confirmation (DXY, VIX, UST10Y proxy) is absent, so the bearish case rests solely on raw price geometry."
+ ],
+ "invalidation": "Sustained reclaim and acceptance above 4050-4055, or any confirmed TREND-up state change on the frozen labeler; conversely a clean momentum break of 4035.085 would confirm the primary scenario rather than invalidate it.",
+ "data_quality_flags": [
+  "M1/M5/M15/H1/H4: RAW_GEOMETRY + DERIVED (DIRECT price, derived aggregates)",
+  "L2 level: DERIVED (causal pivot swing levels)",
+  "L3/L4/L5: DERIVED (frozen labeler, lifecycle, candidate mechanism - not asserted fact)",
+  "DXY/VIX/UST10Y_PROXY_TNX: UNKNOWN (STALE_OR_NOT_COVERED) - no cross-market confirmation available",
+  "GLD/GC/CFTC_COT/ETF_FLOWS/NEWS/MACRO_EVENTS: absent, recorded as absent per rule",
+  "No DIRECT news/macro inputs; direction rests on price structure only"
+ ],
+ "reasoning_trace": [
+  "1. Read PIT context only; no other analyst forecast seen (blind).",
+  "2. Identified immediate situation: strong H1 down displacement (trend_20 -42.22, 8 consecutive down bars, expanding range) pressing into a 35-touch swing low at 4041.035.",
+  "3. The decisive near-term fact is the last M1 flush to 4035.085 with a 6.94 lower wick and close back at 4042.025 - the level was pierced and reclaimed intra-bar, which is a genuine two-sided signal: momentum says break, absorption says reject.",
+  "4. Weighted continuation case: H1 displacement is the strongest single signal in the context; L4 mechanism candidate is trend_continuation; invalidation there is 'decisive break of the active level' which is consistent with my trigger.",
+  "5. Weighted rejection case: 35-touch level, reclaim status pending, ROTATION state with 0.75 ambiguity, CONFLICT multi-TF agreement, H4 trend_20 positive, analogs all show REJECTION/COMPRESSION paths before TREND.",
+  "6. Because the momentum signal and the level-defence signal are nearly balanced, I take a modest directional lean DOWN (intraday) with confidence 0.45, clearly below the level where I would call a confirmed trend, and with an explicit symmetric invalidation.",
+  "7. Confidence is capped by: absence of all cross-market data, high ambiguity rate, CONFLICT multi-TF agreement, and unconfirmed state (ROTATION not TREND)."
+ ]
+}

@@ -1,0 +1,75 @@
+{
+  "hypothesis": "突破过去高低点是否有 drift？",
+  "features": "dist_lo_60",
+  "parameters": {
+    "holding": 15,
+    "feature_params": {}
+  },
+  "dataset": "XAUUSD_M1_MT5-FXTM-Live_20260904_v001",
+  "train_period": "2026-05-26 03:43:00+00:00→2026-07-27 06:53:00+00:00",
+  "test_period": "2026-07-27 06:53:00+00:00→2026-09-04 11:22:00+00:00",
+  "OOS": {
+    "ic": 0.009961906544595516,
+    "p": 0.02
+  },
+  "FDR": {
+    "q": 0.036470588235294116,
+    "reject": true
+  },
+  "WF": {
+    "folds_ic": [
+      0.0339,
+      -0.0108,
+      0.0104,
+      0.0215,
+      -0.0329
+    ],
+    "positive_frac": 0.6,
+    "n_folds": 5
+  },
+  "cost_stress": {
+    "1x": -2.8731,
+    "2x": -3.6171,
+    "3x": -4.3589,
+    "net_total": -0.15402456263363073,
+    "n_trades": 345,
+    "subperiod": {
+      "n_parts": 4,
+      "parts": [
+        {
+          "segment": 1,
+          "n": 24985,
+          "sharpe": -0.214,
+          "mean": -6.085925117275621e-06
+        },
+        {
+          "segment": 2,
+          "n": 24985,
+          "sharpe": -0.1,
+          "mean": -2.682034036362336e-06
+        },
+        {
+          "segment": 3,
+          "n": 24985,
+          "sharpe": 0.123,
+          "mean": 2.7399156118174416e-06
+        },
+        {
+          "segment": 4,
+          "n": 24985,
+          "sharpe": -0.015,
+          "mean": -3.436117727646917e-07
+        }
+      ],
+      "sharpe_positive_frac": 0.25,
+      "sharpe_min": -0.214,
+      "sharpe_max": 0.123,
+      "note": "子段 Sharpe 一致性低 → 结果可能依赖特定时期"
+    }
+  },
+  "subperiod": null,
+  "status": "REJECTED",
+  "git_commit": "c1d84d3",
+  "alpha_id": "H3_breakout_03_dist_lo_60_h15_v001",
+  "created_at": "2026-09-04T11:54:41.410051+00:00"
+}

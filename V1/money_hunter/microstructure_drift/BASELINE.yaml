@@ -1,0 +1,349 @@
+meta:
+  purpose: '滚动基准 (drift_engine 每轮重写): 同 feed(fxtm) 全部观测日, 短期7d/中期21d/长期全部; 已排除当前观察窗'
+  generated_utc: '2026-09-28T13:33:52.009123+00:00'
+  n_live_days: 15
+  n_seed_days: 24
+  live_date_range:
+  - '20260907'
+  - '20260925'
+  duka_reference_n_days: 140
+  warning: duka 为跨年参考层(不同采样), 不进主基准阈值
+  today_utc: '20260928'
+windows:
+  short_7d:
+    n_days: 7
+  medium_21d:
+    n_days: 21
+  long_all:
+    n_days: 36
+fields:
+  median_spr_bps:
+    short_7d:
+      n: 7
+      mean: 0.3374
+      std: 0.0107
+      median: 0.3441
+      p90: 0.3483
+      p99: 0.3485
+    medium_21d:
+      n: 21
+      mean: 0.3391
+      std: 0.009
+      median: 0.3414
+      p90: 0.3481
+      p99: 0.3561
+    long_all:
+      n: 36
+      mean: 0.3409
+      std: 0.0094
+      median: 0.3429
+      p90: 0.3507
+      p99: 0.3636
+  p90_spr_bps:
+    short_7d:
+      n: 7
+      mean: 0.4167
+      std: 0.0031
+      median: 0.4157
+      p90: 0.4204
+      p99: 0.4206
+    medium_21d:
+      n: 21
+      mean: 0.4092
+      std: 0.0092
+      median: 0.4099
+      p90: 0.4196
+      p99: 0.4205
+    long_all:
+      n: 36
+      mean: 0.412
+      std: 0.0112
+      median: 0.4107
+      p90: 0.4215
+      p99: 0.4432
+  p99_spr_bps:
+    short_7d:
+      n: 7
+      mean: 0.5342
+      std: 0.0045
+      median: 0.5356
+      p90: 0.5397
+      p99: 0.5399
+    medium_21d:
+      n: 21
+      mean: 0.5253
+      std: 0.011
+      median: 0.5285
+      p90: 0.5367
+      p99: 0.5398
+    long_all:
+      n: 36
+      mean: 0.528
+      std: 0.0138
+      median: 0.5286
+      p90: 0.5411
+      p99: 0.5663
+  spread_usd_median:
+    short_7d:
+      n: 7
+      mean: 0.1457
+      std: 0.0049
+      median: 0.15
+      p90: 0.15
+      p99: 0.15
+    medium_21d:
+      n: 21
+      mean: 0.1495
+      std: 0.0049
+      median: 0.15
+      p90: 0.15
+      p99: 0.16
+    long_all:
+      n: 36
+      mean: 0.15
+      std: 0.0041
+      median: 0.15
+      p90: 0.15
+      p99: 0.16
+  spread_usd_p90:
+    short_7d:
+      n: 7
+      mean: 0.18
+      std: 0.0
+      median: 0.18
+      p90: 0.18
+      p99: 0.18
+    medium_21d:
+      n: 21
+      mean: 0.1805
+      std: 0.0021
+      median: 0.18
+      p90: 0.18
+      p99: 0.188
+    long_all:
+      n: 36
+      mean: 0.1806
+      std: 0.0023
+      median: 0.18
+      p90: 0.18
+      p99: 0.19
+  arrival_per_min:
+    short_7d:
+      n: 7
+      mean: 159.2957
+      std: 6.1887
+      median: 160.01
+      p90: 165.808
+      p99: 168.9778
+    medium_21d:
+      n: 21
+      mean: 157.5219
+      std: 9.6597
+      median: 160.36
+      p90: 165.96
+      p99: 170.322
+    long_all:
+      n: 36
+      mean: 155.4311
+      std: 9.6826
+      median: 157.43
+      p90: 165.72
+      p99: 172.143
+  burst_min_p99_count:
+    short_7d:
+      n: 7
+      mean: 243.3243
+      std: 19.6478
+      median: 238.0
+      p90: 263.294
+      p99: 286.7354
+    medium_21d:
+      n: 21
+      mean: 246.9481
+      std: 18.4868
+      median: 242.0
+      p90: 278.0
+      p99: 288.996
+    long_all:
+      n: 36
+      mean: 243.7033
+      std: 15.9232
+      median: 239.31
+      p90: 262.495
+      p99: 288.738
+  n_minutes:
+    short_7d:
+      n: 7
+      mean: 1300.7143
+      std: 60.5161
+      median: 1308.0
+      p90: 1367.0
+      p99: 1367.0
+    medium_21d:
+      n: 21
+      mean: 1311.0952
+      std: 110.125
+      median: 1367.0
+      p90: 1370.0
+      p99: 1370.0
+    long_all:
+      n: 36
+      mean: 1335.6389
+      std: 88.9816
+      median: 1370.0
+      p90: 1370.0
+      p99: 1370.0
+  n_jump_min:
+    short_7d:
+      n: 7
+      mean: 0.0
+      std: 0.0
+      median: 0.0
+      p90: 0.0
+      p99: 0.0
+    medium_21d:
+      n: 21
+      mean: 0.0
+      std: 0.0
+      median: 0.0
+      p90: 0.0
+      p99: 0.0
+    long_all:
+      n: 36
+      mean: 0.0
+      std: 0.0
+      median: 0.0
+      p90: 0.0
+      p99: 0.0
+  max_min_move_bps:
+    short_7d:
+      n: 7
+      mean: 0.0
+      std: 0.0
+      median: 0.0
+      p90: 0.0
+      p99: 0.0
+    medium_21d:
+      n: 21
+      mean: 0.0
+      std: 0.0
+      median: 0.0
+      p90: 0.0
+      p99: 0.0
+    long_all:
+      n: 36
+      mean: 0.0
+      std: 0.0
+      median: 0.0
+      p90: 0.0
+      p99: 0.0
+  sess_Asia_median_spr_bps:
+    short_7d:
+      n: 7
+      mean: 0.4162
+      std: 0.0032
+      median: 0.4151
+      p90: 0.4199
+      p99: 0.42
+    medium_21d:
+      n: 21
+      mean: 0.4077
+      std: 0.0102
+      median: 0.4089
+      p90: 0.4192
+      p99: 0.42
+    long_all:
+      n: 36
+      mean: 0.4103
+      std: 0.0123
+      median: 0.41
+      p90: 0.4203
+      p99: 0.4426
+  sess_London_median_spr_bps:
+    short_7d:
+      n: 7
+      mean: 0.3306
+      std: 0.0168
+      median: 0.3251
+      p90: 0.3451
+      p99: 0.3687
+    medium_21d:
+      n: 21
+      mean: 0.3251
+      std: 0.0182
+      median: 0.32
+      p90: 0.3605
+      p99: 0.3705
+    long_all:
+      n: 36
+      mean: 0.3305
+      std: 0.0216
+      median: 0.3228
+      p90: 0.3676
+      p99: 0.3742
+  sess_Overlap_median_spr_bps:
+    short_7d:
+      n: 7
+      mean: 0.3233
+      std: 0.0024
+      median: 0.3233
+      p90: 0.3266
+      p99: 0.3271
+    medium_21d:
+      n: 21
+      mean: 0.3171
+      std: 0.0075
+      median: 0.3187
+      p90: 0.324
+      p99: 0.327
+    long_all:
+      n: 36
+      mean: 0.3184
+      std: 0.0089
+      median: 0.3191
+      p90: 0.3267
+      p99: 0.3413
+  sess_NY_median_spr_bps:
+    short_7d:
+      n: 7
+      mean: 0.3234
+      std: 0.0024
+      median: 0.322
+      p90: 0.3269
+      p99: 0.3273
+    medium_21d:
+      n: 20
+      mean: 0.3173
+      std: 0.0071
+      median: 0.32
+      p90: 0.3236
+      p99: 0.3272
+    long_all:
+      n: 35
+      mean: 0.3181
+      std: 0.0085
+      median: 0.3191
+      p90: 0.327
+      p99: 0.3388
+  sess_Quiet_median_spr_bps:
+    short_7d:
+      n: 7
+      mean: 0.3688
+      std: 0.0027
+      median: 0.3678
+      p90: 0.3718
+      p99: 0.3719
+    medium_21d:
+      n: 20
+      mean: 0.3617
+      std: 0.0094
+      median: 0.365
+      p90: 0.3714
+      p99: 0.3719
+    long_all:
+      n: 35
+      mean: 0.3629
+      std: 0.0104
+      median: 0.3651
+      p90: 0.3718
+      p99: 0.3866

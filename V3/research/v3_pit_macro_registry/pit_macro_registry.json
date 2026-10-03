@@ -1,0 +1,147 @@
+{
+ "schema": "v3_pit_macro_registry/2",
+ "ts_utc": "2026-09-25T01:16:41.677614+00:00",
+ "mandatory_fields": [
+  "source",
+  "series",
+  "observation_time",
+  "publication_time",
+  "vintage",
+  "availability",
+  "timezone",
+  "revision",
+  "hash",
+  "status"
+ ],
+ "admitted_count": 5,
+ "admitted": [
+  {
+   "source": "US_TREASURY_YIELD_CURVE_2024",
+   "series": "US_TREASURY_YIELD_CURVE_2024",
+   "status": "CONDITIONAL",
+   "observation_time": "date column",
+   "publication_time": null,
+   "availability_time": null,
+   "vintage": null,
+   "revision": false,
+   "timezone": "UTC",
+   "hash": "6775840b76cd7fd41121f61d6f6c60184eca6b2ba49954ec7372c463cbeef34d",
+   "stored_at": "data/pit_macro/us_treasury_yield_curve_2024.csv",
+   "confidence": "medium",
+   "reason": "official daily yield curve file: historical by year and not restated in the file itself, but the file carries NO publication timestamp; official practice is same-day after close -> usable at DAILY granularity only"
+  },
+  {
+   "source": "US_TREASURY_YIELD_CURVE_2026",
+   "series": "US_TREASURY_YIELD_CURVE_2026",
+   "status": "CONDITIONAL",
+   "observation_time": "date column",
+   "publication_time": null,
+   "availability_time": null,
+   "vintage": null,
+   "revision": false,
+   "timezone": "UTC",
+   "hash": "334eed6056c7d01bda71f7e81edb83740298d1376d4c6c81995ea39474fbe145",
+   "stored_at": "data/pit_macro/us_treasury_yield_curve_2026.csv",
+   "confidence": "medium",
+   "reason": "official daily yield curve file: historical by year and not restated in the file itself, but the file carries NO publication timestamp; official practice is same-day after close -> usable at DAILY granularity only"
+  },
+  {
+   "source": "YAHOO_GC_F_DAILY",
+   "series": "YAHOO_GC_F_DAILY",
+   "status": "CONDITIONAL",
+   "observation_time": "bar close date",
+   "publication_time": null,
+   "availability_time": "bar close (completed bar only; unfinished candles forbidden)",
+   "vintage": null,
+   "revision": false,
+   "timezone": "UTC",
+   "hash": "6e6c84c1a48978bae1cf29ba39207036bab6a0f348a1e551765751b3467ba127",
+   "stored_at": "data/pit_macro/yahoo_gc_f_daily.csv",
+   "confidence": "medium",
+   "reason": "market series: T_available = T_market for a COMPLETED daily bar; no macro-style publication needed. Restatement risk exists for EOD vendor snapshots -> daily-level research only, never intraday event windows."
+  },
+  {
+   "source": "YAHOO_VIX_DAILY",
+   "series": "YAHOO_VIX_DAILY",
+   "status": "CONDITIONAL",
+   "observation_time": "bar close date",
+   "publication_time": null,
+   "availability_time": "bar close (completed bar only; unfinished candles forbidden)",
+   "vintage": null,
+   "revision": false,
+   "timezone": "UTC",
+   "hash": "0f862d75e5a211ad901316cebc895057f4d3f7ce991bebcd1c65fd085db7e1a4",
+   "stored_at": "data/pit_macro/yahoo_vix_daily.csv",
+   "confidence": "medium",
+   "reason": "market series: T_available = T_market for a COMPLETED daily bar; no macro-style publication needed. Restatement risk exists for EOD vendor snapshots -> daily-level research only, never intraday event windows."
+  },
+  {
+   "source": "YAHOO_DXY_DAILY",
+   "series": "DX-Y.NYB",
+   "status": "CONDITIONAL",
+   "observation_time": "bar close date",
+   "publication_time": null,
+   "availability_time": "bar close + 1 day (conservative: completed bar only)",
+   "vintage": null,
+   "revision": false,
+   "timezone": "UTC",
+   "hash": "04cdad6f642e6004e42a6c18130cc5e38eb16c579044a1af1567a7637a0f5d87",
+   "stored_at": "data/pit_macro/yahoo_dxy_daily.json",
+   "confidence": "medium",
+   "reason": "market series: T_available = bar close + 1d (completed bar only); daily-level research only"
+  }
+ ],
+ "not_admitted_count": 10,
+ "not_admitted": [
+  {
+   "source": "FOMC_CALENDAR",
+   "status": "CONDITIONAL",
+   "reason": "event calendar: meeting/statement DATES are historical facts; usable for event TIMING research only, carries no values and no intraday timestamp"
+  },
+  {
+   "source": "BLS_API_CPI",
+   "status": "FAIL",
+   "reason": "values only: no vintage/revision history in the payload, no publication timestamp; cannot prove what was known at T -> NOT_TESTABLE for signals (release-calendar page returned 403, so publication times were not obtained either)"
+  },
+  {
+   "source": "STOOQ_DXY_DAILY",
+   "status": "NOT_AVAILABLE",
+   "reason": "payload is not a series (throttle/notice page); cannot be used"
+  },
+  {
+   "source": "STOOQ_GC_DAILY",
+   "status": "NOT_AVAILABLE",
+   "reason": "payload is not a series (throttle/notice page); cannot be used"
+  },
+  {
+   "source": "STOOQ_VIX_DAILY",
+   "status": "NOT_AVAILABLE",
+   "reason": "payload is not a series (throttle/notice page); cannot be used"
+  },
+  {
+   "source": "STOOQ_TLT_DAILY",
+   "status": "NOT_AVAILABLE",
+   "reason": "payload is not a series (throttle/notice page); cannot be used"
+  },
+  {
+   "source": "ALFRED_VINTAGES",
+   "status": "NOT_AVAILABLE",
+   "reason": "requires credentials this environment does not have (AUTH_REQUIRED)"
+  },
+  {
+   "source": "NASDAQ_DATA_LINK",
+   "status": "NOT_AVAILABLE",
+   "reason": "requires credentials this environment does not have (AUTH_REQUIRED)"
+  },
+  {
+   "source": "ECONDB_API",
+   "status": "NOT_AVAILABLE",
+   "reason": "requires credentials this environment does not have (AUTH_REQUIRED)"
+  },
+  {
+   "source": "DBNOMICS_FRED_DGS10",
+   "status": "NOT_AVAILABLE",
+   "reason": "unreachable: HTTPError: HTTP Error 404: NOT FOUND"
+  }
+ ]
+}

@@ -1,0 +1,60 @@
+{
+ "tests": {
+  "test_r3_immutable": {
+   "result": "PASS",
+   "detail": "all 55 R3 artifacts byte-identical (changes=[])"
+  },
+  "test_blind_separation": {
+   "result": "PASS",
+   "detail": "Blind Audit payloads contain ONLY the PIT context; forecasts/evaluation are outside the blind read set (verified by prompt + task scope)"
+  },
+  "test_no_lookahead": {
+   "result": "PASS",
+   "detail": "audit contexts are byte-identical copies of the frozen PIT contexts (forbidden_included=false)"
+  },
+  "test_replay": {
+   "result": "PASS",
+   "detail": "context_hash + prompt_hash + model_hash recorded per audit; ledger replayable (34 entries)"
+  },
+  "test_deterministic": {
+   "result": "PASS",
+   "detail": "contexts and prompts frozen with sha256; audit outputs hash-chained"
+  },
+  "test_audit_ledger_chain": {
+   "result": "PASS",
+   "detail": "sha256 chain verified, 34 entries"
+  },
+  "test_future_data_isolation": {
+   "result": "PASS",
+   "detail": "actual outcomes appear ONLY in post_outcome/ payloads; R3 forecasts/contexts unchanged"
+  },
+  "test_forecast_immutability": {
+   "result": "PASS",
+   "detail": "Hermes-A forecasts are read-only inputs; no R4 code path writes under R3"
+  },
+  "test_v1_isolation": {
+   "result": "PASS",
+   "detail": "no V1 execution/risk/order path referenced"
+  },
+  "test_v2_isolation": {
+   "result": "PASS",
+   "detail": "no V2 reference"
+  },
+  "test_v3_isolation": {
+   "result": "PASS",
+   "detail": "no V3 write target"
+  },
+  "test_order_send_disabled": {
+   "result": "PASS",
+   "detail": "no order/broker call in R4 code"
+  },
+  "test_secret_scan": {
+   "result": "PASS",
+   "detail": "no credential values (hits=[])"
+  }
+ },
+ "total": 13,
+ "pass": 13,
+ "fail": 0,
+ "ts_utc": "2026-09-27T15:11:34.699941+00:00"
+}

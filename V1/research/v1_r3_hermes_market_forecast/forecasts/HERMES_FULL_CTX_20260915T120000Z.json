@@ -1,0 +1,90 @@
+{
+  "forecast_id": "HERMES_FULL_20260915T120000Z",
+  "timestamp": "2026-09-15T12:00:00+00:00",
+  "current_state": "REJECTION",
+  "dominant_structure": "HTF downtrend (H4 trend_20 -81.02, trend_50 -198.17, consecutive_down 9; H1 trend_50 -62.29) with a short-term bounce from the 4261.105 low stalling into the swing-low level 4283.098 (23 touches in 240 bars, distance 0.049 ATR, break_status INSIDE, reclaim NONE). Multi-timeframe agreement CONFLICT: M1/M5 short-term up-drift vs M15/H1/H4 down-drift. Price is retesting a broken support level from below.",
+  "current_pressure": {
+    "directional": "DOWN dominant on higher timeframes; short-term UP momentum (M1 trend_20 +6.39, M5 trend_20 +13.46) fading as ranges contract",
+    "volatility": "Contracting across M1 (range_percentile 0.16), M5 (0.135), H1 (0.055); VIX 17.06 falling (change_32 -0.88) — quiescence, typically precedes a resolve",
+    "liquidity_proxy": "DXY 99.595 flat (change_8 +0.002, change_32 -0.069, PROXY) — no fresh dollar pressure; UST10Y proxy UNKNOWN (STALE_OR_NOT_COVERED); no news/macro/CFTC/ETF flow available (absent, not fabricated)"
+  },
+  "primary_scenario": {
+    "scenario": "Retest-rejection: price fails to hold the 4283.098 swing-low zone (former support now resistance), forms a lower high below 4283.669/4300.368, and resumes the HTF downtrend — break of 4278.485 (M15 low) extends toward 4261.105, then the 4253.438 zone.",
+    "confidence": 0.45,
+    "horizon": "SHORT_TERM",
+    "trigger": "Rejection candle at the 4283-4286 zone with M1/M5 momentum rolling over, followed by an H1 close back below 4278.485.",
+    "invalidation": "H1 close above 4300.368 (reclaim of the level zone with a decisive higher low); or a sustained hold above 4283.098 for multiple H1 bars with consecutive up closes."
+  },
+  "alternative_scenario": {
+    "scenario": "Bear-trap reclaim: the break below 4283.098 to 4261.105 was an exhaustion flush; price reclaims the swing-low level, holds it, and pushes through 4300 toward the 4317.245 high (short-squeeze back into the range).",
+    "confidence": 0.3,
+    "horizon": "INTRADAY",
+    "trigger": "H1 close above 4283.098 followed by acceptance above 4300.368 with M5/M15 trend_20 turning firmly positive.",
+    "invalidation": "H1 close back below 4278.485 without first tagging 4300; or a new low below 4261.105."
+  },
+  "third_scenario": {
+    "scenario": "Compression/range: no decisive break either way; price oscillates between 4261.105 and 4300-4317 as the REJECTION state matures into COMPRESSION (consistent with analog A27933 REJECTION->COMPRESSION and A36324 REJECTION->ROTATION).",
+    "confidence": 0.25,
+    "horizon": "SHORT_TERM",
+    "trigger": "Repeated two-sided rejections at 4261 and 4300-4317 with range_percentile staying low and no H1 close beyond either boundary.",
+    "invalidation": "H1 close beyond 4261.105 or 4317.245."
+  },
+  "direction_bias": "DOWN",
+  "expected_state_transition": "REJECTION -> TREND (down-resumption) if the 4283.098 zone holds as resistance; REJECTION -> COMPRESSION if two-sided range persists; bear-trap path would be REJECTION -> TREND (up) on a decisive reclaim above 4300.",
+  "time_horizon": "SHORT_TERM",
+  "confidence": 0.45,
+  "supporting_evidence": [
+    "H4 trend_20 -81.02 and trend_50 -198.17: persistent, strong HTF downtrend (RAW_GEOMETRY + DERIVED)",
+    "H1 trend_50 -62.29 and M15 trend_20 -5.91: intermediate frames still down despite the bounce",
+    "H4 sequence consecutive_down 9; lower highs visible 4306.345 -> 4317.245 -> 4283.669 after the 4355 area peak",
+    "Price retesting broken swing-low 4283.098 from below (level_side DN, break_status INSIDE, reclaim_status NONE, touch_count_240 23) — classic resistance-retest setup after a downside break",
+    "State REJECTION (dwell 3) following TREND, transition TREND->REJECTION (DERIVED lifecycle)",
+    "Range contraction across M1/M5/H1 (range_percentile 0.16 / 0.135 / 0.055) — bounce momentum stalling at the level",
+    "VIX falling (17.06, change_32 -0.88, PROXY) with DXY flat: no counter-pressure supporting a fresh upside bid in gold"
+  ],
+  "counter_evidence": [
+    "M1 trend_20 +6.394 and M5 trend_20 +13.46 with consecutive_up 6/5: short-term momentum is still UP — the bounce is not yet confirmed dead",
+    "Price reclaimed well above the 4261.105 flush low and the H4 4253.438 low — the breakdown could be a bear trap (failed-breakdown resolves upward)",
+    "Multi-timeframe agreement = CONFLICT (L6, §15: never merged) and ambiguity_rate_8 = 0.5 — structure is genuinely two-sided at this price",
+    "L4 mechanism is only a CANDIDATE (trend_continuation), explicitly not asserted as fact",
+    "Historical analogs from REJECTION (state-evolution only, no returns) most often went to COMPRESSION (2 of 3); one ended in TREND at step 16 — immediate trend resumption is not the modal outcome",
+    "DXY slightly soft over 32 bars (change_32 -0.069, PROXY) — a weak dollar is mildly gold-supportive, not gold-negative",
+    "The H4 'current' bar geometry is internally inconsistent across timeframes (high 4300.368 not reconcilable with H1 highs) — I discount that bar's shape and rely on trend/sequence/level layers"
+  ],
+  "trigger": "Rejection at the 4283-4286 zone (long upper wick / H1 close below 4283.098) followed by an H1 close below 4278.485; confirms down-resumption toward 4261.105.",
+  "invalidation": "H1 close above 4300.368, or two consecutive H1 closes above 4283.098 with rising M5/M15 trend_20; alternatively a fresh low below 4261.105 invalidates the range (compression) scenario.",
+  "change_my_mind": [
+    "H1 close above 4300.368 followed by a close above 4317.245 — flips bias to UP (decisive reclaim of the whole rejection zone)",
+    "Sustained hold above 4283.098 for 4+ H1 bars with expanding range on the upside — bear-trap confirmed, bias flips to UP",
+    "H1 close below 4261.105 — downgrade becomes a high-conviction continuation, raise confidence above 0.6",
+    "DXY breaking decisively lower (PROXY) with VIX spiking above ~19 (PROXY) — external pressure shifts, re-evaluate the DOWN bias",
+    "UST10Y proxy becoming available with a clear direction — new macro input not currently observable"
+  ],
+  "abstain": false,
+  "abstain_reason": "",
+  "reasoning_trace": [
+    "A: Price 4281-4284 consolidating just at the swing-low 4283.098 after a bounce from 4261.105; HTF downtrend from ~4355 intact.",
+    "B: Dominant structure = HTF downtrend with a corrective bounce retesting broken support from below; REJECTION lifecycle state (dwell 3) after TREND.",
+    "C: Downside directional pressure on HTF; short-term up-drift fading; volatility contracting; liquidity proxies quiet (DXY flat, VIX low/falling).",
+    "D: Candidates: (1) trend_continuation (L4 candidate, supported by price-inside-level + HTF trend, invalidated by decisive level break); (2) bear-trap reversal (supported by failed-breakdown reclaim, contradicted by HTF trend_50 depth); (3) compression (supported by range contraction + analogs).",
+    "E: Strongest: H4 trend_50 -198.17, H4 consecutive_down 9, price at 23-touch broken level with reclaim_status NONE, contracting ranges.",
+    "F: Counter: M1/M5 trend_20 positive, ambiguity 0.5, CONFLICT agreement, analog modal path is COMPRESSION not continuation; H4 current-bar geometry inconsistency downgrades that bar.",
+    "G: Primary: retest-rejection at 4283.098 -> resumption down toward 4261.105 then 4253.438.",
+    "H: Alternative: bear-trap reclaim through 4300 toward 4317.245; third: compression range 4261-4317.",
+    "I: Invalidated by H1 close > 4300.368 (primary) or > 4317.245 (all-down views).",
+    "J: Flip on decisive reclaim above 4300/4317, or confirm on break below 4261.105.",
+    "Tags respected: DXY/VIX kept as PROXY, UST10Y UNKNOWN, absent series (NEWS/MACRO/CFTC/ETF/GLD/GC) never fabricated; no future information used."
+  ],
+  "questions": {
+    "A": "What is happening? XAUUSD is in a correction/consolidation after a sharp HTF decline: price fell from the ~4355 area (Sep 14) to a flush low of 4261.105 (H1 09:00), bounced to ~4283.7, and is now hovering at 4281-4284, sitting right on the swing-low level 4283.098. Ranges are contracting at every intraday timeframe (M1 range_percentile 0.16, M5 0.135, H1 0.055) — the bounce is stalling. DXY is flat (99.595, PROXY), VIX low and falling (17.06, PROXY), UST10Y UNKNOWN, no news/macro data available.",
+    "B": "What is the dominant structure? A higher-timeframe downtrend (H4 trend_20 -81.02, trend_50 -198.17, consecutive_down 9; H1 trend_50 -62.29) with the current price action being a corrective bounce that has retraced a small fraction of the decline and is now retesting the broken swing-low 4283.098 from below (level_side DN, break_status INSIDE, reclaim_status NONE). The lifecycle state is REJECTION (dwell 3) after TREND. Multi-timeframe agreement is CONFLICT: only M1/M5 are positive short-term.",
+    "C": "What pressures are building? Directional: HTF downside pressure remains dominant; short-term upside momentum (M1 trend_20 +6.39, M5 trend_20 +13.46) is fading as ranges contract. Volatility: contracting across M1/M5/H1 with VIX falling — quiescence that typically resolves into a directional move. Liquidity-proxy: DXY flat (PROXY), UST10Y UNKNOWN, no flow/news data — effectively no observable external driver, so the level interaction (4283.098) is the load-bearing feature.",
+    "D": "What mechanisms could explain it? (1) Trend continuation: the bounce is a retest of broken support now acting as resistance; supported by HTF trend depth, price-inside-level, and L4 candidate trend_continuation (DERIVED, candidate only); invalidated by a decisive break of the level. (2) Bear-trap exhaustion reversal: the flush to 4261.105 was a liquidation sweep and the reclaim is genuine; supported by the failed-breakdown pattern and short-TF up-drift, but contradicted by the depth of HTF trend_50 (-198.17). (3) Compression: two-sided absorption into a range; supported by range contraction and by REJECTION-state analogs that most often went to COMPRESSION. Each remains a candidate — none is asserted as fact.",
+    "E": "What is the strongest evidence? (1) H4 trend_50 -198.17 and trend_20 -81.02 with consecutive_down 9 — a deep, persistent HTF downtrend. (2) H1 trend_50 -62.29 — the intermediate frame still points down through the bounce. (3) Price is inside the 23-touch swing-low level 4283.098 with reclaim_status NONE — the bounce has not reclaimed the level. (4) Contracting ranges at every intraday TF — the up-drift is stalling, not accelerating. (5) Lifecycle TREND->REJECTION transition (dwell 3).",
+    "F": "What is the strongest counter-evidence? (1) M1/M5 trend_20 are positive (+6.39/+13.46) with consecutive_up 6/5 — the short-term momentum is still up. (2) ambiguity_rate_8 = 0.5 and multi-TF agreement CONFLICT — the read is genuinely two-sided. (3) The 4261.105 flush low was reclaimed cleanly — a bear-trap resolution is possible. (4) REJECTION-state analogs (state-evolution only) went to COMPRESSION 2 of 3 times — immediate continuation is not the modal outcome. (5) DXY is flat-to-soft (change_32 -0.069, PROXY), giving no fresh dollar-driven downside. (6) The H4 'current' bar geometry is internally inconsistent across timeframes, so I explicitly discount its candle shape as evidence.",
+    "G": "What could happen next? PRIMARY: retest-rejection — price fails to hold the 4283.098 zone, prints a lower high below 4283.669, and resumes the HTF downtrend; an H1 close below 4278.485 opens the path to 4261.105 and then 4253.438. Confidence 0.45, horizon SHORT_TERM.",
+    "H": "What is the alternative? (1) Bear-trap reclaim: price holds above 4283.098, pushes through 4300.368 toward 4317.245 — confidence 0.30, INTRADAY. (2) Compression: two-sided range 4261-4317 with REJECTION maturing into COMPRESSION — confidence 0.25. The scenarios are mutually exclusive at the level-test resolution.",
+    "I": "What would invalidate the forecast? The primary (down-resumption) view is invalidated by an H1 close above 4300.368, or by two consecutive H1 closes above 4283.098 with rising M5/M15 trend_20. The down family is fully invalidated by an H1 close above 4317.245. The compression view is invalidated by an H1 close beyond 4261.105 or 4317.245.",
+    "J": "What would change your mind? Evidence that would flip me to UP: H1 close above 4300.368 followed by acceptance above 4317.245, or a sustained hold above 4283.098 for 4+ H1 bars with upside range expansion. Evidence that would raise DOWN conviction: H1 close below 4261.105 (confidence to >0.6). External flips: a decisive DXY break lower (PROXY) with a VIX spike (PROXY), or UST10Y proxy becoming available with a clear directional signal."
+  }
+}

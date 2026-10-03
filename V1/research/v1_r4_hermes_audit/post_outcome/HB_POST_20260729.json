@@ -1,0 +1,45 @@
+{
+ "audit_id": "POST_20260729",
+ "timestamp": "2026-09-27T14:44:00Z",
+ "correct_calls": [
+  "State read: COMPRESSION (13-bar dwell, VOL_CONTRACTION) at heavily-tested swing-high 4029.475 (39 touches/240, INSIDE) was accurate per PIT data",
+  "Structural call: compression at a battle-tested resistance was due for near-term resolution — the state did transition (actual_transition=1), ending the COMPRESSION dwell",
+  "The upside breakout alternative (0.35) was explicitly listed with the right trigger (close above 4029.475 with range expansion); actual direction was UP",
+  "Honest framing: NO_DIRECTIONAL_EDGE with explicit invalidation/change-my-mind conditions was the correct epistemic posture given genuinely conflicting evidence (HTF downtrend vs intraday dip-buying)"
+ ],
+ "wrong_calls": [
+  "Primary scenario (confidence 0.5): REJECTION at 4029.475 resolving DOWNWARD toward a retest of 3995-4004 — actual direction was UP; the primary was wrong",
+  "Expected state transition COMPRESSION -> REJECTION (primary) — actual outcome transitioned upward (recorded as NO_DEFINED_STATE), not REJECTION",
+  "Third scenario (protracted compression, 0.15): transition=1 means the compression did not persist through the window",
+  "Direction weighting: putting 0.5 on downside rejection while declaring NO_DIRECTIONAL_EDGE was internally inconsistent; the counter-evidence it catalogued (M15 trend_50 +11.69, dip-buying, mixed analogs) warranted more than a 0.35 upside weight"
+ ],
+ "right_but_wrong_reason": [
+  "Resolution prediction: the forecast was right that the 13-bar COMPRESSION would resolve within the intraday window (transition occurred), but its reasoning anchored resolution to the downside (trend_continuation/rejection) while the actual resolution was upward"
+ ],
+ "direction_ok_state_wrong": {
+  "assessment": "PARTIAL",
+  "detail": "The alternative scenario's direction (UP) matched the actual direction, but the expected upside state (EXPANSION toward 4036-4044 supply) is not confirmed by the outcome record, which reports actual_next_state NO_DEFINED_STATE; hermes_scenario_covered_actual=false means the outcome was not mapped to any forecast scenario"
+ },
+ "state_ok_direction_wrong": {
+  "assessment": "NO",
+  "detail": "No forecast scenario paired the correct state with a wrong direction; the persistence scenario predicted the right state (COMPRESSION) but no transition, while the record shows a transition (actual_transition=1)"
+ },
+ "should_have_abstained": false,
+ "invalidation_occurred": true,
+ "prior_concerns_materialised": null,
+ "hindsight_detected": false,
+ "hindsight_evidence": [],
+ "outcome_alignment_verdict": "PARTIALLY_CORRECT",
+ "reasoning_trace": [
+  "Read the PIT context, Hermes-A's forecast, and the actual outcome record",
+  "Actual outcome: direction UP, transition=1, next state NO_DEFINED_STATE, hermes_scenario_covered_actual=false, baseline persistence state COMPRESSION",
+  "Judged the primary scenario (downside rejection, 0.5) against the outcome: direction UP contradicts it — WRONG",
+  "Judged the alternative scenario (upside breakout, 0.35): direction matches, but the outcome record does not credit scenario coverage (hermes_scenario_covered_actual=false) and no price levels are provided to confirm the breakout trigger (close above 4029.475, follow-through past 4036-4037)",
+  "Judged the third scenario (protracted compression, 0.15): transition=1 means the compression did not persist — WRONG",
+  "Checked for hindsight in Hermes-A's reasoning: no claims found that only make sense knowing the actual outcome; the forecast argued from PIT data alone and honestly catalogued conflicting evidence",
+  "Checked invalidation: the primary's invalidation (decisive close above 4029.475-4030.5 with follow-through beyond 4036-4037) is directionally consistent with the UP outcome, though exact price levels are not present in the outcome payload for full confirmation",
+  "Checked prior auditor concerns: none were provided in the payload; set prior_concerns_materialised to null",
+  "Verdict: the highest-weighted scenario was wrong, but the correct direction was present as an explicitly stated alternative with the right trigger; PARTIALLY_CORRECT rather than INCORRECT, with the caveat that scenario coverage was not formally credited",
+  "Noted the internal inconsistency: NO_DIRECTIONAL_EDGE bias paired with a 0.5 downside primary; a tighter confidence split would have been cleaner, though abstain=false remains defensible for a structural/scenario forecast"
+ ]
+}

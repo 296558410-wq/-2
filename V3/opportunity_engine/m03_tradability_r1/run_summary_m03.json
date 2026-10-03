@@ -1,0 +1,95 @@
+{
+ "schema": "v3_m03_tradability_r1/1",
+ "ts_utc": "2026-09-25T12:11:35.373695+00:00",
+ "version": "M03-R1.0.0",
+ "M03_INPUT_EVENTS": 63,
+ "TESTABLE_EVENTS": 63,
+ "NOT_TESTABLE_EVENTS": 0,
+ "DXY_EVENTS": 13,
+ "VIX_EVENTS": 5,
+ "TNX_EVENTS": 10,
+ "MULTI_SOURCE_EVENTS": 35,
+ "GROSS_EDGE": 26.7942,
+ "NET_EDGE_1X": 25.8802,
+ "NET_EDGE_2X": 24.9662,
+ "NET_EDGE_3X": 24.0522,
+ "MEDIAN_RESPONSE": 15.4088,
+ "MEAN_RESPONSE": 26.7942,
+ "CI95": [
+  10.5104,
+  49.9205
+ ],
+ "RAW_N": 63,
+ "EFFECTIVE_N": 21,
+ "EPISODES": 21,
+ "WF_FOLD_1": 8.2659,
+ "WF_FOLD_2": 19.1354,
+ "WF_FOLD_3": 50.2393,
+ "WF_STATUS": "CONSISTENT",
+ "EVENTS_PER_DAY": 0.1108,
+ "EVENTS_PER_WEEK": 0.7753,
+ "EVENTS_PER_MONTH": 3.3671,
+ "MEDIAN_HOLDING_TIME": 6,
+ "NET_EDGE_PER_HOUR": 4.3134,
+ "PERMUTATION_STATUS": "p=0.0065",
+ "NEGATIVE_CONTROL_STATUS": "PASS",
+ "MULTIPLE_TESTING_STATUS": "PASS",
+ "EXECUTION_FEASIBILITY": "FEASIBLE",
+ "TNX_PROXY_DEPENDENCY": "NOT_PROXY_DEPENDENT",
+ "M03_TRADABILITY_STATUS": "NOT_PROMISING",
+ "status_criteria_met": {
+  "primary_expression_holds": true,
+  "net_edge_1x_positive": true,
+  "wf_consistent": true,
+  "perm_p_ok": true,
+  "fdr_ok": true,
+  "effective_n_ok": true,
+  "execution_feasible": true,
+  "frequency_ok": false
+ },
+ "CANDIDATE_RESEARCH": 0,
+ "CANDIDATE_ELIGIBLE": false,
+ "FREEZE_HASH": "2116ec8e812c322a34604e51eaf03b1682f07bbdeae6b8087c94c4f549d75b20",
+ "INPUT_HASH": "202db652b9732aa92feb08666da70914b3c1f4f2e9db282b32d688e476c20be4",
+ "OUTPUT_HASH": "43249b90c44ce5f718a35c473a382f78595939a8044cbb8c8762ef5eede15b83",
+ "ledger_chain": {
+  "rows": 71,
+  "chain_ok": true,
+  "bad_seq": null
+ },
+ "inputs_unchanged": true,
+ "self_corrections": [
+  {
+   "what": "stray decorator line and incomplete tail in the first runner draft",
+   "when": "before the first execution",
+   "affected_data": false,
+   "affected_method": false,
+   "fix": "rewrote the runner completely",
+   "rerun": "first execution"
+  },
+  {
+   "what": "loader matched event members on cluster_key, which the R1 opportunity ledger does not persist -> 0/63 loaded; the INVALID_INPUT guard fired as designed",
+   "when": "first execution of the corrected runner (before any result was computed)",
+   "affected_data": false,
+   "affected_method": false,
+   "fix": "resolve members by rebuilding events exactly as R4 did and using the event's own member list",
+   "rerun": "full re-run from the freeze gate"
+  },
+  {
+   "what": "pandas unit mismatch: the state index is datetime64[us] while the derived null timestamps became ns -> searchsorted raised 'Cannot losslessly convert units'",
+   "when": "execution, inside the null-redraw section (after responses were computed, before any result file was written)",
+   "affected_data": false,
+   "affected_method": false,
+   "fix": "align query timestamps to the index unit with as_unit() before searchsorted",
+   "rerun": "full re-run from the freeze gate"
+  },
+  {
+   "what": "used random.Random for the block bootstrap but called numpy's .integers() -> AttributeError",
+   "when": "execution, in the block-bootstrap section (no result file written yet)",
+   "affected_data": false,
+   "affected_method": false,
+   "fix": "switched the bootstrap RNG to np.random.default_rng(SEED)",
+   "rerun": "full re-run from the freeze gate"
+  }
+ ]
+}

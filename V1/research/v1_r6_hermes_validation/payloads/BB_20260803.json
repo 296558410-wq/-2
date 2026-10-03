@@ -1,0 +1,54 @@
+{
+ "audit_id": "BB_20260803",
+ "timestamp": "2026-08-03T12:00:00Z",
+ "current_state": "REJECTION (dwell=1) at swing-high 4049.765 after 23 bars of ROTATION; price pinned inside the level zone (distance_atr 0.027), M15 current bar printed a 3.12 upper wick rejecting the 4050-4052 supply zone",
+ "structure": "ROTATION -> REJECTION transition on the frozen labeler; nearest level is a heavily-touched swing high 4049.765 (42 touches / 240 bars, age 70, break_status INSIDE, reclaim NONE). M1 range contracting (trend_20 -2.01), M5 range expanding with a recovery bar (close 4051.815), M15 trend_20 -18.6 with upper-wick rejection, H1 trend_20 +16.9. Multi-timeframe agreement CONFLICT. Note: H4 current bar (low 4018.915, close 4036.055) is not visible in any lower-timeframe sequence (M15 low 4045.655, H1 low 4045.285) and its open equals the M1 12:00 open - flagged as alignment/staleness artifact, do not trust deeper H4 extremes for timing.",
+ "mechanism": "Supply rejection at a well-worn pivot: repeated intra-hour failures above ~4050-4052 (M1 high 4049.855, M5 high 4051.945, M15 high 4052.725 with large upper wick) while short-TF trends (M1/M5/M15 trend_20) are negative. L4 trend_continuation candidate rests on 8-bar displacement -11.74, but price is INSIDE the level with no decisive break, so rejection/mean-reversion back to the 4045-4040 shelf is the more coherent read. Heavy touch count (42) cuts both ways: the level is a magnet that can also break on exhaustion.",
+ "primary_scenario": {
+  "scenario": "Short-term rejection: price fails to hold above the 4049.765-4052 zone, rolls back down to the 4045 shelf and then 4040-4036 (the H4 close region), consistent with M1 range contraction and negative short-TF trend_20",
+  "confidence": 0.45,
+  "horizon": "SHORT_TERM",
+  "trigger": "M1/M5 close back below 4048 (loss of the current support shelf) or a fresh rejection wick at 4050-4052 with expanding downside M5 range",
+  "invalidation": "Decisive close above 4052.7 (M15 swing high) with expanding range, i.e. a real reclaim of the level rather than a wick"
+ },
+ "alternative_scenario": {
+  "scenario": "Level-wear breakout / compression: after 42 touches the swing high is exhausted; price either grinds into COMPRESSION (analog A34623 path) or breaks upward toward 4062 (H1 close level), supported by H1 trend_20 +16.9, the strong H1 current bar body, and mildly falling DXY",
+  "confidence": 0.3,
+  "horizon": "SHORT_TERM",
+  "trigger": "M5 close above 4052.7 with range expansion and sustained buying into the close of the H1 bar",
+  "invalidation": "A further hourly close below 4045.3 (H1 low) which would confirm downside continuation instead"
+ },
+ "expected_transition": "REJECTION -> TREND (short-term down) or REJECTION -> COMPRESSION; historical analogs (2/3) eventually reach TREND and (1/3) COMPRESSION, but state evolution carries no direction/returns, so this only supports 'departure from REJECTION soon', not the direction",
+ "direction": "DOWN",
+ "horizon": "SHORT_TERM",
+ "confidence": 0.4,
+ "counter_evidence": [
+  "H1 trend_20 +16.92 and H1 current bar body +13.06 (strong bullish close 4062.295) directly conflict with short-TF down structure",
+  "M5 current bar is a bullish recovery bar (close 4051.815, body 2.58) suggesting buyers defending 4047-4048",
+  "42 touches in 240 bars on the swing high: worn levels frequently break rather than hold on the next attempt",
+  "DXY mildly falling (change_8 -0.114) is marginally gold-supportive, opposing a down call",
+  "2 of 3 historical analogs resolve to TREND; direction unknown but a clean rejection-to-trend-down is not the modal analog path",
+  "VIX 16.09 low/stable: no macro stress catalyst visible to drive either direction"
+ ],
+ "invalidation": "Hourly close above 4052.7 (M15 swing high) with expanding range invalidates the down view; conversely a confirmed break below 4045.3 (H1 low) with expansion would upgrade it. Absent either, expect continued chop within 4045-4052.",
+ "data_quality_flags": [
+  "H4 current bar (low 4018.915 / close 4036.055) inconsistent with all lower-timeframe sequences (lows ~4045-4047) and shares the M1 12:00 open - alignment artifact, timing of deeper extremes UNKNOWN",
+  "Current-bar timestamp/open convention inconsistent across timeframes (bars labeled 12:00 carry full-range high/low/close data)",
+  "UST10Y PROXY (^TNX) UNKNOWN/STALE - no rates input; treat as missing, never inferred",
+  "DXY and VIX are PROXY (Yahoo 5m, instrument definition UNKNOWN), not DIRECT",
+  "L4 mechanism candidate is DERIVED, explicitly not asserted as fact",
+  "Multi-timeframe agreement CONFLICT by design; timeframes never merged into one direction",
+  "NEWS / MACRO_EVENTS / COT / ETF_FLOWS absent - no fundamental catalyst available"
+ ],
+ "reasoning_trace": [
+  "Frozen state label at t is REJECTION with dwell=1, entered from a long 23-bar ROTATION - fresh transition, regime not yet established",
+  "Price sits INSIDE swing-high 4049.765 zone (distance_atr 0.027, break_status INSIDE, reclaim NONE): the rejection event is happening at this level right now",
+  "M1/M5/M15 all show negative trend_20 (-2.01 / -0.70 / -18.6) while H1 is positive (+16.9): short-term momentum down against higher-TF up - CONFLICT, so I weight the rejection micro-structure for the short horizon",
+  "M15 current bar: body 0.37 with 3.12 upper wick = failed attempt above 4050-4052; classic rejection candle at supply",
+  "M1 range_contracting with consecutive_up 6 / consecutive_down 5 suggests coiling rather than trending - expect a resolution, either a rollover (primary) or a break (alternative)",
+  "H4 data internally conflicting with lower TFs; excluded deep levels (4018.9/4036.0) from structural reasoning except as distant downside targets",
+  "Cross-market: DXY soft (mild gold support), VIX benign - no external catalyst; UST10Y missing; net neutral to the call",
+  "Analog state evolutions only say REJECTION exits toward TREND (2/3) or COMPRESSION (1/3) within ~4-8 steps; no directional information",
+  "Net: short-term down edge at the level is real but modest; confidence capped at 0.4 by TF conflict, level-wear breakout risk, and H4/H1 data inconsistencies"
+ ]
+}

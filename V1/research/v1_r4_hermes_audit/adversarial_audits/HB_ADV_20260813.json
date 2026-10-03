@@ -1,0 +1,120 @@
+{
+ "audit_id": "HB_ADV_20260813",
+ "timestamp": "2026-09-27T22:44:00+08:00",
+ "overall_verdict": "PARTIAL_AGREE",
+ "dimension_verdicts": {
+  "CURRENT_STATE": "PARTIAL_AGREE",
+  "STRUCTURE": "PARTIAL_AGREE",
+  "MECHANISM": "PARTIAL_AGREE",
+  "PRIMARY_SCENARIO": "DISAGREE",
+  "ALTERNATIVE_SCENARIO": "AGREE",
+  "EXPECTED_TRANSITION": "DISAGREE",
+  "DIRECTION": "DISAGREE",
+  "HORIZON": "AGREE",
+  "CONFIDENCE": "PARTIAL_AGREE",
+  "INVALIDATION": "PARTIAL_AGREE",
+  "ABSTENTION": "PARTIAL_AGREE"
+ },
+ "factual_errors": [
+  "H4 12:00 bar low 4352.755 is treated as an observed fact ('sharp H4 spike low', 'buyers defended deeply'), but no lower-timeframe bar in the provided window corroborates it: deepest H1 low is 4363.905 (09:00 bar), M15 low 4388.265, M5 4388.265, M1 4391.555. The H4 current-bar low is inconsistent with every sub-timeframe bar at the same timestamp.",
+  "Counter-evidence #2 states 'the H4 09:00-11:00 sequence peaked at 4393.685 then the 12:00 H4 bar fell to 4352.755'. There is no H4 bar at 09:00/10:00/11:00 (H4 grid: 08:00, 12:00 within the window); 4393.685 is the H4 08:00 bar high, and the H4 12:00 bar high is 4401.965 — so the 12:00 bar did not peak at 4393.685 before falling.",
+  "The primary trigger 'decisive M15 close above 4393.565' is presented as pending while the M15 12:00 bar already closed at 4394.175, above the 4393.565 level; the forecast simultaneously claims price is 'INSIDE' the level and reclaim_status NONE. Trigger already satisfied on M15 vs pending-reclaim framing is internally inconsistent and 'decisive' is undefined."
+ ],
+ "insufficient_evidence": [
+  "Volatility contraction claim ('contracting intraday', 'ATR falling from ~20.5 to ~17 on H1') is contradicted by M1 ATR rising 1.101 -> 1.237 across the shown window and range_expanding=true on all five timeframes; the cited M1 range_percentile range '~0.06-0.46' omits the 0.915 bar at 11:50.",
+  "'44 touches/240 bars = high-traffic support' is a touch-frequency statistic; there is no data on what price did on prior touches (no touch-outcome distribution), so support strength is asserted, not evidenced.",
+  "Direction UP has no confirming evidence outside bar geometry: DXY/VIX are flat PROXY series, UST10Y UNKNOWN, volume/order flow absent — nothing in the context confirms demand at the level."
+ ],
+ "missed_counter_evidence": [
+  "The latest M5 12:00 bar is a 2.78-point bearish body closing 4389.085, below the 4393.565 level — the 'firm intraday rally' is fading at the level, not confirming a reclaim.",
+  "M1 close 4391.785 is below the 4393.565 level with consecutive_down 7; M5 close also below; only M15 (4394.175) is above — the TF split at t argues against a clean UP read.",
+  "M15 trend_50 is -6.88 while trend_20 is +18.46 — the positive M15 drift is a short-window effect; the medium window still points down.",
+  "Two of the three equal-similarity analogs (A26480: COMPRESSION persists all 16 steps; A32370: -> ROTATION) do not support the EXPANSION path the forecast treats as 'likely'; A26480 is never mentioned.",
+  "range_expanding=true on M1/M5/M15/H1/H4 conflicts with the 'coil/contraction' narrative the forecast builds around VOL_CONTRACTION."
+ ],
+ "mechanism_jumps": [
+  "H4 lower wick 30.73 => 'buyers defended deeply' — a long lower wick is equally consistent with a liquidity sweep/stop-run below the low followed by rebound; inferring buyer demand is a mechanism jump with no volume/flow support.",
+  "State history TREND(12)->COMPRESSION(2) => 'classically a coiling point' — pattern narrative; COMPRESSION after TREND is equally consistent with mid-trend continuation, and L5 carries no direction so the 'pause after a directional run' claim imports direction from H1 without justification.",
+  "Analog A20861 state path => 'EXPANSION likely' — the context explicitly notes analogs are 'STATE EVOLUTION ONLY; no returns/PnL/labels' (§18/§72); a state path cannot support a probability of EXPANSION over the alternative paths, let alone a direction."
+ ],
+ "over_inference": [
+  "'A breakout seems to be coiling' is inferred from VOL_CONTRACTION (an OBSERVED label) combined with range_expanding flags; the label and raw flags point opposite ways, and neither independently implies imminent breakout.",
+  "44 touches is extrapolated to a behavioral claim ('well-trafficked support that could either absorb selling or fail sharply') — hedged, but the significance of 44 vs any baseline is never established.",
+  "Direction UP at confidence 0.42 with the level only 0.0995 ATR away and H1 drift -33.46 exceeds what the evidence supports; at this distance the level outcome is near a coin flip."
+ ],
+ "time_window_issues": [
+  "'ATR falling from ~20.5 to ~17 on H1' — within the shown 12-bar window ATR was 20.5485 at 06:00 and 20.5045 at 09:00, rising from 19.646 (05:00) to 20.5485 (06:00); the decline is a 2-3 bar artifact, not an established trend.",
+  "H4 trend_50 +347.4 vs trend_20 +47.95 is used to argue 'the recent pullback erased much of the medium-term rise'; extrapolating a medium-term rise beyond the available 20/50-bar windows is not supported by the provided history."
+ ],
+ "data_quality_issues": [
+  "The H4 12:00 current bar (low 4352.755, range 49.21, lower wick 30.73) is not aligned with any lower-TF bar at 12:00 (H1 low 4382.715, M15 low 4388.265); the forecast's strongest evidence (#2) rests on this possibly-misaligned aggregate.",
+  "DXY/VIX are tagged PROXY (Yahoo, instrument definition UNKNOWN) yet 'VIX 14.57 low and flat — no cross-market stress signal' is used as informative; a PROXY is being treated as a direct read.",
+  "The 4393.565 level and its 44-touch count are DERIVED ('pivot swing levels, causal') but are used as causal support strength ('high-traffic support'), upgrading a derived quantity to behavioral fact."
+ ],
+ "hindsight_flags": [
+  "The same H4 12:00 bar is used as both the strongest support evidence ('buyers defended deeply' via the 4352.755 low wick) and a strongest counter-evidence ('bearish high-to-low reversal bar') — recruiting one bar for both sides makes the reasoning unfalsifiable.",
+  "'Classically a coiling point' is narrative dressing applied to the state sequence after the fact; the state history alone cannot support the direction of any subsequent expansion."
+ ],
+ "explanation_not_prediction_flags": [
+  "Primary target '4400-4401 H4 high zone' is the high already printed inside the current H4 12:00 bar (4401.965) — targeting a level inside the reference bar describes the present instead of forecasting.",
+  "The primary trigger (M15 close above 4393.565) restates an already-observed M15 close (4394.175 at 12:00), making the scenario partially a description of the current state rather than a pending forecast."
+ ],
+ "kline_overreliance_flags": [
+  "Every item of supporting evidence is K-line geometry or derived from it (wicks, range_percentile, trend_20/50, touches); volume/order-flow are absent from the context and the forecast does not state what non-price evidence would be needed to raise confidence.",
+  "Wick reads ('buyers defended', 'bearish reversal bar') and the 44-touch statistic are pure price-geometry inferences treated as market behaviour."
+ ],
+ "mtf_conflict_ignored_flags": [
+  "L6 agreement = CONFLICT is acknowledged in the reasoning trace but is then effectively resolved by weighting intraday M5/M15 above H1 when setting direction_bias UP, with no stated timeframe-weighting rule.",
+  "At the same timestamp M15 closes above the level (4394.175) while M1/M5 close below it (4391.785/4389.085); the forecast asserts 'price sits INSIDE' without surfacing this TF split."
+ ],
+ "evidence": [
+  {
+   "claim": "Reclaim of 4393.565 is pending (break_status INSIDE -> reclaim; trigger = M15 close above 4393.565).",
+   "contradicting_or_absent": "M15 12:00 bar closed 4394.175, already above 4393.565; context reports reclaim_status NONE. Trigger condition vs status are inconsistent at t."
+  },
+  {
+   "claim": "H4 bar low 4352.755 with 30.73 lower wick — buyers defended deeply.",
+   "contradicting_or_absent": "No H1/M15/M5/M1 bar in the window prints below 4363.905 (H1) / 4388.265 (M15/M5); no volume/flow data exists in context to support a demand reading."
+  },
+  {
+   "claim": "H4 12:00 bar reversed from 4393.685 to 4352.755 (bearish reversal bar).",
+   "contradicting_or_absent": "The 12:00 H4 bar high is 4401.965 (> 4393.685); 4393.685 is the H4 08:00 bar high, and '09:00-11:00' does not exist on the H4 grid."
+  },
+  {
+   "claim": "M5/M15 trend_20 positive (+9.3/+18.46) = firm intraday recovery structure.",
+   "contradicting_or_absent": "Latest M5 12:00 bar is a 2.78-point bearish body closing 4389.085 below the level; M1 consecutive_down 7; M15 trend_50 is -6.88."
+  },
+  {
+   "claim": "Volatility is contracting intraday (M1 range_percentile ~0.06-0.46, ATR falling).",
+   "contradicting_or_absent": "M1 range_percentile hit 0.915 at 11:50; range_expanding=true on all five TFs; M1 ATR rose 1.101 -> 1.237 across the window."
+  },
+  {
+   "claim": "EXPANSION is the likely transition per analog A20861 (similarity 1.0).",
+   "contradicting_or_absent": "A26480 and A32370 also have similarity 1.0 but evolve to COMPRESSION-persistence and ROTATION respectively; analogs are state-evolution only, no returns (§18/§72)."
+  },
+  {
+   "claim": "44 touches / 240 bars = high-traffic support at 4393.565.",
+   "contradicting_or_absent": "Touch outcomes on prior visits are absent from context; frequency does not demonstrate support strength, and the level itself is DERIVED."
+  },
+  {
+   "claim": "H1 ATR falling from ~20.5 to ~17 supports the coiling read.",
+   "contradicting_or_absent": "H1 ATR was 20.5485 at 06:00 and 20.5045 at 09:00; the fall to 17.082 occurs only in the final 2 bars of the 12-bar window."
+  },
+  {
+   "claim": "A decisive M15 close above 4393.565 is the pending bullish trigger.",
+   "contradicting_or_absent": "The M15 12:00 close (4394.175) already exceeds 4393.565 while M1/M5 closes are below it; 'decisive' is never defined, so the trigger state at t is ambiguous."
+  }
+ ],
+ "strongest_objection": "The primary UP/recovery scenario is not the best-supported reading of the PIT context at t: its own trigger (M15 close > 4393.565) is already satisfied by the M15 12:00 close of 4394.175 while M1/M5 closes sit below the same level, its invalidation condition (price decisively below 4393.565) is already true on two intraday timeframes, and its cornerstone evidence (H4 low 4352.755 with a 30.73 wick) is corroborated by no lower-timeframe bar; meanwhile the higher-timeframe drift (H1 trend_20 -33.46, H1 consecutive_down 8) and the latest M5 down-bar close argue at least as strongly for the bearish continuation that was relegated to the alternative scenario (0.33 vs 0.42). The UP bias and its confidence are therefore not transparently derived from the evidence presented.",
+ "reasoning_trace": [
+  "Read PIT context and Hermes-A forecast for point 20260813; treated the provided context as the only evidence and no outcome information.",
+  "Cross-checked every forecast claim against the raw bars: verified state labels (COMPRESSION/VOL_CONTRACTION, dwell 2) and the swing-low level 4393.565 (INSIDE, reclaim NONE, 44 touches) as context-consistent.",
+  "Found the H4 12:00 bar low 4352.755 uncorroborated by any H1/M15/M5/M1 bar in the window (deepest H1 low 4363.905) — flagged as data-consistency risk for the strongest-evidence item.",
+  "Identified the trigger/status inconsistency: M15 12:00 close 4394.175 already above 4393.565 while the forecast treats reclaim as pending and sets the same condition as its trigger.",
+  "Noted the same H4 bar recruited as both strongest support and strongest counter-evidence, and the H4 timestamp muddle ('09:00-11:00' does not exist on the H4 grid; 12:00 bar high is 4401.965).",
+  "Compared the three equal-similarity analogs (A20861/A26480/A32370): only one supports EXPANSION, and analogs carry no returns — the 'likely' transition claim over-reads A20861.",
+  "Tested the volatility narrative against raw flags: range_expanding=true everywhere, M1 ATR rising, M1 range_percentile 0.915 — the contraction claim cherry-picks.",
+  "Weighed direction: H1 down-drift, M1/M5 closes below the level, fading M5 bar vs M15-only above-level close and a derived 44-touch level 0.1 ATR away — judged the UP bias insufficiently supported; the alternative scenario is at least as well supported.",
+  "Concluded: structure and data-quality discipline are largely sound (PARTIAL_AGREE dimensions), but PRIMARY_SCENARIO, EXPECTED_TRANSITION and DIRECTION contain material inconsistencies and over-inference; overall PARTIAL_AGREE."
+ ]
+}

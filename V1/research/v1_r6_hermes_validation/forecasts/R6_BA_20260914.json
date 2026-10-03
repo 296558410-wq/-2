@@ -1,0 +1,57 @@
+{
+  "audit_id": "BA_20260914",
+  "timestamp": "2026-09-28T13:03:00+08:00",
+  "sample_id": "A_20260914",
+  "overall_verdict": "PARTIAL_AGREE",
+  "focus_verdicts": {
+    "OBSERVATION_DISCIPLINE": "PARTIAL_AGREE",
+    "MECHANISM_DISCIPLINE": "PARTIAL_AGREE",
+    "COUNTER_EVIDENCE": "AGREE",
+    "CONFIDENCE": "PARTIAL_AGREE",
+    "ABSTENTION": "PARTIAL_AGREE",
+    "INVALIDATION": "AGREE"
+  },
+  "over_inference": [
+    "expected_transition 'TREND to EXPANSION or REJECTION on lower wick resolution': context analogs never show direct TREND->REJECTION; A33007 path is TREND->EXPANSION->REJECTION, A15641 is TREND->EXPANSION, A25491 is TREND->ROTATION. REJECTION is presented as a one-step successor when every analog requires EXPANSION first, and the analog-supported ROTATION branch is omitted.",
+    "primary_scenario 'Continued downside grind below 4300.495 toward 4253 test': context H4 current bar already printed low 4253.438 (lower_wick 25.867), so the stated target has already been realized in the current bar; the forward claim is stale and under-specified.",
+    "evidence 'M5/M1 short-term bounce off 4253 area': context M5 bars range low 4281-4296; no M5 bar approaches 4253.438. Anchoring the M1/M5 bounce to the H4-level wick at 4253 is an inference, not an observation."
+  ],
+  "mechanism_jump": [
+    "Added mechanism 'lower_wick_support' (status POSSIBLE) not present in the context L4_MARKET_MECHANISM candidate set, which contains only breakout_pressure and failed_breakout with note 'mechanism CANDIDATES only; NOT asserted as fact (\u00a713)'. New mechanism invented ad hoc from a single H4 bar.",
+    "'H4 long lower wick at 4253, short bounce' is promoted into a POSSIBLE mechanism and used to drive expected_transition 'on lower wick resolution' — jumping from single-bar candle geometry to a state-transition mechanism."
+  ],
+  "missing_counter_evidence": [
+    "counter_evidence includes 'No reclaim yet, so breakdown still fresh' — this supports the DOWN/breakout thesis, so it is misclassified as counter-evidence; the forecast thereby under-weights genuine counter-signals.",
+    "No counter-evidence cites the frozen label DECELERATION (momentum decelerating) against the primary 'downside grind', nor the level's touch_count_240=4 (well-tested level => higher re-approach probability) against breakout_pressure.",
+    "No counter-evidence is given against the alternative reclaim scenario, so the alternative is not honestly stress-tested."
+  ],
+  "unjustified_confidence": [
+    "direction_bias DOWN / primary 'downside grind' with confidence 0.35 while the nearest price fact contradicts it: context M5 close 4296.605 is only ~3.9 points below broken level 4300.495 with trend_20 +8.81 and M1 trend_50 +6.65; no scenario probabilities are given to resolve the tension between DOWN bias and near-term reclaim risk.",
+    "confidence 0.35 + uncertainty 0.7 = 1.05; if intended as complementary probabilities they are internally inconsistent, and the alternative scenario's probability is never specified."
+  ],
+  "observation_as_fact": [
+    "Observation 'H1 trend_20 -80.08, trend_50 -107.84, persistent downtrend': 'persistent downtrend' converts derived trend numbers into a fact while context frozen_behavior_label is DECELERATION and MTF agreement is CONFLICT.",
+    "Evidence 'H4 close below level with breakdown acceptance': 'breakdown acceptance' is a derived interpretation (event ACCEPTANCE / state_v2 TREND), stated as evidence/fact rather than interpretation."
+  ],
+  "strongest_objection": "The primary DOWN scenario rests on a broken level already ~1 ATR behind price (distance_atr 0.99974) while the only near-term price data argue the other way: M5 close 4296.605 is ~3.9 points below the reclaim level 4300.495 with positive M5 trend_20 (+8.81) and M1 trend_50 (+6.65); the H4 current bar already printed low 4253.438 with a 25.867 lower wick and recovered to 4279.305, so the stated target 'test of 4253' has already occurred. Combined with the frozen label DECELERATION, 'continued downside grind' is weakly evidenced relative to an imminent reclaim test; the forecast's counter_evidence even misplaces 'no reclaim yet' (a pro-breakdown signal) as a counter-signal. Invalidation and confidence capping are disciplined, but the directional conclusion and its primary scenario are over-stated relative to the immediate price action.",
+  "evidence": [
+    "Context H4 current bar: low 4253.438, lower_wick 25.867, close 4279.305, trend_20 -139.2, trend_50 -94.66.",
+    "Context L2: level_price 4300.495, break_status BEYOND, reclaim_status NONE, distance_atr 0.99974, touch_count_240 4.",
+    "Context L6 MTF: agreement CONFLICT; M1 trend_20 +0.17 / trend_50 +6.65, M5 trend_20 +8.81, M15 trend_20 -38.03, H1 trend_20 -80.08, H4 trend_20 -139.2.",
+    "Context L3/L5: frozen_behavior_label DECELERATION, state_v2 TREND, event ACCEPTANCE; transitions_last_8 'ROTATION->DECELERATION', 'DECELERATION->TREND'.",
+    "Context L4 candidates: breakout_pressure (supporting 'close beyond level 4300.495 by 0.99974 ATR'), failed_breakout (counter 'no reclaim observed yet'); note 'NOT asserted as fact'.",
+    "Context analogs: A15641 TREND->EXPANSION; A25491 TREND->ROTATION; A33007 TREND->EXPANSION->REJECTION.",
+    "Forecast evidence_strength 0.4, confidence 0.35, uncertainty 0.7; invalidation 'Close reclaim above 4300.495'.",
+    "Forecast counter_evidence includes 'No reclaim yet, so breakdown still fresh' (misclassified, pro-breakdown)."
+  ],
+  "reasoning_trace": [
+    "Verified Hermes-A's quoted numbers (H1/H4 trend_20/50, level 4300.495, low 4253.438, lower wick 25.87, ~1 ATR distance, MTF CONFLICT) against context — numerically accurate.",
+    "Found the primary target 4253.438 already printed as the low of the current H4 bar, making the primary scenario stale.",
+    "Found M5 close 4296.605 ~3.9 pts under 4300.495 with positive M5/M1 momentum — immediate reclaim risk contrary to DOWN bias; forecast acknowledged it but did not weight it.",
+    "Found 'lower_wick_support' mechanism not in the frozen L4 candidate set (mechanism jump).",
+    "Found expected_transition 'TREND to EXPANSION or REJECTION' — REJECTION is not a direct analog successor (A33007 requires EXPANSION first); ROTATION (A25491) omitted.",
+    "Found frozen label DECELERATION and well-tested level (touch_count 4) not used as counter-evidence; 'no reclaim yet' misplaced as counter-evidence.",
+    "Found minor confidence/uncertainty inconsistency (0.35+0.7=1.05) and no scenario probabilities.",
+    "Verdict: numbers and invalidation are disciplined (AGREE on COUNTER_EVIDENCE/INVALIDATION), but mechanism/observation discipline and confidence justification have concrete gaps — PARTIAL_AGREE overall."
+  ]
+}

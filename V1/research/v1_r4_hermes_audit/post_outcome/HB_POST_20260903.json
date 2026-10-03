@@ -1,0 +1,40 @@
+{
+ "audit_id": "HB_POST_20260903",
+ "timestamp": "2026-09-27T14:53:00Z",
+ "correct_calls": [
+  "State transition out of ROTATION within ~16 steps: actual outcome EXPANSION (transition=1) confirms the forecast that the 11-bar ROTATION dwell would resolve; all three exact-match analogs (A28060/A32384/A35547) diverged from ROTATION by step 16, and EXPANSION was one of the two named transition targets.",
+  "Alternative breakout-continuation-UP scenario was correct on both direction and state: actual_next_state EXPANSION, actual_direction UP matches the predicted TREND/EXPANSION resolution via a break of the 4431.485 swing high with expanding range.",
+  "Correctly treated H1/H4 bullish displacement as genuine momentum ('momentum that typically does not die at the first 41-touch level test'): the 41-touch 4431.485 level was indeed broken and price expanded upward rather than stalling.",
+  "The rejection thesis invalidation condition was correctly specified and did fire: a decisive break of the active level (sustained closes above 4431.485/4433 with expanding ranges) is exactly what the UP/EXPANSION outcome represents.",
+  "Correctly refused to merge conflicting timeframes into a single direction (L6 agreement CONFLICT) and kept H1/H4 current-bar closes flagged as unreliable while using only their derived trend values."
+ ],
+ "wrong_calls": [
+  "Primary scenario (confidence 0.42) — rejection/stall at 4431.485 with drift toward 4424-4418: price broke decisively through the level and expanded UP instead of rejecting; the highest-confidence call was wrong.",
+  "Third scenario (confidence 0.23) — downside rotation toward 4406-4400 on H4 trend_50 -184.97 / M5 -8.89: did not occur.",
+  "Overall NO_DIRECTIONAL_EDGE stance: with H1 trend_20 +71.07, H4 trend_20 +31.49 on a 0.955 range_percentile bar (0.82 body_ratio), 7 consecutive up M1 bars, and 2/3 exact-match analogs resolving UP, the rejection-primary weighting underweighted the momentum case Hermes-A itself documented."
+ ],
+ "right_but_wrong_reason": [
+  "Reading the M1/M5 long upper wicks (2.06) as supply rejection at the level: the wicks were real prints but were absorbed; price broke the level and expanded, so the 'rejection' inference drawn from them was wrong even though a genuine level test was occurring.",
+  "The 4431.485 level was correctly identified as the controlling structure, but it functioned as a breakout/continuation launch point (fueled by H1/H4 momentum) rather than a rejection/stall zone."
+ ],
+ "direction_ok_state_wrong": "None — the actual UP move resolved to EXPANSION state, matching the alternative scenario on both the direction and state axes.",
+ "state_ok_direction_wrong": "The state-change call was right (ROTATION ended; EXPANSION achieved), but the forecast's PRIMARY direction read was down/stall (REJECTION-centric), which was wrong; the correct UP direction was carried only in the lower-confidence (0.35) alternative.",
+ "should_have_abstained": false,
+ "invalidation_occurred": true,
+ "prior_concerns_materialised": null,
+ "hindsight_detected": false,
+ "hindsight_evidence": [],
+ "outcome_alignment_verdict": "PARTIALLY_CORRECT",
+ "reasoning_trace": [
+  "1. Compared the three Hermes-A scenarios against the actual outcome: EXPANSION, UP (transition=1).",
+  "2. The outcome was covered by Hermes-A (hermes_scenario_covered_actual=true): the alternative breakout-continuation-UP scenario (0.35) predicted the exact state (EXPANSION) and direction (UP).",
+  "3. However, the PRIMARY scenario (0.42) — rejection/stall at 4431.485 — did NOT occur; this is a wrong highest-confidence call, so the audit cannot be CORRECT.",
+  "4. The downside-rotation third scenario (0.23) also did not occur.",
+  "5. Invalidation assessment: the primary rejection thesis was explicitly invalidated by a decisive break of the active level with expanding ranges — that condition occurred (invalidation_occurred=true). The forecast's invalidation machinery worked as designed.",
+  "6. The M1/M5 rejection wicks were interpreted as supply, but the H1/H4 momentum Hermes-A flagged as counter-evidence (and as the reason the rejection read rested mainly on lower-TF geometry) ultimately dominated — the wicks were absorbed. This is a right-observation/wrong-inference case.",
+  "7. No hindsight detected: Hermes-A's reasoning used only PIT data; the H1/H4-vs-lower-TF close inconsistency it flagged was observable at t, not a post-hoc rationalization.",
+  "8. Prior adversarial concerns: no earlier adversarial audit output was supplied in this payload, so prior_concerns_materialised is left null.",
+  "9. Abstention check: Hermes-A had a coherent, checkable lower-TF/level/state/cross-market picture and did flag the data inconsistency rather than silently proceed; not abstaining was defensible, though a lean toward the momentum case it documented would have been better than NO_DIRECTIONAL_EDGE.",
+  "10. Verdict: PARTIALLY_CORRECT — correct state-transition call, correct UP alternative, correct invalidation logic; wrong primary rejection call and an over-cautious NO_DIRECTIONAL_EDGE stance."
+ ]
+}

@@ -1,0 +1,1060 @@
+{
+ "collector_ps1": {
+  "path": "research/self_collect/tick_collect_once.ps1",
+  "exists": true,
+  "size": 3037,
+  "content": "# tick_collect_once.ps1 - zero-LLM collector wrapper (replaces LLM cron mt5-live-tick-collect, 2026-09-08)\n# Runs the real collector script, writes truthful heartbeat, self-heals dashboard. ASCII only.\n$ErrorActionPreference = 'Continue'\n$out = & 'C:\\AIQuant\\.venv\\Scripts\\python.exe' 'C:\\AIQuant\\research\\self_collect\\mt5_live_collect.py' --once 2>&1 | Out-String\n$now = (Get-Date).ToUniversalTime()\n\n$result = 'UNKNOWN'\nif ($out -match 'MT5_INIT_FAIL') { $result = 'MT5_INIT_FAIL' }\nelseif ($out -match 'NO_NEW_TICKS_ALERT') { $result = 'NO_NEW_TICKS_ALERT' }\nelseif ($out -match 'NO_NEW_TICKS') { $result = 'NO_NEW_TICKS' }\nelseif ($out -match 'COLLECTED') { $result = 'COLLECTED' }\n\n# truth from collector stdout (never hardcoded)\n$summaryLine = ($out -split \"`n\" | Where-Object { $_ -match 'COLLECTED|TICK_ONLY|NO_NEW_TICKS|MT5_INIT_FAIL' } | Select-Object -Last 1)\n$summary = ($summaryLine | Out-String).Trim()\n$newN = 0; $totalN = 0\nif ($summary -match 'new=(\\d+)') { $newN = [int]$Matches[1] }\nif ($summary -match 'total_day=(\\d+)') { $totalN = [int]$Matches[1] }\n\n# latest parquet truth\n$pq = Get-ChildItem 'C:\\AIQuant\\data\\live_fxtm' -Filter 'ticks_*.parquet' | Sort-Object LastWriteTime -Descending | Select-Object -First 1\nif ($pq) { $tickFile = $pq.Name; $tickMtime = $pq.LastWriteTime.ToUniversalTime().ToString('yyyy-MM-ddTHH:mm:ssZ') } else { $tickFile = 'none'; $tickMtime = '' }\n\n# market_open heuristic: weekend/week (collector prints NO_NEW_TICKS w/o ALERT when weekend)\n$wd = [int]$now.DayOfWeek  # 0=Sunday\n$weekend = ($wd -eq 0) -or ($wd -eq 6) -or ($wd -eq 5 -and $now.Hour -ge 21) -or ($wd -eq 1 -and $now.Hour -lt 21)\nif ($result -eq 'MT5_INIT_FAIL' -or $result -eq 'UNKNOWN') { $marketOpen = $false }\nelseif ($result -eq 'NO_NEW_TICKS' -and $weekend) { $marketOpen = $false }\nelse { $marketOpen = $true }\n\n$hb = @{\n    timestamp       = $now.ToString('yyyy-MM-ddTHH:mm:ss.fffZ')\n    result          = $result\n    summary         = $summary\n    tick_file       = $tickFile\n    tick_rows       = $totalN\n    new_ticks       = $newN\n    tick_file_mtime = $tickMtime\n    market_open     = $marketOpen\n    note            = 'zero-LLM collector wrapper (schtasks every 15min)'\n    detail          = (($out -split \"`n\" | Where-Object { $_ -match 'LIVE |SNAP|COLLECTED|NO_NEW_TICKS|MT5_INIT_FAIL' } | Select-Object -Last 2) -join ' | ').Trim()\n} | ConvertTo-Json\n\nSet-Content -Path 'C:\\AIQuant\\research\\money_hunter\\dashboard\\heartbeat_tick.json' -Value $hb -Encoding UTF8\n\n# dashboard self-heal (port 8787)\n$listener = Get-NetTCPConnection -LocalPort 8787 -State Listen -ErrorAction SilentlyContinue\nif (-not $listener) {\n    Start-Process -FilePath 'C:\\AIQuant\\.venv\\Scripts\\python.exe' -ArgumentList 'research\\money_hunter\\dashboard\\dashboard.py' -WorkingDirectory 'C:\\AIQuant' -WindowStyle Hidden\n}\n\n# audit log\nAdd-Content -Path 'C:\\AIQuant\\data\\live_fxtm\\collect_runs.log' -Value (\"{0}Z {1} {2}\" -f $now.ToString('yyyy-MM-ddTHH:mm:ss'), $result, $summary) -Encoding UTF8\n\nWrite-Output ($result + ' ' + $summary)\n"
+ },
+ "quote_latest": {
+  "path": "data/live_fxtm/quote_latest.json",
+  "fields": {
+   "utc_ts": "2026-09-26T13:13:07.978112+00:00",
+   "bid": 4284.95,
+   "ask": 4285.18,
+   "mid": 4285.07,
+   "spread_usd": 0.23,
+   "server_ms": 1790380499914,
+   "source": "dashboard-live"
+  },
+  "types": {
+   "utc_ts": "str",
+   "bid": "float",
+   "ask": "float",
+   "mid": "float",
+   "spread_usd": "float",
+   "server_ms": "int",
+   "source": "str"
+  },
+  "digits": {
+   "utc_ts": null,
+   "bid": 7,
+   "ask": 7,
+   "mid": 7,
+   "spread_usd": 4,
+   "server_ms": 13,
+   "source": null
+  }
+ },
+ "grep": {
+  "scanned": 159,
+  "hits": [
+   {
+    "file": "research/self_collect/mt5_live_collect.py",
+    "line": 5,
+    "kw": "copy_ticks",
+    "text": "Timestamps: unified UTC. 实测(2026-09-07): copy_ticks_range 参数与返回值均为 UTC epoch;"
+   },
+   {
+    "file": "research/self_collect/mt5_live_collect.py",
+    "line": 6,
+    "kw": "copy_ticks",
+    "text": "copy_ticks_from 返回值 time_msc 为服务器时间(UTC+3) → 已弃用 from, 统一 range。"
+   },
+   {
+    "file": "research/self_collect/mt5_live_collect.py",
+    "line": 6,
+    "kw": "time_msc",
+    "text": "copy_ticks_from 返回值 time_msc 为服务器时间(UTC+3) → 已弃用 from, 统一 range。"
+   },
+   {
+    "file": "research/self_collect/mt5_live_collect.py",
+    "line": 25,
+    "kw": "time_msc",
+    "text": "# 注: symbol_info_tick.time_msc = 服务器本地时间(实测 FXTM UTC+3, delta≈-10800s) 仅打印参考;"
+   },
+   {
+    "file": "research/self_collect/mt5_live_collect.py",
+    "line": 26,
+    "kw": "copy_ticks",
+    "text": "#     copy_ticks_range 返回 time_msc 为 UTC epoch(实测差<1s) → 落盘时间基准正确, 无需 offset。"
+   },
+   {
+    "file": "research/self_collect/mt5_live_collect.py",
+    "line": 26,
+    "kw": "time_msc",
+    "text": "#     copy_ticks_range 返回 time_msc 为 UTC epoch(实测差<1s) → 落盘时间基准正确, 无需 offset。"
+   },
+   {
+    "file": "research/self_collect/mt5_live_collect.py",
+    "line": 47,
+    "kw": "copy_ticks",
+    "text": "# 防御性订阅: 终端重启后若符号不在 Market Watch, copy_ticks_* 缓存可能为空 (Hermes 2026-09-07 建议)"
+   },
+   {
+    "file": "research/self_collect/mt5_live_collect.py",
+    "line": 54,
+    "kw": "server_ms",
+    "text": "f\"server_ms={tick.time_msc} now_utc={now_utc.isoformat()}\", flush=True)"
+   },
+   {
+    "file": "research/self_collect/mt5_live_collect.py",
+    "line": 54,
+    "kw": "time_msc",
+    "text": "f\"server_ms={tick.time_msc} now_utc={now_utc.isoformat()}\", flush=True)"
+   },
+   {
+    "file": "research/self_collect/mt5_live_collect.py",
+    "line": 55,
+    "kw": "time_msc",
+    "text": "# 注: symbol_info_tick.time_msc = 服务器本地时间(实测 UTC+3, 仅打印用);"
+   },
+   {
+    "file": "research/self_collect/mt5_live_collect.py",
+    "line": 56,
+    "kw": "copy_ticks",
+    "text": "#     copy_ticks_* 返回的 time_msc = UTC epoch (实测与 wall-clock 差 <1s) → tz_offset_ms=0 正确。"
+   },
+   {
+    "file": "research/self_collect/mt5_live_collect.py",
+    "line": 56,
+    "kw": "time_msc",
+    "text": "#     copy_ticks_* 返回的 time_msc = UTC epoch (实测与 wall-clock 差 <1s) → tz_offset_ms=0 正确。"
+   },
+   {
+    "file": "research/self_collect/mt5_live_collect.py",
+    "line": 57,
+    "kw": "time_msc",
+    "text": "srv = datetime.fromtimestamp(tick.time_msc / 1000, tz=timezone.utc)"
+   },
+   {
+    "file": "research/self_collect/mt5_live_collect.py",
+    "line": 64,
+    "kw": "time_msc",
+    "text": "last = int(df0[\"time_msc\"].max())"
+   },
+   {
+    "file": "research/self_collect/mt5_live_collect.py",
+    "line": 65,
+    "kw": "copy_ticks",
+    "text": "# 增量策略: 统一用 copy_ticks_range (实测其 date 参数与返回值均为 UTC epoch, 2026-09-07)。"
+   },
+   {
+    "file": "research/self_collect/mt5_live_collect.py",
+    "line": 66,
+    "kw": "copy_ticks",
+    "text": "#   不用 copy_ticks_from: 实测其返回值 time_msc 为服务器时间(UTC+3), 会向文件混入 +3h 未来戳。"
+   },
+   {
+    "file": "research/self_collect/mt5_live_collect.py",
+    "line": 66,
+    "kw": "time_msc",
+    "text": "#   不用 copy_ticks_from: 实测其返回值 time_msc 为服务器时间(UTC+3), 会向文件混入 +3h 未来戳。"
+   },
+   {
+    "file": "research/self_collect/mt5_live_collect.py",
+    "line": 67,
+    "kw": "time_msc",
+    "text": "# 窗口 = [上次存储 tick - 60s(重叠防漏), now], 重叠由 time_msc 去重。首跑无文件时回看 BOOTSTRAP_HOURS。"
+   },
+   {
+    "file": "research/self_collect/mt5_live_collect.py",
+    "line": 68,
+    "kw": "copy_ticks",
+    "text": "# 另: copy_ticks_range 必须显式传 flags=COPY_TICKS_ALL, 否则 MT5 返回 (-2,'Invalid arguments') → None → 假 NO_NEW_TICKS。"
+   },
+   {
+    "file": "research/self_collect/mt5_live_collect.py",
+    "line": 68,
+    "kw": "COPY_TICKS",
+    "text": "# 另: copy_ticks_range 必须显式传 flags=COPY_TICKS_ALL, 否则 MT5 返回 (-2,'Invalid arguments') → None → 假 NO_NEW_TICKS。"
+   },
+   {
+    "file": "research/self_collect/mt5_live_collect.py",
+    "line": 72,
+    "kw": "copy_ticks",
+    "text": "ticks = mt5.copy_ticks_range(a.symbol, from_s, int(now_s) + 5, mt5.COPY_TICKS_ALL)"
+   },
+   {
+    "file": "research/self_collect/mt5_live_collect.py",
+    "line": 72,
+    "kw": "COPY_TICKS",
+    "text": "ticks = mt5.copy_ticks_range(a.symbol, from_s, int(now_s) + 5, mt5.COPY_TICKS_ALL)"
+   },
+   {
+    "file": "research/self_collect/mt5_live_collect.py",
+    "line": 77,
+    "kw": "time_msc",
+    "text": "fresh = tick and abs(now_utc.timestamp() * 1000 - tick.time_msc) < 300_000"
+   },
+   {
+    "file": "research/self_collect/mt5_live_collect.py",
+    "line": 85,
+    "kw": "utc_ms",
+    "text": "df[\"utc_ms\"] = df[\"time_msc\"] - a.tz_offset_ms"
+   },
+   {
+    "file": "research/self_collect/mt5_live_collect.py",
+    "line": 85,
+    "kw": "time_msc",
+    "text": "df[\"utc_ms\"] = df[\"time_msc\"] - a.tz_offset_ms"
+   },
+   {
+    "file": "research/self_collect/mt5_live_collect.py",
+    "line": 86,
+    "kw": "utc_ms",
+    "text": "df[\"ts_utc\"] = pd.to_datetime(df[\"utc_ms\"], unit=\"ms\", utc=True)"
+   },
+   {
+    "file": "research/self_collect/mt5_live_collect.py",
+    "line": 91,
+    "kw": "time_msc",
+    "text": "df2 = df2.drop_duplicates(subset=\"time_msc\").sort_values(\"time_msc\")"
+   },
+   {
+    "file": "research/self_collect/mt5_live_collect.py",
+    "line": 91,
+    "kw": "time_msc",
+    "text": "df2 = df2.drop_duplicates(subset=\"time_msc\").sort_values(\"time_msc\")"
+   },
+   {
+    "file": "research/self_collect/mt5_live_collect.py",
+    "line": 94,
+    "kw": "quote_latest",
+    "text": "# 轻量模式: 不重算快照/心跳; 额外写 quote_latest.json(供 Dashboard 高频刷新零成本)"
+   },
+   {
+    "file": "research/self_collect/mt5_live_collect.py",
+    "line": 95,
+    "kw": "quote_latest",
+    "text": "quote_p = OUT_DIR / \"quote_latest.json\""
+   },
+   {
+    "file": "research/self_collect/mt5_live_collect.py",
+    "line": 99,
+    "kw": "server_ms",
+    "text": "\"server_ms\": tick.time_msc,"
+   },
+   {
+    "file": "research/self_collect/mt5_live_collect.py",
+    "line": 99,
+    "kw": "time_msc",
+    "text": "\"server_ms\": tick.time_msc,"
+   },
+   {
+    "file": "research/self_collect/mt5_live_collect.py",
+    "line": 130,
+    "kw": "utc_ms",
+    "text": "ts = pd.to_datetime(df[\"utc_ms\"], unit=\"ms\", utc=True)"
+   },
+   {
+    "file": "research/self_collect/README.md",
+    "line": 4,
+    "kw": "copy_ticks",
+    "text": "- 2026-09-07 修复（采集器曾假运行, Hermes 诊断触发）: ①copy_ticks_range 缺 flags=COPY_TICKS_ALL → MT5 返 Invalid arguments → 恒 None → 假 NO_NEW_TICKS; ②弃用 copy_ticks_from（其 time_msc 为服务器时间 UTC+3, 会混入未来戳）; ③快照"
+   },
+   {
+    "file": "research/self_collect/README.md",
+    "line": 4,
+    "kw": "COPY_TICKS",
+    "text": "- 2026-09-07 修复（采集器曾假运行, Hermes 诊断触发）: ①copy_ticks_range 缺 flags=COPY_TICKS_ALL → MT5 返 Invalid arguments → 恒 None → 假 NO_NEW_TICKS; ②弃用 copy_ticks_from（其 time_msc 为服务器时间 UTC+3, 会混入未来戳）; ③快照"
+   },
+   {
+    "file": "research/self_collect/README.md",
+    "line": 4,
+    "kw": "copy_ticks",
+    "text": "- 2026-09-07 修复（采集器曾假运行, Hermes 诊断触发）: ①copy_ticks_range 缺 flags=COPY_TICKS_ALL → MT5 返 Invalid arguments → 恒 None → 假 NO_NEW_TICKS; ②弃用 copy_ticks_from（其 time_msc 为服务器时间 UTC+3, 会混入未来戳）; ③快照"
+   },
+   {
+    "file": "research/self_collect/README.md",
+    "line": 4,
+    "kw": "time_msc",
+    "text": "- 2026-09-07 修复（采集器曾假运行, Hermes 诊断触发）: ①copy_ticks_range 缺 flags=COPY_TICKS_ALL → MT5 返 Invalid arguments → 恒 None → 假 NO_NEW_TICKS; ②弃用 copy_ticks_from（其 time_msc 为服务器时间 UTC+3, 会混入未来戳）; ③快照"
+   },
+   {
+    "file": "research/self_collect/README.md",
+    "line": 9,
+    "kw": "copy_ticks",
+    "text": "- research/self_collect/mt5_live_collect.py — 增量采集器（UTC 时间戳; copy_ticks_range 增量; 只读; cron 每 15 分钟）"
+   },
+   {
+    "file": "research/self_collect/README.md",
+    "line": 10,
+    "kw": "utc_ms",
+    "text": "- 输出: data/live_fxtm/ticks_YYYYMMDD.parquet（raw mt5 cols + utc_ms/ts_utc）"
+   },
+   {
+    "file": "research/self_collect/README.md",
+    "line": 12,
+    "kw": "time_msc",
+    "text": "- 注: symbol_info_tick.time_msc = 服务器时间(UTC+3, 仅打印参考); copy_ticks_range.time_msc = UTC epoch(落盘基准, 无需 offset)。"
+   },
+   {
+    "file": "research/self_collect/README.md",
+    "line": 12,
+    "kw": "copy_ticks",
+    "text": "- 注: symbol_info_tick.time_msc = 服务器时间(UTC+3, 仅打印参考); copy_ticks_range.time_msc = UTC epoch(落盘基准, 无需 offset)。"
+   },
+   {
+    "file": "research/self_collect/README.md",
+    "line": 12,
+    "kw": "time_msc",
+    "text": "- 注: symbol_info_tick.time_msc = 服务器时间(UTC+3, 仅打印参考); copy_ticks_range.time_msc = UTC epoch(落盘基准, 无需 offset)。"
+   },
+   {
+    "file": "data/live_fxtm/quote_latest.json",
+    "line": 1,
+    "kw": "server_ms",
+    "text": "{\"utc_ts\": \"2026-09-26T13:13:07.978112+00:00\", \"bid\": 4284.95, \"ask\": 4285.18, \"mid\": 4285.07, \"spread_usd\": 0.23, \"server_ms\": 1790380499914, \"source\": \"dashboard-live\"}"
+   },
+   {
+    "file": "research/hermes/trader_v1/state_package.py",
+    "line": 36,
+    "kw": "time_msc",
+    "text": "df = pd.read_parquet(p, columns=[\"time_msc\", \"bid\", \"ask\"])"
+   },
+   {
+    "file": "research/hermes/trader_v1/state_package.py",
+    "line": 37,
+    "kw": "time_msc",
+    "text": "df[\"ts_utc\"] = pd.to_datetime(df[\"time_msc\"], unit=\"ms\", utc=True)"
+   },
+   {
+    "file": "research/hermes/trader_v1/state_package.py",
+    "line": 180,
+    "kw": "quote_latest",
+    "text": "# —— 实时价覆盖: 优先读 quote_latest.json(dashboard 10s 线程更新) ——"
+   },
+   {
+    "file": "research/hermes/trader_v1/state_package.py",
+    "line": 182,
+    "kw": "quote_latest",
+    "text": "# 每 10s 写 quote_latest.json → engine 决策/触发用实时价, 避免 plan 触发带脱节"
+   },
+   {
+    "file": "research/hermes/trader_v1/state_package.py",
+    "line": 185,
+    "kw": "quote_latest",
+    "text": "qp = REPO / \"data/live_fxtm/quote_latest.json\""
+   },
+   {
+    "file": "research/hermes/trader_v1/state_package.py",
+    "line": 228,
+    "kw": "quote_latest",
+    "text": "\"quote_source\": \"quote_latest\" if live_mid_override is not None else \"parquet\","
+   },
+   {
+    "file": "research/hermes/trader_v1/run_state/state_package_latest.json",
+    "line": 152,
+    "kw": "quote_latest",
+    "text": "\"quote_source\": \"quote_latest\","
+   },
+   {
+    "file": "research/hermes/trader_v1/run_state/decisions/20260924T0247Z.json",
+    "line": 79,
+    "kw": "quote_latest",
+    "text": "\"source\": \"state_package m15_live (quote_latest) 02:47Z\""
+   },
+   {
+    "file": "research/hermes/trader_v1/run_state/decisions/20260924T0302Z.json",
+    "line": 87,
+    "kw": "quote_latest",
+    "text": "\"source\": \"data/live_fxtm/quote_latest.json 2026-09-24T03:02:34Z (dashboard-live); state_package m15_live 03:02Z mid 4293.29\""
+   },
+   {
+    "file": "research/hermes/trader_v1/run_state/decisions/20260924T0302Z.json",
+    "line": 117,
+    "kw": "quote_latest",
+    "text": "\"12\": \"再现性: 全部数字可复算。来源: run_state/state_package_latest.json(cycle 2026-09-24T03:02Z, live_days=14, gaps=[])、data/live_fxtm/quote_latest.json(2026-09-24T03:02:34Z, mid 4292.64)、今日箱体与 M15 高低点来"
+   },
+   {
+    "file": "research/hermes/trader_v1/run_state/decisions/20260924T0317Z.json",
+    "line": 80,
+    "kw": "quote_latest",
+    "text": "\"source\": \"data/live_fxtm/quote_latest.json 2026-09-24T03:17:35Z (dashboard-live); pkg m15_live 03:17Z mid 4288.71\""
+   },
+   {
+    "file": "research/hermes/trader_v1/run_state/decisions/20260924T0317Z.json",
+    "line": 110,
+    "kw": "quote_latest",
+    "text": "\"12\": \"再现性: 全部数字可复算。来源: run_state/state_package_latest.json(cycle 2026-09-24T03:17Z, live_days=14, gaps=[])、data/live_fxtm/quote_latest.json(2026-09-24T03:17:35Z mid 4288.23)、data/live_fxtm/"
+   },
+   {
+    "file": "research/hermes/trader_v1/run_state/decisions/20260924T0332Z.json",
+    "line": 77,
+    "kw": "quote_latest",
+    "text": "\"source\": \"data/live_fxtm/quote_latest.json 2026-09-24T03:32:26Z (dashboard-live); pkg m15_live 03:32Z mid 4285.52\""
+   },
+   {
+    "file": "research/hermes/trader_v1/run_state/decisions/20260924T0332Z.json",
+    "line": 96,
+    "kw": "quote_latest",
+    "text": "\"1\": \"市场状态: live mid 4286.17 (quote_latest 03:32:26Z bid4286.08/ask4286.26 = 0.18pt, spread 0.42bps, tick 132/min, last6 max move 8.1bps, z -0.19 vs baseline 10.1bps = 平静盘口) / 今日 tick 箱体 428"
+   },
+   {
+    "file": "research/hermes/trader_v1/run_state/decisions/20260924T0332Z.json",
+    "line": 107,
+    "kw": "quote_latest",
+    "text": "\"12\": \"再现性: 全部数字可复算。来源: run_state/state_package_latest.json(cycle 2026-09-24T03:32Z, live_days=14, gaps=[])、data/live_fxtm/quote_latest.json(2026-09-24T03:32:26Z mid 4286.17)、data/live_fxtm/"
+   },
+   {
+    "file": "research/hermes/trader_v1/run_state/decisions/20260924T0347Z.json",
+    "line": 9,
+    "kw": "quote_latest",
+    "text": "\"bias\": \"BEARISH-lean 0.55: HTF is aligned down (D1/H4/H1 all close below MA20 -194.3/-121.7/-39.1; D1+H4 structure llish5; H4 -157bps) and on the EXECUTION feed (quote_latest, the feed the "
+   },
+   {
+    "file": "research/hermes/trader_v1/run_state/decisions/20260924T0347Z.json",
+    "line": 71,
+    "kw": "quote_latest",
+    "text": "\"source\": \"data/live_fxtm/quote_latest.json 2026-09-24T03:48:47Z (dashboard-live); pkg m15_live 03:47Z mid 4283.62\""
+   }
+  ]
+ },
+ "shift_scan": {
+  "expected_overlap": 830,
+  "tick_bars": 1328,
+  "hist_bars": 40546,
+  "table": [
+   {
+    "N": -16,
+    "overlap": 830,
+    "coverage": 1.0,
+    "combined_mis_005": 0.997289,
+    "mis_005": {
+     "o": 0.9988,
+     "h": 0.99759,
+     "l": 0.99759,
+     "c": 0.99518
+    },
+    "p95": {
+     "o": 35.0623,
+     "h": 34.915,
+     "l": 36.4515,
+     "c": 36.1955
+    }
+   },
+   {
+    "N": -15,
+    "overlap": 833,
+    "coverage": 1.0036,
+    "combined_mis_005": 0.998199,
+    "mis_005": {
+     "o": 0.9976,
+     "h": 0.9964,
+     "l": 0.9988,
+     "c": 1.0
+    },
+    "p95": {
+     "o": 31.685,
+     "h": 31.759,
+     "l": 34.867,
+     "c": 32.1708
+    }
+   },
+   {
+    "N": -14,
+    "overlap": 836,
+    "coverage": 1.0072,
+    "combined_mis_005": 0.997907,
+    "mis_005": {
+     "o": 0.99761,
+     "h": 0.99522,
+     "l": 1.0,
+     "c": 0.9988
+    },
+    "p95": {
+     "o": 29.159,
+     "h": 28.57,
+     "l": 31.5007,
+     "c": 29.15
+    }
+   },
+   {
+    "N": -13,
+    "overlap": 839,
+    "coverage": 1.0108,
+    "combined_mis_005": 0.996722,
+    "mis_005": {
+     "o": 0.99881,
+     "h": 0.99404,
+     "l": 1.0,
+     "c": 0.99404
+    },
+    "p95": {
+     "o": 26.7287,
+     "h": 26.388,
+     "l": 27.81,
+     "c": 26.5427
+    }
+   },
+   {
+    "N": -12,
+    "overlap": 842,
+    "coverage": 1.0145,
+    "combined_mis_005": 0.995843,
+    "mis_005": {
+     "o": 0.99644,
+     "h": 0.99525,
+     "l": 0.99881,
+     "c": 0.99287
+    },
+    "p95": {
+     "o": 23.6591,
+     "h": 23.209,
+     "l": 25.8415,
+     "c": 23.6717
+    }
+   },
+   {
+    "N": -11,
+    "overlap": 852,
+    "coverage": 1.0265,
+    "combined_mis_005": 0.996185,
+    "mis_005": {
+     "o": 0.99531,
+     "h": 0.99765,
+     "l": 0.99648,
+     "c": 0.99531
+    },
+    "p95": {
+     "o": 21.589,
+     "h": 20.5815,
+     "l": 22.0655,
+     "c": 21.5254
+    }
+   },
+   {
+    "N": -10,
+    "overlap": 862,
+    "coverage": 1.0386,
+    "combined_mis_005": 0.9942,
+    "mis_005": {
+     "o": 0.99304,
+     "h": 0.99652,
+     "l": 0.9942,
+     "c": 0.99304
+    },
+    "p95": {
+     "o": 17.314,
+     "h": 17.1485,
+     "l": 17.7363,
+     "c": 16.9335
+    }
+   },
+   {
+    "N": -9,
+    "overlap": 872,
+    "coverage": 1.0506,
+    "combined_mis_005": 0.987959,
+    "mis_005": {
+     "o": 0.99197,
+     "h": 0.98165,
+     "l": 0.98509,
+     "c": 0.99312
+    },
+    "p95": {
+     "o": 11.6691,
+     "h": 10.1052,
+     "l": 10.4985,
+     "c": 11.7995
+    }
+   },
+   {
+    "N": -8,
+    "overlap": 882,
+    "coverage": 1.0627,
+    "combined_mis_005": 0.909297,
+    "mis_005": {
+     "o": 0.87642,
+     "h": 0.95465,
+     "l": 0.91383,
+     "c": 0.89229
+    },
+    "p95": {
+     "o": 0.625,
+     "h": 0.505,
+     "l": 0.5145,
+     "c": 0.5745
+    }
+   },
+   {
+    "N": -7,
+    "overlap": 872,
+    "coverage": 1.0506,
+    "combined_mis_005": 0.991686,
+    "mis_005": {
+     "o": 0.99656,
+     "h": 0.98624,
+     "l": 0.99312,
+     "c": 0.99083
+    },
+    "p95": {
+     "o": 11.7775,
+     "h": 10.37,
+     "l": 10.552,
+     "c": 11.7795
+    }
+   },
+   {
+    "N": -6,
+    "overlap": 862,
+    "coverage": 1.0386,
+    "combined_mis_005": 0.993619,
+    "mis_005": {
+     "o": 0.99536,
+     "h": 0.99304,
+     "l": 0.99304,
+     "c": 0.99304
+    },
+    "p95": {
+     "o": 17.2626,
+     "h": 17.343,
+     "l": 17.8702,
+     "c": 17.3845
+    }
+   },
+   {
+    "N": -5,
+    "overlap": 852,
+    "coverage": 1.0265,
+    "combined_mis_005": 0.994718,
+    "mis_005": {
+     "o": 0.99296,
+     "h": 0.99531,
+     "l": 0.99648,
+     "c": 0.99413
+    },
+    "p95": {
+     "o": 21.2645,
+     "h": 20.2695,
+     "l": 22.157,
+     "c": 21.0995
+    }
+   },
+   {
+    "N": -4,
+    "overlap": 842,
+    "coverage": 1.0145,
+    "combined_mis_005": 0.996734,
+    "mis_005": {
+     "o": 0.99169,
+     "h": 0.99881,
+     "l": 0.99881,
+     "c": 0.99762
+    },
+    "p95": {
+     "o": 23.424,
+     "h": 22.873,
+     "l": 25.725,
+     "c": 23.3445
+    }
+   },
+   {
+    "N": -3,
+    "overlap": 839,
+    "coverage": 1.0108,
+    "combined_mis_005": 0.99702,
+    "mis_005": {
+     "o": 0.99762,
+     "h": 0.99762,
+     "l": 0.99404,
+     "c": 0.99881
+    },
+    "p95": {
+     "o": 26.6107,
+     "h": 25.992,
+     "l": 28.13,
+     "c": 26.8541
+    }
+   },
+   {
+    "N": -2,
+    "overlap": 836,
+    "coverage": 1.0072,
+    "combined_mis_005": 0.997907,
+    "mis_005": {
+     "o": 0.99761,
+     "h": 0.9988,
+     "l": 0.99761,
+     "c": 0.99761
+    },
+    "p95": {
+     "o": 29.2523,
+     "h": 28.7075,
+     "l": 31.6425,
+     "c": 29.1548
+    }
+   },
+   {
+    "N": -1,
+    "overlap": 833,
+    "coverage": 1.0036,
+    "combined_mis_005": 0.997299,
+    "mis_005": {
+     "o": 0.9952,
+     "h": 1.0,
+     "l": 0.9964,
+     "c": 0.9976
+    },
+    "p95": {
+     "o": 31.895,
+     "h": 31.4262,
+     "l": 34.435,
+     "c": 31.871
+    }
+   },
+   {
+    "N": 0,
+    "overlap": 830,
+    "coverage": 1.0,
+    "combined_mis_005": 0.997289,
+    "mis_005": {
+     "o": 0.99759,
+     "h": 0.99759,
+     "l": 0.99518,
+     "c": 0.9988
+    },
+    "p95": {
+     "o": 35.3995,
+     "h": 35.3095,
+     "l": 36.5355,
+     "c": 35.4685
+    }
+   },
+   {
+    "N": 1,
+    "overlap": 827,
+    "coverage": 0.9964,
+    "combined_mis_005": 0.997279,
+    "mis_005": {
+     "o": 1.0,
+     "h": 0.99516,
+     "l": 0.99758,
+     "c": 0.99637
+    },
+    "p95": {
+     "o": 37.18,
+     "h": 37.259,
+     "l": 38.2241,
+     "c": 37.532
+    }
+   },
+   {
+    "N": 2,
+    "overlap": 824,
+    "coverage": 0.9928,
+    "combined_mis_005": 0.99818,
+    "mis_005": {
+     "o": 0.99515,
+     "h": 0.99757,
+     "l": 1.0,
+     "c": 1.0
+    },
+    "p95": {
+     "o": 40.045,
+     "h": 38.573,
+     "l": 40.22,
+     "c": 40.2145
+    }
+   },
+   {
+    "N": 3,
+    "overlap": 821,
+    "coverage": 0.9892,
+    "combined_mis_005": 0.997868,
+    "mis_005": {
+     "o": 0.99635,
+     "h": 0.99756,
+     "l": 0.99878,
+     "c": 0.99878
+    },
+    "p95": {
+     "o": 40.305,
+     "h": 39.725,
+     "l": 41.515,
+     "c": 40.535
+    }
+   },
+   {
+    "N": 4,
+    "overlap": 818,
+    "coverage": 0.9855,
+    "combined_mis_005": 0.996638,
+    "mis_005": {
+     "o": 0.99511,
+     "h": 0.99511,
+     "l": 0.99756,
+     "c": 0.99878
+    },
+    "p95": {
+     "o": 40.9304,
+     "h": 41.4931,
+     "l": 41.5761,
+     "c": 41.4801
+    }
+   },
+   {
+    "N": 5,
+    "overlap": 816,
+    "coverage": 0.9831,
+    "combined_mis_005": 0.997855,
+    "mis_005": {
+     "o": 0.99755,
+     "h": 0.99755,
+     "l": 0.99755,
+     "c": 0.99877
+    },
+    "p95": {
+     "o": 43.1297,
+     "h": 41.93,
+     "l": 43.3593,
+     "c": 43.2475
+    }
+   },
+   {
+    "N": 6,
+    "overlap": 814,
+    "coverage": 0.9807,
+    "combined_mis_005": 0.997543,
+    "mis_005": {
+     "o": 0.99877,
+     "h": 0.99754,
+     "l": 0.99631,
+     "c": 0.99754
+    },
+    "p95": {
+     "o": 43.5055,
+     "h": 42.2525,
+     "l": 44.822,
+     "c": 43.3595
+    }
+   },
+   {
+    "N": 7,
+    "overlap": 813,
+    "coverage": 0.9795,
+    "combined_mis_005": 0.998462,
+    "mis_005": {
+     "o": 1.0,
+     "h": 0.99877,
+     "l": 0.99631,
+     "c": 0.99877
+    },
+    "p95": {
+     "o": 43.591,
+     "h": 42.545,
+     "l": 44.481,
+     "c": 43.479
+    }
+   },
+   {
+    "N": 8,
+    "overlap": 811,
+    "coverage": 0.9771,
+    "combined_mis_005": 0.99815,
+    "mis_005": {
+     "o": 0.9963,
+     "h": 0.99877,
+     "l": 0.99877,
+     "c": 0.99877
+    },
+    "p95": {
+     "o": 44.06,
+     "h": 42.775,
+     "l": 44.745,
+     "c": 43.95
+    }
+   },
+   {
+    "N": 9,
+    "overlap": 808,
+    "coverage": 0.9735,
+    "combined_mis_005": 0.999381,
+    "mis_005": {
+     "o": 0.99752,
+     "h": 1.0,
+     "l": 1.0,
+     "c": 1.0
+    },
+    "p95": {
+     "o": 43.859,
+     "h": 43.4495,
+     "l": 44.64,
+     "c": 43.831
+    }
+   },
+   {
+    "N": 10,
+    "overlap": 805,
+    "coverage": 0.9699,
+    "combined_mis_005": 0.998447,
+    "mis_005": {
+     "o": 0.99876,
+     "h": 0.99752,
+     "l": 1.0,
+     "c": 0.99752
+    },
+    "p95": {
+     "o": 43.8334,
+     "h": 44.903,
+     "l": 44.643,
+     "c": 45.097
+    }
+   },
+   {
+    "N": 11,
+    "overlap": 802,
+    "coverage": 0.9663,
+    "combined_mis_005": 0.999065,
+    "mis_005": {
+     "o": 0.99875,
+     "h": 1.0,
+     "l": 1.0,
+     "c": 0.99751
+    },
+    "p95": {
+     "o": 45.702,
+     "h": 46.239,
+     "l": 45.4335,
+     "c": 45.658
+    }
+   },
+   {
+    "N": 12,
+    "overlap": 800,
+    "coverage": 0.9639,
+    "combined_mis_005": 0.998437,
+    "mis_005": {
+     "o": 0.9975,
+     "h": 1.0,
+     "l": 0.99875,
+     "c": 0.9975
+    },
+    "p95": {
+     "o": 47.1382,
+     "h": 47.1008,
+     "l": 46.6,
+     "c": 47.4869
+    }
+   },
+   {
+    "N": 13,
+    "overlap": 798,
+    "coverage": 0.9614,
+    "combined_mis_005": 0.999373,
+    "mis_005": {
+     "o": 1.0,
+     "h": 1.0,
+     "l": 0.99875,
+     "c": 0.99875
+    },
+    "p95": {
+     "o": 48.29,
+     "h": 48.5205,
+     "l": 48.7455,
+     "c": 48.448
+    }
+   },
+   {
+    "N": 14,
+    "overlap": 796,
+    "coverage": 0.959,
+    "combined_mis_005": 1.0,
+    "mis_005": {
+     "o": 1.0,
+     "h": 1.0,
+     "l": 1.0,
+     "c": 1.0
+    },
+    "p95": {
+     "o": 48.355,
+     "h": 49.4125,
+     "l": 49.932,
+     "c": 49.5675
+    }
+   },
+   {
+    "N": 15,
+    "overlap": 794,
+    "coverage": 0.9566,
+    "combined_mis_005": 0.999055,
+    "mis_005": {
+     "o": 0.99874,
+     "h": 0.99874,
+     "l": 0.99874,
+     "c": 1.0
+    },
+    "p95": {
+     "o": 49.253,
+     "h": 50.275,
+     "l": 50.6695,
+     "c": 49.319
+    }
+   },
+   {
+    "N": 16,
+    "overlap": 792,
+    "coverage": 0.9542,
+    "combined_mis_005": 0.998737,
+    "mis_005": {
+     "o": 0.99747,
+     "h": 0.99874,
+     "l": 1.0,
+     "c": 0.99874
+    },
+    "p95": {
+     "o": 50.59,
+     "h": 51.422,
+     "l": 51.64,
+     "c": 50.4845
+    }
+   }
+  ],
+  "best_by_combined_mis005": {
+   "N": -8,
+   "overlap": 882,
+   "coverage": 1.0627,
+   "combined_mis_005": 0.909297,
+   "mis_005": {
+    "o": 0.87642,
+    "h": 0.95465,
+    "l": 0.91383,
+    "c": 0.89229
+   },
+   "p95": {
+    "o": 0.625,
+    "h": 0.505,
+    "l": 0.5145,
+    "c": 0.5745
+   }
+  },
+  "neighbors": [
+   {
+    "N": -9,
+    "overlap": 872,
+    "coverage": 1.0506,
+    "combined_mis_005": 0.987959,
+    "mis_005": {
+     "o": 0.99197,
+     "h": 0.98165,
+     "l": 0.98509,
+     "c": 0.99312
+    },
+    "p95": {
+     "o": 11.6691,
+     "h": 10.1052,
+     "l": 10.4985,
+     "c": 11.7995
+    }
+   },
+   {
+    "N": -7,
+    "overlap": 872,
+    "coverage": 1.0506,
+    "combined_mis_005": 0.991686,
+    "mis_005": {
+     "o": 0.99656,
+     "h": 0.98624,
+     "l": 0.99312,
+     "c": 0.99083
+    },
+    "p95": {
+     "o": 11.7775,
+     "h": 10.37,
+     "l": 10.552,
+     "c": 11.7795
+    }
+   }
+  ]
+ }
+}

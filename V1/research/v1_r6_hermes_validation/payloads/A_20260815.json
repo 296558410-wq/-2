@@ -1,0 +1,96 @@
+{
+ "forecast_id": "R6_A_20260815",
+ "sample_id": "A_20260815",
+ "timestamp": "2026-08-15T12:00:00Z",
+ "observations": [
+  "Close 4374.205 beyond swing high 4373.145 by 0.215 ATR",
+  "State COMPRESSION dwell 3 with ACCEPTANCE event at t",
+  "Latest bar 2026-08-14 21:59 UTC, fourteen hours before as_of",
+  "MTF trend_20 conflict: M15 -15.33 versus H1 +56.32"
+ ],
+ "what_i_know": [
+  "PIT context states price beyond nearest swing-high level",
+  "Frozen labeler outputs COMPRESSION with ACCEPTANCE at t",
+  "Historical analogs show COMPRESSION persistence, one later REJECTION",
+  "Cross-market series DXY, VIX, TNX unavailable, quality UNKNOWN"
+ ],
+ "what_i_do_not_know": [
+  "No price action between 21:59 UTC and as_of 12:00 UTC",
+  "Unknown whether breakout sustains or reclaims inside level",
+  "Unknown news, macro events, order flow, positioning",
+  "Analog outcomes exclude returns; no predictive distribution"
+ ],
+ "evidence": [
+  "Break status BEYOND with acceptance beyond level 4373.145",
+  "M1 21:58 wide bar 95.5 percentile range with recovery lower wick",
+  "H1 current bar small range with large lower wick 3.01",
+  "Volatility contracting: ATR declining across M1, M5, M15"
+ ],
+ "counter_evidence": [
+  "Breakout margin thin: only 0.215 ATR beyond level",
+  "Reclaim_status NONE; failed breakout not yet excluded",
+  "M1, M5, M15 trend_20 negative while H1 positive (CONFLICT)",
+  "Data stale fourteen hours; recent action could invalidate"
+ ],
+ "possible_mechanisms": [
+  {
+   "mechanism": "breakout_pressure",
+   "status": "POSSIBLE",
+   "why": "close beyond level, no reclaim observed yet"
+  },
+  {
+   "mechanism": "failed_breakout",
+   "status": "POSSIBLE",
+   "why": "thin margin, no sustained acceptance evidence"
+  },
+  {
+   "mechanism": "compression_continuation",
+   "status": "POSSIBLE",
+   "why": "analogs persist COMPRESSION; contraction confirmed"
+  }
+ ],
+ "primary_scenario": {
+  "scenario": "Compression persists around level; breakout unconfirmed",
+  "horizon": "4-8 hours",
+  "trigger": "Close holds within ATR of level",
+  "invalidation": "Sustained move beyond level or reclaim inside"
+ },
+ "alternative_scenario": {
+  "scenario": "Rejection back inside level after thin false break",
+  "horizon": "4-8 hours",
+  "trigger": "Reclaim below 4373.145 confirmed",
+  "invalidation": "Acceptance beyond level extends materially"
+ },
+ "expected_transition": "COMPRESSION persists; direction unresolved",
+ "direction_bias": "NO_DIRECTIONAL_EDGE",
+ "time_horizon": "4-8 hours",
+ "evidence_strength": 0.3,
+ "confidence": 0.25,
+ "uncertainty": 0.8,
+ "confidence_reason": "Thin breakout margin, stale data, conflicting timeframes",
+ "uncertainty_reason": "Fourteen-hour data gap and absent cross-market inputs",
+ "invalidation": "Close reverts inside level or acceptance extends materially",
+ "change_my_mind": [
+  "Fresh bar shows sustained acceptance above level",
+  "Reclaim below 4373.145 confirmed by new bars",
+  "New data closes the fourteen-hour gap",
+  "Cross-market or news input becomes available"
+ ],
+ "abstain": true,
+ "abstain_reason": "Data stale 14h; MTF conflict; thin breakout basis",
+ "questions": {
+  "Q1": "Price beyond swing high; state COMPRESSION; data ends 21:59 UTC",
+  "Q2": "Fourteen-hour gap, breakout durability, macro/news, order flow",
+  "Q3": "Break BEYOND, acceptance event, contraction, ATR decline",
+  "Q4": "Thin 0.215 ATR margin, no reclaim, MTF conflict, stale data",
+  "Q5": "Breakout persistence mechanism; not entitled to assert",
+  "Q6": "Fresh bars with sustained acceptance or confirmed reclaim",
+  "Q7": "True; stale data and conflicting timeframes preclude conviction"
+ },
+ "reasoning_trace": [
+  "Price marginally beyond swing high with acceptance at t",
+  "Data stale fourteen hours; recent action unknown",
+  "MTF trend conflict; cross-market absent",
+  "Abstain: insufficient fresh evidence for direction"
+ ]
+}

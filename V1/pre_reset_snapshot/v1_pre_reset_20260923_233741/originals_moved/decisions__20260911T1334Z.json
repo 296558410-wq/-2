@@ -1,0 +1,120 @@
+{
+ "cycle": "2026-09-11T13:34Z",
+ "symbol": "XAUUSD",
+ "decision_id": "DEC-2026-09-11T13:34Z",
+ "utc_ts": "2026-09-11T13:34Z",
+ "generated_utc": "2026-09-11T13:34Z",
+ "decision": "SHORT",
+ "confidence": 0.55,
+ "bias": "SHORT-lean 0.55. HTF still caps the upside (D1 close 4386.19 < MA20 4464.62; H4 close 4386.19 < MA50 4394.11) and the 13:15Z(16:15srv) spike printed a fresh high 4398.60 that tagged H1 MA200 4397.16 / H4 MA50 4394.11 and was rejected (C 4390.01, follow bar rolling over to 4384.78). With-trend play = SELL the retrace back into the 4393.5-4398.6 HTF MA resistance cluster, not chase. Realize intraday momentum is up (M15/H1 close > MA20/MA50) -> fade ONLY at the cluster; stand above 4400 = thesis void.",
+ "opportunity": "pullback",
+ "opportunity_mechanism": "Post-flush V-recovery (12:30Z sweep low 4292.60) has rallied +106pt into the 4393.5-4398.6 HTF MA resistance cluster (H4 MA50 4394.11 + H1 MA200 4397.16 + 13:15Z spike high 4398.60 + round 4400) and was rejected there -> sell the retrace into resistance (retrace-fade with HTF). The 13:15Z bar left a rejection at 4398.60 (C 4390.01) and the 13:30Z bar rolled to 4384.78 before price is now bouncing back to ~4392.9; the fade is valid only while price stays below the cluster top. If price reclaims/stands above 4400 the fade is void and next cycle re-evaluates.",
+ "mtf_agreement": "conflict",
+ "state_summary": "XAUUSD live mid 4392.94 (MT5 broker bid4392.87/ask4393.01, spread0.14=0.30bps; pkg m15_live 4392.94, tick128/min, z0.26); data_quality ok (live_days5, live_ticks928662, context_days29, gaps[]). FLAT (broker POSITIONS 0 / ORDERS 0). MT5 server bars: 16:00srv(13:00Z) O4387.88 H4394.50 L4380.51 C4389.16; 16:15srv(13:15Z) O4389.17 H4398.60 L4380.71 C4390.01 (spike high rejected at H1 MA200); 16:30srv(13:30Z) O4389.92 H4391.21 L4381.83 C4384.78 (rolling over) -> now bouncing back to ~4392.9. MT5-true MAs: D1 MA20 4464.62/MA50 4269.48 (close below MA20, above MA50); H4 MA20 4376.34/MA50 4394.11/MA200 4366.35; H1 MA20 4338.17/MA50 4373.59/MA200 4397.16; M15 MA20 4351.05/MA50 4341.43/MA200 4373.62.",
+ "data_note": "state_package 的 parquet OHLC 源与 MT5 broker 实时源不一致(~+40pt: pkg m15 last_close 4346.43 vs broker 4392.9); 触发用 state_package.m15_live(quote_latest=broker 一致), 结构位以 MT5 server bars 为准。已按 broker 真值定级, 不影响本轮触价与风控。",
+ "m15_change": "vs 13:17Z (mid ~4383.9): +9pt net, 但区间内先冲高 4398.60 再回落 4384.78 再反弹 4392.9 (宽幅震荡)。13:15Z(16:15srv) O4389.17 H4398.60 L4380.71 C4390.01 = 在 H1 MA200 4397.16 处被打回; 13:30Z(16:30srv) O4389.92 H4391.21 L4381.83 C4384.78 = 阴蜡烛; 现价反弹回 4392.9。支撑 4386.5/4376.5(H4 MA20 & M15 MA200 4373.62)/4366.4(H4 MA200 4366.35); 阻力 4394.11(H4 MA50)/4397.16(H1 MA200)/4398.6(13:15Z 高)/4400(整数)。",
+ "position_note": "MT5 FXTM demo FLAT, 0 positions / 0 orders。In-book TP-20260911T1317Z (SHORT zone 4388.5-4394.5, inv 4400.0) 仍 PENDING 且现价 4392.94 已进入其区间上沿 -> 本轮由引擎触发/管理; 同时注册本轮精炼计划 (zone 上移至 4393.5-4399.0 以正对 H1 MA200/H4 MA50 簇)。单仓约束 -> 不逆势做多、不加仓摊平。",
+ "answers_14": {
+  "1": "市场状态: XAUUSD live mid 4392.94 (MT5 bid4392.87/ask4393.01, spread0.30bps; pkg m15_live 4392.94, tick128/min, z0.26); data_quality ok (live_days5, ticks928662, context_days29, gaps[]); 零持仓零挂单。13:15Z spike 高 4398.60 撞 H1 MA200 4397.16 / H4 MA50 4394.11 被拒后回落 4384.78, 现反弹 4392.9。HTF: D1 close4386.19<MA20 4464.62(>MA50 4269.48); H4 <MA50 4394.11 (>MA20 4376.34/MA200 4366.35); H1 >MA20 4338.17/MA50 4373.59 <MA200 4397.16; M15 >MA20 4351.05/MA50 4341.43/MA200 4373.62。",
+  "2": "一致性: conflict — HTF(D1<MA20, H4<MA50)偏空; 日内(H1/M15 均 > MA20/MA50)偏多, 属强反弹。阻力簇 4393.5-4398.6 (H4 MA50 4394.11 / H1 MA200 4397.16 / spike 高 4398.60 / 整数 4400)。净 SHORT-lean 0.55: 只顺 HTF 在簇内卖反弹, 站稳 4400 作废。",
+  "3": "M15 变化 vs 13:17Z(~4383.9): 13:00Z(16:00srv) O4387.88 H4394.50 L4380.51 C4389.16; 13:15Z(16:15srv) O4389.17 H4398.60 L4380.71 C4390.01 (冲高 4398.60 撞 H1 MA200 被打回); 13:30Z(16:30srv) O4389.92 H4391.21 L4381.83 C4384.78 (阴蜡烛回落); 现价 4392.9 反弹。支撑 4386.5/4376.5/4366.4; 阻力 4394.11/4397.16/4398.6/4400。",
+  "4": "机会/离可交易差什么: 零持仓 -> 注册顺 HTF 的 retrace-fade SELL。现价 4392.94 距 zone_lo 4393.5 仅 ~0.6pt, 只差一次微小上探即实时触价自动成交 (无需等收盘)。不追空(现价在簇下沿附近, 追空 R 变小), 不逆势多(正撞 H4 MA50/H1 MA200)。",
+  "5": "机制: 12:30Z 扫低 4292.60 后 V 修复 +106pt 推入 4393.5-4398.6 HTF MA 簇 (H4 MA50 4394.11 / H1 MA200 4397.16 / spike 高 4398.60 / 4400 整数) 并在 4398.60 遭拒, 顺 D1<MA20 + H4<MA50 的 HTF 偏空方向卖该反弹。SL 置于簇顶/4400 上方; 目标 4386.5/4376.5/4366.4。站稳 4400 = 作废。",
+  "6": "触发条件 [具体价]: SHORT {and:[{zone_touch:[4393.5,4399.0]},{spread_under_bps:0.8}]} (现价 4392.94, 距 zone_lo 4393.5 ~0.6pt, 实时触价即自动成交)。",
+  "7": "失效 [具体价]: {price_cross_up:4402.0} (收复并站稳 4400 整数 + H1 MA200 4397.16 之上 = 反弹卖点作废)。成交后硬止损 4403.0。",
+  "8": "预期收益 R (ref fill 4396.0, SL4403.0, 1R=7.0pt): T1 4386.5=-9.5pt=1.36R x0.40; T2 4376.5=-19.5pt=2.79R x0.35; T3 4366.4=-29.6pt=4.23R x0.25; 加权=2.58R。",
+  "9": "预期损失 R: 结构止损 4403.0 = -7.0pt = -1.0R (0.01 手 ≈ -7.0 USD)。硬止损, 不移不改, 亏损绝不加仓。",
+  "10": "成本数值: spread 0.30bps + slippage 0.30bps = 往返 0.60bps ≈ 0.26pt (0.01 手 ≈ 0.26 USD); 1R=7.0pt(≈15.9bps) -> 成本 0.038R。成本极低, 非障碍。",
+  "11": "净 EV 算式: EV_R = 0.42*2.58 - 0.58*1.00 - 0.038 = 1.084 - 0.618 = +0.466R (>0)。",
+  "12": "再现性: 家族 'HTF 偏空 + 顺趋势卖反弹至 HTF MA 簇' (含 TP-1102Z/1132Z/1217Z/1235Z/1247Z/1302Z/1317Z); 本轮为 12:30Z 扫低后 V 修复撞 H4 MA50/H1 MA200 簇被拒的回撤卖。铁律: 卖反弹不追高、不摊平、破位即离。",
+  "13": "SHORT",
+  "14": "HTF偏空(D1<MA20/H4<MA50)+spike高4398.6撞H1 MA200簇被拒; 触4393.5-4399即空SL4403, 目标4386.5/4376.5/4366.4, EV+0.47R; 站稳4400作废。"
+ },
+ "cost_note": "spread_bps=0.30, slippage_bps=0.30, round_trip=0.60bps (=0.26pt ~0.26USD on 0.01 lot; 1R=7.0pt -> cost_in_R 0.038).",
+ "ev_note": "SHORT: EV_R = 0.42*(0.40*1.36+0.35*2.79+0.25*4.23) - 0.58*1.00 - 0.038 = 0.42*2.58 - 0.618 = +0.466R (>0). ref fill 4396.0, SL 4403.0, 1R=7.0pt.",
+ "management_note": "零持仓。触发 TP-20260911T1334Z 后由 broker 随单 SL 4403.0 + T1/T2/T3 4386.5/4376.5/4366.4 管理; 单仓约束常在; 若站稳 4400 或跌破 4376.5 形成新结构 -> 由新轮重评。旧 TP-20260911T1317Z 在册, 由引擎按 stale/invalidation 自行清扫。",
+ "plan": {
+  "plan_id": "TP-20260911T1334Z",
+  "decision_id_ref": "DEC-2026-09-11T13:34Z",
+  "direction": "SHORT",
+  "opportunity_type": "retrace_fade_at_htf_ma_cluster_with_trend",
+  "mechanism_ref": "post-flush V-recovery rejected at HTF MA cluster (H4 MA50 4394.11 / H1 MA200 4397.16 / spike high 4398.60 / round 4400)",
+  "entry_style": "market_on_trigger",
+  "entry_zone": {
+   "low": 4393.5,
+   "high": 4399.0
+  },
+  "trigger_condition": {
+   "and": [
+    {
+     "zone_touch": [
+      4393.5,
+      4399.0
+     ]
+    },
+    {
+     "spread_under_bps": 0.8
+    }
+   ]
+  },
+  "invalidation_condition": {
+   "price_cross_up": 4402.0
+  },
+  "stop_logic": {
+   "type": "structure",
+   "level": "above 13:15Z spike high 4398.60 / H1 MA200 4397.16 / H4 MA50 4394.11 / round 4400 (HTF MA resistance cluster top)",
+   "level_price": 4403.0,
+   "reason": "Retrace-fade invalidation: the 12:30Z flush (L4292.60) fully V-recovered and printed a fresh high 4398.60 into the 4393.5-4398.6 HTF MA cluster (H4 MA50 4394.11, H1 MA200 4397.16, round 4400) with an upper-wick rejection (13:15Z C 4390.01). A with-trend sell into that cluster is the fade. If price reclaims and stands above the cluster top (round 4400) the fade thesis is void. SL 4403.0 = 1R=7.0pt @ref fill 4396.0, hard, no widening."
+  },
+  "target_logic": {
+   "type": "price_levels",
+   "levels": [
+    {
+     "price": 4386.5,
+     "frac": 0.4
+    },
+    {
+     "price": 4376.5,
+     "frac": 0.35
+    },
+    {
+     "price": 4366.4,
+     "frac": 0.25
+    }
+   ],
+   "reason": "T1 4386.5 = 13:30Z(16:30srv) bar mid / immediate pullback shelf (ref -9.5pt = 1.36R) x0.40; T2 4376.5 = H4 MA20 4376.34 / M15 MA200 4373.62 shelf (ref -19.5pt = 2.79R) x0.35; T3 4366.4 = H4 MA200 4366.35 (ref -29.6pt = 4.23R) x0.25."
+  },
+  "expected_R": 2.58,
+  "expected_win_probability": 0.42,
+  "probability_source": "subjective; HTF bearish/neutral-capped (D1 close 4386.19 < MA20 4464.62; H4 close < MA50 4394.11) and the fresh high 4398.60 was rejected at H1 MA200 4397.16; same-family retrace-fade base rate ~0.40-0.45. Set 0.42 (not higher) because intraday momentum is up after the flush -> honest acknowledgement of the squeeze risk.",
+  "expected_loss": {
+   "units": "R",
+   "value": -1.0
+  },
+  "estimated_cost": {
+   "spread_bps": 0.3,
+   "slippage_bps": 0.3,
+   "total_roundtrip_bps": 0.6,
+   "cost_in_R": 0.038
+  },
+  "expected_net_EV": {
+   "value": 0.466,
+   "units": "R",
+   "note": "EV_R = 0.42*(0.40*1.36+0.35*2.79+0.25*4.23) - 0.58*1.00 - 0.038 = 0.42*2.58 - 0.618 = +0.466R (1R=7.0pt @ref fill 4396.0, SL 4403.0)"
+  },
+  "maximum_holding_time": "M15*8",
+  "qty_lots": 0.01,
+  "risk_level": "medium",
+  "reason": "顺 HTF(D1<MA20/H4<MA50)偏空, 在 4393.5-4398.6 HTF MA 簇 (H4 MA50 4394.11/H1 MA200 4397.16/spike 高 4398.60/整数 4400) 被拒后的回撤卖点; 现价 4392.94 距 zone_lo 仅 ~0.6pt, 触价即自动成交; SL 4403.0 硬止损, 目标 4386.5/4376.5/4366.4, EV +0.466R (>0)。",
+  "cancel_conditions": [
+   "mid price_cross_up 4402.0 (reclaim/stand above round 4400 & H1 MA200 4397.16 -> retrace-fade thesis void, plan cancelled)",
+   "engine stale/age: 2h / 8 M15 bars untriggered",
+   "engine price_left_setup: mid < 4393.5-2band=4382.5 (bounce stalled/faded without holding the cluster, rebuilt next cycle)",
+   "post-fill broker SL 4403.0 governs; single-position constraint always"
+  ],
+  "model": "deepseek/deepseek-v4-flash",
+  "prompt_version": "hermes_trader_v1_active_hunter"
+ },
+ "model": "deepseek/deepseek-v4-flash",
+ "prompt_version": "hermes_trader_v1_active_hunter"
+}

@@ -1,0 +1,35 @@
+{
+ "audit_id": "POST_20260807",
+ "timestamp": "2026-09-27T14:44:00Z",
+ "correct_calls": [
+  "Direction bias UP matched actual_direction UP",
+  "EXPANSION persistence matched actual_next_state EXPANSION with actual_transition 0 (state persistence, not reversion to REJECTION)",
+  "Primary scenario envelope covered the actual outcome (hermes_scenario_covered_actual=true)",
+  "No abstention was correct: the context was sufficient for a structural scenario forecast and the outcome was covered",
+  "The invalidation conditions (decisive close below 4316.625 or 4300.825) did not occur, consistent with the UP/EXPANSION outcome"
+ ],
+ "wrong_calls": [
+  "The specific continuation leg of the primary scenario - reclaim/clear of swing high 4320.585 and extension toward the 4341-4372 supply band with progression toward TREND - is UNVERIFIED, not confirmed wrong: the outcome record only reports state (EXPANSION) and direction (UP), with no price-path detail, so the level-break claim can neither be confirmed nor refuted"
+ ],
+ "right_but_wrong_reason": [
+  "No case established: the stated reasons (MTF trend agreement, ACCEPTANCE/EXPANSION state, positive momentum) are consistent with the observed UP/EXPANSION outcome; the level-reclaim mechanism is unverified rather than demonstrated wrong"
+ ],
+ "direction_ok_state_wrong": false,
+ "state_ok_direction_wrong": false,
+ "should_have_abstained": false,
+ "invalidation_occurred": false,
+ "prior_concerns_materialised": false,
+ "hindsight_detected": false,
+ "hindsight_evidence": [],
+ "outcome_alignment_verdict": "CORRECT",
+ "reasoning_trace": [
+  "Actual outcome: actual_next_state=EXPANSION, actual_transition=0, actual_direction=UP, hermes_scenario_covered_actual=true; baseline_persistence_state=EXPANSION.",
+  "Hermes-A's primary scenario (confidence 0.55) was acceptance holds / expansion continues with direction UP - the state and direction both matched the actual outcome exactly.",
+  "The alternative (supply rejection at 4320.585 rolling back to 4300-4283) and the third scenario (unresolved two-sided range) did not materialise as outcomes within the reported window; the observed outcome stayed EXPANSION/UP.",
+  "Invalidation conditions given by Hermes-A (close below 4316.625 or below 4300.825 with expanding down bars; EXPANSION->REJECTION transition) did not occur - invalidation_occurred=false.",
+  "Adversarial concerns implicit in the counter-evidence (4-touch supply holding, upper-wick absorption, 2-of-3 analogs resolving to REJECTION) did not materialise in the observed outcome window - prior_concerns_materialised=false.",
+  "No hindsight detected: Hermes-A reasoned only from PIT context, explicitly flagged the H4 geometry anomaly as a caution, and recorded absent series as absent (no fabrication).",
+  "Caveat on data sufficiency: the outcome record is minimal (state + direction only). It supports a CORRECT verdict for direction and state persistence, but cannot verify the level-reclaim/TREND-progression leg of the primary scenario; that specific claim remains unverified, not disproven.",
+  "Outcome_alignment_verdict=CORRECT at the level the outcome record can measure; no wrong calls established."
+ ]
+}

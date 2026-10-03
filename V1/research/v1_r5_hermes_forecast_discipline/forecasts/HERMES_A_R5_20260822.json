@@ -1,0 +1,119 @@
+{
+  "forecast_id": "HERMES_A_R5_20260822",
+  "timestamp": "2026-08-22 12:00:00+00:00",
+  "observations": [
+    "as_of_utc 2026-08-22 12:00:00+00:00; last price bar closes at 2026-08-21 21:59:00+00:00 (M1) / 21:55 (M5,M15) / 21:00 (H1) / 20:00 (H4); data are PIT up to those bars.",
+    "M1 last close 4602.055; trend_20 -6.65; trend_50 -14.17; consecutive_down 7; range_contracting true; current bar range_percentile 0.155 (low activity).",
+    "M5 last close 4602.055; trend_20 -20.05; trend_50 -25.17; consecutive_down 10; range_contracting true.",
+    "M15 last close 4602.055; trend_20 -12.08; trend_50 +19.77; consecutive_down 7; range_expanding true; current M15 bar is a large bearish body (body_ratio 0.83, range 6.43).",
+    "H1 last close 4602.055; trend_20 +71.51; trend_50 +115.45; consecutive_up 7; current H1 bar is a strong bearish body (body_ratio 0.94, range 15.61).",
+    "H4 last close 4602.055; trend_20 +247.96; trend_50 +234.08; consecutive_up 9; trend_20 up over 20 bars.",
+    "L2 nearest level: SWING_HIGH_38669 at 4601.875, side UP, origin SWING_HIGH, age 46 bars, touch_count_240 11, distance_atr 0.02578, break_status INSIDE, reclaim_status NONE.",
+    "L3 frozen behaviour label: COMPRESSION; event at t: VOL_CONTRACTION; state_v2 COMPRESSION.",
+    "L4 mechanism candidates only (NOT asserted): trend_continuation, supporting evidence 'price inside level, 8-bar displacement -22.09'.",
+    "L5 state history: current_state COMPRESSION, current_event VOL_CONTRACTION, dwell 2 bars; transitions_last_8: EXPANSION->REJECTION, REJECTION->COMPRESSION; ambiguity_rate_8 0.25.",
+    "L6 multi-timeframe agreement: CONFLICT (M1/M5/M15 negative trend_20, H1/H4 positive trend_20).",
+    "L7 cross-market: DXY, VIX, UST10Y_PROXY_TNX all UNKNOWN (STALE_OR_NOT_COVERED); absent: GLD, GC, CFTC_COT, ETF_FLOWS, NEWS, MACRO_EVENTS.",
+    "Historical analogs (state evolution only): A21233 stays COMPRESSION through step 16; A26956 COMPRESSION->REJECTION at step 8; A32777 COMPRESSION->TREND at step 4 -> REJECTION -> EXPANSION."
+  ],
+  "what_i_know": [
+    "Price as of the last PIT bars is 4602.055 on all timeframes, sitting ~0.18 above the nearest swing-high level at 4601.875.",
+    "The nearest level (SWING_HIGH_38669, 4601.875) has break_status INSIDE and 11 touches in 240 bars; it is the active level per L2.",
+    "Short timeframes (M1, M5, M15) show negative trend_20 and consecutive down runs (7/10/7); H1 and H4 show strongly positive trend_20 (71.5 / 248.0) and consecutive up runs (7/9).",
+    "The frozen behaviour label at t is COMPRESSION with event VOL_CONTRACTION; current state dwell is 2 bars; last transitions were EXPANSION->REJECTION then REJECTION->COMPRESSION.",
+    "L4 lists trend_continuation as a mechanism candidate only, with 8-bar displacement -22.09 and 'price inside level' as supporting evidence.",
+    "Cross-market series (DXY, VIX, UST10Y) are UNKNOWN/not covered and other series are recorded absent; nothing there may be used or fabricated."
+  ],
+  "what_i_do_not_know": [
+    "The direction of any future volatility expansion after COMPRESSION/VOL_CONTRACTION is UNKNOWN from this context.",
+    "Whether the 4601.875 swing-high level will hold (reject) or break is UNKNOWN; break_status INSIDE is ambiguous by definition.",
+    "Cross-market drivers (DXY, VIX, yields, news, macro events, positioning/CFTC, ETF flows) are UNKNOWN or absent - no causal read-through is possible.",
+    "Volume, order flow, and microstructure (L2 book depth, taker flow) are not present; all derived quantities are geometry-only.",
+    "Historical analogs are state-evolution only (no returns/PnL); they say nothing about the size or direction of a move.",
+    "The 8-bar displacement (-22.09) is a DERIVED number; its driver (who is selling, why) is UNKNOWN.",
+    "Intention of participants around the level (stop placement, breakout orders) is UNKNOWN."
+  ],
+  "evidence": [
+    "Short-timeframe downward drift: M5 trend_20 -20.05 with 10 consecutive down bars; M15 trend_20 -12.08; M1 trend_20 -6.65.",
+    "Price is pressing the active level: last close 4602.055 vs level 4601.875 (distance_atr 0.026); recent M1 low 4601.745 is below the level price.",
+    "L4 candidate mechanism trend_continuation cites 'price inside level, 8-bar displacement -22.09'.",
+    "Current M15 and H1 bars are large bearish bodies (body_ratio 0.83 and 0.94) closing near their lows, consistent with near-term selling pressure.",
+    "Frozen label COMPRESSION with VOL_CONTRACTION and range_contracting true on M1/M5 supports low-activity compression at the level.",
+    "Level persistence: 11 touches in 240 bars implies the level has been meaningful price structure recently."
+  ],
+  "counter_evidence": [
+    "H1 and H4 trend_20 are strongly positive (+71.5, +248.0) with 7 and 9 consecutive up bars - higher-timeframe uptrend argues against sustained downside.",
+    "M15 trend_50 and the H1/H4 structure suggest the recent pullback may be a correction within an uptrend, not a reversal.",
+    "Historical analog A26956 shows COMPRESSION resolving to REJECTION, and A32777 resolves to TREND then EXPANSION - compression here has historically resolved in more than one way.",
+    "The level has 11 touches without a clean break (INSIDE), so it may be a magnet/support that rejects price back up.",
+    "VOL_CONTRACTION frequently precedes expansion in either direction; the current down drift may simply be noise inside a still-valid uptrend.",
+    "ambiguity_rate_8 of 0.25 and a 2-bar dwell are too short to infer regime durability."
+  ],
+  "possible_mechanisms": [
+    {
+      "mechanism": "trend_continuation (short-term down-drift into the level)",
+      "status": "POSSIBLE",
+      "why": "L4 lists it as a candidate only (not asserted, §13): 8-bar displacement -22.09 and negative M1/M5/M15 trend_20 are consistent, but cross-market and flow causes are UNKNOWN."
+    },
+    {
+      "mechanism": "level rejection / mean reversion back into the uptrend",
+      "status": "POSSIBLE",
+      "why": "Strong H1/H4 uptrend plus a 240-bar-active swing-high level with 11 touches suggests the 4601.875 area may act as support; compression at a level often precedes rejection (analog A26956)."
+    },
+    {
+      "mechanism": "volatility expansion after compression",
+      "status": "POSSIBLE",
+      "why": "VOL_CONTRACTION with contracting M1/M5 ranges is present; expansion typically follows, but the direction of the expansion is UNKNOWN and the state machine offers no direction."
+    }
+  ],
+  "primary_scenario": {
+    "scenario": "Compression continues at the 4601.875 swing-high level: near-term selling pressure persists (M5 trend_20 -20.05, 10 down bars), price grinds down and tests/breaks the level with contracting range; state remains COMPRESSION or transitions to REJECTION after a shallow test.",
+    "horizon": "intraday, next 2-4 hours (~8-32 M15 bars)",
+    "trigger": "M5/M15 continue to print lower closes; a sustained (M5-bar) close below 4601.745-4601.875 breaks the level with expanding range.",
+    "invalidation": "Price reclaims above 4607.6 (recent M15 high) or 4616-4617 (M5/H1 highs) with expanding range, or a decisive lower-wick rejection at the level pushes price back up - invalidates the down-drive continuation."
+  },
+  "alternative_scenario": {
+    "scenario": "Rejection at the level and resumption of the higher-timeframe uptrend: compression resolves upward; H1/H4 trend_20 (+71.5/+248) dominates as price bounces off 4601.875 support.",
+    "horizon": "intraday to 1-2 days (~8-32 M15 bars; up to a few H1 bars)",
+    "trigger": "Defensive rejection bars (lower wicks) at the level on M15/H1 followed by a close back above 4607.6 and then 4616-4617.",
+    "invalidation": "A clean M5/H1 close below 4601.745 without reclaim (level lost) removes the rejection premise."
+  },
+  "expected_transition": "COMPRESSION -> REJECTION or TREND (resolution of the volatility contraction); analogs split: A21233 stays COMPRESSION, A26956 -> REJECTION, A32777 -> TREND; the state machine offers no direction.",
+  "direction_bias": "DOWN",
+  "time_horizon": "intraday, next 2-4 hours (~8-32 M15 bars)",
+  "evidence_strength": 0.4,
+  "confidence": 0.35,
+  "uncertainty": 0.65,
+  "confidence_reason": "The only directional evidence is short-timeframe geometry (negative M1/M5/M15 trend_20, consecutive down runs, bearish current bars) pressing an active level; this is coherent but low-level (price/geometry only, no volume or cross-market confirmation) and directly contested by strongly positive H1/H4 trends. A complete narrative does not raise confidence.",
+  "uncertainty_reason": "Multi-timeframe agreement is CONFLICT (L6), cross-market series are UNKNOWN/absent, the compression state has only a 2-bar dwell with 0.25 ambiguity rate, break_status INSIDE is inherently ambiguous, and analogs diverge in outcome - so the near-term direction and the resolution side of the compression are genuinely uncertain.",
+  "invalidation": "Sustained M5/H1 close above 4607.6 (then 4616-4617) with expanding range, or a decisive lower-wick rejection at 4601.875 followed by upside expansion, invalidates the short-term DOWN bias; a clean close below 4601.745 with expanding range confirms it.",
+  "change_my_mind": [
+    "A M5 or H1 bar closing decisively above 4607.6 with expanding range flips the bias toward UP/rejection.",
+    "A close above 4616-4617 (recent highs) confirms upside resolution of the compression.",
+    "A clean M5 close below 4601.745 with expanding range and falling H4 trend_20 would upgrade the DOWN view.",
+    "Any newly available cross-market data (DXY, yields, VIX, news, macro) contradicting the down-drive would re-weight the view.",
+    "A COMPRESSION dwell exceeding the historical analog range without a VOL_EXPANSION event would make the label stale rather than informative."
+  ],
+  "abstain": false,
+  "abstain_reason": "Context is sufficient to answer all seven questions: it contains consistent PIT price geometry, an active level, a frozen state label, and explicit quality flags. The multi-timeframe CONFLICT and absent cross-market data are disclosed gaps, not contradictions; the discipline requirements (status on every mechanism, separated confidence fields) can be satisfied, so abstention is not required.",
+  "questions": {
+    "Q1": "what_do_i_know: PIT bars to 2026-08-21 21:59Z show XAUUSD at 4602.055, ~0.18 above active swing-high level 4601.875 (INSIDE, 11 touches/240 bars); M1/M5/M15 trend_20 negative with 7/10/7 consecutive down bars; H1/H4 trend_20 strongly positive (+71.5/+248); frozen label COMPRESSION with VOL_CONTRACTION, dwell 2; L4 candidate mechanism trend_continuation (8-bar displacement -22.09); cross-market all UNKNOWN/absent.",
+    "Q2": "what_do_i_not_know: resolution direction of the compression; whether 4601.875 holds or breaks; all cross-market/macro/news/positioning/flow data (UNKNOWN or absent, PROXY for nothing); the driver of the -22.09 displacement; volume/microstructure; analog outcomes beyond state evolution (no PnL/returns).",
+    "Q3": "evidence_for_primary: negative short-TF trend_20 and consecutive-down runs; price pressing the level (distance_atr 0.026, recent low below level); bearish current M15/H1 bodies; range_contracting M1/M5; L4 candidate trend_continuation with 8-bar displacement -22.09.",
+    "Q4": "evidence_against_primary: strong positive H1/H4 trend_20 (uptrend context); M15 trend_50 positive; analogs resolve to REJECTION or TREND as often as staying flat; 11-touch level may reject; VOL_CONTRACTION precludes direction; short dwell/ambiguity.",
+    "Q5": "mechanism_that_is_only_possible: trend_continuation is only POSSIBLE (L4 candidate, not asserted) - I am not entitled to assert that the -22.09 displacement or the down-drift is a real continuation rather than noise inside a higher-timeframe uptrend; likewise 'rejection at the level' is only POSSIBLE.",
+    "Q6": "what_would_change_my_mind: M5/H1 close above 4607.6 with expansion (-> UP/rejection view); close above 4616-4617 (-> confirmed upside resolution); clean close below 4601.745 with expansion plus falling H4 trend_20 (-> upgrade DOWN); availability of contradicting cross-market/macro data; a stale COMPRESSION label (no VOL_EXPANSION after long dwell).",
+    "Q7": "should_i_abstain_now: false - the context is sufficient and internally consistent; gaps (cross-market absent, TF conflict) are disclosed, not fatal, so a low-confidence, well-flagged forecast is more honest than abstention."
+  },
+  "reasoning_trace": [
+    "Read context v1r3-r1 as_of 2026-08-22 12:00Z; verified PIT timestamps all precede as_of.",
+    "Identified active structure: price 4602.055 vs swing-high level 4601.875 (INSIDE, distance_atr 0.026).",
+    "Cross-checked trend_20 across TFs: M1 -6.65, M5 -20.05, M15 -12.08 vs H1 +71.51, H4 +247.96 -> L6 CONFLICT noted; refused to merge timeframes (§15).",
+    "Accepted frozen label COMPRESSION/VOL_CONTRACTION with 2-bar dwell and 0.25 ambiguity; treated transitions EXPANSION->REJECTION->COMPRESSION as history only.",
+    "Treated L4 trend_continuation as candidate only (§13) - status POSSIBLE, not asserted.",
+    "Recorded L7 as UNKNOWN/absent (§6/§16/§75); used no cross-market input.",
+    "Used analogs only for state evolution, never for returns/direction magnitude (§18/§72).",
+    "Primary = short-TF down-drive into/through the level (DOWN, low confidence); alternative = level rejection / uptrend resumption; both explicit triggers and invalidations.",
+    "Assigned evidence_strength 0.4, confidence 0.35, uncertainty 0.65; abstain=false with reasoning; answered Q1-Q7 explicitly."
+  ]
+}

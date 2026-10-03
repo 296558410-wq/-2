@@ -1,0 +1,51 @@
+{
+  "audit_id": "POST_20260720",
+  "timestamp": "2026-09-27T22:45:00+08:00",
+  "correct_calls": [
+    "Direction bias NO_DIRECTIONAL_EDGE was honest and correct: the actual outcome (DOWN break) was one of the three enumerated scenarios, and Hermes-A never asserted a confident directional view that the market contradicted",
+    "Range-expansion warning (range_expanding=true on all timeframes, M1 range_percentile 0.925) was correct: expansion pressure was real and resolved within the forecast horizon",
+    "Third scenario (downside resolution) was directionally CORRECT: price broke the 4021.065 swing low and moved DOWN, matching the listed trigger 'M15 close below 4021.065 with follow-through below 4019.575'",
+    "Invalidation condition for the primary scenario was specified in advance and DID occur: 'decisive M15 close below 4021.065' — the swing-low break happened, so the primary compression thesis was invalidated exactly as declared",
+    "Structural anchor identification (4021.065 swing low, 33 touches, INSIDE) was correct and was the pivot on which the actual downside resolution occurred",
+    "Multi-timeframe CONFLICT read (M1-M15 up-drift vs H4 downtrend) was correct; the eventual resolution was indeed DOWN, i.e., the H4 latent downside pressure was the side that won",
+    "Abstain decision was defensible: abstain=false but with a no-edge stance and a covered scenario set; actual outcome fell inside the announced scenario space (hermes_scenario_covered_actual=true)"
+  ],
+  "wrong_calls": [
+    "Primary scenario 'COMPRESSION persists for the next several hours' was WRONG: the actual next state is REJECTION with a DOWN transition (transition=1), i.e., compression broke down immediately rather than persisting",
+    "Expected state transition 'COMPRESSION persists near-term (analogs A24698/A30701 stay COMPRESSION through step 16)' was WRONG: state did not persist; the 2/3-analog persistence evidence failed",
+    "Probability ranking was inverted relative to outcome: upside resolution (0.25) was ranked above downside resolution (0.2), yet downside occurred",
+    "The 'eventual expansion whose direction is not yet determined' framing underweighted the already-visible downside path: H4 downtrend (trend_20 -54.13) was noted but the downside scenario received the lowest confidence"
+  ],
+  "right_but_wrong_reason": [
+    "Range-expansion pressure was flagged correctly, but the supporting reason cited '2/3 exact-state analogs stay in COMPRESSION through step 16' — analog-based persistence reasoning was wrong; expansion occurred immediately, not after persistence",
+    "The H1 upper-wick rejection at 4040.435 was cited against the upside scenario and price did resolve DOWN — correct direction, but the mechanism invoked (intraday COMPRESSION/absorption) was wrong; the resolution was a rejection break of the support side, not a compressed range holding",
+    "The H4-current-bar close inconsistency (4005.915 vs ~4024-4025 on lower TFs) was dismissed as a snapshot artifact; in hindsight that H4 close was a genuine signal of the downside pressure that materialized — correct to distrust geometry detail, but the downside content was wrongly discarded"
+  ],
+  "direction_ok_state_wrong": true,
+  "direction_ok_state_wrong_details": "Third scenario direction (DOWN) was right, but the expected state evolution was 'expansion to TREND upon a decisive range break' (analog A19210 transitions COMPRESSION->TREND at step 12); the actual next state is REJECTION, not TREND — a rejection break of the swing low rather than a trending expansion.",
+  "state_ok_direction_wrong": false,
+  "state_ok_direction_wrong_details": "No call got the state right while missing the direction: the primary (COMPRESSION persists) failed on both state and direction, and the downside scenario got direction right but state wrong.",
+  "should_have_abstained": false,
+  "should_have_abstained_details": "Context was genuinely ambiguous (state CONFLICT, ambiguity rate 0.375, compression with expansion flags), but Hermes-A did not assert a directional edge, enumerated a three-scenario space that covered the actual outcome (hermes_scenario_covered_actual=true), and pre-specified an invalidation that functioned. Abstention was not required; a higher-confidence primary would have been the error.",
+  "invalidation_occurred": true,
+  "invalidation_occurred_details": "Primary-scenario invalidation was 'a decisive M15 close below 4021.065 (swing-low break)' — the actual outcome is a DOWN transition with next state REJECTION, i.e., the swing low broke and the primary compression thesis was invalidated exactly at the pre-declared condition.",
+  "prior_concerns_materialised": null,
+  "prior_concerns_materialised_details": "No earlier adversarial auditor's concerns were provided in the payload; nothing to evaluate.",
+  "hindsight_detected": false,
+  "hindsight_evidence": [],
+  "hindsight_evidence_details": "All cited data (4040.435 rejection, 4021.065 swing low, H4 close 4005.915, trend values) are present in the PIT context as of 2026-07-20 12:00:00Z and were usable at forecast time. No claim in the forecast requires knowledge of the outcome to make sense.",
+  "outcome_alignment_verdict": "PARTIALLY_CORRECT",
+  "verdict_details": "The primary scenario (compression persists) was wrong and the highest-confidence directional weight went to the wrong side (upside 0.25 > downside 0.2), but the actual outcome (DOWN, REJECTION) was explicitly covered by the third scenario with the correct trigger and the correct invalidation condition, and the no-directional-edge stance was honest. Directionally the forecast space contained the realized path; the point-mass primary failed.",
+  "reasoning_trace": [
+    "Read PIT context as of 2026-07-20 12:00:00Z and Hermes-A forecast HERMES_FULL_CTX_20260720T120000Z",
+    "Read actual_outcome: next state REJECTION, transition 1, direction DOWN, hermes_scenario_covered_actual=true, baseline persistence state COMPRESSION",
+    "Compared primary scenario: COMPRESSION persists within ~4019.6-4027 — contradicted by the immediate DOWN break to REJECTION; persistence failed",
+    "Compared third scenario (downside): trigger 'M15 close below 4021.065 with follow-through below 4019.575' — matches the realized DOWN direction and the swing-low break; scenario correctly covered the outcome",
+    "Checked invalidation: 'decisive M15 close below 4021.065' — realized, so invalidation_occurred=true and the primary was invalidated exactly as pre-declared",
+    "Checked probability ranking: upside (0.25) ranked above downside (0.2); the realized side was the lower-ranked one — evidence of underweighting the H4 downtrend despite it being noted",
+    "Checked state expectation: expected expansion to TREND (analog A19210 at step 12) vs realized REJECTION — direction right (down), state wrong (not a trend)",
+    "Checked for hindsight: every cited price/level/trend exists in the PIT snapshot at t; no outcome-dependent claim found; hindsight_detected=false",
+    "Checked prior adversarial concerns: none supplied in payload; prior_concerns_materialised=null",
+    "Assigned verdict PARTIALLY_CORRECT: scenario space covered the realized path and invalidation worked, but the primary point forecast and the confidence ranking were wrong"
+  ]
+}

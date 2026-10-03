@@ -1,0 +1,84 @@
+{
+ "decision_id": "DEC-2026-09-22T01:17Z",
+ "cycle": "2026-09-22T01:17Z",
+ "utc_ts": "2026-09-22T01:17:00+00:00",
+ "symbol": "XAUUSD",
+ "decision": "SHORT",
+ "confidence": 0.62,
+ "bias": "SHORT-lean",
+ "opportunity": "SELL THE RETEST, slot is FREE (POS-20260922T003534 closed by broker TP at 01:04:43Z +6.75 USD, no position, no active plan, balance 1984.46). Broker live tape 01:17Z mid 4351.29 (bid 4351.20 / ask 4351.38, spread 0.18pt = 0.414bps, tick rate 97/min, last6 max move 8.2bps, z -0.18 = CALM). The tape made a FALSE BREAK of the 60-bar high 4376.13 (4376.13 vs hi60 4376.13, close back 4369.85), then printed a LOWER HIGH 4365.22 with the largest volume of the session (3172) closing near its low 4353.82, and the forming bar has now pushed to 4350.13 - swing low 4353.50 and the M15 MA20 4354.16 are BOTH lost. The actionable object is therefore the retest of [4353.4, 4355.2] (M15 MA20 4354.16 + the broken swing low 4353.50 confluence), 2.1pt above the current mid, with the fixed stop 4359.2 (MA20+5.0) and targets 4344.2 (MA20-10) / 4341.5 (H1 MA200). NOTE the structurally tempting alternative - BUY the M15 MA50 4351.22 / H1 MA20 4350.79 cluster touch - is measured WEAKER (L_MA50_above s4.0_t8: n 304, p 0.4013, grossR +0.1982, CI-low grossR +0.065) and fights the M15 MA200 4362.16 ceiling plus the 3-TF llish structure, so it is recorded as the stand-down, not registered. Also measured and REJECTED as before: S_MA200_below (sell the M15 MA200 underside) is NEGATIVE in every cell (p 0.253-0.313, grossR -0.06 to -0.18) - do not fade the MA200 from below.",
+ "opportunity_mechanism": "Range-internal mean reversion of the 'lost level, then retest' type - NOT a chase. Mechanism: a false break of the range high, followed by a lower high and the loss of the M15 MA20, converts the MA20 into supply; sellers re-price the upper half of the M15 range and the retest of that MA20 is where the sell-side flow is measured to be profitable. Target pair takes the trade back to the lower half (MA20-10 = 4344.2, just above the H1 MA200 4341.54) and toward the range low side (4341.5), i.e. the range's own mean-reversion destinations, not a trend extension. Trigger is real-time zone_touch on the coalesced feed (no close confirmation demanded), so a 2.1pt bounce is enough for the engine to arm and fill. Measured support: unconditional family S_MA20_below on 6000 broker MT5 XAUUSD M15 bars (5000 evaluated) - prev close below MA20 and the bar poking up to the MA20; this is the most robust of the four level families tested this cycle: n 648, ALL 6 grid cells positive, CI-low grossR +0.14 to +0.22. Stand-down recorded: the MA20-touch-from-above BUY family (L_MA20_above, the one that paid off in the 00:50Z long) has DECAYED to grossR +0.13 at best with CI-low barely positive, so its edge is not re-armed here.",
+ "mtf_agreement": "PARTIAL, SHORT-side by LOCATION and by STRUCTURE, no timeframe trending (all four classify as range). Broker tape: mid 4351.29 BELOW M15 MA20 4354.16 (-2.87) and below M15 MA200 4362.16 (-10.87), sitting ON M15 MA50 4351.22 (+0.07); ABOVE H1 MA20 4350.79 (+0.50), above H1 MA200 4341.54 (+9.75) but far below H1 MA50 4361.81 (-10.52); ABOVE H4 MA20 4352.28 (+0.99, i.e. at it) and H4 MA50 4337.32 (+13.97); BELOW D1 MA20 4390.68 (-39.39). Structure counts are bearish on the three traded timeframes: M15 hhish 3 / llish 6, H1 3/6, H4 3/6, D1 4/5. Package (01:17:06Z) matches the regime and not the price: D1 range ER 0.022 pos 46.0; H4 mixed ER 0.173 pos 52.6; H1 range ER 0.095 pos 41.1; M15 range ER 0.074 pos 39.9 exp_cont CONTRACTING 0.63. So the agreement is a location agreement in a range: the constructive counters (price above H1/H4 MAs) are range-mid noise, while the tradable asymmetry is the failed upper boundary.",
+ "answers_14": {
+  "1": "M15 live (broker MT5 tape, 01:17Z, server tick epoch 1790050645): mid 4351.29, bid 4351.20 / ask 4351.38, spread 0.18pt = 0.414bps. Package 2026-09-22T01:17:06Z: live_days 12 / live_ticks 2279047 / context_days 36 / gaps []; regimes D1 range (ER 0.022, pos_in_range 46.0) / H4 mixed (ER 0.173, pos 52.6) / H1 range (ER 0.095, pos 41.1) / M15 range (ER 0.074, pos 39.9, exp_cont CONTRACTING ratio 0.63); pkg m15_live last_mid 4350.64, spread 0.41bps, tick rate 97/min, last6 max move 8.2bps, z -0.18 vs baseline 10.12bps = CALM. Broker levels: M15 MA20 4354.16 / MA50 4351.22 / MA200 4362.16; H1 MA20 4350.79 / MA50 4361.81 / MA200 4341.54; H4 MA20 4352.28 / MA50 4337.32; D1 MA20 4390.68; M15 hi60 4376.13 / lo60 4322.62; H1 hi60 4399.70 / lo60 4322.62. State of the book: NO open position (POS-20260922T003534 was closed by broker TP 4363.07 at 01:04:43Z, +6.75 USD), NO active plan in the ledger (426 plans: 343 cancelled / 83 closed), account demo balance = equity 1984.46, free margin 1984.46, leverage 500 (READ-ONLY). Data caveat: the pkg/quote_latest mid LAGS the broker tape by 0.65pt this cycle (4350.64 vs 4351.29) and candle_latest.json is STALE (2026-09-07) and ignored; all live prices here come from the broker probe run_state/tmp/probe_0117Z_out.json.",
+  "2": "PARTIAL - agreement by LOCATION and STRUCTURE on the SHORT side, no trend permission anywhere. SHORT-side: price is BELOW the M15 MA20 4354.16 (-2.87) and below the M15 MA200 4362.16 (-10.87), structure counts are llish 6 / hhish 3 on M15, H1 and H4, the 60-bar high 4376.13 was falsely broken and a lower high 4365.22 printed, and D1 sits 39.4pt under its MA20 4390.68. LONG-side counters (why this is PARTIAL, not aligned): price is above H1 MA20 4350.79 (+0.50), above H1 MA200 4341.54 (+9.75) and above H4 MA20 4352.28 / H4 MA50 4337.32, i.e. the higher-timeframe 'constructive location' is intact - but every timeframe is a RANGE (ER <= 0.173), so that is range-mid noise, not trend backing. Net: sell the retest of the lost M15 MA20 rather than sell the break.",
+  "3": "M15 changed from 'holding the cluster into the 4362 shelf' to 'rejected at the shelf, lower high, M15 MA20 lost'. Broker M15 sequence (epoch): 1790046000 o4368.72 h4376.13 l4366.96 c4369.85 v2353 = FALSE BREAK of hi60 4376.13 (0.00pt excess, closed 6.28pt back under); 1790046900 o4369.85 h4370.10 l4357.64 c4358.35 v2196 = -12.46pt flush; 1790047800 o4358.10 h4359.34 l4348.42 c4355.27 v2284 = sweep of 4348.42 bought back; 1790048700 o4355.28 h4360.43 l4353.16 c4360.40 v2175 = higher low, strong close; 1790049600 o4360.41 h4365.22 l4353.50 c4353.82 v3172 = REJECTION at 4365.22, the largest volume of the sequence, closing 11.4pt off the high near the low; 1790050500 (forming) o4353.80 h4356.01 l4350.13 c4351.20 v511 = follow-through that CLEARED both the 4353.50 swing low and the M15 MA20 4354.16, now testing the M15 MA50 4351.22. Bar ranges 9.17 -> 12.46 -> 10.92 -> 7.27 -> 11.72 -> (forming) 5.88pt: expansion, contraction, then expansion back down = the up-leg is over.",
+  "4": "Opportunity = SHORT the retest of [4353.4, 4355.2] (M15 MA20 4354.16 + broken swing low 4353.50). Distance from the live mid 4351.29: 2.1pt to the zone low, 3.9pt to the zone high - a 2pt bounce arms it and the engine fills automatically (no close needed). Geometry: nominal fill 4354.5, fixed stop 4359.2 (risk 4.7pt = 4.70 USD on 0.01 lot), blended target (4344.2 x0.6 / 4341.5 x0.4) = 11.38pt = R 2.42. Alternatives priced and stood down: (i) LONG the M15 MA50 4351.22 / H1 MA20 4350.79 touch - the touch is live this very bar, but the measured family L_MA50_above is weaker (best cell s4.0_t8: n 304, p 0.4013, grossR +0.1982, CI-low grossR +0.065) and it fights the MA200 ceiling + llish 6 structure; (ii) SHORT the M15 MA200 4362.16 underside - measured NEGATIVE everywhere (S_MA200_below: n 166, p 0.253-0.313, grossR -0.06 to -0.18), rejected; (iii) chasing the current mid 4351.29 short - only 2.2pt of room to the MA50 before the level, no edge, rejected.",
+  "5": "Mechanism = range-internal mean reversion, 'lost level -> retest'. The upper boundary event (false break of hi60 4376.13) plus a lower high 4365.22 turned the M15 MA20 into supply once price closed below it (4351.20 < 4354.16); the sell-side re-prices the upper half of the M15 range (hi60 4376.13 / lo60 4322.62, mid ~4349.4) and the retest of that MA20 is where the flow is measured to be profitable. Destinations are the range's own mean-reversion levels, not a trend extension: 4344.2 (MA20-10) and 4341.5 (H1 MA200 4341.54), i.e. the lower half where 4348.42 was swept and 4343.5/4341.5 is the last real support shelf before the range floor 4322.62. Trigger is a live zone_touch on the coalesced feed, so no bar close is demanded. Everything is single-position: one plan, 0.01 lot, stop and target ride with the order.",
+  "6": "Trigger: {\"and\": [{\"zone_touch\": [4353.4, 4355.2]}, {\"spread_under_bps\": 1.0}]} - the engine evaluates the coalesced mid in real time and opens the SHORT at market on the touch (no close confirmation). Concrete prices: zone low 4353.4, zone high 4355.2; broker-equivalent trigger ~4354.05-4355.85 given tonight's measured 0.65pt pkg lag.",
+  "7": "Invalidation / stop: price_cross_up 4359.2 (M15 MA20 4354.16 + 5.0pt). A close or sustained cross above 4359.2 means the lost-MA20 read is wrong and the plan is dead (the engine's fixed stop at the same price guarantees the -1R exit). Deeper structural invalidation if it were allowed: reclaim of 4362.16 (M15 MA200) / 4361.81 (H1 MA50).",
+  "8": "Expected reward: nominal fill 4354.5; T1 4344.2 (frac 0.6) = 10.3pt, T2 4341.5 (frac 0.4) = 13.0pt -> blended 11.38pt = +2.42R against the 4.7pt risk. Absolute: +11.38 USD on 0.01 lot.",
+  "9": "Expected loss: 1.0R = 4.7pt = 4.70 USD on 0.01 lot (fixed stop 4359.2, no averaging down, no re-registration while the slot is busy).",
+  "10": "Cost numbers: broker spread 0.18pt = 0.414bps (measured, bid 4351.20 / ask 4351.38) + the exit crossing = 0.36pt round trip, plus a conservative 0.20pt slippage allowance on the FOK demo fill = 0.56pt total = 0.56 USD per 0.01 lot = 0.119R on the 4.7pt risk. Cost is not the obstacle (0.12R against a 2.42R target).",
+  "11": "Net EV: point estimate p = 0.412 -> 0.412 x 2.42 - 0.588 - 0.119 = +0.290R. Conservative bound (CI-low p = 0.380 from the same 648-sample cell) -> 0.380 x 2.42 - 0.620 - 0.119 = +0.181R. Both > 0, so SHORT is authorised; the reported figure uses the conservative bound.",
+  "12": "Reproducibility: measured on 6000 broker MT5 XAUUSD M15 bars (last 5000 evaluated) - family S_MA20_below (prev close below the M15 MA20, bar pokes up to it) with entry at the MA20: n 648, 6/6 grid cells positive, best cells s4.0_t8 (p 0.4259, R 2.0, grossR +0.2617, CI-low grossR +0.1819), s5.0_t10 (p 0.4120, R 2.0, grossR +0.1840, CI-low +0.1407), s6.0_t14 (p 0.3966, R 2.333, grossR +0.1560, CI-low +0.2166). Symmetric controls this cycle: L_MA50_above weaker but positive (CI-low +0.065), S_MA200_below negative (rejected), L_MA20_above decayed (+0.128 at best). Artifacts: run_state/tmp/baserate_0117Z.py / baserate_0117Z_out.json, probe_0117Z_out.json.",
+  "13": "Decision: SHORT (bias SHORT-lean, confidence 0.62) - register ONE plan, qty 0.01 lot, zone_touch [4353.4, 4355.2], fixed stop 4359.2, targets 4344.2 / 4341.5, maximum_holding_time M15*8 (2h, expires ~03:17Z).",
+  "14": "hi60 4376.13 假突破 + 更低高点 4365.22 后, 价失守 M15 MA20 4354.16 与摆动低 4353.50; M15/H1/H4 结构全 llish6, 下破 MA20 视为卖方接管。回抽 4353.4-4355.2 挂空, 停 4359.2, 目标 4344.2/4341.5, R 2.42; 6000 根实测同族 n648 p0.41 全格网正 EV(CI-low +0.18R)。"
+ },
+ "held_position": null,
+ "gap_to_tradable": "2.1pt: pkg coalesced mid 4350.64 (broker 4351.29) must rise into the zone low 4353.4 -> the engine's zone_touch fires and the SHORT is opened at market without waiting for a close. If instead the mid keeps falling, the plan stays armed and simply is not filled (no loss) - the down-side equivalent (sell the break of 4348.42) is deliberately NOT registered because the measured S_MA200/S_breakaway families are the weak side and the slot is single.",
+ "data_quality_note": "pkg live_days 12 / live_ticks 2279047 / context_days 36 / gaps []; pkg m15_live last_mid 4350.64 lags the broker tape by 0.65pt; the last M15 bar in the cache is 2026-09-21 23:45Z while the live tape is 01:17Z (forming bar); candle_latest.json is STALE (2026-09-07) and ignored; account and positions read from broker_mt5_demo (demo, read-only).",
+ "model": "deepseek/deepseek-v4-flash",
+ "plan": {
+  "direction": "SHORT",
+  "entry_zone": {
+   "low": 4353.4,
+   "high": 4355.2
+  },
+  "trigger_condition": {
+   "and": [
+    {
+     "zone_touch": [
+      4353.4,
+      4355.2
+     ]
+    },
+    {
+     "spread_under_bps": 1.0
+    }
+   ]
+  },
+  "invalidation_condition": {
+   "price_cross_up": 4359.2
+  },
+  "stop_logic": {
+   "type": "fixed",
+   "level_price": 4359.2
+  },
+  "target_logic": {
+   "levels": [
+    {
+     "price": 4344.2,
+     "frac": 0.6
+    },
+    {
+     "price": 4341.5,
+     "frac": 0.4
+    }
+   ]
+  },
+  "expected_R": 2.42,
+  "expected_win_probability": 0.412,
+  "probability_source": "MEASURED, broker MT5 XAUUSD M15, 6000 bars fetched / 5000 evaluated, run_state/tmp/baserate_0117Z.py -> baserate_0117Z_out.json, family S_MA20_below (prev close below MA20, bar high touches MA20, entry = MA20, stop MA20+s, target MA20-t, horizon 8 bars, ambiguity -> LOSS). Cell reused verbatim: s5.0_t10 -> n 648, p 0.4120, R 2.0, grossR +0.1840, CI-low p 0.3802, CI-low grossR +0.1407. Cross-checks this cycle: s4.0_t8 p 0.4259 grossR +0.2617; s6.0_t14 p 0.3966 R 2.333 grossR +0.1560; control L_MA50_above s4.0_t8 p 0.4013 grossR +0.1982 (weaker, stood down); S_MA200_below negative in all cells (rejected).",
+  "estimated_cost": 0.56,
+  "spread_bps": 0.414,
+  "slippage_bps": 0.25,
+  "expected_net_EV": {
+   "value": 0.181,
+   "units": "R",
+   "note": "Conservative bound using CI-low p 0.380: 0.380 x 2.42 - 0.620 - 0.119 = +0.181R. Point estimate with measured p 0.412 gives +0.290R. Cost 0.119R (0.56pt of 4.7pt risk). Positive EV either way -> SHORT authorised."
+  },
+  "maximum_holding_time": "M15*8",
+  "qty_lots": 0.01
+ }
+}

@@ -1,0 +1,171 @@
+{
+ "task": "V1_R2_FULL_AUTONOMOUS_OPTIMIZATION",
+ "stage": "KLINE_MTF_TRANSITION_COUNTER",
+ "ts_utc": "2026-09-27T13:03:06.990053+00:00",
+ "bars": 40546,
+ "H": 8,
+ "leads": [
+  0,
+  1,
+  2,
+  3,
+  4,
+  8
+ ],
+ "n_train": 24209,
+ "n_test": 16211,
+ "safety": {
+  "ORDER_SEND": 0,
+  "BROKER_WRITE": 0,
+  "FORWARD": "OFF",
+  "LIVE": "OFF",
+  "FUTURE_RETURN_USED": "NO",
+  "PNL_USED": "NO"
+ },
+ "transition_lead_time": {
+  "lead_0": {
+   "dll": 0.05969,
+   "auc": 0.6678,
+   "n": 16211
+  },
+  "lead_1": {
+   "dll": 0.0375,
+   "auc": 0.635,
+   "n": 16211
+  },
+  "lead_2": {
+   "dll": 0.0197,
+   "auc": 0.6003,
+   "n": 16211
+  },
+  "lead_3": {
+   "dll": 0.01038,
+   "auc": 0.5756,
+   "n": 16211
+  },
+  "lead_4": {
+   "dll": 0.00419,
+   "auc": 0.554,
+   "n": 16211
+  },
+  "lead_8": {
+   "dll": -0.00416,
+   "auc": 0.5008,
+   "n": 16211
+  }
+ },
+ "lead_time_best": "lead_0",
+ "kline_ladder": {
+  "KLINE_ONLY": {
+   "dll": 0.00098,
+   "n": 16211,
+   "accuracy": 0.2532,
+   "majority_accuracy": 0.2533,
+   "balanced_accuracy": 0.1112,
+   "macro_f1": 0.0458
+  },
+  "KLINE_LOCATION": {
+   "dll": -0.0539,
+   "n": 16211,
+   "accuracy": 0.2644,
+   "majority_accuracy": 0.2533,
+   "balanced_accuracy": 0.1692,
+   "macro_f1": 0.0996
+  },
+  "KLINE_STRUCTURE": {
+   "dll": 0.05183,
+   "n": 16211,
+   "accuracy": 0.2764,
+   "majority_accuracy": 0.2533,
+   "balanced_accuracy": 0.1337,
+   "macro_f1": 0.1091
+  },
+  "KLINE_MOMENTUM": {
+   "dll": 0.00336,
+   "n": 16211,
+   "accuracy": 0.2543,
+   "majority_accuracy": 0.2533,
+   "balanced_accuracy": 0.1151,
+   "macro_f1": 0.0598
+  },
+  "KLINE_STATE": {
+   "dll": 0.2432,
+   "n": 16211,
+   "accuracy": 0.3729,
+   "majority_accuracy": 0.2533,
+   "balanced_accuracy": 0.2443,
+   "macro_f1": 0.238
+  },
+  "KLINE_EVENT": {
+   "dll": 0.22182,
+   "n": 16211,
+   "accuracy": 0.3423,
+   "majority_accuracy": 0.2533,
+   "balanced_accuracy": 0.2127,
+   "macro_f1": 0.1878
+  },
+  "KLINE_MTF": {
+   "dll": 0.0503,
+   "n": 16211,
+   "accuracy": 0.2736,
+   "majority_accuracy": 0.2533,
+   "balanced_accuracy": 0.142,
+   "macro_f1": 0.1222
+  },
+  "KLINE_CONTEXT_FULL": {
+   "dll": 0.41438,
+   "n": 16211,
+   "accuracy": 0.4089,
+   "majority_accuracy": 0.2533,
+   "balanced_accuracy": 0.2662,
+   "macro_f1": 0.2613
+  }
+ },
+ "kline_increment": {
+  "vs_KLINE_ONLY": {
+   "KLINE_ONLY": 0.0,
+   "KLINE_LOCATION": -0.05488,
+   "KLINE_STRUCTURE": 0.05085,
+   "KLINE_MOMENTUM": 0.00238,
+   "KLINE_STATE": 0.24222,
+   "KLINE_EVENT": 0.22084,
+   "KLINE_MTF": 0.04932,
+   "KLINE_CONTEXT_FULL": 0.4134
+  },
+  "KLINE_VERDICT": "KLINE_CONTEXTUAL_INCREMENTAL"
+ },
+ "mtf_increment": {
+  "M15_only": 0.2385,
+  "M15_plus_H1": 0.2926,
+  "M15_plus_H1_plus_H4": 0.31406,
+  "delta_H1": 0.0541,
+  "delta_H1H4": 0.02146,
+  "MTF_SUPPORTED": true
+ },
+ "counter_evidence_ablation": {
+  "WITHOUT": 0.37769,
+  "WITH": 0.3771,
+  "delta": -0.00059,
+  "COUNTER_EVIDENCE_STATUS": "EXPLANATORY_ONLY"
+ },
+ "mechanism_increment": {
+  "without": 0.3759,
+  "with": 0.41141,
+  "delta": 0.03551,
+  "MECHANISM_STATUS": "SUPPORTED"
+ },
+ "direction_structural": {
+  "model": {
+   "dll": 0.0429,
+   "n": 16211,
+   "accuracy": 0.5111,
+   "majority_accuracy": 0.4623,
+   "balanced_accuracy": 0.3943,
+   "macro_f1": 0.3585
+  },
+  "majority_baseline": 0.4623,
+  "previous_event_baseline": 0.4463,
+  "BEATS_BASELINES": true,
+  "note": "direction defined STRUCTURALLY from events; NO returns/PnL used (§19/§5)"
+ }
+}

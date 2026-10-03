@@ -1,0 +1,204 @@
+{
+ "generated_utc": "2026-10-02T03:43:13.890449+00:00",
+ "restart_utc": "2026-10-01T13:52:15+00:00",
+ "restart_evidence": "host LastBootUpTime 2026-10-01 21:52:15 GMT+8 (= 13:52:15Z); python procs started 21:54",
+ "old_logic_state_at_restart": {
+  "daily_loss": 0.0,
+  "consecutive_losses": 0,
+  "why": "cycle.py:287 builds a fresh RiskGuard each cycle; note_close() never called"
+ },
+ "true_state_at_restart": {
+  "day_utc": "2026-10-01",
+  "daily_loss": 38.99,
+  "consecutive_losses": 0
+ },
+ "open_position_at_restart": null,
+ "post_restart_trace": [
+  {
+   "position_id": "2378322488",
+   "open_utc": "2026-10-01T14:33:03+00:00",
+   "daily_before": 38.99,
+   "cons_before": 0,
+   "old_logic_verdict": "ALLOW",
+   "correct_logic_reasons": [],
+   "correct_logic_verdict": "ALLOW",
+   "net": -9.51
+  },
+  {
+   "position_id": "2378333628",
+   "open_utc": "2026-10-01T15:03:04+00:00",
+   "daily_before": 29.48,
+   "cons_before": 1,
+   "old_logic_verdict": "ALLOW",
+   "correct_logic_reasons": [],
+   "correct_logic_verdict": "ALLOW",
+   "net": -8.78
+  },
+  {
+   "position_id": "2378343004",
+   "open_utc": "2026-10-01T15:33:04+00:00",
+   "daily_before": 20.7,
+   "cons_before": 2,
+   "old_logic_verdict": "ALLOW",
+   "correct_logic_reasons": [],
+   "correct_logic_verdict": "ALLOW",
+   "net": -11.01
+  },
+  {
+   "position_id": "2378348994",
+   "open_utc": "2026-10-01T15:48:04+00:00",
+   "daily_before": 9.69,
+   "cons_before": 3,
+   "old_logic_verdict": "ALLOW",
+   "correct_logic_reasons": [
+    "MAX_CONSECUTIVE_LOSS"
+   ],
+   "correct_logic_verdict": "BLOCK",
+   "net": -11.81
+  },
+  {
+   "position_id": "2378382127",
+   "open_utc": "2026-10-01T18:48:03+00:00",
+   "daily_before": -2.12,
+   "cons_before": 4,
+   "old_logic_verdict": "ALLOW",
+   "correct_logic_reasons": [
+    "MAX_CONSECUTIVE_LOSS"
+   ],
+   "correct_logic_verdict": "BLOCK",
+   "net": -11.77
+  },
+  {
+   "position_id": "2378409328",
+   "open_utc": "2026-10-02T01:18:02+00:00",
+   "daily_before": -11.77,
+   "cons_before": 1,
+   "old_logic_verdict": "ALLOW",
+   "correct_logic_reasons": [],
+   "correct_logic_verdict": "ALLOW",
+   "net": -7.66
+  },
+  {
+   "position_id": "2378413449",
+   "open_utc": "2026-10-02T01:48:02+00:00",
+   "daily_before": -19.43,
+   "cons_before": 2,
+   "old_logic_verdict": "ALLOW",
+   "correct_logic_reasons": [],
+   "correct_logic_verdict": "ALLOW",
+   "net": -7.21
+  }
+ ],
+ "post_restart_summary": {
+  "trades": 7,
+  "closed": 7,
+  "losses": 7,
+  "wins": 0,
+  "net": -67.75,
+  "longest_loss_run": 7,
+  "should_have_blocked": 2
+ },
+ "limits": {
+  "max_daily_loss": -20.0,
+  "max_consecutive_loss": 3,
+  "stale_data_seconds": 900,
+  "slippage_limit_bps": 15.0,
+  "spread_limit_bps": 30.0
+ },
+ "scheduler": {
+  "expected": "OpenClaw cron v1-upgrade-demo-cycle (3-59/15 * * * *) UTC",
+  "gaps_over_16min": [
+   {
+    "after": "2026-10-01T13:48:03.541495+00:00",
+    "before": "2026-10-01T14:18:02.922492+00:00",
+    "minutes": 30.0
+   }
+  ],
+  "missed_during_reboot": [
+   {
+    "after": "2026-10-01T13:48:03.541495+00:00",
+    "before": "2026-10-01T14:18:02.922492+00:00",
+    "minutes": 30.0
+   }
+  ],
+  "watchdog": "none dedicated; the cron job itself is the only scheduler; it recovered (fired the 14:18Z cycle)"
+ },
+ "data_freshness_at_restart": {
+  "first_cycle_after_restart_utc": "2026-10-01T14:18:02.922492+00:00",
+  "action": "WAIT_SIGNAL:FAMILY_RANGE_NO_TRADE",
+  "last_cycle_before_restart_utc": "2026-10-01T13:48:03.541495+00:00",
+  "schedule_gap_minutes": 30.0,
+  "live_state": {
+   "state": "ROTATION",
+   "family": "RANGE",
+   "trend_20": -12.877999999999702,
+   "atr": 8.50533333333333,
+   "last_bar_utc": "2026-10-01 17:15:00+00:00",
+   "source": "label_adapter",
+   "MARKET_BEHAVIOR": "TREND",
+   "ma20": 4169.508
+  },
+  "snapshot": {
+   "bid": 4156.63,
+   "ask": 4156.77,
+   "mid": 4156.7,
+   "spread_bps": 0.337,
+   "digits": 2
+  },
+  "guard_fed_data_age_seconds": 0,
+  "note": "risk guard consumed hardcoded data_age_seconds=0 (cycle.py:289-290); real staleness unmeasured at runtime"
+ },
+ "time_frames": {
+  "terminal_time_srv": 1790923393,
+  "read_utc": "2026-10-02T03:43:13.886437+00:00",
+  "measured_offset_seconds": 10800,
+  "measured_offset_hours": 3.0,
+  "declared": "UTC+3 = 10800s; broker_time_utc / live_state.last_bar_utc carry this server frame",
+  "note": "engine roll_day(NOW[:10]) uses UTC date; server-frame dates differ by up to one day near midnight"
+ },
+ "pending_close_writes": {
+  "closes_total": 32,
+  "max_detect_lag_sec": 112397,
+  "top5_lag": [
+   {
+    "position_id": "2377720619",
+    "observed_utc": "2026-09-29T23:38:02.206908+00:00",
+    "realized_utc_est": "2026-09-28T16:24:45+00:00",
+    "lag_sec": 112397
+   },
+   {
+    "position_id": "2377732264",
+    "observed_utc": "2026-09-29T23:38:02.214906+00:00",
+    "realized_utc_est": "2026-09-28T20:07:09+00:00",
+    "lag_sec": 99053
+   },
+   {
+    "position_id": "2377758482",
+    "observed_utc": "2026-09-29T23:38:02.221428+00:00",
+    "realized_utc_est": "2026-09-28T20:48:16+00:00",
+    "lag_sec": 96586
+   },
+   {
+    "position_id": "2377762527",
+    "observed_utc": "2026-09-29T23:38:02.228428+00:00",
+    "realized_utc_est": "2026-09-29T00:18:25+00:00",
+    "lag_sec": 83977
+   },
+   {
+    "position_id": "2377901575",
+    "observed_utc": "2026-09-29T23:38:02.235970+00:00",
+    "realized_utc_est": "2026-09-29T15:19:17+00:00",
+    "lag_sec": 29925
+   }
+  ],
+  "crossing_restart": []
+ },
+ "drawdown": {
+  "cum_net_all_closed": -17.86,
+  "max_drawdown_net": -72.5,
+  "post_restart_net": -67.75,
+  "balance_now": 1923.39,
+  "equity_now": 1923.39,
+  "balance_at_audit_snapshot_09_28": 1949.93
+ }
+}

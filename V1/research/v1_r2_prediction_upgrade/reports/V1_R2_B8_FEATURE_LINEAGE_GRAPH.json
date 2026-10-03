@@ -1,0 +1,319 @@
+{
+ "RAW_INPUTS": {
+  "TICK_BID": {
+   "source": "data/live_fxtm/ticks_*.parquet bid",
+   "role": "sole price source (PRICE_SOURCE=BID)"
+  },
+  "TICK_ASK": {
+   "source": "ticks_*.parquet ask",
+   "role": "spread only; NOT used by the frozen state machine"
+  },
+  "TICK_VOLUME": {
+   "source": "ticks_*.parquet volume",
+   "role": "all-zero -> unusable; NOT a real volume signal"
+  },
+  "TIME": {
+   "source": "utc_ms",
+   "role": "15min UTC floor binning"
+  }
+ },
+ "INTERMEDIATE": {
+  "OHLC_15M": {
+   "formula": "per 15min bucket: o=first bid, h=max bid, l=min bid, c=last bid",
+   "raw": [
+    "TICK_BID",
+    "TIME"
+   ],
+   "window": "15min",
+   "line": "R1 recon (B-R3/R4)"
+  },
+  "TR": {
+   "formula": "max(h-l, |h-pc|, |l-pc|)",
+   "raw": [
+    "OHLC_15M"
+   ],
+   "window": "1bar"
+  },
+  "ATR20": {
+   "formula": "TR.rolling(20).mean()",
+   "raw": [
+    "TR"
+   ],
+   "window": 20,
+   "line": "R1.indicators"
+  },
+  "MA20": {
+   "formula": "c.rolling(20).mean()",
+   "raw": [
+    "OHLC_15M"
+   ],
+   "window": 20,
+   "line": "R1.indicators"
+  },
+  "SLOPE5": {
+   "formula": "MA20 - MA20.shift(5)",
+   "raw": [
+    "MA20"
+   ],
+   "window": 5,
+   "line": "R1.indicators"
+  },
+  "ER10": {
+   "formula": "|c-c.shift(10)| / sum(|c.diff()|,10)",
+   "raw": [
+    "OHLC_15M"
+   ],
+   "window": 10,
+   "line": "R1.indicators"
+  },
+  "ATR_PCTL": {
+   "formula": "ATR20.rolling(480).percentile",
+   "raw": [
+    "ATR20"
+   ],
+   "window": 480,
+   "line": "R1.indicators"
+  },
+  "RNG_EXP": {
+   "formula": "TR.rolling(4).mean() / ATR20",
+   "raw": [
+    "TR",
+    "ATR20"
+   ],
+   "window": 4,
+   "line": "R1.indicators"
+  },
+  "VEL4": {
+   "formula": "(c - c.shift(4)) / ATR20",
+   "raw": [
+    "OHLC_15M",
+    "ATR20"
+   ],
+   "window": 4,
+   "line": "R1.indicators"
+  },
+  "ACC": {
+   "formula": "VEL4 - VEL4.shift(1)",
+   "raw": [
+    "VEL4"
+   ],
+   "window": 2,
+   "line": "R1.indicators"
+  },
+  "EFF3": {
+   "formula": "|c-c.shift(3)| / sum(|c.diff()|,3)",
+   "raw": [
+    "OHLC_15M"
+   ],
+   "window": 3,
+   "line": "R1.indicators"
+  },
+  "ACT3": {
+   "formula": "TR.rolling(4).mean() / ATR20",
+   "raw": [
+    "TR",
+    "ATR20"
+   ],
+   "window": 4,
+   "line": "R1.indicators"
+  }
+ },
+ "FEATURES": {
+  "REGIME": {
+   "derived_from": [
+    "ATR_PCTL",
+    "ER10",
+    "SLOPE5",
+    "VEL4",
+    "MA20"
+   ],
+   "raw": [
+    "OHLC_15M",
+    "TIME"
+   ],
+   "window": "20-480",
+   "line": "research/hermes/trader_v1/v1_r2_prediction_upgrade/_v1r2_phaseB_R1.py L151-166",
+   "axis": "REGIME",
+   "timestamp_dependency": "<=t"
+  },
+  "LEVEL": {
+   "derived_from": [
+    "PIVOT_HIGH/LOW (h/l fractal L2R2)",
+    "RANGE_HIGH/LOW (96-bar)"
+   ],
+   "raw": [
+    "OHLC_15M"
+   ],
+   "window": "96-240",
+   "line": "research/hermes/trader_v1/v1_r2_prediction_upgrade/_v1r2_phaseB_R1.py L84-96,L188",
+   "axis": "PRICE_STRUCTURE",
+   "timestamp_dependency": "confirm lag 2"
+  },
+  "TOUCH": {
+   "derived_from": [
+    "LEVEL.touch_events_240",
+    "LEVEL.fail_rate",
+    "LEVEL.pen_last",
+    "LEVEL.rec_ok/fail",
+    "LEVEL.last_touch_i"
+   ],
+   "raw": [
+    "OHLC_15M"
+   ],
+   "window": 240,
+   "line": "research/hermes/trader_v1/v1_r2_prediction_upgrade/_v1r2_phaseB_R1.py L180-194",
+   "axis": "PRICE_STRUCTURE",
+   "timestamp_dependency": "<=t"
+  },
+  "BREAK": {
+   "derived_from": [
+    "LEVEL(touch_events_240,rec_ok,rec_fail,fail_rate,pen_last,last_touch_i,dist_atr)",
+    "ABSORPTION",
+    "VEL4+LEVEL.side"
+   ],
+   "raw": [
+    "OHLC_15M"
+   ],
+   "window": "12-240",
+   "line": "research/hermes/trader_v1/v1_r2_prediction_upgrade/_v1r2_phaseB_R1.py L204-221 (all groups inside `if nl:` L205)",
+   "axis": "PRICE_STRUCTURE",
+   "timestamp_dependency": "<=t"
+  },
+  "MOMENTUM": {
+   "derived_from": [
+    "VEL4",
+    "ACC",
+    "RNG_EXP"
+   ],
+   "raw": [
+    "OHLC_15M",
+    "ATR20"
+   ],
+   "window": "2-4",
+   "line": "research/hermes/trader_v1/v1_r2_prediction_upgrade/_v1r2_phaseB_R1.py L225-236",
+   "axis": "MOMENTUM",
+   "timestamp_dependency": "<=t"
+  },
+  "ABSORPTION": {
+   "derived_from": [
+    "EFF3/EFF3_prev",
+    "ACT3/ACT3_prev",
+    "LEVEL.pen_last",
+    "LEVEL.dist_atr"
+   ],
+   "raw": [
+    "OHLC_15M",
+    "TR",
+    "ATR20"
+   ],
+   "window": "3-4",
+   "line": "research/hermes/trader_v1/v1_r2_prediction_upgrade/_v1r2_phaseB_R1.py L198-201",
+   "axis": "ABSORPTION",
+   "timestamp_dependency": "<=t",
+   "proxy": "PROXY_BAR (no DOM / no trade direction)"
+  },
+  "LIQUIDITY": {
+   "derived_from": [],
+   "raw": [],
+   "line": "NOT EMITTED by engines_v2",
+   "axis": "LIQUIDITY_UNAVAILABLE",
+   "status": "DATA_LIMITED"
+  },
+  "FAILED_EVENT": {
+   "derived_from": [
+    "close[i-1]",
+    "close[i]",
+    "LEVEL.price",
+    "ATR20"
+   ],
+   "raw": [
+    "OHLC_15M"
+   ],
+   "window": 2,
+   "line": "research/hermes/trader_v1/v1_r2_prediction_upgrade/_v1r2_phaseB_R1.py failed_event block (`if nl and i>=3`)",
+   "axis": "PRICE_STRUCTURE",
+   "timestamp_dependency": "<=t",
+   "note": "break-attempt + reclaim at the level -> DERIVED_FROM_PRICE_STRUCTURE"
+  },
+  "TRANSITION": {
+   "derived_from": [
+    "REGIME",
+    "LEVEL relation",
+    "TOUCH",
+    "ABSORPTION",
+    "MOMENTUM",
+    "BREAK"
+   ],
+   "raw": [
+    "OHLC_15M"
+   ],
+   "window": 2,
+   "line": "research/hermes/trader_v1/v1_r2_prediction_upgrade/_v1r2_phaseB_R1.py transition block",
+   "axis": "DERIVED_OUTPUT",
+   "timestamp_dependency": "t and t-1"
+  },
+  "DATA_QUALITY": {
+   "derived_from": [],
+   "raw": [],
+   "line": "not implemented",
+   "axis": "UNAVAILABLE"
+  }
+ },
+ "COUNTER": {
+  "COUNTER_BREAK_RISK": {
+   "line": "research/hermes/trader_v1/v1_r2_prediction_upgrade/_v1r2_phaseB_R2.py L148",
+   "restates": "BREAK",
+   "axis": "PRICE_STRUCTURE",
+   "class": "PRICE_STRUCTURE_DERIVED"
+  },
+  "COUNTER_DECELERATION": {
+   "line": "research/hermes/trader_v1/v1_r2_prediction_upgrade/_v1r2_phaseB_R2.py L152",
+   "restates": "MOMENTUM==DECELERATING",
+   "axis": "MOMENTUM",
+   "class": "MOMENTUM_DERIVED"
+  },
+  "COUNTER_EXHAUSTION": {
+   "line": "research/hermes/trader_v1/v1_r2_prediction_upgrade/_v1r2_phaseB_R2.py L146",
+   "restates": "TOUCH(EXHAUSTION)",
+   "axis": "PRICE_STRUCTURE",
+   "class": "PRICE_STRUCTURE_DERIVED"
+  },
+  "COUNTER_ABSORPTION": {
+   "line": "research/hermes/trader_v1/v1_r2_prediction_upgrade/_v1r2_phaseB_R2.py L144",
+   "restates": "ABSORPTION",
+   "axis": "ABSORPTION",
+   "class": "ABSORPTION_DERIVED"
+  },
+  "COUNTER_FAILED_EVENT": {
+   "line": "research/hermes/trader_v1/v1_r2_prediction_upgrade/_v1r2_phaseB_R2.py L150",
+   "restates": "FAILED_EVENT",
+   "axis": "PRICE_STRUCTURE",
+   "class": "FAILED_EVENT_DERIVED"
+  }
+ },
+ "STATE_OUTPUT": {
+  "NEXT_STATE": {
+   "derived_from": [
+    "REGIME",
+    "MOMENTUM",
+    "TOUCH",
+    "ABSORPTION",
+    "BREAK",
+    "LEVEL",
+    "FAILED_EVENT",
+    "TRANSITION"
+   ],
+   "axis": "DERIVED_OUTPUT",
+   "note": "State Decision Output — NOT an independent market information source"
+  },
+  "DIRECTION": {
+   "derived_from": [
+    "groups_of()",
+    "NEXT_STATE",
+    "velocity sign"
+   ],
+   "line": "research/hermes/trader_v1/v1_r2_prediction_upgrade/_v1r2_phaseB_R2.py rule_mu",
+   "axis": "DERIVED_OUTPUT"
+  }
+ }
+}

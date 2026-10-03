@@ -1,0 +1,24 @@
+{
+  "audit_id": "PO_20260802",
+  "audit_type": "POST_OUTCOME_ALIGNMENT",
+  "auditor": "HERMES-B",
+  "timestamp": "2026-08-02T04:00:00+00:00",
+  "forecast_id": "R8B_A_20260802_H4",
+  "outcome_ref": "OUTCOME_20260802T000000Z.json",
+  "forecast_primary_scenario_family": "RANGE",
+  "forecast_alternative_scenario_family": "DIRECTIONAL",
+  "forecast_primary_trigger": "price holds above 4041.035, bounce toward 4050",
+  "forecast_alternative_trigger": "sustained break below 4041.035 with momentum",
+  "outcome_family_at_H": "DIRECTIONAL",
+  "outcome_state_at_H": "EXPANSION",
+  "outcome_alignment_verdict": "PARTIAL",
+  "outcome_alignment_rationale": "The PRIMARY scenario call was RANGE, but the realised family at H=4 was DIRECTIONAL (state EXPANSION) - the primary call did NOT materialize. However, the realised outcome fell exactly on Hermes-A's explicitly-flagged ALTERNATIVE scenario: 'sustained break below 4041.035 with momentum', which is precisely the directional break that occurred. Because the outcome matched the named alternative branch (with the correct checkable trigger) rather than the primary branch, alignment is PARTIAL, not ALIGNED and not MISALIGNED.",
+  "primary_hit": false,
+  "alternative_hit": true,
+  "process_defects": [
+    "Primary/alternative boundary conflation: the primary invalidation 'decisive break below 4041.035' and the alternative trigger 'sustained break below 4041.035 with momentum' and the change_my_mind condition 'Clear close below 4041.035 with expanding range' all reference the same level/event, so the two scenario branches were not cleanly disjoint and the RANGE primary was weakly founded (evidence_strength 0.4) against a strong directional momentum read.",
+    "Low decisiveness at high ambiguity: with ambiguity_rate_8=0.75 and MTF conflict (H1 trend_20 -42 vs H4 trend_20 +19), a low-confidence 0.35 RANGE primary was presented as the headline call even though the counter-evidence (8 consecutive down bars, expanding range, trend_continuation candidate with displacement -8.54) argued at least as strongly for the DIRECTIONAL branch that materialized.",
+    "Expected transition mismatch: 'ROTATION toward rejection or compression at level' did not hold; outcome state was EXPANSION, indicating the forecast's projected state path did not capture the realised expansion/directional resolution."
+  ],
+  "note": "Outcome file contains only family/state fields; no price series or level-break detail provided, so alignment is judged on family + state only."
+}

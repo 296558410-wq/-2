@@ -1,0 +1,1 @@
+﻿SUPERSEDED — run was auto-started by the new Windows scheduler at its first tick (2026-09-14T23:07Z) before the canonical V2_REPAIRED run was started. Only 1 cycle (window 23:00Z, WAIT). Canonical run = V2-PAPER-20260914-231126-5fe2. Not deleted; finalized COMPLETE for audit.

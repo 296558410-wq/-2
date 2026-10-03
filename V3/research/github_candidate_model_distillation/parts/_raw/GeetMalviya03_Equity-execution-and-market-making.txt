@@ -1,0 +1,15 @@
+### FILE README.md
+# Equity-execution-and-market-making
+An ML-driven market-making simulator with inventory-aware quoting and calibrated fill models, plus intraday regime detection and execution cost forecasting using volatility, liquidity, and time-of-day signals.
+
+This repository contains a small research framework focused on equity market microstructure, liquidity provision, and execution risk. It brings together two complementary projects that address different but closely related problems faced by market makers and execution desks.
+
+The Equity MMX project is an ML-driven equity market-making simulator. It models two-sided quoting around a mid-price proxy, incorporates inventory-aware quote skewing, and uses machine-learned fill probabilities rather than assuming guaranteed execution. The simulator explicitly decomposes performance into spread edge, adverse selection, and inventory risk, allowing the behavior of a market-making strategy to be analyzed under different market conditions.
+
+The Intraday Equity Regime project focuses on intraday market regimes and execution costs. It identifies volatility and liquidity regimes using unsupervised learning, constructs a proxy for execution cost (slippage), and trains predictive models to estimate expected execution difficulty and the probability of high-cost trading conditions. This provides a market-state and risk perspective that complements the market-making logic.
+
+The two projects are designed to work together conceptually. The regime and execution model answers when trading conditions are favorable or risky, while the market-making simulator answers how to quote given the current market state. In a production setting, regime and execution signals would directly inform quote width, order size, and inventory limits in the market-making system.
+
+All analysis is performed using intraday 1-minute OHLCV data sourced dynamically from Yahoo Finance. Because data is loaded at runtime, numerical results may vary across runs depending on the time window, ticker, and prevailing market conditions. The focus of the repository is therefore on execution realism, structural relationships, and economic intuition rather than on absolute performance metrics.
+
+The code is intended as a research and learning framework and can be extended to higher-fidelity data (e.g., quote or order-book data) without changing the overall structure of the models.

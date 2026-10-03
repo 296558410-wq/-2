@@ -1,0 +1,206 @@
+{
+ "schema": "v3_r2_hypotheses/1",
+ "round": "R2",
+ "ts_utc": "2026-09-25T10:29:11.537813+00:00",
+ "frozen_before_evaluation": true,
+ "E_family": {
+  "status": "NOT_TESTABLE",
+  "reason": "Jin10 event layer window (2026-09-21..26) does not overlap the XAUUSD window (ends 2026-09-18)"
+ },
+ "F_family_count": 8,
+ "hypotheses": [
+  {
+   "hypothesis_id": "F1_DXY_SHOCK_CONT",
+   "mechanism_family": "F_crossmarket",
+   "information_source": "DXY_XAUUSD_PANEL",
+   "signal_definition": {
+    "trigger": "|z(DXY_XAUUSD_PANEL DXY_XAUUSD_PANEL_z_5m)| >= 2.0",
+    "z_window": "5m change over trailing 288x5m",
+    "direction": "follow sign(dDXY)",
+    "kind": "shock_continuation"
+   },
+   "direction_definition": "follow sign(dDXY)",
+   "threshold": {
+    "z_abs": 2.0,
+    "field": "DXY_XAUUSD_PANEL_z_5m"
+   },
+   "event_window": "T+0..T+15m",
+   "entry_rule": "close of the first 5m bar after the trigger",
+   "exit_rule": "close after 15 minutes",
+   "holding_period": 15,
+   "cost_model": "0.914bp anchor; stress 0x/1x/2x/3x",
+   "pit_definition": "external bar close = information_available_at; XAUUSD bar close = tradeable",
+   "data_version": "r2_panel_5m (2026-08-25..2026-09-18)",
+   "context_hash": null
+  },
+  {
+   "hypothesis_id": "F2_DXY_SHOCK_REV",
+   "mechanism_family": "F_crossmarket",
+   "information_source": "DXY_XAUUSD_PANEL",
+   "signal_definition": {
+    "trigger": "|z(DXY_XAUUSD_PANEL DXY_XAUUSD_PANEL_z_5m)| >= 2.0",
+    "z_window": "5m change over trailing 288x5m",
+    "direction": "opposite sign(dDXY)",
+    "kind": "shock_reversal"
+   },
+   "direction_definition": "opposite sign(dDXY)",
+   "threshold": {
+    "z_abs": 2.0,
+    "field": "DXY_XAUUSD_PANEL_z_5m"
+   },
+   "event_window": "T+0..T+15m",
+   "entry_rule": "close of the first 5m bar after the trigger",
+   "exit_rule": "close after 15 minutes",
+   "holding_period": 15,
+   "cost_model": "0.914bp anchor; stress 0x/1x/2x/3x",
+   "pit_definition": "external bar close = information_available_at; XAUUSD bar close = tradeable",
+   "data_version": "r2_panel_5m (2026-08-25..2026-09-18)",
+   "context_hash": null
+  },
+  {
+   "hypothesis_id": "F3_VIX_SHOCK_CONT",
+   "mechanism_family": "F_crossmarket",
+   "information_source": "VIX",
+   "signal_definition": {
+    "trigger": "|z(VIX VIX_z_5m)| >= 2.0",
+    "z_window": "5m change over trailing 288x5m",
+    "direction": "follow sign(dVIX)",
+    "kind": "shock_continuation"
+   },
+   "direction_definition": "follow sign(dVIX)",
+   "threshold": {
+    "z_abs": 2.0,
+    "field": "VIX_z_5m"
+   },
+   "event_window": "T+0..T+15m",
+   "entry_rule": "close of the first 5m bar after the trigger",
+   "exit_rule": "close after 15 minutes",
+   "holding_period": 15,
+   "cost_model": "0.914bp anchor; stress 0x/1x/2x/3x",
+   "pit_definition": "external bar close = information_available_at; XAUUSD bar close = tradeable",
+   "data_version": "r2_panel_5m (2026-08-25..2026-09-18)",
+   "context_hash": null
+  },
+  {
+   "hypothesis_id": "F4_VIX_SHOCK_REV",
+   "mechanism_family": "F_crossmarket",
+   "information_source": "VIX",
+   "signal_definition": {
+    "trigger": "|z(VIX VIX_z_5m)| >= 2.0",
+    "z_window": "5m change over trailing 288x5m",
+    "direction": "opposite sign(dVIX)",
+    "kind": "shock_reversal"
+   },
+   "direction_definition": "opposite sign(dVIX)",
+   "threshold": {
+    "z_abs": 2.0,
+    "field": "VIX_z_5m"
+   },
+   "event_window": "T+0..T+15m",
+   "entry_rule": "close of the first 5m bar after the trigger",
+   "exit_rule": "close after 15 minutes",
+   "holding_period": 15,
+   "cost_model": "0.914bp anchor; stress 0x/1x/2x/3x",
+   "pit_definition": "external bar close = information_available_at; XAUUSD bar close = tradeable",
+   "data_version": "r2_panel_5m (2026-08-25..2026-09-18)",
+   "context_hash": null
+  },
+  {
+   "hypothesis_id": "F5_TNX_SHOCK_CONT",
+   "mechanism_family": "F_crossmarket",
+   "information_source": "UST10Y_PROXY_TNX",
+   "signal_definition": {
+    "trigger": "|z(UST10Y_PROXY_TNX UST10Y_PROXY_TNX_z_5m)| >= 2.0",
+    "z_window": "5m change over trailing 288x5m",
+    "direction": "follow sign(dTNX)",
+    "kind": "shock_continuation"
+   },
+   "direction_definition": "follow sign(dTNX)",
+   "threshold": {
+    "z_abs": 2.0,
+    "field": "UST10Y_PROXY_TNX_z_5m"
+   },
+   "event_window": "T+0..T+15m",
+   "entry_rule": "close of the first 5m bar after the trigger",
+   "exit_rule": "close after 15 minutes",
+   "holding_period": 15,
+   "cost_model": "0.914bp anchor; stress 0x/1x/2x/3x",
+   "pit_definition": "external bar close = information_available_at; XAUUSD bar close = tradeable",
+   "data_version": "r2_panel_5m (2026-08-25..2026-09-18)",
+   "context_hash": null
+  },
+  {
+   "hypothesis_id": "F6_TNX_SHOCK_REV",
+   "mechanism_family": "F_crossmarket",
+   "information_source": "UST10Y_PROXY_TNX",
+   "signal_definition": {
+    "trigger": "|z(UST10Y_PROXY_TNX UST10Y_PROXY_TNX_z_5m)| >= 2.0",
+    "z_window": "5m change over trailing 288x5m",
+    "direction": "opposite sign(dTNX)",
+    "kind": "shock_reversal"
+   },
+   "direction_definition": "opposite sign(dTNX)",
+   "threshold": {
+    "z_abs": 2.0,
+    "field": "UST10Y_PROXY_TNX_z_5m"
+   },
+   "event_window": "T+0..T+15m",
+   "entry_rule": "close of the first 5m bar after the trigger",
+   "exit_rule": "close after 15 minutes",
+   "holding_period": 15,
+   "cost_model": "0.914bp anchor; stress 0x/1x/2x/3x",
+   "pit_definition": "external bar close = information_available_at; XAUUSD bar close = tradeable",
+   "data_version": "r2_panel_5m (2026-08-25..2026-09-18)",
+   "context_hash": null
+  },
+  {
+   "hypothesis_id": "F7_DXY_LAG_CATCHUP_CONT",
+   "mechanism_family": "F_crossmarket",
+   "information_source": "DXY_XAUUSD_PANEL",
+   "signal_definition": {
+    "trigger": "|z(DXY_XAUUSD_PANEL DXY_XAUUSD_PANEL_z_5m)| >= 2.0",
+    "z_window": "5m change over trailing 288x5m",
+    "direction": "follow sign(dDXY)",
+    "kind": "lag_catchup AND |XAUUSD 5m move| < 0.5x its trailing median |move| (i.e. XAUUSD has NOT yet adjusted)"
+   },
+   "direction_definition": "follow sign(dDXY)",
+   "threshold": {
+    "z_abs": 2.0,
+    "field": "DXY_XAUUSD_PANEL_z_5m"
+   },
+   "event_window": "T+0..T+15m",
+   "entry_rule": "close of the first 5m bar after the trigger",
+   "exit_rule": "close after 15 minutes",
+   "holding_period": 15,
+   "cost_model": "0.914bp anchor; stress 0x/1x/2x/3x",
+   "pit_definition": "external bar close = information_available_at; XAUUSD bar close = tradeable",
+   "data_version": "r2_panel_5m (2026-08-25..2026-09-18)",
+   "context_hash": null
+  },
+  {
+   "hypothesis_id": "F8_DXY_LAG_CATCHUP_REV",
+   "mechanism_family": "F_crossmarket",
+   "information_source": "DXY_XAUUSD_PANEL",
+   "signal_definition": {
+    "trigger": "|z(DXY_XAUUSD_PANEL DXY_XAUUSD_PANEL_z_5m)| >= 2.0",
+    "z_window": "5m change over trailing 288x5m",
+    "direction": "opposite sign(dDXY)",
+    "kind": "lag_catchup AND |XAUUSD 5m move| < 0.5x its trailing median |move|"
+   },
+   "direction_definition": "opposite sign(dDXY)",
+   "threshold": {
+    "z_abs": 2.0,
+    "field": "DXY_XAUUSD_PANEL_z_5m"
+   },
+   "event_window": "T+0..T+15m",
+   "entry_rule": "close of the first 5m bar after the trigger",
+   "exit_rule": "close after 15 minutes",
+   "holding_period": 15,
+   "cost_model": "0.914bp anchor; stress 0x/1x/2x/3x",
+   "pit_definition": "external bar close = information_available_at; XAUUSD bar close = tradeable",
+   "data_version": "r2_panel_5m (2026-08-25..2026-09-18)",
+   "context_hash": null
+  }
+ ],
+ "registry_hash": "e0178021b11114d965bc4c06a1a4f94c7d9e3cd74ddbd59341359da79f4cd1fc"
+}

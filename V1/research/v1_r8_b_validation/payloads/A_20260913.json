@@ -1,0 +1,105 @@
+{
+ "forecast_id": "R8B_A_20260913",
+ "sample_id": "A_20260913",
+ "timestamp": "2026-09-13T00:00:00Z",
+ "horizon": 4,
+ "scenario_family": "RANGE",
+ "scenario_alternative": "QUIET",
+ "scenario_abstain": false,
+ "observations": [
+  "State COMPRESSION, event VOL_CONTRACTION, dwell 1",
+  "Price 4347.5 inside swing high 4349.728, 0.31 ATR below",
+  "M1 last bar range percentile 0.67; M5 contracting",
+  "MTF agreement CONFLICT; cross-market all UNKNOWN"
+ ],
+ "what_i_know": [
+  "Frozen label COMPRESSION at t, VOL_CONTRACTION event",
+  "3/3 historical analogs stay COMPRESSION at step 4",
+  "Nearest level 4349.728, status INSIDE, 33 touches",
+  "Cross-market series absent or UNKNOWN per rules"
+ ],
+ "what_i_do_not_know": [
+  "Breakout direction and exact resolution timing",
+  "News, macro events, positioning, order flow",
+  "Analogs state-only; no returns or labels",
+  "Whether contraction persists past step 4"
+ ],
+ "evidence": [
+  "3/3 analogs COMPRESSION through step 4",
+  "Two-way oscillation 4343-4351 under level",
+  "VOL_CONTRACTION event supports bounded action",
+  "Price held INSIDE level with 33 touches"
+ ],
+ "counter_evidence": [
+  "M1 range_expanding flag on last bar",
+  "Ambiguity rate 0.875, recent state churn",
+  "H4 bars 4292-4402 show explosive regime",
+  "Trend signs conflict across timeframes"
+ ],
+ "possible_mechanisms": [
+  {
+   "mechanism": "compression_persistence",
+   "status": "SUPPORTED",
+   "why": "Analogs identical 3/3 at step 4"
+  },
+  {
+   "mechanism": "rejection_at_resistance",
+   "status": "POSSIBLE",
+   "why": "0.31 ATR below multi-touch swing high"
+  },
+  {
+   "mechanism": "volatility_resumption",
+   "status": "WEAK",
+   "why": "Recent extreme H4 ranges, low dwell history"
+  },
+  {
+   "mechanism": "trend_continuation",
+   "status": "WEAK",
+   "why": "Candidate listed but state contradicts trend now"
+  }
+ ],
+ "primary_scenario": {
+  "scenario": "RANGE",
+  "horizon": 4,
+  "trigger": "Oscillation within 4343-4351 band under level",
+  "invalidation": "Decisive break of 4349.728 or 4345 low"
+ },
+ "alternative_scenario": {
+  "scenario": "QUIET",
+  "horizon": 4,
+  "trigger": "Vol contraction extends, ranges shrink below 1 ATR",
+  "invalidation": "Range expansion above 2 ATR on M1"
+ },
+ "expected_transition": "COMPRESSION persists, no family change at H4",
+ "direction_bias": "NO_DIRECTIONAL_EDGE",
+ "time_horizon": "H4",
+ "evidence_strength": 0.45,
+ "confidence": 0.5,
+ "uncertainty": 0.55,
+ "confidence_reason": "State and analogs agree; direction and timing uncertain",
+ "uncertainty_reason": "Ambiguity 0.875, cross-market absent, extreme regime recently",
+ "invalidation": "Break of 4349.728 or 4345 with 2+ ATR move",
+ "change_my_mind": [
+  "COMPRESSION label flips to TREND or REJECTION",
+  "M1 ATR doubles with directional closes",
+  "Decisive break and reclaim of 4349.728",
+  "Fresh DXY or VIX stress data appears"
+ ],
+ "abstain": false,
+ "abstain_reason": "Context sufficient for low-confidence family forecast",
+ "questions": {
+  "Q1": "COMPRESSION state with VOL_CONTRACTION; price inside swing high 4349.728",
+  "Q2": "Breakout direction, timing, news, positioning, cross-market state unknown",
+  "Q3": "3/3 analogs COMPRESSION at step 4; bounded oscillation under resistance",
+  "Q4": "M1 range_expanding flag; ambiguity 0.875; extreme recent H4 volatility",
+  "Q5": "rejection_at_resistance: 33-touch level may flip compression to down move",
+  "Q6": "State label change, M1 ATR doubling, decisive level break, fresh cross-market stress",
+  "Q7": "false: enough evidence for low-confidence RANGE forecast"
+ },
+ "reasoning_trace": [
+  "Frozen state COMPRESSION and analogs align",
+  "Price pinned under multi-touch resistance",
+  "Regime historically explosive; timing unknown",
+  "RANGE fits bounded oscillation evidence best"
+ ]
+}

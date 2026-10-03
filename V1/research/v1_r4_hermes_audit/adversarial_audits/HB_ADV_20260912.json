@@ -1,0 +1,106 @@
+{
+  "audit_id": "HB_ADV_20260912",
+  "timestamp": "2026-09-27T14:52:00Z",
+  "overall_verdict": "PARTIAL_AGREE",
+  "dimension_verdicts": {
+    "CURRENT_STATE": "AGREE",
+    "STRUCTURE": "PARTIAL_AGREE",
+    "MECHANISM": "PARTIAL_AGREE",
+    "PRIMARY_SCENARIO": "PARTIAL_AGREE",
+    "ALTERNATIVE_SCENARIO": "PARTIAL_AGREE",
+    "EXPECTED_TRANSITION": "PARTIAL_AGREE",
+    "DIRECTION": "AGREE",
+    "HORIZON": "PARTIAL_AGREE",
+    "CONFIDENCE": "DISAGREE",
+    "INVALIDATION": "AGREE",
+    "ABSTENTION": "AGREE"
+  },
+  "factual_errors": [],
+  "insufficient_evidence": [
+    "Claim 'downside liquidity sweep at 4291-4320 that was aggressively bought' — the context contains only OHLC geometry (H4 12:00 bar low 4291.951, lower wick 45.3) and no volume, order-flow, or footprint data (L7 all UNKNOWN); buying behaviour cannot be established from a wick.",
+    "Claim '33 touches indicate strong two-way participation' — touch_count_240 is a DERIVED pivot statistic; participation/intent is asserted without order-flow or volume evidence.",
+    "'8-bar displacement 0.723' (L4 supporting_evidence) is cited as candidate support for trend_continuation, but its definition, window, and computation do not appear anywhere in the visible context — it cannot be verified or weighted."
+  ],
+  "missed_counter_evidence": [
+    "M1 sequence_flags show range_expanding=true and the final M1 bar (21:59) has range_percentile 0.67 with ATR 1.113 (up from ~0.86-0.94) — volatility is already re-expanding at M1, contradicting the uniform 'contraction' narrative and suggesting resolution may come sooner than 'several more bars'.",
+    "M15 sequence_flags also show range_expanding=true; Hermes-A cites only range_contracting on M5/H1/H4, omitting the two expanding timeframes — selective evidence.",
+    "H1 sequence_flags show consecutive_down=8 — sustained down pressure on the timeframe Hermes-A itself uses to argue bullishness (H1 trend_20 +18.3); this 8-bar down streak is never weighed.",
+    "The last two M1 closes (21:58 close 4348.625, 21:59 close 4347.508 at bar low) show near-term selling into the close, mildly against the 'M1 stabilization' support claim."
+  ],
+  "mechanism_jumps": [
+    "Lower wick of 45.3 on the H4 shock bar → 'downside liquidity sweep ... aggressively bought' (candle geometry → order-flow mechanism with no volume data).",
+    "DERIVED touch count 33/240 → 'strong two-way participation' and 'absorption/breakout decision zone' (touch frequency → behavioural participation).",
+    "ATR contraction / VOL_CONTRACTION → 'expansion energy is building' (volatility contraction → directionally-loaded energy, a mechanism leap)."
+  ],
+  "over_inference": [
+    "Scenario probabilities 0.55 (primary) + 0.45 (bearish) + 0.40 (bullish) are presented as comparable confidences but do not form a coherent distribution (sum ≈ 1.4); Hermes-A simultaneously emits NO_DIRECTIONAL_EDGE and 0.875 ambiguity.",
+    "'4291-4320' zone is inferred; the context defines 4291.951 as the shock low and shows prior closes ~4318-4322, but no explicit '4320' level exists.",
+    "Retest of the 4291.951 shock low is offered as a bearish target with weak support — an extreme two-standard-deviation move, not evidenced as a probable target."
+  ],
+  "time_window_issues": [
+    "Analog state-evolution 'steps' have undefined granularity (A22271/A28461/A34291 step 0..16); mapping 'COMPRESSION persists 4-16 steps' to an INTRADAY horizon is unsupported without knowing step length.",
+    "touch_count_240 counts over 240 bars while the level is only 42 bars old (level_age_bars: 42) — '33 touches in 240 bars' overstates the level's current relevance window.",
+    "trend_20/trend_50 comparisons across H1 and H4 mix different lookbacks into one 'CONFLICT' statement; the direction claim is fair, but the numeric juxtaposition is not apples-to-apples (Hermes-A does disclose it)."
+  ],
+  "data_quality_issues": [
+    "DERIVED touch_count and DERIVED pivot swing level (L2 quality_label 'DERIVED (pivot swing levels, causal)') are treated as near-DIRECT evidence of 'decision point' / 'participation'.",
+    "L7 cross-market is correctly marked UNKNOWN, yet behavioural conclusions ('aggressive demand near 4291-4320', 'strong two-way participation') are still drawn from price-only geometry.",
+    "'H4 shock bar range_percentile 0.985' is a raw range percentile used to justify an extreme-event narrative; percentile of range is not evidence of the specific liquidity-sweep interpretation."
+  ],
+  "hindsight_flags": [
+    "'the H4 shock bar's huge lower wick shows aggressive demand near 4291-4320' — post-hoc rationalisation of a past bar's wick into a directional demand story.",
+    "'an impulse that was rejected and is now compressing' (state sequence NO_DEFINED_STATE->TREND->REJECTION->COMPRESSION) — an explanation of history used to support the forecast, not a forward mechanism."
+  ],
+  "explanation_not_prediction_flags": [
+    "Primary scenario 'COMPRESSION persists ... direction unknown' largely restates the current state (COMPRESSION, inside band) rather than forecasting a directional change; a defensible no-op, but close to describing the present.",
+    "The structural narrative (post-impulse rejection → compression beneath swing high) explains how price got here and is used as scenario support without adding predictive content beyond persistence."
+  ],
+  "kline_overreliance_flags": [
+    "All directional conclusions rest on K-line geometry and derived levels (wick, touch count, band edges, trend_20/50) — no volume, order flow, or cross-market series (all L7 UNKNOWN) is available, and the forecast leans on that geometry for both bull and bear scenarios.",
+    "Bullish scenario rests on wick shape + touch count; bearish scenario rests on trend deltas — both are K-line/derived only."
+  ],
+  "mtf_conflict_ignored_flags": [
+    "MTF CONFLICT is acknowledged honestly, but the bullish scenario selectively uses H1 trend_20 +18.3 while ignoring H1 trend_50 -68.3 (same timeframe, longer lookback, strongly negative) and H4 trend_20 -27.9 — cherry-picking within the conflicting set.",
+    "The 8-bar H1 down-streak (consecutive_down=8) is omitted from the MTF weighing."
+  ],
+  "evidence": [
+    {
+      "claim": "Price is inside swing-high 4349.728 at 0.31 ATR; state COMPRESSION (dwell 1), VOL_CONTRACTION.",
+      "finding": "Supported verbatim by L2 (level_price 4349.728, break_status INSIDE, distance_atr 0.31243) and L3/L5 (COMPRESSION, VOL_CONTRACTION, dwell 1). Not contradicted."
+    },
+    {
+      "claim": "ATR collapse across M1/M5/H1 confirms compression.",
+      "finding": "Partially contradicted by M1 range_expanding=true and M1 ATR 1.113 with range_percentile 0.67 at the final bar — contraction is not uniform; M15 also range_expanding=true."
+    },
+    {
+      "claim": "H4 shock bar's 45.3 lower wick = downside liquidity sweep aggressively bought.",
+      "finding": "No volume/order-flow data exists (L7 UNKNOWN); wick geometry alone cannot establish a sweep or who bought. Mechanism jump from observation."
+    },
+    {
+      "claim": "33 touches in 240 bars = strong two-way participation at 4349.728.",
+      "finding": "touch_count_240 is DERIVED and windowed at 240 bars while the level is only 42 bars old — participation inference is not supported by the context's own level metadata."
+    },
+    {
+      "claim": "COMPRESSION persists 4-16 steps per analogs A22271/A28461/A34291.",
+      "finding": "Analog state series support persistence (A22271 to 8, A28461 to 12, A34291 to 16+), but 'steps' granularity is undefined, so the INTRADAY horizon mapping is unsupported."
+    },
+    {
+      "claim": "Multi-timeframe agreement is CONFLICT → NO_DIRECTIONAL_EDGE.",
+      "finding": "Supported: H1 trend_20 +18.25 / trend_50 -68.32 vs H4 trend_20 -27.94 / trend_50 +18.80 vs M15 trend_20 -13.63. The no-edge call is the correct reading of this context."
+    },
+    {
+      "claim": "Scenario confidences 0.55 primary / 0.45 bearish / 0.40 bullish.",
+      "finding": "Not a coherent probability partition (sum ≈ 1.4) and inconsistent with 0.875 ambiguity and NO_DIRECTIONAL_EDGE — confidence over-calibrated for the evidence."
+    }
+  ],
+  "strongest_objection": "Hermes-A is directionally honest (NO_DIRECTIONAL_EDGE is right given MTF CONFLICT and 0.875 ambiguity) but over-claims in exactly two places: (1) it assigns primary confidence 0.55 and alternative probabilities 0.45/0.40 (sum ≈ 1.4) to a 'compression persists, direction unknown' scenario — over-certain numbers for an explicitly no-edge, high-ambiguity state; and (2) it asserts order-flow mechanisms the context cannot support ('liquidity sweep aggressively bought', 'strong two-way participation' from 33 touches) using only wick geometry and a DERIVED touch count while every volume/order-flow and cross-market series is UNKNOWN. The forecast is a well-caveated description of the present — defensible as a stance, but the confidence numbers and the liquidity narrative outrun the evidence.",
+  "reasoning_trace": [
+    "Read the PIT context (as_of 2026-09-12 12:00 UTC) and Hermes-A's forecast; no outcome data used.",
+    "Checked every numeric claim in Hermes-A against the context: state labels, level price/distance/touches, ATR values, H4 shock bar geometry, trend_20/50 figures, analog state series — all quoted numbers are faithful to the context; no fabricated values found (factual_errors empty).",
+    "Scored CURRENT_STATE AGREE (direct from frozen labeler/L2); DIRECTION AGREE (NO_DIRECTIONAL_EDGE is the correct consequence of MTF CONFLICT); INVALIDATION AGREE (conditions are specific and checkable: M5 close out of band, frozen-state transition, break_status/reclaim_status change); ABSTENTION AGREE (conditional forecast is justified despite all-L7-UNKNOWN).",
+    "Scored STRUCTURE, MECHANISM, PRIMARY/ALTERNATIVE/EXPECTED_TRANSITION, HORIZON as PARTIAL_AGREE: structure is accurate but rests on derived level metadata; mechanism includes unsupported order-flow jumps even though L4 is correctly labelled candidate-only; scenarios are coherent but the primary is near-descriptive and analog-step granularity is undefined for the horizon.",
+    "Scored CONFIDENCE DISAGREE: 0.55/0.45/0.40 are not a partition, contradict the stated 0.875 ambiguity and no-edge stance, and the bullish scenario cherry-picks H1 trend_20 +18.3 against H1 trend_50 -68.3.",
+    "Flagged missed counter-evidence (M1/M15 range_expanding=true, H1 consecutive_down=8, selling into the M1 close), mechanism jumps (wick→order flow, touch count→participation, ATR contraction→building energy), data-quality issues (DERIVED treated as direct; UNKNOWN series still driving behavioural conclusions), and explanation-not-prediction (primary scenario restates the present).",
+    "Overall PARTIAL_AGREE: the stance is defensible and internally careful, but confidence calibration and the liquidity narrative outrun the available evidence."
+  ]
+}

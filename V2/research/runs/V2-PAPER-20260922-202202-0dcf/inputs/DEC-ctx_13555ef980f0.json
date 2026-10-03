@@ -1,0 +1,1585 @@
+{
+ "schema_version": "input_snapshot/1",
+ "decision_id": "DEC-ctx_13555ef980f0",
+ "decision_ts": "2026-09-23T16:37:43.624745+00:00",
+ "instrument": "XAUUSD",
+ "reference_market": "GC_F",
+ "strategy_version": "hermes2-prompt/0.1.0",
+ "data_version": null,
+ "router_version": null,
+ "context_hash": "13555ef980f0e4417d3b9b57562b519d00f88ff273f66bcf709f86ae2a3da11c",
+ "input_hash": "13555ef980f0e4417d3b9b57562b519d00f88ff273f66bcf709f86ae2a3da11c",
+ "market_inputs": {
+  "instrument": "XAUUSD",
+  "reference_market": "GC_F",
+  "primary_last": 4312.2,
+  "primary_source": "mt5",
+  "spread": 0.15,
+  "source_basis_usd": 24.17,
+  "basis_usd": 24.17,
+  "retrieved_at": "2026-09-23T16:37:43.622587+00:00"
+ },
+ "technical_features": {
+  "agent": "agent1-technical",
+  "agent_version": "agent1/0.1.0",
+  "generated_utc": "2026-09-23T16:37:05.093534+00:00",
+  "cycle": "2026-09-23T16:37Z",
+  "symbol": "XAUUSD",
+  "point_in_time": {
+   "retrieval_ts": "2026-09-23T16:37:05.093534+00:00",
+   "note": "历史=Yahoo(单源, 已剔除未收盘); 现价=多源回退; 不合并非同源序列"
+  },
+  "quotes": {
+   "gold_spot": {
+    "price": 4288.03,
+    "bid": 4287.96,
+    "ask": 4288.11,
+    "spread": 0.15,
+    "data_ts": 1790192222,
+    "source": "mt5",
+    "symbol": "XAUUSD",
+    "retrieval_ts": "2026-09-23T16:37:02.795084+00:00",
+    "key": "gold_spot",
+    "code": "XAUUSD",
+    "_selected_source": "mt5",
+    "_fallback_level": 0,
+    "_freshness": "FRESH"
+   },
+   "gold_comex": {
+    "price": 4323.42,
+    "bid": 4324.1,
+    "ask": 4324.3,
+    "spread": 0.2,
+    "data_ts": "00:37:02",
+    "source": "sina",
+    "key": "gold_comex",
+    "retrieval_ts": "2026-09-23T16:37:03.235073+00:00",
+    "code": "hf_GC",
+    "_selected_source": "sina",
+    "_fallback_level": 0,
+    "_freshness": "FRESH"
+   },
+   "silver": {
+    "price": 64.67,
+    "bid": 64.664,
+    "ask": 64.683,
+    "spread": 0.019,
+    "data_ts": 1790192222,
+    "source": "mt5",
+    "symbol": "XAGUSD",
+    "retrieval_ts": "2026-09-23T16:37:03.249071+00:00",
+    "key": "silver",
+    "code": "XAGUSD",
+    "_selected_source": "mt5",
+    "_fallback_level": 0,
+    "_freshness": "FRESH"
+   },
+   "dxy": {
+    "price": 101.0734,
+    "bid": null,
+    "ask": null,
+    "spread": null,
+    "prev": 100.5409,
+    "change": 0.5325,
+    "change_pct": 0.53,
+    "data_ts": "2026-09-24 00:36:58",
+    "source": "sina",
+    "key": "dxy",
+    "retrieval_ts": "2026-09-23T16:37:03.636013+00:00",
+    "code": "DINIW",
+    "_selected_source": "sina",
+    "_fallback_level": 0,
+    "_freshness": "FRESH"
+   },
+   "ust10y": {
+    "price": 38.73,
+    "bid": null,
+    "ask": null,
+    "spread": null,
+    "change": -0.66,
+    "change_pct": -1.68,
+    "data_ts": "2026-09-23 12:32:18",
+    "source": "tencent",
+    "key": "ust10y",
+    "retrieval_ts": "2026-09-23T16:37:04.149701+00:00",
+    "code": "usUST",
+    "_selected_source": "tencent",
+    "_fallback_level": 0,
+    "_freshness": "FRESH"
+   },
+   "vix": {
+    "price": 14.85,
+    "bid": null,
+    "ask": null,
+    "spread": null,
+    "change": 0.63,
+    "change_pct": 4.43,
+    "data_ts": "2026-09-24 00:35:46",
+    "source": "sina",
+    "key": "vix",
+    "retrieval_ts": "2026-09-23T16:37:04.524974+00:00",
+    "code": "znb_VIX",
+    "_selected_source": "sina",
+    "_fallback_level": 0,
+    "_freshness": "FRESH"
+   },
+   "gld": {
+    "price": 393.14,
+    "bid": null,
+    "ask": null,
+    "spread": null,
+    "change": -6.93,
+    "change_pct": -1.73,
+    "data_ts": "2026-09-23 12:36:59",
+    "source": "tencent",
+    "key": "gld",
+    "retrieval_ts": "2026-09-23T16:37:04.980684+00:00",
+    "code": "usGLD",
+    "_selected_source": "tencent",
+    "_fallback_level": 0,
+    "_freshness": "FRESH"
+   }
+  },
+  "price_basis": {
+   "primary": "XAUUSD@mt5",
+   "primary_source": "mt5",
+   "primary_last": 4312.2,
+   "spot_check": {
+    "gold_spot": 4288.03,
+    "gold_comex": 4323.42
+   },
+   "source_basis_usd": 24.17,
+   "source_basis_bps": 56.4,
+   "basis_usd": 24.17,
+   "basis_bps": 56.4,
+   "note": "主序列=XAUUSD; basis=主序列源 与 sina 现货源 的 source_basis（仅交叉校验, 未拼接; 非 COMEX 基差）"
+  },
+  "timeframes": {
+   "5m": {
+    "tf": "5m",
+    "n_bars": 1963,
+    "state": "ok",
+    "last_close": 4301.08,
+    "ma": {
+     "sma20": 4307.95,
+     "sma50": 4310.85,
+     "sma200": 4335.17
+    },
+    "ema": {
+     "ema20": 4306.78,
+     "ema50": 4311.09,
+     "ema200": 4326.71
+    },
+    "rsi14": 42.15,
+    "atr14": 5.74,
+    "atr_pct": 0.134,
+    "realized_vol_ann": 0.1578,
+    "vwap": 4330.0,
+    "structure": {
+     "hh": 1,
+     "lh": 1,
+     "hl": 2,
+     "ll": 2,
+     "swing_bias": "neutral",
+     "last_swings": [
+      {
+       "type": "H",
+       "price": 4319.08,
+       "i": 1946
+      },
+      {
+       "type": "L",
+       "price": 4300.69,
+       "i": 1954
+      },
+      {
+       "type": "H",
+       "price": 4311.08,
+       "i": 1955
+      },
+      {
+       "type": "L",
+       "price": 4297.99,
+       "i": 1958
+      }
+     ]
+    },
+    "trend_range": {
+     "cat": "range",
+     "er": 0.133
+    },
+    "exp_cont": {
+     "state": "expanding",
+     "ratio": 1.41
+    },
+    "range60": {
+     "high": 4320.53,
+     "low": 4294.6,
+     "pos_pct": 25.0
+    },
+    "recent_move_bps": -11.1,
+    "price_vs_sma20_bps": -15.9,
+    "breakout": {
+     "state": "inside",
+     "range_hi": 4319.08,
+     "range_lo": 4297.99
+    },
+    "bar_behavior": [
+     {
+      "dir": "down",
+      "body_ratio": 0.78,
+      "close_pos": 0.12,
+      "upper_wick": 0.1,
+      "lower_wick": 0.12
+     },
+     {
+      "dir": "up",
+      "body_ratio": 0.08,
+      "close_pos": 0.84,
+      "upper_wick": 0.16,
+      "lower_wick": 0.77
+     },
+     {
+      "dir": "up",
+      "body_ratio": 0.06,
+      "close_pos": 0.26,
+      "upper_wick": 0.74,
+      "lower_wick": 0.2
+     },
+     {
+      "dir": "up",
+      "body_ratio": 0.24,
+      "close_pos": 0.35,
+      "upper_wick": 0.65,
+      "lower_wick": 0.11
+     },
+     {
+      "dir": "up",
+      "body_ratio": 0.96,
+      "close_pos": 0.98,
+      "upper_wick": 0.02,
+      "lower_wick": 0.03
+     },
+     {
+      "dir": "down",
+      "body_ratio": 0.87,
+      "close_pos": 0.02,
+      "upper_wick": 0.12,
+      "lower_wick": 0.02
+     }
+    ]
+   },
+   "15m": {
+    "tf": "15m",
+    "n_bars": 887,
+    "state": "ok",
+    "last_close": 4312.2,
+    "ma": {
+     "sma20": 4313.11,
+     "sma50": 4326.6,
+     "sma200": 4339.34
+    },
+    "ema": {
+     "ema20": 4313.83,
+     "ema50": 4323.92,
+     "ema200": 4337.85
+    },
+    "rsi14": 46.28,
+    "atr14": 7.79,
+    "atr_pct": 0.181,
+    "realized_vol_ann": 0.1919,
+    "vwap": 4330.26,
+    "structure": {
+     "hh": 1,
+     "lh": 2,
+     "hl": 0,
+     "ll": 3,
+     "swing_bias": "down",
+     "last_swings": [
+      {
+       "type": "L",
+       "price": 4308.33,
+       "i": 872
+      },
+      {
+       "type": "H",
+       "price": 4319.06,
+       "i": 875
+      },
+      {
+       "type": "L",
+       "price": 4294.6,
+       "i": 879
+      },
+      {
+       "type": "H",
+       "price": 4319.08,
+       "i": 881
+      }
+     ]
+    },
+    "trend_range": {
+     "cat": "range",
+     "er": 0.085
+    },
+    "exp_cont": {
+     "state": "expanding",
+     "ratio": 2.02
+    },
+    "range60": {
+     "high": 4369.28,
+     "low": 4294.6,
+     "pos_pct": 23.6
+    },
+    "recent_move_bps": 6.5,
+    "price_vs_sma20_bps": -2.1,
+    "breakout": {
+     "state": "inside",
+     "range_hi": 4322.84,
+     "range_lo": 4294.6
+    },
+    "bar_behavior": [
+     {
+      "dir": "up",
+      "body_ratio": 0.95,
+      "close_pos": 0.99,
+      "upper_wick": 0.01,
+      "lower_wick": 0.05
+     },
+     {
+      "dir": "down",
+      "body_ratio": 0.85,
+      "close_pos": 0.15,
+      "upper_wick": 0.0,
+      "lower_wick": 0.15
+     },
+     {
+      "dir": "down",
+      "body_ratio": 0.77,
+      "close_pos": 0.23,
+      "upper_wick": 0.0,
+      "lower_wick": 0.23
+     },
+     {
+      "dir": "up",
+      "body_ratio": 0.57,
+      "close_pos": 0.89,
+      "upper_wick": 0.11,
+      "lower_wick": 0.32
+     },
+     {
+      "dir": "down",
+      "body_ratio": 0.58,
+      "close_pos": 0.34,
+      "upper_wick": 0.08,
+      "lower_wick": 0.34
+     },
+     {
+      "dir": "up",
+      "body_ratio": 0.9,
+      "close_pos": 0.99,
+      "upper_wick": 0.01,
+      "lower_wick": 0.09
+     }
+    ]
+   },
+   "60m": {
+    "tf": "60m",
+    "n_bars": 396,
+    "state": "ok",
+    "last_close": 4309.94,
+    "ma": {
+     "sma20": 4338.06,
+     "sma50": 4339.65,
+     "sma200": 4331.8
+    },
+    "ema": {
+     "ema20": 4329.76,
+     "ema50": 4338.23,
+     "ema200": 4346.59
+    },
+    "rsi14": 35.53,
+    "atr14": 14.48,
+    "atr_pct": 0.336,
+    "realized_vol_ann": 0.2753,
+    "vwap": 4331.05,
+    "structure": {
+     "hh": 1,
+     "lh": 3,
+     "hl": 2,
+     "ll": 0,
+     "swing_bias": "neutral",
+     "last_swings": [
+      {
+       "type": "L",
+       "price": 4315.0,
+       "i": 374
+      },
+      {
+       "type": "H",
+       "price": 4371.22,
+       "i": 379
+      },
+      {
+       "type": "H",
+       "price": 4369.28,
+       "i": 383
+      },
+      {
+       "type": "H",
+       "price": 4347.36,
+       "i": 387
+      }
+     ]
+    },
+    "trend_range": {
+     "cat": "mixed",
+     "er": 0.175
+    },
+    "exp_cont": {
+     "state": "neutral",
+     "ratio": 0.96
+    },
+    "range60": {
+     "high": 4383.42,
+     "low": 4291.44,
+     "pos_pct": 20.1
+    },
+    "recent_move_bps": -49.2,
+    "price_vs_sma20_bps": -64.8,
+    "breakout": {
+     "state": "inside",
+     "range_hi": 4371.22,
+     "range_lo": 4294.6
+    },
+    "bar_behavior": [
+     {
+      "dir": "down",
+      "body_ratio": 0.84,
+      "close_pos": 0.04,
+      "upper_wick": 0.12,
+      "lower_wick": 0.04
+     },
+     {
+      "dir": "down",
+      "body_ratio": 0.22,
+      "close_pos": 0.34,
+      "upper_wick": 0.44,
+      "lower_wick": 0.34
+     },
+     {
+      "dir": "down",
+      "body_ratio": 0.3,
+      "close_pos": 0.49,
+      "upper_wick": 0.21,
+      "lower_wick": 0.49
+     },
+     {
+      "dir": "up",
+      "body_ratio": 0.25,
+      "close_pos": 0.51,
+      "upper_wick": 0.49,
+      "lower_wick": 0.26
+     },
+     {
+      "dir": "down",
+      "body_ratio": 0.27,
+      "close_pos": 0.66,
+      "upper_wick": 0.07,
+      "lower_wick": 0.66
+     },
+     {
+      "dir": "up",
+      "body_ratio": 0.03,
+      "close_pos": 0.5,
+      "upper_wick": 0.5,
+      "lower_wick": 0.47
+     }
+    ]
+   },
+   "4h": {
+    "tf": "4h",
+    "n_bars": 149,
+    "state": "ok",
+    "last_close": 4309.94,
+    "ma": {
+     "sma20": 4351.84,
+     "sma50": 4333.13,
+     "sma200": null
+    },
+    "ema": {
+     "ema20": 4341.4,
+     "ema50": 4349.1,
+     "ema200": null
+    },
+    "rsi14": 41.2,
+    "atr14": 33.02,
+    "atr_pct": 0.766,
+    "realized_vol_ann": 0.5187,
+    "vwap": 4330.67,
+    "structure": {
+     "hh": 1,
+     "lh": 2,
+     "hl": 1,
+     "ll": 2,
+     "swing_bias": "down",
+     "last_swings": [
+      {
+       "type": "L",
+       "price": 4322.62,
+       "i": 137
+      },
+      {
+       "type": "H",
+       "price": 4376.13,
+       "i": 139
+      },
+      {
+       "type": "L",
+       "price": 4291.44,
+       "i": 141
+      },
+      {
+       "type": "H",
+       "price": 4371.22,
+       "i": 144
+      }
+     ]
+    },
+    "trend_range": {
+     "cat": "mixed",
+     "er": 0.239
+    },
+    "exp_cont": {
+     "state": "neutral",
+     "ratio": 0.99
+    },
+    "range60": {
+     "high": 4434.99,
+     "low": 4235.21,
+     "pos_pct": 37.4
+    },
+    "recent_move_bps": -55.6,
+    "price_vs_sma20_bps": -96.3,
+    "breakout": {
+     "state": "inside",
+     "range_hi": 4399.7,
+     "range_lo": 4291.44
+    },
+    "bar_behavior": [
+     {
+      "dir": "up",
+      "body_ratio": 0.08,
+      "close_pos": 0.74,
+      "upper_wick": 0.26,
+      "lower_wick": 0.66
+     },
+     {
+      "dir": "up",
+      "body_ratio": 0.6,
+      "close_pos": 0.65,
+      "upper_wick": 0.35,
+      "lower_wick": 0.05
+     },
+     {
+      "dir": "down",
+      "body_ratio": 0.38,
+      "close_pos": 0.19,
+      "upper_wick": 0.43,
+      "lower_wick": 0.19
+     },
+     {
+      "dir": "down",
+      "body_ratio": 0.52,
+      "close_pos": 0.42,
+      "upper_wick": 0.06,
+      "lower_wick": 0.42
+     },
+     {
+      "dir": "down",
+      "body_ratio": 0.86,
+      "close_pos": 0.08,
+      "upper_wick": 0.06,
+      "lower_wick": 0.08
+     },
+     {
+      "dir": "down",
+      "body_ratio": 0.31,
+      "close_pos": 0.59,
+      "upper_wick": 0.1,
+      "lower_wick": 0.59
+     }
+    ]
+   },
+   "1d": {
+    "tf": "1d",
+    "n_bars": 89,
+    "state": "ok",
+    "last_close": 4358.42,
+    "ma": {
+     "sma20": 4391.04,
+     "sma50": 4301.34,
+     "sma200": null
+    },
+    "ema": {
+     "ema20": 4365.1,
+     "ema50": 4343.83,
+     "ema200": null
+    },
+    "rsi14": 49.69,
+    "atr14": 98.17,
+    "atr_pct": 2.252,
+    "realized_vol_ann": 2.2013,
+    "vwap": 4342.0,
+    "structure": {
+     "hh": 1,
+     "lh": 2,
+     "hl": 1,
+     "ll": 2,
+     "swing_bias": "down",
+     "last_swings": [
+      {
+       "type": "L",
+       "price": 4282.44,
+       "i": 74
+      },
+      {
+       "type": "H",
+       "price": 4510.94,
+       "i": 75
+      },
+      {
+       "type": "L",
+       "price": 4235.21,
+       "i": 84
+      },
+      {
+       "type": "H",
+       "price": 4399.7,
+       "i": 86
+      }
+     ]
+    },
+    "trend_range": {
+     "cat": "mixed",
+     "er": 0.294
+    },
+    "exp_cont": {
+     "state": "neutral",
+     "ratio": 0.87
+    },
+    "range60": {
+     "high": 4696.78,
+     "low": 3959.54,
+     "pos_pct": 54.1
+    },
+    "recent_move_bps": 141.0,
+    "price_vs_sma20_bps": -74.3,
+    "breakout": {
+     "state": "inside",
+     "range_hi": 4696.78,
+     "range_lo": 4235.21
+    },
+    "bar_behavior": [
+     {
+      "dir": "down",
+      "body_ratio": 0.12,
+      "close_pos": 0.57,
+      "upper_wick": 0.32,
+      "lower_wick": 0.57
+     },
+     {
+      "dir": "down",
+      "body_ratio": 0.25,
+      "close_pos": 0.21,
+      "upper_wick": 0.55,
+      "lower_wick": 0.21
+     },
+     {
+      "dir": "up",
+      "body_ratio": 0.66,
+      "close_pos": 0.68,
+      "upper_wick": 0.32,
+      "lower_wick": 0.02
+     },
+     {
+      "dir": "up",
+      "body_ratio": 0.55,
+      "close_pos": 0.68,
+      "upper_wick": 0.32,
+      "lower_wick": 0.13
+     },
+     {
+      "dir": "down",
+      "body_ratio": 0.61,
+      "close_pos": 0.34,
+      "upper_wick": 0.05,
+      "lower_wick": 0.34
+     },
+     {
+      "dir": "up",
+      "body_ratio": 0.12,
+      "close_pos": 0.79,
+      "upper_wick": 0.21,
+      "lower_wick": 0.67
+     }
+    ]
+   }
+  },
+  "market_regime": {
+   "regime": "mixed",
+   "trend_range_by_tf": {
+    "5m": "range",
+    "15m": "range",
+    "60m": "mixed",
+    "4h": "mixed",
+    "1d": "mixed"
+   },
+   "vol_state_15m": "expanding",
+   "flags": [
+    "vol_expansion"
+   ]
+  },
+  "key_levels": {
+   "swing_highs": [
+    {
+     "tf": "60m",
+     "price": 4371.22
+    },
+    {
+     "tf": "60m",
+     "price": 4369.28
+    },
+    {
+     "tf": "60m",
+     "price": 4347.36
+    },
+    {
+     "tf": "15m",
+     "price": 4319.06
+    },
+    {
+     "tf": "15m",
+     "price": 4319.08
+    }
+   ],
+   "swing_lows": [
+    {
+     "tf": "60m",
+     "price": 4315.0
+    },
+    {
+     "tf": "15m",
+     "price": 4308.33
+    },
+    {
+     "tf": "15m",
+     "price": 4294.6
+    }
+   ],
+   "range60_15m": {
+    "high": 4369.28,
+    "low": 4294.6,
+    "pos_pct": 23.6
+   },
+   "vwap_15m": 4330.26,
+   "ma_cluster_60m": {
+    "sma20": 4338.06,
+    "sma50": 4339.65,
+    "sma200": 4331.8
+   }
+  },
+  "deterministic_candidates": [],
+  "volatility": {
+   "atr_pct_15m": 0.181,
+   "atr_pct_60m": 0.336,
+   "exp_cont_15m": {
+    "state": "expanding",
+    "ratio": 2.02
+   },
+   "rv_ann_15m": 0.1919
+  },
+  "data_quality": {
+   "gaps": [],
+   "by_tf": {
+    "5m": {
+     "n_bars": 1963,
+     "retrieval_ts": "2026-09-23T16:37:05.003618+00:00",
+     "last_bar_ts": 1790181000,
+     "error": null
+    },
+    "15m": {
+     "n_bars": 887,
+     "retrieval_ts": "2026-09-23T16:37:05.023527+00:00",
+     "last_bar_ts": 1790180100,
+     "error": null
+    },
+    "60m": {
+     "n_bars": 396,
+     "retrieval_ts": "2026-09-23T16:37:05.040621+00:00",
+     "last_bar_ts": 1790175600,
+     "error": null
+    },
+    "4h": {
+     "n_bars": 149,
+     "retrieval_ts": "2026-09-23T16:37:05.055016+00:00",
+     "last_bar_ts": 1790164800,
+     "error": null
+    },
+    "1d": {
+     "n_bars": 89,
+     "retrieval_ts": "2026-09-23T16:37:05.069165+00:00",
+     "last_bar_ts": 1790035200,
+     "error": null
+    }
+   },
+   "sources": {
+    "history": "mt5",
+    "quotes": [
+     "mt5",
+     "sina",
+     "tencent"
+    ]
+   }
+  }
+ },
+ "macro_inputs": {
+  "agent": "agent2-macro-global",
+  "agent_version": "agent2/0.2.0-pit",
+  "snapshot_ts": "2026-09-23T16:37:43.618811+00:00",
+  "cycle": "2026-09-23T16:37Z",
+  "symbol": "XAUUSD",
+  "instrument": {
+   "instrument": "XAUUSD",
+   "reference_market": "GC_F",
+   "spot_futures_proxy": false,
+   "note": "P0-01: 交易标的=XAUUSD; 本 Agent2 不含技术序列"
+  },
+  "market_regime": null,
+  "macro": {
+   "usd": {
+    "value": 101.0734,
+    "change_pct_1d": 0.53,
+    "source": "sina:DINIW(国内)",
+    "data_ts": "2026-09-24 00:36:58",
+    "retrieved_at": "2026-09-23T16:37:05.470430+00:00"
+   },
+   "rates": {
+    "ust10y_pct": 38.73,
+    "change_1d": 0.66,
+    "change_pct_1d": 1.68,
+    "source": "tencent:usUST(7-10Y ETF代理,反向; 非^TNX)",
+    "proxy": true,
+    "note": "国内无 ^TNX 直连 → 用 7-10Y 国债ETF 价格代理; change_pct 已取反(价格↑=收益率↓)",
+    "data_ts": "2026-09-23 12:32:18"
+   },
+   "real_rates": {
+    "proxy": "TIP(TIPS ETF)",
+    "value": 104.92,
+    "change_pct_1d": -0.61,
+    "source": "tencent:usTIP(国内)",
+    "note": "实际利率代理(非 TIPS 收益率本身); 真值需 FRED/官方, 已列 data_gap"
+   },
+   "central_banks": {
+    "fed": null,
+    "ecb": null,
+    "boj": null,
+    "pboc": null,
+    "note": "政策利率/决议无免 Key 直连 API → placeholder; 以新闻事件代替",
+    "recent_headlines": [
+     {
+      "title": "印度储备银行（RBI，该国央行）副行长Poonam Gupta：印度卢比较当前水平存在升值空间。",
+      "published_at": 1790180832,
+      "source": "wallstreetcn",
+      "source_url": "https://wallstreetcn.com/live/global",
+      "credibility": "REPORTED",
+      "tags": [
+       "central_bank"
+      ],
+      "evidence_id": "ev_news_20260923_2772",
+      "content_sha256": "0fb20facaeccf25495a8290098ec9cba1c4f3edecce6a65864e4c8b0ba4be480",
+      "version": 38135,
+      "first_seen_at": "2026-09-23T16:37:15.665986+00:00",
+      "freshness": "fresh",
+      "age_seconds": 604,
+      "impact_direction": null,
+      "priced_in": null
+     },
+     {
+      "title": "美国财政部拍卖四个月期国债，得标利率4.135%，投标倍数2.81。",
+      "published_at": 1790177555,
+      "source": "wallstreetcn",
+      "source_url": "https://wallstreetcn.com/live/global",
+      "credibility": "REPORTED",
+      "tags": [
+       "central_bank"
+      ],
+      "evidence_id": "ev_news_20260923_2790",
+      "content_sha256": "765f938a54083e369a96f17dbf7af56125e2464c126b250cb19bedf7824e3e43",
+      "version": 38153,
+      "first_seen_at": "2026-09-23T16:37:25.848202+00:00",
+      "freshness": "stale",
+      "age_seconds": 3891,
+      "impact_direction": null,
+      "priced_in": null
+     },
+     {
+      "title": "美国财政部拍卖两年期浮息国债（FRNS），贴现利率为0.040%（8月26日为0.055%），投标倍数2.63（前次为3.14%）。",
+      "published_at": 1790177541,
+      "source": "wallstreetcn",
+      "source_url": "https://wallstreetcn.com/live/global",
+      "credibility": "REPORTED",
+      "tags": [
+       "central_bank"
+      ],
+      "evidence_id": "ev_news_20260923_2791",
+      "content_sha256": "717ed3a15d1993844e1875163659e7e36d10ce41f9c1ce2449580a26f8b4b882",
+      "version": 38154,
+      "first_seen_at": "2026-09-23T16:37:26.403558+00:00",
+      "freshness": "stale",
+      "age_seconds": 3905,
+      "impact_direction": null,
+      "priced_in": null
+     },
+     {
+      "title": "俄称欧盟正计划窃取俄被冻结资产",
+      "published_at": 1790176972,
+      "source": "wallstreetcn",
+      "source_url": "https://wallstreetcn.com/live/global",
+      "credibility": "REPORTED",
+      "tags": [
+       "geopolitics",
+       "central_bank"
+      ],
+      "evidence_id": "ev_news_20260923_2796",
+      "content_sha256": "79486aa9a50f6df86943a32a76c8f0d24c23a569eb869a66c359b6dea5b1bb59",
+      "version": 38159,
+      "first_seen_at": "2026-09-23T16:37:29.179156+00:00",
+      "freshness": "stale",
+      "age_seconds": 4477,
+      "impact_direction": null,
+      "priced_in": null
+     },
+     {
+      "title": "Nearly 10% of borrowers opted for riskier mortgages last week, as rates soared over 7%",
+      "published_at": "Wed, 23 Sep 2026 11:44:32 GMT",
+      "source": "cnbc",
+      "source_url": "https://www.cnbc.com/2026/09/23/nearly-10percent-of-borrowers-opted-for-riskier-mortgages-last-week.html",
+      "credibility": "REPORTED",
+      "tags": [
+       "central_bank"
+      ],
+      "evidence_id": "ev_news_20260923_1971",
+      "content_sha256": "f5ef08122dc433ef4b103c3d4ed06a606841c41f302b3d12556e2c096e43c387",
+      "version": 2,
+      "first_seen_at": "2026-09-23T11:53:10.800308+00:00",
+      "freshness": "unknown",
+      "age_seconds": null,
+      "impact_direction": null,
+      "priced_in": null
+     },
+     {
+      "title": "Iran says Trump’s threats a sign of ‘strategic desperation,’ floats conditions for Hormuz reopening",
+      "published_at": "Wed, 23 Sep 2026 14:47:28 GMT",
+      "source": "cnbc",
+      "source_url": "https://www.cnbc.com/2026/09/23/us-iran-war-trump-hormuz.html",
+      "credibility": "REPORTED",
+      "tags": [
+       "geopolitics",
+       "central_bank"
+      ],
+      "evidence_id": "ev_news_20260923_2495",
+      "content_sha256": "6500a7cfb7e01c1431cea8dab3c5f9b1515d2879e8512cca0b7b74d2dfb0bff8",
+      "version": 5,
+      "first_seen_at": "2026-09-23T14:53:27.870848+00:00",
+      "freshness": "unknown",
+      "age_seconds": null,
+      "impact_direction": null,
+      "priced_in": null
+     },
+     {
+      "title": "Fed's Collins warns inflation could be 'notably' higher after backing rate hike",
+      "published_at": "Wed, 23 Sep 2026 07:33:14 GMT",
+      "source": "cnbc",
+      "source_url": "https://www.cnbc.com/2026/09/23/federal-reserve-inflation-interest-rates-ecb.html",
+      "credibility": "REPORTED",
+      "tags": [
+       "geopolitics",
+       "central_bank"
+      ],
+      "evidence_id": "ev_news_20260923_1469",
+      "content_sha256": "c7b421bace5525969c4d0c003aeae3a252a3c3c58e6ff36ff6d7996f1777da37",
+      "version": 1,
+      "first_seen_at": "2026-09-23T08:52:39.114516+00:00",
+      "freshness": "unknown",
+      "age_seconds": null,
+      "impact_direction": null,
+      "priced_in": null
+     }
+    ]
+   },
+   "economic_data": [
+    {
+     "title": "俄罗斯9月21日当周CPI周环比上升0.06%，2026年迄今累计上升4.81%。",
+     "published_at": 1790179272,
+     "source": "wallstreetcn",
+     "source_url": "https://wallstreetcn.com/live/global",
+     "credibility": "REPORTED",
+     "tags": [
+      "economic_data"
+     ],
+     "evidence_id": "ev_news_20260923_2778",
+     "content_sha256": "9f54beef0d4919fe90aad1b84df376cb604e541a66da6e693ed99683397a288d",
+     "version": 38141,
+     "first_seen_at": "2026-09-23T16:37:19.050636+00:00",
+     "freshness": "stale",
+     "age_seconds": 2167,
+     "impact_direction": null,
+     "priced_in": null,
+     "release_timestamp": null,
+     "release_timestamp_source": "unavailable",
+     "point_in_time_confidence": "low"
+    }
+   ],
+   "releases": [],
+   "completeness": {
+    "DXY": "AVAILABLE",
+    "UST10Y": "AVAILABLE",
+    "VIX": "AVAILABLE",
+    "TIP": "AVAILABLE",
+    "BLS": "MISSING",
+    "COT": "ERROR",
+    "ETF_FLOW_CN": "AVAILABLE",
+    "NEWS": "AVAILABLE",
+    "GEOPOLITICS": "AVAILABLE"
+   },
+   "news_status": {
+    "wallstcn": {
+     "source_status": "OK",
+     "error_type": null,
+     "last_data_ts": null
+    },
+    "cnbc": {
+     "source_status": "OK",
+     "error_type": null,
+     "last_data_ts": null
+    }
+   },
+   "macro_pit_risk": [
+    "COT",
+    "BLS"
+   ]
+  },
+  "geopolitics": {
+   "events": [
+    {
+     "title": "国际货币基金组织（IMF）：中东战争爆发时，全球公共债务规模已经接近历史高位。\n\n支持性的财政政策、私人投资以及人工智能生产率提升潜力，可能支撑中期全球经济增长。\n\n自2月底开始的中东战争通过能源、大宗商品和供应链中断，显著改变了全球经济增长轨迹。",
+     "published_at": 1790181395,
+     "source": "wallstreetcn",
+     "source_url": "https://wallstreetcn.com/live/global",
+     "credibility": "REPORTED",
+     "tags": [
+      "geopolitics"
+     ],
+     "evidence_id": "ev_news_20260923_2767",
+     "content_sha256": "0db9bc1645ad3ed90ae6da9346f7440aa3cc5cb959bf23d24e0827725dc2e349",
+     "version": 38130,
+     "first_seen_at": "2026-09-23T16:37:12.789449+00:00",
+     "freshness": "fresh",
+     "age_seconds": 38,
+     "impact_direction": null,
+     "priced_in": null
+    },
+    {
+     "title": "微软在中东地区扩大投资。\n\n今后至2030年这段时期将投资超过100亿美元。\n\n公司将在海湾四国扩大云、AI基础设施（投资）。\n\n将在科威特、卡塔尔、阿联酋、KSA（沙特）深化网络安全（合作）协议。",
+     "published_at": 1790181101,
+     "source": "wallstreetcn",
+     "source_url": "https://wallstreetcn.com/live/global",
+     "credibility": "REPORTED",
+     "tags": [
+      "geopolitics"
+     ],
+     "evidence_id": "ev_news_20260923_2771",
+     "content_sha256": "67865b46a2c9f7ee4710e91715841ea8e7d1c159781fb8358c1513552f5532b2",
+     "version": 38134,
+     "first_seen_at": "2026-09-23T16:37:15.107150+00:00",
+     "freshness": "fresh",
+     "age_seconds": 334,
+     "impact_direction": null,
+     "priced_in": null
+    },
+    {
+     "title": "阿曼海事安全中心：商船 “CAPE DAO” 号遇袭后，该中心已撤离船上船员。\n\n此次袭击造成一名船员遇难。",
+     "published_at": 1790179669,
+     "source": "wallstreetcn",
+     "source_url": "https://wallstreetcn.com/live/global",
+     "credibility": "REPORTED",
+     "tags": [
+      "geopolitics"
+     ],
+     "evidence_id": "ev_news_20260923_2774",
+     "content_sha256": "deac6e0707e776f8e479453fe6d3ffce44dce1f7148c21e0e26b8e6789c03d7d",
+     "version": 38137,
+     "first_seen_at": "2026-09-23T16:37:16.786882+00:00",
+     "freshness": "stale",
+     "age_seconds": 1768,
+     "impact_direction": null,
+     "priced_in": null
+    },
+    {
+     "title": "伊朗总统：愿意谈判合作，不接受强权威胁",
+     "published_at": 1790179442,
+     "source": "wallstreetcn",
+     "source_url": "https://wallstreetcn.com/live/global",
+     "credibility": "REPORTED",
+     "tags": [
+      "geopolitics"
+     ],
+     "evidence_id": "ev_news_20260923_2776",
+     "content_sha256": "db136f2f5cf9cf28f91d17cc173a247d99990532399d3da2a8e71274af34914d",
+     "version": 38139,
+     "first_seen_at": "2026-09-23T16:37:17.945819+00:00",
+     "freshness": "stale",
+     "age_seconds": 1996,
+     "impact_direction": null,
+     "priced_in": null
+    },
+    {
+     "title": "惠誉：美欧再度加征关税的风险仍然显著",
+     "published_at": 1790178981,
+     "source": "wallstreetcn",
+     "source_url": "https://wallstreetcn.com/live/global",
+     "credibility": "REPORTED",
+     "tags": [
+      "geopolitics"
+     ],
+     "evidence_id": "ev_news_20260923_2780",
+     "content_sha256": "31a12a1599e8992049c2606df497115ebcd3fcc765a7e4f876566206790521f7",
+     "version": 38143,
+     "first_seen_at": "2026-09-23T16:37:20.247521+00:00",
+     "freshness": "stale",
+     "age_seconds": 2459,
+     "impact_direction": null,
+     "priced_in": null
+    },
+    {
+     "title": "特朗普的“和平委员会”迎来第一批认捐，金额超24亿美元",
+     "published_at": 1790178690,
+     "source": "wallstreetcn",
+     "source_url": "https://wallstreetcn.com/live/global",
+     "credibility": "REPORTED",
+     "tags": [
+      "geopolitics"
+     ],
+     "evidence_id": "ev_news_20260923_2782",
+     "content_sha256": "7c4e2794459a18980e17dd93cf9a16ecf4f21bc108b01809d6fd17d4b5726f3a",
+     "version": 38145,
+     "first_seen_at": "2026-09-23T16:37:21.430551+00:00",
+     "freshness": "stale",
+     "age_seconds": 2751,
+     "impact_direction": null,
+     "priced_in": null
+    },
+    {
+     "title": "伊朗证实：周二再联大期间经斡旋方卡塔尔与美国传递信息",
+     "published_at": 1790178101,
+     "source": "wallstreetcn",
+     "source_url": "https://wallstreetcn.com/live/global",
+     "credibility": "REPORTED",
+     "tags": [
+      "geopolitics"
+     ],
+     "evidence_id": "ev_news_20260923_2785",
+     "content_sha256": "a8613733f221660cd164f098d6752a1f36c0db80615f0be869ddce6c5d5909d1",
+     "version": 38148,
+     "first_seen_at": "2026-09-23T16:37:23.081400+00:00",
+     "freshness": "stale",
+     "age_seconds": 3342,
+     "impact_direction": null,
+     "priced_in": null
+    },
+    {
+     "title": "俄称欧盟正计划窃取俄被冻结资产",
+     "published_at": 1790176972,
+     "source": "wallstreetcn",
+     "source_url": "https://wallstreetcn.com/live/global",
+     "credibility": "REPORTED",
+     "tags": [
+      "geopolitics",
+      "central_bank"
+     ],
+     "evidence_id": "ev_news_20260923_2796",
+     "content_sha256": "79486aa9a50f6df86943a32a76c8f0d24c23a569eb869a66c359b6dea5b1bb59",
+     "version": 38159,
+     "first_seen_at": "2026-09-23T16:37:29.179156+00:00",
+     "freshness": "stale",
+     "age_seconds": 4477,
+     "impact_direction": null,
+     "priced_in": null
+    },
+    {
+     "title": "伊朗总统联大发表讲话",
+     "published_at": 1790175913,
+     "source": "wallstreetcn",
+     "source_url": "https://wallstreetcn.com/live/global",
+     "credibility": "REPORTED",
+     "tags": [
+      "geopolitics"
+     ],
+     "evidence_id": "ev_news_20260923_2799",
+     "content_sha256": "6c893003f90363f154f7a67ff4042e33f8951c1ee9b796e3f7dad4ff00579ea2",
+     "version": 38162,
+     "first_seen_at": "2026-09-23T16:37:30.826190+00:00",
+     "freshness": "stale",
+     "age_seconds": 5538,
+     "impact_direction": null,
+     "priced_in": null
+    },
+    {
+     "title": "美国国务卿鲁比奥：伊朗会谈是此前讨论的“延续”。\n\n此次会谈是积极的，但并未取得突破。\n\n伊朗伊斯兰革命卫队领导人阻碍了伊朗对话。\n\n伊朗违反谅解备忘录，并袭击其邻国。",
+     "published_at": 1790175511,
+     "source": "wallstreetcn",
+     "source_url": "https://wallstreetcn.com/live/global",
+     "credibility": "REPORTED",
+     "tags": [
+      "geopolitics"
+     ],
+     "evidence_id": "ev_news_20260923_2803",
+     "content_sha256": "c25e8f28b9da097b31684bb35b68dd716c56ec1f4d889c802d7e590cbf6dd71a",
+     "version": 38166,
+     "first_seen_at": "2026-09-23T16:37:33.022049+00:00",
+     "freshness": "stale",
+     "age_seconds": 5942,
+     "impact_direction": null,
+     "priced_in": null
+    },
+    {
+     "title": "Iran's president blames U.S., Israel for global instability in defiant UN speech",
+     "published_at": "Wed, 23 Sep 2026 16:09:20 GMT",
+     "source": "cnbc",
+     "source_url": "https://www.cnbc.com/2026/09/23/iran-united-nations-trump-israel.html",
+     "credibility": "REPORTED",
+     "tags": [
+      "geopolitics"
+     ],
+     "evidence_id": "ev_news_20260923_2765",
+     "content_sha256": "5c389b169040d4f557ef219f0509443d8b1a80d20ab69d80738e3d8ffbef4c40",
+     "version": 5,
+     "first_seen_at": "2026-09-23T16:22:37.105400+00:00",
+     "freshness": "unknown",
+     "age_seconds": null,
+     "impact_direction": null,
+     "priced_in": null
+    },
+    {
+     "title": "Iran says Trump’s threats a sign of ‘strategic desperation,’ floats conditions for Hormuz reopening",
+     "published_at": "Wed, 23 Sep 2026 14:47:28 GMT",
+     "source": "cnbc",
+     "source_url": "https://www.cnbc.com/2026/09/23/us-iran-war-trump-hormuz.html",
+     "credibility": "REPORTED",
+     "tags": [
+      "geopolitics",
+      "central_bank"
+     ],
+     "evidence_id": "ev_news_20260923_2495",
+     "content_sha256": "6500a7cfb7e01c1431cea8dab3c5f9b1515d2879e8512cca0b7b74d2dfb0bff8",
+     "version": 5,
+     "first_seen_at": "2026-09-23T14:53:27.870848+00:00",
+     "freshness": "unknown",
+     "age_seconds": null,
+     "impact_direction": null,
+     "priced_in": null
+    },
+    {
+     "title": "AI drone maker hits $6.4 billion valuation as Ukraine war spurs defense tech",
+     "published_at": "Wed, 23 Sep 2026 09:47:31 GMT",
+     "source": "cnbc",
+     "source_url": "https://www.cnbc.com/2026/09/23/ai-drone-maker-ukraine-war-defense-tech.html",
+     "credibility": "REPORTED",
+     "tags": [
+      "geopolitics"
+     ],
+     "evidence_id": "ev_news_20260923_1683",
+     "content_sha256": "ac4dc44e272d7a20d9acfdb7e4619a528aeeef6508eed7222d6bda0cb020133f",
+     "version": 1,
+     "first_seen_at": "2026-09-23T10:07:54.749499+00:00",
+     "freshness": "unknown",
+     "age_seconds": null,
+     "impact_direction": null,
+     "priced_in": null
+    },
+    {
+     "title": "Fed's Collins warns inflation could be 'notably' higher after backing rate hike",
+     "published_at": "Wed, 23 Sep 2026 07:33:14 GMT",
+     "source": "cnbc",
+     "source_url": "https://www.cnbc.com/2026/09/23/federal-reserve-inflation-interest-rates-ecb.html",
+     "credibility": "REPORTED",
+     "tags": [
+      "geopolitics",
+      "central_bank"
+     ],
+     "evidence_id": "ev_news_20260923_1469",
+     "content_sha256": "c7b421bace5525969c4d0c003aeae3a252a3c3c58e6ff36ff6d7996f1777da37",
+     "version": 1,
+     "first_seen_at": "2026-09-23T08:52:39.114516+00:00",
+     "freshness": "unknown",
+     "age_seconds": null,
+     "impact_direction": null,
+     "priced_in": null
+    },
+    {
+     "title": "Zelenskyy says Ukraine ready for ‘energy ceasefire,’ calls for trilateral meeting with Putin, Trump",
+     "published_at": "Wed, 23 Sep 2026 14:41:48 GMT",
+     "source": "cnbc",
+     "source_url": "https://www.cnbc.com/2026/09/23/ukraine-war-zelenskyy-putin-trump-russia.html",
+     "credibility": "REPORTED",
+     "tags": [
+      "geopolitics"
+     ],
+     "evidence_id": "ev_news_20260923_2497",
+     "content_sha256": "4665d2934db81e1001b7d390bc5722f6222f5488151a367da38be3c3cd9cfd76",
+     "version": 5,
+     "first_seen_at": "2026-09-23T14:53:30.073283+00:00",
+     "freshness": "unknown",
+     "age_seconds": null,
+     "impact_direction": null,
+     "priced_in": null
+    }
+   ],
+   "levels_note": "CONFIRMED|MARKET_CONFIRMED|REPORTED|UNVERIFIED|SPECULATION; 本阶段新闻默认 REPORTED"
+  },
+  "gold_flows": {
+   "etf": {
+    "gld_price": 393.14,
+    "gld_change_pct_1d": -1.73,
+    "cn_gold_etf_net_inflow_cny": {
+     "518880": 150704576.0,
+     "159934": 50109902.0
+    },
+    "cn_gold_etf_net_inflow_sum_cny": 200814478.0,
+    "asof": {
+     "518880": "2026-09-23",
+     "159934": "2026-09-23"
+    },
+    "publication_ts": null,
+    "pit_status": "PASS",
+    "global_etf_holdings": null,
+    "note": "全球ETF持仓/净流(WGC)页面为 JS, 未取到 → data_gap; 国内ETF净流为真实流量(东财); asof=数据所属日",
+    "source": "eastmoney + yahoo:GLD"
+   },
+   "central_bank": {
+    "purchases": null,
+    "reserves": null,
+    "note": "央行购金/储备披露无免 Key 直连 → placeholder; 待 WGC/官方接口"
+   },
+   "cot": {
+    "contract": null,
+    "report_date": null,
+    "publication_date": null,
+    "publication_timestamp_unknown": true,
+    "pit_status": "UNKNOWN",
+    "timestamp_precision": "approximate",
+    "open_interest": null,
+    "noncommercial_net": null,
+    "commercial_net": null,
+    "source": null,
+    "credibility": "CONFIRMED",
+    "note": "存量(stock)项; managed money 口径以 noncommercial 近似; 精确发布时刻未知"
+   },
+   "comex": {
+    "open_interest": null,
+    "price": null,
+    "note": "OI 取 CFTC; 实时 OI/仓单无免 Key 源 → 部分覆盖"
+   }
+  },
+  "narrative_vs_flow": {
+   "narrative": {
+    "bull_mentions": 0,
+    "bear_mentions": 0,
+    "net": 0.0,
+    "n_mentions": 0
+   },
+   "flow_direction": "inflow",
+   "narrative_flow_divergence": false,
+   "note": "叙事(新闻措辞)与实际资金流(国内黄金ETF净流)方向冲突时置 TRUE; 供 Hermes 判断是否存在机会"
+  },
+  "gold_macro_state": "BULLISH",
+  "macro_status": "OK",
+  "core_macro_status": {
+   "dxy": "OK",
+   "ust10y": "OK",
+   "vix": "OK"
+  },
+  "key_evidence": [
+   "DXY 1d +0.53% → 压力 -0.53",
+   "UST10Y 1d +1.68% → 压力 -1.68(名义,实际利率见TIP)",
+   "VIX 1d +4.43% → 风险溢价 +0.89",
+   "国内黄金ETF净流 +2.01亿 → +0.50"
+  ],
+  "conflicts": [],
+  "risks": [
+   "无免Key的央行政策/购金/全球ETF流量直连源 → 覆盖不完整",
+   "新闻可信度默认 REPORTED, 未做事实核验"
+  ],
+  "data_gaps": [
+   "central_bank_policy_rates:no_direct_api(placeholder)",
+   "bls_macro:no_domestic_source(BLS 403)",
+   "cot:no_domestic_source(CFTC 403)",
+   "global_gold_etf_flows:WGC_JS(未取)",
+   "central_bank_gold_purchases:no_source"
+  ],
+  "macro_completeness": {
+   "DXY": "AVAILABLE",
+   "UST10Y": "AVAILABLE",
+   "VIX": "AVAILABLE",
+   "TIP": "AVAILABLE",
+   "BLS": "MISSING",
+   "COT": "ERROR",
+   "ETF_FLOW_CN": "AVAILABLE",
+   "NEWS": "AVAILABLE",
+   "GEOPOLITICS": "AVAILABLE"
+  },
+  "macro_pit_risk": [
+   "COT",
+   "BLS"
+  ],
+  "evidence": {
+   "n_refs": 70,
+   "refs": [
+    "ev_news_20260923_0041",
+    "ev_news_20260923_1425",
+    "ev_news_20260923_1469",
+    "ev_news_20260923_1595",
+    "ev_news_20260923_1596",
+    "ev_news_20260923_1681",
+    "ev_news_20260923_1683",
+    "ev_news_20260923_1971",
+    "ev_news_20260923_2147",
+    "ev_news_20260923_2233",
+    "ev_news_20260923_2275",
+    "ev_news_20260923_2360",
+    "ev_news_20260923_2492",
+    "ev_news_20260923_2494",
+    "ev_news_20260923_2495",
+    "ev_news_20260923_2497",
+    "ev_news_20260923_2585",
+    "ev_news_20260923_2586",
+    "ev_news_20260923_2631",
+    "ev_news_20260923_2632",
+    "ev_news_20260923_2675",
+    "ev_news_20260923_2676",
+    "ev_news_20260923_2677",
+    "ev_news_20260923_2719",
+    "ev_news_20260923_2762",
+    "ev_news_20260923_2764",
+    "ev_news_20260923_2765",
+    "ev_news_20260923_2767",
+    "ev_news_20260923_2768",
+    "ev_news_20260923_2769",
+    "ev_news_20260923_2770",
+    "ev_news_20260923_2771",
+    "ev_news_20260923_2772",
+    "ev_news_20260923_2773",
+    "ev_news_20260923_2774",
+    "ev_news_20260923_2775",
+    "ev_news_20260923_2776",
+    "ev_news_20260923_2777",
+    "ev_news_20260923_2778",
+    "ev_news_20260923_2779"
+   ],
+   "registry": "state/evidence_registry.jsonl",
+   "raw_dir": "data_cache/evidence_raw/",
+   "note": "Hermes 可经 evidence_id → registry → raw → sha256 回溯当时看到的原内容"
+  },
+  "point_in_time": {
+   "retrieved_at": "2026-09-23T16:37:43.618811+00:00",
+   "cot_timestamp_confidence": "approximate(report_date only)",
+   "calendar_release_timestamp": "unavailable(官方源未提供精确发布时刻)",
+   "note": "每条记录带 published_at/retrieved_at; 新闻发布≠事件发生≠市场反应; 严禁用后更新污染历史"
+  },
+  "signal_guard": "本快照不包含任何 LONG/SHORT/BUY/SELL 交易信号(任务书 §10)"
+ },
+ "candidate": "opp_macro_repricing_short",
+ "regime_tags": [
+  "GEOPOLITICAL_EVENT",
+  "HIGH_VOLATILITY",
+  "MACRO_EVENT"
+ ],
+ "gate_results": {
+  "decision": "WAIT",
+  "reason": "技术(SHORT) 与宏观(BULLISH) 冲突 → 证据冲突, 等确认"
+ },
+ "health": {
+  "overall_status": "PASS",
+  "trading_source_bad": [],
+  "technical_status": "PASS",
+  "trading_source_status": "PASS",
+  "macro_status": "PASS",
+  "router_status": "PASS",
+  "pit_status": "PASS",
+  "freshness_status": "PASS",
+  "price_space_status": "DISABLED",
+  "broker_status": "UNKNOWN"
+ },
+ "freshness": {
+  "agent1": {
+   "data_ts": 1790181000.0,
+   "status": "fresh",
+   "age_seconds": 463
+  },
+  "agent2": {
+   "data_ts": 1790181418.0,
+   "status": "fresh",
+   "age_seconds": 45
+  }
+ },
+ "pit_status": "PASS",
+ "price_space": {
+  "enabled": false
+ },
+ "risk_calculation": {},
+ "source_provenance": {
+  "hist:XAUUSD:15m": {
+   "source": "mt5",
+   "source_hash": "717f1b2b35c06c28626a783c3b3eb06cbd4fb762184208cfb725c73a28665dc8",
+   "data_ts": 1790180100.0
+  },
+  "hist:XAUUSD:5m": {
+   "source": "mt5",
+   "source_hash": "325ed51693214fbac05173262f45d37e13c7360e40140e0a2bdaca6db103b871",
+   "data_ts": 1790181000.0
+  },
+  "hist:XAUUSD:60m": {
+   "source": "mt5",
+   "source_hash": "80a3d6c7ef95c56504b3379f813a674951bae8da6ee6e2a4d3ffade61b8b6251",
+   "data_ts": 1790175600.0
+  },
+  "hist:XAUUSD:1d": {
+   "source": "mt5",
+   "source_hash": "b4215156c1543854acecf51f372af5b55323bfbabd37e8c71bd04505e58f3e3f",
+   "data_ts": 1790035200.0
+  }
+ },
+ "decision": {
+  "decision": "WAIT",
+  "reason": "技术(SHORT) 与宏观(BULLISH) 冲突 → 证据冲突, 等确认",
+  "chosen_opportunity": "opp_macro_repricing_short",
+  "regime_tags": [
+   "GEOPOLITICAL_EVENT",
+   "HIGH_VOLATILITY",
+   "MACRO_EVENT"
+  ],
+  "plan": null,
+  "no_trade_reason": "技术(SHORT) 与宏观(BULLISH) 冲突 → 证据冲突, 等确认",
+  "context_id": "ctx_13555ef980f0",
+  "context_hash": "13555ef980f0e4417d3b9b57562b519d00f88ff273f66bcf709f86ae2a3da11c",
+  "decision_source": "reference_rules",
+  "ts": "2026-09-23T16:37:43.624745+00:00",
+  "instrument": "XAUUSD",
+  "reference_market": "GC_F",
+  "live_trading": false,
+  "signal_from_agents": false,
+  "decision_id": "DEC-ctx_13555ef980f0"
+ },
+ "snapshot_hash": "480a053674144ad8cd799c108743df538a78c89fec96ef92e9cb1462415adb4d"
+}

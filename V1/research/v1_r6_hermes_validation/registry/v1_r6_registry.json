@@ -1,0 +1,87 @@
+{
+ "task": "V1_R6_HERMES_VALIDATION",
+ "registry_id": "v1r6-validation-registry-r1",
+ "frozen": true,
+ "frozen_at_utc": "2026-09-28T04:29:07.414188+00:00",
+ "r3_r4_r5_r51_immutable": true,
+ "frozen_hashes": {
+  "R3": "b6887675307d32ac1d81a6a6a2437d1c93b94e7585cd6efcbf8c7740cb6d2ebb",
+  "R4": "d2a5c0444576f5b22650ed7218290e841f026020ed6af8fc82024ab28dd3d36a",
+  "R5": "35d1f083b453cf6778a58eada2da813cec20b0dbdadfbb5ee0da6c8e9342c889",
+  "R5_1": "a022da021c5e350db7f99a0088a578818753809769631c9519c55393cb2a450a"
+ },
+ "sample": {
+  "n": 31,
+  "points": [
+   "2026-07-18 12:00:00+00:00",
+   "2026-07-20 12:00:00+00:00",
+   "2026-07-22 12:00:00+00:00",
+   "2026-07-24 12:00:00+00:00",
+   "2026-07-26 12:00:00+00:00",
+   "2026-07-28 12:00:00+00:00",
+   "2026-07-30 12:00:00+00:00",
+   "2026-08-01 12:00:00+00:00",
+   "2026-08-03 12:00:00+00:00",
+   "2026-08-05 12:00:00+00:00",
+   "2026-08-07 12:00:00+00:00",
+   "2026-08-09 12:00:00+00:00",
+   "2026-08-11 12:00:00+00:00",
+   "2026-08-13 12:00:00+00:00",
+   "2026-08-15 12:00:00+00:00",
+   "2026-08-17 12:00:00+00:00",
+   "2026-08-19 12:00:00+00:00",
+   "2026-08-21 12:00:00+00:00",
+   "2026-08-23 12:00:00+00:00",
+   "2026-08-25 12:00:00+00:00",
+   "2026-08-27 12:00:00+00:00",
+   "2026-08-29 12:00:00+00:00",
+   "2026-08-31 12:00:00+00:00",
+   "2026-09-02 12:00:00+00:00",
+   "2026-09-04 12:00:00+00:00",
+   "2026-09-06 12:00:00+00:00",
+   "2026-09-08 12:00:00+00:00",
+   "2026-09-10 12:00:00+00:00",
+   "2026-09-12 12:00:00+00:00",
+   "2026-09-14 12:00:00+00:00",
+   "2026-09-16 12:00:00+00:00"
+  ],
+  "EFFECTIVE_N_target": 30,
+  "rule": "pre-registered, fixed, PIT-safe"
+ },
+ "reuse_r5_prompt": true,
+ "r5_prompt_hash": "29f1fc6da7ee9db174e04fd349ad0acfad3d3409565b76ab60346fa0bbc531b1",
+ "prompt_hashes": {
+  "hermes_a_r6": "29f1fc6da7ee9db174e04fd349ad0acfad3d3409565b76ab60346fa0bbc531b1",
+  "hermes_b_blind_r6": "d515a26c4bf5798788e3644dd38f0e5ef06b607836de1bcd3f3bc72e167c5162",
+  "hermes_b_adversarial_r6": "35b1523db0ee59adcfcd5a38e142ccf00484112d501b39cd03f184820eeb259f"
+ },
+ "prompt_unchanged_vs_r5": true,
+ "comparisons": [
+  "R5_HERMES_A",
+  "R6_HERMES_A",
+  "SIMPLE_BASELINE",
+  "R6_HERMES_B"
+ ],
+ "metrics": [
+  "STATE",
+  "TRANSITION",
+  "SCENARIO",
+  "DIRECTION",
+  "TIMING",
+  "CONFIDENCE_CALIBRATION",
+  "ABSTENTION",
+  "COUNTER_EVIDENCE"
+ ],
+ "persistence": "R5.1 protocol, batch <= 5, failures stay in the denominator",
+ "gate_rule": "CAPABILITY_GATE stays CLOSED unless independently sufficient evidence; PREDICTION=UNSUPPORTED or INCONCLUSIVE otherwise",
+ "hard_safety": {
+  "ORDER_SEND": 0,
+  "ORDER_CHECK": 0,
+  "BROKER_WRITE": 0,
+  "FORWARD": "OFF",
+  "SHADOW": "OFF",
+  "LIVE": "OFF",
+  "BOUNDARY_VIOLATION": 0
+ },
+ "registry_hash": "a71cee6636b851099feabb844cd05b9f77066d899ab1e2d953d344cefca89dca"
+}

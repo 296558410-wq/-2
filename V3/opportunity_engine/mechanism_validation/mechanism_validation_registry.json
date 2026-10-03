@@ -1,0 +1,114 @@
+{
+ "version": "MV-R1.0.0",
+ "taxonomy": {
+  "M01": "PRICE_STATE_TRANSITION",
+  "M02": "VOLATILITY_REGIME_TRANSITION",
+  "M03": "CROSS_MARKET_SHOCK",
+  "M04": "CROSS_MARKET_DIVERGENCE",
+  "M05": "LIQUIDITY_REPRICING",
+  "M06": "RISK_SENTIMENT_TRANSMISSION",
+  "M07": "EXTREME_REVERSION",
+  "M08": "STATE_BREAK_MOMENTUM",
+  "M09": "EVENT_REPRICING",
+  "M10": "DATA_MEASUREMENT_ARTIFACT",
+  "M11": "UNKNOWN_MECHANISM"
+ },
+ "event_separation_window": {
+  "unit": "bars_on_the_records_own_grid",
+  "value": 6,
+  "cross_grid_merge": {
+   "rule": "same mechanism_id and |dt| <= 2h -> one cross_grid_event",
+   "value_hours": 2
+  }
+ },
+ "minimum_independent_events": 8,
+ "stability_windows": {
+  "split": "event time thirds",
+  "names": [
+   "EARLY",
+   "MIDDLE",
+   "LATE"
+  ],
+  "rules": {
+   "HIGH": "all three non-empty and no third > 70% of events",
+   "MEDIUM": "two thirds non-empty",
+   "LOW": "otherwise"
+  }
+ },
+ "counter_evidence_rules": {
+  "artifact_codes": [
+   "C01",
+   "C02",
+   "C03"
+  ],
+  "fatal_codes": [
+   "C08"
+  ],
+  "severity": "HIGH if any artifact code or C07 dominates; MEDIUM for C04/C05/C06/C09; LOW otherwise",
+  "strongest_counter_evidence_required": true,
+  "count_alone_is_not_enough": true
+ },
+ "artifact_rules": {
+  "checks": [
+   "timestamp artifact",
+   "bar construction artifact",
+   "proxy artifact",
+   "source artifact",
+   "selection artifact",
+   "duplicate detection"
+  ],
+  "proxy_dependency_high_when": "the only cross-market confirmation is UST10Y_PROXY (^TNX)",
+  "artifact_first": "if the best explanation is a data artifact -> REJECTED or UNCERTAIN, never CANDIDATE"
+ },
+ "candidate_entry_rules": {
+  "requires": [
+   "MECHANISM_SUPPORTED",
+   "independent_event_count >= minimum_independent_events",
+   "artifact_risk != HIGH",
+   "strongest_counter_evidence != C08"
+  ],
+  "thresholds_frozen_before_run": true
+ },
+ "negative_control_definition": {
+  "method": "shuffle the detected_at timestamps across opportunities (types and feature values kept), rebuild clusters and events, re-decide",
+  "pass_if": "SUPPORTED count is not materially above the real run",
+  "no_future_return": true
+ },
+ "response_observation": {
+  "window_bars": 3,
+  "excluded_from_decision": true,
+  "reason": "post-event data is descriptive only; keeping it out of the decision makes historical decisions stable under truncation"
+ },
+ "causality_levels": [
+  "CO_MOVEMENT",
+  "TEMPORAL_PRECEDENCE",
+  "MECHANISTIC_HYPOTHESIS",
+  "CAUSALITY_UNPROVEN"
+ ],
+ "causality_default": "CO_MOVEMENT for same-bar external/XAU observations; TEMPORAL_PRECEDENCE requires strict timestamp ordering, which a bar-aligned grid cannot demonstrate",
+ "forbidden_identifiers": [
+  "future_return",
+  "future_pnl",
+  "pnl",
+  "win_rate",
+  "sharpe",
+  "profit_factor",
+  "expected_profit",
+  "expected_return",
+  "profit_score",
+  "win_probability",
+  "order_send",
+  "order_check",
+  "metatrader5",
+  "broker",
+  "execution"
+ ],
+ "lifecycle": {
+  "DISCOVERED": [],
+  "UNDER_REVIEW": [],
+  "SUPPORTED": [],
+  "UNCERTAIN": [],
+  "REJECTED": [],
+  "SUPERSEDED": []
+ }
+}

@@ -1,0 +1,94 @@
+{
+  "forecast_id": "HERMES_A_R5_20260912",
+  "timestamp": "2026-09-12T12:00:00Z",
+  "observations": [
+    {"observation": "XAUUSD last close 4347.508 (2026-09-11 21:59 UTC), inside swing-high level SWING_HIGH_40043 at 4349.728; distance 0.31 ATR, break_status INSIDE, reclaim_status NONE", "status": "SUPPORTED"},
+    {"observation": "Frozen behavior label COMPRESSION with event VOL_CONTRACTION at t; dwell 1 bar; current state derived via frozen C1 labeler + min-dwell lifecycle", "status": "SUPPORTED"},
+    {"observation": "ambiguity_rate_8 = 0.875: state sequence over last 8 steps is highly ambiguous", "status": "SUPPORTED"},
+    {"observation": "Multi-timeframe agreement CONFLICT: M1/M5/M15 trend_20 negative; H1 trend_20 positive (+18.25) but trend_50 -68.3; H4 trend_20 negative (-27.9) but trend_50 positive (+18.8)", "status": "SUPPORTED"},
+    {"observation": "Cross-market series (DXY, VIX, UST10Y_PROXY_TNX) unavailable/UNKNOWN; GLD, GC, CFTC_COT, ETF_FLOWS, NEWS, MACRO_EVENTS absent", "status": "SUPPORTED"},
+    {"observation": "L4 mechanism candidates: trend_continuation with supporting evidence 'price inside level, 8-bar displacement 0.723' — CANDIDATE only, not asserted", "status": "POSSIBLE"},
+    {"observation": "3 historical analogs (A22271, A28461, A34291) all COMPRESSION at t0, dwelling in COMPRESSION through step 8-12, evolving to REJECTION by step 12-16; state evolution only, no returns", "status": "WEAK"}
+  ],
+  "what_i_know": [
+    "Price geometry only: M1 21:59 bar closed 4347.508 with a bearish body after testing 4349.275; M1 range_expanding but M5/M15/H1 range_contracting",
+    "Nearest L2 level is a swing high at 4349.728, touched 33 times in 240 bars, age 42 bars, price inside the level at 0.31 ATR distance",
+    "State machine labels COMPRESSION / VOL_CONTRACTION at t, preceded by NO_DEFINED_STATE(3-5) -> TREND(1-2) -> REJECTION(1-2) -> COMPRESSION(1)",
+    "All quality labels are RAW_GEOMETRY + DERIVED; nothing direct beyond price/levels/state",
+    "L4 supplies mechanism CANDIDATES only; §13 forbids asserting them as fact"
+  ],
+  "what_i_do_not_know": [
+    "Any cross-market driver: DXY, VIX, UST10Y, COT, ETF flows, news, macro events are unavailable (UNKNOWN) — these are PROXY gaps, not filled by anything",
+    "Why volatility contracted (fundamental/flow cause unknown); VOL_CONTRACTION is a derived label, not an explanation",
+    "Direction of the eventual compression resolution — geometry alone does not determine it",
+    "Whether the 0.875 ambiguity rate invalidates the COMPRESSION label reliability at t",
+    "Future price path beyond context cut-off (2026-09-11 21:59 UTC); analogs carry no returns/PnL and cannot imply outcomes"
+  ],
+  "evidence": [
+    "Price is inside the active swing-high level 4349.728 (0.31 ATR below), break_status INSIDE — level is live and proximal (SUPPORTED)",
+    "M5/M15/H1 recent trend_20 negative and H4 trend_20 negative: short/medium-term drift is down (SUPPORTED, derived)",
+    "State COMPRESSION + VOL_CONTRACTION with range contraction on M5/M15/H1 supports low-volatility consolidation (SUPPORTED as label, mechanism not asserted)",
+    "Historical analogs persist in COMPRESSION for 8-12 steps then flip to REJECTION — consistent with continued compression short-term (WEAK: evolution only, no returns)",
+    "L4 candidate trend_continuation cites 8-bar displacement 0.723 at the level (POSSIBLE only, not asserted)"
+  ],
+  "counter_evidence": [
+    "H1 trend_20 is positive (+18.25) and H4 trend_50 positive (+18.8): the downward drift is not confirmed on all timeframes; agreement is CONFLICT (SUPPORTED)",
+    "Level has 33 touches in 240 bars — a well-respected level; repeated defense could also resolve upward through it (SUPPORTED)",
+    "M1 range is EXPANDING (not contracting) and showed 6 consecutive up bars into 21:57 before the last down bar — near-term momentum mixed (SUPPORTED)",
+    "ambiguity_rate_8 = 0.875 undermines confidence in any single state narrative (SUPPORTED)",
+    "Analogs at step 12-16 move to REJECTION, which in this context would argue AGAINST clean compression continuation (WEAK)"
+  ],
+  "possible_mechanisms": [
+    {"mechanism": "level_rejection_at_swing_high_4349.728", "status": "POSSIBLE", "why": "Price sits 0.31 ATR under a heavily-touched swing high with wick-heavy candles; but no order-flow, COT or cross-market evidence — cannot assert rejection"},
+    {"mechanism": "compression_breakout_direction_resolution", "status": "UNKNOWN", "why": "COMPRESSION/VOL_CONTRACTION implies eventual expansion, but direction is undetermined from geometry alone; all macro inputs absent"},
+    {"mechanism": "trend_continuation_up_after_level_break", "status": "POSSIBLE", "why": "L4 candidate mechanism names it (8-bar displacement 0.723, H1 trend_20 positive); candidate is NOT a fact conclusion"}
+  ],
+  "primary_scenario": {
+    "scenario": "Compression persists: price oscillates inside/near swing-high level 4349.728 with contracting ranges and no directional resolution over the near term",
+    "horizon": "4-24H",
+    "trigger": "VOL_CONTRACTION continues, range keeps contracting, price stays within ~0.3-1 ATR of 4349.728, no state transition with dwell >= 2",
+    "invalidation": "Decisive H4 close beyond 4349.728 (up) or below 4342.535 (down) with range expansion and exit from COMPRESSION"
+  },
+  "alternative_scenario": {
+    "scenario": "Rejection at SWING_HIGH_40043 followed by drift down toward 4342-4340 and below, consistent with the M5/M15/H4 negative trend_20 and analog evolution toward REJECTION",
+    "horizon": "4-24H",
+    "trigger": "Repeated wick-rejections at 4349.728, momentum turns down on M15/H1, state transitions to REJECTION with dwell >= 2",
+    "invalidation": "Sustained close above 4349.728 with reclaim_status change and range expansion upward"
+  },
+  "expected_transition": "COMPRESSION -> REJECTION or NO_DEFINED_STATE; direction of any resolution is unresolved from available data",
+  "direction_bias": "NO_DIRECTIONAL_EDGE",
+  "time_horizon": "4-24H",
+  "evidence_strength": 0.25,
+  "confidence": 0.2,
+  "uncertainty": 0.85,
+  "confidence_reason": "All inputs are RAW_GEOMETRY + DERIVED; no cross-market, news, macro, or flow data exists in context, and the single L4 mechanism is a candidate only. A complete geometric story does not raise confidence.",
+  "uncertainty_reason": "Multi-timeframe agreement is CONFLICT, state ambiguity_rate_8 is 0.875, cross-market series are entirely UNKNOWN, and the direction of compression resolution cannot be inferred — uncertainty is necessarily high.",
+  "invalidation": "H4 close beyond 4349.728 with range expansion (up) or below 4342.535 with range expansion (down), or a state transition to TREND/REJECTION with dwell >= 2",
+  "change_my_mind": [
+    "H4 close above 4349.728 with break_status leaving INSIDE and reclaim_status != NONE and range expansion -> flip toward UP bias",
+    "H4 close below 4342.535 with range expansion -> flip toward DOWN bias",
+    "State machine transition out of COMPRESSION (to TREND or REJECTION) with dwell >= 2",
+    "Cross-market series (DXY/VIX/UST10Y) becoming available and contradicting the consolidation read",
+    "Volatility expansion: M15 ATR returning toward prior ~7-11 level with a directional bar sequence"
+  ],
+  "abstain": true,
+  "abstain_reason": "Context is insufficient and self-contradictory for a directional stance: L6 agreement = CONFLICT, ambiguity_rate_8 = 0.875, cross-market/macro/news inputs are all UNKNOWN/absent, and the only mechanism is a non-asserted candidate. No directional edge can be claimed; abstaining from directional bias is the disciplined output.",
+  "questions": {
+    "Q1": "I know only what the context states: raw price geometry across M1-M4 (last close 4347.508), nearest swing-high level 4349.728 with break_status INSIDE, state COMPRESSION/VOL_CONTRACTION (derived), multi-timeframe agreement CONFLICT, all cross-market series unavailable, and mechanism candidates that are not facts.",
+    "Q2": "I do not know: cross-market/fundamental drivers (DXY, VIX, UST10Y, COT, ETF flows, news, macro — all UNKNOWN/absent, proxied by nothing), the cause of the volatility contraction, the direction of the eventual resolution, and whether the 0.875 ambiguity rate undermines the COMPRESSION label at t. All data is DERIVED/PROXY-grade, nothing DIRECT.",
+    "Q3": "Observations supporting the primary (compression continuation) scenario: price inside a live level at 0.31 ATR, VOL_CONTRACTION event, range contraction on M5/M15/H1, negative M5/M15/H4 trend_20, and analogs that dwell in COMPRESSION 8-12 steps.",
+    "Q4": "Observations against it: H1 trend_20 positive and H4 trend_50 positive (CONFLICT agreement), 33 level touches suggesting a well-respected level that could resolve upward, M1 range expanding with 6 consecutive up bars, 0.875 ambiguity, and analogs that eventually transition to REJECTION.",
+    "Q5": "The mechanism I am NOT entitled to assert is level rejection/mean reversion at SWING_HIGH_40043 (or, symmetrically, break-and-continue through it). It can only be POSSIBLE/WEAK from geometry; there is no flow, inventory, or fundamental evidence in context.",
+    "Q6": "Concrete evidence that would flip my view: a decisive H4 close above 4349.728 with reclaim_status change and range expansion (up), or below 4342.535 with range expansion (down); a state transition out of COMPRESSION with dwell >= 2; newly available cross-market series contradicting the consolidation read; or a volatility-expansion bar sequence on M15.",
+    "Q7": "should_i_abstain_now = true. The context is self-contradictory (CONFLICT multi-timeframe agreement, 0.875 ambiguity) and insufficient (no cross-market, macro, news, or flow data); asserting a directional bias would violate the observation-vs-conclusion separation discipline."
+  },
+  "reasoning_trace": [
+    "1. Read only the permitted PIT prompt and context; verified no future information was used.",
+    "2. Separated SUPPORTED observations (geometry, labels, level state) from POSSIBLE/WEAK (mechanisms, analog inference).",
+    "3. Recognized CONFLICT multi-timeframe agreement and 0.875 ambiguity as self-contradictory evidence.",
+    "4. Identified the swing-high 4349.728 (INSIDE, 0.31 ATR) as the single actionable structural anchor.",
+    "5. Declined to assert any direction; set direction_bias NO_DIRECTIONAL_EDGE and abstain=true.",
+    "6. Built primary (compression persists) and alternative (rejection/down-drift) scenarios with explicit triggers and invalidations.",
+    "7. Calibrated evidence_strength 0.25 / confidence 0.2 / uncertainty 0.85 to the DERIVED-only, cross-market-empty data quality."
+  ]
+}

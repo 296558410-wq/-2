@@ -1,0 +1,77 @@
+{
+ "forecast_id": "HERMES_PO_20260831T120000Z",
+ "timestamp": "2026-08-31 12:00:00+00:00",
+ "current_state": "Price ~4454.8 (12:00 UTC) inside a multi-hour rebound from a sharp H4 selloff (00:00 H4 bar high 4471.775 -> low 4396.145; 07:00 H1 low 4429.075). H1 closes recovered 4439 -> 4443 -> 4435 -> 4445 -> 4453 -> 4455. At 12:00, M1/M5 close bullish near session highs, but M15 (upper wick 3.79, gravestone at 4457.445) and H1 (upper wick 8.76 at 4463.855) show strong rejection overhead. Volatility is compressing (falling ATR, low range percentiles). NOTE: current H4 bar (close 4431.495, low 4415.575) is internally inconsistent with M1/M5/M15/H1 closes (~4453-4456); treated as UNKNOWN data anomaly, excluded from the price read.",
+ "dominant_structure": "Range / mean-reverting rebound after volatility expansion. A sharp downside leg (4471.775 -> 4396.145) was followed by a recovery/repair advance now stalling at a supply zone (4457-4466). Structure is a broad range (~4396-4472) with compression building, not a clean directional trend. Liquidity/order-flow structure is UNKNOWN (price-only variant); upper wicks are DIRECT price geometry evidence of rejection.",
+ "current_pressure": "Directional: lower-TF up-momentum (M1/M5 bullish closes) colliding with overhead supply at 4457-4466 (M15/H1 long upper wicks) -> netting to a stalled/balanced state. Volatility: falling ATR across timeframes (H1 29.99->24.46; M15 8.47->6.84; M5 3.78->3.44) and low range percentiles (M5 0.185, M15 0.095, H1 0.18) = compression after expansion; a breakout leg may be building. Liquidity-proxy: UNKNOWN (no volume/order-flow in price-only variant); wicks read only as price-geometry rejection.",
+ "primary_scenario": {
+  "scenario": "Supply-zone stall -> shallow mean-reversion pullback: price fails to hold the 4457-4464 zone, pulls back to retest 4443-4450 (H1/M15 mid-range) while holding above 4433-4435, then re-tests 4457-4464. Net range-bound action inside 4433-4464 within the larger 4396-4472 range.",
+  "confidence": 0.5,
+  "horizon": "INTRADAY (next ~2-6 hours)",
+  "trigger": "M15 or H1 close below 4452 (current M1/M5 lows) with range expansion, or repeated upper-wick rejections at 4457-4464.",
+  "invalidation": "H1 or M15 close above 4464 (above the 4463.855 H1 high) with range expansion = supply broken, scenario switches to upside continuation."
+ },
+ "alternative_scenario": {
+  "scenario": "Upside continuation: buyers absorb the 4457-4466 supply, H1 closes above 4463.855 and price extends toward 4471-4475 (H4 high 4471.775).",
+  "confidence": 0.3,
+  "horizon": "INTRADAY",
+  "trigger": "M15 or H1 close above 4464 with expanding range and no long upper-wick rejection.",
+  "invalidation": "Another failure at 4457-4464 (new long upper wick / close back below 4452) -> reverts to primary pullback."
+ },
+ "third_scenario": {
+  "scenario": "Downside break of the rebound: price breaks below 4433-4435 (H1 low 4433.635), retests 4422-4415, and potentially the 4396.145 H4 low.",
+  "confidence": 0.2,
+  "horizon": "SHORT_TERM (next 6-24 hours)",
+  "trigger": "H1 close below 4433.6 with range expansion; or a break of the 4396.145 H4 low.",
+  "invalidation": "Price holds above 4443 and reclaims 4457-4464."
+ },
+ "direction_bias": "NEUTRAL",
+ "expected_state_transition": "From supply-zone stall to a shallow mean-reversion pullback toward 4443-4450 followed by a re-test of 4457-4464; net range-bound state inside the 4396-4472 range until a range expansion resolves direction.",
+ "time_horizon": "INTRADAY",
+ "confidence": 0.5,
+ "supporting_evidence": [
+  "DIRECT: H1 current bar range 11.6, body 1.44, body_ratio 0.124, upper wick 8.76 -> strong rejection at 4463.855.",
+  "DIRECT: M15 current bar body_ratio 0.0246 with upper wick 3.79 (gravestone doji) -> rejection at 4457.445.",
+  "DIRECT: H1 sequence of rising closes 4439.025 -> 4443.045 -> 4435.375 -> 4445.335 -> 4453.665 -> 4455.095 = persistent recovery from the selloff.",
+  "DERIVED: Volatility compression - ATR falling (H1 29.991 -> 24.458; M15 8.467 -> 6.839) and low range percentiles (M5 0.185, M15 0.095, H1 0.18) after the 00:00 H4 expansion bar (range_percentile 0.97).",
+  "DERIVED: H4 00:00 bar wide range 75.63 with long lower wick 26.34 marks the 4396.145 low; subsequent H1 bars recover, consistent with a mean-reverting rebound."
+ ],
+ "counter_evidence": [
+  "DIRECT: M1/M5 at 12:00 close near their highs with bullish bodies (M5 body_ratio 0.66, range_percentile 0.185) - short-term buyers still active.",
+  "DIRECT: 10:00 H1 was a near-marubozu bullish bar (body_ratio 0.96, upper wick 0.0) and 08:00 H4 closed up at 4453.665 - dip-buying demonstrated.",
+  "DIRECT: M1 current bar upper wick 0.01, lower wick 0.31 - no intra-minute rejection at the last print.",
+  "UNKNOWN/anomaly: current H4 bar (close 4431.495, low 4415.575) is internally inconsistent with M1/M5/M15/H1 closes (~4453-4456); the apparent H4-level lower-wick rejection may be a data artifact and weakens the H4 supply read.",
+  "PROXY-inference caveat: no volume/order-flow/news in this variant; the 'supply at 4457-4466' reading is inferred from price geometry only, not DIRECT liquidity evidence."
+ ],
+ "trigger": "M15 or H1 close below 4452 with range expansion, or repeated upper-wick rejection at 4457-4464.",
+ "invalidation": "H1/M15 close above 4463.855-4464 (supply broken -> upside continuation) OR a decisive break below 4433.6 with expansion (downside-break scenario).",
+ "change_my_mind": [
+  "H1 or M15 close above 4464 with range expansion (no long upper wick) would flip me to a bullish continuation read toward 4471-4475.",
+  "Repeated M15/H1 closes above 4457 with shrinking upper wicks would flip the primary scenario to upside continuation.",
+  "A close below 4396.145 (H4 low) would flip me to a confirmed downside-trend (breakdown) read.",
+  "Any DIRECT volume/order-flow or news/fundamental data would upgrade my supply-zone interpretation from price-geometry inference to DIRECT evidence and likely raise confidence."
+ ],
+ "abstain": false,
+ "abstain_reason": "",
+ "reasoning_trace": [
+  "Read frozen prompt and PIT price-only context; only Layer 1 K-line geometry provided, no structure/behaviour/mechanism/state-history/cross-market.",
+  "Flagged current H4 bar as internally inconsistent (close 4431.495 vs live ~4454.8 across M1/M5/M15/H1); treated as UNKNOWN anomaly and excluded from the live price read.",
+  "Reconstructed price path: 00:00 H4 wide bearish expansion (4471.775 -> 4396.145, range_percentile 0.97), then H1 recovery 4439 -> 4455 with 07:00 dip-low 4429.075.",
+  "Detected overhead rejection via price geometry: M15 gravestone at 4457.445, H1 upper wick 8.76 at 4463.855; lower TFs (M1/M5) still bid at 12:00.",
+  "Observed volatility compression (falling ATR, low range percentiles across M5/M15/H1) consistent with structure-building after expansion.",
+  "Formed range-bound primary scenario (pullback to 4443-4450 then re-test of 4457-4464) with NEUTRAL bias, confidence 0.5; invalidation above 4464 or below 4433.6; kept all non-price dimensions tagged UNKNOWN.",
+  "Decided against abstention: sufficient price-geometry evidence exists for a structural/scenario forecast with NO future information and no invented data."
+ ],
+ "questions": {
+  "A": "Current market (12:00 UTC, price ~4454.8): a multi-hour rebound from a sharp H4 selloff that printed 4396.145 (00:00 bar). H1 closes recovered 4439 -> 4455. At the print, M1/M5 close bullish near highs while M15 (upper wick 3.79) and H1 (upper wick 8.76) reject at 4457-4464. Volatility is compressing (falling ATR, low range percentiles). Anomaly: the current H4 bar (close 4431.495, low 4415.575) contradicts the M1/M5/M15/H1 closes (~4453-4456) and is treated as UNKNOWN/artifact.",
+  "B": "Dominant structure: a mean-reverting RANGE (approx 4396-4472) after a volatility-expansion selloff. The rebound is stalling at a supply zone (4457-4466) with compression building; not a clean trend at higher timeframe.",
+  "C": "Pressures: (1) directional - lower-TF up-momentum colliding with overhead supply at 4457-4466, netting to a stall/balance; (2) volatility - compression after expansion (ATR down across TFs, low range percentiles), suggesting an imminent range expansion; (3) liquidity-proxy - UNKNOWN (no volume/order-flow in price-only variant); supply read is price-geometry inference only.",
+  "D": "Mechanisms: (1) mean reversion within a range after a volatility spike - supported by H4 wide bars followed by H1/H5 compression; (2) supply absorption/distribution at 4457-4466 - supported at price-geometry level (long upper wicks, near-flat bodies near the zone); (3) lower-TF trend continuation - partially supported (M1/M5 momentum) but contradicted by higher-TF rejection; (4) fundamental/news-driven mechanism - UNKNOWN, cannot be tested in price-only variant.",
+  "E": "Strongest evidence: (1) H1 current bar upper wick 8.76 with body only 1.44 (rejection at 4463.855); (2) M15 gravestone doji body_ratio 0.0246, upper wick 3.79 (rejection at 4457.445); (3) rising H1 closes 4439 -> 4455 showing persistent recovery; (4) compression - ATR falling (H1 29.99 -> 24.46) and low range percentiles (M5 0.185, M15 0.095, H1 0.18).",
+  "F": "Counter-evidence: (1) M1/M5 bullish closes at session highs at 12:00 - short-term buyers active; (2) 10:00 H1 near-marubozu (body_ratio 0.96) and 08:00 H4 up-close - dip-buying proven; (3) M1 upper wick near zero at the last print - no intra-minute rejection; (4) the anomalous current H4 bar may be an artifact that weakens the H4-level supply reading; (5) all supply interpretation is price-geometry PROXY-inference, not DIRECT liquidity evidence.",
+  "G": "Primary scenario: stall at supply then a shallow mean-reversion pullback to 4443-4450, holding above 4433-4435, then a re-test of 4457-4464; range-bound inside 4433-4464 / larger 4396-4472.",
+  "H": "Alternative: upside continuation - buyers absorb the 4457-4466 supply, H1 closes above 4463.855 and price extends toward 4471-4475 (H4 high 4471.775). Second alternative (third_scenario): downside break of the rebound below 4433-4435 toward 4422-4415 and potentially the 4396.145 H4 low.",
+  "I": "Invalidation: H1 or M15 close above 4464 (supply broken -> bullish continuation), OR a decisive break below 4433.6 with expansion (downside-break scenario). The primary scenario is also invalid if the current H4 bar proves correct (price at ~4431), which would mean the M1/M5/M15/H1 stack is the artifact instead.",
+  "J": "Would change my mind: (1) H1/M15 close above 4464 with expansion -> bullish continuation; (2) repeated closes above 4457 with shrinking upper wicks -> upside continuation; (3) close below 4396.145 -> confirmed breakdown; (4) any DIRECT volume/order-flow or fundamental data -> upgrades the supply read from inference to DIRECT evidence and adjusts confidence."
+ }
+}

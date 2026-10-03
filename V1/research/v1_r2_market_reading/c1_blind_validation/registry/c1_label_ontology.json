@@ -1,0 +1,579 @@
+{
+ "version": "c1-label-ontology-r1",
+ "frozen": true,
+ "levels": {
+  "L0_EVENT": [
+   "CANDLE_EVENT",
+   "TOUCH_EVENT",
+   "BREAK_ATTEMPT",
+   "BREAK_ACCEPTANCE",
+   "BREAK_REJECTION",
+   "BREAK_CONFIRMED",
+   "FAILED_BREAK",
+   "RETEST",
+   "EXHAUSTION",
+   "REJECTION",
+   "ACCEPTANCE",
+   "ROTATION"
+  ],
+  "L1_MARKET_BEHAVIOR": [
+   "TREND",
+   "RANGE",
+   "COMPRESSION",
+   "EXPANSION",
+   "ACCELERATION",
+   "DECELERATION",
+   "EXHAUSTION",
+   "REJECTION",
+   "ACCEPTANCE",
+   "ROTATION",
+   "BREAKOUT_ATTEMPT",
+   "BREAKOUT_CONFIRMATION",
+   "BREAKOUT_FAILURE",
+   "RETEST",
+   "REVERSAL_ATTEMPT"
+  ],
+  "L2_PRICE_STRUCTURE": [
+   "UNTESTED",
+   "APPROACH",
+   "FIRST_TEST",
+   "REPEATED_TEST",
+   "BREAK_ATTEMPT",
+   "ACCEPTANCE",
+   "REJECTION",
+   "BREAK_CONFIRMED",
+   "FAILED_BREAK",
+   "RETEST",
+   "RESOLVED"
+  ],
+  "L2_TOUCH_SUBSTATE": [
+   "NO_TOUCH",
+   "FIRST_TOUCH",
+   "REPEATED_TOUCH"
+  ],
+  "L3_MARKET_STATE_FIELDS": [
+   "REGIME",
+   "TREND",
+   "MOMENTUM",
+   "PRICE_STRUCTURE",
+   "VOLATILITY",
+   "CANDLE_STRUCTURE",
+   "MARKET_BEHAVIOR",
+   "MECHANISM",
+   "CONFIDENCE"
+  ],
+  "L4_TRANSITION": [
+   "RANGE->BREAKOUT_ATTEMPT->BREAKOUT_CONFIRMATION",
+   "RANGE->BREAKOUT_ATTEMPT->BREAKOUT_FAILURE",
+   "RANGE->REJECTION",
+   "RANGE->ROTATION",
+   "RANGE->RETEST->BREAKOUT_CONFIRMATION",
+   "TREND->ACCELERATION->TREND",
+   "TREND->DECELERATION->EXHAUSTION",
+   "TREND->DECELERATION->TREND",
+   "TREND->REVERSAL_ATTEMPT",
+   "COMPRESSION->EXPANSION->BREAKOUT_ATTEMPT",
+   "COMPRESSION->ROTATION",
+   "EXPANSION->TREND",
+   "EXPANSION->EXHAUSTION",
+   "BREAKOUT_ATTEMPT->BREAKOUT_CONFIRMATION",
+   "BREAKOUT_ATTEMPT->BREAKOUT_FAILURE",
+   "BREAKOUT_CONFIRMATION->RETEST->ACCEPTANCE",
+   "BREAKOUT_CONFIRMATION->BREAKOUT_FAILURE",
+   "BREAKOUT_FAILURE->RETEST",
+   "BREAKOUT_FAILURE->REVERSAL_ATTEMPT",
+   "EXHAUSTION->REVERSAL_ATTEMPT",
+   "REVERSAL_ATTEMPT->TREND",
+   "ACCEPTANCE->TREND",
+   "REJECTION->RANGE",
+   "ROTATION->BREAKOUT_ATTEMPT",
+   "NO_DEFINED_STATE"
+  ],
+  "L5_FORECAST_FIELDS": [
+   "CURRENT_STATE",
+   "PREDICTED_NEXT_STATE",
+   "PREDICTED_TRANSITION",
+   "PREDICTED_DIRECTION",
+   "PREDICTED_HORIZON",
+   "INVALIDATION"
+  ],
+  "MECHANISM": [
+   "TREND_CONTINUATION",
+   "BREAKOUT_ACCEPTANCE",
+   "BREAKOUT_FAILURE",
+   "MEAN_REVERSION",
+   "EXHAUSTION",
+   "LIQUIDITY_WITHDRAWAL",
+   "ABSORPTION",
+   "ROTATION",
+   "ACCUMULATION_PROXY",
+   "DISTRIBUTION_PROXY"
+  ],
+  "COUNTER_TYPES": [
+   "MOMENTUM_OPPOSITE",
+   "STRUCTURE_OPPOSITE",
+   "VOLATILITY_OPPOSITE",
+   "EVIDENCE_MISSING",
+   "NONE"
+  ],
+  "INVALIDATION_TYPES": [
+   "LEVEL_BREAK",
+   "LEVEL_RECLAIM",
+   "MOMENTUM_FLIP",
+   "REGIME_CHANGE",
+   "HORIZON_EXPIRY",
+   "STRUCTURE_RESOLVED"
+  ]
+ },
+ "state_field_enums": {
+  "REGIME": [
+   "TREND",
+   "RANGE",
+   "COMPRESSION",
+   "EXPANSION",
+   "REVERSAL",
+   "EVENT_DRIVEN",
+   "INSUFFICIENT_DATA",
+   "CONFLICTING_EVIDENCE",
+   "AMBIGUOUS_STATE",
+   "UNOBSERVABLE_PREREQUISITE",
+   "NO_DEFINED_STATE",
+   "LOW_CONFIDENCE"
+  ],
+  "TREND": [
+   "UP",
+   "DOWN",
+   "NEUTRAL",
+   "INSUFFICIENT_DATA",
+   "CONFLICTING_EVIDENCE",
+   "AMBIGUOUS_STATE",
+   "UNOBSERVABLE_PREREQUISITE",
+   "NO_DEFINED_STATE",
+   "LOW_CONFIDENCE"
+  ],
+  "MOMENTUM": [
+   "ACCELERATING",
+   "NORMAL",
+   "DECELERATING",
+   "EXHAUSTING",
+   "INSUFFICIENT_DATA",
+   "CONFLICTING_EVIDENCE",
+   "AMBIGUOUS_STATE",
+   "UNOBSERVABLE_PREREQUISITE",
+   "NO_DEFINED_STATE",
+   "LOW_CONFIDENCE"
+  ],
+  "PRICE_STRUCTURE": [
+   "UNTESTED",
+   "APPROACH",
+   "FIRST_TEST",
+   "REPEATED_TEST",
+   "BREAK_ATTEMPT",
+   "ACCEPTANCE",
+   "REJECTION",
+   "BREAK_CONFIRMED",
+   "FAILED_BREAK",
+   "RETEST",
+   "RESOLVED",
+   "INSUFFICIENT_DATA",
+   "CONFLICTING_EVIDENCE",
+   "AMBIGUOUS_STATE",
+   "UNOBSERVABLE_PREREQUISITE",
+   "NO_DEFINED_STATE",
+   "LOW_CONFIDENCE"
+  ],
+  "VOLATILITY": [
+   "COMPRESSION",
+   "NORMAL",
+   "EXPANSION",
+   "INSUFFICIENT_DATA",
+   "CONFLICTING_EVIDENCE",
+   "AMBIGUOUS_STATE",
+   "UNOBSERVABLE_PREREQUISITE",
+   "NO_DEFINED_STATE",
+   "LOW_CONFIDENCE"
+  ],
+  "CANDLE_STRUCTURE": [
+   "NEUTRAL",
+   "ENGULFING",
+   "INDECISION",
+   "REJECTION",
+   "INSUFFICIENT_DATA",
+   "CONFLICTING_EVIDENCE",
+   "AMBIGUOUS_STATE",
+   "UNOBSERVABLE_PREREQUISITE",
+   "NO_DEFINED_STATE",
+   "LOW_CONFIDENCE"
+  ],
+  "MARKET_BEHAVIOR": [
+   "TREND",
+   "RANGE",
+   "COMPRESSION",
+   "EXPANSION",
+   "ACCELERATION",
+   "DECELERATION",
+   "EXHAUSTION",
+   "REJECTION",
+   "ACCEPTANCE",
+   "ROTATION",
+   "BREAKOUT_ATTEMPT",
+   "BREAKOUT_CONFIRMATION",
+   "BREAKOUT_FAILURE",
+   "RETEST",
+   "REVERSAL_ATTEMPT",
+   "INSUFFICIENT_DATA",
+   "CONFLICTING_EVIDENCE",
+   "AMBIGUOUS_STATE",
+   "UNOBSERVABLE_PREREQUISITE",
+   "NO_DEFINED_STATE",
+   "LOW_CONFIDENCE",
+   "NOT_APPLICABLE"
+  ],
+  "MECHANISM": [
+   "TREND_CONTINUATION",
+   "BREAKOUT_ACCEPTANCE",
+   "BREAKOUT_FAILURE",
+   "MEAN_REVERSION",
+   "EXHAUSTION",
+   "LIQUIDITY_WITHDRAWAL",
+   "ABSORPTION",
+   "ROTATION",
+   "ACCUMULATION_PROXY",
+   "DISTRIBUTION_PROXY",
+   "UNRESOLVED",
+   "INSUFFICIENT_DATA",
+   "CONFLICTING_EVIDENCE",
+   "AMBIGUOUS_STATE",
+   "UNOBSERVABLE_PREREQUISITE",
+   "NO_DEFINED_STATE",
+   "LOW_CONFIDENCE"
+  ],
+  "CONFIDENCE": [
+   "HIGH",
+   "MEDIUM",
+   "LOW",
+   "UNCERTAIN"
+  ]
+ },
+ "direction_enum": [
+  "UP",
+  "DOWN",
+  "NEUTRAL",
+  "INSUFFICIENT_DATA",
+  "CONFLICTING_EVIDENCE",
+  "AMBIGUOUS_STATE",
+  "UNOBSERVABLE_PREREQUISITE",
+  "NO_DEFINED_STATE",
+  "LOW_CONFIDENCE"
+ ],
+ "unknown_enums_unified": [
+  "INSUFFICIENT_DATA",
+  "CONFLICTING_EVIDENCE",
+  "AMBIGUOUS_STATE",
+  "UNOBSERVABLE_PREREQUISITE",
+  "NO_DEFINED_STATE",
+  "LOW_CONFIDENCE"
+ ],
+ "not_applicable": "NOT_APPLICABLE",
+ "legacy_to_canonical": {
+  "CONTINUATION": "TREND",
+  "HOLD": "RANGE",
+  "REVERSION": "REVERSAL_ATTEMPT",
+  "BREAKOUT": "BREAKOUT_CONFIRMATION",
+  "BREAKDOWN": "BREAKOUT_CONFIRMATION",
+  "UNKNOWN": "NO_DEFINED_STATE",
+  "FAILED_BREAKOUT": "BREAKOUT_FAILURE",
+  "FAILED_BREAKDOWN": "BREAKOUT_FAILURE",
+  "BREAK_FAIL": "BREAKOUT_FAILURE",
+  "FAILED_BREAK": "BREAKOUT_FAILURE",
+  "PENETRATION": "BREAKOUT_ATTEMPT",
+  "RECLAIM": "BREAKOUT_FAILURE",
+  "EXHAUSTION": "EXHAUSTION"
+ },
+ "non_lifecycle_classification": {
+  "PENETRATION": "SUBSTATE",
+  "EXHAUSTION": "SUBSTATE",
+  "RECLAIM": "DERIVED_STATE",
+  "TOUCH": "SUBSTATE",
+  "CANDLE_EVENT": "EVENT",
+  "TOUCH_EVENT": "EVENT"
+ },
+ "derived_labels": {
+  "STRONG_BREAKOUT": {
+   "equals": [
+    "BREAK_CONFIRMED",
+    "ACCELERATION"
+   ],
+   "level": "L1",
+   "status": "REGISTERED_DERIVED"
+  },
+  "WEAK_BREAKOUT": {
+   "equals": [
+    "BREAK_ATTEMPT",
+    "DECELERATION"
+   ],
+   "level": "L1",
+   "status": "REGISTERED_DERIVED"
+  }
+ },
+ "allowed_evaluation_equivalence": [
+  [
+   "BREAKOUT_FAILURE",
+   "FAILED_BREAK"
+  ],
+  [
+   "ACCEPTANCE",
+   "ACCEPTANCE_AFTER_TOUCH"
+  ],
+  [
+   "REJECTION",
+   "REJECTION_AFTER_TOUCH"
+  ],
+  [
+   "BREAKATTEMPT_ALIAS",
+   "BREAK_ATTEMPT"
+  ]
+ ],
+ "cross_level_qualified_ids": {
+  "L1:TREND": {
+   "bare_name": "TREND",
+   "level": "L1",
+   "qualified_id": "L1:TREND",
+   "auto_equate": false
+  },
+  "L1:RANGE": {
+   "bare_name": "RANGE",
+   "level": "L1",
+   "qualified_id": "L1:RANGE",
+   "auto_equate": false
+  },
+  "L1:COMPRESSION": {
+   "bare_name": "COMPRESSION",
+   "level": "L1",
+   "qualified_id": "L1:COMPRESSION",
+   "auto_equate": false
+  },
+  "L1:EXPANSION": {
+   "bare_name": "EXPANSION",
+   "level": "L1",
+   "qualified_id": "L1:EXPANSION",
+   "auto_equate": false
+  },
+  "L1:ACCELERATION": {
+   "bare_name": "ACCELERATION",
+   "level": "L1",
+   "qualified_id": "L1:ACCELERATION",
+   "auto_equate": false
+  },
+  "L1:DECELERATION": {
+   "bare_name": "DECELERATION",
+   "level": "L1",
+   "qualified_id": "L1:DECELERATION",
+   "auto_equate": false
+  },
+  "L1:EXHAUSTION": {
+   "bare_name": "EXHAUSTION",
+   "level": "L1",
+   "qualified_id": "L1:EXHAUSTION",
+   "auto_equate": false
+  },
+  "L1:REJECTION": {
+   "bare_name": "REJECTION",
+   "level": "L1",
+   "qualified_id": "L1:REJECTION",
+   "auto_equate": false
+  },
+  "L1:ACCEPTANCE": {
+   "bare_name": "ACCEPTANCE",
+   "level": "L1",
+   "qualified_id": "L1:ACCEPTANCE",
+   "auto_equate": false
+  },
+  "L1:ROTATION": {
+   "bare_name": "ROTATION",
+   "level": "L1",
+   "qualified_id": "L1:ROTATION",
+   "auto_equate": false
+  },
+  "L1:BREAKOUT_ATTEMPT": {
+   "bare_name": "BREAKOUT_ATTEMPT",
+   "level": "L1",
+   "qualified_id": "L1:BREAKOUT_ATTEMPT",
+   "auto_equate": false
+  },
+  "L1:BREAKOUT_CONFIRMATION": {
+   "bare_name": "BREAKOUT_CONFIRMATION",
+   "level": "L1",
+   "qualified_id": "L1:BREAKOUT_CONFIRMATION",
+   "auto_equate": false
+  },
+  "L1:BREAKOUT_FAILURE": {
+   "bare_name": "BREAKOUT_FAILURE",
+   "level": "L1",
+   "qualified_id": "L1:BREAKOUT_FAILURE",
+   "auto_equate": false
+  },
+  "L1:RETEST": {
+   "bare_name": "RETEST",
+   "level": "L1",
+   "qualified_id": "L1:RETEST",
+   "auto_equate": false
+  },
+  "L1:REVERSAL_ATTEMPT": {
+   "bare_name": "REVERSAL_ATTEMPT",
+   "level": "L1",
+   "qualified_id": "L1:REVERSAL_ATTEMPT",
+   "auto_equate": false
+  },
+  "L2:UNTESTED": {
+   "bare_name": "UNTESTED",
+   "level": "L2",
+   "qualified_id": "L2:UNTESTED",
+   "auto_equate": false
+  },
+  "L2:APPROACH": {
+   "bare_name": "APPROACH",
+   "level": "L2",
+   "qualified_id": "L2:APPROACH",
+   "auto_equate": false
+  },
+  "L2:FIRST_TEST": {
+   "bare_name": "FIRST_TEST",
+   "level": "L2",
+   "qualified_id": "L2:FIRST_TEST",
+   "auto_equate": false
+  },
+  "L2:REPEATED_TEST": {
+   "bare_name": "REPEATED_TEST",
+   "level": "L2",
+   "qualified_id": "L2:REPEATED_TEST",
+   "auto_equate": false
+  },
+  "L2:BREAK_ATTEMPT": {
+   "bare_name": "BREAK_ATTEMPT",
+   "level": "L2",
+   "qualified_id": "L2:BREAK_ATTEMPT",
+   "auto_equate": false
+  },
+  "L2:ACCEPTANCE": {
+   "bare_name": "ACCEPTANCE",
+   "level": "L2",
+   "qualified_id": "L2:ACCEPTANCE",
+   "auto_equate": false
+  },
+  "L2:REJECTION": {
+   "bare_name": "REJECTION",
+   "level": "L2",
+   "qualified_id": "L2:REJECTION",
+   "auto_equate": false
+  },
+  "L2:BREAK_CONFIRMED": {
+   "bare_name": "BREAK_CONFIRMED",
+   "level": "L2",
+   "qualified_id": "L2:BREAK_CONFIRMED",
+   "auto_equate": false
+  },
+  "L2:FAILED_BREAK": {
+   "bare_name": "FAILED_BREAK",
+   "level": "L2",
+   "qualified_id": "L2:FAILED_BREAK",
+   "auto_equate": false
+  },
+  "L2:RETEST": {
+   "bare_name": "RETEST",
+   "level": "L2",
+   "qualified_id": "L2:RETEST",
+   "auto_equate": false
+  },
+  "L2:RESOLVED": {
+   "bare_name": "RESOLVED",
+   "level": "L2",
+   "qualified_id": "L2:RESOLVED",
+   "auto_equate": false
+  },
+  "L0:CANDLE_EVENT": {
+   "bare_name": "CANDLE_EVENT",
+   "level": "L0",
+   "qualified_id": "L0:CANDLE_EVENT",
+   "auto_equate": false
+  },
+  "L0:TOUCH_EVENT": {
+   "bare_name": "TOUCH_EVENT",
+   "level": "L0",
+   "qualified_id": "L0:TOUCH_EVENT",
+   "auto_equate": false
+  },
+  "L0:BREAK_ATTEMPT": {
+   "bare_name": "BREAK_ATTEMPT",
+   "level": "L0",
+   "qualified_id": "L0:BREAK_ATTEMPT",
+   "auto_equate": false
+  },
+  "L0:BREAK_ACCEPTANCE": {
+   "bare_name": "BREAK_ACCEPTANCE",
+   "level": "L0",
+   "qualified_id": "L0:BREAK_ACCEPTANCE",
+   "auto_equate": false
+  },
+  "L0:BREAK_REJECTION": {
+   "bare_name": "BREAK_REJECTION",
+   "level": "L0",
+   "qualified_id": "L0:BREAK_REJECTION",
+   "auto_equate": false
+  },
+  "L0:BREAK_CONFIRMED": {
+   "bare_name": "BREAK_CONFIRMED",
+   "level": "L0",
+   "qualified_id": "L0:BREAK_CONFIRMED",
+   "auto_equate": false
+  },
+  "L0:FAILED_BREAK": {
+   "bare_name": "FAILED_BREAK",
+   "level": "L0",
+   "qualified_id": "L0:FAILED_BREAK",
+   "auto_equate": false
+  },
+  "L0:RETEST": {
+   "bare_name": "RETEST",
+   "level": "L0",
+   "qualified_id": "L0:RETEST",
+   "auto_equate": false
+  },
+  "L0:EXHAUSTION": {
+   "bare_name": "EXHAUSTION",
+   "level": "L0",
+   "qualified_id": "L0:EXHAUSTION",
+   "auto_equate": false
+  },
+  "L0:REJECTION": {
+   "bare_name": "REJECTION",
+   "level": "L0",
+   "qualified_id": "L0:REJECTION",
+   "auto_equate": false
+  },
+  "L0:ACCEPTANCE": {
+   "bare_name": "ACCEPTANCE",
+   "level": "L0",
+   "qualified_id": "L0:ACCEPTANCE",
+   "auto_equate": false
+  },
+  "L0:ROTATION": {
+   "bare_name": "ROTATION",
+   "level": "L0",
+   "qualified_id": "L0:ROTATION",
+   "auto_equate": false
+  }
+ },
+ "cross_level_rule": "same bare name at different levels is DESIGNED (task §2/§5/§12); it carries a level-qualified id and auto_equate=false; evaluation must go through the hierarchy, never by bare-name equality",
+ "eval_relations": [
+  "EXACT",
+  "EQUIVALENT",
+  "PARENT",
+  "CHILD",
+  "RELATED",
+  "CONFLICT",
+  "UNMAPPED"
+ ],
+ "r1_registry_hash": "752bf2273f6a509d343dca633860605f927850d85fc491e402f40318df168f68",
+ "r1_ontology_hash": "8436866dfe71030ba7be036b2d73904ed2f817aa52673a5e27d583e931c354d8"
+}

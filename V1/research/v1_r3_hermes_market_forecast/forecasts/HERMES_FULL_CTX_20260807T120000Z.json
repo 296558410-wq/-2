@@ -1,0 +1,83 @@
+{
+  "forecast_id": "HERMES_FULL_CTX_20260807T120000Z",
+  "timestamp": "2026-08-07T12:00:00Z",
+  "current_state": "EXPANSION (event ACCEPTANCE, dwell 4 bars; preceded by 4 bars REJECTION; ambiguity_rate_8 0.5)",
+  "dominant_structure": "Multi-timeframe bullish expansion driving price into a heavily-tested swing-high supply level. All timeframes show strongly positive trend_20 (M1 +3.27, M5 +16.66, M15 +36.86, H1 +87.44, H4 +287.69) with L6 agreement AGREE. Price sits INSIDE swing-high 4320.585 (distance 0.0588 ATR, 4 touches in 240 bars, break_status INSIDE, reclaim NONE). State machine shows REJECTION->EXPANSION transition with ACCEPTANCE at t, consistent with acceptance above the prior rejection zone but capped by the untested supply level.",
+  "current_pressure": "DIRECTIONAL UP: momentum and displacement (H1 8-bar displacement 14.12, H4 trend_20 +287.69), expanding ranges (M1/M5 current bar range_percentile 0.915/0.94), DXY drifting down (change_8 -0.069, PROXY). VOLATILITY: elevated and expanding (H4 range_percentile 0.945, M5 ATR 4.781 rising; H1 range_contracting=true suggests a squeeze/coiling at highs). LIQUIDITY-PROXY: swing-high 4320.585 with 4 touches = resting supply pool; large upper wicks (H4 30.39, H1 6.65, M15 6.03) indicate absorption overhead; absent order-flow/positioning data (no COT/ETF/GC), so liquidity read is level-based only.",
+  "primary_scenario": {
+    "scenario": "Acceptance holds and the 4320.585 swing high is reclaimed/cleared, extending the expansion toward the 4341-4372 supply band seen on H4; trend_20-positive momentum and the REJECTION->EXPANSION acceptance support continuation toward TREND state.",
+    "confidence": 0.55,
+    "horizon": "INTRADAY",
+    "trigger": "Sustained trade/close above 4320.585 (reclaim of the swing high) with range expansion on M5/M15; M1 continuing to print high-percentile bullish bodies.",
+    "invalidation": "Price fails to hold above the level and a decisive close below 4316.625 (current M1 low) or below 4300.825 (H4 current low) occurs; state transitions back to REJECTION."
+  },
+  "alternative_scenario": {
+    "scenario": "Rejection at the swing-high supply: 4320.585 (4 touches) holds as supply, upper-wick absorption (H4 wick 30.39 from 4371.695) caps price, and the market rolls back into the 4300-4283 demand zone (H4 low 4300.825, H1 08:00 low 4282.735), reverting to REJECTION as 2 of 3 historical analogs (A11710, A28608) show by steps 12-16.",
+    "confidence": 0.35,
+    "horizon": "INTRADAY",
+    "trigger": "Rejection bar (long upper wick / low body_ratio) printed at 4320-4327 zone, or an M5/M15 close back below 4316.6, or state transition EXPANSION->REJECTION.",
+    "invalidation": "A clean, expanding close above 4327.645 (H1 current high) with follow-through toward 4341+ invalidates the rejection case."
+  },
+  "third_scenario": {
+    "scenario": "Range expansion without directional resolution: wide two-sided trade between 4300.8 and 4327.6 (or wider toward 4341/4372 given H4 range_percentile 0.945) while the level break_status stays INSIDE and ambiguity_rate_8 stays ~0.5; expansion continues but direction stays unresolved.",
+    "confidence": 0.1,
+    "horizon": "INTRADAY",
+    "trigger": "Repeated upper and lower wicks around the 4320.585 level with no consecutive directional displacement.",
+    "invalidation": "A decisive level break in either direction with expanding single-sided bars."
+  },
+  "direction_bias": "UP",
+  "expected_state_transition": "EXPANSION persists, progressing toward TREND if 4320.585 is reclaimed with follow-through; risk of reversion to REJECTION if supply holds (analog-dominated path at steps 12-16).",
+  "time_horizon": "INTRADAY",
+  "confidence": 0.55,
+  "supporting_evidence": [
+    "L6 multi-timeframe agreement AGREE; trend_20 positive on all TFs (M1 +3.27, M5 +16.66, M15 +36.86, H1 +87.44, H4 +287.69) [DERIVED]",
+    "L3/L5: state EXPANSION with event ACCEPTANCE at t, following 4 bars of REJECTION (transition REJECTION->EXPANSION) [DERIVED]",
+    "M5 current bar: range_percentile 0.94, body 6.54 (body_ratio 0.873) - strong bullish displacement into the level [RAW_GEOMETRY + DERIVED]",
+    "M1 current bar: range_percentile 0.915, body 2.46 (body_ratio 0.752) - buying pressure at the level [RAW_GEOMETRY + DERIVED]",
+    "L2: level 4320.585 at distance 0.0588 ATR (price essentially AT the level), touch_count_240 4, break_status INSIDE - breakout territory [DERIVED]",
+    "L4 candidate trend_continuation: 8-bar displacement 14.12, price inside level [DERIVED]",
+    "DXY (PROXY) drifting lower: change_8 -0.069, change_32 -0.048 - mildly supportive backdrop",
+    "H4 current: bullish body +24.56 despite wide range (range_percentile 0.945) - expansion momentum dominant",
+    "Analog A20151: EXPANSION->TREND by step 16 (state-evolution only, no returns)"
+  ],
+  "counter_evidence": [
+    "L2: break_status INSIDE, reclaim_status NONE - the level has NOT been decisively broken despite 4 touches",
+    "H4 current bar: upper wick 30.39 from high 4371.695 - significant supply rejection overhead",
+    "M15 current bar: upper wick 6.03, body_ratio 0.35; H1 current: upper wick 6.65 with range_percentile 0.295 (low-energy bar at highs)",
+    "2 of 3 historical analogs (A11710, A28608) evolve EXPANSION->REJECTION by steps 12-16; A20151 only reaches TREND at step 16 [state-evolution only]",
+    "L5 ambiguity_rate_8 = 0.5 - mixed state history",
+    "H1 sequence_flags range_contracting=true - compression at highs could resolve either way",
+    "No confirmation data available: NEWS, MACRO_EVENTS, CFTC_COT, ETF_FLOWS, GC, GLD all absent (recorded as absent, not fabricated)"
+  ],
+  "trigger": "Sustained trade/close above swing-high 4320.585 with M5/M15 range expansion; DXY (PROXY) continuing softness.",
+  "invalidation": "Decisive close below 4316.625 (M1 low) or 4300.825 (H4 low) with expanding down bars; state transition EXPANSION->REJECTION.",
+  "change_my_mind": [
+    "A confirmed close below 4300.825 with expanding bearish displacement would flip me to DOWN",
+    "State transition to REJECTION with a bearish H1/H4 close and rising DXY (PROXY) would flip me to DOWN/NEUTRAL",
+    "Multiple consecutive M5/M15 bars with high range_percentile and low body_ratio at 4320-4327 (repeated rejection wicks) would downgrade the UP bias",
+    "VIX (PROXY) spiking or DXY (PROXY) strengthening materially would add counter-pressure",
+    "Emergence of any news/macro/positioning data (currently absent) contradicting the expansion reading"
+  ],
+  "abstain": false,
+  "abstain_reason": null,
+  "reasoning_trace": [
+    "Read PIT context only; no future data consulted. All tags respected: UST10Y not used (UNKNOWN/absent), DXY and VIX treated as PROXY only, H4/geometry marked DERIVED.",
+    "H1/H4 trend_20 strongly positive and MTF agreement AGREE -> dominant bias is up, but price is pinned INSIDE a 4-touch swing high (4320.585) with visible upper-wick supply (H4 30.39, M15 6.03).",
+    "State machine shows REJECTION->EXPANSION acceptance at t (dwell 4), while analogs split 2-to-1 toward eventual REJECTION by steps 12-16 - so the near-term continuation case is favored but the level is the swing factor.",
+    "Momentum (M1/M5 high-percentile bullish bodies, DXY drifting down) supports the primary UP scenario; the level's INSIDE status and rejection wicks cap confidence at 0.55.",
+    "Noted H4 'current' bar geometry (open 4316.745 matching 12:00 M1 open, yet high 4371.695/low 4300.825) is internally anomalous vs listed H1 constituents; treated as given DERIVED data, flagged only as caution, no fabrication.",
+    "No abstention: context is sufficient for a structural scenario forecast with explicit invalidation conditions."
+  ],
+  "questions": {
+    "A": "XAUUSD is in a strong multi-timeframe uptrend (trend_20 positive on all timeframes, MTF agreement AGREE) that has just completed a REJECTION->EXPANSION transition (event ACCEPTANCE, dwell 4). Price is trading essentially AT the swing-high supply level 4320.585 (distance 0.0588 ATR, 4 touches in 240 bars, break_status INSIDE). Near-term momentum is expanding (M1 and M5 current bars at range_percentile 0.915/0.94 with strong bullish bodies), while H4 shows a wide-range bar (percentile 0.945) with a large upper wick (30.39) off 4371.695, closing 4341.305. DXY (PROXY) is drifting down; VIX (PROXY) is low and flat. No news/macro/positioning data available.",
+    "B": "Dominant structure: bullish EXPANSION into a tested swing-high supply level (4320.585, SWING_HIGH_37751, 4 touches). The state machine labels ACCEPTANCE/EXPANSION after 4 bars of REJECTION; L6 shows all timeframes in positive trend alignment (AGREE). The structure is 'expansion toward resistance' - momentum up against a well-defined, repeatedly-tested level.",
+    "C": "Pressures: (1) Directional UP - positive displacement across TFs, H1 8-bar displacement 14.12, H4 trend_20 +287.69, DXY (PROXY) softening. (2) Volatility - elevated and expanding: H4 range_percentile 0.945, M5 ATR 4.781 rising, M1/M5 range_expanding=true; H1 range_contracting=true hints at intraday coiling at highs. (3) Liquidity-proxy - swing high 4320.585 with 4 touches represents resting supply; large upper wicks (H4 30.39, H1 6.65, M15 6.03) indicate absorption overhead; no order-flow/positioning series available.",
+    "D": "Candidate mechanisms: (1) trend_continuation - SUPPORTED by 8-bar displacement 14.12, price inside level, MTF agreement, momentum bars; listed as the L4 candidate with invalidation 'decisive break of the active level'. (2) Supply rejection/absorption at swing high - SUPPORTED by 4 touches, INSIDE status (no reclaim), large upper wicks on M15/H1/H4. (3) Expansion-then-pullback (two-sided wide range) - PARTIALLY supported by H4 current geometry (wide range, both wicks). Mechanisms are candidates only; both continuation and rejection are live, which is why confidence is capped.",
+    "E": "Strongest evidence: (1) L6 MTF agreement AGREE with all trend_20 strongly positive (H1 +87.44, H4 +287.69). (2) ACCEPTANCE/EXPANSION state after REJECTION->EXPANSION transition. (3) M5 current bar range_percentile 0.94 / body 6.54 and M1 range_percentile 0.915 - buying into the level. (4) Price at 0.0588 ATR from a 4-touch swing high (INSIDE) - breakout setup. (5) L4 trend_continuation candidate with 14.12 displacement. (6) DXY (PROXY) drifting lower.",
+    "F": "Counter-evidence: (1) break_status INSIDE / reclaim NONE - level not decisively broken despite 4 touches. (2) H4 current upper wick 30.39 (rejection from 4371.695); M15 upper wick 6.03, body_ratio 0.35. (3) H1 current bar range_percentile 0.295 - low energy at highs. (4) 2 of 3 analogs (A11710, A28608) resolve to REJECTION by steps 12-16. (5) ambiguity_rate_8 = 0.5. (6) H1 range_contracting=true - compression can resolve down. (7) H4 current geometry is internally anomalous vs H1 constituents (caution flag).",
+    "G": "PRIMARY scenario: continuation - acceptance holds, 4320.585 is reclaimed/cleared with expanding momentum, expansion extends toward the 4341-4372 supply band (H4 high 4371.695), progressing EXPANSION->TREND. Confidence 0.55, horizon INTRADAY. Trigger: sustained trade/close above 4320.585. Invalidation: close below 4316.625 / 4300.825.",
+    "H": "ALTERNATIVE: supply rejection at 4320.585 - the 4-touch level holds, upper-wick absorption caps price, rollback into the 4300-4283 demand zone (H4 low 4300.825, H1 08:00 low 4282.735), reverting to REJECTION (analog-dominated path). Confidence 0.35, horizon INTRADAY. Trigger: rejection bar at 4320-4327 or M5/M15 close back below 4316.6. Third: unresolved two-sided expansion between 4300.8-4327.6 (confidence 0.10).",
+    "I": "Invalidation conditions (checkable): (1) decisive close below 4316.625 (current M1 low) or below 4300.825 (H4 current low) with expanding down-range bars; (2) state transition EXPANSION->REJECTION; (3) conversely, the UP scenario is invalidated for continuation only if the 4320.585 level fails to be reclaimed within the near bars while price prints high-percentile down bars.",
+    "J": "Evidence that would change my mind: a confirmed close below 4300.825 with bearish displacement (flip to DOWN); EXPANSION->REJECTION transition with a bearish H1/H4 close and firmer DXY (PROXY); repeated high-range low-body rejection bars at 4320-4327 (downgrade UP bias); a VIX (PROXY) spike or material DXY (PROXY) strength; or the appearance of any currently-absent news/macro/positioning data contradicting the expansion reading."
+  }
+}

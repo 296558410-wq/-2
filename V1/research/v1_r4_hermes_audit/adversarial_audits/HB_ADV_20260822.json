@@ -1,0 +1,107 @@
+{
+ "audit_id": "HB_ADV_20260822",
+ "timestamp": "2026-09-27T22:48:00+08:00",
+ "overall_verdict": "PARTIAL_AGREE",
+ "dimension_verdicts": {
+  "CURRENT_STATE": "AGREE",
+  "STRUCTURE": "PARTIAL_AGREE",
+  "MECHANISM": "DISAGREE",
+  "PRIMARY_SCENARIO": "DISAGREE",
+  "ALTERNATIVE_SCENARIO": "PARTIAL_AGREE",
+  "EXPECTED_TRANSITION": "PARTIAL_AGREE",
+  "DIRECTION": "AGREE",
+  "HORIZON": "PARTIAL_AGREE",
+  "CONFIDENCE": "PARTIAL_AGREE",
+  "INVALIDATION": "AGREE",
+  "ABSTENTION": "PARTIAL_AGREE"
+ },
+ "factual_errors": [
+  "Alternative scenario / Q-H: '4588.255 (H1 12:00 close zone)' — 4588.255 is the H1 11:00 close (H1 11:00 close=4588.255); the H1 12:00 close is 4596.835. The target level is real, the bar attribution is wrong.",
+  "Alternative scenario: '4577.785-4563.255 (H1 11:00 low / H4 12:00 low)' — 4563.255 is the H1 13:00 low (and H4 12:00 low); the range spans lows from 11:00 through 13:00 but is labelled as if it were one bar's zone.",
+  "dominant_structure/volatility claim: 'M1 ATR contracting (~1.56)' — the M1 sequence shows ATR RISING from 1.348 (21:48) to a peak 1.6405 (21:56) and only ticking down to 1.5605 in the final two bars; 'contracting' is presented as a sustained state it is not."
+ ],
+ "insufficient_evidence": [
+  "Primary-scenario load-bearing claim 'the level holds (as it has 11 times in 240 bars)': context only provides touch_count_240=11 (proximity events), never hold/success counts; there is no evidence the level has 'held' 11 times.",
+  "Primary mechanism (pullback-in-uptrend / breakout retest hold) has no L4 registration: the ONLY L4 mechanism candidate is trend_continuation of the -22.09 displacement, i.e. pointing down.",
+  "Analog support for continuation: all three analogs share similarity 1.0 yet diverge (A21233 stays COMPRESSION, A26956 -> REJECTION, A32777 -> TREND); no path is dominant, so 'compression at this label has preceded continuation' rests on a single n=1 path.",
+  "'M1 ATR spiking above ~2.0 with rejection wicks would confirm active defense' — the 2.0 threshold is invented; nothing in the context supports it.",
+  "Confidence values (0.5/0.35/0.15) are presented as point probabilities with no calibration basis and no discount for the all-UNKNOWN cross-market block."
+ ],
+ "missed_counter_evidence": [
+  "M15 range_expanding=true and H1 range_expanding=true (with M15 consecutive_down 7, trend_20 -12.08): the 'compression/stall' narrative is built only on M1/M5 while the two mid-timeframes are EXPANDING downward — the M15 21:45 bar is a 5.34-point bearish body closing at its low.",
+  "reclaim_status is NONE: there is no confirmed reclaim of the level; 'a well-tested pivot being defended' is asserted without any reclaim confirmation.",
+  "Bearish-body cascade into the level: last completed bars M5 21:55 (body_ratio 0.89, close at low), M15 21:45 (0.83, close at low), H1 21:00 (0.94, close at low), H4 20:00 (0.94, close at low) — continuous selling momentum, not a pause; A lists this as counter-evidence but still weights recovery (0.5) above breakdown (0.35).",
+  "M15 trend_50 +19.77 vs trend_20 -12.08 (a recent M15 flip) is never discussed either way."
+ ],
+ "mechanism_jumps": [
+  "Observation ('price 0.18 above a touch-dense swing-high + HTF uptrend') -> mechanism ('level will hold and price recovers'): the primary scenario's retest-hold mechanism is asserted even though the only registered L4 candidate is short-term trend_continuation DOWN; A discloses this in counter-evidence yet the primary still rests on the unregistered mechanism.",
+  "touch_count_240=11 -> 'liquidity anchor/stop cluster' and 'level is being defended': proximity counts are read as evidence of active defense (A does label the stop-run leg 'unproven', but the 11-touch figure is repeatedly used as if it supports a hold)."
+ ],
+ "over_inference": [
+  "'11 touches in 240 bars' -> 'the level holds / has held 11 times' (repeated in current_pressure, primary_scenario, Q-B, Q-E): touches are not holds; for a SWING_HIGH with price INSIDE, touches can equally mean repeated supply rejection.",
+  "Supporting-evidence item cites A32777 (similarity 1.0) for continuation while the equal-similarity analogs A26956 (->REJECTION) and A21233 (stay COMPRESSION) are relegated to counter-evidence; cherry-picking among identical-similarity analogs.",
+  "'M1 ATR contracting' based on the last two bars of a rising ATR sequence (1.348 -> 1.6405 -> 1.5605).",
+  "Weighting recovery 0.5 > breakdown 0.35 when every completed M5+ bar closes at its low with body_ratio >= 0.83 and M15/H1 are range-expanding — the split favours the branch with weaker immediate evidence."
+ ],
+ "time_window_issues": [
+  "Internal inconsistency: level age_bars=46 but touch_count window is 240 bars; '11 touches in 240 bars' for a level aged 46 bars implies most touches occurred before the level existed (or different bases), and A repeats the 240-bar figure without questioning it.",
+  "H1/H4 trend_20 (+71.51 / +247.96) span 20-80 hours of history that mostly predates the current 14-22 point sell-off; they are used as 'dominant structure still bullish' for an INTRADAY call while the newest bars are strongly bearish — a stale-trend weighting.",
+  "Analog state evolutions (up to 16 steps) have undefined step units; A21233 'stays COMPRESSION for 16 steps' may exceed the INTRADAY horizon if steps are H1+, yet it is cited for the intraday third scenario."
+ ],
+ "data_quality_issues": [
+  "touch_count (a DERIVED proximity metric) is used as DIRECT evidence of support ('held 11 times', 'well-tested pivot acting as support').",
+  "reclaim_status NONE is never incorporated; break_status INSIDE alone cannot distinguish 'successful retest' from 'failed reclaim'.",
+  "'Volume/volatility contraction': VOL_CONTRACTION is a DERIVED label; the context contains NO volume series at all, so the 'volume' half of the claim is unmeasurable language, not evidence.",
+  "All cross-market series are UNKNOWN (correctly disclosed), yet confidence 0.5 is assigned to the primary without any stated uncertainty discount."
+ ],
+ "hindsight_flags": [],
+ "explanation_not_prediction_flags": [
+  "Primary scenario's 'trigger' ('M5/M15 reclaim of 4604-4606 with expanding bodies and rising range_percentile') IS the first step of the scenario itself: the trigger restates the outcome, making the scenario conditionally tautological ('if it goes up, it goes up').",
+  "dominant_structure / Q-B largely re-describe the current configuration (uptrend + pullback + compression at level); the actual prediction content is only the conditional fork, which adds little falsifiable content beyond the stated triggers."
+ ],
+ "kline_overreliance_flags": [
+  "The entire directional read is built on K-line geometry + derived levels: no volume, no order-flow, no cross-market series exist in the context, yet the forecast speaks of 'volume contraction' and a 'stop/liquidity cluster' as though flow evidence exists.",
+  "The liquidity/stop-run story (sweep below 4601.875) is inferred purely from touch-count density on K-line-derived levels."
+ ],
+ "mtf_conflict_ignored_flags": [
+  "L6 CONFLICT is acknowledged but resolved in favour of the HTF (recovery 0.5) with no stated rule for how a CONFLICT read should be weighted; the mid-timeframe EXPANSION evidence (M15/H1 range_expanding) is excluded from the 'compression' narrative while M1/M5 contraction is featured."
+ ],
+ "evidence": [
+  {
+   "claim": "The swing-high level 4601.875 'holds' and 'has held 11 times in 240 bars', supporting a base/recovery scenario.",
+   "contradicting_or_absent_evidence": "Context gives only touch_count_240=11 (proximity events) for a level aged 46 bars with reclaim_status NONE; no hold-success data exists, so the claim is unsupported."
+  },
+  {
+   "claim": "Primary scenario (recovery, confidence 0.5) has an operative mechanism.",
+   "contradicting_or_absent_evidence": "L4 registers only trend_continuation of the -22.09 displacement (down); the retest-hold mechanism is absent from L4 and is contradicted by the sole registered candidate."
+  },
+  {
+   "claim": "Microstructure is a 'volume/volatility contraction pause at a key pivot'.",
+   "contradicting_or_absent_evidence": "M15 range_expanding=true and H1 range_expanding=true; last M15 bar is a 5.34-point bearish body closing at its low; no volume data exists to support the 'volume' half of the claim."
+  },
+  {
+   "claim": "Recovery (0.5) is more likely than breakdown (0.35).",
+   "contradicting_or_absent_evidence": "Every completed bar from M5 up closes at/near its low with body_ratio >= 0.83 (M5 0.89, M15 0.83, H1 0.94, H4 0.94); M15/H1 ranges are expanding; no evidence source justifies the higher weight on the level-hold branch."
+  },
+  {
+   "claim": "'Compression at this label has preceded continuation' (supporting evidence, via analog A32777).",
+   "contradicting_or_absent_evidence": "All three analogs have similarity 1.0 and diverge: A21233 stays COMPRESSION, A26956 -> REJECTION, A32777 -> TREND; the support is a selected single path from a 3-way split."
+  },
+  {
+   "claim": "Breakdown target '4588.255 (H1 12:00 close zone)'.",
+   "contradicting_or_absent_evidence": "4588.255 is the H1 11:00 close; H1 12:00 close is 4596.835 — the level is real, the bar attribution is a factual error."
+  }
+ ],
+ "strongest_objection": "The primary scenario's probability (0.5) rests on the claim that the swing-high 4601.875 'has held 11 times in 240 bars' — but touch_count is a proximity counter, not a hold counter, the level is a SWING_HIGH (supply origin) with reclaim_status NONE, and the only registered L4 mechanism candidate points DOWN. Meanwhile every completed bar from M5 to H4 closes at its low with body_ratio >= 0.83 and M15/H1 are range-EXPANDING. The immediate, causally-recent evidence favours the breakdown branch, yet A weights recovery higher on 20-bar trends that mostly predate the current 14-22 point sell-off. The level-hold premise is under-evidenced and the confidence split is not supported by the context.",
+ "reasoning_trace": [
+  "Read prompt (HERMES-B adversarial audit) and PIT context v1r3-r1 as_of 2026-08-22 12:00 UTC; latest bars 2026-08-21 21:59 (M1).",
+  "Verified A's factual anchors against context: H4 trend_20 +247.96 / trend_50 +234.08 / consecutive_up 9, H1 trend_20 +71.51, M1/M5 trends and consecutive-down counts, 8-bar displacement -22.09, last M1 range_percentile 0.155, level 4601.875 distance_atr 0.026, touch_count_240 11, frozen COMPRESSION/VOL_CONTRACTION dwell 2, L6 CONFLICT, L7 all UNKNOWN, three similarity-1.0 analogs — all match; no fabrication found.",
+  "Found factual errors: 4588.255 mis-attributed to H1 12:00 close (it is the 11:00 close); 4563.255 range attributed to 'H1 11:00 low' (it is the H1 13:00 low); 'M1 ATR contracting' contradicted by the rising ATR sequence (1.348 -> 1.6405 -> 1.5605).",
+  "Identified the load-bearing over-inference: '11 touches in 240 bars' read as 'level has held 11 times'; compounded by level age_bars=46 vs 240-bar window mismatch and reclaim_status NONE.",
+  "Checked the compression narrative against all timeframes: M1/M5 contract but M15/H1 range_expanding=true with strong bearish bodies closing at lows — counter-evidence A down-weighted.",
+  "Checked mechanism registration: L4's only candidate is trend_continuation (down); A's primary mechanism is unregistered — mechanism jump, though A disclosed it.",
+  "Checked scenario construction: primary trigger is the scenario's first step (tautological condition); invalidation is concrete and checkable (M15 closes); alternative targets are real levels but mislabelled bars.",
+  "Checked confidence/abstention: 0.5/0.35/0.15 split is a bare point estimate, favours the less-supported branch, and is not discounted for all-UNKNOWN cross-market; abstention was defensible but a conditional disclosure is acceptable.",
+  "Assigned per-dimension verdicts and PARTIAL_AGREE overall: transparent, factually near-accurate, honest counter-evidence, correct NEUTRAL bias — but the primary scenario's level-hold premise and its confidence weight are not supported by the context."
+ ]
+}

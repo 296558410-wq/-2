@@ -1,0 +1,97 @@
+{
+ "schema": "v3_quality_report/1",
+ "ts_utc": "2026-09-25T11:31:10.335380+00:00",
+ "input_opportunities": 1999,
+ "input_clusters": 295,
+ "input_clusters_per_grid": {
+  "1h": 217,
+  "5m": 78
+ },
+ "cluster_id_namespace_note": "R1 numbered clusters per grid, so cluster_id alone collides across grids; clusters are counted as (grid, cluster_id)",
+ "assessed": 1999,
+ "quality_distribution": {
+  "QUALITY_INSUFFICIENT": 156,
+  "QUALITY_PASS": 1099,
+  "QUALITY_REJECT": 744
+ },
+ "hermes_sent": 1099,
+ "hermes_decisions": {
+  "REJECT": 695,
+  "INVESTIGATE": 404
+ },
+ "candidate_research": 0,
+ "dimension_distribution": {
+  "NOVELTY": {
+   "MEDIUM": 698,
+   "LOW": 786,
+   "HIGH": 515
+  },
+  "EXTREMENESS": {
+   "MEDIUM": 913,
+   "HIGH": 1058,
+   "LOW": 28
+  },
+  "PERSISTENCE": {
+   "LOW": 200,
+   "HIGH": 1664,
+   "MEDIUM": 135
+  },
+  "CROSSMARKET_CONFIRMATION": {
+   "NONE": 421,
+   "HIGH": 317,
+   "MEDIUM": 1261
+  },
+  "HISTORICAL_RECURRENCE": {
+   "LOW": 20,
+   "MEDIUM": 60,
+   "HIGH": 1919
+  },
+  "DATA_QUALITY": {
+   "PARTIAL": 1999
+  }
+ },
+ "ablations": {
+  "drop_NOVELTY": {
+   "QUALITY_INSUFFICIENT": 200,
+   "QUALITY_PASS": 1781,
+   "QUALITY_REJECT": 18
+  },
+  "drop_PERSISTENCE": {
+   "QUALITY_INSUFFICIENT": 54,
+   "QUALITY_PASS": 1199,
+   "QUALITY_REJECT": 746
+  },
+  "drop_CROSSMARKET_CONFIRMATION": {
+   "QUALITY_INSUFFICIENT": 153,
+   "QUALITY_PASS": 1099,
+   "QUALITY_REJECT": 747
+  },
+  "drop_HISTORICAL_RECURRENCE": {
+   "QUALITY_INSUFFICIENT": 111,
+   "QUALITY_PASS": 1101,
+   "QUALITY_REJECT": 787
+  },
+  "all_dimensions": {
+   "QUALITY_INSUFFICIENT": 156,
+   "QUALITY_PASS": 1099,
+   "QUALITY_REJECT": 744
+  }
+ },
+ "comparison_with_R1": {
+  "R1": {
+   "opportunities": 1999,
+   "hermes": 120,
+   "investigate": 120
+  },
+  "QF_R1": {
+   "opportunities": 1999,
+   "hermes": 1099,
+   "decisions": {
+    "REJECT": 695,
+    "INVESTIGATE": 404
+   }
+  }
+ },
+ "registry_hash": "052867f86f6735f37c7cb6b98c89bf78af3efbfdfcb50c9c6700aa331ec35d66",
+ "quality_filter_version": "QF-R1.0.0"
+}

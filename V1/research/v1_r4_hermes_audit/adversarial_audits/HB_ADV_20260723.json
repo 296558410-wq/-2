@@ -1,0 +1,106 @@
+{
+ "audit_id": "HB_ADV_20260723",
+ "timestamp": "2026-09-27T22:44:00+08:00",
+ "overall_verdict": "DISAGREE",
+ "dimension_verdicts": {
+  "CURRENT_STATE": "PARTIAL_AGREE",
+  "STRUCTURE": "PARTIAL_AGREE",
+  "MECHANISM": "DISAGREE",
+  "PRIMARY_SCENARIO": "DISAGREE",
+  "ALTERNATIVE_SCENARIO": "PARTIAL_AGREE",
+  "EXPECTED_TRANSITION": "DISAGREE",
+  "DIRECTION": "PARTIAL_AGREE",
+  "HORIZON": "PARTIAL_AGREE",
+  "CONFIDENCE": "DISAGREE",
+  "INVALIDATION": "PARTIAL_AGREE",
+  "ABSTENTION": "PARTIAL_AGREE"
+ },
+ "factual_errors": [
+  "Forecast counter-evidence claims the three analogs 'evolve to ROTATION/REJECTION/EXPANSION, none to TREND'. FALSE: analog A12220 evolves ACCEPTANCE(0) -> REJECTION(4) -> TREND(8) -> ROTATION(12) -> ROTATION(16). TREND is reached at step 8, so trend_continuation IS corroborated by one of the three analogs - the exact opposite of the claimed 'no life-cycle corroboration'.",
+  "Forecast expected_state_transition claims 'most likely per historical analogs A310/A12220 which evolve from ACCEPTANCE into ROTATION'. Misread: A12220's IMMEDIATE transition (step 4) is to REJECTION, not ROTATION (it reaches ROTATION only at step 12); A23519 holds ACCEPTANCE through step 8. Only A310 (1 of 3) rotates at step 4. 'Most likely ROTATION' is not supported by the analog record.",
+  "Forecast states 'Price sits just above a heavily-touched swing low at 4086.785'. Contradicted by its own cited bars: H1 current close 4085.535 is BELOW 4086.785, and H4 current close 4057.715 is 29.07 below the level. The 'above' reading cherry-picks M1/M5/M15 closes while the H1/H4 bars it simultaneously cites as wick evidence closed below the defended level."
+ ],
+ "insufficient_evidence": [
+  "Claim 'aggressive rejection of the lows' / 'active buyers near 4072.7 / 4039.7' rests only on wick geometry (quality RAW_GEOMETRY + DERIVED); there is no volume, order-flow, or tape evidence in the context to establish buyer intent.",
+  "Claim 'repeatedly defended, high-confluence support' rests on touch_count_240=19 (DERIVED pivot touch count). Touches are price excursions, not successful defenses; no evidence in context that the level has actually HALTED a close below it (break_status INSIDE, reclaim_status NONE, and H1/H4 closes are already below it).",
+  "Claim 'bounces capped near 4095.185-4099.315' asserts a cap mechanism with no evidence for why those session highs would cap rotations.",
+  "M1/M5 trend_20 (+4.17/+0.57 over 20 bars) is characterized as 'a bounce already in progress' contradicting continuation - a ~4-point 20-minute drift is trivial relative to the ~60-90 point H1/H4 displacement and cannot carry that interpretive weight."
+ ],
+ "missed_counter_evidence": [
+  "Cross-timeframe close inconsistency at the identical timestamp 12:00:00: H4 close 4057.715 vs H1 close 4085.535 vs M15 close 4087.535 vs M5 4091.865 vs M1 4092.315. The H1/H4 current-bar lows (4072.755 / 4039.685) do not appear anywhere in the M1/M5/M15 sequence_last_N data for the same period (lowest M15 low in the window is 4085.255). The H1/H4 'current' bars appear to be forming bars aligned to the 12:00 open (their open 4093.135 equals the M1 12:00 open) containing price action NOT visible in lower timeframes - either lookahead or a misaligned dataset. The forecast never notices this, yet builds its primary case on exactly those wicks.",
+  "The forecast's own invalidation rule for the primary scenario is already met by its own cited data: H4 close 4057.715 is 29.07 below 4086.785 (far beyond 'roughly one M15 ATR ~7.4') and H1 close 4085.535 is below the level, with H1/H4 range_percentile 0.795/0.81 (ranges expanding) and reclaim_status NONE. The support it defends has already been closed below in the very bars it cites.",
+  "Analog A12220 reaches TREND at step 8 - the forecast's claim that no analog corroborates trend_continuation misses this.",
+  "L4 mechanism candidate (trend_continuation) invalidation is 'decisive break of the active level'; per the cited H1/H4 closes the decisive break may already have occurred, which would flip the only formal mechanism to 'invalidated', not 'supported'."
+ ],
+ "mechanism_jumps": [
+  "Lower wick -> 'aggressive rejection of the lows' / 'active buyers': a wick is a price excursion; attributing buyer intent is a mechanism attribution with no order-flow evidence.",
+  "19 touches -> 'repeatedly defended': conflates touch frequency (DERIVED counter) with defense quality.",
+  "Fresh ACCEPTANCE label (dwell 1, ambiguity_rate_8 0.625) -> 'the level holds': a single ambiguous labeler print (7 of the last 8 state prints were REJECTION) is treated as confirmation of support defense."
+ ],
+ "over_inference": [
+  "M1/M5 positive trend_20 treated as an in-progress counter-bounce to the H1/H4 impulse (see insufficient_evidence).",
+  "Confidence 0.55 for support-hold assigned despite 0.625 labeler ambiguity, own closes below the level, and no external (macro/news/flow) confirmation of any kind.",
+  "'Down-impulse into MAJOR support' upgrades a DERIVED pivot level to 'major' on touch count alone without evidence the level has held a close."
+ ],
+ "time_window_issues": [
+  "The 12:00 H1 and H4 bars are treated as completed, observed bars at the forecast instant, but their OHLC (lows 4072.755/4039.685, closes 4085.535/4057.715) is inconsistent with the same-instant M1/M5/M15 bars and their opens equal the M1 12:00 open - consistent with forming bars containing post-cutoff (12:00+) price action. Using them as observed evidence is lookahead/hindsight.",
+  "Alternative-scenario targets (4072.755, then 4039.685-4057.715) are the already-printed lows of the very bars the forecast cites. If those bars are complete, the move to those targets already happened; if they are forming/lookahead, the targets are derived from future data. Either way they are not forecasts - they are present extremes restated as targets."
+ ],
+ "data_quality_issues": [
+  "Unreconciled cross-timeframe closes at one timestamp (H4 4057.715 vs H1 4085.535 vs M15 4087.535 vs M5 4091.865 vs M1 4092.315) and H1/H4 current-bar lows absent from lower-TF data: the dataset the forecast reasons over is internally inconsistent, and the forecast neither flags it nor adjusts evidence weight.",
+  "PROXY handling itself is correct (DXY/VIX labeled PROXY, UST10Y UNKNOWN and not fabricated) - the defect is the forecast then commits firm probabilities (0.55/0.30/0.15) on top of geometry whose own bars are mutually contradictory."
+ ],
+ "hindsight_flags": [
+  "Primary scenario 'the level holds' is asserted at a moment when the cited closes are already below the level - a thesis the data already contradicts, defended post-hoc via wick reading.",
+  "Alternative-scenario targets equal the current bars' lows - hindsight-derived targets."
+ ],
+ "explanation_not_prediction_flags": [
+  "'Lower wicks show aggressive rejection of the lows' describes the current bars rather than forecasting; it is then used to support a hold that the same bars' closes contradict.",
+  "Alternative scenario 'targeting 4072.755 then the 4039.685-4057.715 H4 zone' restates present extremes as a future path."
+ ],
+ "kline_overreliance_flags": [
+  "The entire scenario distribution rests on K-line geometry (touches, wicks, trend_20 deltas, range percentiles) with volume, order flow, and macro/news entirely absent (UNKNOWN/absent per L7) - the forecast acknowledges the absence but still commits 0.55/0.30/0.15 probabilities.",
+  "Lower-wick length is read as direct evidence of buyer aggression - a pure K-line pattern reading with no corroborating data."
+ ],
+ "mtf_conflict_ignored_flags": [
+  "CONFLICT is named but not reconciled: the forecast trusts lower-TF closes for 'price above the level' while trusting H1/H4 bars for wick evidence, selectively switching timeframes per claim instead of resolving the ~34-point disagreement between H4 close and M1 close at the same timestamp."
+ ],
+ "evidence": [
+  {
+   "claim": "Price sits just above the swing low at 4086.785.",
+   "contradicting_evidence": "Same-payload H1 current close 4085.535 < 4086.785; H4 current close 4057.715 = 29.07 below the level. Only M1 (4092.315), M5 (4091.865), M15 (4087.535) closes are above. The forecast's own cited bars contradict the 'above' characterization."
+  },
+  {
+   "claim": "Historical analogs evolve to ROTATION/REJECTION/EXPANSION, none to TREND.",
+   "contradicting_evidence": "A12220: ACCEPTANCE(0) -> REJECTION(4) -> TREND(8) -> ROTATION(12) -> ROTATION(16). TREND occurs at step 8, so the analog record DOES contain a TREND path."
+  },
+  {
+   "claim": "A310/A12220 evolve from ACCEPTANCE into ROTATION (most likely expected transition).",
+   "contradicting_evidence": "A12220's immediate transition at step 4 is REJECTION (ROTATION only at step 12); A23519 holds ACCEPTANCE through step 8. Only A310 rotates at step 4 - 1 of 3 analogs, not 'most likely'."
+  },
+  {
+   "claim": "Long lower wicks (H1 12.78, H4 18.03) show aggressive rejection / active buyers near the lows.",
+   "contradicting_evidence": "No volume/order-flow data exists in the context; the same bars closed below the defended level (H1 4085.535, H4 4057.715); and the H1/H4 bar lows (4072.755/4039.685) are absent from all M1/M5/M15 bars at the same timestamp (lowest M15 low 4085.255), so the wicks themselves may be an artifact of bar misalignment/lookahead."
+  },
+  {
+   "claim": "Primary scenario: level holds, rotation in 4086-4095 band, confidence 0.55.",
+   "contradicting_evidence": "The forecast's own invalidation - 'a decisive close below 4086.785, beyond roughly one M15 ATR ~7.4, with H1/H4 ranges still expanding and no reclaim' - is met by its own cited data: H4 close 4057.715 (-29.07, >> 7.4), H1 close 4085.535 (below), H1/H4 range_percentile 0.795/0.81 (expanding), reclaim_status NONE."
+  },
+  {
+   "claim": "Alternative scenario targets 4072.755 then 4039.685-4057.715.",
+   "contradicting_evidence": "Those are the already-printed lows of the cited current H1/H4 bars; the 'targets' contain no forecast content beyond the present extremes (and if the bars are forming, they are derived from post-cutoff data)."
+  },
+  {
+   "claim": "Fresh ACCEPTANCE label (dwell 1) supports level defense.",
+   "contradicting_evidence": "ambiguity_rate_8 = 0.625; dwell is 1 bar; 7 of the last 8 state prints were REJECTION - the labeler flips were frequent and ambiguous, and the immediate prior regime was a long rejection run, not a confirmed acceptance."
+  }
+ ],
+ "strongest_objection": "The primary scenario (support-defense/rotation at 4086.785, p=0.55) is contradicted by the forecast's own cited data. Its invalidation rule - a decisive close below 4086.785 beyond ~1 M15 ATR (~7.4) with ranges expanding - is already satisfied by the bars it quotes: H1 closes at 4085.535 (below the level) and H4 closes at 4057.715 (29.07 below, ~4 M15 ATRs) with H1/H4 ranges expanding and reclaim NONE. The forecast simultaneously uses those same bars' lower wicks as 'aggressive rejection' evidence while ignoring their closes. Moreover the H1/H4 current-bar lows (4072.755/4039.685) never appear in the M1/M5/M15 bars at the same timestamp, indicating those bars are either forming (containing post-12:00 lookahead action) or the dataset is misaligned - so the wick story is built on suspect data. If the closes are real, the support has already failed and the primary scenario is already invalidated; if they are not real, the rejection evidence is contaminated. On top of this, the analog counter-evidence is factually wrong (A12220 reaches TREND at step 8, and A12220's immediate transition is REJECTION, not ROTATION). Either way the central thesis fails.",
+ "reasoning_trace": [
+  "Verified every numeric transcription in the forecast against the PIT context (4165.8 H4 high, H1 8-down/trend_20 -73.58, H4 7-down/trend_20 +33.79, M1/M5 trend_20, 4086.785/19 touches/age 9/INSIDE/NONE, ACCEPTANCE dwell 1, DXY/VIX values, ATRs, ambiguity 0.625) - transcriptions are accurate.",
+  "Cross-checked the analog sequences against the forecast's two analog-based claims: found 'none to TREND' false (A12220 reaches TREND at step 8) and 'A310/A12220 evolve into ROTATION' misread (A12220's step-4 transition is REJECTION).",
+  "Cross-checked the forecast's 'price above 4086.785' and 'level holds' against the closes of the bars it cites: H1 close 4085.535 and H4 close 4057.715 are below the level; applied the forecast's own invalidation rule to its own data - already triggered (H4 -29.07 vs ~7.4 ATR, ranges expanding, no reclaim).",
+  "Detected cross-timeframe close inconsistency at 12:00:00 (H4 4057.715 vs H1 4085.535 vs M15 4087.535 vs M5 4091.865 vs M1 4092.315) and absence of the H1/H4 current-bar lows in lower-TF data - flagged as data-quality/lookahead risk the forecast ignored.",
+  "Assessed each dimension with the above evidence; issued DISAGREE overall with PARTIAL_AGREE only where the forecast is factually accurate and checkable (state description mostly, invalidation form, non-abstention)."
+ ]
+}

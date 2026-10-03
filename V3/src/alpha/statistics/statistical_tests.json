@@ -1,0 +1,98 @@
+{
+ "schema": "v3_alpha_statistical_tests/1",
+ "alpha": 0.05,
+ "bootstrap": {
+  "n_resamples": 2000,
+  "block_rule": "max(50, 10*rho)",
+  "level": 0.95
+ },
+ "horizons": {
+  "1000": {
+   "selected": "B0/MLP",
+   "test": {
+    "n_trades": 6,
+    "net_edge_bp": -0.9012653303881378,
+    "net_edge_usd": -0.39666666666672307,
+    "gross_edge_bp": 0.013149973502509424,
+    "bootstrap_net_bp": {
+     "mean": -0.9012653303881378,
+     "ci_low": -1.6816187803216858,
+     "ci_high": -0.14208001641100992,
+     "n_blocks": 6,
+     "block_samples": 1,
+     "degenerate": false
+    },
+    "nonoverlap_rho": 4,
+    "n_independent": 2,
+    "t_noverlap_net": NaN,
+    "p_noverlap_net": NaN,
+    "t_noverlap_gross": NaN,
+    "p_noverlap_gross": NaN,
+    "ci_excludes_zero_positive": false
+   },
+   "val": {
+    "net_edge_bp": -0.24713182272474893,
+    "net_edge_usd": -0.11999999999944629,
+    "n_trades": 5
+   }
+  },
+  "30000": {
+   "selected": "B3/Ridge",
+   "test": {
+    "n_trades": 383,
+    "net_edge_bp": -0.8878528105131355,
+    "net_edge_usd": -0.38326370757181855,
+    "gross_edge_bp": 0.03415177539040557,
+    "bootstrap_net_bp": {
+     "mean": -0.8878528105131355,
+     "ci_low": -1.4027719385226285,
+     "ci_high": -0.7453918517638424,
+     "n_blocks": 2,
+     "block_samples": 300,
+     "degenerate": false
+    },
+    "nonoverlap_rho": 113,
+    "n_independent": 4,
+    "t_noverlap_net": NaN,
+    "p_noverlap_net": NaN,
+    "t_noverlap_gross": NaN,
+    "p_noverlap_gross": NaN,
+    "ci_excludes_zero_positive": false
+   },
+   "val": {
+    "net_edge_bp": -0.15547693374013544,
+    "net_edge_usd": -0.06465596330276725,
+    "n_trades": 436
+   }
+  },
+  "300000": {
+   "selected": "B4/GBT",
+   "test": {
+    "n_trades": 110248,
+    "net_edge_bp": -0.8248872091964249,
+    "net_edge_usd": -0.3618924606342083,
+    "gross_edge_bp": 0.09596510255509615,
+    "bootstrap_net_bp": {
+     "mean": -0.8248872091964249,
+     "ci_low": -1.867501022236017,
+     "ci_high": 0.18126485238468448,
+     "n_blocks": 37,
+     "block_samples": 3000,
+     "degenerate": false
+    },
+    "nonoverlap_rho": 1128,
+    "n_independent": 98,
+    "t_noverlap_net": -1.1357923000695545,
+    "p_noverlap_net": 0.2588419992146516,
+    "t_noverlap_gross": -0.3719610837658204,
+    "p_noverlap_gross": 0.7107331732311579,
+    "ci_excludes_zero_positive": false
+   },
+   "val": {
+    "net_edge_bp": -1.3384976960060495,
+    "net_edge_usd": -0.6117274405051006,
+    "n_trades": 51475
+   }
+  }
+ }
+}

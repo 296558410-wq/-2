@@ -1,0 +1,111 @@
+{
+ "layer": "L1_MARKET_PERCEPTION",
+ "name": "JAPANESE_CANDLESTICK",
+ "version": "v1r2-mr-ontology-r1",
+ "principle": "a candle pattern emits a CANDLE_EVENT (an OBSERVATION), never a TRADE_SIGNAL (task §4/§8)",
+ "thresholds_preregistered": {
+  "DOJI_BODY_MAX_RANGE": 0.1,
+  "MARUBOZU_BODY_MIN_RANGE": 0.95,
+  "LONG_BODY_MIN_RANGE": 0.7,
+  "LONG_WICK_WICK_OVER_BODY": 2.0,
+  "HAMMER_WICK_OVER_BODY": 2.0,
+  "HAMMER_OPPOSITE_WICK_MAX_BODY": 0.5,
+  "SPINNING_TOP_BODY_MAX_RANGE": 0.3,
+  "ENGULF_MIN_PREV_BODY_RANGE": 0.1,
+  "STAR_MID_RETRACE": 0.5,
+  "CONTEXT_TREND_BARS": 20
+ },
+ "geometry_fields": [
+  "open",
+  "high",
+  "low",
+  "close",
+  "body_size",
+  "body_direction",
+  "upper_wick",
+  "lower_wick",
+  "wick_body_ratio",
+  "close_location",
+  "range",
+  "true_range",
+  "body_to_range"
+ ],
+ "single_bar_events": {
+  "DOJI": {
+   "rule": "body <= DOJI_BODY_MAX_RANGE * range"
+  },
+  "MARUBOZU": {
+   "rule": "body >= MARUBOZU_BODY_MIN_RANGE * range"
+  },
+  "LONG_BODY": {
+   "rule": "body >= LONG_BODY_MIN_RANGE * range"
+  },
+  "LONG_WICK": {
+   "rule": "max(upper_wick, lower_wick) >= LONG_WICK_WICK_OVER_BODY * body"
+  },
+  "SPINNING_TOP": {
+   "rule": "body <= SPINNING_TOP_BODY_MAX_RANGE * range and upper_wick > body and lower_wick > body"
+  },
+  "HAMMER_GEOMETRY": {
+   "rule": "lower_wick >= HAMMER_WICK_OVER_BODY*body and upper_wick <= HAMMER_OPPOSITE_WICK_MAX_BODY*body and close_location >= 0.66"
+  },
+  "INVERTED_HAMMER_GEOMETRY": {
+   "rule": "upper_wick >= HAMMER_WICK_OVER_BODY*body and lower_wick <= HAMMER_OPPOSITE_WICK_MAX_BODY*body and close_location <= 0.34"
+  }
+ },
+ "two_bar_events": {
+  "BULLISH_ENGULFING": {
+   "rule": "prev bearish and cur bullish and cur body engulfs prev body"
+  },
+  "BEARISH_ENGULFING": {
+   "rule": "prev bullish and cur bearish and cur body engulfs prev body"
+  },
+  "INSIDE_BAR": {
+   "rule": "high <= prev_high and low >= prev_low"
+  },
+  "OUTSIDE_BAR": {
+   "rule": "high > prev_high and low < prev_low"
+  },
+  "HARAMI": {
+   "rule": "inside bar and prev body contains cur body and prev body >= ENGULF_MIN_PREV_BODY_RANGE*prev_range"
+  }
+ },
+ "three_bar_events": {
+  "MORNING_STAR": {
+   "rule": "bar1 bearish long, bar2 small body, bar3 bullish closing above midpoint of bar1 body"
+  },
+  "EVENING_STAR": {
+   "rule": "bar1 bullish long, bar2 small body, bar3 bearish closing below midpoint of bar1 body"
+  }
+ },
+ "context_labels_require_context": {
+  "SHOOTING_STAR": {
+   "geometry": "INVERTED_HAMMER_GEOMETRY",
+   "required_context": "ADVANCE_CONTEXT"
+  },
+  "HANGING_MAN": {
+   "geometry": "HAMMER_GEOMETRY",
+   "required_context": "ADVANCE_CONTEXT"
+  },
+  "HAMMER": {
+   "geometry": "HAMMER_GEOMETRY",
+   "required_context": "DECLINE_CONTEXT"
+  }
+ },
+ "REUSE_OF_GEOMETRY_FORBIDDEN_AS_SIGNAL": true,
+ "sequence_events": [
+  "CONSECUTIVE_UP",
+  "CONSECUTIVE_DOWN",
+  "BODY_EXPANDING",
+  "BODY_CONTRACTING",
+  "RANGE_EXPANDING",
+  "RANGE_CONTRACTING",
+  "OVERLAP_INCREASING",
+  "OVERLAP_DECREASING",
+  "HH_SERIES",
+  "HL_SERIES",
+  "LH_SERIES",
+  "LL_SERIES"
+ ],
+ "sequence_window_pre_registered": 5
+}

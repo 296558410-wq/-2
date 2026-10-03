@@ -1,0 +1,30 @@
+{
+ "cycle": "2026-09-09T07:17Z",
+ "symbol": "XAUUSD",
+ "decision_id": "DEC-2026-09-09T07:17Z",
+ "generated_utc": "2026-09-09T07:17:04+00:00",
+ "decision": "WAIT",
+ "confidence": 0.58,
+ "opportunity": "场内 TP-20260909T0547Z (SHORT zone_touch[4403.0,4412.9] SL4420.0, 05:51Z 注册, ~07:51:47Z 过期) 触发条件已满足: live mid 4405.26 (07:17Z quote, spread 0.32bps, 120 tick/min, z0.78 正常) 已进入触发带 [4403.0, 4412.9] (06:47Z 4399.25 → 07:02Z 4400.57 → 07:17Z 4405.26 连续缓升 +5.3pt/30min 攻入三线合成供给带下沿), 引擎本轮运行 zone_touch 实时判定=True → 自动市价 SHORT 0.01, 无需新注册; 反向 mid>=4416.0 取消零成本; 同区同向重复注册=双挂双触违反单仓 → plan=null 零新增",
+ "opportunity_mechanism": "TP-0547Z 触发执行: 修复反弹(双底 4341-45 → 4405)第三段动能衰竭后价格缓升逼进供给带 4403-4413 (H1 MA50 4403.1 / M15 MA200 ~4402 / M15 high60 4412.9 三线间距<10pt), 06:32→07:17 45min 内 4399.25→4405.26 (+6pt) 高位滞涨缓推未放量直穿 (z0.78 正常, last6_max 18.4bps) = 供给带测试前蓄势; mid 4405.26 ∈ [4403.0,4412.9] → 本轮 engine TRIGGER 检核将置 zone_touch=True, spread 0.32<0.6 达标 → 自动成交 SHORT; 成交后随单 SL 4420.0 (1R=12pt) / T1 4386.0 (H1 MA20) x0.35 / T2 4373.0 (起点) x0.35 / T3 4345.8 (双底颈线) x0.30, E[R|win]=3.22R, breakeven p~0.25, EV+0.54R",
+ "mtf_agreement": "SHORT-lean 维持: D1 close 4353.5 < MA20 4464.6 (-248.7pt) RSI38.97 mixed; H4 trend down (close 4364.6 < MA20 4425.5/MA50 4436.8, RSI32.2, pos21%, er0.356, recent -161.6bps); H1 close 4375.03 站上 MA20 4383.3 但 MA50 4399.5/MA200 4447.0 压制 (RSI33.3 修复中); M15 修复动能至 4405 逼近供给带 = fade 顶顺 HTF 方向; 唯一 pending TP-0547Z 同向无冲突; 单仓约束: FLAT 下仅 pending 占用 → 零新增即合规; 站上 4416/4425.5 则短逻辑暂破 → 计划取消零成本, 不逆势追多",
+ "answers_14": {
+  "1": "XAUUSD live mid 4405.26 (07:17Z quote, spread 0.32bps≈0.14pt, 120 tick/min, live_days=3 gaps=[] z0.78 正常); M15 bar 滞后已知 (06:45 close 4375.03 vs quote 差 ~30pt) → 以 m15_live mid 为准; candle_latest 陈旧(09-07T12:15Z)弃用; FLAT (POS-0402Z 05:33:18Z broker_sl 已闭) + 唯一 pending TP-20260909T0547Z (SHORT @4403.0-4412.9 SL4420.0, 05:51Z 注册, age~85min, mid 4405.26 已入带 → 本轮 engine 将判 zone_touch=True) → 单仓约束下不注册新开仓计划",
+  "2": "一致性 SHORT-lean: D1/H4 均 MA 下方空排 (D1 -248.7pt, H4 trend down RSI32.2), H1 MA50/MA200 压制; M15 修复反弹停入 4403-4413 三线供给带 = fade 顶顺 HTF; 唯一 pending TP-0547Z 同向; FLAT 下零新增即合规; 站上 4416/4425.5 (H4 MA20) 短逻辑暂破 → 计划取消, 不逆势追多",
+  "3": "M15 变化 (07:02Z→07:17Z): live mid 4400.57→4405.26 (+4.69pt/15min) 攻入触发带 [4403.0,4412.9], 高位缓升未放量直穿 (z0.78, last6_max 18.4bps); spread 0.32bps 稳定; 结构面无新增 → 场内计划触发/失效/过期条件原样有效; 距上沿 4412.9 仅 7.6pt, 距失效 4416 仅 10.7pt → tick 级即分晓",
+  "4": "机会: 唯一可交易 setup (4403-4413 供给带 fade SHORT) 已由 TP-0547Z 注册且触发条件已满足 — mid 4405.26 入带; 同区同向重复注册=双挂双触违反单仓且 EV 不增 → 本轮零新增 plan=null; engine 本轮实时判定: 触价自动市价成交; 未触 (回落出带) 则待过期后按 4386/4373 回吐结构重建",
+  "5": "机制: 沿用 TP-0547Z 注册逻辑: 1R=12pt (ref fill~4408, SL 4420.0); 修复反弹(双底 4341-45→4405)第三段滞涨后 mid 缓升入带停于 H1 MA50 4403.1 / M15 MA200~4402 / M15 high60 4412.9 三线合成供给带 → 带内成交后若再攻被拒则回吐 T1 4386.0(+22pt=1.83R)x0.35 / T2 4373.0(+35pt=2.92R)x0.35 / T3 4345.8(+62.2pt=5.18R)x0.30; E[R|win]=3.22R, breakeven p~0.25; engine 逐周期实时 zone_touch 判定, 触价即自动市价, SL/TP 随单, 不手动干预",
+  "6": "触发条件(具体价): 沿用场内 TP-0547Z — {\"and\":[{\"zone_touch\":[4403.0,4412.9]},{\"spread_under_bps\":0.6}]}: live mid 4405.26 已入带 (07:02Z 时差 2.43pt 未触, 本轮已满足) → engine 运行即自动市价 SHORT 0.01, 不等下一根收盘; 现 spread 0.32bps 达标; 贴近边界计划早已注册, 触价自动成交 — 本轮禁止(亦无需)再挂同区计划防双挂违反单仓",
+  "7": "失效(具体价): TP-0547Z: ①成交前 mid>=4416.0 (price_cross_up, 现差 +10.7pt) = 穿越供给带修复升级 → 取消零成本, 4425.5 (H4 MA20) 上方前不逆势; ②成交后 SL 4420.0 broker 随单认损 1R; ③未触发至 ~07:51:47Z (05:51 注册+2h) engine age 过期清理; ④过期取消后按 4386/4373 回吐结构重建 rollover (不追现价市价空, SL 过宽 EV 负)",
+  "8": "预期收益 R: 场内 TP-0547Z 按注册核算: E[R|win]=3.22R (1R=12pt, ref fill~4408: T1 4386.0=1.83R x0.35; T2 4373.0=2.92R x0.35; T3 4345.8=5.18R x0.30); breakeven p~0.25; WAIT 轮零新增预期; 触发后随单 TP 自动兑现; 未触发过期取消=0R 零损耗",
+  "9": "预期损失 R: 场内最大风险仅触发成交后 SL 4420.0 = -1R = 12pt ≈ -$12 @0.01手 demo (随单自动含滑点~0.3bps); 未触发取消/过期/stale 清理=零成本; 本轮 WAIT 零新增; 现价 4405.26 在带内不追市价空 (engine 触价自动成交即可); 亏损不加仓铁律维持",
+  "10": "成本: 现 spread 0.32bps + slippage~0.3 → 往返~1.32bps ≈ 0.58pt ≈ 0.05R (1R=12pt; TP-0547Z 注册按 0.06R 保守计已含); WAIT 轮零新增成本; 成本 0.3bps 级极低非决策障碍 — 本轮 WAIT 原因为防同区双挂违反单仓, 与成本无关",
+  "11": "净 EV 算式: 本轮零新增开仓 → 无新增 EV; 场内 TP-0547Z EV = 0.38x3.22 − 0.62x1.00 − 0.06 = +0.54R > 0 (05:51Z 注册核算, 仍有效; mid 已入带, 触发由 engine 本轮执行); 同区同向重复注册=仅 pending 双触发 → 单仓违例拒绝; 触发后 EV 由随单 TP/SL 锁定兑现",
+  "12": "再现: 剧本链: 双底 4341-45 → 修复反弹两触 4378-79 fade (04:02Z) → 04:34 成交@4379.36 → 05:33 SL 4389.16 修复升级 -1R → 05:47 注册带 fade TP-0547Z → V 反弹 4372.93→4400.9 动能衰竭 → 06:32 滞涨 4400.03 → 06:47 4399.25 → 07:02 4400.57 (差 2.43pt 未触) → 本 cycle 4405.26 入带 → 分支 A: engine 本轮 zone_touch=True 自动成交 SHORT → 拒绝回吐 T1 4386 → T2 4373 → T3 4345.8; 分支 B: 滞涨转跌出带未成交 → 至 07:51:47Z 过期零成本 → 下轮按 4386/4373 重建 rollover SHORT; 穿越 4416 → 取消, 4425.5 上方前不逆势; engine 15min 周期实时裁定不干预; 本轮'差什么': 什么都不差 — 触发带已含 mid, 仅待 engine 本轮运行检核成交",
+  "13": "决策: WAIT (bias SHORT-lean, confidence 0.58) — FLAT + 唯一 pending TP-0547Z (SHORT @4403.0-4412.9 SL4420.0 qty0.01, age~85min) 触发条件已满足 (mid 4405.26 入带, 07:02Z 差 2.43pt → 本轮已触), 重复注册=同区双挂违例 → 零新增 plan=null; 离可交易就差: 无 — engine 本轮 --decide --exec 运行即实时 zone_touch 检核自动市价成交; 若本轮未成交 (回落出带) 则待 07:51:47Z 过期后按 4386/4373 重建; 关键价: 触发带 4403.0-4412.9 / 失效 4416.0 / SL 4420.0 / T1 4386.0 / T2 4373.0 / T3 4345.8 / 过期 ~07:51:47Z",
+  "14": "FLAT+pending TP-0547Z 已入触发带 (mid 4405.26∈[4403,4412.9]) 本轮 engine 自动成交 SHORT; 3TF 空排→SHORT-lean; 同区双挂违单仓零新增; 失效 4416/SL4420/过期 07:51:47Z, 过期按 4386/4373 重建"
+ },
+ "plan": null,
+ "model": "deepseek/deepseek-v4-flash",
+ "data_quality_note": "live_days=3 gaps=[] ok; quote 07:17Z 新鲜 (mid 4405.26, spread 0.32bps, 120 tick/min, z0.78 正常); M15 bar 滞后已知 (06:45 close 4375.03 vs quote 差~30pt) → 判定以 m15_live mid 为准; candle_latest 陈旧 (09-07T12:15Z) 弃用; FLAT (POS-0402Z 05:33:18Z broker_sl 已闭) + 唯一 pending TP-20260909T0547Z (05:51:47Z 注册 SHORT zone_touch[4403.0,4412.9] SL4420.0 T1 4386.0x0.35/T2 4373.0x0.35/T3 4345.8x0.30 qty0.01 EV+0.54R age~85min, mid 4405.26 已入带) → WAIT plan=null 防同区双挂; engine 本轮实时 trigger/stale/invalidation/expiry 裁定"
+}

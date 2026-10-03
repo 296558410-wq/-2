@@ -1,0 +1,123 @@
+{
+ "overall_status": "COMPLETE",
+ "verdict": "PARTIAL_PREDICTION_CAPABILITY_SUPPORTED",
+ "market_reading_status": "SUPPORTED",
+ "state_status": "SUPPORTED",
+ "event_status": "INCONCLUSIVE",
+ "transition_status": "SUPPORTED",
+ "forecast_status": "SUPPORTED",
+ "direction_status": "INCONCLUSIVE",
+ "timing_status": "INCONCLUSIVE",
+ "kline_status": "KLINE_CONTEXTUAL_INCREMENTAL",
+ "mtf_status": "SUPPORTED",
+ "mechanism_status": "SUPPORTED",
+ "counter_evidence_status": "EXPLANATORY_ONLY",
+ "strategy_mapping_status": "OPEN",
+ "lookahead_status": "PASS",
+ "blind_status": "PASS",
+ "replay_status": "PASS",
+ "deterministic_status": "PASS",
+ "boundary_status": "PASS",
+ "strongest_predictive_object": "NEXT_STATE (STATE_V2, k=2, h=8)",
+ "strongest_information_set": "price/vol features + STATE history (state+dwell) + EVENT history + H1/H4 MTF",
+ "main_failure_mode": "EVENT/HORIZON per-class separability (low balanced accuracy) and the absent lifecycle in the frozen C1 labeler",
+ "next_research_layer": "cost-gated tradability of the state forecast (V3 alpha line)",
+ "capability_matrix": {
+  "Candle Reading": {
+   "status": "SUPPORTED",
+   "increment": 0.00098,
+   "evidence": "K-line geometry perceives structure; KLINE_ONLY alone ~0 bits"
+  },
+  "Price Structure": {
+   "status": "SUPPORTED",
+   "increment": 0.05146,
+   "evidence": "A2 structure ablation"
+  },
+  "Market Behavior": {
+   "status": "SUPPORTED",
+   "increment": 0.24964,
+   "evidence": "behavior one-hot ablation"
+  },
+  "Mechanism": {
+   "status": "SUPPORTED",
+   "increment": 0.03551,
+   "evidence": "mechanism ablation"
+  },
+  "State Recognition": {
+   "status": "SUPPORTED",
+   "increment": 0.37769,
+   "evidence": "M_A blind ΔLL"
+  },
+  "Event Recognition": {
+   "status": "INCONCLUSIVE",
+   "increment": 0.19238,
+   "evidence": "M_B blind ΔLL / balanced-acc weak"
+  },
+  "Transition": {
+   "status": "SUPPORTED",
+   "increment": 0.06368,
+   "evidence": "AUC 0.6726; lead window ~4 bars"
+  },
+  "Next State": {
+   "status": "SUPPORTED",
+   "increment": 0.37769,
+   "evidence": "STATE_FORECAST"
+  },
+  "Direction": {
+   "status": "INCONCLUSIVE",
+   "increment": 0.04978,
+   "evidence": "acc 0.522 vs maj 0.4623 (structural, no returns)"
+  },
+  "Timing": {
+   "status": "INCONCLUSIVE",
+   "increment": 0.06651,
+   "evidence": "horizon bucket, marginal"
+  },
+  "Counter Evidence": {
+   "status": "EXPLANATORY_ONLY",
+   "increment": -0.00059,
+   "evidence": "conflict-feature ablation"
+  },
+  "Invalidation": {
+   "status": "SUPPORTED",
+   "increment": 0.07017,
+   "evidence": "AUC 0.677"
+  },
+  "MTF": {
+   "status": "SUPPORTED",
+   "increment": 0.07556,
+   "evidence": "H1 +0.0541, H4 +0.02146"
+  }
+ },
+ "tests_summary": {
+  "pass": 30,
+  "fail": 0,
+  "total": 30
+ },
+ "effective_n": {
+  "raw_n": 40420,
+  "effective_n": 9419.61,
+  "autocorr_sum": 1.6455,
+  "unique_days": 533,
+  "unique_clusters": 975
+ },
+ "unique_days": 533,
+ "unique_clusters": 975,
+ "safety": {
+  "ORDER_SEND": 0,
+  "ORDER_CHECK": 0,
+  "BROKER_WRITE": 0,
+  "FORWARD": "OFF",
+  "SHADOW": "OFF",
+  "LIVE": "OFF",
+  "V2_WRITE": 0,
+  "V3_WRITE": 0,
+  "FUTURE_RETURN_USED": "NO",
+  "PNL_USED": "NO",
+  "WIN_RATE_USED": "NO"
+ },
+ "registry_hash": "0d9733eb4a46e70cbe8756f53eb6591abf193babb6b81bb8ef6b7fd01659ae91",
+ "context_hash": "df2448b84f4e29f366b2aff3bd3b5fe83c1c5141e0bcf3223cf5f65b33221f5c",
+ "git_head": "0f3d5d3c88a701a80b42d520b2b510f1aa07ccf3",
+ "ts_utc": "2026-09-27T13:11:48.299014+00:00"
+}

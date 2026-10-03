@@ -1,0 +1,81 @@
+{
+ "decision_id": "DEC-2026-09-21T18:32Z",
+ "cycle": "2026-09-21T18:32Z",
+ "utc_ts": "2026-09-21T18:32Z",
+ "symbol": "XAUUSD",
+ "decision": "WAIT",
+ "confidence": 0.55,
+ "bias": "SHORT-lean 0.55 - the measured cycle trade is LIVE, not absent. POS-20260921T1732Z (SHORT 0.01 filled @4351.72 at 18:19Z, broker SL 4355.9 / TP 4338.0 attached, ticket 2376734503) is the only exposure and it is +0.90pt (+0.71USD at the broker mark) with live mid 4350.82. HONEST READ: part of last cycle's degradation is being REPAIRED by the same move that filled us - the 18:15Z rally high 4352.57 has been sold back, and the live tape 4350.82 has given back the M15 MA20 4352.838 (2.02pt below) and the M15 MA50 4353.874 (3.05pt below) again, so the M15 stack is STRICTLY INVERTED for the first time in two cycles (4352.838 < 4353.874 < 4362.746, price under all three, strict leg 1.036pt - thin, disclosed). The regime filter holds (prior close 4349.285 < M15 MA200 4362.746) and D1 remains bearish (live 4350.82 ~69.2pt under the D1 MA20 4419.98). AGAINST the lean: H1 price 4350.82 sits 6.64pt ABOVE the H1 MA200 4344.185, and H4 price is 4.02pt above the H4 MA20 4346.796 / 9.02pt above the H4 MA50 4341.799, so the two slowest live legs still sit under the tape - that is why the lean is 0.55 and not higher, and why nothing is added at market.",
+ "opportunity": "NO NEW REGISTERABLE SETUP THIS CYCLE - the cycle's measured opportunity is ALREADY MONETIZED as an open position, and the single-position rule forbids stacking. Level hierarchy at 18:32Z (live mid 4350.82, bid 4350.75 / ask 4350.90): 4350.00 (round/psych), M15 MA20 4352.838 (2.02pt over), M15 MA50 4353.874 (3.05pt over, = the soft invalidation zone), 4355.90 (broker stop / hard invalidation, 5.08pt over), 4357.21 (16:15Z spike high), H1 MA20 4360.611 (9.79pt over), 4362.619-4362.746 (H1 MA50 / M15 MA200 confluence, 11.80-11.93pt over, UNMEASURED, not armed). BELOW: H4 MA20 4346.796 (-4.02pt), H4 MA50 4341.799 (-9.02pt), H1 MA200 4344.185 (-6.64pt), 4338.00 (broker TP / T1, banks 60%, -12.82pt), 4333.00 (T2, -17.82pt), 4322.69 (M15 low60 / T3, -28.13pt). GAP TO TRADABLE: (i) for the open short - NOTHING is missing, it is filled and mechanically managed by the hard-stop layer (SL 4355.9 / TP 4338.0 live at the broker); (ii) for a NEW entry - the missing ingredient is the SLOT, i.e. the current position must close first; (iii) absent the slot, the first re-arm candidate is the measured MA20/MA50 cluster touch (zone_touch [4352.0, 4354.0], regime intact now) and the second is the unmeasured 4362.62-4362.75 confluence fade. NONE is registered: a duplicate on the same geometry would be the position_busy zombie from 14:32Z/15:17Z.",
+ "opportunity_mechanism": "ma-stack pullback short in the below-MA200 regime - the family that just paid on this account (TP-20260921T1732Z registered 17:35Z, filled 18:19Z). Read-only probe run_state/tmp/baserate_1502Z_mastack.py over 5000 MT5 XAUUSD M15 bars: regime = MA20 < MA50 < MA200 AND prior close below the MA200 (this cycle: 4352.838 / 4353.874 / 4362.746, prior close 4349.285 < 4362.746 - HOLDS); event = the first bar whose high reaches the MA20 from below; entry limit at the level, stop level+s, target level-t, horizon 8 bars, intrabar ambiguity -> SL. n=176: SHORT positive in EVERY cell (s6_t6 p 0.630, s7_t10 p 0.577 +0.401R, s8_t10 p 0.605 +0.361R, s9_t10 p 0.646, s10_t10 p 0.660, s12_t10 p 0.684); mirror LONG at the same touches negative in every cell (p 0.212-0.545). The open book position is a band-top fill (4351.72, not the MA20 touch) - that haircut cell (n=170, entry ~4pt under the MA20) prints s8_t10 p 0.487 / s10_t10 p 0.615, i.e. still positive, so the fill stands as registered. Control probe run_state/tmp/baserate_1502Z_rereclaim.py: re-reclaim LONG n=3 p 0.000 - the 18:00-18:15Z reclaims (4351.72 / 4352.57) are exactly that losing shape and have since been sold back.",
+ "mtf_agreement": "PARTIAL (2.5/4 bearish-consistent, one leg improved this cycle): M15 BEARISH - strict inverted stack MA20 4352.838 < MA50 4353.874 < MA200 4362.746 with price 4350.82 under all three (strict leg thin at 1.036pt), RSI 39.8, pos_in_range 43.7, exp_cont expanding 1.42; H1 MIXED - price 9.79pt under MA20 4360.611 and 11.80pt under MA50 4362.619 (bearish) but 6.64pt ABOVE MA200 4344.185 (the honest non-short leg), RSI 38.6; H4 MILD-BULLISH - price 4.02pt above MA20 4346.796 and 9.02pt above MA50 4341.799, still 59.3pt under MA200 4410.16, RSI 63.4; D1 BEARISH - live 4350.82 ~69.2pt under MA20 4419.98, RSI 45.4, range er 0.091, pos_in_range 51.4. Net: the short needs the M15 stack now under price to keep working and must NOT let the H1 MA200 4344.185 / H4 MA20 4346.796 shelf turn back into support.",
+ "answers_14": {
+  "1": "M15: below-MA200 inverted stack regime (MA20 4352.838 < MA50 4353.874 < MA200 4362.746), price 4350.82 under all three; M15 RSI 39.8, er 0.203 mixed, exp_cont expanding 1.42, pos_in_range 43.7 (hi60 4383.51 / lo60 4322.69). H1 mixed (price under MA20 4360.611 / MA50 4362.619, above MA200 4344.185). H4 mild-bull (above MA20 4346.796 / MA50 4341.799, far under MA200 4410.16). D1 bearish (last_close 4378.645, MA20 4419.98, price_vs_ma20 -93.5, RSI 45.4, range). Live tape: mid 4350.82, spread 0.15pt = 0.345bps, tick 184/min, abnormal last6 max move 24.2bps (z 1.33 vs 10.14bps baseline) = active but not disordered.",
+  "2": "PARTIAL, not 4/4: D1 bearish + M15 bearish agree with the open short; H1 is mixed (MA200 4344.185 is 6.64pt UNDER the tape) and H4 still mildly bullish below its MA200 (price above H4 MA20/MA50) - the two slowest live legs are the dissenters, which is exactly why the lean is 0.55 and no size is added.",
+  "3": "M15 slab: 18:00Z bar closed 4349.285 (the first close inside the armed band), 18:15Z ran to 4352.57 and has been SOLD BACK - live mid 4350.82 is 2.02pt below the M15 MA20 4352.838 and 3.05pt below the MA50 4353.874, restoring the strict inversion that was lost last cycle; RSI 39.8, exp_cont expanding 1.42, abnormal last6 max move 24.2bps. Net M15 change = the retrace that filled the armed short is failing to hold its gains, but the strict leg is only 1.036pt thick so the regime is fragile, not robust.",
+  "4": "NO NEW TRADEABLE OPPORTUNITY registerable: the measured opportunity of this cycle is already an OPEN POSITION (POS-20260921T1732Z SHORT 0.01 @4351.72, +0.90pt), and the single-position rule forbids a second plan. If the slot were free, the first candidate would be the MA20/MA50 touch zone_touch [4352.0, 4354.0] (measured family, regime intact) and the second the unmeasured 4362.62-4362.75 confluence fade.",
+  "5": "ma-stack pullback SHORT in the below-MA200 regime (baserate n=176 over 5000 MT5 M15 bars, SHORT positive in every cell, s8_t10 p 0.605 / s10_t10 p 0.660; haircut entry ~4pt under the MA20 n=170 s8_t10 p 0.487 / s10_t10 p 0.615; mirror LONG p 0.212-0.545 negative; re-reclaim control n=3 p 0.000).",
+  "6": "NO NEW PLAN THIS CYCLE (single-position rule). For the LIVE position nothing needs triggering - it was filled at 18:19Z and is managed mechanically (broker SL 4355.9 / TP 4338.0). NEXT-CYCLE re-arm (only when flat): zone_touch [4352.0, 4354.0] (M15 MA20 4352.838 / MA50 4353.874) with the regime still MA20 < MA50 < MA200 and prior close < 4362.746; require a tick-level rejection (upper wick / fast fade) before the plan is written. Alternative watch: SHORT at the 4362.62-4362.75 confluence - NOT armed (no base rate).",
+  "7": "INVALIDATION of the open short = price_cross_up 4355.90 (broker stop; 5.08pt above the live mid) - thesis dead, NO re-entry / NO averaging / NO stop widening. SOFT KILL (earlier evidence): a confirmed M15 close back above the M15 MA50 4353.874 with the stack no longer inverted, i.e. MA20 crossing back through MA50.",
+  "8": "Expected reward remaining to T1 4338.0 (60% frac, broker TP) = 12.82pt = 12.82USD = 2.52R from the live mid 4350.82 (3.28R measured from the 4351.72 fill). T2 4333.0 (25%) = 17.82pt; T3 4322.69 (15%) = 28.13pt.",
+  "9": "Expected loss to the broker stop 4355.90 = 5.08pt from the live mid = 5.08USD = 1.22R remaining (initial 1R = 4.18pt = 4.18USD = 0.211% of the 1979.64 balance, well under the 1% cap).",
+  "10": "Cost: spread 0.15pt = 0.345bps (0.15USD) + assumed slippage 0.30bps (0.13USD) = 0.645bps = 0.28USD = 0.067R on 1R 4.18pt. Execution quality: live quote 18:32:27Z bid 4350.75 / ask 4350.90, source dashboard-live, spread 0.345bps < 1.0bps ceiling.",
+  "11": "Net EV (live frame) = p x 2.52 - (1-p) - 0.067; at the conservative p 0.40 -> +0.941R; at the haircut measured cell p 0.487 (s8_t10, entry ~4pt under the MA20) -> +1.16R; at the exact touched-cell p 0.605 -> +1.46R. As-filled frame: 0.40 x 3.28 - 0.60 - 0.067 = +0.645R. POSITIVE in every frame; breakeven p at the live frame is 0.423. This is a HOLD assessment, not a new-plan EV: no plan is registered this cycle.",
+  "12": "Recurrence: the family recurs whenever the M15 stack is inverted under the MA200 and price touches the MA20 from below - it ALREADY recurred today (17:32Z plan -> 18:19Z fill). Next recurrence: fresh touch of [4352.0, 4354.0] after the current position closes, expected on the order of 1-3 M15 cycles given the tape's 24.2bps/15min max move and the 2-3pt distance to the cluster.",
+  "13": "WAIT (single-position rule; the cycle's measured setup is ALREADY LIVE as POS-20260921T1732Z; no new plan registered).",
+  "14": "单仓约束: POS-20260921T1732Z SHORT 0.01 @4351.72 持仓中(+0.90pt), 槽位占用, 不注册新开仓计划; 持仓由机械硬止4355.9/目标4338.0管理; 平仓后首选再武装区 4352.0-4354.0 (M15 MA20/MA50), 失效价 4355.90。"
+ },
+ "plan": null,
+ "gap_to_tradable": "The 18:32Z cycle lacks NOTHING for the live short (it is filled at the broker: MT5 positions_get [SHORT 0.01 @4351.72, SL 4355.9, TP 4338.0, profit +0.71USD]). What is missing for a NEW trade is the SLOT: the single-position rule + the position_busy zombie failure mode mean a second plan on the same geometry would be cancelled at exec. Once flat, the missing ingredient becomes PRICE: a tick back into [4352.0, 4354.0] (M15 MA20 4352.838 / MA50 4353.874, 1.2-3.2pt above the tape) with a rejection print, or - if the stop 4355.90 is taken out instead - a re-assessment of the regime, since a tick through 4355.9 also breaks the armed thesis and would put the H1 MA20 4360.611 / 4362.62-4362.75 confluence in play (unmeasured, needs its own probe before arming).",
+ "next_setup_not_registered": {
+  "direction": "SHORT",
+  "entry_zone": {
+   "low": 4352.0,
+   "high": 4354.0
+  },
+  "trigger_condition": {
+   "zone_touch": [
+    4352.0,
+    4354.0
+   ]
+  },
+  "invalidation_condition": {
+   "price_cross_up": 4355.9
+  },
+  "stop_logic": {
+   "type": "fixed",
+   "level_price": 4355.9
+  },
+  "target_logic": {
+   "levels": [
+    {
+     "price": 4338.0,
+     "frac": 0.6
+    },
+    {
+     "price": 4333.0,
+     "frac": 0.25
+    },
+    {
+     "price": 4322.69,
+     "frac": 0.15
+    }
+   ]
+  },
+  "expected_R": 1.9,
+  "expected_win_probability": 0.55,
+  "probability_source": "run_state/tmp/baserate_1502Z_mastack.py n=176 (s8_t10 p0.605, haircut n=170 p0.487 -> carried 0.55)",
+  "estimated_cost": 0.28,
+  "spread_bps": 0.345,
+  "slippage_bps": 0.3,
+  "expected_net_EV": {
+   "value": 0.12,
+   "units": "R",
+   "note": "positive at every matching cell; NOT registered this cycle (slot occupied)"
+  },
+  "maximum_holding_time": "M15*8",
+  "qty_lots": 0.01,
+  "registration_status": "WITHHELD - single-position rule; armed only after POS-20260921T1732Z closes"
+ },
+ "model": "deepseek/deepseek-v4-flash"
+}

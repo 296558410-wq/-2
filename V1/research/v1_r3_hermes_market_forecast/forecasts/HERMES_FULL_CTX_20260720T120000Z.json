@@ -1,0 +1,79 @@
+{
+  "forecast_id": "HERMES_FULL_CTX_20260720T120000Z",
+  "timestamp": "2026-07-20 12:00:00+00:00",
+  "current_state": "COMPRESSION (event: ACCEPTANCE, dwell 1 bar)",
+  "dominant_structure": "Intraday COMPRESSION anchored on a heavily-tested swing-low support at 4021.065 (33 touches/240 bars, break_status INSIDE, distance 0.12 ATR) below a rejected supply zone (~4027-4040.4); higher timeframe H4 remains in a downtrend (trend_20 -54.13) while M1-M15 show short-term up-drift, so no trend is asserted — multi-timeframe agreement = CONFLICT.",
+  "current_pressure": "Range-expansion pressure building on all timeframes (range_expanding=true; M1 range_percentile 0.925); supply rejections at 4040.435 (H1 upper wick 15.39) and 4026.955 (M5/M15); demand absorption at the 4021 swing low; latent downside pressure from the H4 downtrend; cross-market proxies neutral-to-mild headwind (DXY 100.815, +0.025/8 bars; VIX 18.26 flat) and UST10Y unavailable.",
+  "primary_scenario": {
+    "scenario": "Compression persists: price continues oscillating within roughly 4019.6-4027 around the 4021.065 swing-low pivot for the next several hours; range-expansion flags warn of an eventual expansion whose direction is not yet determined. 2/3 exact-state analogs stay in COMPRESSION through step 16.",
+    "confidence": 0.55,
+    "horizon": "SHORT_TERM",
+    "trigger": "Continued acceptance inside the 4019.6-4027 range with repeated tests of the 4021.065 level without a decisive close through it",
+    "invalidation": "A decisive M15 close below 4021.065 (swing-low break) or a M15 close above ~4030.355 (prior high / 4027 zone)"
+  },
+  "alternative_scenario": {
+    "scenario": "Upside resolution: acceptance above 4026.955 and then 4030.355 extends toward a retest of the 4040.435 rejection high, consistent with positive M1-M15 trend_20 and consecutive-up flags (6-7 bars).",
+    "confidence": 0.25,
+    "horizon": "INTRADAY",
+    "trigger": "M15 close above 4026.955 holding, followed by a close above 4030.355",
+    "invalidation": "Rejection back inside the range (M15 close below 4024) or a fresh lower high below 4030"
+  },
+  "third_scenario": {
+    "scenario": "Downside resolution: decisive break of the 4021.065 swing low opens a move toward the 3998-4000 H4 lows and the 3981.935 overnight low, aligning with the persistent H4 downtrend (trend_20 -54.13, trend_50 -78.13).",
+    "confidence": 0.2,
+    "horizon": "SHORT_TERM",
+    "trigger": "M15 close below 4021.065 with follow-through below 4019.575",
+    "invalidation": "Quick reclaim of 4021.065 within 1-2 bars (whipsaw)"
+  },
+  "direction_bias": "NO_DIRECTIONAL_EDGE",
+  "expected_state_transition": "COMPRESSION persists near-term (analogs A24698/A30701 stay COMPRESSION through step 16), with a conditional expansion to TREND upon a decisive range break (analog A19210 transitions at step 12); direction of the eventual expansion is undetermined from this context.",
+  "time_horizon": "SHORT_TERM",
+  "confidence": 0.5,
+  "supporting_evidence": [
+    "Frozen labeler state COMPRESSION with event ACCEPTANCE (dwell 1 bar), consistent with state history REJECTION->TREND->REJECTION->COMPRESSION",
+    "Swing-low level 4021.065: 33 touches in 240 bars, break_status INSIDE, distance 0.12 ATR — a heavily-tested, intact support pivot",
+    "range_expanding=true on M1/M5/M15/H1/H4 with current M1 range_percentile 0.925 — compression with rising volatility pressure",
+    "H1 12:00 bar upper wick 15.39 rejecting 4040.435; M5/M15 current bars also show upper-wick rejection near 4027",
+    "Multi-timeframe agreement explicitly CONFLICT — no coherent directional signal",
+    "2/3 exact-state historical analogs remain in COMPRESSION through step 16 (state evolution only, no returns)"
+  ],
+  "counter_evidence": [
+    "M1/M5/M15/H1 trend_20 all positive (3.25/7.95/17.21/6.21) with consecutive_up 6-7 — near-term up-drift argues against a flat/neutral read",
+    "H4 current-bar close 4005.915 contradicts M1/M5/H1 closes (~4024-4025) at the same timestamp — snapshot misalignment reduces trust in the H4 bar geometry (noted, not used as a directional signal)",
+    "Analog A19210 transitions COMPRESSION->TREND at step 12 — an imminent expansion is plausible",
+    "DXY mildly rising (+0.041/32 bars, PROXY) is a mild headwind for gold; VIX 18.26 is low, historically consistent with complacency",
+    "Ambiguity rate 0.375 — the state label carries meaningful uncertainty"
+  ],
+  "trigger": "Range-expansion flags on all timeframes with price pinned at the 4021.065 swing low; a decisive close through 4021.065 (down) or 4026.955/4030.355 (up) triggers directional expansion",
+  "invalidation": "Primary compression scenario invalidated by a decisive M15 close below 4021.065 or above ~4030.355; also weakened if range contracts for >6-8 bars without expansion",
+  "change_my_mind": [
+    "State label transitions to TREND with a clear direction consistent across M1-H4 (resolution of the multi-timeframe conflict)",
+    "UST10Y / NEWS / MACRO data appearing (currently absent) with a clear macro impulse",
+    "A strong directional DXY move (PROXY) or a VIX spike breaking its recent flat range",
+    "A clean M15 close outside the 4019.6-4027 range, establishing the break direction"
+  ],
+  "abstain": false,
+  "abstain_reason": "",
+  "reasoning_trace": [
+    "Read PIT context as of 2026-07-20 12:00:00Z; only DIRECT/DERIVED/PROXY data used; UST10Y marked UNKNOWN and treated as absent",
+    "Identified frozen label COMPRESSION + ACCEPTANCE, consistent with a tight intraday range 4019.6-4027",
+    "Located the swing-low pivot 4021.065 (33 touches, INSIDE) as the structural anchor",
+    "Cross-checked multi-timeframe trends: M1-M15 up (trend_20>0), H4 down (trend_20 -54.13) — CONFLICT, no direction asserted",
+    "Noted H4 current-bar close inconsistency vs M1/M5/H1 closes; excluded H4 close from evidence",
+    "Checked cross-market: DXY/VIX flat (PROXY), UST10Y/news/macro absent — no external impulse",
+    "Checked historical analogs: 2/3 stay COMPRESSION through step 16, 1/3 -> TREND at step 12 — supports persistence with eventual expansion",
+    "Concluded NO_DIRECTIONAL_EDGE with a structural compression primary scenario; subjective confidence 0.5"
+  ],
+  "questions": {
+    "A": "Price is oscillating in a tight ~4019.6-4027 range around 4021-4025 after a volatile morning that printed 4040.435 and was rejected with large upper wicks; the frozen labeler reads COMPRESSION with ACCEPTANCE at t.",
+    "B": "Intraday COMPRESSION anchored on a heavily-tested swing-low support at 4021.065 (33 touches/240 bars, INSIDE) below a rejected supply zone ~4027-4040.4; the H4 downtrend vs positive M1-M15 drift keeps it a compression, not a trend.",
+    "C": "Range-expansion pressure is building on all timeframes (range_expanding=true, M1 range_percentile 0.925); supply rejection at 4040.4/4027, demand absorption at 4021, latent H4 downside pressure; DXY (PROXY) mildly up and VIX flat give no offsetting impulse.",
+    "D": "Candidates: (1) trend_continuation (L4) — weakly supported by 8-bar displacement 2.57 and price inside the level; (2) compression/absorption before expansion — supported by state history and 2/3 analogs persisting; (3) H4 downtrend resumption — supported at H4 but contradicted by lower-TF up-drift; all are DERIVED candidates, not asserted.",
+    "E": "Frozen label COMPRESSION+ACCEPTANCE; swing-low 4021.065 with 33 touches and break_status INSIDE; range_expanding=true across all timeframes; H1 upper wick 15.39 rejecting 4040.435; multi-timeframe agreement = CONFLICT.",
+    "F": "Lower-TF trend_20 all positive with 6-7 consecutive up bars (near-term up-drift); H4 current-bar close (4005.915) conflicts with M1/M5/H1 closes at the same timestamp (snapshot artifact); analog A19210 transitions to TREND at step 12; DXY mild rise is a headwind.",
+    "G": "Primary: COMPRESSION persists — price continues oscillating within ~4019.6-4027 around the 4021.065 pivot for the next several hours, with expanding range warning of an eventual direction-not-yet-determined expansion; subjective confidence 0.55.",
+    "H": "Alternative: upside resolution — acceptance above 4026.955/4030.355 extends toward a 4040.435 retest (confidence 0.25); downside break of 4021.065 toward 3998-4000 H4 lows is the third path (confidence 0.2).",
+    "I": "Compression is invalidated by a decisive M15 close below 4021.065 or above ~4030.355; a >6-8 bar range contraction without expansion also weakens the thesis.",
+    "J": "I would flip toward a direction if the state label moves to TREND with consistent M1-H4 alignment, or if UST10Y/news/macro (currently absent), a strong DXY move, or a VIX spike supplies a clear impulse, or a clean M15 close outside 4019.6-4027 establishes the break direction."
+  }
+}

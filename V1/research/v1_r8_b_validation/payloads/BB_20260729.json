@@ -1,0 +1,56 @@
+{
+ "audit_id": "BB_20260729",
+ "timestamp": "2026-07-29T00:00:00Z",
+ "current_state": "COMPRESSION (M1 lifecycle, dwell 8 bars, event ACCEPTANCE); price 4017-4024 straddling nearest swing-low level 4021.515 (status INSIDE, 20 touches / 240 bars) after a sharp H4 correction from ~4105 to low 4010.055",
+ "structure": "H4 uptrend intact (trend_50 +30.15, trend_20 +4.95) with a deep ~95pt pullback; nearest level SWING_LOW_37051 @ 4021.515 is heavily touched (20x/240 bars) and price sits inside its zone; current H4 bar is a large bullish body (open 4017.8, close 4029.3, high 4037.8) showing an intra-bar poke to 4010.055 then reclaim — buyers defended the zone; lower timeframes (M5/M15/H1) still have negative trend_20 (-10.6/-15.9/-24.5), so MTF agreement is CONFLICT",
+ "mechanism": "Two DERIVED candidate mechanisms only (not asserted): (1) trend_continuation — price inside the level with 8-bar displacement -1.97 and still-negative lower-TF momentum; (2) exhaustion — 8-bar compression dwell after a large selloff, dwell alone acknowledged as weak. Compression = volatility contraction after a big move; resolution direction is the open question",
+ "primary_scenario": {
+  "scenario": "Support-reclaim bounce: price holds the 4021.515 swing-low zone (reclaims and holds above it), compression resolves upward; retest of 4029-4038 (H4 high / prior resistance)",
+  "confidence": 0.45,
+  "horizon": "SHORT_TERM",
+  "trigger": "Sustained M15/H1 close above 4021.515 with upside range expansion; DXY staying flat or weakening",
+  "invalidation": "Decisive downside break with expansion — H1 close below 4013.785 or H4 close below 4010.055"
+ },
+ "alternative_scenario": {
+  "scenario": "Level failure / trend continuation down: support gives way, price closes decisively below the swing low; next leg toward 4000 psychological / ~3990 measured-move zone",
+  "confidence": 0.35,
+  "horizon": "INTRADAY",
+  "trigger": "M5/M15 breakdown below 4015.8-4013.8 with expansion (consecutive_down extending beyond 7)",
+  "invalidation": "Rapid reclaim of 4021.515 within 1-2 bars (breakdown failure)"
+ },
+ "expected_transition": "COMPRESSION -> TREND within roughly 4-8 bars per highest-similarity analog A33379 (COMPRESSION at t0 -> TREND at step 4); direction conditional on reclaim vs decisive break of 4021.515. Non-trivial chance compression persists (analog A35780) or ends in late REJECTION (analog A34354)",
+ "direction": "UP",
+ "horizon": "SHORT_TERM",
+ "confidence": 0.45,
+ "counter_evidence": [
+  "M5/M15/H1 trend_20 all negative (-10.6 / -15.9 / -24.5) — momentum still down at lower timeframes",
+  "M5 sequence shows consecutive_down 7 — sellers active into the level",
+  "M1 and M5 closes (4017.5 / 4016.5) remain below the nearest level 4021.515",
+  "MTF agreement CONFLICT — no aligned multi-timeframe confirmation",
+  "Compression is two-sided: analogs show it can persist (A35780) or end in REJECTION (A34354)",
+  "No volume, macro, news, COT, ETF-flow, or positioning data available to confirm a bounce",
+  "DXY is PROXY (Yahoo, instrument definition UNKNOWN) with flat change — weak confirmatory value only"
+ ],
+ "invalidation": "H1 close below 4013.785 or H4 close below 4010.055 with expansion (downside scenario confirmed); a sustained close above 4037.8 would flip the frame to bullish continuation and is supportive of, not contrary to, the UP call",
+ "data_quality_flags": [
+  "L1 RAW_GEOMETRY + DERIVED (DIRECT price, DERIVED aggregates)",
+  "L2 DERIVED (causal pivot swing levels)",
+  "L3/L4/L5 DERIVED (frozen C1 labeler; mechanisms are CANDIDATES only)",
+  "L6 CONFLICT (timeframes reported separately, never merged)",
+  "DXY PROXY (Yahoo 5m, instrument definition UNKNOWN)",
+  "VIX and UST10Y_PROXY_TNX UNKNOWN (stale or not covered)",
+  "GLD/GC/CFTC_COT/ETF_FLOWS/NEWS/MACRO absent — macro and positioning tail risks unobservable"
+ ],
+ "reasoning_trace": [
+  "Read only the PIT context CTX_20260729T000000Z.json and the HERMES-B blind prompt; no other analyst forecast consulted",
+  "Located price: ~4017-4024, after a sharp H4 selloff from ~4105 (Jul 27) to low 4010.055 (Jul 28/29); current M1 close 4017.475",
+  "H4 trend_50 +30.15 with trend_20 +4.95: higher-timeframe uptrend intact; the pullback is deep but has not broken H4 structure",
+  "Nearest level SWING_LOW_37051 @ 4021.515, 20 touches in 240 bars, status INSIDE: a well-tested support; current H4 bar poked to 4010.055 and reclaimed to 4029.255 — defensive buying visible in the zone",
+  "M1 state COMPRESSION (dwell 8, ACCEPTANCE, ambiguity_rate_8 0.125, no transitions): volatility contraction; resolution pending",
+  "Lower-TF momentum still negative (M5 -10.6, M15 -15.9, H1 -24.5 trend_20): the main argument against the bounce",
+  "Cross-market: DXY flat (101.428, +0.056 over 8 bars) — no dollar tailwind/headwind; VIX and UST10Y unavailable; macro absent",
+  "Analog A33379 (similarity 1.0): COMPRESSION -> TREND at step 4 supports imminent resolution, but the analog carries no direction information",
+  "Judgement: structural support + intact H4 uptrend + intra-bar reclaim tilt the balance to a short-term bounce; conflicting lower-TF momentum and absent confirmation data cap confidence at 0.45",
+  "Output: UP / SHORT_TERM / 0.45 with explicit downside invalidation; alternative DOWN scenario at 0.35"
+ ]
+}

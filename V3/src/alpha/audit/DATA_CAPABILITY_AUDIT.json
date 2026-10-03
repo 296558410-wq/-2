@@ -1,0 +1,45 @@
+{
+ "schema": "v3_alpha_postmortem_data_capability/1",
+ "generated_utc": "2026-09-21T20:23:19.977118+00:00",
+ "task": "V3-HFT-ALPHA-POSTMORTEM-001",
+ "available_fields": [
+  "bid",
+  "ask",
+  "ts_utc",
+  "flags"
+ ],
+ "derived_fields": [
+  "mid=(bid+ask)/2",
+  "spread=ask-bid"
+ ],
+ "missing_fields": [
+  "L2 order book / depth",
+  "trade prints",
+  "real volume",
+  "last",
+  "queue position",
+  "order sizes",
+  "signed trade flow"
+ ],
+ "zero_field_proof": {
+  "fxtm_staging_tick": {
+   "volume_nonzero_frac": 0.0,
+   "volume_real_nonzero_frac": 0.0,
+   "last_nonzero_frac": 0.0
+  },
+  "fxtm_live_tick": {
+   "volume_nonzero_frac": 0.0,
+   "volume_real_nonzero_frac": 0.0,
+   "last_nonzero_frac": 0.0
+  }
+ },
+ "consequences": {
+  "microprice": "DATA_GAP (needs bid/ask sizes; volume/volume_real identically 0)",
+  "true_ofi": "DATA_GAP (no sizes, no prints)",
+  "ofi_used": "tick-rule L1 proxy only (sign of mid change over 20 ticks) - weak information proxy",
+  "vpin/kyle_lambda/queue_imbalance": "DATA_GAP"
+ },
+ "FEATURE_CAPABILITY": "L1_QUOTE_ONLY (price/spread/time only; no trade-flow or depth information)",
+ "verdict": "DATA_GAP",
+ "verdict_note": "Microstructure/trade-flow alpha is not testable on this feed; only price-based families B0/B3/B4/B5/B6 and a tick-rule proxy B2 could be tested."
+}

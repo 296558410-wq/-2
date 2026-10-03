@@ -1,0 +1,236 @@
+{
+ "schema": "v3_mechanism_r2_tests/1",
+ "total": 23,
+ "pass": 23,
+ "fail": 0,
+ "results": [
+  {
+   "test": "test_r2_deterministic",
+   "result": "PASS",
+   "detail": {
+    "events": 127,
+    "identical": true
+   },
+   "sec": 0.15
+  },
+  {
+   "test": "test_r2_no_lookahead",
+   "result": "PASS",
+   "detail": {
+    "replays_checked": 3,
+    "no_lookahead": true
+   },
+   "sec": 0.0
+  },
+  {
+   "test": "test_r2_replay_70",
+   "result": "PASS",
+   "detail": {
+    "frac": 0.7,
+    "cut": "2026-08-19 15:50:00+00:00",
+    "closed_events": 97,
+    "identity_stable": true
+   },
+   "sec": 0.0
+  },
+  {
+   "test": "test_r2_replay_80",
+   "result": "PASS",
+   "detail": {
+    "frac": 0.8,
+    "cut": "2026-08-31 12:50:00+00:00",
+    "closed_events": 106,
+    "identity_stable": true
+   },
+   "sec": 0.0
+  },
+  {
+   "test": "test_r2_replay_90",
+   "result": "PASS",
+   "detail": {
+    "frac": 0.9,
+    "cut": "2026-09-10 12:40:00+00:00",
+    "closed_events": 118,
+    "identity_stable": true
+   },
+   "sec": 0.0
+  },
+  {
+   "test": "test_registry_hash",
+   "result": "PASS",
+   "detail": {
+    "registry_hash": "9913dd6d9860f5e0fb3b",
+    "permutation_count": 500,
+    "random_seed": 20260925
+   },
+   "sec": 0.0
+  },
+  {
+   "test": "test_immutable_inputs",
+   "result": "PASS",
+   "detail": {
+    "four_inputs_unchanged": true
+   },
+   "sec": 0.01
+  },
+  {
+   "test": "test_negative_control_a",
+   "result": "PASS",
+   "detail": {
+    "status": "PASS",
+    "mean_rate": 0.0,
+    "max_rate": 0.0,
+    "ceiling": 0.25
+   },
+   "sec": 0.0
+  },
+  {
+   "test": "test_negative_control_b",
+   "result": "PASS",
+   "detail": {
+    "status": "PASS",
+    "mean_rate": 0.0,
+    "max_rate": 0.0,
+    "ceiling": 0.25
+   },
+   "sec": 0.0
+  },
+  {
+   "test": "test_negative_control_c",
+   "result": "PASS",
+   "detail": {
+    "status": "PASS",
+    "mean_rate": 0.0,
+    "max_rate": 0.0,
+    "ceiling": 0.25
+   },
+   "sec": 0.0
+  },
+  {
+   "test": "test_positive_control",
+   "result": "PASS",
+   "detail": {
+    "decision": "FAIL",
+    "detected": 0,
+    "distribution": {
+     "MECHANISM_SUPPORTED": 0,
+     "MECHANISM_UNCERTAIN": 0,
+     "MECHANISM_REJECTED": 1
+    }
+   },
+   "sec": 0.0
+  },
+  {
+   "test": "test_null_distribution",
+   "result": "PASS",
+   "detail": {
+    "mechanisms_with_full_null_summary": 4,
+    "example_p": {
+     "M03": 0.0,
+     "M01": 0.0
+    }
+   },
+   "sec": 0.0
+  },
+  {
+   "test": "test_permutation_reproducibility",
+   "result": "PASS",
+   "detail": {
+    "p_value": 0.0,
+    "reproducible": true
+   },
+   "sec": 0.04
+  },
+  {
+   "test": "test_artifact_separation",
+   "result": "PASS",
+   "detail": {
+    "mechanisms": 4,
+    "fatal_only_blocks": true
+   },
+   "sec": 0.0
+  },
+  {
+   "test": "test_duplicate_evidence_separation",
+   "result": "PASS",
+   "detail": {
+    "stage": "EVENT_LEVEL",
+    "events": 127,
+    "opportunities": 404
+   },
+   "sec": 0.0
+  },
+  {
+   "test": "test_counter_evidence_independence",
+   "result": "PASS",
+   "detail": {
+    "mechanisms": 4,
+    "one_parent_per_code": true
+   },
+   "sec": 0.0
+  },
+  {
+   "test": "test_evidence_dependency",
+   "result": "PASS",
+   "detail": {
+    "pairs": 7,
+    "dependent": 3
+   },
+   "sec": 0.0
+  },
+  {
+   "test": "test_mechanism_cluster_stability",
+   "result": "PASS",
+   "detail": {
+    "clusters": 61,
+    "mechanisms": 4
+   },
+   "sec": 0.0
+  },
+  {
+   "test": "test_independent_event_count",
+   "result": "PASS",
+   "detail": {
+    "independent_events": 127,
+    "raw_investigate": 404
+   },
+   "sec": 0.0
+  },
+  {
+   "test": "test_candidate_gate",
+   "result": "PASS",
+   "detail": {
+    "method_validity": "INVALID",
+    "candidates": 0
+   },
+   "sec": 0.0
+  },
+  {
+   "test": "test_v1_isolation",
+   "result": "PASS",
+   "detail": {
+    "v1_source_modified": 0,
+    "v1_runtime_files": 12
+   },
+   "sec": 0.02
+  },
+  {
+   "test": "test_v2_isolation",
+   "result": "PASS",
+   "detail": {
+    "v2_source_modified": 0,
+    "v2_runtime_files": 217
+   },
+   "sec": 0.7
+  },
+  {
+   "test": "test_order_send_disabled",
+   "result": "PASS",
+   "detail": {
+    "ast_clean": true,
+    "registry_complete": true
+   },
+   "sec": 0.02
+  }
+ ]
+}

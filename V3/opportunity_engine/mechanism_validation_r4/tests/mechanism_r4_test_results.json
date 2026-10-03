@@ -1,0 +1,306 @@
+{
+ "schema": "v3_mechanism_r4_tests/1",
+ "total": 30,
+ "pass": 30,
+ "fail": 0,
+ "results": [
+  {
+   "test": "test_input_count_404",
+   "result": "PASS",
+   "detail": {
+    "expected": 404,
+    "loaded": 404,
+    "validated": 404,
+    "unexpected_in_scope": 0,
+    "out_of_scope": 1595
+   },
+   "sec": 0.0
+  },
+  {
+   "test": "test_input_manifest_hash",
+   "result": "PASS",
+   "detail": {
+    "input_manifest_hash": "15d4064473c5fca62ea8",
+    "rows": 404
+   },
+   "sec": 0.0
+  },
+  {
+   "test": "test_input_immutable",
+   "result": "PASS",
+   "detail": {
+    "four_hashes_unchanged": true
+   },
+   "sec": 0.12
+  },
+  {
+   "test": "test_r3_method_hash",
+   "result": "PASS",
+   "detail": {
+    "R3_METHOD_HASH": "571bad8fd9621780d676",
+    "unchanged": true
+   },
+   "sec": 0.0
+  },
+  {
+   "test": "test_r3_registry_immutable",
+   "result": "PASS",
+   "detail": {
+    "registry_hash": "9913dd6d9860f5e0fb3b",
+    "r2_r3_agree": true
+   },
+   "sec": 0.0
+  },
+  {
+   "test": "test_r3_decision_rules_immutable",
+   "result": "PASS",
+   "detail": {
+    "decision_rules_hash": "34aa7b471e278ebce9bf",
+    "perm": 500,
+    "seed": 20260925
+   },
+   "sec": 0.0
+  },
+  {
+   "test": "test_no_lookahead",
+   "result": "PASS",
+   "detail": {
+    "replays": 3,
+    "no_lookahead": true
+   },
+   "sec": 0.0
+  },
+  {
+   "test": "test_event_separation",
+   "result": "PASS",
+   "detail": {
+    "separation_window_h": 6,
+    "finest_window_h": 0.5,
+    "1h_only_pairs_checked": 22,
+    "mixed_grid_clusters": 32,
+    "events_checked": 127
+   },
+   "sec": 0.02
+  },
+  {
+   "test": "test_event_dedup",
+   "result": "PASS",
+   "detail": {
+    "opportunities": 404,
+    "independent_events": 127
+   },
+   "sec": 0.0
+  },
+  {
+   "test": "test_cross_grid_dedup",
+   "result": "PASS",
+   "detail": {
+    "cross_grid_events": 1,
+    "unique_ids": 127
+   },
+   "sec": 0.0
+  },
+  {
+   "test": "test_independent_event_count",
+   "result": "PASS",
+   "detail": {
+    "total": 127,
+    "mechanisms": 4
+   },
+   "sec": 0.0
+  },
+  {
+   "test": "test_artifact_detection",
+   "result": "PASS",
+   "detail": {
+    "artifact_risk_high": 4,
+    "fatal": [
+     "M01",
+     "M08",
+     "M02"
+    ]
+   },
+   "sec": 0.0
+  },
+  {
+   "test": "test_counter_evidence",
+   "result": "PASS",
+   "detail": {
+    "counter_evidence_high": 3,
+    "levels": [
+     "FATAL",
+     "MODERATE"
+    ]
+   },
+   "sec": 0.0
+  },
+  {
+   "test": "test_evidence_dependency",
+   "result": "PASS",
+   "detail": {
+    "pairs": 7,
+    "dependent": 3
+   },
+   "sec": 0.0
+  },
+  {
+   "test": "test_temporal_stability",
+   "result": "PASS",
+   "detail": {
+    "M03": "HIGH",
+    "M01": "HIGH",
+    "M08": "HIGH",
+    "M02": "HIGH"
+   },
+   "sec": 0.0
+  },
+  {
+   "test": "test_session_stability",
+   "result": "PASS",
+   "detail": {
+    "M03": "NOT_INFORMATIVE",
+    "M01": "NOT_INFORMATIVE",
+    "M08": "NOT_INFORMATIVE",
+    "M02": "NOT_INFORMATIVE"
+   },
+   "sec": 0.0
+  },
+  {
+   "test": "test_state_stability",
+   "result": "PASS",
+   "detail": {
+    "M03": "NOT_INFORMATIVE",
+    "M01": "NOT_INFORMATIVE",
+    "M08": "NOT_INFORMATIVE",
+    "M02": "NOT_INFORMATIVE"
+   },
+   "sec": 0.0
+  },
+  {
+   "test": "test_negative_control_a",
+   "result": "PASS",
+   "detail": {
+    "status": "PASS",
+    "rate_mean": 0.0,
+    "ceiling": 0.25
+   },
+   "sec": 0.0
+  },
+  {
+   "test": "test_negative_control_b",
+   "result": "PASS",
+   "detail": {
+    "status": "PASS",
+    "rate_mean": 0.0,
+    "ceiling": 0.25
+   },
+   "sec": 0.0
+  },
+  {
+   "test": "test_negative_control_c",
+   "result": "PASS",
+   "detail": {
+    "status": "PASS",
+    "rate_mean": 0.0,
+    "ceiling": 0.25
+   },
+   "sec": 0.0
+  },
+  {
+   "test": "test_deterministic",
+   "result": "PASS",
+   "detail": {
+    "deterministic": true
+   },
+   "sec": 0.0
+  },
+  {
+   "test": "test_replay_70",
+   "result": "PASS",
+   "detail": {
+    "frac": 0.7,
+    "cut": "2026-08-19 15:50:00+00:00",
+    "closed_events": 97,
+    "identity_stable": true,
+    "decision_stable": true
+   },
+   "sec": 0.0
+  },
+  {
+   "test": "test_replay_80",
+   "result": "PASS",
+   "detail": {
+    "frac": 0.8,
+    "cut": "2026-08-31 12:50:00+00:00",
+    "closed_events": 106,
+    "identity_stable": true,
+    "decision_stable": true
+   },
+   "sec": 0.0
+  },
+  {
+   "test": "test_replay_90",
+   "result": "PASS",
+   "detail": {
+    "frac": 0.9,
+    "cut": "2026-09-10 12:40:00+00:00",
+    "closed_events": 118,
+    "identity_stable": true,
+    "decision_stable": true
+   },
+   "sec": 0.0
+  },
+  {
+   "test": "test_no_future_return_in_identification",
+   "result": "PASS",
+   "detail": {
+    "future_return_absent": true
+   },
+   "sec": 0.01
+  },
+  {
+   "test": "test_no_pnl_in_mechanism_decision",
+   "result": "PASS",
+   "detail": {
+    "mechanism_results_clean": true
+   },
+   "sec": 0.0
+  },
+  {
+   "test": "test_no_candidate_auto_promotion",
+   "result": "PASS",
+   "detail": {
+    "candidates": 0,
+    "synthetic_used": 0
+   },
+   "sec": 0.0
+  },
+  {
+   "test": "test_v1_isolation",
+   "result": "PASS",
+   "detail": {
+    "v1_source_modified": 0,
+    "v1_runtime_files": 0
+   },
+   "sec": 0.03
+  },
+  {
+   "test": "test_v2_isolation",
+   "result": "PASS",
+   "detail": {
+    "v2_source_modified": 0,
+    "v2_runtime_files": 0
+   },
+   "sec": 0.87
+  },
+  {
+   "test": "test_order_send_disabled",
+   "result": "PASS",
+   "detail": {
+    "ast_clean": true,
+    "scanned": 1
+   },
+   "sec": 0.01
+  }
+ ]
+}

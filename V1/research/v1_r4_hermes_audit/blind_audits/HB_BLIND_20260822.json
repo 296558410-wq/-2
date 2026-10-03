@@ -1,0 +1,54 @@
+{
+  "audit_id": "HB_BLIND_20260822",
+  "timestamp": "2026-08-22T12:00:00+00:00",
+  "current_state": "COMPRESSION (dwell 2 bars) following a short REJECTION (dwell 3) after an EXPANSION (dwell 10-12). Event at t: VOL_CONTRACTION. Price 4602.055, sitting at/inside the nearest level SWING_HIGH 4601.875 (break_status INSIDE, 11 touches/240 bars, distance 0.03 ATR).",
+  "structure": "Higher timeframes in a strong uptrend (H4 trend_20 +247.96, trend_50 +234.08; H1 trend_20 +71.51, trend_50 +115.45). Within that uptrend a sharp intraday down-impulse: H1 current candle is a large bearish body (open 4616.675, close 4602.055, body 14.62, body_ratio 0.937), M5 shows 10 consecutive down bars, and M1/M5/M15 trend_20 are negative (-6.65, -20.05, -12.08). Price retraced ~30 pts from session high 4631.935 and is now testing the old swing high 4601.875 (former resistance, potential support pivot). Multi-timeframe agreement = CONFLICT; timeframes are never merged.",
+  "mechanism": "trend_continuation (CANDIDATE only, DERIVED, not asserted): pullback within an intact H1/H4 uptrend; price inside the active level with 8-bar displacement -22.09; COMPRESSION likely to resolve with an expansion. No alternative mechanism candidate was provided in the context.",
+  "primary_scenario": {
+    "scenario": "Higher-timeframe uptrend resumes after the pullback stabilizes at the 4601.875 swing-high pivot; COMPRESSION resolves upward toward EXPANSION/TREND and price works back above the 4615-4617 zone.",
+    "confidence": 0.52,
+    "horizon": "SHORT_TERM",
+    "trigger": "Price holds above the 4601.875 pivot and prints a higher-low reclaim (M5 consecutive-down stalls, short-term momentum flips up) with range expansion to the upside.",
+    "invalidation": "Decisive break and close below 4601.875 with expanding range converts the level into resistance and opens the downside."
+  },
+  "alternative_scenario": {
+    "scenario": "The sharp H1 bearish impulse (body_ratio 0.937) marks a deeper corrective or reversing phase; price breaks 4601.875 and extends down toward the 4588 then 4563.3 (H1 13:00 / H4 low) consolidation as COMPRESSION resolves downward.",
+    "confidence": 0.33,
+    "horizon": "INTRADAY",
+    "trigger": "Clean break of 4601.875 with momentum (M5 consecutive-down extends, no reclaim) and expansion to the downside.",
+    "invalidation": "Reclaim above ~4615-4617 (recent broken zone) and recovery of H1 uptrend momentum."
+  },
+  "expected_transition": "COMPRESSION -> EXPANSION (direction-resolving; primary scenario tilts up but residual is high given the conflict and the sharp selling impulse).",
+  "direction": "UP",
+  "horizon": "SHORT_TERM",
+  "confidence": 0.52,
+  "counter_evidence": [
+    "H1 current candle is a large bearish impulse (open 4616.675, close 4602.055, body 14.62, body_ratio 0.937) showing aggressive near-term selling.",
+    "M1/M5/M15 trend_20 all negative (-6.65, -20.05, -12.08) while only H1/H4 are positive; L6 agreement = CONFLICT.",
+    "M5 sequence shows 10 consecutive down bars; short-term momentum is decisively down.",
+    "Nearest level 4601.875 originates as a SWING_HIGH (resistance) touched 11 times in 240 bars and price is INSIDE it, so it may repel price again rather than hold as support.",
+    "Historical analog A26956 (identical start state) evolved COMPRESSION -> REJECTION, consistent with downside continuation.",
+    "All cross-market series (DXY, VIX, UST10Y/TNX) are unavailable (UNKNOWN) and GLD/GC/COT/flows/news/macro are absent; no macro confirmation in either direction."
+  ],
+  "invalidation": "Decisive break/close below the active swing-high pivot 4601.875 with range expansion invalidates the bullish pullback-continuation view, flips the level to resistance, and opens targets near 4588 and 4563.3.",
+  "data_quality_flags": [
+    "L1: RAW_GEOMETRY + DERIVED (M1/M5/M15/H1/H4)",
+    "L2: DERIVED (pivot swing levels, causal)",
+    "L3: OBSERVED frozen C1 label + DERIVED state_v2/event",
+    "L4: DERIVED mechanism CANDIDATE only, not asserted as fact",
+    "L5: DERIVED (frozen C1 ontology + min-dwell lifecycle)",
+    "L6: DERIVED; agreement=CONFLICT, timeframes never merged into one direction",
+    "L7: DXY/VIX/UST10Y_PROXY_TNX UNKNOWN/absent; GLD/GC/COT/ETF_FLOWS/NEWS/MACRO_EVENTS absent, never fabricated"
+  ],
+  "reasoning_trace": [
+    "Read only PIT context CTX_20260822T120000Z.json (as_of 2026-08-22 12:00 UTC); no other analyst forecast consulted.",
+    "State = COMPRESSION (dwell 2) after REJECTION (dwell 3) following EXPANSION (dwell 10-12); VOL_CONTRACTION event; COMPRESSION typically precedes a resolution/expansion.",
+    "H4/H1 trend_20 strongly positive (+247.96, +71.51) with H1/H4 50-bar trends also positive (+115.45, +234.08) -> higher-timeframe uptrend intact.",
+    "Immediate tape is a sharp down-impulse: H1 bearish body 14.62 (ratio 0.937), M5 10 consecutive down bars, M1/M5/M15 trend_20 negative.",
+    "Price 4602.055 retraced ~30 pts from 4631.935 and now sits at/inside nearest level 4601.875 (SWING_HIGH, 11 touches/240, ~0.03 ATR) -> former resistance acting as a support pivot in an uptrend pullback.",
+    "L4 candidate mechanism = trend_continuation (DERIVED, not asserted); supports the pullback-then-resume read.",
+    "Historical analogs are mixed: A21233 stays COMPRESSION, A32777 goes TREND then REJECTION/EXPANSION, A26956 goes REJECTION; no single strong resolution signal.",
+    "No cross-market or macro input available; all series UNKNOWN/absent.",
+    "Synthesis: lean UP (resumption) on the higher-TF trend plus pivot support, but confidence capped at ~0.52 by the timeframe conflict, the sharp near-term selling, and the missing cross-market data; downside scenario explicitly retained."
+  ]
+}

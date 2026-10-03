@@ -1,0 +1,40 @@
+{
+  "audit_id": "PO_20260729",
+  "forecast_id": "R8B_A_20260729",
+  "outcome_id": "OUTCOME_20260729T000000Z",
+  "auditor": "HERMES-B",
+  "audit_type": "POST_OUTCOME_ALIGNMENT",
+  "timestamp": "2026-07-29T04:00:00Z",
+  "horizon_hours": 4,
+  "outcome_alignment_verdict": "ALIGNED",
+  "primary_scenario_forecast": "RANGE",
+  "alternative_scenario_forecast": "DIRECTIONAL",
+  "realised_family_at_H": "QUIET",
+  "realised_state_at_H": "COMPRESSION",
+  "alignment_rationale": "Hermes-A's primary scenario was RANGE (oscillation 4013-4030 around swing low 4021.5, direction_bias NO_DIRECTIONAL_EDGE), with DIRECTIONAL breakout as the alternative. At H=4 the outcome family was QUIET and state COMPRESSION: no directional resolution, no breakout, and neither invalidation (4h close beyond 4030 or below 4010) was triggered. The realised outcome falls within the primary non-directional scenario family; the alternative DIRECTIONAL call did not materialise. Scenario call therefore aligned with the realised outcome.",
+  "verdict_evidence": [
+    "Forecast scenario_family = RANGE with invalidation '4h close below 4010 or above 4030'",
+    "Forecast alternative = DIRECTIONAL requiring 'decisive break of 4021.5 level'",
+    "Outcome family_at_H = QUIET (no expansion/trend), state_at_H = COMPRESSION (stayed compressed)",
+    "No signal in outcome of directional break or invalidation breach",
+    "Expected_transition 'COMPRESSION to RANGE or breakout' partially overspecified but consistent with the disclosed no-edge stance"
+  ],
+  "process_defects": [
+    {
+      "defect": "TAXONOMY_MISMATCH",
+      "detail": "Forecast scenario families are RANGE/DIRECTIONAL while the outcome record reports family QUIET / state COMPRESSION. Alignment must be judged on semantic family (non-directional, contained) rather than literal label equality; the two taxonomies are not directly comparable by label."
+    },
+    {
+      "defect": "INVALIDATION_NOT_VERIFIABLE_FROM_OUTCOME",
+      "detail": "The outcome record contains only family/state fields and no price series, so the explicit invalidation levels (4h close beyond 4030 or below 4010) could not be independently confirmed; alignment rests on family/state evidence that no directional move occurred."
+    },
+    {
+      "defect": "EXPECTED_TRANSITION_OVERSCOPE",
+      "detail": "expected_transition 'COMPRESSION to RANGE or breakout' names the alternative as a plausible path inside the primary narrative; outcome stayed COMPRESSION. Minor tension, disclosed in reasoning, did not affect the primary call."
+    }
+  ],
+  "notes": [
+    "Alignment judged at H=4 per task scope using only the four permitted files.",
+    "Outcome remained within primary RANGE/QUIET family; alternative DIRECTIONAL falsified by absence of breakout."
+  ]
+}

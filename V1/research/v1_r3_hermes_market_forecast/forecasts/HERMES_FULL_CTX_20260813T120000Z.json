@@ -1,0 +1,82 @@
+{
+ "forecast_id": "HERMES_FULL_CTX_20260813T120000Z",
+ "timestamp": "2026-08-13 12:00:00+00:00",
+ "current_state": "COMPRESSION (VOL_CONTRACTION, dwell 2 bars) after a long TREND regime (7-12 bars); H1/H4 downtrend structure with a sharp H4 spike low at 4352.755 and current price recovering inside a swing-low level zone.",
+ "dominant_structure": "Compression building on a higher-timeframe pullback. H4 trend_20 is +47.95 over the wider 20-bar drift but the current H4 bar is a deep-range bearish bar (low 4352.755, close 4383.485); H1 trend_20 is -33.46 with a long lower wick recovery. Intraday M5/M15 show a firm rally off the 4368-4370 zone into 4393-4394. The frozen C1 labeler calls it COMPRESSION with a VOL_CONTRACTION event, and price sits INSIDE a 44-touch swing-low level at 4393.565 (distance_atr 0.0995) - i.e., a tight consolidation right at a high-touch support level after an impulsive downswing.",
+ "current_pressure": "Directional: recovery bids pressing up from the 4352.755 H4 low toward the 4393.565 swing-low level, while H1 trend_20 (-33.46) still points down - conflicting pull. Volatility: contracting intraday (M1 range_percentile ~0.06-0.46, VOL_CONTRACTION event, ATR falling from ~20.5 to ~17 on H1); a breakout seems to be coiling. Liquidity-proxy: 44 touches on the swing-low level indicate high-traffic support; VIX 14.57 low and flat, DXY 99.925 nearly flat - no cross-market stress signal.",
+ "mechanisms_explained": "Candidate mechanisms from context: trend_continuation (supported: price inside level, 8-bar displacement 17.38; invalidation = decisive break of active level). Others considered from evidence: mean-reversion bounce off oversold H4 low (supported by the deep H4 lower wick and intraday up-structure); volatility-coil / breakout (supported by VOL_CONTRACTION + range_expanding flags and contracting ATR); exhaustion of the down-move (supported by H1 long lower wick and multi-minute higher lows at 4388-4390). The 'trend_continuation' candidate is DERIVED and listed as a candidate only, not asserted.",
+ "strongest_evidence": "1) Frozen state COMPRESSION + VOL_CONTRACTION event at t (OBSERVED labeler). 2) H4 current bar low 4352.755 with a massive 30.73 lower wick and close 4383.485 - buyers defended deeply. 3) Price is INSIDE the swing-low level 4393.565 with 44 touches/240 bars (high-traffic support) and reclaim_status NONE. 4) Intraday structure is up: M5/M15 trend_20 positive (+9.3/+18.46), M15 consecutive_up 10, H1 bar closed 4387.435 well off the 4382.715 low with recovery. 5) State sequence TREND(12 bars)->COMPRESSION(2 bars): a pause after a long directional run, classically a coiling point.",
+ "strongest_counter_evidence": "1) H1 trend_20 -33.46 and H1 consecutive_down 8 - the dominant higher-timeframe drift is still DOWN. 2) H4 trend_50 is strongly positive (+347.4) but trend_20 only +47.95, meaning the recent pullback has erased a large part of the medium-term rise; the H4 09:00-11:00 sequence peaked at 4393.685 then the 12:00 H4 bar fell to 4352.755 - a bearish high-to-low reversal within the bar. 3) Cross-market is uninformative (DXY/VIX flat, UST10Y unavailable), so nothing confirms a bottom. 4) The level is swing-low-based; if broken, the whole recovery thesis inverts. 5) M1/M5 still show mixed consecutive_up/down flags (M1 consecutive_down 7) - no clean low-timeframe confirmation of a breakout yet.",
+ "primary_scenario": {
+  "scenario": "Range/compression resolves with a continuation of the intraday recovery: price holds above the 4388-4390 zone, reclaims the 4393.565 swing-low level (break_status changes from INSIDE to reclaim), and presses back toward the 4400-4401 H4 high zone, consistent with the bounce off the 4352.755 low.",
+  "confidence": 0.42,
+  "horizon": "INTRADAY",
+  "trigger": "A decisive close above 4393.565 (the swing-low level) on M15 with rising volume/range after the compression; M15 trend_20 staying positive and H1 flattening above -20.",
+  "invalidation": "Price loses the 4388.265-4388.055 intraday support and especially the 4368-4370 H4 swing-low zone; if the swing-low level 4393.565 is decisively broken downward (level_side DN break) the recovery scenario is invalid."
+ },
+ "alternative_scenario": {
+  "scenario": "The compression is a bearish continuation: the H1/H4 down-drift resumes and price breaks the 4368.695/4363.905 lows toward a retest of the 4352.755 H4 low and lower - the 'trend_continuation' candidate wins.",
+  "confidence": 0.33,
+  "horizon": "INTRADAY",
+  "trigger": "Loss of 4388 and then 4382.715-4383.635, followed by H1 trend_20 accelerating below -40 and VIX/DXY confirming stress; the swing-low level fails on the DN side.",
+  "invalidation": "A strong reclaim of 4393.565 with sustained M15 closes above it, or a higher-low at 4388+ holding for several M15 bars."
+ },
+ "third_scenario": {
+  "scenario": "Extended chop/no directional edge: price grinds within the 4388-4394 band without reclaiming or breaking the level; compression persists and expands into rotation (analog A32370 path) with no clean breakout this session.",
+  "confidence": 0.25,
+  "horizon": "INTRADAY",
+  "trigger": "Range stays contained between ~4388 and ~4394 with low M15 range_percentiles and VOL_CONTRACTION continuing past dwell 4+.",
+  "invalidation": "Either a decisive close above 4393.565 or below 4388.265, resolving the coil."
+ },
+ "direction_bias": "UP",
+ "expected_state_transition": "COMPRESSION -> EXPANSION (likely, per analog A20861 path: COMPRESSION -> REJECTION -> EXPANSION), with direction contingent on which side of the 4393.565 level the breakout resolves.",
+ "time_horizon": "INTRADAY",
+ "confidence": 0.42,
+ "supporting_evidence": [
+  "Frozen C1 labeler at t: state COMPRESSION, event VOL_CONTRACTION (OBSERVED)",
+  "Price INSIDE swing-low level 4393.565, 44 touches/240 bars, distance_atr 0.0995, reclaim_status NONE",
+  "H4 current bar: low 4352.755 with 30.73 lower wick, close 4383.485 well off the low",
+  "M5/M15 trend_20 positive (+9.3/+18.46); M15 consecutive_up 10; intraday recovery structure",
+  "State history: long TREND regime (7-12 dwell) just transitioned to COMPRESSION (dwell 2)",
+  "Historical analog A20861 (similarity 1.0): COMPRESSION -> REJECTION -> EXPANSION"
+ ],
+ "counter_evidence": [
+  "H1 trend_20 -33.46, H1 consecutive_down 8: higher-timeframe drift still DOWN",
+  "H4 12:00 bar reversed from 4393.685/4401.965 highs to a 4352.755 low - bearish bar",
+  "H4 trend_20 (+47.95) far below trend_50 (+347.4): recent pullback erased much of the medium-term rise",
+  "Cross-market proxies flat/unavailable (DXY 99.925, VIX 14.57, UST10Y UNKNOWN) - no confirmation",
+  "M1/M5 mixed consecutive flags; M1 consecutive_down 7 - no clean low-TF confirmation of breakout"
+ ],
+ "trigger": "Decisive M15 close above 4393.565 (swing-low level reclaim) on expanding range",
+ "invalidation": "Decisive downward break of 4393.565 level (DN side) followed by loss of 4388.265 intraday support and the 4368-4370 zone; retest of 4352.755 H4 low",
+ "change_my_mind": [
+  "A sustained M15 close above 4393.565 with range_expanding and rising H1 trend_20 toward 0 or positive",
+  "A sustained M15 close below 4388.265 without reclaim, confirming bearish continuation",
+  "VIX rising materially (e.g., >16) or DXY breaking to new local lows/highs confirming a direction",
+  "An H1 close below 4382.715 followed by H1 consecutive_down extending to 10+"
+ ],
+ "abstain": false,
+ "abstain_reason": "",
+ "reasoning_trace": [
+  "Read PIT context as_of 2026-08-13 12:00Z; only that context used.",
+  "Established state: COMPRESSION/VOL_CONTRACTION after TREND regime; multi-TF conflict noted (L6 agreement CONFLICT - timeframes never merged).",
+  "Located dominant level: swing-low 4393.565 (DN), 44 touches, price INSIDE; this is the key battleground.",
+  "Mechanism candidates taken as-is from L4 (candidate only, not asserted); supported trend_continuation flag noted.",
+  "Built primary scenario (intraday recovery/reclaim) from intraday up-structure + deep H4 lower wick + high-touch level proximity.",
+  "Actively searched counter-evidence: H1/H4 down-drift, bearish H4 reversal bar, uninformative cross-market - captured as alternative and invalidation.",
+  "Chose UP bias with low confidence (0.42) given genuine multi-TF conflict; abstention considered but rejected because a coherent, falsifiable scenario with explicit invalidation is possible.",
+  "Respected data_quality tags: DXY/VIX treated as PROXY, UST10Y as UNKNOWN/absent; no future information used."
+ ],
+ "questions": {
+  "A": "Current market: XAUUSD at ~4387-4394 after a sharp H4 down-move that printed a deep low at 4352.755; price has recovered off that low into a tight consolidation right at a high-touch swing-low level (4393.565). Multi-timeframe conflict: higher TFs still drifting down (H1 trend_20 -33.46) while intraday M5/M15 have rallied (+9.3/+18.46). Volatility is contracting (VOL_CONTRACTION event).",
+  "B": "Dominant structure: COMPRESSION coiling on a higher-timeframe pullback, anchored at a 44-touch swing-low support level. The frozen C1 labeler says COMPRESSION with VOL_CONTRACTION; price is INSIDE the swing-low level with reclaim_status NONE - a pause after a long TREND regime at a level with heavy traffic.",
+  "C": "Pressures: (1) directional - recovery bids pressing against a still-down higher-TF drift (H1 trend_20 negative); (2) volatility - contraction/coiling, ATR falling, breakout pending (range_expanding flags with small realized ranges); (3) liquidity-proxy - 44 touches on the swing-low level indicate a well-trafficked support that could either absorb selling or fail sharply; cross-market proxies flat and uninformative.",
+  "D": "Mechanisms: (a) trend_continuation (L4 candidate, supported by price inside level + 8-bar displacement 17.38; invalidated by decisive level break) - if the pullback resumes, bears win; (b) mean-reversion/recovery bounce off oversold H4 low - supported by the 30.73 H4 lower wick and intraday up-structure; (c) volatility-coil/breakout - supported by VOL_CONTRACTION + contracting ATR; (d) exhaustion of the down-move - supported by higher lows at 4388-4390 in M1. These are candidates, not asserted facts.",
+  "E": "Strongest evidence: frozen COMPRESSION/VOL_CONTRACTION label; H4 bar with 4352.755 low and 30.73 lower wick closing at 4383.485; price INSIDE 4393.565 swing-low level with 44 touches; positive M5/M15 trends and M15 consecutive_up 10; state history TREND(12)->COMPRESSION(2).",
+  "F": "Strongest counter-evidence: H1 trend_20 -33.46 with consecutive_down 8; the 12:00 H4 bar reversed from 4393.685/4401.965 to 4352.755 (bearish reversal bar); H4 trend_20 (+47.95) far below trend_50 (+347.4) showing the pullback erased much of the medium-term rise; DXY/VIX flat and UST10Y unavailable so nothing confirms the bottom; M1 consecutive_down 7 shows no clean low-TF confirmation.",
+  "G": "Primary scenario: intraday recovery resolves the compression - price holds 4388-4390, reclaims 4393.565, presses toward 4400-4401 H4 high zone (bounce off the 4352.755 low). Confidence 0.42, INTRADAY.",
+  "H": "Alternative: bearish continuation - H1/H4 down-drift resumes, price breaks 4388.265, then 4382.715/4368.695, retesting the 4352.755 H4 low and lower (trend_continuation wins). Third: extended chop 4388-4394 with no resolution (analog A32370 path).",
+  "I": "Invalidation of the primary (UP/recovery): decisive downward break of the swing-low level 4393.565 (DN side) followed by loss of 4388.265 intraday support and the 4368-4370 H4 zone, retest of the 4352.755 H4 low. Checkable in M15/H1 closes.",
+  "J": "Would flip judgement to bearish: sustained M15 close below 4388.265, or H1 close below 4382.715 with H1 consecutive_down extending; would firm up bullish: sustained M15 close above 4393.565 with expanding range and H1 trend_20 flattening to ~0/positive; a material VIX rise or DXY move confirming direction would raise confidence in whichever direction it points."
+ }
+}

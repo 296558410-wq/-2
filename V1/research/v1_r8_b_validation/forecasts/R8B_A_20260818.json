@@ -1,0 +1,105 @@
+{
+  "sample_id": "A_20260818",
+  "horizon": 4,
+  "scenario_family": "RANGE",
+  "scenario_alternative": "DIRECTIONAL",
+  "scenario_abstain": false,
+  "forecast_id": "A_20260818_H4",
+  "timestamp": "2026-08-18 00:00:00+00:00",
+  "observations": [
+    "COMPRESSION state, ACCEPTANCE event, dwell 3",
+    "Price inside swing-high 4416.235, 22 touches",
+    "H4 large upper wick rejection at 4435.905",
+    "H1 bullish bar 4425.605; MTF conflict"
+  ],
+  "what_i_know": [
+    "Frozen state COMPRESSION at t, dwell 3",
+    "Nearest level 4416.235 inside, 22 touches",
+    "Short-TF trends negative; H4 trend_50 positive",
+    "DXY soft; VIX, UST, news absent"
+  ],
+  "what_i_do_not_know": [
+    "Direction of eventual compression breakout",
+    "VIX, UST10Y, macro news are absent",
+    "Level break_status INSIDE, reclaim NONE",
+    "Exact H=4 range size unknown"
+  ],
+  "evidence": [
+    "COMPRESSION dwell 3 with ACCEPTANCE event",
+    "Analogs A25759 persist COMPRESSION five steps",
+    "Price inside level, distance 0.28 ATR",
+    "Level 4416.235 touched 22 times"
+  ],
+  "counter_evidence": [
+    "H4 bar range 42.23, volatility rising",
+    "MTF conflict implies possible expansion",
+    "Analog A31804 flips REJECTION at step 4",
+    "Recent bars range_percentile high 0.97"
+  ],
+  "possible_mechanisms": [
+    {
+      "mechanism": "level_rejection_mean_reversion",
+      "status": "SUPPORTED",
+      "why": "22 touches plus H4 upper wick rejection"
+    },
+    {
+      "mechanism": "trend_continuation",
+      "status": "POSSIBLE",
+      "why": "H4 rejection favours near-term downside"
+    },
+    {
+      "mechanism": "compression_squeeze",
+      "status": "POSSIBLE",
+      "why": "dwell 3 compression may prelude expansion"
+    },
+    {
+      "mechanism": "break_and_hold_level",
+      "status": "WEAK",
+      "why": "reclaim NONE, break INSIDE only"
+    }
+  ],
+  "primary_scenario": {
+    "scenario": "RANGE",
+    "horizon": 4,
+    "trigger": "price stays inside 4408-4420 around level 4416",
+    "invalidation": "decisive 4h close beyond 4425 or below 4393"
+  },
+  "alternative_scenario": {
+    "scenario": "DIRECTIONAL",
+    "horizon": 4,
+    "trigger": "breakdown below 4408 follows H4 rejection",
+    "invalidation": "price reclaims and holds above 4420"
+  },
+  "expected_transition": "COMPRESSION persists or drifts to REJECTION",
+  "direction_bias": "NEUTRAL",
+  "time_horizon": "H4",
+  "evidence_strength": 0.45,
+  "confidence": 0.4,
+  "uncertainty": 0.55,
+  "confidence_reason": "COMPRESSION plus level anchor support RANGE, direction unresolved",
+  "uncertainty_reason": "MTF conflict, absent VIX/news, level break status unresolved",
+  "invalidation": "decisive 4h close beyond 4425 or below 4393",
+  "change_my_mind": [
+    "Sustained 4h close above 4425",
+    "Sustained 4h close below 4393",
+    "VIX or UST data confirms stress",
+    "State flips EXPANSION with strong body"
+  ],
+  "abstain": false,
+  "abstain_reason": "",
+  "questions": {
+    "Q1_what_do_i_know": "COMPRESSION dwell 3; inside level 4416; H4 rejection; MTF conflict",
+    "Q2_what_do_i_not_know": "Breakout direction; VIX and UST absent; reclaim NONE",
+    "Q3_evidence_for_primary": "Compression, level anchor, analog persistence",
+    "Q4_evidence_against_primary": "Wide H4 range, MTF conflict, expansion risk",
+    "Q5_mechanism_that_is_only_possible": "Squeeze direction after compression",
+    "Q6_what_would_change_my_mind": "4h close beyond 4425 or below 4393",
+    "Q7_should_i_abstain_now": "false - sufficient state context despite uncertainty"
+  },
+  "reasoning_trace": [
+    "State COMPRESSION with level anchor inside",
+    "H4 rejection favours down, H1 rally favours up",
+    "Analog mean stays COMPRESSION to step 8",
+    "Forecast RANGE with directional risk"
+  ]
+}

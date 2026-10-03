@@ -1,0 +1,110 @@
+{
+ "task": "V1_R5_HERMES_FORECAST_DISCIPLINE",
+ "registry_id": "v1r5-discipline-registry-r1",
+ "frozen": true,
+ "frozen_before_any_forecast": true,
+ "frozen_at_utc": "2026-09-27T23:24:32.586078+00:00",
+ "r3_immutable": true,
+ "r4_immutable": true,
+ "r3_baseline_hash": "ae995b3817a1f7b1b477649feafdf5b0b36c193c6d7337cac54a559328f97e59",
+ "r4_baseline_hash": "6e81837ee6ab66c6159da57a5f0043731449583f7004192d2a697906a9febd3d",
+ "focus": [
+  "OVER_INFERENCE",
+  "MECHANISM_JUMP",
+  "COUNTER_EVIDENCE_MISSING",
+  "OVERCONFIDENCE"
+ ],
+ "mandatory_answers": [
+  "what_i_know",
+  "what_i_do_not_know",
+  "evidence_for_primary",
+  "evidence_against_primary",
+  "mechanism_only_possible",
+  "what_would_change_my_mind",
+  "should_i_abstain_now"
+ ],
+ "mechanism_status_vocabulary": [
+  "SUPPORTED",
+  "POSSIBLE",
+  "WEAK",
+  "UNKNOWN"
+ ],
+ "confidence_fields": [
+  "evidence_strength",
+  "confidence",
+  "uncertainty",
+  "confidence_reason",
+  "uncertainty_reason"
+ ],
+ "sample": {
+  "declared_pool": [
+   "20260720",
+   "20260723",
+   "20260726",
+   "20260729",
+   "20260801",
+   "20260804",
+   "20260807",
+   "20260810",
+   "20260813",
+   "20260816",
+   "20260822",
+   "20260825",
+   "20260828",
+   "20260831",
+   "20260903",
+   "20260906",
+   "20260912",
+   "20260915"
+  ],
+  "r5_sample": [
+   "20260720",
+   "20260726",
+   "20260801",
+   "20260807",
+   "20260813",
+   "20260822",
+   "20260828",
+   "20260903",
+   "20260912"
+  ],
+  "n": 9,
+  "rule": "every 2nd point of the frozen R3 R4 sample (fixed rule; no re-selection)",
+  "EFFECTIVE_N": 9,
+  "small_sample_declared": true
+ },
+ "comparisons": [
+  "R3_BASELINE",
+  "R5_HERMES",
+  "SIMPLE_BASELINES"
+ ],
+ "metrics": [
+  "State",
+  "Transition",
+  "Scenario",
+  "Direction",
+  "Timing",
+  "Calibration",
+  "Abstention"
+ ],
+ "gate": {
+  "rule": "if R5 does not beat baseline -> CAPABILITY_GATE = CLOSED; discipline-only improvement -> PREDICTION = UNSUPPORTED"
+ },
+ "prompt_hashes": {
+  "hermes_a_r5": "29f1fc6da7ee9db174e04fd349ad0acfad3d3409565b76ab60346fa0bbc531b1",
+  "hermes_b_adversarial": "35b1523db0ee59adcfcd5a38e142ccf00484112d501b39cd03f184820eeb259f",
+  "hermes_b_post": "045b3185519ba949c86075b75e6d382137c101864075421b2cf6a1be8b9e2cf4"
+ },
+ "hard_safety": {
+  "ORDER_SEND": 0,
+  "ORDER_CHECK": 0,
+  "BROKER_WRITE": 0,
+  "FORWARD": "OFF",
+  "SHADOW": "OFF",
+  "LIVE": "OFF",
+  "V2_WRITE": 0,
+  "V3_WRITE": 0,
+  "BOUNDARY_VIOLATION": 0
+ },
+ "registry_hash": "dea8586dc5e9c8debd20268f0bfaa45ee819246a8750774ad4e23f5914b13091"
+}

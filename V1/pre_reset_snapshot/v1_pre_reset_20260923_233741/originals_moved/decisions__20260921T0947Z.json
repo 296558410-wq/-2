@@ -1,0 +1,84 @@
+{
+ "decision_id": "DEC-2026-09-21T09:47Z",
+ "cycle": "2026-09-21T09:47Z",
+ "utc_ts": "2026-09-21T09:49:00+00:00",
+ "symbol": "XAUUSD",
+ "decision": "SHORT",
+ "confidence": 0.55,
+ "bias": "NEUTRAL-lean-SHORT 0.55 at the wall / do not chase spot 4346.1. Box edge-fade only: sell strength into [4353.5,4355.5] (M15 MA200 4353.95 + H1 MA50 4354.12 confluence, 8 rejections today). The complementary floor-buy LONG [4340.5,4343.5] registered at 09:32Z (TP-20260921T0932Z) stays armed, so the book is a deliberate two-sided box fade (precedent: 01:32Z LONG lower edge + 01:47Z SHORT upper edge).",
+ "opportunity": "ACTIVE HUNTER: after the session floor 4340.35 was swept and reclaimed (5x today), price climbed back to H1 MA200 4346.36 (live mid 4346.10, 09:48:28Z) and the natural next leg of this box is a grind into the 4353.5-4355.5 supply shelf, where the fade has already banked 3 trades today. Price is 7.4pt below the zone low, so the plan is armed as a resting sell: trigger {zone_touch:[4353.5,4355.5]} auto-fills on the rally, no M15 close needed. Slot is FREE this cycle (POS-20260921T0702Z SHORT closed by broker TP 4346.5 -> +8.65 USD, balance 1966.33, flat), so the single-position rule permits registration. Geometry: conservative fill at the zone low 4353.5 with SL 4358.5 = 1R 5.0pt = 5.00 USD/0.01lot; T1 4345.5 = 8.0pt = 1.60R (demo hard TP = tp_levels[0], ladder not bankable). Realistic fill at the zone mid 4354.5 gives 1R 4.0pt and R_T1 2.25.",
+ "opportunity_mechanism": "Range-extreme fade in an all-TF box (pkg er D1 0.091 / H1 0.02; H4 0.364 and M15 0.391 are box-internal legs). The upper edge is a two-way confluence 0.2pt thin: M15 MA200 4353.95 + H1 MA50 4354.12, on top of the descending intraday high ladder 4383.51 -> 4368.45 -> 4365.45 -> 4363.47 -> 4362.51 -> 4362.23 -> 4357.75 -> 4356.17 (8 rejections today, none closed above). The session's repeatable paying mechanism is exactly this fade: 4354.83 -> TP 4346.5 (+8.65 USD), and two earlier wall fades (+5.18 / +5.18 USD) = +19.01 USD from 3 attempts, versus the day's losing pattern of buying mid-box 4348-4360 (3 stop-outs: 4376.17 / 4359.79 / 4351.74, MFE only +2.9/+3.1pt). Payoff is reachable without any floor break: T1 4345.5 sits 8pt below the zone and just under H1 MA200 4346.36 / the 4346.5 shelf that has already paid once today. Rejected alternative: buying spot 4346.1 - the wall is only 7.8pt overhead, so R:R from spot is ~1.0 at best; the floor-buy LONG is already armed lower, so a third mid-box long would re-run the day's proven-losing pattern.",
+ "mtf_agreement": "Mixed, edge-fade consistent. M15: bearish stack (close 4347.385 < MA20 4361.86 < MA50 4372.12, straddling MA200 4353.95), RSI14 30.5 and pos_in_range 8.6 of the 4342.68-4397.15 60-bar window = just off the range floor, i.e. the bounce leg is alive - so the wall fade must be entered as a resting order, not at spot. H1: pure range (er 0.02), close 4351.165 under MA20 4370.14 / MA50 4354.12, sitting on MA200 4346.36 = price is at the H1 pivot, and its 60-bar low 4235.28 shows the box interior is wide. H4: constructive (close 4356.14 > MA20 4341.14 > MA50 4342.47, MA200 4407.45 far above) but RSI 68.2 = no upside room, so a wall break would be a breakout, not a trend. D1: range (er 0.091, pos_in_range 51.4, RSI 45.4) with a bearish day body off 4380.4 toward today's 4340.35 low. Net: no TF offers a trend edge; both box edges pay and the upper edge just got 7.8pt closer as price reclaimed H1 MA200.",
+ "answers_14": {
+  "1": "市场状态: 4TF 全 RANGE, 无趋势顺风。D1 er0.091 close4378.645<<MA20 4419.98 RSI45.4 pos51.4 当体阴(4380.4→今低4340.35); H4 er0.364=箱内摆动, close4356.14>MA20 4341.14>MA50 4342.47, MA200 4407.45 远在上, RSI68.2 无上行空间; H1 er0.02 极致无趋势, close4351.165<MA20 4370.14/MA50 4354.12 且正踩 MA200 4346.36; M15 er0.391 下腿, close4347.385<MA20 4361.86<MA50 4372.12 跨骑 MA200 4353.95, RSI30.5 超卖, pos_in_range 8.6 (hi60 4397.15/lo60 4342.68)。实时 mid4346.10 (09:48:28Z bid4346.03/ask4346.17, spread0.322bps=0.14pt), pkg m15_live 4347.03 tick150/min abnormal z0.27 正常。账户 demo160759434: balance=equity=1966.33, 0 持仓 (POS-0702Z 已 TP 平仓 +8.65)。",
+  "2": "一致性: 部分/混合。支持做空上沿的是 M15+H1 全均线压在价上 (M15 MA20 4361.86/MA50 4372.12, H1 MA20 4370.14/MA50 4354.12) 与日内高点梯级下移 4383.51→…→4356.17 (8 次撞墙全被拒), 且上沿 4353.95/4354.12 是 0.2pt 薄共振; 反向证据是 H4 结构仍多 (价>MA20>MA50) 且 M15 RSI30.5 超卖 + 地板 4340.35 刚被买回 = 反弹是活的, 故本笔不用市价追、只在墙位挂单。",
+  "3": "M15 变化 (vs 09:32Z): 地板 4340.35 被扫后再次收回并爬回 H1 MA200 4346.36。09:15Z bar 收 4346.70 (其 4346.50 低点正是上一笔墙 fade 的 broker TP), 09:30Z bar o4346.04 h4346.54 l4340.35 c~4342.4 后放量拉回 (新低仅较前低 4341.88 低 1.53pt 且 3 分钟内 +2.1pt), 当前 mid4346.10 基本收复 09:15 收盘位; M15 RSI 由 33.0 降至 30.5 属滞后超卖读数。要点: 买盘未死、价格回到 H1 枢轴, 上方 4353.95/4354.12 墙未破 = 反弹的天然终点就是本计划的触发带。",
+  "4": "机会: 上沿墙 fade, 现已进入'等回撤的卖区'而非追空区 — mid4346.10 距 zone 下沿 4353.5 还有 7.4pt, 挂单让爆发行情自己送价。墙 = M15 MA200 4353.95 + H1 MA50 4354.12 (0.2pt 薄共振), 今日 8 次高点全部死于其下; 目标 4345.5 在 H1 MA200 4346.36 与今日已兑现过的 4346.5 平台之下, 无需破地板即可兑现。下沿买盘计划 TP-0932Z [4340.5,4343.5] 仍有效 = 双向箱体 fade。",
+  "5": "机制: 区间边界均值回归 (D1 er0.091 / H1 er0.02)。上沿供给带的兑现证据链: 今日 3 笔墙 fade 全盈 (+5.18/+5.18/+8.65 = +19.01 USD), 高点序列 4383.51→4368.45→4365.45→4363.47→4362.51→4362.23→4357.75→4356.17 逐级下移且无一收盘于 4354 上方; 下沿 4340.35 亦第 5 次被扫后收回 = 两端都是 fade 场。成本仅 0.622bps 往返 = 0.054R, 不构成障碍。",
+  "6": "触发条件 (具体价): {\"zone_touch\":[4353.5,4355.5]} — engine 每轮以最新 mid 判定, mid 落入 4353.5-4355.5 即市价成交 (SHORT); 无需等 M15 收盘, 也不要求突破确认 (mandate: 贴近边界即计划, 触价自动成交)。",
+  "7": "失效 (具体价): {\"price_cross_up\":4357.5} — mid ≥ 4357.5 视为墙带被实体突破 (已越过今日 4357.75/4356.17 双高点), 未成交计划立即取消; 成交后机械止损 stop_logic.level_price = 4358.5 (墙带上沿 4354.12 之上 4.4pt, broker 侧硬 SL)。",
+  "8": "预期收益 R: 保守口径 (zone 下沿 4353.5 成交, 1R = 5.0pt = 5.00 USD/0.01手) T1 4345.5 = 8.0pt = 1.60R。实际口径 (zone 中值 4354.5 成交, 1R = 4.0pt) R_T1 = 2.25。demo 模式 trader_core 强制在 tp_levels[0] 全平, 故 T2/T3 阶梯不计入可兑现收益。",
+  "9": "预期损失 R: 1.000R = 5.0pt = 5.00 USD (0.01 手) = 平衡 1966.33 USD 的 0.254% (实际按 4354.5 成交则 4.0 USD = 0.203%), 远低于 1% 单笔风控。",
+  "10": "成本数值: spread 0.322bps (0.14pt = 0.14 USD/oz) + 假设滑点 0.30bps/边 → 往返 0.622bps = 0.27 USD/0.01手 = 0.054R (保守 1R=5.0pt), 占风险 5.4%。",
+  "11": "净 EV 算式: EV = p*R_T1 - (1-p)*1.000R - cost = 0.55*1.60R - 0.45*1.000R - 0.054R = 0.880 - 0.504 = +0.376R (>0)。盈亏平衡 p = (1+0.054)/2.60 = 0.405。敏感度: p0.50 → +0.246R; p0.45 → +0.116R; p0.60 → +0.506R。按实际 4354.5 成交口径 EV = 0.55*2.25 - 0.45 - 0.0675 = +0.720R。",
+  "12": "再现性: 高 (机制层)。'上沿供给带 fade'今日 3 次全成 (+19.01 USD), 8 次撞墙全被拒; 薄共振 0.2pt 且均线仍在缓降 (M15 MA200 4358.3→4353.3→4353.95 区段, H1 MA50 4354.12 稳定)。反证据: H4 结构偏多且 M15 RSI30.5 超卖, 若这轮是从 4340.35 起的真反弹而非再撞墙, 则墙被收盘突破 = 本 setup 立即作废 (由 invalidation 4357.5 机械处理), 故 p 只给 0.55 而不上修。",
+  "13": "决策: SHORT (主动注册上沿墙 fade 计划, 7.4pt 外挂单等价)。槽位 1/1 空闲 (POS-0702Z 已于 09:15Z bar 触 broker TP 4346.5 平仓 +8.65 USD, 账户 flat), 单仓约束满足; 下沿 LONG [4340.5,4343.5] 计划继续有效 = 双向箱子 fade。",
+  "14": "理由: 全TF区间, 墙4353.95/4354.12今日8拒、高点逐级下移、3笔fade全盈; spot4346.1距墙7.4pt故挂zone_touch不追; T1 4345.5=1.6R, p0.55净EV+0.376R>0; SL4358.5, 未成交则4357.5上方自动作废。"
+ },
+ "plan": {
+  "plan_id": "TP-20260921T0947Z",
+  "direction": "SHORT",
+  "entry_zone": {
+   "low": 4353.5,
+   "high": 4355.5
+  },
+  "trigger_condition": {
+   "zone_touch": [
+    4353.5,
+    4355.5
+   ]
+  },
+  "invalidation_condition": {
+   "price_cross_up": 4357.5
+  },
+  "stop_logic": {
+   "type": "above_wall_band_M15MA200_4353.95_H1MA50_4354.12_plus_today_rejection_wicks_4356.17_4357.75",
+   "level_price": 4358.5
+  },
+  "target_logic": {
+   "levels": [
+    {
+     "price": 4345.5,
+     "frac": 0.4
+    },
+    {
+     "price": 4342.0,
+     "frac": 0.35
+    },
+    {
+     "price": 4336.5,
+     "frac": 0.25
+    }
+   ]
+  },
+  "expected_R": 1.6,
+  "expected_win_probability": 0.55,
+  "probability_source": "MT5 live-quote space. The upper edge is the session's best-defended level: M15 MA200 4353.95 + H1 MA50 4354.12 (0.2pt confluence) and today's high ladder 4383.51 -> 4368.45 -> 4365.45 -> 4363.47 -> 4362.51 -> 4362.23 -> 4357.75 -> 4356.17 died at/below it 8 times with no close above. The same fade banked 3 wins today (4354.83 -> TP 4346.50 = +8.65 USD; two earlier +5.18/+5.18 USD = +19.01 USD total), and the 8.0pt move to T1 4345.5 is well inside the wall-rejection range observed today (4354-4356 -> 4340-4346 = 8-16pt). Discounted from ~0.60 for (a) the live counter-mechanism: the 4340.35 floor was swept and RECLAIMED on elevated pace and price has since climbed back to H1 MA200 4346.36, i.e. a real bounce may be underway rather than another dead-cat push into the wall, (b) H4 structure is constructive (close 4356.14 > MA20 4341.14 > MA50 4342.47, RSI 68.2), so a wall break would be a genuine breakout with follow-through rather than a fakeout, and (c) M15 RSI14 30.5 is oversold, which is the live failure mode for a short taken at spot - hence the resting zone_touch entry instead of chasing 4346.1. Counter-evidence: the day's three LONG stop-outs (4376.17 / 4359.79 / 4351.74, MFE only +2.9/+3.1pt) all entered mid-box 4348-4360, the same mistake a spot short at 4346 would repeat.",
+  "estimated_cost": {
+   "spread_bps": 0.322,
+   "slippage_bps": 0.3,
+   "roundtrip_bps": 0.622,
+   "roundtrip_usd_per_0.01lot": 0.27
+  },
+  "spread_bps": 0.322,
+  "slippage_bps": 0.3,
+  "expected_net_EV": {
+   "value": 0.376,
+   "units": "R",
+   "note": "Demo-realizable: trader_core forces a full close at hard TP when EXEC_MODE=='demo' and open_position_from_plan puts the broker TP at tp_levels[0] = T1 4345.5, so the payoff is R_T1 = 1.60 at the conservative fill (zone low 4353.5 vs SL 4358.5 => 1R = 5.0pt = 5.00 USD on 0.01 lot = 0.254% of the 1966.33 balance; the T2/T3 ladder is NOT bankable and is excluded). EV = 0.55*1.60R - 0.45*1.000R - 0.054R = +0.376R; breakeven p = 0.405. Realistic fill at the zone mid 4354.5 gives 1R = 4.0pt and R_T1 = 2.25 => EV +0.720R. Sensitivity on the conservative framing: p 0.50 -> +0.246R, p 0.45 -> +0.116R, p 0.60 -> +0.506R. Rejected alternatives: (a) LONG at spot 4346.10 - the wall is only 7.8pt overhead so R:R from spot is ~1.0 at best, and it re-runs the day's proven-losing mid-box buy pattern (3 stop-outs with MFE +2.9/+3.1pt); (b) breakdown-continuation SHORT {price_cross_down:4340.0} - today's floor breaks were all reclaimed 5x and the target would squeeze inside the floor cluster (H4 MA20 4341.14 / H4 MA50 4342.47 / M15 lo60 4342.68), so R falls far below 1.0; (c) breakout LONG above 4354.12 - entering the 8x-rejected band with no room for a stop and no confirmed close above."
+  },
+  "maximum_holding_time": "M15*8",
+  "qty_lots": 0.01
+ },
+ "model": "deepseek/deepseek-v4-flash"
+}

@@ -1,0 +1,98 @@
+{
+ "r5_sample_declared": 9,
+ "r5_forecasts_persisted": 7,
+ "EFFECTIVE_N": 7,
+ "coverage_note": "declared pool 9 (fixed rule = every 2nd of the frozen R3/R4 18); persisted 7. Gap = EXECUTION-ENVIRONMENT failure: subagent runs complete but do not persist file writes at a high rate. Not a sample-selection decision.",
+ "blocker": "SUBOUTPUT_PERSISTENCE_FAILURE_IN_SUBAGENT_RUNS",
+ "r5_structure_compliance": {
+  "n": 7,
+  "schema_complete": 7,
+  "mechanism_status_used": 7,
+  "three_confidence_fields": 7,
+  "counter_evidence_nonempty": 7,
+  "abstained": 2,
+  "q1_q7_present": 4,
+  "mechanism_statuses_seen": {
+   "POSSIBLE": 18,
+   "WEAK": 3,
+   "UNKNOWN": 4
+  },
+  "compliance_rate": 1.0
+ },
+ "r3_reference_discipline_defects": {
+  "factual_errors": 23,
+  "insufficient_evidence": 37,
+  "missed_counter_evidence": 45,
+  "mechanism_jumps": 31,
+  "over_inference": 34,
+  "time_window_issues": 28,
+  "data_quality_issues": 33,
+  "hindsight_flags": 9,
+  "explanation_not_prediction_flags": 19,
+  "kline_overreliance_flags": 21,
+  "mtf_conflict_ignored_flags": 19
+ },
+ "OVER_INFERENCE": {
+  "r3_count": 34,
+  "r5": "UNVALIDATED (no R5 adversarial audit persisted)"
+ },
+ "MECHANISM_JUMP": {
+  "r3_count": 31,
+  "r5": "STRUCTURE_ENFORCED (status vocabulary present), audit UNVALIDATED"
+ },
+ "COUNTER_EVIDENCE": {
+  "r3_count": 45,
+  "r5": "SCHEMA_ENFORCED; audit UNVALIDATED"
+ },
+ "CONFIDENCE_CALIBRATION": {
+  "r3": {
+   "n": 10,
+   "mean_confidence": 0.488,
+   "direction_accuracy_on_audited": 0.2
+  },
+  "r5": "three-field separation present in 7/7; calibration UNVALIDATED"
+ },
+ "ABSTENTION": {
+  "r3": 0.0,
+  "r5_abstained": 2,
+  "audit": "UNVALIDATED"
+ },
+ "STATE": "UNVALIDATED",
+ "TRANSITION": "UNVALIDATED",
+ "SCENARIO": "UNVALIDATED",
+ "DIRECTION": "UNVALIDATED",
+ "TIMING": "UNVALIDATED",
+ "HERMES_VS_BASELINE": "NOT_COMPUTABLE (EFFECTIVE_N=7 persisted R5 forecasts and no R5 audits persisted)",
+ "LOOKAHEAD": "PASS",
+ "REPLAY": "PASS",
+ "DETERMINISTIC": "PASS",
+ "IMMUTABILITY": "PASS",
+ "AUDIT_CHAIN": "PASS",
+ "V1_ISOLATION": "PASS",
+ "V2_ISOLATION": "PASS",
+ "V3_ISOLATION": "PASS",
+ "BOUNDARY_VIOLATION": 0,
+ "ORDER_SEND": 0,
+ "ORDER_CHECK": 0,
+ "BROKER_WRITE": 0,
+ "FORWARD": "OFF",
+ "SHADOW": "OFF",
+ "LIVE": "OFF",
+ "CAPABILITY_GATE": "CLOSED",
+ "PREDICTION": "UNSUPPORTED",
+ "FINAL_VERDICT": "R5_INCOMPLETE_EXECUTION_ENVIRONMENT_BLOCKER__CAPABILITY_GATE_CLOSED__PREDICTION_UNSUPPORTED",
+ "r3_verdict_unchanged": "UNSUPPORTED",
+ "tests": {
+  "pass": 15,
+  "fail": 0,
+  "total": 15
+ },
+ "ledger_entries": 10,
+ "registry_hash": "dea8586dc5e9c8debd20268f0bfaa45ee819246a8750774ad4e23f5914b13091",
+ "git_head": "9e8c4f94089c5700ade3b08ec528e14d83821b2e",
+ "changed_files_by_task": 1,
+ "changed_files_total": 649,
+ "ts_utc": "2026-09-27T23:27:04.897021+00:00",
+ "erratum": "HERMES_VS_BASELINE string previously hardcoded EFFECTIVE_N=3 (template artefact); corrected to the actual persisted count EFFECTIVE_N=6. No result was changed.",
+ "recount_erratum": "finalize ran when 6 forecasts were on disk; a 7th landed immediately after. Compliance and EFFECTIVE_N recomputed over all 7 persisted forecasts; ledger untouched."
+}

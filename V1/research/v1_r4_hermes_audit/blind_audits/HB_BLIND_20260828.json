@@ -1,0 +1,58 @@
+{
+ "audit_id": "HB_BLIND_20260828",
+ "timestamp": "2026-08-28T12:00:00Z",
+ "current_state": "NO_DEFINED_STATE with REJECTION event (frozen C1 label), dwell 16 bars, ambiguity_rate_8 = 0.75. Price is pinned INSIDE a heavily-touched swing-low level (SWING_LOW_39024 @ 4599.305, side DN, 59 touches in 240 bars, break_status INSIDE, distance 0.084 ATR). Intraday structure: post-impulse decline off the 07:00 UTC H1 rally high (~4613) with descending highs (4614.2 -> 4609.7 -> 4601.1) and price now pressing through the level on M1/M5/M15 and closing below it on H1 (4593.2).",
+ "structure": "H1 downtrend intact (trend_20 -17.13, trend_50 -34.98), M1/M5 mildly negative (trend_20 -3.57 / -3.04), M15 conflicting (trend_20 +13.95 but trend_50 -10.43). L6 multi-timeframe agreement = CONFLICT (explicitly not mergeable). The 4599.3 swing low is a 59-touch magnet; price is testing/chipping it from above. Below: H1 swing lows 4575/4571, then 4564.2 (H4 08/27 low). Above: 4605-4611 reclaim zone, then 4611.6-4614.2 supply. H4 current bar (high 4630.8 / low 4529.5 / close 4576.7, range_percentile 0.99) is internally inconsistent with H1/M15/M5/M1 (no corroborating extreme in any lower TF) — treated as suspect/corrupted, excluded from directional weight.",
+ "mechanism": "Ambiguous between the two DERIVED candidates: (1) trend_continuation — 8-bar displacement -2.68 with price inside the level and H1/H4 trend_20 negative; (2) exhaustion — 16-bar dwell, though the context itself flags 'dwell alone is a weak signal'. No supporting cross-market mechanism: DXY flat (99.195, chg8 +0.016), VIX low/flat (14.47), UST10Y unavailable, and all macro/news/flow series absent. Candidates only; not asserted (§13).",
+ "primary_scenario": {
+  "scenario": "Downside continuation: the 4599.3 swing low gives way after prolonged chipping; price confirms below ~4597-4599 on M5 with range expansion and extends toward the 4575/4571 H1 swing-low zone, with 4564.2 as the deeper target. H1 already closed below the level (4593.2), consistent with this path.",
+  "confidence": 0.32,
+  "horizon": "INTRADAY",
+  "trigger": "M5/M15 close below 4597.3 with range_expanding and negative displacement; or a retest of 4599-4601 that fails to reclaim 4605.",
+  "invalidation": "Reclaim of 4605+ on M5 with expansion, or a close back above 4611 (07:00 impulse base / H1 supply), which voids the continuation case."
+ },
+ "alternative_scenario": {
+  "scenario": "Exhaustion / rejection hold: the 59-touch swing low (plus the 07:00 bullish impulse zone and M15 positive trend_20) repels the downside, producing a rebound that retests 4605 then 4611-4614. This matches analog A26393 (REJECTION -> ROTATION) and the REJECTION frozen label read as a defended level.",
+  "confidence": 0.30,
+  "horizon": "INTRADAY",
+  "trigger": "Bullish M5 reversal bar off the 4594-4599 zone (e.g., wide-range up bar / short lower wick) with range expansion and DXY softening or VIX spiking (neither present yet).",
+  "invalidation": "Loss of 4591.1 (H1 current low); a clean break then targets 4575/4571 and the primary scenario becomes operative."
+ },
+ "expected_transition": "From NO_DEFINED_STATE/REJECTION toward either EXPANSION (downside, if the level breaks with range expansion) or ROTATION (if the level holds and price oscillates 4596-4611). No transitions in last 8 bars; dwell 16 and ambiguity 0.75 mean the near-term transition is undefined until M5 expansion picks a side. Watch the 4597.3/4599.3 boundary as the decision line.",
+ "direction": "DOWN",
+ "horizon": "INTRADAY",
+ "confidence": 0.30,
+ "counter_evidence": [
+  "Swing-low level has 59 touches in 240 bars — heavy two-sided defense makes a clean break far from certain.",
+  "M15 trend_20 is positive (+13.95), creating an explicit L6 CONFLICT against the lower/H1 negative trends.",
+  "H4 current bar (high 4630.8, low 4529.5, close 4576.7) contradicts every lower timeframe (H1 high 4614.4, low 4591.1, close 4593.2) — data integrity issue lowers confidence in the whole H4-derived read.",
+  "DXY flat (99.195, chg8 +0.016) — no USD push driving gold direction.",
+  "VIX low and flat (14.47) — no risk-off bid for gold.",
+  "Historical analogs diverge in outcome (A1365 REJECTION-loop, A26393 -> ROTATION, A12004 -> EXPANSION) and carry no return/label information; state-only, uninformative for direction.",
+  "ambiguity_rate_8 = 0.75 — the state labeler itself is highly uncertain.",
+  "All macro/news/COT/ETF-flow series absent; UST10Y unavailable (UNKNOWN) — no fundamental confirmation."
+ ],
+ "invalidation": "Any of: (a) M5 close above 4605 followed by a move that holds above 4611-4614 (bullish reclaim voids the down view); (b) correction of the H4 data inconsistency showing the market never traded below ~4591 (would remove the down-side technical case if price then stabilizes above the level); (c) range expansion up with DXY weakness or VIX spike.",
+ "data_quality_flags": [
+  "L1 price klines: RAW_GEOMETRY + DERIVED (geometry computed, not asserted)",
+  "L2 level: DERIVED (causal pivot swing), break_status INSIDE",
+  "L4 mechanism: DERIVED candidates only, explicitly NOT asserted (§13)",
+  "L5 frozen C1 label + min-dwell lifecycle: DERIVED; ambiguity_rate_8 = 0.75",
+  "L6 multi-timeframe agreement: CONFLICT — never merged into one direction (§15)",
+  "L7 DXY/VIX: PROXY (Yahoo, instrument definition UNKNOWN) — never upgraded",
+  "UST10Y: UNKNOWN (STALE_OR_NOT_COVERED); not used, never DIRECT",
+  "H4 current bar inconsistent with H1/M15/M5/M1 (extreme high/low/close uncorroborated) — flagged as suspect data",
+  "Absent series (GLD, GC, CFTC_COT, ETF_FLOWS, NEWS, MACRO_EVENTS) recorded absent, not fabricated (§6/§16/§75)"
+ ],
+ "reasoning_trace": [
+  "1. Read PIT context only; no other analyst's forecast; no future data used.",
+  "2. Established price location: ~4598-4600 at 12:00 UTC, inside swing-low level 4599.305 (59 touches, INSIDE).",
+  "3. Assessed trend stack: H1 (trend_20 -17.13, trend_50 -34.98) and M1/M5 negative; M15 trend_20 positive -> L6 CONFLICT.",
+  "4. Detected H4 current-bar inconsistency (4630.8/4529.5/4576.7 vs H1 4614.4/4591.1/4593.2 and M15 data) — flagged, excluded from weighting, lowered confidence.",
+  "5. Price action: descending highs since 07:00 impulse (4614.2 -> 4609.7 -> 4601.1); H1 closed below the swing low (4593.2); M1/M5 pressing 4597-4599 -> mild downside mechanical skew (trend_continuation candidate with -2.68 displacement).",
+  "6. Cross-market check: DXY and VIX both flat; UST10Y absent; no news/macro — no external driver either way.",
+  "7. Analogs diverge (REJECTION-loop / ROTATION / EXPANSION) and are state-only — no directional information.",
+  "8. Conclusion: marginal, low-confidence DOWN lean for INTRADAY continuation toward 4575/4571 if 4597-4599 breaks with expansion; strong level defense and flat cross-market keep confidence at 0.30; a reclaim of 4605-4611 invalidates.",
+  "9. Context is partially self-contradictory (TF conflict + data inconsistency) — per rules, said so explicitly and kept confidence low."
+ ]
+}

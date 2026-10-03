@@ -1,0 +1,72 @@
+# -*- coding: utf-8 -*-
+"""Freeze the V3 R2 confirmation protocol BEFORE any computation."""
+import json, hashlib, os, sys
+sys.stdout.reconfigure(encoding="utf-8", errors="replace")
+HERE = os.path.dirname(os.path.abspath(__file__)); os.makedirs(HERE, exist_ok=True)
+
+P = {
+ "schema": "v3_r2_confirmation_protocol/1",
+ "task_id": "V3-R2-CONFIRMATION",
+ "ts_utc": "2026-10-02T07:50:00+08:00",
+ "frozen_before_computation": True,
+ "bounds": {
+   "order_send": "NO", "live": "NO", "execution": "NO",
+   "v1_v2_touched": "NO", "v1_v2_results_read": "NO",
+   "r1_results_modified": "NO", "cost_anchor_modified": "NO",
+   "tuning_for_higher_return": "NO", "future_data": "NO",
+   "unfavourable_samples_deleted": "NO", "mirror_treated_as_independent": "NO",
+   "output_dir": "research/hermes/trader_v3/research/v3_r2_confirmation"
+ },
+ "inherits": {
+   "from_alpha_sweep_r1": "ONLY the hypothesis DEFINITIONS of P3_VOL_EXPANSION_DIR and X3_HTF_REGIME_COND. No R1 return statistic is carried over; everything below is recomputed from the raw snapshots.",
+   "thresholds_changed_vs_r1": "NO (rv window 5 bars, regime quantile q67 trailing, sigma window 20, z5 cut 2.0, donchian/trend window 60 bars, horizons 1/5/15/30/60 min, cost 0.914bp)"
+ },
+ "data": {
+   "MAIN": {"snapshot": "V3-SNAP-20260922T025312Z", "ticks": 7285000,
+            "span_utc": ["2026-08-04T01:05:00.093Z", "2026-09-22T02:39:05.572Z"],
+            "sha256_verify": "36/36 MATCH",
+            "manifest_sha256": "13fb5d1720a3b25768d0bca59eda897e85e66ba6d7741d538fc32ed33ef8eb54"},
+   "PIT2": {"snapshot": "V3-SNAP-PIT2-20261001T131500Z", "ticks": 1712560,
+            "span_utc": ["2026-09-21T01:08:06.326Z", "2026-10-01T12:54:06.646Z"]},
+   "EXTENDED": {"definition": "union(MAIN, PIT2) deduplicated on the exact ts_utc value, then re-sorted and re-segmented",
+                "purpose": "expand the time sample WITHOUT changing any PIT definition",
+                "note": "the two snapshots overlap on 2026-09-21..09-22; duplicates are removed on ts_utc only"},
+   "bars": "1m bars per segment, a bar is usable at its close (PIT)",
+   "volume": "volume/volume_real/last are 0 on 100% of ticks in BOTH snapshots => every flow feature is a QUOTE-BASED PROXY"
+ },
+ "cost_model": {"COST_MODEL_VERSION": "CALIBRATION_20RT_20260921", "REAL_RT_COST_BP": 0.914,
+                "stress": [0.0, 1.0, 2.0, 3.0], "rule": "unchanged from R1; 0.314bp remains invalid"},
+ "P3": {
+   "id": "P3_VOL_EXPANSION_DIR",
+   "definition": "rv5 = trailing 5-bar std of 1-bar returns; regime = causal trailing q67 of rv5 (expanding, min 100 bars); trigger = onset of the high-vol regime (rv5 crossing from below q67 to at/above q67); direction = FOLLOW sign(ret1) of the trigger bar; entry = first tick with ts > the trigger bar close; exit = mid at the first tick with ts >= entry + h",
+   "horizons_min": [1, 5, 15, 30, 60],
+   "must_recompute": ["raw n", "effective_n (greedy non-overlapping, floor 30)", "overlap ratio",
+                      "gross bp", "net bp at 0x/1x/2x/3x", "IS (first 70% by time)", "OOS (last 30%)",
+                      "block bootstrap 95% CI (2000 resamples, 50 blocks)", "sign-flip permutation (2000)",
+                      "session subsample (ASIA/LONDON/NY)", "volatility-tercile subsample", "spread-tercile subsample",
+                      "BH-FDR across the P3 tests"],
+   "taxonomy": ["VALIDATED_EDGE", "EDGE_UNCERTAIN", "COST_INSUFFICIENT", "DATA_BLOCKED"],
+   "VALIDATED_EDGE_requires": "cost-positive on IS AND OOS at 1x, permutation p<0.05, bootstrap CI excluding 0, effective_n>=30, survives 2x, no single-bucket dependence, and the same sign on MAIN and EXTENDED"
+ },
+ "X3": {
+   "id": "X3_HTF_REGIME_COND",
+   "definition": "|z5|>=2 AND 60-bar change > 0 AND ret5 > 0 -> LONG (always direction +1); entry = first tick with ts > trigger bar close",
+   "nulls": [
+     {"id": "NULL_UNCOND_LONG_SAME_TIMES", "definition": "LONG at exactly the same entry ticks as X3, ignoring all of X3's conditions", "purpose": "isolate the direction component from the signal component"},
+     {"id": "NULL_UNCOND_LONG_ALL_BARS", "definition": "LONG at every 1m bar close in the same segments (a broad always-long control)"},
+     {"id": "NULL_BUY_AND_HOLD", "definition": "buy at the first tick and hold to the end of the sample (market baseline)"}
+   ],
+   "must_compare": ["gross bp", "net bp at 0x/1x/2x/3x", "std bp", "max drawdown bp", "IS", "OOS", "per-horizon"],
+   "verdict_rule": {
+     "BETA_EXPLAINED": "the same-times unconditional LONG captures >= 70% of X3's gross at every horizon at which X3 is positive",
+     "ALPHA_SUPPORTED": "X3 beats the same-times unconditional LONG by a margin that is cost-positive AND permutation-significant (not expected here)",
+     "INCONCLUSIVE": "neither condition holds cleanly"
+   },
+   "forbidden": "no change to the X3 rule to improve its performance"
+ }
+}
+body = json.dumps(P, sort_keys=True, separators=(",", ":"), ensure_ascii=False).encode()
+P["registry_hash_sha256"] = hashlib.sha256(body).hexdigest()
+json.dump(P, open(os.path.join(HERE, "V3_R2_FROZEN_PROTOCOL.json"), "w", encoding="utf-8"), ensure_ascii=False, indent=1)
+print("wrote V3_R2_FROZEN_PROTOCOL.json")
+print("registry_hash_sha256 =", P["registry_hash_sha256"])

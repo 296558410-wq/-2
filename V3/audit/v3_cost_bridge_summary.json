@@ -1,0 +1,224 @@
+{
+ "schema": "v3_cost_bridge/1",
+ "task_id": "V3-HFT-COST-BRIDGE-AUDIT-001",
+ "audit_timestamp_utc": "2026-09-21T05:29:42.251915+00:00",
+ "status": "VALID",
+ "HEADLINE": {
+  "MODEL_NET_MEAN_usd_per_roundtrip": -0.13749999999993634,
+  "BROKER_NET_MEAN_usd_per_roundtrip": -0.372,
+  "MEAN_DIFFERENCE_model_minus_broker": 0.23450000000006366,
+  "TASK_FRAMED_MODEL_NET_plus_0.1375_is_NET_ROUND_TRIP_COST": 0.13749999999993634,
+  "TASK_FRAMED_DIFFERENCE_minus_0.5095": -0.5094999999999363,
+  "SIGN_CONVENTION_NOTE": "state/V3_COST_PROFILE.json exposes BOTH 'round_trip_net_pnl' (mean -0.1375, a NET P&L) and 'NET_ROUND_TRIP_COST' (mean +0.1375, the negation = a COST). The task header compares the COST (+0.1375) against BROKER NET P&L (-0.372), producing the sign-mixed -0.5095. Like-for-like: MODEL_NET -0.1375 vs BROKER_NET -0.372 => +0.2345/trade.",
+  "MEAN_DIFFERENCE_CROSSCHECK_0.5095": 0.0
+ },
+ "BRIDGE": {
+  "explained_difference_usd_per_trade": 0.2345000000000637,
+  "unexplained_difference_usd_per_trade": -5.551115123125783e-17,
+  "explained_ratio": 1.0000000000000002,
+  "max_abs_per_trade_unexplained": 5.551115123125783e-17,
+  "components_model_to_broker_correction_usd_per_trade": {
+   "spread_effect": 0.17999999999992725,
+   "entry_slippage_effect": 0.00749999999998181,
+   "exit_slippage_effect": 0.018000000000029104,
+   "commission_effect": -0.44000000000000006,
+   "swap_effect": 0.0,
+   "conversion_effect": -1.817990202823694e-15,
+   "rounding_effect": 0.0,
+   "other_effect": 0.0
+  },
+  "components_as_contribution_to_gap_usd_per_trade": {
+   "spread_effect": -0.17999999999992725,
+   "entry_slippage_effect": -0.00749999999998181,
+   "exit_slippage_effect": -0.018000000000029104,
+   "commission_effect": 0.44000000000000006,
+   "swap_effect": -0.0,
+   "conversion_effect": 1.817990202823694e-15,
+   "rounding_effect": -0.0,
+   "other_effect": -0.0
+  },
+  "components_explanation": {
+   "spread_effect": "model subtracts the entry spread although the spread is ALREADY embedded in the fill-to-fill gross (buy@ask / sell@bid). Spurious double count.",
+   "entry_slippage_effect": "model subtracts abs(entry_slippage) although slippage is already inside the fill price. Spurious double count. Also abs() forces favourable fills to be costed as losses.",
+   "exit_slippage_effect": "same spurious double count for the exit leg; abs() flips the favourable +0.30 fill on V3CAL-00 into a -0.30 charge.",
+   "commission_effect": "SIGN INVERSION: MT5 returns commission as a NEGATIVE number (-0.22/RT); calibration_pilot.py computes net_pnl = ... - comm, which ADDS 0.22 instead of charging it. Error = 2 x |comm| = 0.44/RT.",
+   "swap_effect": "broker swap = 0.0 on all 40 deals (no rollover in the 31 s window) -> registry swap 0.0 agrees.",
+   "conversion_effect": "price move x contract_size(100) x volume(0.01) = x1.0 oz; model gross == broker deal profit on 20/20.",
+   "rounding_effect": "0 (float residuals < 1e-15 only).",
+   "other_effect": "0 (no unmodelled execution cost found)."
+  }
+ },
+ "EFFECTS_ABS": {
+  "SPREAD_EFFECT": 0.17999999999992725,
+  "ENTRY_SLIPPAGE_EFFECT": 0.00749999999998181,
+  "EXIT_SLIPPAGE_EFFECT": 0.018000000000029104,
+  "COMMISSION_EFFECT": -0.44000000000000006,
+  "SWAP_EFFECT": 0.0,
+  "CONVERSION_EFFECT": -1.817990202823694e-15,
+  "ROUNDING_EFFECT": 0.0,
+  "OTHER_EFFECT": 0.0
+ },
+ "COST_LEVELS": {
+  "true_structural_roundtrip_cost_usd": 0.3999999999999272,
+  "model_theoretical_cost_usd": 0.4254999999999381,
+  "task_quoted_model_cost_usd": 0.13749999999993634,
+  "true_structural_roundtrip_cost_bps": 0.914497877793196,
+  "spread_bps_measured": 0.4115240453203641,
+  "commission_bps_per_side": 0.20576202250350653,
+  "ref_mid": 4373.985
+ },
+ "FOK": {
+  "filling_mode_symbol": 1,
+  "order_type_filling_values": [
+   0
+  ],
+  "order_filling_enum_legend": {
+   "0": "FOK",
+   "1": "IOC",
+   "2": "RETURN"
+  },
+  "order_states_present": [
+   4
+  ],
+  "order_state_legend": {
+   "4": "FILLED"
+  },
+  "partial_fills": 0,
+  "rejections": 0,
+  "max_abs_fill_vs_requested_price": 0.3000000000001819,
+  "max_favourable_fill_vs_requested": 0.3000000000001819,
+  "max_adverse_fill_vs_requested": -0.020000000000436557,
+  "request_deviation_limit_points": 20,
+  "fok_effect_on_bridge_usd_per_trade": 0.0,
+  "note": "All 40 orders filled in full (state=4) with type_filling=0 (FOK). No partial fill, no rejection. Fill-vs-request deviations are already inside the fill prices and therefore already inside gross; they add no separate bridge term. deviation is dominated by market drift over the ~270 ms order RTT at the Sunday weekly open, not by FOK mechanics."
+ },
+ "UNITS": {
+  "contract_size": 100.0,
+  "volume": 0.01,
+  "effective_oz": 1.0,
+  "price_to_usd_factor": 1.0,
+  "account_currency": "USD",
+  "broker_tick_value_reported": 0.1,
+  "broker_tick_value_consistent_with_deals": false,
+  "observed_usd_per_price_unit_per_0.01_lot": 1.0,
+  "unit_conversion_status": "PASS",
+  "note": "profit = price_diff x 100 x 0.01 = price_diff x 1.0 USD, verified against deal.profit for 20/20. DATA_GAP: broker-reported trade_tick_value (0.1) does not reconcile with contract_size 100 (expected 1.0/lot/tick); the bridge therefore uses deal.profit, not tick_value metadata. The spec value was NOT used anywhere in the bridge."
+ },
+ "TIME_ALIGNMENT": {
+  "status": "PASS_WITH_DEFECT",
+  "server_tz_offset_s": 10800,
+  "note": "broker deal time == ledger UTC + exactly 10800 s for all 40 deals (FXTM server = UTC+3). Ledger UTC matches pilot started/finished. No look-ahead: every request timestamp precedes its fill. DEFECT: registry hold_actual_ms is derived from integer-second tick stamps (resolution 1000 ms) and returns 0/2000/3000 ms garbage; usable hold comes from ledger ns timestamps (~100-2000 ms targets). DATA_GAP: tick.age is not logged, so exit deviation cannot be split into quote-staleness vs market-drift vs execution components."
+ },
+ "RECONCILIATION": {
+  "ledger_chain_ok": {
+   "ok": true,
+   "events": 131,
+   "head": "4b4beabecb36c90a2028f476952c909aaff9320cd5af44fcbf72af3c38e96575"
+  },
+  "n_roundtrips": 20,
+  "model_formula_reproduced_20_20": true,
+  "cost_profile_mean_reproduced": true,
+  "broker_entry_price_matches_ledger_fill_20_20": true,
+  "broker_exit_price_matches_ledger_fill_20_20": true,
+  "broker_net_sum": -7.44,
+  "broker_balance_delta": -7.4399999999996,
+  "broker_net_equals_balance_delta": true,
+  "broker_commission_total": -4.4,
+  "broker_swap_total": 0.0,
+  "broker_profit_total": -3.04,
+  "broker_deal_count": 40,
+  "broker_order_count": 40,
+  "broker_tz_offsets_s": [
+   10800
+  ],
+  "tick_coverage": {
+   "mt5.copy_ticks_range(V3 terminal)": 0,
+   "local live_fxtm archive": "no file for 2026-09-20; ticks_20260921 starts 2026-09-21T01:08:06Z",
+   "status": "DATA_GAP"
+  }
+ },
+ "DATA_GAPS": [
+  "No independent tick/quote source covers 2026-09-20T23:05:42-23:06:13Z: mt5.copy_ticks_range on the V3 terminal returns 0 rows for every window/flag variant; the local live_fxtm archive has no 2026-09-20 file (ticks_20260921 starts 2026-09-21T01:08:06Z, after the window). Entry quotes therefore come from the ledger's own symbol_info_tick snapshot, not an independent feed.",
+  "ledger does not persist exit-time bid/ask (only the executable side). Exit spread reconstructed from registry exit_slippage_bps where non-zero (5/20), else assumed = entry spread.",
+  "registry.jsonl entry_fill_price is null (key mismatch: code writes s['fill_price']) and V3_COST_PROFILE rows entry_slippage is null (code reads s['entry_slippage_price'] but the sample stores s['slippage_price']). Entry slippage recovered for this audit from the ledger; published profiles under-report it.",
+  "hold_actual_ms computed from integer-second tick timestamps -> 0/1000/2000/3000 ms quantisation; not usable as a duration measurement.",
+  "tick.age / STALE_TICK_AT_REQUEST is computed in code but never written to the ledger, so quote staleness at request time cannot be verified from stored evidence.",
+  "broker symbol_info trade_tick_value (0.1) does not reconcile with contract_size (100.0); unused by the bridge (deal.profit used as ground truth).",
+  "calibration_pilot.py sets s['volume'] only inside a dead 'if volume in s' guard; the variable 'gross' multiplies by 0 and is never used. Latent unit bug (no effect on this run because gross_pnl is computed separately)."
+ ],
+ "SOURCES": {
+  "ledger": "C:\\AIQuant\\research\\hermes\\trader_v3\\data\\hft_ledger\\v3_calibration_ledger.jsonl",
+  "registry": "C:\\AIQuant\\research\\hermes\\trader_v3\\data\\calibration\\registry.jsonl",
+  "cost_profile": "C:\\AIQuant\\research\\hermes\\trader_v3\\state\\V3_COST_PROFILE.json",
+  "execution_profile": "C:\\AIQuant\\research\\hermes\\trader_v3\\state\\V3_EXECUTION_PROFILE.json",
+  "pilot": "C:\\AIQuant\\research\\hermes\\trader_v3\\state\\V3_CALIBRATION_PILOT.json",
+  "broker_source": "MT5_LIVE_READ_ONLY",
+  "broker_account": {
+   "login": 160764551,
+   "server": "ForexTimeFXTM-Demo01",
+   "balance": 4992.56,
+   "equity": 4992.56,
+   "currency": "USD",
+   "leverage": 500
+  },
+  "broker_spec": {
+   "name": "XAUUSD",
+   "digits": 2,
+   "point": 0.01,
+   "trade_tick_size": 0.01,
+   "trade_tick_value": 0.1,
+   "trade_contract_size": 100.0,
+   "volume_min": 0.01,
+   "spread": 18,
+   "filling_mode": 1,
+   "trade_exemode": 2,
+   "trade_mode": 4,
+   "currency_profit": "USD",
+   "swap_long": -63.05,
+   "swap_short": 42.04
+  },
+  "symbol_spec_expected": {
+   "name": "XAUUSD",
+   "digits": 2,
+   "point": 0.01,
+   "trade_tick_size": 0.01,
+   "trade_tick_value": 0.1,
+   "trade_contract_size": 100.0,
+   "volume_min": 0.01,
+   "volume_step": 0.01,
+   "volume_max": 100.0,
+   "spread": 18,
+   "visible": true,
+   "trade_mode": 4
+  },
+  "window_utc": [
+   "2026-09-20T23:05:42.928971+00:00",
+   "2026-09-20T23:06:13.516469+00:00"
+  ]
+ },
+ "HASHES": {
+  "ledger_hash": "fc8fd01e5ac487dd63558241d67584d453ccd21d8aa3a91d8bb804304e06750c",
+  "registry_hash": "7ad9596c4cab88bb95e0650daabbb169b53c3d3b796b07ea8bacb7c6366f4f25",
+  "cost_profile_hash": "26b3f8d80a7ad4754d403ee2c03df1898cb2fb2bf19a04edc6d8fc515bd0a728",
+  "execution_profile_hash": "7a613cbf054fcce2c2aaf31c5c37013cf5d37abf24a90b3b3bf99b7717a585aa",
+  "pilot_hash": "e39948a65e23aeb39c21d37958c83ff866c90886dc68c60f98123d540f081e84",
+  "config_hash": "f6957453c0376a37c682e978268f9a163c7d4aa0dc6f7cf93e1383ebf117e4f2",
+  "broker_data_hash": "bbd36b4680c4ca36737192f5a5a4ac127e6fa220be6816322c00efcfc7aeaaa4",
+  "script_hash": "4886a92786f10ddbd07c8f1bffe280d43483b23e713374b739a67c3f9a8a9a46",
+  "tick_data_hash": null,
+  "input_hash": "2a936d0c6c348e6a1af1ac81fa0fc62524309521d5c85ed5e21c399365d864cd",
+  "result_hash": "b93b585b812f2c8e2394bca25d5a62339a9e1b310d0a3789f7f48adbdd18c978"
+ },
+ "git_commit": "7351955e1b8e029eda84c20610862d03e1050492",
+ "safety": {
+  "V1_ORDER_SEND": false,
+  "V2_ORDER_SEND": false,
+  "V3_ORDER_SEND": false,
+  "LIVE": false,
+  "CALIBRATION_AUTO_STOP": true,
+  "EXPANSION": "LOCKED"
+ },
+ "base_commit": "98ef9a74221427d5ef1e3eaa365cdd6d893ccbc1",
+ "git_branch": "fix/v2-full-system-repair-20260917",
+ "note_self_reference": "git_commit = the commit that froze these audit artifacts; later metadata-only commits may follow."
+}

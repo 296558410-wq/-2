@@ -1,0 +1,431 @@
+{
+ "schema": "v3_hf_r2_env/2",
+ "ts_utc": "2026-09-25T13:46:20.716224+00:00",
+ "negative_control": {
+  "runs": 200,
+  "mean": 10131.59,
+  "status": "PASS"
+ },
+ "ablation": {
+  "remove_F1": {
+   "removed_family": "F1_SHORT_STATE_JUMP",
+   "removed_family_status": "COMPUTED",
+   "remaining_raw": 21776,
+   "remaining_independent_episodes": 5392
+  },
+  "remove_F2": {
+   "removed_family": "F2_SHORT_SHOCK_STRUCTURE",
+   "removed_family_status": "COMPUTED",
+   "remaining_raw": 26141,
+   "remaining_independent_episodes": 6819
+  },
+  "remove_F3": {
+   "removed_family": "F3_PRICE_ACTIVITY_PROXY",
+   "removed_family_status": "INSUFFICIENT_DATA",
+   "remaining_raw": 38367,
+   "remaining_independent_episodes": 7792
+  },
+  "remove_F4": {
+   "removed_family": "F4_CROSSMARKET_LEADING_ASSOCIATION",
+   "removed_family_status": "COMPUTED",
+   "remaining_raw": 36531,
+   "remaining_independent_episodes": 7753
+  },
+  "remove_F5": {
+   "removed_family": "F5_SHORT_EXTENSION_REVERSION",
+   "removed_family_status": "COMPUTED",
+   "remaining_raw": 37894,
+   "remaining_independent_episodes": 7733
+  },
+  "remove_F6": {
+   "removed_family": "F6_STATE_CONDITIONAL_HF",
+   "removed_family_status": "COMPUTED",
+   "remaining_raw": 31126,
+   "remaining_independent_episodes": 6921
+  }
+ },
+ "overlap_matrix": {
+  "F1_SHORT_STATE_JUMP | F2_SHORT_SHOCK_STRUCTURE": {
+   "family_pair": [
+    "F1_SHORT_STATE_JUMP",
+    "F2_SHORT_SHOCK_STRUCTURE"
+   ],
+   "n_a": 4469,
+   "n_b": 3995,
+   "overlap_n": 1666,
+   "union_n": 6798,
+   "jaccard": 0.245072,
+   "shared_episode_n": 1666,
+   "matched_A_count": 1666,
+   "matched_B_count": 1666,
+   "merge_candidate": false,
+   "INFORMATIVE": "INFORMATIVE",
+   "symmetry_tolerance": 0.0,
+   "inv_overlap_le_nA": true,
+   "inv_overlap_le_nB": true,
+   "inv_jaccard_range": true,
+   "inv_symmetry": true
+  },
+  "F1_SHORT_STATE_JUMP | F3_PRICE_ACTIVITY_PROXY": {
+   "family_pair": [
+    "F1_SHORT_STATE_JUMP",
+    "F3_PRICE_ACTIVITY_PROXY"
+   ],
+   "n_a": 4469,
+   "n_b": 0,
+   "overlap_n": 0,
+   "union_n": 4469,
+   "jaccard": 0.0,
+   "shared_episode_n": 0,
+   "matched_A_count": 0,
+   "matched_B_count": 0,
+   "merge_candidate": false,
+   "INFORMATIVE": "UNINFORMATIVE",
+   "symmetry_tolerance": 0.0,
+   "inv_overlap_le_nA": true,
+   "inv_overlap_le_nB": true,
+   "inv_jaccard_range": true,
+   "inv_symmetry": true
+  },
+  "F1_SHORT_STATE_JUMP | F4_CROSSMARKET_LEADING_ASSOCIATION": {
+   "family_pair": [
+    "F1_SHORT_STATE_JUMP",
+    "F4_CROSSMARKET_LEADING_ASSOCIATION"
+   ],
+   "n_a": 4469,
+   "n_b": 135,
+   "overlap_n": 65,
+   "union_n": 4539,
+   "jaccard": 0.01432,
+   "shared_episode_n": 65,
+   "matched_A_count": 65,
+   "matched_B_count": 65,
+   "merge_candidate": false,
+   "INFORMATIVE": "INFORMATIVE",
+   "symmetry_tolerance": 0.0,
+   "inv_overlap_le_nA": true,
+   "inv_overlap_le_nB": true,
+   "inv_jaccard_range": true,
+   "inv_symmetry": true
+  },
+  "F1_SHORT_STATE_JUMP | F5_SHORT_EXTENSION_REVERSION": {
+   "family_pair": [
+    "F1_SHORT_STATE_JUMP",
+    "F5_SHORT_EXTENSION_REVERSION"
+   ],
+   "n_a": 4469,
+   "n_b": 436,
+   "overlap_n": 209,
+   "union_n": 4696,
+   "jaccard": 0.044506,
+   "shared_episode_n": 209,
+   "matched_A_count": 209,
+   "matched_B_count": 209,
+   "merge_candidate": false,
+   "INFORMATIVE": "INFORMATIVE",
+   "symmetry_tolerance": 0.0,
+   "inv_overlap_le_nA": true,
+   "inv_overlap_le_nB": true,
+   "inv_jaccard_range": true,
+   "inv_symmetry": true
+  },
+  "F1_SHORT_STATE_JUMP | F6_STATE_CONDITIONAL_HF": {
+   "family_pair": [
+    "F1_SHORT_STATE_JUMP",
+    "F6_STATE_CONDITIONAL_HF"
+   ],
+   "n_a": 4469,
+   "n_b": 3634,
+   "overlap_n": 1438,
+   "union_n": 6665,
+   "jaccard": 0.215754,
+   "shared_episode_n": 1438,
+   "matched_A_count": 1438,
+   "matched_B_count": 1438,
+   "merge_candidate": false,
+   "INFORMATIVE": "INFORMATIVE",
+   "symmetry_tolerance": 0.0,
+   "inv_overlap_le_nA": true,
+   "inv_overlap_le_nB": true,
+   "inv_jaccard_range": true,
+   "inv_symmetry": true
+  },
+  "F2_SHORT_SHOCK_STRUCTURE | F3_PRICE_ACTIVITY_PROXY": {
+   "family_pair": [
+    "F2_SHORT_SHOCK_STRUCTURE",
+    "F3_PRICE_ACTIVITY_PROXY"
+   ],
+   "n_a": 3995,
+   "n_b": 0,
+   "overlap_n": 0,
+   "union_n": 3995,
+   "jaccard": 0.0,
+   "shared_episode_n": 0,
+   "matched_A_count": 0,
+   "matched_B_count": 0,
+   "merge_candidate": false,
+   "INFORMATIVE": "UNINFORMATIVE",
+   "symmetry_tolerance": 0.0,
+   "inv_overlap_le_nA": true,
+   "inv_overlap_le_nB": true,
+   "inv_jaccard_range": true,
+   "inv_symmetry": true
+  },
+  "F2_SHORT_SHOCK_STRUCTURE | F4_CROSSMARKET_LEADING_ASSOCIATION": {
+   "family_pair": [
+    "F2_SHORT_SHOCK_STRUCTURE",
+    "F4_CROSSMARKET_LEADING_ASSOCIATION"
+   ],
+   "n_a": 3995,
+   "n_b": 135,
+   "overlap_n": 66,
+   "union_n": 4064,
+   "jaccard": 0.01624,
+   "shared_episode_n": 66,
+   "matched_A_count": 66,
+   "matched_B_count": 66,
+   "merge_candidate": false,
+   "INFORMATIVE": "INFORMATIVE",
+   "symmetry_tolerance": 0.0,
+   "inv_overlap_le_nA": true,
+   "inv_overlap_le_nB": true,
+   "inv_jaccard_range": true,
+   "inv_symmetry": true
+  },
+  "F2_SHORT_SHOCK_STRUCTURE | F5_SHORT_EXTENSION_REVERSION": {
+   "family_pair": [
+    "F2_SHORT_SHOCK_STRUCTURE",
+    "F5_SHORT_EXTENSION_REVERSION"
+   ],
+   "n_a": 3995,
+   "n_b": 436,
+   "overlap_n": 313,
+   "union_n": 4118,
+   "jaccard": 0.076008,
+   "shared_episode_n": 313,
+   "matched_A_count": 313,
+   "matched_B_count": 313,
+   "merge_candidate": false,
+   "INFORMATIVE": "INFORMATIVE",
+   "symmetry_tolerance": 0.0,
+   "inv_overlap_le_nA": true,
+   "inv_overlap_le_nB": true,
+   "inv_jaccard_range": true,
+   "inv_symmetry": true
+  },
+  "F2_SHORT_SHOCK_STRUCTURE | F6_STATE_CONDITIONAL_HF": {
+   "family_pair": [
+    "F2_SHORT_SHOCK_STRUCTURE",
+    "F6_STATE_CONDITIONAL_HF"
+   ],
+   "n_a": 3995,
+   "n_b": 3634,
+   "overlap_n": 2382,
+   "union_n": 5247,
+   "jaccard": 0.453974,
+   "shared_episode_n": 2382,
+   "matched_A_count": 2382,
+   "matched_B_count": 2382,
+   "merge_candidate": false,
+   "INFORMATIVE": "INFORMATIVE",
+   "symmetry_tolerance": 0.0,
+   "inv_overlap_le_nA": true,
+   "inv_overlap_le_nB": true,
+   "inv_jaccard_range": true,
+   "inv_symmetry": true
+  },
+  "F3_PRICE_ACTIVITY_PROXY | F4_CROSSMARKET_LEADING_ASSOCIATION": {
+   "family_pair": [
+    "F3_PRICE_ACTIVITY_PROXY",
+    "F4_CROSSMARKET_LEADING_ASSOCIATION"
+   ],
+   "n_a": 0,
+   "n_b": 135,
+   "overlap_n": 0,
+   "union_n": 135,
+   "jaccard": 0.0,
+   "shared_episode_n": 0,
+   "matched_A_count": 0,
+   "matched_B_count": 0,
+   "merge_candidate": false,
+   "INFORMATIVE": "UNINFORMATIVE",
+   "symmetry_tolerance": 0.0,
+   "inv_overlap_le_nA": true,
+   "inv_overlap_le_nB": true,
+   "inv_jaccard_range": true,
+   "inv_symmetry": true
+  },
+  "F3_PRICE_ACTIVITY_PROXY | F5_SHORT_EXTENSION_REVERSION": {
+   "family_pair": [
+    "F3_PRICE_ACTIVITY_PROXY",
+    "F5_SHORT_EXTENSION_REVERSION"
+   ],
+   "n_a": 0,
+   "n_b": 436,
+   "overlap_n": 0,
+   "union_n": 436,
+   "jaccard": 0.0,
+   "shared_episode_n": 0,
+   "matched_A_count": 0,
+   "matched_B_count": 0,
+   "merge_candidate": false,
+   "INFORMATIVE": "UNINFORMATIVE",
+   "symmetry_tolerance": 0.0,
+   "inv_overlap_le_nA": true,
+   "inv_overlap_le_nB": true,
+   "inv_jaccard_range": true,
+   "inv_symmetry": true
+  },
+  "F3_PRICE_ACTIVITY_PROXY | F6_STATE_CONDITIONAL_HF": {
+   "family_pair": [
+    "F3_PRICE_ACTIVITY_PROXY",
+    "F6_STATE_CONDITIONAL_HF"
+   ],
+   "n_a": 0,
+   "n_b": 3634,
+   "overlap_n": 0,
+   "union_n": 3634,
+   "jaccard": 0.0,
+   "shared_episode_n": 0,
+   "matched_A_count": 0,
+   "matched_B_count": 0,
+   "merge_candidate": false,
+   "INFORMATIVE": "UNINFORMATIVE",
+   "symmetry_tolerance": 0.0,
+   "inv_overlap_le_nA": true,
+   "inv_overlap_le_nB": true,
+   "inv_jaccard_range": true,
+   "inv_symmetry": true
+  },
+  "F4_CROSSMARKET_LEADING_ASSOCIATION | F5_SHORT_EXTENSION_REVERSION": {
+   "family_pair": [
+    "F4_CROSSMARKET_LEADING_ASSOCIATION",
+    "F5_SHORT_EXTENSION_REVERSION"
+   ],
+   "n_a": 135,
+   "n_b": 436,
+   "overlap_n": 5,
+   "union_n": 566,
+   "jaccard": 0.008834,
+   "shared_episode_n": 5,
+   "matched_A_count": 5,
+   "matched_B_count": 5,
+   "merge_candidate": false,
+   "INFORMATIVE": "INFORMATIVE",
+   "symmetry_tolerance": 0.0,
+   "inv_overlap_le_nA": true,
+   "inv_overlap_le_nB": true,
+   "inv_jaccard_range": true,
+   "inv_symmetry": true
+  },
+  "F4_CROSSMARKET_LEADING_ASSOCIATION | F6_STATE_CONDITIONAL_HF": {
+   "family_pair": [
+    "F4_CROSSMARKET_LEADING_ASSOCIATION",
+    "F6_STATE_CONDITIONAL_HF"
+   ],
+   "n_a": 135,
+   "n_b": 3634,
+   "overlap_n": 60,
+   "union_n": 3709,
+   "jaccard": 0.016177,
+   "shared_episode_n": 60,
+   "matched_A_count": 60,
+   "matched_B_count": 60,
+   "merge_candidate": false,
+   "INFORMATIVE": "INFORMATIVE",
+   "symmetry_tolerance": 0.0,
+   "inv_overlap_le_nA": true,
+   "inv_overlap_le_nB": true,
+   "inv_jaccard_range": true,
+   "inv_symmetry": true
+  },
+  "F5_SHORT_EXTENSION_REVERSION | F6_STATE_CONDITIONAL_HF": {
+   "family_pair": [
+    "F5_SHORT_EXTENSION_REVERSION",
+    "F6_STATE_CONDITIONAL_HF"
+   ],
+   "n_a": 436,
+   "n_b": 3634,
+   "overlap_n": 264,
+   "union_n": 3806,
+   "jaccard": 0.069364,
+   "shared_episode_n": 264,
+   "matched_A_count": 264,
+   "matched_B_count": 264,
+   "merge_candidate": false,
+   "INFORMATIVE": "INFORMATIVE",
+   "symmetry_tolerance": 0.0,
+   "inv_overlap_le_nA": true,
+   "inv_overlap_le_nB": true,
+   "inv_jaccard_range": true,
+   "inv_symmetry": true
+  }
+ },
+ "concentration": {
+  "top_10_episode_share": 0.0137,
+  "top_20_episode_share": 0.0239
+ },
+ "duration": {
+  "median": 47.0,
+  "p25": 33.0,
+  "p75": 56.0
+ },
+ "duration_measurement_status": "TRUNCATION_SENSITIVE",
+ "family_table": {
+  "F1_SHORT_STATE_JUMP": {
+   "raw_opportunities": 16591,
+   "status": "COMPUTED",
+   "independent_episodes": 4469,
+   "independent_per_day": 7.0785,
+   "independent_per_week": 49.5493,
+   "frequency_class": "HIGH_FREQUENCY"
+  },
+  "F2_SHORT_SHOCK_STRUCTURE": {
+   "raw_opportunities": 12226,
+   "status": "COMPUTED",
+   "independent_episodes": 3995,
+   "independent_per_day": 6.3277,
+   "independent_per_week": 44.2939,
+   "frequency_class": "HIGH_FREQUENCY"
+  },
+  "F3_PRICE_ACTIVITY_PROXY": {
+   "raw_opportunities": 0,
+   "status": "INSUFFICIENT_DATA",
+   "independent_episodes": null,
+   "independent_per_week": null,
+   "frequency_class": "NOT_COMPUTABLE"
+  },
+  "F4_CROSSMARKET_LEADING_ASSOCIATION": {
+   "raw_opportunities": 1836,
+   "status": "COMPUTED",
+   "independent_episodes": 135,
+   "independent_per_day": 0.2138,
+   "independent_per_week": 1.4968,
+   "frequency_class": "MEDIUM_FREQUENCY"
+  },
+  "F5_SHORT_EXTENSION_REVERSION": {
+   "raw_opportunities": 473,
+   "status": "COMPUTED",
+   "independent_episodes": 436,
+   "independent_per_day": 0.6906,
+   "independent_per_week": 4.8341,
+   "frequency_class": "HIGH_FREQUENCY"
+  },
+  "F6_STATE_CONDITIONAL_HF": {
+   "raw_opportunities": 7241,
+   "status": "COMPUTED",
+   "independent_episodes": 3634,
+   "independent_per_day": 5.7559,
+   "independent_per_week": 40.2914,
+   "frequency_class": "HIGH_FREQUENCY"
+  }
+ },
+ "grouping_unit_tests": {
+  "same_event_same_grid": true,
+  "same_event_cross_grid": true,
+  "different_event_same_grid": true,
+  "different_event_cross_grid": true,
+  "three_grid_same_event": true,
+  "cross_family_same_event": true
+ }
+}

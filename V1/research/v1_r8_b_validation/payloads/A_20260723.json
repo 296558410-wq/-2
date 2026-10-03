@@ -1,0 +1,105 @@
+{
+ "sample_id": "A_20260723",
+ "horizon": 4,
+ "scenario_family": "RANGE",
+ "scenario_alternative": "DIRECTIONAL",
+ "scenario_abstain": false,
+ "forecast_id": "R8B_A_20260723",
+ "timestamp": "2026-07-23 00:00:00+00:00",
+ "observations": [
+  "Price at swing high 4123, break_status INSIDE",
+  "State REJECTION dwell 5, prior COMPRESSION, ambiguity 0.375",
+  "H1 bullish bar close 4133 after low 4115; M1 bearish close 4118",
+  "H4 trend_20 +134.58 vs M5/M15 negative; MTF CONFLICT"
+ ],
+ "what_i_know": [
+  "Current state REJECTION, dwell 5 bars",
+  "Price at swing high 4123, distance 0.056 ATR",
+  "Recent session range 4115-4165, H1 close 4133",
+  "DXY 101.1 stable, change_8 -0.041, PROXY quality"
+ ],
+ "what_i_do_not_know": [
+  "News, macro events, order flow absent",
+  "VIX and UST10Y unavailable, UNKNOWN quality",
+  "Whether 4123 level breaks or rejects unknown",
+  "Positioning, CFTC, ETF flows all absent"
+ ],
+ "evidence": [
+  "REJECTION state dwell 5, from COMPRESSION",
+  "Price pinned at swing high, two-sided rejection",
+  "MTF trend conflict across all timeframes",
+  "Mixed bar directions, ambiguity_rate 0.375"
+ ],
+ "counter_evidence": [
+  "H1 bullish bar close 4133, lower wick 5.74",
+  "H4 trend_20 +134.58, strong longer uptrend",
+  "Analogs A15630, A30026 show TREND or EXPANSION",
+  "M5 M15 negative trends imply downside continuation"
+ ],
+ "possible_mechanisms": [
+  {
+   "mechanism": "trend_continuation",
+   "status": "SUPPORTED",
+   "why": "Candidate only, 8-bar displacement -10.93"
+  },
+  {
+   "mechanism": "level_rejection_mean_reversion",
+   "status": "POSSIBLE",
+   "why": "REJECTION state at swing high 4123"
+  },
+  {
+   "mechanism": "range_coalescence",
+   "status": "POSSIBLE",
+   "why": "MTF conflict, compression to rejection"
+  },
+  {
+   "mechanism": "uptrend_resumption",
+   "status": "WEAK",
+   "why": "H4 uptrend, single H1 bullish bar"
+  }
+ ],
+ "primary_scenario": {
+  "scenario": "RANGE",
+  "horizon": 4,
+  "trigger": "Two-sided rejection at 4123, no follow-through",
+  "invalidation": "Sustained close beyond 4165 or below 4115"
+ },
+ "alternative_scenario": {
+  "scenario": "DIRECTIONAL",
+  "horizon": 4,
+  "trigger": "Loss of 4115 support extends intraday downtrend",
+  "invalidation": "Reclaim above 4140 with expansion"
+ },
+ "expected_transition": "REJECTION persists or resolves to range",
+ "direction_bias": "NEUTRAL",
+ "time_horizon": "H4",
+ "evidence_strength": 0.3,
+ "confidence": 0.35,
+ "uncertainty": 0.65,
+ "confidence_reason": "REJECTION state, level pin, MTF conflict align with range",
+ "uncertainty_reason": "H1 bullish bar and H4 uptrend contradict; no flow data",
+ "invalidation": "Sustained close beyond 4165 or below 4115",
+ "change_my_mind": [
+  "Decisive 4-bar close above 4165 flips to DIRECTIONAL",
+  "Decisive 4-bar close below 4115 flips to DIRECTIONAL",
+  "Sustained ATR contraction with tight range flips to QUIET",
+  "Macro news release shifts regime materially"
+ ],
+ "abstain": false,
+ "abstain_reason": "Context sufficient, state consistent, no contradiction",
+ "questions": {
+  "Q1": "Context states price near 4123 swing high, REJECTION state",
+  "Q2": "Breakout direction, news, flows, volatility drivers unknown",
+  "Q3": "REJECTION dwell 5, price at level, MTF conflict",
+  "Q4": "H1 bullish bar, H4 uptrend, analogs show direction",
+  "Q5": "Level rejection mean-reversion not entitled to assert",
+  "Q6": "Sustained close beyond 4165 or below 4115",
+  "Q7": "false; context sufficient though weak, state consistent"
+ },
+ "reasoning_trace": [
+  "State REJECTION dwell 5 implies two-sided price rejection",
+  "Price pinned at swing high 4123 supports range not trend",
+  "MTF conflict and absent flow data cap evidence strength",
+  "H4 uptrend and H1 bullish bar temper downside lean"
+ ]
+}

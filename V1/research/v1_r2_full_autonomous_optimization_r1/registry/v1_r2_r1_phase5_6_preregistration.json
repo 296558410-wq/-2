@@ -1,0 +1,26 @@
+{
+ "task": "V1_R2_FULL_AUTONOMOUS_OPTIMIZATION_R1",
+ "phase": "PHASE_5_6_SELECTIVE_ABSTENTION_AND_ABLATION",
+ "frozen_before_analysis": true,
+ "frozen_at_utc": "2026-09-27T20:55:00+08:00",
+ "question": "Can the STATE v2 predictor BUY usable accuracy by abstaining (selective prediction), and how well is it calibrated? Which feature group actually carries the value (ablation), and does it survive a permutation null?",
+ "return_free": true,
+ "data": {"source": "research/v3_alpha_discovery_r1/xauusd_m1_histdata.parquet", "tf": "M15", "bars": 40546},
+ "target": "STATE_V2(t+8), STATE_V2 = frozen MARKET_BEHAVIOR with min-dwell k=2",
+ "protocol": {
+  "blind_split": "single 60/40 split; fit once on first 60%, evaluate once on last 40%",
+  "model": "multinomial logistic C=1.0, TRAIN-only StandardScaler",
+  "selective": "sort blind-test predictions by max posterior; report accuracy and DeltaLL at coverage 100/80/60/40/20%",
+  "calibration": "10-bin expected calibration error (ECE) on the blind test",
+  "ablation_ladder": {
+   "A2_STRUCT": ["atr_pctl", "rng_exp", "vel4", "acc", "er10", "eff3", "act3"],
+   "A2_PLUS_STATE_HISTORY": "A2 + one-hot(current state) + dwell length + rolling NO_DEFINED rate(8)",
+   "A2_PLUS_H1_CONTEXT": "A2 + H1 ret/rng/slope (causal ffill)",
+   "A2_PLUS_ALL": "A2 + state history + H1 context"
+  },
+  "null": "block-shuffle (block=48) of the target, full protocol re-run, NPERM=30, empirical p",
+  "acceptance": "SELECTIVE_VALUE if accuracy at 40% coverage exceeds full-coverage accuracy by >= 0.10 absolute; ABLATION_DECIDED by largest positive incremental DeltaLL vs A2_STRUCT"
+ },
+ "forbidden": ["returns/PnL/win-rate", "orders/broker", "live/shadow/forward", "editing frozen artifacts", "tuning thresholds"],
+ "write_scope": "research/hermes/trader_v1/v1_r2_full_autonomous_optimization_r1/** ONLY"
+}

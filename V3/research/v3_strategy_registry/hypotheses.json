@@ -1,0 +1,261 @@
+{
+ "schema": "v3_hypothesis_registry/1",
+ "frozen_utc": "2026-09-24T17:11:01.378322+00:00",
+ "frozen_before_any_evaluation": true,
+ "count": 12,
+ "registry_hash": "1650e065911e72c93f85cf26d51cdb179f252b089eb4a2c86ad8be2c7682c52d",
+ "state_flow": [
+  "DISCOVERED",
+  "DEFINED",
+  "FROZEN",
+  "BACKTEST",
+  "COST_STRESS",
+  "OOS",
+  "REGIME_TEST",
+  "EDGE_UNCERTAIN",
+  "REJECT",
+  "CANDIDATE"
+ ],
+ "note": "Thresholds fixed a-priori from mechanism reasoning; no parameter search; changing any parameter requires a NEW hypothesis_id.",
+ "independence_policy": "INDEPENDENT / DERIVED / REUSED must be declared; reuse of V1/V2 strategy logic/thresholds/prompts is forbidden (§9).",
+ "hypotheses": [
+  {
+   "hypothesis_id": "H01_1M_SIGMA_FADE",
+   "hypothesis": "1-minute 2.5-sigma mid move partially reverts over the next 5 minutes",
+   "mechanism": "short-horizon liquidity absorption: a move far beyond recent realized vol is over-extended; makers replenish and price mean-reverts",
+   "data_required": [
+    "live_fxtm 1m bars (FXTM, PIT)"
+   ],
+   "signal_definition": {
+    "sigma_window": 60,
+    "entry_sigma": 2.5,
+    "hold_bars": 5,
+    "side": "fade"
+   },
+   "invalid_condition": "no reversion to the 1-sigma band within hold",
+   "expected_horizon": "5m",
+   "cost_assumption": "1x calibrated (stress 0/1/2/3x)",
+   "evaluation_method": "net bp per signal + blocked OOS",
+   "independence": "INDEPENDENT",
+   "frozen": true
+  },
+  {
+   "hypothesis_id": "H02_5M_RANGE_BREAKOUT",
+   "hypothesis": "1m close beyond the prior 20-bar range continues for 10 bars",
+   "mechanism": "range breakout with a close beyond the extreme signals inventory imbalance / stop cascades that persist briefly",
+   "data_required": [
+    "live_fxtm 1m bars (FXTM, PIT)"
+   ],
+   "signal_definition": {
+    "range_window": 20,
+    "hold_bars": 10,
+    "side": "follow"
+   },
+   "invalid_condition": "close back inside the prior range within hold",
+   "expected_horizon": "10m",
+   "cost_assumption": "1x calibrated (stress 0/1/2/3x)",
+   "evaluation_method": "net bp per signal + blocked OOS",
+   "independence": "INDEPENDENT",
+   "frozen": true
+  },
+  {
+   "hypothesis_id": "H03_LONDON_OPEN_MOMENTUM",
+   "hypothesis": "the first bar after 07:00 UTC continues in its own direction for 6 bars",
+   "mechanism": "session-open order flow from European desk repositioning extends briefly before liquidity normalises",
+   "data_required": [
+    "live_fxtm 1m bars (FXTM, PIT)"
+   ],
+   "signal_definition": {
+    "session_utc_hour": 7,
+    "hold_bars": 6,
+    "side": "follow"
+   },
+   "invalid_condition": "immediate reversal beyond the opening bar range",
+   "expected_horizon": "6m",
+   "cost_assumption": "1x calibrated (stress 0/1/2/3x)",
+   "evaluation_method": "net bp per signal + blocked OOS",
+   "independence": "INDEPENDENT",
+   "frozen": true
+  },
+  {
+   "hypothesis_id": "H04_LOWVOL_SIGMA_FADE",
+   "hypothesis": "the sigma-fade works better when realized vol is in its lower tercile",
+   "mechanism": "in quiet regimes the spread is tighter and the reversion impulse is less likely to be swamped by a trend leg",
+   "data_required": [
+    "live_fxtm 1m bars (FXTM, PIT)"
+   ],
+   "signal_definition": {
+    "sigma_window": 60,
+    "entry_sigma": 2.0,
+    "hold_bars": 5,
+    "vol_filter": "lower_tercile"
+   },
+   "invalid_condition": "no reversion within hold",
+   "expected_horizon": "5m",
+   "cost_assumption": "1x calibrated (stress 0/1/2/3x)",
+   "evaluation_method": "regime-conditional net bp + OOS",
+   "independence": "DERIVED (regime-conditioning of H01's mechanism; independent test)",
+   "frozen": true
+  },
+  {
+   "hypothesis_id": "H05_SPREAD_SPIKE_FADE",
+   "hypothesis": "when the 1m mean spread z-score exceeds 2 the contemporaneous mid move fades",
+   "mechanism": "spread widening marks transient liquidity withdrawal; the printed move is partly a liquidity artefact rather than information",
+   "data_required": [
+    "live_fxtm ticks -> 1m spread (FXTM, PIT)"
+   ],
+   "signal_definition": {
+    "spread_z_window": 120,
+    "entry_z": 2.0,
+    "hold_bars": 5,
+    "side": "fade"
+   },
+   "invalid_condition": "spread normalises without reversion",
+   "expected_horizon": "5m",
+   "cost_assumption": "1x calibrated (stress 0/1/2/3x)",
+   "evaluation_method": "net bp per signal; spread cost dominant",
+   "independence": "INDEPENDENT",
+   "frozen": true
+  },
+  {
+   "hypothesis_id": "H06_EMA_TREND_PULLBACK",
+   "hypothesis": "in an EMA20>EMA50 uptrend a pullback to EMA20 then resumption continues 8 bars",
+   "mechanism": "trend persistence plus short-term mean reversion interact: the pullback improves entry while the trend supplies drift",
+   "data_required": [
+    "live_fxtm 1m bars (FXTM, PIT)"
+   ],
+   "signal_definition": {
+    "ema_fast": 20,
+    "ema_slow": 50,
+    "hold_bars": 8,
+    "side": "trend"
+   },
+   "invalid_condition": "EMA20 crosses back below EMA50",
+   "expected_horizon": "8m",
+   "cost_assumption": "1x calibrated (stress 0/1/2/3x)",
+   "evaluation_method": "net bp per signal + OOS",
+   "independence": "INDEPENDENT",
+   "frozen": true
+  },
+  {
+   "hypothesis_id": "H07_ROUND_LEVEL_REJECTION",
+   "hypothesis": "a failed test of a round 10.00 level fades away from the level for 6 bars",
+   "mechanism": "round numbers concentrate resting liquidity; a failed test leaves trapped participants",
+   "data_required": [
+    "live_fxtm 1m bars (FXTM, PIT)"
+   ],
+   "signal_definition": {
+    "level_step": 10.0,
+    "proximity": 0.4,
+    "hold_bars": 6,
+    "side": "fade"
+   },
+   "invalid_condition": "level is broken and held",
+   "expected_horizon": "6m",
+   "cost_assumption": "1x calibrated (stress 0/1/2/3x)",
+   "evaluation_method": "net bp per signal + OOS",
+   "independence": "INDEPENDENT",
+   "frozen": true
+  },
+  {
+   "hypothesis_id": "H08_SQUEEZE_BREAKOUT",
+   "hypothesis": "after a bandwidth squeeze a breakout follows for 8 bars",
+   "mechanism": "volatility compression precedes expansion; the direction of first expansion is informative over short horizons",
+   "data_required": [
+    "live_fxtm 1m bars (FXTM, PIT)"
+   ],
+   "signal_definition": {
+    "bb_window": 20,
+    "bb_band_k": 2.0,
+    "squeeze_quantile": 0.2,
+    "hold_bars": 8
+   },
+   "invalid_condition": "no expansion within hold",
+   "expected_horizon": "8m",
+   "cost_assumption": "1x calibrated (stress 0/1/2/3x)",
+   "evaluation_method": "net bp per signal + OOS",
+   "independence": "INDEPENDENT",
+   "frozen": true
+  },
+  {
+   "hypothesis_id": "H09_ROLLOVER_REVERSAL",
+   "hypothesis": "the prior 30-minute move fades around the 21:00-22:00 UTC rollover",
+   "mechanism": "daily rollover changes financing and dealer inventory, producing transient reversal without fresh information",
+   "data_required": [
+    "live_fxtm 1m bars (FXTM, PIT)"
+   ],
+   "signal_definition": {
+    "rollover_hours_utc": [
+     21,
+     22
+    ],
+    "premove_bars": 30,
+    "hold_bars": 6,
+    "side": "fade"
+   },
+   "invalid_condition": "continuation instead of reversal",
+   "expected_horizon": "6m",
+   "cost_assumption": "1x calibrated (stress 0/1/2/3x)",
+   "evaluation_method": "net bp per signal + OOS",
+   "independence": "INDEPENDENT",
+   "frozen": true
+  },
+  {
+   "hypothesis_id": "H10_DXY_CONFIRMED_REVERSAL",
+   "hypothesis": "an FXTM move aligned with an opposite DXY move reverses",
+   "mechanism": "cross-asset disagreement indicates the local move is flow-driven rather than macro-driven and should revert",
+   "data_required": [
+    "DXY series with publication timestamps (PIT)"
+   ],
+   "signal_definition": {
+    "hold_bars": 6,
+    "side": "fade"
+   },
+   "invalid_condition": "DXY and FXTM agree",
+   "expected_horizon": "6m",
+   "cost_assumption": "1x calibrated (stress 0/1/2/3x)",
+   "evaluation_method": "blocked OOS",
+   "independence": "INDEPENDENT (cross-asset)",
+   "frozen": true
+  },
+  {
+   "hypothesis_id": "H11_TICKRATE_SPIKE_FADE",
+   "hypothesis": "a tick-rate spike with a directional move fades 5 bars later",
+   "mechanism": "tick-rate spikes are often quote churn rather than informed flow; the accompanying move is transient",
+   "data_required": [
+    "live_fxtm ticks (FXTM, PIT)"
+   ],
+   "signal_definition": {
+    "rate_z_window": 120,
+    "entry_z": 2.0,
+    "hold_bars": 5,
+    "side": "fade"
+   },
+   "invalid_condition": "no fade within hold",
+   "expected_horizon": "5m",
+   "cost_assumption": "1x calibrated (stress 0/1/2/3x)",
+   "evaluation_method": "net bp per signal + OOS",
+   "independence": "INDEPENDENT",
+   "frozen": true
+  },
+  {
+   "hypothesis_id": "H12_DAILY_GAP_FADE",
+   "hypothesis": "an overnight gap from the prior session close partially fades at the open",
+   "mechanism": "gaps that are not information-driven are liquidity vacuums that refill",
+   "data_required": [
+    "live_fxtm 1m bars (FXTM, PIT)"
+   ],
+   "signal_definition": {
+    "gap_min_bp": 5.0,
+    "hold_bars": 10,
+    "side": "fade"
+   },
+   "invalid_condition": "gap extends instead of fading",
+   "expected_horizon": "10m",
+   "cost_assumption": "1x calibrated (stress 0/1/2/3x)",
+   "evaluation_method": "net bp per signal + OOS",
+   "independence": "INDEPENDENT",
+   "frozen": true
+  }
+ ]
+}

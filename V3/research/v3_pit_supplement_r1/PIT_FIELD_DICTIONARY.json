@@ -1,0 +1,47 @@
+{
+ "schema": "v3_pit_supplement_dictionary/1",
+ "task_id": "V3-PHASE2-PIT-DATA-SUPPLEMENT-001",
+ "round": "R1",
+ "ts_utc": "2026-10-01T13:10:00+00:00",
+ "frozen_before_any_fetch": true,
+ "purpose": "Unblock family D (event microstructure) and re-rate family E (cross-market lead-lag); family B is out of scope of this round (see scope_note).",
+ "scope_note": {
+   "D_event_microstructure": "needs a PIT event calendar overlapping the tick window -> Jin10 calendar exists; new snapshot required for the overlap",
+   "E_crossmarket_leadlag": "needs longer/better PIT cross-market history -> Yahoo 1h/2y DXY+VIX",
+   "B_execution_alpha": "CANNOT be unblocked by calendar/cross-market data: blocker is bid_vol/ask_vol identically 0 (DATA_GAP). Would require L2/queue/fill-probability data, which is a separate availability question (see microstructure_source_audit). This round does NOT unlock B and will not pretend to."
+ },
+ "time_fields": {
+   "observation_time": "when the value was OBSERVED (e.g. bar close, tick time)",
+   "publication_time": "when the value was PUBLISHED by the producer",
+   "availability_time": "when the value became USABLE by a point-in-time reader (conservative, >= publication_time)",
+   "revision_time_vintage": "when a value was REVISED; a vintage is the value as known at a given availability_time"
+ },
+ "status_enum": ["PASS", "CONDITIONAL", "FAIL", "NOT_AVAILABLE", "AUTH_REQUIRED"],
+ "terminal_enum": ["V3_PIT_READY", "V3_PIT_PARTIAL", "V3_PIT_SOURCE_UNAVAILABLE"],
+ "status_rule": {
+   "PASS": "BOTH historical observation AND that observation's historical availability/vintage are provable",
+   "CONDITIONAL": "authoritative/snapshot-only, or粒度受限; must state the only admissible granularity",
+   "FAIL": "final values only, no version, no publication time (or client-rendered shell)",
+   "NOT_AVAILABLE": "rate-limit page / error page / no series (payload_verified=false)",
+   "AUTH_REQUIRED": "needs key or OAuth; not a FAIL; do not register, do not borrow third-party app-id"
+ },
+ "conservative_availability_rules_FROZEN": {
+   "daily_market_bar_dated_D": "available at D+1 00:00:00Z",
+   "official_daily_value_dated_D": "available at D+1 00:00:00Z",
+   "calendar_event_dated_D": "available at D 23:59:59Z (date-level events)",
+   "calendar_event_with_pub_time": "available at its own pub_time_utc (no extra lag assumed, no early availability)",
+   "unfinished_bar": "FORBIDDEN (never use a bar that had not closed at T)",
+   "intraday_market_bar": "available at bar close time (market data; no external publication lag)",
+   "rule_rationale": "宁可晚一天，也不把收盘后才确定的值放到当天盘中"
+ },
+ "leakage_tests_required": ["T1_future_publication_invisible", "T2_future_revision_invisible", "T3_replay_deterministic", "T4_hash_integrity", "T5_timezone_normalized_preserving_original"],
+ "candidates_to_probe_ONCE": [
+   {"tier": "T3_market", "name": "YAHOO_DXY_1H_2Y", "why": "cross-market long overlap for family E"},
+   {"tier": "T3_market", "name": "YAHOO_VIX_1H_2Y", "why": "cross-market long overlap for family E"},
+   {"tier": "T3_market", "name": "YAHOO_DXY_5M_60D", "why": "intraday overlap for family E"},
+   {"tier": "T3_market", "name": "YAHOO_VIX_5M_60D", "why": "intraday overlap for family E"},
+   {"tier": "T2_event_calendar", "name": "JIN10_MCP_list_calendar", "why": "PIT calendar for family D"},
+   {"tier": "T1_official", "name": "US_TREASURY_YIELD_CURVE", "why": "official macro (control)"}
+ ],
+ "probe_policy": "每候选只探测一次；取不到就记原因，不反复换窗口重试；限流页/错误页/空壳都不是数据"
+}

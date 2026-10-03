@@ -1,0 +1,84 @@
+{
+ "POLICY_VERSION": 1,
+ "name": "MV_R1_METHOD_POLICY",
+ "min_events": 8,
+ "permutation_count": 500,
+ "seed": 20260925,
+ "hermes_budget": 500,
+ "taxonomy": {
+  "M01": "PRICE_STATE_TRANSITION",
+  "M02": "VOLATILITY_REGIME_TRANSITION",
+  "M03": "CROSS_MARKET_SHOCK",
+  "M04": "CROSS_MARKET_DIVERGENCE",
+  "M05": "LIQUIDITY_REPRICING",
+  "M06": "RISK_SENTIMENT_TRANSMISSION",
+  "M07": "EXTREME_REVERSION",
+  "M08": "STATE_BREAK_MOMENTUM",
+  "M09": "EVENT_REPRICING",
+  "M10": "DATA_MEASUREMENT_ARTIFACT",
+  "M11": "UNKNOWN_MECHANISM"
+ },
+ "family_to_mechanism_candidates": {
+  "F1": [
+   "M01"
+  ],
+  "F2": [
+   "M08",
+   "M01"
+  ],
+  "F4": [
+   "M03"
+  ],
+  "F5": [
+   "M07"
+  ],
+  "F6": [
+   "M02"
+  ],
+  "F3": [
+   "M05"
+  ]
+ },
+ "artifact_levels": [
+  "NONE",
+  "LOW",
+  "MEDIUM",
+  "HIGH",
+  "FATAL"
+ ],
+ "counter_levels": [
+  "NONE",
+  "WEAK",
+  "MODERATE",
+  "HIGH",
+  "FATAL"
+ ],
+ "final_states": [
+  "SUPPORTED",
+  "UNCERTAIN",
+  "REJECTED",
+  "NOT_TESTABLE",
+  "INSUFFICIENT"
+ ],
+ "status_rule": [
+  "FATAL_ARTIFACT or FATAL_COUNTER -> REJECTED",
+  "zero_events -> NOT_TESTABLE",
+  "events < min_events -> INSUFFICIENT",
+  "null p > 0.05 -> UNCERTAIN",
+  "SEMANTIC_DEPENDENCY HIGH -> UNCERTAIN",
+  "else SUPPORTED"
+ ],
+ "no_future_data_in_identification": true,
+ "dependency_units": {
+  "cross_family": "episode_id_v2",
+  "cross_grid": "cross_grid_parent_id"
+ },
+ "forbidden_status_words": [
+  "PROMISING",
+  "GOOD",
+  "STRONG",
+  "BEST",
+  "ALPHA"
+ ],
+ "POLICY_HASH": "9ed578dda3331db90e20ddcdb5388d548621cf4e110b57e81548982b9d89334e"
+}

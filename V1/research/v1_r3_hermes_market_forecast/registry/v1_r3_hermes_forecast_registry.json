@@ -1,0 +1,366 @@
+{
+ "task": "V1_R3_HERMES_MARKET_FORECAST_ENGINE",
+ "registry_id": "v1r3-hermes-forecast-registry-r1",
+ "frozen": true,
+ "frozen_before_any_forecast": true,
+ "frozen_at_utc": "2026-09-27T13:29:30.907755+00:00",
+ "context_schema": {
+  "schema_id": "HERMES_MARKET_CONTEXT",
+  "version": "v1r3-r1",
+  "layers": {
+   "L1_PRICE_KLINE": {
+    "timeframes": [
+     "M1",
+     "M5",
+     "M15",
+     "H1",
+     "H4"
+    ],
+    "per_bar": [
+     "timestamp",
+     "open",
+     "high",
+     "low",
+     "close",
+     "range",
+     "body",
+     "upper_wick",
+     "lower_wick",
+     "body_ratio",
+     "range_percentile",
+     "atr",
+     "volatility"
+    ],
+    "sequence": "last N bars per timeframe",
+    "labels": [
+     "RAW",
+     "DERIVED"
+    ]
+   },
+   "L2_PRICE_STRUCTURE": {
+    "fields": [
+     "swing_high",
+     "swing_low",
+     "support",
+     "resistance",
+     "level_id",
+     "level_origin",
+     "level_age",
+     "touch_count",
+     "last_touch",
+     "break_status",
+     "reclaim_status",
+     "retest",
+     "rejection",
+     "acceptance"
+    ],
+    "labels": [
+     "DERIVED"
+    ]
+   },
+   "L3_MARKET_BEHAVIOUR": {
+    "fields": [
+     "TREND",
+     "RANGE",
+     "COMPRESSION",
+     "EXPANSION",
+     "ROTATION",
+     "REJECTION",
+     "ACCEPTANCE",
+     "EXHAUSTION",
+     "BREAKOUT",
+     "FAILED_BREAKOUT",
+     "REVERSAL_ATTEMPT",
+     "CONTINUATION"
+    ],
+    "labels": [
+     "OBSERVED",
+     "DERIVED",
+     "INFERRED"
+    ]
+   },
+   "L4_MARKET_MECHANISM": {
+    "fields": [
+     "trend_continuation",
+     "range_rotation",
+     "breakout_pressure",
+     "failed_breakout",
+     "volatility_repricing",
+     "macro_repricing",
+     "liquidity_withdrawal_proxy",
+     "exhaustion",
+     "reversal_pressure"
+    ],
+    "per_mechanism": [
+     "supporting_evidence",
+     "counter_evidence",
+     "invalidation",
+     "data_quality"
+    ]
+   },
+   "L5_STATE_HISTORY": {
+    "fields": [
+     "current_state",
+     "past_states",
+     "durations",
+     "transitions",
+     "sequence"
+    ]
+   },
+   "L6_MULTI_TIMEFRAME": {
+    "timeframes": [
+     "M5",
+     "M15",
+     "H1",
+     "H4"
+    ],
+    "fields": [
+     "each_tf_state",
+     "agreement",
+     "conflict",
+     "transition"
+    ]
+   },
+   "L7_CROSS_MARKET": {
+    "series": [
+     "DXY",
+     "VIX",
+     "UST10Y_PROXY_TNX"
+    ],
+    "absent": [
+     "GLD",
+     "GC",
+     "COT",
+     "ETF_FLOWS",
+     "NEWS",
+     "MACRO_EVENTS"
+    ],
+    "per_series": [
+     "value",
+     "change",
+     "quality",
+     "source",
+     "timestamp"
+    ],
+    "rule": "quality in DIRECT|DERIVED|PROXY|UNKNOWN; UST10Y is PROXY and must never be upgraded"
+   }
+  },
+  "historical_analog": {
+   "fields": [
+    "analog_id",
+    "t0_state",
+    "state_evolution",
+    "similarity_method",
+    "similarity",
+    "retrieval_timestamp"
+   ],
+   "forbidden": [
+    "future_return",
+    "future_pnl",
+    "future_win_rate",
+    "future_direction_label"
+   ]
+  },
+  "forbidden_keys": [
+   "future",
+   "future_return",
+   "future_pnl",
+   "pnl",
+   "profit",
+   "win",
+   "loss",
+   "win_rate",
+   "ground_truth",
+   "actual_next_state",
+   "NEXT_STATE_LABEL",
+   "future_state",
+   "future_direction",
+   "forward_return",
+   "sharpe"
+  ],
+  "allowed_similar_keys": [
+   "historical_state_evolution",
+   "state_transition_history"
+  ]
+ },
+ "time_semantics": {
+  "XAUUSD": {
+   "source": "HistData.com M1 (BID)",
+   "timezone": "EST UTC-5 FIXED (VERIFIED)",
+   "dst": "NOT_APPLICABLE",
+   "timestamp_definition": "bar open time, EST fixed; converted to UTC for this engine",
+   "bar_close_definition": "UNKNOWN (vendor not documented) -> treated as bar close = tradable, PIT OK",
+   "availability_definition": "bar available at its close time",
+   "quality": "DERIVED"
+  },
+  "DXY": {
+   "source": "Yahoo chart API DX-Y.NYB",
+   "timezone": "UTC epoch",
+   "timestamp_definition": "bar open time (Yahoo convention UNKNOWN)",
+   "bar_close_definition": "UNKNOWN",
+   "availability_definition": "UNKNOWN -> treated as available at bar time",
+   "quality": "PROXY"
+  },
+  "VIX": {
+   "source": "Yahoo ^VIX",
+   "timezone": "UTC epoch",
+   "timestamp_definition": "bar open (UNKNOWN)",
+   "bar_close_definition": "UNKNOWN",
+   "availability_definition": "UNKNOWN",
+   "quality": "PROXY"
+  },
+  "UST10Y_PROXY_TNX": {
+   "source": "Yahoo ^TNX",
+   "timezone": "UTC epoch",
+   "timestamp_definition": "intraday bars land on a :20 grid offset",
+   "bar_close_definition": "UNKNOWN",
+   "availability_definition": "UNKNOWN",
+   "quality": "PROXY",
+   "note": "^TNX is a CBOE yield INDEX proxy, NOT the official Treasury constant-maturity yield; never call it DIRECT UST10Y"
+  },
+  "grid_rule": "XAUUSD M15 bars on :00/:15/:30/:45; cross-market 5m floored to 15m grid; NO silent time shift; offsets documented",
+  "no_silent_shift": true
+ },
+ "prompt": "You are HERMES, a market-structure forecasting engine for XAUUSD.\n\nYou are given a point-in-time (PIT) market context. You must reason ONLY from that context.\nYou have NO access to any future information, labels, outcomes, returns, PnL or directional answers.\nIf the context is insufficient or self-contradictory, you MUST abstain rather than guess.\n\nAnswer these ten questions in order, then emit the forecast JSON.\n\nA. What is happening?            Describe the current market from the evidence given.\nB. What is the dominant structure? Name the prevailing price structure and why.\nC. What pressures are building?  Name the pressures (directional, volatility, liquidity-proxy).\nD. What mechanisms could explain it? Propose the candidate mechanisms and say whether each is supported.\nE. What is the strongest evidence? List the strongest supporting observations.\nF. What is the strongest counter-evidence? Actively search for evidence AGAINST your own reading.\nG. What could happen next?       State the PRIMARY scenario.\nH. What is the alternative?      State at least one ALTERNATIVE scenario.\nI. What would invalidate the forecast? Give explicit, checkable invalidation conditions.\nJ. What would change your mind?  Give explicit evidence that would flip your judgement.\n\nRULES\n- Directions allowed: UP, DOWN, NEUTRAL, UNDEFINED, NO_DIRECTIONAL_EDGE. You are NOT required to give a\n  direction; a clear structural/scenario forecast with NO_DIRECTIONAL_EDGE is a valid answer.\n- Timing allowed: IMMEDIATE, SHORT_TERM, INTRADAY, HIGHER_TIMEFRAME, or TIMING_UNCERTAIN.\n- Confidence is YOUR SUBJECTIVE confidence in [0,1]. It is NOT a statistical probability; do not present it as one.\n- You may ABSTAIN (abstain=true) with a reason. Abstention is a capability, not a failure.\n- NEVER invent data that is not in the context. Respect every data_quality tag (DIRECT/DERIVED/PROXY/UNKNOWN).\n- UST10Y is a PROXY (^TNX); never treat it as an official yield series.\n\nOUTPUT: exactly one JSON object, no prose outside it, with these keys:\nforecast_id, timestamp, current_state, dominant_structure, current_pressure,\nprimary_scenario{scenario,confidence,horizon,trigger,invalidation},\nalternative_scenario{scenario,confidence,horizon,trigger,invalidation},\nthird_scenario (optional, same shape or null),\ndirection_bias (UP|DOWN|NEUTRAL|UNDEFINED|NO_DIRECTIONAL_EDGE),\nexpected_state_transition, time_horizon, confidence,\nsupporting_evidence[], counter_evidence[], trigger, invalidation, change_my_mind[],\nabstain (bool), abstain_reason, reasoning_trace[], questions{A..J}",
+ "evaluation": {
+  "ground_truth_generator": "independent module; uses bars <= t+H only; NEVER feeds Hermes",
+  "targets": {
+   "ACTUAL_NEXT_STATE": "STATE_V2(t+H)",
+   "ACTUAL_TRANSITION": "STATE_V2(t+H) != STATE_V2(t)",
+   "ACTUAL_DIRECTION": "structural direction of EVENT(t+H): UP/DOWN/NEUTRAL",
+   "ACTUAL_TIMING": "first-change bucket within 1/2/4/8/16 bars or >16",
+   "ACTUAL_INVALIDATION": "family(STATE_V2(t+H)) != family(STATE_V2(t))"
+  },
+  "H": 8,
+  "horizons_reported": [
+   "M5",
+   "M15",
+   "H1",
+   "H4"
+  ],
+  "metrics": [
+   "accuracy",
+   "balanced_accuracy",
+   "macro_F1",
+   "log_loss",
+   "Brier",
+   "ECE",
+   "coverage",
+   "abstention_accuracy",
+   "majority_baseline_displayed"
+  ],
+  "levels": {
+   "L0": "NONE",
+   "L1": "MARKET_READING",
+   "L2": "STATE_RECOGNITION",
+   "L3": "STATE_TRANSITION/SCENARIO",
+   "L4": "DIRECTION",
+   "L5": "TIMING",
+   "L6": "STRATEGY_RELEVANT"
+  },
+  "decision_rules": {
+   "A_SUPPORTED": "Hermes>baseline AND blind/null/replay/lookahead PASS",
+   "B_INCONCLUSIVE": "Hermes>baseline but effect small",
+   "C_UNSUPPORTED": "Hermes<=baseline",
+   "D_LAYERED": "report per level, no OVERALL_SUCCESS masking"
+  },
+  "effect_floor": {
+   "log_loss_bits": 0.01,
+   "balanced_accuracy": 0.02
+  }
+ },
+ "baselines": [
+  "MAJORITY",
+  "PERSISTENCE",
+  "PREVIOUS_STATE",
+  "SIMPLE_TRANSITION",
+  "FROZEN_NEXT_STATE_MODEL"
+ ],
+ "ablations": {
+  "information_content": [
+   "PRICE",
+   "PRICE+KLINE",
+   "PRICE+STRUCTURE",
+   "PRICE+STATE",
+   "PRICE+EVENT",
+   "PRICE+MTF",
+   "PRICE+MECHANISM",
+   "PRICE+CROSSMARKET",
+   "FULL"
+  ],
+  "hermes_context": [
+   "HERMES_FULL",
+   "HERMES_PRICE_ONLY",
+   "HERMES_PRICE_KLINE"
+  ],
+  "module_toggles": [
+   "KLINE",
+   "MTF",
+   "CROSSMARKET",
+   "MECHANISM",
+   "HISTORICAL_ANALOG",
+   "COUNTER_EVIDENCE"
+  ],
+  "rule": "all ablations saved; no best-only reporting (§88)"
+ },
+ "blind_split": {
+  "design": "earlier period = DEVELOPMENT, later period = BLIND (time isolation, no random shuffle)",
+  "development": [
+   "2025-01-01T23:00Z",
+   "2026-05-31T23:59Z"
+  ],
+  "blind": [
+   "2026-06-01T00:00Z",
+   "2026-09-18T21:45Z"
+  ],
+  "crossmarket_subwindow": [
+   "2026-07-17T04:00Z",
+   "2026-09-18T20:55Z"
+  ],
+  "purge_bars": 480,
+  "embargo_bars": 1,
+  "rules": [
+   "Hermes never sees labels",
+   "OpenClaw never edits prompt after seeing blind results",
+   "BLIND=TRUE recorded"
+  ]
+ },
+ "model_registry": {
+  "registry_id": "v1r3-hermes-model-r1",
+  "model": "deepseek/deepseek-v4-flash",
+  "provider": "custom-yuanyuaicloud-cn",
+  "prompt_hash": "3813c2e323e7e2bb6c265c880701ee635bbcda6da0efa1c647fccc3c1d815ad9",
+  "context_schema_hash": "eeb1621d61c391d1f27c84b9bd40c0cbeeebc15681108d667bc4150114572c08",
+  "temperature": "runtime_default",
+  "seed": "runtime_default",
+  "runtime": "OpenClaw subagent (isolated context), tools disabled for forecast calls",
+  "invocation": "one isolated Hermes call per (timestamp, context_variant); no shared state",
+  "ts_utc": "2026-09-27T13:29:30.907755+00:00"
+ },
+ "upstream_frozen": {
+  "r2_final": "research\\hermes\\trader_v1\\v1_r2_full_optimization\\reports\\V1_R2_FULL_OPTIMIZATION_FINAL.json",
+  "c1_ontology_hash": "8436866dfe71030ba7be036b2d73904ed2f817aa52673a5e27d583e931c354d8"
+ },
+ "hard_safety": {
+  "ORDER_SEND": 0,
+  "ORDER_CHECK": 0,
+  "BROKER_WRITE": 0,
+  "FORWARD": "OFF",
+  "SHADOW": "OFF",
+  "LIVE": "OFF",
+  "V2_WRITE": 0,
+  "V3_WRITE": 0,
+  "BOUNDARY_VIOLATION": 0,
+  "V1_EXECUTION_MODIFIED": 0,
+  "V1_RISK_MODIFIED": 0,
+  "V1_ORDER_LOGIC_MODIFIED": 0
+ },
+ "prompt_hash": "3813c2e323e7e2bb6c265c880701ee635bbcda6da0efa1c647fccc3c1d815ad9",
+ "context_schema_hash": "eeb1621d61c391d1f27c84b9bd40c0cbeeebc15681108d667bc4150114572c08",
+ "time_semantics_hash": "ff70d09902fab2f590f6a6ce1c0add25f5177de29f2f2361ff9224679f0dfe8f",
+ "evaluation_hash": "b0144b6ebc8218f1fe8327ba48faacde4ba19fcc919ff648ed9e9045080462cb",
+ "baseline_hash": "2e10353d34a1cbe1eb8877b7eae83aa0d5c6db250dd722dea5180ec403314446",
+ "ablation_hash": "05deed7e07209b22e05259c9edcdba21beb764ebf36291b5ec6e23f544d6f666",
+ "blind_split_hash": "9ad4e56c135531a5e778a53f891073cee362cdce9f4db650eedc40825dcbcc0b",
+ "registry_hash": "c44e18712e72490b43d85dd4a4ca7a639c387c32d2002d8dbb2bd5807e73ae02"
+}

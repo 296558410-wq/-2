@@ -1,0 +1,71 @@
+{
+ "BREAK_EVIDENCE_LINEAGE": {
+  "source_file": "research/hermes/trader_v1/v1_r2_prediction_upgrade/_v1r2_phaseB_R1.py",
+  "anchor": "engines_v2() break-risk block",
+  "lines": {
+   "guard": 205,
+   "TOUCH_REPEAT": 208,
+   "REJECTION_FAIL": 210,
+   "PENETRATION": 212,
+   "ABSORPTION": 214,
+   "MOMENTUM_TOWARD": 216,
+   "AT_LEVEL": 218,
+   "n_ev": 219,
+   "state_rule": 220,
+   "emit": 221
+  },
+  "code_guard": "if nl:   # entire evidence list is INSIDE the nearest-level block",
+  "groups": {
+   "TOUCH_REPEAT": {
+    "input": "level.touch_events_240",
+    "derived_from": "LEVEL/TOUCH",
+    "dependency": "DERIVED"
+   },
+   "REJECTION_FAIL": {
+    "input": "level.rec_ok + level.rec_fail + level.fail_rate",
+    "derived_from": "LEVEL/TOUCH",
+    "dependency": "DERIVED"
+   },
+   "PENETRATION": {
+    "input": "level.pen_last + level.last_touch_i",
+    "derived_from": "LEVEL/TOUCH",
+    "dependency": "DERIVED"
+   },
+   "ABSORPTION": {
+    "input": "absorption.state",
+    "derived_from": "ABSORPTION (eff3/act3)",
+    "dependency": "INDEPENDENT_INPUT"
+   },
+   "MOMENTUM_TOWARD": {
+    "input": "vel4 + level.side",
+    "derived_from": "MOMENTUM (+ level side)",
+    "dependency": "PARTIALLY_DEPENDENT"
+   },
+   "AT_LEVEL": {
+    "input": "level.dist_atr",
+    "derived_from": "LEVEL",
+    "dependency": "DERIVED"
+   }
+  }
+ },
+ "content_independence": {
+  "groups_level_derived": [
+   "TOUCH_REPEAT",
+   "REJECTION_FAIL",
+   "PENETRATION",
+   "AT_LEVEL"
+  ],
+  "groups_non_level": [
+   "ABSORPTION",
+   "MOMENTUM_TOWARD"
+  ],
+  "observed_group_frequency": {
+   "PENETRATION": 48,
+   "AT_LEVEL": 27,
+   "MOMENTUM_TOWARD": 27,
+   "TOUCH_REPEAT": 13,
+   "ABSORPTION": 2
+  },
+  "note": "break STATE non-LOW is impossible without a level (code guard L205), so the LEVEL<->BREAK pair carries a single structural axis"
+ }
+}

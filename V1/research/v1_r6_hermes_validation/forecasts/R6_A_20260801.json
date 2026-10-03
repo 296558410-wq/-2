@@ -1,0 +1,101 @@
+{
+  "forecast_id": "A_20260801",
+  "sample_id": "A_20260801",
+  "timestamp": "2026-08-01 12:00:00+00:00",
+  "observations": [
+    "Close 4042.025, inside swing low 4041.035",
+    "H1 trend_20 -42.2, M1 down streak 7",
+    "M1 last bar range percentile 1.0, lower wick 6.94",
+    "MTF CONFLICT, state ROTATION ACCEPTANCE"
+  ],
+  "what_i_know": [
+    "Close 4042.025, inside SWING_LOW 4041.035",
+    "All trend_20 negative except H4 positive",
+    "State ROTATION, event ACCEPTANCE, dwell 4",
+    "Cross-market series unavailable, absent recorded"
+  ],
+  "what_i_do_not_know": [
+    "DXY VIX TNX news macro all unavailable",
+    "Order flow positioning fundamental drivers unknown",
+    "Level break direction unresolved, inside only",
+    "Ambiguity rate 0.75 weakens state signal"
+  ],
+  "evidence": [
+    "H1 trend_20 -42.2, 8-bar displacement -8.54",
+    "Consecutive down 7 on M1, range expanding",
+    "Level SWING_LOW 4041.035 under pressure, touch 35",
+    "L4 candidate trend_continuation flagged"
+  ],
+  "counter_evidence": [
+    "H4 trend_20 positive +19.16, MTF conflict",
+    "M5 consecutive up 7 conflicting signal",
+    "Long lower wick 6.94 shows dip buying",
+    "Ambiguity rate 0.75, analogs diverge"
+  ],
+  "possible_mechanisms": [
+    {
+      "mechanism": "trend_continuation",
+      "status": "POSSIBLE",
+      "why": "L4 candidate only, displacement -8.54"
+    },
+    {
+      "mechanism": "support_rejection_rebound",
+      "status": "POSSIBLE",
+      "why": "lower wick buying at support level"
+    },
+    {
+      "mechanism": "compression_rotation",
+      "status": "WEAK",
+      "why": "analog A25116 shows compression path"
+    },
+    {
+      "mechanism": "trend_reversal",
+      "status": "WEAK",
+      "why": "H4 positive trend conflicts with down"
+    }
+  ],
+  "primary_scenario": {
+    "scenario": "downside continuation breaks 4041.035 toward 4020s",
+    "horizon": "4-8 hours",
+    "trigger": "decisive close below 4041.035",
+    "invalidation": "reclaim above 4051 with strong body"
+  },
+  "alternative_scenario": {
+    "scenario": "rejection at swing low, rotation to 4050-4055",
+    "horizon": "4-8 hours",
+    "trigger": "higher low above 4041, push above 4048",
+    "invalidation": "sustained break below 4035"
+  },
+  "expected_transition": "ROTATION resolves to REJECTION or TREND at level",
+  "direction_bias": "DOWN",
+  "time_horizon": "4-8 hours",
+  "evidence_strength": 0.35,
+  "confidence": 0.3,
+  "uncertainty": 0.75,
+  "confidence_reason": "Thin derived context, MTF conflict, high ambiguity rate",
+  "uncertainty_reason": "No cross-market or fundamental data, analogs diverge",
+  "invalidation": "decisive close above 4051 reclaims range",
+  "change_my_mind": [
+    "Decisive close below 4041.035 confirms downside",
+    "Reclaim above 4051 invalidates downside scenario",
+    "New cross-market data appears contradicting view",
+    "State transition to TREND or REJECTION observed"
+  ],
+  "abstain": false,
+  "abstain_reason": "Context sufficient for low-confidence view; no contradiction",
+  "questions": {
+    "Q1": "Close 4042.025 inside level 4041.035; H1 trend -42.2",
+    "Q2": "Cross-market, order flow, news, macro unknown; level break unresolved",
+    "Q3": "Negative H1 trend, down streak, L4 continuation candidate support downside",
+    "Q4": "H4 positive, M5 up streak, long lower wick, high ambiguity",
+    "Q5": "Support rejection rebound mechanism is possible, not asserted",
+    "Q6": "Level break direction, volume data, state transition, cross-market prints",
+    "Q7": "false, sufficient price structure exists though confidence low"
+  },
+  "reasoning_trace": [
+    "Price pressing swing low with negative H1 momentum",
+    "MTF conflict and ambiguity cap confidence at low",
+    "Analogs diverge: trend, rejection, compression paths",
+    "Forecast downside bias with explicit invalidation triggers"
+  ]
+}

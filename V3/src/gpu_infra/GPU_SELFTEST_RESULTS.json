@@ -1,0 +1,68 @@
+{
+ "schema": "v3_gpu_infra_selftest/1",
+ "generated_utc": "2026-10-02T10:59:01.468576+00:00",
+ "purpose": "compute infrastructure verification only",
+ "tests": {
+  "parity_sign_perm_exact": {
+   "verdict": "PASS",
+   "detail": "cpu=0.5107446276861569 gpu=0.5107446276861569"
+  },
+  "chunk_invariance": {
+   "verdict": "PASS",
+   "detail": "chunked vs full means identical"
+  },
+  "determinism_same_seed": {
+   "verdict": "PASS",
+   "detail": "p=0.562874251497006 twice equal"
+  },
+  "oom_fallback_recovers": {
+   "verdict": "PASS",
+   "detail": "recovered p=0.5149501661129569 == ref 0.5149501661129569"
+  },
+  "tiny_chunk_runs": {
+   "verdict": "PASS",
+   "detail": "p=0.5323383084577115"
+  },
+  "vram_no_growth": {
+   "verdict": "PASS",
+   "detail": "free 3276->3278 MiB"
+  },
+  "tick_features_parity": {
+   "verdict": "PASS",
+   "detail": "max|diff|=7.03e-18 over 500000 ticks"
+  },
+  "batch_processing_parity": {
+   "verdict": "PASS",
+   "detail": "4-way batch == single pass"
+  }
+ },
+ "device": {
+  "torch": "2.14.0+cu126",
+  "cuda_available": true,
+  "device": "NVIDIA RTX A2000 Laptop GPU",
+  "capability": [
+   8,
+   6
+  ],
+  "vram_total_mib": 4095.6,
+  "vram_free_mib": 3290.2,
+  "cuda": "12.6"
+ },
+ "benchmark": {
+  "perm_cpu_s": 0.088,
+  "perm_gpu_s": 0.026,
+  "perm_speedup": 3.4,
+  "boot_cpu_s": 0.009,
+  "boot_gpu_s": 0.087,
+  "boot_speedup": 0.11,
+  "config": {
+   "reps_perm": 4000,
+   "n": 1000,
+   "reps_boot": 2000,
+   "nblocks": 50
+  }
+ },
+ "verdict": "GPU_INFRA_SELFTEST_PASS",
+ "passed": 8,
+ "total": 8
+}

@@ -1,0 +1,41 @@
+{
+ "schema": "v3_data_capability_matrix/1",
+ "ts_utc": "2026-09-25T02:06:04.237377+00:00",
+ "gaps": {
+  "P0_XAUUSD_SPOT_DAILY": {
+   "solved": true,
+   "solution": {
+    "source_id": "SINA_KLINE",
+    "series": "XAU (spot gold, sina global futures daily K-line)",
+    "rows": 5186,
+    "first": "2006-09-25",
+    "last": "2026-09-25",
+    "china_intranet": "YES",
+    "automation": "YES (JSONP over HTTPS)",
+    "pit": "PIT_CONDITIONAL (market series; market-timestamp; daily granularity only)",
+    "raw_sha256": "12e225cc5d4a1d1445e97a47a286a8f16114bf31f673daf4e8d30c2e785a33d8"
+   },
+   "caveat": "spot XAU daily from a commercial portal: restatement risk and portal dependency; not an official venue; must not be mixed with the FXTM execution venue without disclosure"
+  },
+  "P0_MACRO_PIT": {
+   "solved": false,
+   "note": "official sites reachable, but no automatable PIT macro API with publication_time was found; vintage/revision unavailable"
+  },
+  "P1_VINTAGE": {
+   "solved": false,
+   "note": "no candidate exposed revisions/vintages"
+  },
+  "P1_NEWS_PIT": {
+   "solved": false,
+   "note": "j10 already FAIL (previous task)"
+  },
+  "P1_CALENDAR_PIT": {
+   "solved": false,
+   "note": "j10 calendar AUTH_REQUIRED (previous task)"
+  },
+  "P2_CROSS_MARKET": {
+   "solved": "partial",
+   "note": "daily market data reachable (see audit)"
+  }
+ }
+}

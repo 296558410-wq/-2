@@ -1,0 +1,118 @@
+{
+ "task": "V1_R8_B_SCENARIO_VALIDATION",
+ "registry_id": "v1r8b-valid-registry-r1",
+ "frozen_at_utc": "2026-09-28T10:51:12.998236+00:00",
+ "read_only_on": [
+  "R3",
+  "R4",
+  "R5",
+  "R5_1",
+  "R6",
+  "R7",
+  "R8_A",
+  "registry_v2",
+  "AMENDMENT_1"
+ ],
+ "target": {
+  "families": {
+   "TREND": "DIRECTIONAL",
+   "BREAKOUT_ATTEMPT": "DIRECTIONAL",
+   "EXPANSION": "DIRECTIONAL",
+   "ROTATION": "RANGE",
+   "REJECTION": "RANGE",
+   "DECELERATION": "RANGE",
+   "COMPRESSION": "QUIET",
+   "ACCEPTANCE": "QUIET",
+   "NO_DEFINED_STATE": "QUIET"
+  },
+  "horizon": 4,
+  "abstain_rule": "ABSTAIN if max_family_prob - second_family_prob < 0.10",
+  "uncertainty_rule": "PRIMARY = argmax prob; ALTERNATIVE = 2nd family; band = top2_mass; ABSTAIN per ABSTAIN_RULE",
+  "scenario_definition_hash": "e51a5fdea95535e5d0c87c0de2d0586c4d5a8424432ee1250501132b9b1a5222",
+  "registry_v2_hash": "368392de43aeafa821e788ea1b5957d5ad72d09e5768e4515a9a062d91ba21a4"
+ },
+ "sample": {
+  "declared_n": 32,
+  "rule": "every 2 days at 00:00Z inside 2026-07-17..2026-09-17 (fresh, pre-registered, no cherry-picking)",
+  "EFFECTIVE_N_target": 30,
+  "points": [
+   "2026-07-17 00:00:00+00:00",
+   "2026-07-19 00:00:00+00:00",
+   "2026-07-21 00:00:00+00:00",
+   "2026-07-23 00:00:00+00:00",
+   "2026-07-25 00:00:00+00:00",
+   "2026-07-27 00:00:00+00:00",
+   "2026-07-29 00:00:00+00:00",
+   "2026-07-31 00:00:00+00:00",
+   "2026-08-02 00:00:00+00:00",
+   "2026-08-04 00:00:00+00:00",
+   "2026-08-06 00:00:00+00:00",
+   "2026-08-08 00:00:00+00:00",
+   "2026-08-10 00:00:00+00:00",
+   "2026-08-12 00:00:00+00:00",
+   "2026-08-14 00:00:00+00:00",
+   "2026-08-16 00:00:00+00:00",
+   "2026-08-18 00:00:00+00:00",
+   "2026-08-20 00:00:00+00:00",
+   "2026-08-22 00:00:00+00:00",
+   "2026-08-24 00:00:00+00:00",
+   "2026-08-26 00:00:00+00:00",
+   "2026-08-28 00:00:00+00:00",
+   "2026-08-30 00:00:00+00:00",
+   "2026-09-01 00:00:00+00:00",
+   "2026-09-03 00:00:00+00:00",
+   "2026-09-05 00:00:00+00:00",
+   "2026-09-07 00:00:00+00:00",
+   "2026-09-09 00:00:00+00:00",
+   "2026-09-11 00:00:00+00:00",
+   "2026-09-13 00:00:00+00:00",
+   "2026-09-15 00:00:00+00:00",
+   "2026-09-17 00:00:00+00:00"
+  ]
+ },
+ "prompt": {
+  "hermes_a_r5_reused": true,
+  "prompt_hash": "29f1fc6da7ee9db174e04fd349ad0acfad3d3409565b76ab60346fa0bbc531b1",
+  "prompt_unchanged": true
+ },
+ "baselines": [
+  "MAJORITY",
+  "PERSISTENCE",
+  "SIMPLE_TRANSITION",
+  "FROZEN_BASELINE"
+ ],
+ "metrics": [
+  "BALANCED_ACCURACY",
+  "RAW_ACCURACY",
+  "CLASS_RECALL",
+  "ABSTENTION_RATE",
+  "ECE"
+ ],
+ "chance": 0.3333,
+ "persistence_protocol": "R5.1 parent-authoritative, batch<=5",
+ "prohibited": [
+  "future_return",
+  "future_PnL",
+  "profit_score",
+  "win_probability",
+  "expected_profit",
+  "trading_signal",
+  "MetaTrader5",
+  "order_send",
+  "order_check",
+  "broker",
+  "modifying the frozen target/horizon/abstain/prompt",
+  "sample cherry-picking",
+  "changing rules after seeing results"
+ ],
+ "frozen_hashes": {
+  "R3": "ae444baaa0a97e84a72290be9e50b096ad0dd1a0ae0133734a74934deea27b14",
+  "R4": "d2a5c0444576f5b22650ed7218290e841f026020ed6af8fc82024ab28dd3d36a",
+  "R5": "35d1f083b453cf6778a58eada2da813cec20b0dbdadfbb5ee0da6c8e9342c889",
+  "R5_1": "a022da021c5e350db7f99a0088a578818753809769631c9519c55393cb2a450a",
+  "R6": "7a058b4b76644b57fb57ca64f2817a9df9d672a6d4c70aa5d1fb3d2d35550677",
+  "R7": "99c47151456671dfac56d59147268a5ceef9c5a4cf8e80dc5256c6f6ad5cf683",
+  "R8_A": "0ddcf04716aeb99bd9e15350306a7d262d415f11cf1a3be64bb9e55a98bcde6d"
+ },
+ "registry_hash": "4688ac3978b62a4baf0d0b97a20eb110c6e5477f77f1cf641f9ade4d43a5b242"
+}

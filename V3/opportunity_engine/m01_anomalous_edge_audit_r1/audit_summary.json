@@ -1,0 +1,69 @@
+{
+ "M01_AUDIT_STATUS": "STOPPED",
+ "STOPPED_AT": "S12_FULL_RECALC",
+ "FIRST_FAILED_GATE": "recalculation mismatch (mismatch_count != 0)",
+ "COMMIT": "NONE",
+ "ORIGINAL_TRADABILITY_RESULT": "PRESERVED",
+ "ts_utc": "2026-09-25T14:22:39.177983+00:00",
+ "input_lock": {
+  "R2_HEAD_bdd3d7d": true,
+  "MVR1_HEAD_641c7f1": true,
+  "TRD_HEAD_0f3d5d3": true,
+  "FREEZE_HASH": true,
+  "R2_FREEZE": true
+ },
+ "event_set": {
+  "RAW_M01": 6798,
+  "USABLE_M01_LONG_FROM_R1_LEDGER": 6759,
+  "expected_usable": 6759,
+  "match": true
+ },
+ "recalc_counts": {
+  "recomputed": 6759,
+  "r1_usable": 6759
+ },
+ "RETURN_RECALCULATION": {
+  "AUDIT_GROSS": -0.8937,
+  "AUDIT_NET1X": -1.8077,
+  "R1_GROSS": 19.5967,
+  "R1_NET1X": 18.6827,
+  "max_abs_difference": 791.3460316121871,
+  "mean_abs_difference": 13.660285730518625,
+  "median_abs_difference": 2.6609320777026824e-05,
+  "mismatch_count": 27024,
+  "TOLERANCE_FROZEN": 1e-10,
+  "mismatch_examples": [
+   "TE-M01-HEP2-00001|M01_LONG|gross_0x|31.4",
+   "TE-M01-HEP2-00001|M01_LONG|net_1x|31.4",
+   "TE-M01-HEP2-00001|M01_LONG|net_2x|31.4",
+   "TE-M01-HEP2-00001|M01_LONG|net_3x|31.4",
+   "TE-M01-HEP2-00005|M01_LONG|gross_0x|3.32e-05"
+  ],
+  "formula": {
+   "LONG": "gross_bp = (exit_price - entry_price) / entry_price * 10000",
+   "SHORT": "gross_bp = (entry_price - exit_price) / entry_price * 10000",
+   "net": "net_bp = gross_bp - k * 0.914"
+  }
+ },
+ "AUDIT_GROSS": -0.8937,
+ "AUDIT_NET1X": -1.8077,
+ "R1_GROSS": 19.5967,
+ "R1_NET1X": 18.6827,
+ "max_abs_difference": 791.3460316121871,
+ "mean_abs_difference": 13.660285730518625,
+ "median_abs_difference": 2.6609320777026824e-05,
+ "mismatch_count": 27024,
+ "TOLERANCE_FROZEN": 1e-10,
+ "mismatch_examples": [
+  "TE-M01-HEP2-00001|M01_LONG|gross_0x|31.4",
+  "TE-M01-HEP2-00001|M01_LONG|net_1x|31.4",
+  "TE-M01-HEP2-00001|M01_LONG|net_2x|31.4",
+  "TE-M01-HEP2-00001|M01_LONG|net_3x|31.4",
+  "TE-M01-HEP2-00005|M01_LONG|gross_0x|3.32e-05"
+ ],
+ "formula": {
+  "LONG": "gross_bp = (exit_price - entry_price) / entry_price * 10000",
+  "SHORT": "gross_bp = (entry_price - exit_price) / entry_price * 10000",
+  "net": "net_bp = gross_bp - k * 0.914"
+ }
+}

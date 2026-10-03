@@ -1,0 +1,109 @@
+{
+ "cycle": "2026-09-17T21:17Z",
+ "utc_ts": "2026-09-17T21:17Z",
+ "decision_id": "DEC-2026-09-17T21:17Z",
+ "symbol": "XAUUSD",
+ "decision": "SHORT",
+ "plan_id": "TP-20260917T2117Z",
+ "confidence": 0.5,
+ "bias": "SHORT-lean 0.50 (tactical fade of the broken intraday confluence inside a faded-but-not-broken D1 up-day). Broker book is FLAT (positions [], margin 0.00, balance = equity 1977.55) - the single-position slot is FREE. Live mid 4341.74 (broker MT5 demo tick bid 4341.62/ask 4341.85, spread 0.23pt = 0.53bps, last print 20:54:59Z - the market is inside the daily maintenance break 21:00-22:00Z, gate armed=true open=false). M15 closed at 4341.62 under the whole intraday MA cluster: M15 MA50 4347.69 / H4 MA50 4347.58 / H1 MA200 4350.67 / M15 MA20 4354.21. Session bled from the 4381.4 high to a 4340.47/4340.51 double-low with a stair of lower highs (4354.86 -> 4349.32 -> 4347.04 -> 4343.77 -> 4342.52); H4 closed at its low, H1 printed 5 softer closes. Bias SHORT-lean: sell strength into 4347-4355; NOT full bearish - H1 holds above MA20 4331.64 / MA50 4319.86, D1 is still an up-day above MA50 4283.17, and M15 RSI recovered to 40.6 on a 4340.5 base, so a reclaim of 4355 flips the tilt long toward 4365.96 / 4381.4.",
+ "mtf_agreement": "mixed-to-SHORT-lean intraday (live broker bars, server UTC+3): D1 last_close 4341.62 << MA20 4432.80, > MA50 4283.17 (RSI14 48.45, high60 4696.78 / low60 3942.72) = big up-day 4257.37 -> 4381.4 that gave back ~40pt, still ~91pt under MA20; H4 last_close 4341.62 < MA50 4347.58 > MA20 4310.25 (RSI 52.38, last bar closed at its low 4340.47) = up-leg rolling back, higher lows intact; H1 last_close 4341.62 > MA20 4331.64 > MA50 4319.86 < MA200 4350.67 (RSI 52.97) = five softer closes, MA200 lost; M15 last_close 4341.62 < MA50 4347.69 < MA20 4354.21 > MA200 4319.77 (RSI 40.6, high60 4381.4 / low60 4304.23) = short-term down inside chop, decelerating on the 4340.5 base. Verdict: short-term frames are down (M15 lower-lows + H4 close-at-low + price under the M15/H4/H1 MA cluster) while the bigger frame is a faded recovery (H1 above MA20/MA50, D1 above MA50). The line is 4355: reject the [4347,4355] retest -> 4331.6 / 4319.8 / 4310.2; reclaim it -> longs re-arm toward 4365.96 / 4381.4.",
+ "state_summary": "XAUUSD live mid 4341.74 (broker MT5 demo tick 2026-09-17 20:54:59Z = server 23:54, bid 4341.62/ask 4341.85, spread 0.23pt = 0.53bps; pkg m15_live last_mid 4341.74 quote_latest, spread 0.53bps, tick_rate 152/min, abnormal last6_max_move 16.8bps z0.61 vs baseline 10.23bps = normal). Fri 05:17 CST / Thu 21:17Z - DAILY MAINTENANCE BREAK (gate: armed=true, open=false, reason pre-open/warmup, exit 0; market reopens ~22:00Z). pkg cycle 2026-09-17T21:17Z: live_days 9, live_ticks 1,852,874, gaps []. Book: FLAT at broker (positions [], margin 0.00, balance 1977.55 = equity) - single-position slot FREE. Pending plans still armed: TP-20260917T2032Z SHORT zone_touch [4347.0,4355.0] SL 4361.0 (reg 20:34Z) and TP-20260917T2047Z SHORT price_cross_down 4340.3 SL 4347.8 (reg 20:49Z) and TP-20260917T2102Z SHORT zone_touch [4347.0,4355.0] SL 4361.0 (reg 21:03Z). MTF (live broker bars, server UTC+3): D1 4341.62 << MA20 4432.80 > MA50 4283.17 (RSI 48.45); H4 4341.62 < MA50 4347.58 > MA20 4310.25 (RSI 52.38, last bar closed at low 4340.47); H1 4341.62 > MA20 4331.64 > MA50 4319.86 < MA200 4350.67 (RSI 52.97); M15 4341.62 < MA50 4347.69 < MA20 4354.21 > MA200 4319.77 (RSI 40.6). Levels above mid: 4347.58 (H4 MA50, +5.8) -> 4347.69 (M15 MA50, +5.9) -> 4350.67 (H1 MA200, +8.9) -> 4354.21 (M15 MA20, +12.5) -> 4361.0 (plan SL, +19.3) -> 4365.96 (H4 bar high, +24.2) -> 4381.4 (session/H1 high60, +39.7) -> 4432.80 (D1 MA20). Levels below: 4340.51/4340.47 (M15 double-low, -1.2) -> 4331.64 (H1 MA20, -10.1) -> 4319.86 (H1 MA50) / 4319.77 (M15 MA200), -22.0 -> 4310.25 (H4 MA20, -31.5) -> 4304.23 (M15 low60, -37.5) -> 4283.17 (D1 MA50) -> 4235.21 (H1/H4 low60). DATA: candle_latest.json stale ts 2026-09-07 -> ignored; the parquet state_package feed lags the live broker (pkg M15 close 4360.42 @20:45Z vs broker M15 close 4341.62 @20:45Z = ~20pt disagreement), so all acting levels are anchored to the live MT5 broker feed.",
+ "m15_change": "vs 21:02Z (mid 4341.74) the tape is IDENTICAL at mid 4341.74 and frozen - the 21:00Z daily maintenance break stopped the tick flow (last print 20:54:59Z). Last M15 bar 20:45Z (o4340.79 h4342.52 l4340.47 c4341.62) closed just +0.46pt over the prior bar (4341.16). Key development over the last 6 M15 bars is DECELERATION: lows 4342.78 -> 4344.04 -> 4342.26 -> 4341.93 -> 4340.51 -> 4340.47 with the last close ticking UP (4341.16 -> 4341.62) = a rounded 4340.47/4340.51 double-bottom rather than a fresh flush. Price still sits under M15 MA50 4347.69 (-5.9), H4 MA50 4347.58 (-5.8), H1 MA200 4350.67 (-8.9), M15 MA20 4354.21 (-12.5). M15 RSI 40.6 (recovered from 25.8 two cycles back) = bounce risk into the 4347 shelf, which is exactly what the retest-short is waiting to fade. Impulse NORMAL (tick 152/min, last6_max_move 16.8bps z0.61) = grind, not a news spike. candle_latest.json stale (2026-09-07).",
+ "opportunity": "Retest-fade of the broken intraday confluence - the highest-location SHORT available. Slot is FREE and price is coiling on the 4340.5 double-bottom ~5.3pt under the shelf: SELL the lift into [4347.0,4355.0] (M15 MA50 4347.69 / H4 MA50 4347.58 / H1 MA200 4350.67 / M15 MA20 4354.21) - hard SL 4361.0 (above the band), targets 4331.6 (H1 MA20) / 4319.8 (M15 MA200 + H1 MA50) / 4310.2 (H4 MA20). 'What is missing to trade NOW' = only a +5.3 to +13.3pt lift into the zone: live 4341.74 is 5.26pt under zone_lo 4347.0, so the zone_touch auto-fills on the bounce (no close needed) and the M15 deceleration on 4340.5 makes a probe of that shelf the base case. If instead the tape keeps sliding and leaves the setup (mid < 4329) the engine cancels (price_left_setup); a break of 4340.3 is already handled by the pending TP-2047Z leg. The genuine alternative (NOT registered, slot is one-way) is a deep with-trend LONG into the 4319.8-4331.6 H1 shelf (H1 MA20/MA50 + M15 MA200) if support holds on a deeper probe.",
+ "opportunity_mechanism": "Failed-reclaim / broken-confluence retest short inside a faded D1 bounce. Sequence: gold ran 4235.21 -> 4381.4 (D1/H4 up-leg), then H1 rolled over (five softer closes) and the last H4 bar rejected from 4365.96 to close at its low 4340.47 - a ~40pt / ~48% give-back. The former support shelf (M15 MA50 4347.69 / H4 MA50 4347.58 / H1 MA200 4350.67 / M15 MA20 4354.21) has flipped to resistance and now caps overhead; the M15 lows are decelerating into a 4340.47/4340.51 double-bottom, so the likely next step is a probe of that shelf. Mechanism: a lift into [4347.0,4355.0] that FAILS keeps the with-momentum path toward H1 MA20 4331.6 -> the 4319.8 shelf (M15 MA200 + H1 MA50) -> H4 MA20 4310.2. The stop 4361.0 sits just above the band, so a decisive reclaim voids the fade cheaply (1R = 10pt @ref fill 4351.0). Counter-risk: D1 is an up-day only ~91pt under MA20 and above MA50, and M15 RSI recovered to 40.6 with a rounded base - a real bounce can blow through 4361 - hence a modest 0.01 lot and a hard structural stop.",
+ "answers_14": {
+  "1_market_state": "XAUUSD live mid 4341.74 (broker MT5 demo tick 2026-09-17 20:54:59Z bid 4341.62/ask 4341.85, spread 0.53bps; pkg m15_live 4341.74 quote_latest, spread 0.53bps, tick 152/min, abnormal last6_max 16.8bps z0.61 = normal). Fri 05:17 CST / Thu 21:17Z - DAILY MAINTENANCE BREAK (gate armed=true, open=false 'pre-open/warmup', exit 0; reopens ~22:00Z). pkg cycle 2026-09-17T21:17Z: live_days 9, live_ticks 1,852,874, gaps []. Book FLAT (positions [], margin 0.00, balance 1977.55 = equity) - single-position slot FREE. Pending plans: TP-2032Z SHORT zone_touch [4347.0,4355.0] SL 4361.0, TP-2047Z SHORT price_cross_down 4340.3 SL 4347.8, TP-2102Z SHORT zone_touch [4347.0,4355.0] SL 4361.0. MTF (live broker, server UTC+3): D1 4341.62 << MA20 4432.80 > MA50 4283.17 (RSI 48.45); H4 4341.62 < MA50 4347.58 > MA20 4310.25 (RSI 52.38, last bar closed at low 4340.47); H1 4341.62 > MA20 4331.64 > MA50 4319.86 < MA200 4350.67 (RSI 52.97); M15 4341.62 < MA50 4347.69 < MA20 4354.21 > MA200 4319.77 (RSI 40.6). candle_latest.json stale (2026-09-07) -> ignored. Parquet pkg disagrees with live broker (~20pt at 20:45Z).",
+  "2_mtf_consistency": "mixed-to-SHORT-lean intraday: short-term frames align down (M15 lower-lows, H4 bar closed at its low, price under M15 MA50/H4 MA50/H1 MA200) while the bigger frame is a faded-but-not-broken recovery (H1 above MA20 4331.64 / MA50 4319.86; D1 an up-day above MA50 4283.17). Conflict resolves to a tactical FADE at the 4347-4355 shelf: sell the retest (this plan) or ride the breakdown of 4340.3 (pending TP-2047Z); a reclaim of 4355 flips the intraday tilt long toward 4365.96 / 4381.4, and a deeper pullback to 4319.8-4331.6 is the with-D1 buy.",
+  "3_m15_change": "vs 21:02Z (mid 4341.74) the tape is IDENTICAL at 4341.74 then froze (last print 20:54:59Z; 21:00Z daily break). Last M15 bar 20:45Z o4340.79 h4342.52 l4340.47 c4341.62, closing +0.46pt over the prior 4341.16. Key: DECELERATION - lows 4342.78 -> 4344.04 -> 4342.26 -> 4341.93 -> 4340.51 -> 4340.47 with the last close ticking up = a rounded 4340.47/4340.51 double-bottom. Price still under M15 MA50 4347.69 / H4 MA50 4347.58 / H1 MA200 4350.67 / M15 MA20 4354.21. M15 RSI 40.6 (up from 25.8) = bounce risk into the 4347-4355 shelf, which the retest-short fades. Impulse NORMAL (tick 152/min, z0.61). candle_latest.json stale (2026-09-07).",
+  "4_opportunity": "Retest-fade SHORT (highest location of the cycle; slot FREE): SELL the lift into [4347.0,4355.0] - zone_touch [4347.0,4355.0], SL 4361.0, T 4331.6 / 4319.8 / 4310.2, qty 0.01. 'What is missing to trade NOW' = a +5.3 to +13.3pt lift: live 4341.74 is 5.26pt under zone_lo 4347.0, so the zone_touch auto-fills on the bounce (no close needed). If price instead falls away (mid < 4329) the engine cancels (price_left_setup) and TP-2047Z covers the break of 4340.3. Alternative (not registered, one-way slot): deep with-trend LONG into the 4319.8-4331.6 H1 shelf if support holds on a deeper probe.",
+  "5_mechanism": "Broken-confluence retest short: the 4347-4355 shelf (M15 MA50 / H4 MA50 / H1 MA200 / M15 MA20) that capped the run has flipped to resistance after the H1 lost its MA200 and the H4 bar closed at its low; the M15 is now decelerating into a 4340.47/4340.51 double-bottom, so a probe of that shelf is the base case - and it is the path of least resistance toward H1 MA20 4331.6 -> the 4319.8 shelf (M15 MA200 + H1 MA50) -> H4 MA20 4310.2. Tight hard stop 4361.0 caps the risk if D1 buyers reclaim the band.",
+  "6_trigger_condition": "{\"zone_touch\": [4347.0, 4355.0]} - SELL when the live mid enters [4347.0,4355.0] (M15 MA50 4347.69 / H4 MA50 4347.58 / H1 MA200 4350.67 / M15 MA20 4354.21). Live 4341.74 is 5.26pt below zone_lo -> gap-to-fill = +5.3 to +13.3pt.",
+  "7_invalidation": "{\"price_cross_up\": 4361.0} - a decisive reclaim of the 4347-4355 band (mid >= 4361.0) voids the fade (plan cancelled). For the live plan the hard SL is the same 4361.0: ref fill 4351.0 -> 1R = 10.0pt (~10.0usd on 0.01 lot). Downside continuation levels after a fill: 4331.6 (H1 MA20) / 4319.8 (M15 MA200 + H1 MA50) / 4310.2 (H4 MA20).",
+  "8_expected_return": "entry ref 4351.0 (zone mid), SL 4361.0 -> 1R = 10.0pt (~10.0usd on 0.01 lot). Targets: T1 4331.6 (-19.4pt = 1.94R, frac 0.40), T2 4319.8 (-31.2pt = 3.12R, frac 0.35), T3 4310.2 (-40.8pt = 4.08R, frac 0.25) -> blended expR = 0.4*1.94 + 0.35*3.12 + 0.25*4.08 = 2.89R.",
+  "9_expected_loss": "hard SL 4361.0 caps the loss at -1R = -10.0pt (~-10.0usd on 0.01 lot); a worst-case fill at zone_hi 4355.0 gives only -6.0pt (-0.6R). No averaging / no add (forbidden). Book risk this cycle = 1R max on 0.01 lot; TP-2032Z/TP-2047Z/TP-2102Z cannot double up (single-position rule).",
+  "10_cost": "spread 0.53bps live (broker tick 0.23pt @4341.74) + slippage ~0.30bps = ~0.83bps roundtrip (~0.36pt @4351 ~ 0.036R on the 10.0pt 1R). Well under the 1.0bps entry ceiling; cost is not a barrier.",
+  "11_net_EV": "EV = expR*Pwin - 1*Ploss - cost = 2.89*0.44 - 1.00*0.56 - 0.036 = 1.2716 - 0.5600 - 0.036 = +0.676R. Breakeven p ~ 0.267. Pwin 0.44 (source: subjective - H4 close-at-low + price under the whole 4347-4355 MA cluster that now caps, tempered by the M15 decelerating 4340.5 base + H1 still above its MA20/MA50 + D1 an up-day that could resume). Positive EV -> actionable.",
+  "12_reproducibility": "yes - deterministic: decision SHORT with one zone_touch plan; parseable conditions. Acting levels are fixed numbers: 4310.2/4310.25/4319.77/4319.8/4319.86/4329.0/4331.6/4331.64/4340.47/4340.51/4341.16/4341.62/4341.74/4342.52/4347.0/4347.58/4347.69/4350.67/4351.0/4354.21/4355.0/4361.0/4365.96/4381.4/4432.80.",
+  "13_decision": "SHORT (legal; slot FREE). Sell the retest of the lost 4347-4355 MA confluence: zone_touch [4347.0,4355.0], SL 4361.0, T 4331.6 / 4319.8 / 4310.2, qty 0.01, expR 2.89, p 0.44, EV +0.68R. Bias SHORT-lean 0.50 (tactical fade inside a faded D1 recovery). To trigger, price must lift +5.3 to +13.3pt into the band; the M15 deceleration on 4340.5 makes that probe the base case.",
+  "14": "Slot FREE. SHORT the retest of the lost 4347-4355 MA confluence: zone_touch[4347,4355], SL4361, T4331.6/4319.8/4310.2, qty0.01, expR2.89, p0.44, EV+0.68R. Live 4341.74 is 5.3pt under zone_lo -> needs a +5.3/+13.3pt lift; M15 decelerating on the 4340.47/4340.51 double-bottom so a probe is likely. Reclaim 4361 voids; break 4340.3 handled by pending TP-2047Z."
+ },
+ "management": {
+  "position_id": null,
+  "action": "NONE",
+  "note": "Book FLAT (broker positions [], margin 0.00, balance = equity 1977.55). No open position to manage. No averaging, no discretionary exit. Three pending SHORT plans (TP-2032Z, TP-2047Z, TP-2102Z) remain armed; this cycle adds the retest leg as a fresh 120-min clock so the fade stays live through the 22:00Z reopen."
+ },
+ "gap_to_tradable": "Slot is FREE, so the gap is purely PRICE and it is a routine retest: live mid 4341.74 is 5.26pt BELOW the short's zone_lo 4347.0 - the plan is a live zone_touch [4347.0,4355.0] that auto-fills when the mid lifts into the band (need +5.3 to +13.3pt). The M15 deceleration into a 4340.47/4340.51 double-bottom plus M15 RSI 40.6 (bounce risk) make a probe of that shelf the base case. If price instead keeps falling and the mid leaves the setup (mid < 4329 = zone_lo - 2*band) the engine cancels it (price_left_setup) and the pending TP-2047Z covers the break of 4340.3; a deep with-trend LONG into the 4319.8-4331.6 H1 shelf is the alternative if support holds on a deeper probe.",
+ "cost_note": "spread 0.53bps live (0.23pt @4341.74) + slippage 0.30bps = 0.83bps roundtrip (~0.36pt @4351 ~ 0.036R on the 10.0pt 1R)",
+ "ev_note": "SHORT TP-2117Z: EV = 2.89*0.44 - 1.00*0.56 - 0.036 = +0.676R (breakeven p ~0.267). Positive EV -> registered; to fill, mid must lift +5.3 to +13.3pt into [4347.0,4355.0].",
+ "plan": {
+  "plan_id": "TP-20260917T2117Z",
+  "direction": "SHORT",
+  "opportunity_type": "broken_support_retest_short",
+  "entry_style": "limit_at_zone",
+  "entry_zone": {
+   "low": 4347.0,
+   "high": 4355.0
+  },
+  "trigger_condition": {
+   "zone_touch": [
+    4347.0,
+    4355.0
+   ]
+  },
+  "invalidation_condition": {
+   "price_cross_up": 4361.0
+  },
+  "stop_logic": {
+   "type": "structure",
+   "level_price": 4361.0,
+   "level": "above the lost 4347-4355 MA confluence (M15 MA50 4347.69 / H4 MA50 4347.58 / H1 MA200 4350.67 / M15 MA20 4354.21) + ~6pt buffer through the band top",
+   "reason": "the plan is a fade of the broken 4347-4355 shelf; a decisive reclaim (mid >= 4361.0) means the retest held and the intraday tilt flips long, so the short is void. 1R = 10.0pt @ref fill 4351.0."
+  },
+  "target_logic": {
+   "type": "price_levels",
+   "levels": [
+    {
+     "price": 4331.6,
+     "frac": 0.4
+    },
+    {
+     "price": 4319.8,
+     "frac": 0.35
+    },
+    {
+     "price": 4310.2,
+     "frac": 0.25
+    }
+   ],
+   "reason": "T1 4331.6 = H1 MA20 4331.64 (first shelf below the 4340.47 double-low); T2 4319.8 = M15 MA200 4319.77 + H1 MA50 4319.86 confluence; T3 4310.2 = H4 MA20 4310.25 (bottom of the recovery shelf)."
+  },
+  "expected_R": 2.89,
+  "expected_win_probability": 0.44,
+  "probability_source": "subjective",
+  "estimated_cost": {
+   "spread_bps": 0.53,
+   "slippage_bps": 0.3,
+   "total_roundtrip_bps": 0.83,
+   "cost_in_R": 0.036
+  },
+  "spread_bps": 0.53,
+  "slippage_bps": 0.3,
+  "expected_net_EV": {
+   "value": 0.676,
+   "units": "R",
+   "note": "0.44*2.89 - 0.56*1.00 - 0.036 = +0.676R (1R = 10.0pt @ref fill 4351.0, SL 4361.0; breakeven p ~0.267)"
+  },
+  "maximum_holding_time": "M15*8",
+  "cancel_conditions": [
+   "invalidation price_cross_up mid >= 4361.0 (band reclaimed -> fade void)",
+   "engine stale/age cancel (2h / 8 M15 bars) if never tagged",
+   "engine price_left_setup cancel if mid < zone_lo - 2*band = 4329.0 before tag (supported on the way down without a retest)",
+   "spread > 1.0bps at trigger (risk ceiling)",
+   "single-position rule: any open position at trigger -> exec_fail position_busy"
+  ],
+  "qty_lots": 0.01
+ },
+ "model": "deepseek/deepseek-v4-flash",
+ "prompt_version": "hermes-trader-m15-cycle/2026-09-12"
+}

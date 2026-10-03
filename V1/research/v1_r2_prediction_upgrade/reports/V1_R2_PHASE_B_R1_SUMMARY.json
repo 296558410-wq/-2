@@ -1,0 +1,211 @@
+{
+ "task": "V1_R2_PHASE_B_R1",
+ "status": "BLOCKED",
+ "original_registry_hash": "9e0d767935b1e9a589d1894089a661b57d352556fe9bc28a5feb60b7e8d82dce",
+ "new_registry_hash": "c77b23394155b4ef6fc03e75f107b79a9a9b63d610a374e24bb12d2309a792b7",
+ "rules_hash": "73efc0cead842f5d04757abd77e00f969a718d9c8db90183b191f2ba99ce43ad",
+ "checks": {
+  "D1_LEVEL_IDENTITY_FIXED": "PASS",
+  "D2_TOUCH_DEDUP": "PASS",
+  "D3_BREAK_EVIDENCE_LIFECYCLE": "PASS",
+  "D4_NEXT_STATE_REACHABILITY": "FAIL",
+  "D5_V2_DIRECTION_MAPPING": "FAIL",
+  "D6_PIT": "PASS",
+  "D7_DETERMINISTIC": "PASS",
+  "D8_NULL_SHUFFLE": "PASS",
+  "D9_REDUNDANCY_AUDIT": "PASS",
+  "D10_REGISTRY_REFROZEN": "PASS"
+ },
+ "distributions": {
+  "NEXT_STATE": {
+   "UNKNOWN": 22065,
+   "HOLD": 14091,
+   "CONTINUATION": 4170,
+   "BREAKOUT": 170,
+   "BREAKDOWN": 39,
+   "REVERSION": 11
+  },
+  "BREAK_RISK": {
+   "LOW": 29107,
+   "NORMAL": 9372,
+   "ELEVATED": 2018,
+   "CRITICAL": 49
+  },
+  "TOUCH_STATE": {
+   "NO_TOUCH": 37300,
+   "FIRST_TOUCH": 1916,
+   "REPEATED_TOUCH": 1291,
+   "EXHAUSTION_BUILDING": 39
+  },
+  "REGIME": {
+   "TREND": 8672,
+   "EXPANSION": 8305,
+   "RANGE": 8210,
+   "COMPRESSION": 6524,
+   "REVERSAL": 3778,
+   "UNKNOWN": 3671,
+   "EVENT_DRIVEN": 1386
+  },
+  "TRANSITION": {
+   "MOMENTUM_CHANGED": 17701,
+   "REGIME_CHANGED": 13002,
+   "SAME_STATE": 7236,
+   "ABSORPTION_CHANGED": 1986,
+   "TOUCH_STATE_CHANGED": 619,
+   "INIT": 2
+  },
+  "DIRECTION": {
+   "NONE": 36156,
+   "LONG": 2718,
+   "SHORT": 1672
+  },
+  "UNKNOWN_REASON": {
+   "DATA_INSUFFICIENT": 20,
+   "EVIDENCE_AMBIGUOUS": 21236,
+   "RECENT_TRANSITION": 809
+  }
+ },
+ "rates": {
+  "BREAK_HIGH_RISK_RATE": 0.051,
+  "EXHAUSTION_RATE": 0.001,
+  "CONTINUATION_RATE": 0.1028,
+  "UNKNOWN_RATE": 0.5442,
+  "V2_DIRECTIONAL_RATE": 0.0
+ },
+ "replay": {
+  "n": 142,
+  "v1_directional": 66,
+  "v2_directional": 0,
+  "dir_agree": 0
+ },
+ "pit_truncation": [
+  {
+   "i": 4036,
+   "match": true,
+   "diff": []
+  },
+  {
+   "i": 5367,
+   "match": true,
+   "diff": []
+  },
+  {
+   "i": 6039,
+   "match": true,
+   "diff": []
+  },
+  {
+   "i": 7778,
+   "match": true,
+   "diff": []
+  },
+  {
+   "i": 10551,
+   "match": true,
+   "diff": []
+  },
+  {
+   "i": 15112,
+   "match": true,
+   "diff": []
+  },
+  {
+   "i": 18010,
+   "match": true,
+   "diff": []
+  },
+  {
+   "i": 36135,
+   "match": true,
+   "diff": []
+  }
+ ],
+ "null_shuffle": {
+  "NULL_TEST": "PASS",
+  "SHUFFLE_TEST": {
+   "state_sequence": {
+    "orig_same_rate": 0.6853,
+    "chance_rate": 0.4275,
+    "shuffled_same_rate": 0.4246,
+    "structure_present": true
+   },
+   "level_identity": {
+    "break_high_risk_rate_real": 0.051,
+    "n_levels": 40521
+   },
+   "touch_event": {
+    "exhaustion_rate_real": 0.001,
+    "exhaustion_rate_shuffled": 0.001,
+    "mean_touch_events_240": 0.129
+   }
+  },
+  "note": "结构性零假设检验：仅用状态序列/身份/事件时间，未使用任何未来收益"
+ },
+ "redundancy": [
+  {
+   "pair": "TOUCH vs BREAK",
+   "cramers_v": 0.442,
+   "REDUNDANT": "NO"
+  },
+  {
+   "pair": "BREAK vs TRANSITION",
+   "cramers_v": 0.183,
+   "REDUNDANT": "NO"
+  },
+  {
+   "pair": "REGIME vs TRANSITION",
+   "cramers_v": 0.182,
+   "REDUNDANT": "NO"
+  },
+  {
+   "pair": "TOUCH vs TRANSITION",
+   "cramers_v": 0.17,
+   "REDUNDANT": "NO"
+  },
+  {
+   "pair": "MOMENTUM vs BREAK",
+   "cramers_v": 0.16,
+   "REDUNDANT": "NO"
+  },
+  {
+   "pair": "MOMENTUM vs TRANSITION",
+   "cramers_v": 0.154,
+   "REDUNDANT": "NO"
+  },
+  {
+   "pair": "REGIME vs MOMENTUM",
+   "cramers_v": 0.074,
+   "REDUNDANT": "NO"
+  },
+  {
+   "pair": "REGIME vs BREAK",
+   "cramers_v": 0.066,
+   "REDUNDANT": "NO"
+  },
+  {
+   "pair": "REGIME vs TOUCH",
+   "cramers_v": 0.02,
+   "REDUNDANT": "NO"
+  },
+  {
+   "pair": "MOMENTUM vs TOUCH",
+   "cramers_v": 0.007,
+   "REDUNDANT": "NO"
+  }
+ ],
+ "run_dir": "research/hermes/trader_v1/v1_r2_prediction_upgrade/v1_r2_research_runs/V1_R2_RUN_B2_20260926T122053",
+ "safety": {
+  "ORDER_SEND": 0,
+  "ORDER_CHECK": 0,
+  "BROKER_WRITE": 0,
+  "FORWARD": 0,
+  "SHADOW": 0,
+  "LIVE": 0,
+  "V2_WRITE": 0,
+  "V3_WRITE": 0,
+  "RUN_BOUNDARY_WRITE": 0,
+  "GIT_COMMIT": "NONE"
+ },
+ "phase_c_allowed": "NO",
+ "ts_utc": "2026-09-26T12:19:08.002981+00:00"
+}

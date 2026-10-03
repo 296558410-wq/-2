@@ -1,0 +1,52 @@
+{
+ "layer": "L2_MARKET_READING",
+ "version": "v1r2-mr-ontology-r1",
+ "note": "REWORKED from the old state machine; NOT inherited as-is (task §10)",
+ "level_lifecycle": [
+  "UNTESTED",
+  "APPROACH",
+  "FIRST_TEST",
+  "REPEATED_TEST",
+  "BREAK_ATTEMPT",
+  "ACCEPTANCE",
+  "REJECTION",
+  "BREAK_CONFIRMED",
+  "FAILED_BREAK",
+  "RETEST",
+  "RESOLVED"
+ ],
+ "touch_classes": [
+  "FIRST_TOUCH",
+  "REPEATED_TOUCH",
+  "DEEP_TEST",
+  "SHALLOW_TEST",
+  "REJECTION_AFTER_TOUCH",
+  "ACCEPTANCE_AFTER_TOUCH"
+ ],
+ "forbidden": "touch_count += 1 as the whole model (task §11)",
+ "information_lineage": {
+  "PRICE_STRUCTURE": [
+   "LEVEL",
+   "TOUCH",
+   "BREAK",
+   "PENETRATION",
+   "FAILED_EVENT"
+  ],
+  "raw_source": "TICK_BID -> OHLC -> level geometry"
+ },
+ "penetration_status": "STATUS_UNRESOLVED (B-R11: state justification INCONCLUSIVE, threshold justification INCONCLUSIVE) -> retained as an OBSERVATION, not promoted",
+ "break_lifecycle": [
+  "BREAK_ATTEMPT",
+  "BREAK_ACCEPTANCE",
+  "BREAK_CONFIRMATION",
+  "BREAK_FAILURE",
+  "RECLAIM",
+  "RETEST"
+ ],
+ "break_forbidden": "close > level == breakout is forbidden (task §15)",
+ "carried_dependency_findings": {
+  "LEVEL_TOUCH_BREAK": "DERIVED (one PRICE_STRUCTURE axis)",
+  "COUNTER_BREAK_RISK": "DERIVED (restates BREAK)",
+  "COUNTER_DECELERATION": "DERIVED (restates MOMENTUM)"
+ }
+}

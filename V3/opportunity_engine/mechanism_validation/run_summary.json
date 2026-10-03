@@ -1,0 +1,56 @@
+{
+ "schema": "v3_mechanism_validation/1",
+ "ts_utc": "2026-09-25T11:43:03.321238+00:00",
+ "input_hermes_investigate": 404,
+ "input_opportunities": 1999,
+ "mechanism_count": 4,
+ "independent_event_count": 127,
+ "decisions": {
+  "MECHANISM_REJECTED": 4
+ },
+ "candidate_research": 0,
+ "opportunities_merged": 277,
+ "cross_grid_duplicates_merged": 1,
+ "artifact_risk_high": 3,
+ "counter_evidence_high": 4,
+ "mechanism_with_8plus_events": 4,
+ "mechanism_with_time_stability": 3,
+ "mechanism_with_state_stability": 1,
+ "negative_control": {
+  "real": {
+   "MECHANISM_REJECTED": 4
+  },
+  "shuffled": {
+   "MECHANISM_SUPPORTED": 2,
+   "MECHANISM_REJECTED": 1,
+   "MECHANISM_UNCERTAIN": 1
+  },
+  "status": "FAIL",
+  "note": "shuffling timestamps must not manufacture MORE supported mechanisms than the real run",
+  "outputs_usable": false,
+  "structural_finding": "time stability is computed from the placement of events across time thirds; a uniformly shuffled timestamp series satisfies it trivially, so the rule rewards randomness. A corrected method needs a randomness-resistant stability measure (e.g. a burstiness or permutation-based statistic) - not implemented here, because adjusting the rule after seeing this result is exactly what the task forbids."
+ },
+ "method_validity": "INVALID_NEGATIVE_CONTROL_FAILED",
+ "ablations": {
+  "drop_time_stability": {
+   "MECHANISM_REJECTED": 4
+  },
+  "drop_session_stability": {
+   "MECHANISM_REJECTED": 4
+  },
+  "drop_state_stability": {
+   "MECHANISM_REJECTED": 4
+  },
+  "drop_counter_evidence": {
+   "MECHANISM_REJECTED": 4
+  },
+  "drop_recurrence": {
+   "MECHANISM_REJECTED": 4
+  },
+  "none": {
+   "MECHANISM_REJECTED": 4
+  }
+ },
+ "registry_hash": "9dd16f2d293a066e1f842c68504d1ea1d48a514dcc231bc641c250eace4e32ec",
+ "version": "MV-R1.0.0"
+}

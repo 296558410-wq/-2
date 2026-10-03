@@ -1,0 +1,34 @@
+{
+  "audit_id": "PO_20260717",
+  "outcome_alignment_verdict": "ALIGNED",
+  "forecast_id": "R8B_A_20260717",
+  "sample_id": "A_20260717",
+  "horizon": 4,
+  "forecast_scenario_family": "RANGE",
+  "forecast_alternative": "DIRECTIONAL",
+  "forecast_direction_bias": "NEUTRAL",
+  "forecast_expected_transition": "REJECTION continues with range rotation",
+  "outcome_family_at_H": "RANGE",
+  "outcome_state_at_H": "ROTATION",
+  "outcome_state_now": "REJECTION",
+  "family_match": true,
+  "state_transition_match": true,
+  "alignment_rationale": "Primary scenario RANGE matches realised family RANGE at H=4. Expected transition 'REJECTION continues with range rotation' exactly matches realised state evolution REJECTION->ROTATION. Invalidation thresholds (close above 3980.3 or below 3974.5) were not triggered per outcome label; no flip to DIRECTIONAL. The call ALIGNED with the realised outcome at label level.",
+  "process_defects": [
+    "Outcome granularity is coarse: OUTCOME file reports only family and state labels at H (RANGE/ROTATION), with no price path, so the primary scenario band (3974.5-3980.0) and the invalidation thresholds cannot be verified at price level; alignment is established only at label level.",
+    "Scenario band edges (3974.5/3980.0) sit within ~0.5 of the invalidation thresholds (3980.3/3974.5), so a marginal break could be counted as either RANGE or DIRECTIONAL depending on labeler convention; the outcome file does not expose which convention was applied.",
+    "Low confidence (0.4) and NEUTRAL bias were justified by MTF CONFLICT and ambiguity 0.5; no over-confidence defect. The explicit change_my_mind conditions kept the call falsifiable despite the coarse verification surface."
+  ],
+  "evidence": [
+    "Context frozen label ROTATION, state REJECTION dwell 7, event NONE at t0.",
+    "Forecast primary_scenario RANGE with trigger 'oscillates between 3974.5 and 3980.0' and expected_transition 'REJECTION continues with range rotation'.",
+    "Outcome family_at_H RANGE, state_at_H ROTATION, state_now REJECTION.",
+    "Invalidation 'close above 3980.3 or below 3974.5' not evidenced as triggered by outcome file."
+  ],
+  "reasoning_trace": [
+    "Compare forecast family vs outcome family: RANGE == RANGE -> match.",
+    "Compare expected transition vs outcome state: REJECTION->ROTATION expected; REJECTION->ROTATION realised -> exact match.",
+    "No invalidation flag present in outcome; alternative DIRECTIONAL did not realise at label level.",
+    "No process defect demonstrably misled Hermes-A this round; residual caveat is the coarse label-only outcome surface."
+  ]
+}

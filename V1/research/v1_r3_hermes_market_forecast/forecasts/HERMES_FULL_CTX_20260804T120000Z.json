@@ -1,0 +1,88 @@
+{
+  "forecast_id": "HERMES_FULL_CTX_20260804T120000Z",
+  "timestamp": "2026-08-04T12:00:00Z",
+  "current_state": "REJECTION (dwell 7 bars) with MOM_ACCELERATION event; price ~4052-4056 sitting just below the active swing-low level 4056.825 (INSIDE, DN side, 70 touches/240); MTF agreement is CONFLICT; DXY soft at 99.92 (-0.091 over 32 bars) while VIX is calm at 15.68.",
+  "dominant_structure": "Level-bound rejection around a heavily-touched swing low (4056.825) with an intraday momentum burst followed by a fade; higher timeframes (H1/H4) print large bullish bodies while M1/M5 show a fresh pullback, i.e. a range/rotation structure with unresolved breakout, not a clean trend.",
+  "current_pressure": {
+    "directional": "Mixed: M1/M5 trend_20 positive (+3.26/+4.70) but M15 trend_20 negative (-3.17); H1 trend_20 strongly positive (+38.95) vs H4 trend_20 negative (-16.5); M1 shows 7 consecutive down bars into 12:00 while M5/H1 show 7 consecutive up bars.",
+    "volatility": "Range expanding on M1/M5/H1/H4 (range_expanding=true), M15 contracting; M1 range_percentile 0.955, H1 current bar range_percentile 0.97, H4 0.765; ATR rising on M1 (2.531) and H4 (28.44); volatility ~0.0005 at micro level, 0.0019 on H1.",
+    "liquidity_proxy": "VIX 15.68 (low, calm risk environment); DXY easing (supportive for gold, PROXY quality); no order-flow/volume data; UST10Y unavailable (UNKNOWN)."
+  },
+  "primary_scenario": {
+    "scenario": "Momentum acceleration resolves the rejection to the upside: price reclaims and holds the 4056.825 swing low, extends toward the 4065-4075 zone and retests the H1/H4 highs (4072.8-4084/4094), consistent with analogs A32323 and A34031 (REJECTION -> EXPANSION).",
+    "confidence": 0.5,
+    "horizon": "SHORT_TERM",
+    "trigger": "A clean M5/M15 close back above 4056.825 with a continuation bar, accompanied by sustained M1 trend_20>0 and no DXY rebound.",
+    "invalidation": "Price fails to reclaim 4056.825 within the next few bars, or a decisive H1 close below 4052.175 (M1/H1 current low) and a break below 4045.385-4042.345."
+  },
+  "alternative_scenario": {
+    "scenario": "Rejection persists and decays into a downtrend: the swing low is lost, price drifts toward 4045.385 then 4042.345/4035.085, matching analog A36049 (REJECTION -> REJECTION) and the negative H4 trend_20.",
+    "confidence": 0.3,
+    "horizon": "SHORT_TERM",
+    "trigger": "M1/M5 consecutive down bars continue and price prints a sustained M15 close below 4046.325 (M5 11:40 low) with range still expanding.",
+    "invalidation": "A strong bullish M15 bar reclaims 4058-4060 and holds above the swing low for multiple bars."
+  },
+  "third_scenario": {
+    "scenario": "Continued rotation/consolidation: price oscillates in the 4045-4065 band with shrinking range, state staying REJECTION/ROTATION and no directional resolution, leaving NO_DIRECTIONAL_EDGE for the horizon.",
+    "confidence": 0.2,
+    "horizon": "INTRADAY",
+    "trigger": "Range contraction resumes on M5/M15 (range_contracting=true), wicks dominate bodies, and the level is neither reclaimed nor decisively broken.",
+    "invalidation": "Either side of the band is closed through with momentum."
+  },
+  "direction_bias": "UP",
+  "expected_state_transition": "REJECTION -> EXPANSION",
+  "time_horizon": "SHORT_TERM",
+  "confidence": 0.5,
+  "supporting_evidence": [
+    "L3/L5: state REJECTION dwell 7 with MOM_ACCELERATION event and ambiguity_rate_8=0.125 (low ambiguity).",
+    "H1 current bar: close 4074.815, body 21.18, range_percentile 0.97, body_ratio 0.66 - strong bullish impulse.",
+    "H4 current bar: close 4083.365, body 29.73, body_ratio 0.71, range_percentile 0.765 - bullish expansion on the higher timeframe.",
+    "H1/H4 sequence flags: 7-8 consecutive up bars, range_expanding=true.",
+    "M1/M5 trend_20 positive (+3.26/+4.70) and H1 trend_50 positive (+13.95); H4 trend_50 +37.25.",
+    "DXY softening (-0.025 over 8, -0.091 over 32) is a mild supportive tailwind for gold (PROXY).",
+    "Historical analogs A32323 and A34031 show REJECTION evolving to EXPANSION by step 8-12.",
+    "L4 mechanism candidate trend_continuation supported by 'price inside level, 8-bar displacement 5.93'."
+  ],
+  "counter_evidence": [
+    "M1 latest close 4052.735 and M5 close 4054.895 sit BELOW the active swing-low level 4056.825; price has not yet reclaimed it.",
+    "M1 sequence_flags show 7 consecutive DOWN bars into 12:00; M15 trend_20 is negative (-3.17) and H4 trend_20 is negative (-16.5).",
+    "L6 multi-timeframe agreement = CONFLICT; timeframes must not be merged, so the H1/H4 bullishness is not confirmed at lower TFs.",
+    "Internal inconsistency: H1 current close 4074.815 and H4 close 4083.365 contradict the same-timestamp M1/M5/M15 closes (4052.7-4056.5), so the higher-TF bars cannot be fully reconciled with the raw micro prints.",
+    "Frozen behavior label at t is ROTATION (not a trend label); L4 lists the mechanism as a CANDIDATE only, not asserted fact.",
+    "DXY/VIX are PROXY (Yahoo, instrument definition UNKNOWN); UST10Y absent - no rate confirmation.",
+    "Analog A36049 (equally similar, similarity 1.0) shows REJECTION persisting through step 16."
+  ],
+  "trigger": "M5/M15 close reclaims and holds 4056.825 with momentum (MOM_ACCELERATION persisting), DXY stays soft, M1 trend_20 remains positive.",
+  "invalidation": "Decisive H1 close below 4052.175, or sustained M15 close below 4046.325/4042.345; also any evidence that the H1/H4 current-bar geometry was erroneous or non-causal.",
+  "change_my_mind": [
+    "A sustained M15 close above 4060.545 (intraday high) with range_expanding would raise confidence in the UP scenario.",
+    "A reclaim-and-hold of 4065-4070 on M15 with H1 trend_20 still positive would upgrade the primary scenario.",
+    "A decisive close below 4042.345 (H4 00:00 low / H1 02:00 low area) would flip the bias to DOWN.",
+    "Cross-market confirmation (UST10Y_PROXY_TNX available and falling, or DXY rebound >100.3) would materially change the read.",
+    "If the H1/H4 closes are shown to be non-causal artifacts, the forecast should be treated as NO_DIRECTIONAL_EDGE."
+  ],
+  "abstain": false,
+  "abstain_reason": "",
+  "reasoning_trace": [
+    "Read PIT context as_of 2026-08-04 12:00 UTC; no future/label/outcome data used.",
+    "State machine: REJECTION dwell 7, low ambiguity (0.125), event MOM_ACCELERATION -> bias toward resolution rather than continuation of dead range.",
+    "Level check: swing low 4056.825 is the dominant nearby reference; current micro price (~4053) is just below it, so the first causal test is reclaim vs breakdown.",
+    "MTF: H1/H4 strongly bullish, M1/M5 mildly positive trend_20 but fresh pullback, M15/H4 trend_20 negative -> CONFLICT flagged, so direction confidence capped at 0.5.",
+    "Cross-market: DXY soft supports gold mildly; VIX calm; UST10Y absent -> no rate confirmation; both proxies are PROXY quality.",
+    "Analogs (state evolution only): two of three REJECTION analogs evolve to EXPANSION, one persists - consistent with a mild UP tilt but not strong evidence.",
+    "Recorded the same-timestamp H1/H4 vs M1/M5 close inconsistency as counter-evidence and an explicit change_my_mind condition.",
+    "Chose primary UP/reclaim scenario with explicit invalidation, alternative DOWN, third consolidation; abstain=false because a checkable structural forecast is possible."
+  ],
+  "questions": {
+    "A": "The market is a level-bound rejection: XAUUSD trades around 4052-4056 just beneath the active swing-low level 4056.825 (70 touches in 240 bars, INSIDE/DN). A momentum burst earlier in the hour (M5 11:45 high 4060.545, H1 high 4084.115, H4 high 4094.055) was followed by a fade into 12:00 (M1 close 4052.735, 7 consecutive down bars). Higher timeframes show large bullish bodies (H1 close 4074.815, H4 close 4083.365) while micro timeframes show a pullback, and the MTF agreement is explicitly CONFLICT.",
+    "B": "The dominant structure is level-bound rejection/rotation around the heavily-touched swing-low 4056.825, with the frozen behavior label ROTATION and state REJECTION (dwell 7). It is not a clean trend: H1 trend_20 (+38.95) and H4 trend_20 (-16.5) point opposite ways, and the sequence flags show simultaneous 7-bar up streaks (M5/H1) and a 7-bar down streak (M1). The structure is best described as an unresolved impulse-and-fade within a larger range pending a decision at the level.",
+    "C": "Pressures building: (1) directional - conflicting momentum at each timeframe, with MOM_ACCELERATION event suggesting an imminent resolution; (2) volatility - ranges expanding on M1/M5/H1/H4 with elevated range percentiles (M1 0.955, H1 0.97, H4 0.765) and rising ATR (M1 2.531 vs earlier ~2.0), M15 contracting; (3) liquidity-proxy - calm risk environment (VIX 15.68) and soft DXY (99.92, -0.091/32) that mildly supports gold, with no volume/order-flow data and no UST10Y to confirm.",
+    "D": "Candidate mechanisms: (1) trend_continuation - supported by 'price inside level, 8-bar displacement 5.93' per L4; (2) impulse-fade within a range (momentum burst to 4060+ rejected, price faded back under the level) - supported by M1's 7 down bars and the M15 upper wick (6.93) at 11:45; (3) breakout/reclaim setup (accumulation at a heavily-touched swing low with DXY easing) - plausible but unconfirmed since price has NOT yet reclaimed 4056.825; (4) higher-TF expansion (H1/H4 strong bodies) - supported by RAW_GEOMETRY bars but contradicted by same-timestamp M1/M5 closes, so treated with suspicion. Only mechanism (1) is officially listed; the others are my candidate readings, not asserted facts.",
+    "E": "Strongest supporting evidence: the H1 current bar (close 4074.815, body 21.18, range_percentile 0.97) and H4 current bar (close 4083.365, body 29.73, body_ratio 0.71); H1/H4 7-8 consecutive up bars with range_expanding=true; low-ambiguity REJECTION state (0.125) with MOM_ACCELERATION; positive M1/M5 trend_20 and H1/H4 trend_50; two of three exact-state analogs resolving REJECTION -> EXPANSION; DXY drifting lower.",
+    "F": "Strongest counter-evidence: the freshest micro prints (M1 close 4052.735, M5 close 4054.895) are BELOW the swing-low level 4056.825, so the bullish H1/H4 reads are not confirmed at the point of decision; M1 shows 7 consecutive down bars; M15 and H4 trend_20 are negative; L6 flags CONFLICT; the frozen label is ROTATION (not a trend); the H1/H4 close values are inconsistent with the same-timestamp M1/M5 closes, which casts doubt on the higher-TF bullish geometry; equally-similar analog A36049 stays REJECTION throughout.",
+    "G": "Primary scenario: the momentum acceleration resolves the rejection to the upside - price reclaims and holds 4056.825, extends into the 4065-4075 zone and retests the H1/H4 highs (4084/4094), following analogs A32323/A34031. Confidence 0.5, horizon SHORT_TERM.",
+    "H": "Alternatives: (1) rejection persists - the swing low is lost and price drifts toward 4045.385 then 4042.345/4035.085 (analog A36049, negative H4 trend_20), confidence 0.3; (2) continued rotation/consolidation in the 4045-4065 band with no directional resolution (NO_DIRECTIONAL_EDGE), confidence 0.2.",
+    "I": "Invalidation of the UP forecast: a decisive H1 close below 4052.175 (current low), a sustained M15 close below 4046.325, a break of 4042.345/4035.085, or failure to reclaim 4056.825 within the next few bars while M1 keeps printing consecutive down bars.",
+    "J": "Would flip my judgement: a confirmed M15 close above 4060.545 with range_expanding and holding 4065-4070 would raise confidence in UP; a decisive close below 4042.345 would flip the bias to DOWN; availability of UST10Y (falling yields) or a DXY rebound above ~100.3 would materially change the cross-market read; if the H1/H4 close values are shown to be artifacts, I would switch to NO_DIRECTIONAL_EDGE."
+  }
+}

@@ -1,0 +1,89 @@
+{
+  "sample_id": "A_20260915",
+  "forecast_id": "R8B_A_20260915",
+  "timestamp": "2026-09-15 00:00:00+00:00",
+  "horizon": 4,
+  "scenario_family": "RANGE",
+  "scenario_alternative": "DIRECTIONAL",
+  "scenario_abstain": false,
+  "observations": [
+    "M1 close 4296.255, right at swing low 4292.588",
+    "H1 close 4287.979, bearish body_ratio 0.71",
+    "State REJECTION, event VOL_CONTRACTION, dwell 2",
+    "Level touch_count_240 22, break_status INSIDE"
+  ],
+  "what_i_know": [
+    "Swing low 4292.588 tested 22 times, price inside",
+    "M5/M15/H1 trend_20 negative; M1 flat positive",
+    "State REJECTION with VOL_CONTRACTION at t",
+    "All analogs REJECTION or COMPRESSION at step 4"
+  ],
+  "what_i_do_not_know": [
+    "H4 current bar inconsistent with M1/H1 data",
+    "VIX, UST10Y, news, macro absent UNKNOWN",
+    "DXY is PROXY, instrument definition unknown",
+    "Direction of eventual level break unknown"
+  ],
+  "evidence": [
+    "State REJECTION dwell 2, ambiguity_rate_8 0.375",
+    "Price oscillating 4292-4298 with both-side wicks",
+    "All three analogs non-trend at step 4",
+    "Multi-timeframe agreement CONFLICT, no edge"
+  ],
+  "counter_evidence": [
+    "H1 strong bearish body, close below level",
+    "M5 consecutive_down 9, range expanding",
+    "H1/H4 trend_20 strongly negative",
+    "Break_status INSIDE may precede decisive break"
+  ],
+  "possible_mechanisms": [
+    {"mechanism": "level_rejection_bounce", "status": "POSSIBLE", "why": "22 touches imply strong support; pullback from resistance rejection"},
+    {"mechanism": "range_compression", "status": "POSSIBLE", "why": "VOL_CONTRACTION event; analogs compress at step 4"},
+    {"mechanism": "trend_continuation", "status": "WEAK", "why": "H1 bearish momentum but M1 flat and level holds"},
+    {"mechanism": "breakdown", "status": "WEAK", "why": "H1 close below level but M1 reclaimed above"}
+  ],
+  "primary_scenario": {
+    "scenario": "RANGE",
+    "horizon": 4,
+    "trigger": "Price holds above 4292.588, oscillates 4292-4300",
+    "invalidation": "H1 close below 4292.588"
+  },
+  "alternative_scenario": {
+    "scenario": "DIRECTIONAL",
+    "horizon": 4,
+    "trigger": "Decisive H1 close below 4292.588 with follow-through",
+    "invalidation": "M1 sustained close above 4298"
+  },
+  "expected_transition": "REJECTION persists or transitions to COMPRESSION",
+  "direction_bias": "NEUTRAL",
+  "time_horizon": 4,
+  "evidence_strength": 0.45,
+  "confidence": 0.45,
+  "uncertainty": 0.55,
+  "confidence_reason": "State, analogs, level structure align on range; H1 bearish divergence limits confidence",
+  "uncertainty_reason": "H4 bar inconsistent with lower timeframes; break direction unknown",
+  "invalidation": "H1 close below 4292.588 confirms breakdown",
+  "change_my_mind": [
+    "H1 close below 4292.588 flips to DIRECTIONAL",
+    "M1 range percentile collapse indicates QUIET",
+    "DXY move beyond 0.3 shifts the edge",
+    "Sustained M1 close above 4302 flips up"
+  ],
+  "abstain": false,
+  "abstain_reason": "Context sufficient; M1-H1 self-consistent",
+  "questions": {
+    "Q1": "Price at 4292.588 swing low, REJECTION state, VOL_CONTRACTION, analogs non-directional",
+    "Q2": "VIX, yields, news absent; H4 bar inconsistency; break direction unknown",
+    "Q3": "Level holds, rejection state, analogs flat at step 4",
+    "Q4": "H1 bearish body, M5 nine down bars, negative H1 trend",
+    "Q5": "level_rejection_bounce is POSSIBLE only, not asserted",
+    "Q6": "H1 close below 4292.588 or above 4302 sustained",
+    "Q7": "false; enough aligned evidence for a range call"
+  },
+  "reasoning_trace": [
+    "Level heavily tested, price inside, rejection state",
+    "Analog step 4 unanimous non-directional",
+    "H1 bearish momentum offsets, keep NEUTRAL",
+    "Call RANGE, downside DIRECTIONAL on level break"
+  ]
+}

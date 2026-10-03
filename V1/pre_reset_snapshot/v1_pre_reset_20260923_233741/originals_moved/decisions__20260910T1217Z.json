@@ -1,0 +1,113 @@
+{
+ "cycle": "2026-09-10T12:17Z",
+ "symbol": "XAUUSD",
+ "decision_id": "DEC-2026-09-10T12:17Z",
+ "utc_ts": "2026-09-10T12:17Z",
+ "generated_utc": "2026-09-10T12:17Z",
+ "decision": "SHORT",
+ "confidence": 0.55,
+ "bias": "SHORT-lean 0.60 (四周期同向空; 日内 lower-high + 破位续跌; 现 flat 可新开 -> 主动猎人注册反抽 fade 4373-4381, 触价自动成交)",
+ "opportunity": "现 flat (MT5 demo; 上一笔 POS-20260910T1102ZB SHORT 0.01@4386.83 已于 12:04Z 按 broker TP 4380.0 落袋, realized +7.2USD -> RECONCILE_CLOSE, 引擎转 flat; pending=0). 现价 MT5-tick mid 4369.22 (12:17Z, bid/ask spread 0.32bps, tick_rate ~160/min; state_pkg m15_live mid 4369.22). 日内 4434.99(06:00Z)->新低 4369.22(12:17Z) 单边下行, 12:00Z 低点 4371.59 已破。主动猎人 setup: 反抽至破位微供给带 4373.0-4381.0 (12:00Z bar 高 ~4377 + 破位段整固 4374-4380) 时 fade 做空, zone_touch 实时成交, 不等下一根收盘。现在离可交易 = 需自 4369.22 上抽 +4~+12pt 进入 4373-4381 触价即自动成交; 若先续跌破 4362 则本计划引擎 price_left_setup 自动清理, 转下轮更低一级 fade 重建。",
+ "opportunity_mechanism": "broken_micro_supply_retest_fade_4377_v1 —— 强势单边下行(四周期空头共振)于 12:00Z 破日内低 4371.59 后, 反抽进入破位微供给带 4373.0-4381.0 (12:00Z bar 高 ~4377.0 + 破位整固 4374-4380, 上方 11:45Z 破位K开盘 4384.62 为缓冲), 反抽动能耗尽即回落续空; 与 D1/H4/H1/M15 各自关键均线下方结构共振, 1R=8.5pt 有界, 分档 T 4366.0/4356.0/4341.0 加权 ~2.44R。",
+ "mtf_agreement": "bearish (四周期同向空)。MT5-true: D1 close 4400.49 < MA20 4464.19 (range, llish5>hhish4, RSI42.7, pos_in_range 54.7) -> 中期空。H4 close 4394.89 < MA20 4400.24 & MA50 4407.59 (range pos31.2, RSI42.7, recent -12.3bps) -> 空。H1 close 4394.89 < MA20 4408.51/MA50 4396.95/MA200 4419.66, hi60 4440.96/lo60 4341.45, recent -32.7bps -> 空。M15 close 4394.89 < MA20 4413.67/MA50 4408.13/MA200 4396.84, hi60 4435.07/lo60 4389.75, pos_in_range 11.3, er0.357(趋势) -> 空且动能延续。现价 4369.22 已在 M15 lo60 4389.75 下方 ~20pt。四周期无多头反对 -> bias SHORT-lean 0.60。",
+ "position_note": "MT5 demo: 现 flat。上一笔 POS-20260910T1102ZB SHORT 0.01@4386.83 (broker ticket 2375368498) 已按 broker TP 4380.0 落袋 (reconcile @4379.63, realized +7.2USD); 引擎 12:04Z reconcile 后转 flat。在册 TP-20260910T120409 (SHORT zone 4382.5-4387.5) 因 mid 4369.22 < zone_lo-2band=4372.5 本轮将被引擎 price_left_setup 取消, 由本计划重建更低一级 fade。持仓中不叠加新仓 (单仓约束)。",
+ "answers_14": {
+  "1": "市场状态: XAUUSD live mid 4369.22 (MT5-tick 12:17Z; spread 0.32bps; tick_rate ~160/min; abnormal last6_max_move 21.4bps z1.08)。四周期: D1 close 4400.49<MA20 4464.19 (range, llish5>hhish4, RSI42.7, pos_in_range 54.7); H4 close 4394.89<MA20 4400.24&MA50 4407.59 (range pos31.2); H1 close 4394.89<MA20 4408.51/MA50 4396.95/MA200 4419.66, hi60 4440.96/lo60 4341.45; M15 close 4394.89<MA20 4413.67/MA50 4408.13/MA200 4396.84, hi60 4435.07/lo60 4389.75 (pos11.3)。日内 4434.99(06:00Z)->新低 4369.22(12:17Z) 单边下行, 12:00Z 低 4371.59 已破。data_quality ok(live_days=4, live_ticks 678504, gaps[], context_days 28)。",
+  "2": "一致性: 四周期现价均在各自关键均线下方 (D1<MA20; H4<MA20&MA50; H1<三条MA; M15<三条MA) -> 空头共振, 无多头周期反对。短线动能同向下 (M15 recent -34.1bps, H1 recent -32.7bps, M15 er0.357 趋势)。综合 = 下跌趋势内弱反抽 -> 续空, 非抄底。bias SHORT-lean 0.60。",
+  "3": "M15变化: 12:00Z bar 破日内低 4371.59, 12:17Z live 进一步下探 4369.22 (较 11:45Z close 4394.89 -25.7pt), 反抽高点持续递降 (前值 4390.80->4385.47->4377.00), 未收复 4386+ 微供给带; 上方阻力带 4373-4381(破位微供给) + 4384.62(11:45Z 破位K开盘) + 4389.75(M15 lo60)。下方 4341.45(H1 lo60) 为下一关键支撑。",
+  "4": "有无可交易机会: 有。现 flat 可新开(SHORT)。主动猎人 setup = 反抽进入破位微供给带 4373.0-4381.0 时 fade 做空 (zone_touch 实时判定)。现在离可交易 = 需自 4369.22 上抽 +4~+12pt 进入 4373-4381 触价即自动成交; 若先续跌破 4362 则本计划引擎自动清理, 转下轮更低一级 fade。confidence 0.55。",
+  "5": "机会机制: broken_micro_supply_retest_fade_4377_v1 —— 强势下行破日内低后反抽至破位微供给带 4373-4381 (12:00Z bar 高 ~4377.0 + 破位整固 4374-4380, 上方 11:45Z 破位K开盘 4384.62 为缓冲) 后动能耗尽回落续空; 与四周期空头背景共振。备用机制: intraday_low_break_continuation_4362_v1 供下轮更低一级使用。",
+  "6": "触发条件[具体价]: {\"and\":[{\"zone_touch\":[4373.0,4381.0]},{\"spread_under_bps\":1.2}]} —— MT5 mid 自 4369.22 上抽进入 4373.0-4381.0 即实时成交 (不等下一根 M15 收盘)。",
+  "7": "失效[具体价]: {\"price_cross_up\":4386.0} (站回 11:45Z 破位K开盘 4384.62 上方 -> 破位被否定, 反抽升级为反转, 计划零成本取消); 另引擎 price_left_setup: mid < zone_lo-2band = 4373.0-2x8.0 = 4357.0 (先续跌破位不回 -> 自动清理转下轮)。已成交易失效 = broker SL 4385.5 认损 -1R。",
+  "8": "预期收益R (ref fill 4377.0, 1R=8.5pt@SL4385.5): T1 4366.0(+11.0pt=1.29R)x0.40 / T2 4356.0(+21.0pt=2.47R)x0.35 / T3 4341.0(+36.0pt=4.24R)x0.25 -> expected_R ≈ 2.44R。",
+  "9": "预期损失R: -1.0R 有界 (SL 4385.5, risk 8.5pt ≈ 19.4bps @4377)。亏损不加仓、不反手; 空头背景下不注册反向 LONG。",
+  "10": "成本数值: spread 0.32bps + slippage 0.30bps = 单边 0.62bps, 往返 1.24bps ≈ 0.543pt ≈ 0.06R(1R=8.5pt)。demo 执行成本极低, 非障碍。",
+  "11": "净EV算式: EV_R = p×R − (1−p)×1 − cost = 0.44×2.44 − 0.56×1.0 − 0.06 = 1.074 − 0.620 = +0.45R (>0 通过; breakeven p≈0.36)。触发前 mid 未入带零成本; 入带才成交。",
+  "12": "再现: 今日套路 —— 破位/反抽 fade 连续生效: 07:47Z fade -> broker_tp +6.43USD; 11:32Z 反抽微供给带 fade 成交@4386.83 -> 12:04Z broker TP 落袋 +7.2USD。本轮为同一空头趋势内、价位下移一级后的 fade 接力 (zone 4382.5-4387.5 -> 4373.0-4381.0)。",
+  "13": "决策: SHORT。confidence 0.55, bias SHORT-lean 0.60。注册 fade 计划 zone 4373.0-4381.0 (zone_touch 实时触发), SL 4385.5, T 4366.0/4356.0/4341.0 加权 2.44R, 净EV +0.45R, qty 0.01。",
+  "14": "现 flat, 上一空单已 TP 落袋。四周期空头共振、日内新低不断。主动猎人: 注册反抽 fade 4373-4381, 触价即自动空, SL4385.5 -1R 有界, T 4366/4356/4341 加权 2.44R, 净EV +0.45R。离可交易 = 等 +4~+12pt 上抽入带; 先破 4357 则引擎自清转续空。"
+ },
+ "plan": {
+  "direction": "SHORT",
+  "opportunity_type": "broken_support_retest_fade",
+  "mechanism_ref": "broken_micro_supply_retest_fade_4377_v1",
+  "entry_style": "market_on_trigger",
+  "entry_zone": {
+   "low": 4373.0,
+   "high": 4381.0
+  },
+  "trigger_condition": {
+   "and": [
+    {
+     "zone_touch": [
+      4373.0,
+      4381.0
+     ]
+    },
+    {
+     "spread_under_bps": 1.2
+    }
+   ]
+  },
+  "invalidation_condition": {
+   "price_cross_up": 4386.0
+  },
+  "stop_logic": {
+   "type": "structure",
+   "level_price": 4385.5,
+   "level": "11:45Z 破位K开盘 4384.62 上方 0.9pt; 破位微供给带 4373-4381 上方 4.5pt",
+   "reason": "fade 失效: 价格站回 11:45Z 破位K开盘 4384.62 上方即证明破位被否定、反抽升级为反转; SL 4385.5 置于该破位K开盘上方 0.9pt, 认损 1R=8.5pt @ref 4377.0。"
+  },
+  "target_logic": {
+   "type": "price_levels",
+   "levels": [
+    {
+     "price": 4366.0,
+     "frac": 0.4
+    },
+    {
+     "price": 4356.0,
+     "frac": 0.35
+    },
+    {
+     "price": 4341.0,
+     "frac": 0.25
+    }
+   ],
+   "reason": "T1 4366.0 = 12:00Z 低点 4371.59 下方延伸/近端下降目标 (+11.0pt=1.29R)x0.40 降险; T2 4356.0 = 延伸测量目标 (+21.0pt=2.47R)x0.35; T3 4341.0 = H1 low60 4341.45 上方 0.45pt 汇合 (+36.0pt=4.24R)x0.25; 不设 4341 之下。"
+  },
+  "expected_R": 2.44,
+  "expected_win_probability": 0.44,
+  "probability_source": "subjective",
+  "expected_loss": {
+   "units": "R",
+   "value": 1.0
+  },
+  "estimated_cost": {
+   "spread_bps": 0.32,
+   "slippage_bps": 0.3,
+   "total_roundtrip_bps": 1.24,
+   "cost_in_R": 0.06
+  },
+  "spread_bps": 0.32,
+  "slippage_bps": 0.3,
+  "expected_net_EV": {
+   "value": 0.45,
+   "units": "R",
+   "note": "0.44x(0.40x1.29+0.35x2.47+0.25x4.24) − 0.56x1.0 − 0.064 = 0.44x2.44 − 0.624 = +0.45R (1R=8.5pt @ref fill 4377.0, SL 4385.5; breakeven p≈0.36)。"
+  },
+  "maximum_holding_time": "M15*8",
+  "cancel_conditions": [
+   "触发前 mid ≥ 4386.0 (price_cross_up invalidation = 站回 11:45Z 破位K开盘 4384.62 上方) -> 引擎零成本取消",
+   "触发前 mid < 4357.0 (engine price_left_setup, 价格跌破 zone_lo−2×band=4357.0, 先续跌破位不回) -> 下轮改评更低一级续空",
+   "未触发 age > 120min (M15*8) 过期清理 -> 下轮重评",
+   "成交失败(仓位忙/broker 拒) -> 计划即时作废不留僵尸, 不追单",
+   "空头背景下不注册反向 LONG; 已成交 -> SL 4385.5 broker 随单 -1R 有界; 亏损不加仓不反手; 持仓中不注册新开仓计划(单仓约束)"
+  ],
+  "risk_level": "medium",
+  "reason": "四周期同向空 (D1<MA20 4464 / H4<MA20 4400&MA50 4408 / H1<三条MA / M15<三条MA)。日内 4434.99->新低 4369.22 单边下行, 12:00Z 低 4371.59 已破; 上方 4373-4381 为破位微供给带 (12:00Z bar 高 ~4377.0 + 破位整固 4374-4380), 再上 4384.62 为 11:45Z 破位K开盘缓冲。fade 该带, SL 4385.5 置破位K开盘上方 -1R 有界, 分档 T 4366.0/4356.0/4341.0 加权 2.44R, 净EV +0.45R; qty 0.01 在 [0.01,0.05] 区间内。与被取消的 TP-120409(4382.5-4387.5) 触发区不重叠。",
+  "qty_lots": 0.01
+ },
+ "model": "deepseek/deepseek-v4-flash",
+ "data_quality_note": "data_quality ok (live_days=4, live_ticks 678504, gaps=[], context_days=28)。注意: state_pkg/parquet M15 bar 块与均线相对 MT5 偏高 (M15 ma20 4413.67 vs MT5-true ~4393-4398, 偏移等级 +16~20pt), 决策价位以 MT5 rates + live tick 为准; state_pkg m15_live mid 4369.22 与 MT5 tick 一致。candle_latest.json 冻结于 09-07 12:15, 忽略。MT5 现 flat (上一 POS-20260910T1102ZB 已按 broker TP 落袋 +7.2USD), pending=0。"
+}

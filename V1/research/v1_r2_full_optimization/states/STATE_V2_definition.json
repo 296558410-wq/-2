@@ -1,0 +1,25 @@
+{
+ "definition_id": "V1_R2_FULL_STATE_V2",
+ "status": "RESEARCH_ONLY",
+ "k": 2,
+ "derivation": "frozen C1 MARKET_BEHAVIOR + min-dwell k=2 (pre-registered; not tuned)",
+ "levels": [
+  "ACCEPTANCE",
+  "BREAKOUT_ATTEMPT",
+  "COMPRESSION",
+  "DECELERATION",
+  "EXPANSION",
+  "NO_DEFINED_STATE",
+  "REJECTION",
+  "ROTATION",
+  "TREND"
+ ],
+ "bars": 40546,
+ "lifecycle": {
+  "entry": "candidate observed >= 2 consecutive bars",
+  "exit": "superseded by a new state",
+  "persistence": "run length >= 2 by construction",
+  "carry_forward": "true"
+ },
+ "note": "STATE != BEHAVIOR EVENT (§13): this is the slow variable"
+}

@@ -1,0 +1,196 @@
+{
+ "CURRENT_TIME_UTC": "2026-09-25T15:00:05.495820+00:00",
+ "V1_PROCESS_STATE": {
+  "matched_processes": [
+   {
+    "ProcessId": 6476,
+    "ParentProcessId": 20960,
+    "Name": "powershell.exe",
+    "CommandLine": "powershell -NoProfile -NonInteractive -Command \"Get-CimInstance Win32_Process | Where-Object {$_.CommandLine -match 'trader_v1'} | Select-Object ProcessId,ParentProcessId,Name,CommandLine,CreationDate | ConvertTo-Json -Compress -Depth 4\"",
+    "CreationDate": "/Date(1790348405497)/"
+   }
+  ],
+  "children": [],
+  "engine_candidates": 0,
+  "note": "PID 14376 was a powershell.exe in the previous audit and is NOT assumed to be V1"
+ },
+ "V1_ENGINE_PID": null,
+ "V1_ENGINE_PROCESS_NAME": null,
+ "V1_ENGINE_CMDLINE": null,
+ "V1_ENGINE_PARENT_PID": null,
+ "V1_PYTHON_PATH": null,
+ "V1_WORKING_DIRECTORY": "UNKNOWN",
+ "V1_START_TIME": null,
+ "V1_PROCESS_COUNT": 1,
+ "V1_PID_CONFIDENCE": "UNCONFIRMED",
+ "V1_CRON_STATE": {
+  "all_openclaw_tasks": [
+   {
+    "Name": "\\OpenClaw\\hermes-tick-collect",
+    "State": "Ready",
+    "Enabled": true,
+    "Last": "09/25/2026 22:54:01",
+    "Result": 0,
+    "Next": "09/25/2026 23:09:00",
+    "Actions": "powershell.exe -NoProfile -ExecutionPolicy Bypass -File C:\\AIQuant\\research\\self_collect\\tick_collect_once.ps1"
+   },
+   {
+    "Name": "\\OpenClaw\\hermes-v2-cycle",
+    "State": "Ready",
+    "Enabled": true,
+    "Last": "09/25/2026 22:52:01",
+    "Result": 0,
+    "Next": "09/25/2026 23:07:00",
+    "Actions": "C:\\AIQuant\\.venv\\Scripts\\python.exe C:\\AIQuant\\research\\hermes\\trader_v2\\runtime\\v2_scheduled_cycle.py"
+   },
+   {
+    "Name": "\\OpenClaw\\hermes-v2-observer",
+    "State": "Ready",
+    "Enabled": true,
+    "Last": "09/25/2026 22:55:01",
+    "Result": 0,
+    "Next": "09/25/2026 23:55:00",
+    "Actions": "C:\\AIQuant\\.venv\\Scripts\\python.exe C:\\AIQuant\\research\\hermes\\trader_v2\\tools\\v2_observer.py --quiet"
+   },
+   {
+    "Name": "\\OpenClaw\\v3-calibration-pilot",
+    "State": "Ready",
+    "Enabled": true,
+    "Last": "09/21/2026 06:30:00",
+    "Result": 0,
+    "Next": "",
+    "Actions": "C:\\AIQuant\\research\\hermes\\trader_v3\\run_calibration_pilot.cmd "
+   }
+  ],
+  "v1_related": [
+   {
+    "Name": "\\OpenClaw\\hermes-tick-collect",
+    "State": "Ready",
+    "Enabled": true,
+    "Last": "09/25/2026 22:54:01",
+    "Result": 0,
+    "Next": "09/25/2026 23:09:00",
+    "Actions": "powershell.exe -NoProfile -ExecutionPolicy Bypass -File C:\\AIQuant\\research\\self_collect\\tick_collect_once.ps1"
+   },
+   {
+    "Name": "\\OpenClaw\\hermes-v2-cycle",
+    "State": "Ready",
+    "Enabled": true,
+    "Last": "09/25/2026 22:52:01",
+    "Result": 0,
+    "Next": "09/25/2026 23:07:00",
+    "Actions": "C:\\AIQuant\\.venv\\Scripts\\python.exe C:\\AIQuant\\research\\hermes\\trader_v2\\runtime\\v2_scheduled_cycle.py"
+   },
+   {
+    "Name": "\\OpenClaw\\hermes-v2-observer",
+    "State": "Ready",
+    "Enabled": true,
+    "Last": "09/25/2026 22:55:01",
+    "Result": 0,
+    "Next": "09/25/2026 23:55:00",
+    "Actions": "C:\\AIQuant\\.venv\\Scripts\\python.exe C:\\AIQuant\\research\\hermes\\trader_v2\\tools\\v2_observer.py --quiet"
+   }
+  ],
+  "running_now": []
+ },
+ "V1_PRIMARY_TASK": "UNKNOWN",
+ "V1_ACTIVE_TASKS": [],
+ "V1_TASK_RETRY_STATE": "NO_FAILED_TASK_SEEN",
+ "V1_NEXT_TRADING_TASK_TIME": "09/25/2026 23:07:00",
+ "V1_AUTO_RESTART_MECHANISM": "UNKNOWN",
+ "OPEN_POSITIONS": "UNKNOWN",
+ "OPEN_POSITION_COUNT": "UNKNOWN",
+ "PENDING_ORDERS": "UNKNOWN",
+ "PENDING_ORDER_COUNT": "UNKNOWN",
+ "ACTIVE_ORDER_ACTION": "UNKNOWN",
+ "ORDER_REQUEST_IN_FLIGHT": "UNKNOWN",
+ "ORDER_RETRY_IN_FLIGHT": "UNKNOWN",
+ "BROKER_OPERATION_IN_FLIGHT": "UNKNOWN",
+ "trading_state_sources": {
+  "state_package": "research/hermes/trader_v1/run_state/state_package_latest.json",
+  "greps": {}
+ },
+ "V1_CURRENT_WRITE_ACTIVITY": "IDLE",
+ "currently_writing_files": [],
+ "newest_state_files": [
+  {
+   "file": "research/hermes/trader_v1/run_state/trader_summary.txt",
+   "mtime": "2026-09-25T14:51:39.216271+00:00",
+   "size": 419
+  },
+  {
+   "file": "research/hermes/trader_v1/run_state/workflow_history.jsonl",
+   "mtime": "2026-09-25T14:51:24.873846+00:00",
+   "size": 23532
+  },
+  {
+   "file": "research/hermes/trader_v1/run_state/workflow_latest.json",
+   "mtime": "2026-09-25T14:51:24.872846+00:00",
+   "size": 2393
+  },
+  {
+   "file": "research/hermes/trader_v1/run_state/statistics.json",
+   "mtime": "2026-09-25T14:51:24.871844+00:00",
+   "size": 5472
+  },
+  {
+   "file": "research/hermes/trader_v1/run_state/plan_ledger.jsonl",
+   "mtime": "2026-09-25T14:51:24.870933+00:00",
+   "size": 242825
+  }
+ ],
+ "V1_LEDGER_WRITE_ACTIVITY": "IDLE",
+ "V1_PLAN_WRITE_ACTIVITY": "IDLE",
+ "V1_EXECUTION_WRITE_ACTIVITY": "IDLE",
+ "V1_STATE_WRITE_ACTIVITY": "IDLE",
+ "V1_CURRENT_CYCLE": "FINISHED",
+ "V1_LAST_CYCLE_START": "UNKNOWN",
+ "V1_LAST_CYCLE_END": "2026-09-25T14:51:24.873846+00:00",
+ "STATE_WRITE_IN_FLIGHT": "UNKNOWN",
+ "CURRENT_M15_PHASE": "minute 0 within M15 bucket (phase=0)",
+ "NEXT_V1_TRADING_WINDOW": "2026-09-25T15:15:00+00:00",
+ "MINUTES_TO_NEXT_V1_CYCLE": 15,
+ "M15_WINDOW": "UNKNOWN",
+ "SAFETY_CHECKS": {
+  "V1_PID_CONFIRMED": false,
+  "PRIMARY_TASK_CONFIRMED": false,
+  "NO_ACTIVE_ORDER_ACTION": false,
+  "OPEN_POSITIONS_ZERO": false,
+  "PENDING_ORDERS_ZERO": false,
+  "NO_STATE_WRITE_IN_FLIGHT": false,
+  "NO_AUTO_RESTART_RACE": false,
+  "OUTSIDE_TRADING_WINDOW": false,
+  "CURRENT_CYCLE_FINISHED": true
+ },
+ "SAFETY_WINDOW": "NOT_PROVEN",
+ "NEXT_STAGE_AUTHORIZED": "NO",
+ "UNKNOWN_FIELDS": [
+  "V1_WORKING_DIRECTORY",
+  "V1_PRIMARY_TASK",
+  "V1_AUTO_RESTART_MECHANISM",
+  "OPEN_POSITIONS",
+  "OPEN_POSITION_COUNT",
+  "PENDING_ORDERS",
+  "PENDING_ORDER_COUNT",
+  "ACTIVE_ORDER_ACTION",
+  "ORDER_REQUEST_IN_FLIGHT",
+  "ORDER_RETRY_IN_FLIGHT",
+  "BROKER_OPERATION_IN_FLIGHT",
+  "V1_LAST_CYCLE_START",
+  "STATE_WRITE_IN_FLIGHT",
+  "M15_WINDOW"
+ ],
+ "research_immutability": {
+  "M01_event": "ca44fd2c02afd867b9c66cb5da463eb0283fef6c31ba4e7c20fc988a1c9e2621",
+  "R1_ledger": "d9cd67757e501c3e550338da4228d67c0132ea293f28bce031b1cf010790f4ed",
+  "M01_audit": "a3bee5375f318ceb8bdd3144a0ac2639b88e2c5932a3e33c563c72b2c0c9f17d",
+  "R2_canonical": "20913b986890b1c593a63d1dfa7d6e1d90ad0b71db7b5134132f3ecfd7e72624"
+ },
+ "TASK_STATUS": "READ_ONLY_SAFETY_AUDIT_COMPLETE",
+ "V1_MODIFIED": "NO",
+ "V2_MODIFIED": "NO",
+ "V3_MODIFIED": "NO",
+ "ORDER_SEND": 0,
+ "COMMIT": "NONE",
+ "ts_utc": "2026-09-25T15:00:05.495820+00:00"
+}

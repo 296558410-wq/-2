@@ -1,0 +1,105 @@
+{
+ "sample_id": "A_20260731",
+ "forecast_id": "R8B_A_20260731_H4",
+ "timestamp": "2026-07-31T00:00:00Z",
+ "horizon": 4,
+ "scenario_family": "RANGE",
+ "scenario_alternative": "QUIET",
+ "scenario_abstain": false,
+ "observations": [
+  "State COMPRESSION dwell 8 bars, VOL_CONTRACTION, no transitions, ambiguity 0.25",
+  "Price INSIDE swing-high 4107.585, 26 touches, distance 0.105 ATR",
+  "H4 close 4075.845 conflicts with H1 4105.6 / M15 4106.9 closes",
+  "Multi-TF CONFLICT; H1/H4 trend_50 positive, M1/M5 trend_20 negative"
+ ],
+ "what_i_know": [
+  "L3 frozen label COMPRESSION with VOL_CONTRACTION event",
+  "L2 nearest level is swing high 4107.585, break_status INSIDE",
+  "L5 dwell 8 bars, zero transitions in last 8 bars",
+  "H1/H4 trend_50 strongly positive; DXY proxy 100.069 rising"
+ ],
+ "what_i_do_not_know": [
+  "Which timeframe close is authoritative at 00:00",
+  "Compression resolution timing and direction",
+  "Macro/news drivers absent (NEWS, MACRO_EVENTS unavailable)",
+  "VIX, TNX, GLD, COT all UNKNOWN"
+ ],
+ "evidence": [
+  "Frozen COMPRESSION label, 8-bar dwell, no transitions",
+  "M5 range percentile 0.065, intraday ATR low",
+  "Price pinned inside heavily-touched level, two-sided flow",
+  "2 of 3 analogs still COMPRESSION at step 4"
+ ],
+ "counter_evidence": [
+  "M1 range_expanding true, range percentile 0.85",
+  "H4 range 37.55, percentile 0.655, large bearish body",
+  "Dwell 8 nearing analog transition window 8-16",
+  "H1/H4 strong uptrend argues resolution risk upward"
+ ],
+ "possible_mechanisms": [
+  {
+   "mechanism": "compression continuation",
+   "status": "SUPPORTED",
+   "why": "frozen label, dwell 8, zero transitions, low M5 range"
+  },
+  {
+   "mechanism": "coiled-spring breakout pending",
+   "status": "POSSIBLE",
+   "why": "analogs transition by steps 8-16; M1 expanding"
+  },
+  {
+   "mechanism": "downside trend continuation",
+   "status": "WEAK",
+   "why": "H4 bearish close but contradicts intraday data"
+  },
+  {
+   "mechanism": "uptrend exhaustion reversal",
+   "status": "WEAK",
+   "why": "dwell alone weak per L4; H1/H4 trend_50 positive"
+  }
+ ],
+ "primary_scenario": {
+  "scenario": "RANGE",
+  "horizon": 4,
+  "trigger": "oscillation within 4106-4112 band around level 4107.585",
+  "invalidation": "decisive H4-range break of 4107.585 with expansion"
+ },
+ "alternative_scenario": {
+  "scenario": "QUIET",
+  "horizon": 4,
+  "trigger": "vol contraction persists, sub-ATR M1 bars",
+  "invalidation": "H4 range exceeds one ATR, band violated"
+ },
+ "expected_transition": "COMPRESSION to COMPRESSION at H=4; REJECTION risk after",
+ "direction_bias": "NEUTRAL",
+ "time_horizon": "H4",
+ "evidence_strength": 0.3,
+ "confidence": 0.35,
+ "uncertainty": 0.7,
+ "confidence_reason": "Frozen compression state and heavy level support range view",
+ "uncertainty_reason": "H4/H1 close conflict, absent macro data, CONFLICT timeframes",
+ "invalidation": "decisive break of 4107.585 with expanded H4 range",
+ "change_my_mind": [
+  "H4 close confirmed near 4075 by aligned timeframes",
+  "State transition to TREND or REJECTION before H=4",
+  "Volume/range expansion with directional displacement",
+  "DXY large move breaking 100.069 proxy range"
+ ],
+ "abstain": false,
+ "abstain_reason": "Enough PIT structure for a low-confidence family call",
+ "questions": {
+  "Q1": "Context states COMPRESSION dwell 8, VOL_CONTRACTION, no transitions",
+  "Q2": "H4 close truth unknown; macro/news/VIX/TNX absent",
+  "Q3": "Frozen label, dwell, level pinning, analog step-4 persistence",
+  "Q4": "M1 expansion, H4 large bearish body, CONFLICT timeframes",
+  "Q5": "Coiled-spring breakout; compression does not imply direction",
+  "Q6": "Aligned close near 4075 or transition label before H=4",
+  "Q7": "No; sufficient structure for low-confidence family forecast"
+ },
+ "reasoning_trace": [
+  "State and dwell favor compression persistence to H=4",
+  "Level 4107.585 with 26 touches implies two-sided equilibrium",
+  "Data conflict caps evidence_strength at 0.3",
+  "Analog majority stays COMPRESSION at step 4, supports RANGE"
+ ]
+}

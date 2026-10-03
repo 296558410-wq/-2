@@ -1,0 +1,141 @@
+{
+ "task": "V1_R8_B_SCENARIO_VALIDATION",
+ "ts_utc": "2026-09-28T11:45:21.008140+00:00",
+ "target": {
+  "scenario_definition_hash": "e51a5fdea95535e5d0c87c0de2d0586c4d5a8424432ee1250501132b9b1a5222",
+  "H": 4,
+  "registry_v2_hash": "368392de43aeafa821e788ea1b5957d5ad72d09e5768e4515a9a062d91ba21a4",
+  "registry_hash": "4688ac3978b62a4baf0d0b97a20eb110c6e5477f77f1cf641f9ade4d43a5b242"
+ },
+ "counts": {
+  "A": 32,
+  "BB": 10,
+  "BA": 16,
+  "PO": 6
+ },
+ "declared_n": 32,
+ "EFFECTIVE_N": {
+  "A": 32,
+  "B_BLIND": 10,
+  "B_ADVERSARIAL": 16,
+  "POST_OUTCOME": 6
+ },
+ "B_SUBSET": {
+  "rule": "every 2nd of the 32 declared points (16)",
+  "covered": 10
+ },
+ "comparison_table": {
+  "R8_HERMES_A": {
+   "balanced_accuracy": 0.4056,
+   "raw_accuracy": 0.25,
+   "class_recall": {
+    "DIRECTIONAL": 0.3333,
+    "QUIET": 0.05,
+    "RANGE": 0.8333
+   },
+   "n": 32,
+   "abstention_rate": 0.0
+  },
+  "SIMPLE_MAJORITY": {
+   "balanced_accuracy": 0.3333,
+   "raw_accuracy": 0.1875,
+   "class_recall": {
+    "DIRECTIONAL": 0.0,
+    "QUIET": 0.0,
+    "RANGE": 1.0
+   },
+   "n": 32
+  },
+  "SIMPLE_PERSISTENCE": {
+   "balanced_accuracy": 0.75,
+   "raw_accuracy": 0.75,
+   "class_recall": {
+    "DIRECTIONAL": 0.6667,
+    "QUIET": 0.75,
+    "RANGE": 0.8333
+   },
+   "n": 32
+  },
+  "SIMPLE_TRANSITION": {
+   "balanced_accuracy": 0.75,
+   "raw_accuracy": 0.75,
+   "class_recall": {
+    "DIRECTIONAL": 0.6667,
+    "QUIET": 0.75,
+    "RANGE": 0.8333
+   },
+   "n": 32
+  },
+  "FROZEN_BASELINE": {
+   "balanced_accuracy": 0.5444,
+   "raw_accuracy": 0.6562,
+   "class_recall": {
+    "DIRECTIONAL": 0.3333,
+    "QUIET": 0.8,
+    "RANGE": 0.5
+   },
+   "n": 32
+  }
+ },
+ "chance": 0.3333,
+ "strongest_baseline_balanced_acc": 0.75,
+ "calibration": {
+  "n": 32,
+  "ECE": 0.1616,
+  "mean_confidence": 0.4116,
+  "raw_accuracy": 0.25
+ },
+ "hermes_b_audit": {
+  "blind_n": 10,
+  "blind_vs_A_agreement": null,
+  "adversarial_n": 16,
+  "adversarial_verdicts": {
+   "PARTIAL_AGREE": 7,
+   "DISAGREE": 9
+  },
+  "adversarial_error_counts": {
+   "over_inference": 54,
+   "mechanism_jump": 40,
+   "missing_counter_evidence": 58,
+   "unjustified_confidence": 45,
+   "observation_as_fact": 39
+  },
+  "post_outcome_n": 6,
+  "post_outcome_verdicts": {
+   "ALIGNED": 4,
+   "PARTIAL": 2
+  }
+ },
+ "verdict": "UNSUPPORTED",
+ "CAPABILITY_GATE": "CLOSED",
+ "r3_verdict_unchanged": "UNSUPPORTED",
+ "tests": {
+  "pass": 17,
+  "fail": 0,
+  "total": 17
+ },
+ "ledger_entries": 65,
+ "ledger_chain_ok": true,
+ "immutability": {
+  "R3": "PASS",
+  "R4": "PASS",
+  "R5": "PASS",
+  "R5_1": "PASS",
+  "R6": "PASS",
+  "R7": "PASS",
+  "R8_A": "PASS"
+ },
+ "safety": {
+  "ORDER_SEND": 0,
+  "ORDER_CHECK": 0,
+  "BROKER_WRITE": 0,
+  "FORWARD": "OFF",
+  "SHADOW": "OFF",
+  "LIVE": "OFF",
+  "BOUNDARY_VIOLATION": 0,
+  "MT5_CALLS": 0
+ },
+ "git_head": "9e8c4f94089c5700ade3b08ec528e14d83821b2e",
+ "changed_files_by_task": 1,
+ "forecast_files": 64
+}

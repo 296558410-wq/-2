@@ -1,0 +1,45 @@
+{
+  "audit_id": "POST_20260801",
+  "timestamp": "2026-09-27T14:44:00Z",
+  "correct_calls": [
+    "Correctly identified 4041.035 (SWING_LOW_37318, 35 touches/240, break_status INSIDE) as a high-confluence, well-defended decision level, and made the downside continuation explicitly conditional on a decisive M5/H1 close below it - no such break materialized and the level held.",
+    "Correctly read the final-bar long lower wicks (6.94 on M1/M5/M15/H1, sweep to 4035.085) as aggressive buying/bid presence at 4035-4041 arguing against a clean breakdown; the UP outcome confirms the bids won.",
+    "Correctly flagged H4 trend_20 +19.16 as countervailing higher-timeframe bid pressure (multi-timeframe CONFLICT); the higher-timeframe positive context was on the right side of the actual UP move.",
+    "Correctly used the frozen ACCEPTANCE label as support for the level holding / acceptance outcome rather than rejection.",
+    "Correctly observed range_expanding true on all timeframes and pointed to continued expansion; actual next state is EXPANSION (expansion did continue, though the directional read of it was wrong).",
+    "Correctly disciplined the forecast: stated downside extension required a decisive close below 4035.085 with no reclaim; that confirmation never occurred and the forecast's own validation condition was honest."
+  ],
+  "wrong_calls": [
+    "direction_bias DOWN was WRONG: actual_direction UP.",
+    "Primary scenario (confidence 0.5) 'downside continuation through 4041.035 toward 4020-4026' did not occur; price went UP instead.",
+    "Expected state transition 'ROTATION -> REJECTION at 4041.035' or 'toward TREND (down) / NO_DEFINED_STATE per analog A4173' was WRONG: actual next state is EXPANSION (transition 1), none of the enumerated down paths.",
+    "The near-term downside momentum framing (H1 trend_20 -42.22, consecutive_down 8, displacement -8.54) as the dominant driver did not follow through; the impulse failed.",
+    "Confidence ordering (down 0.5 > bounce 0.35 > rotation 0.15) was inverted relative to the outcome; the alternative should have been ranked above the primary.",
+    "Selection of analog A4173 (ROTATION->NO_DEFINED_STATE->REJECTION->TREND) as the primary path; the realized path was an upside expansion, not that trajectory."
+  ],
+  "right_but_wrong_reason": [
+    "The level-hold / bid-presence mechanism at 4035-4041 was correct, but Hermes-A attached it to the wrong implied mechanism narrative (downside impulse needing a break to fail) - the wicks were actually evidence of accumulation that produced the upside expansion, not merely a temporary bid against continuation.",
+    "range_expanding true was correctly cited, but framed as supporting downside displacement; the expansion materialized in the opposite direction, so the evidence was used for the right phenomenon (expansion) with the wrong directional reason."
+  ],
+  "direction_ok_state_wrong": "The alternative/bounce scenario (confidence 0.35) was directionally CORRECT (UP) but the state characterization was WRONG: Hermes-A framed it as price 'rotating back up toward 4050-4055.5' within continued ROTATION per analog A14240 (ROTATION->ROTATION->REJECTION), whereas the actual next state was EXPANSION (transition 1, a strong directional expansion) - direction UP right, expected state wrong.",
+  "state_ok_direction_wrong": "No case: no Hermes-A call carried the correct state with a wrong direction. Its state predictions (ROTATION persistence, REJECTION at 4041.035, down TREND / NO_DEFINED_STATE) all failed against actual EXPANSION(UP), and its only directionally-correct read (alternative/bounce) had the wrong state (see direction_ok_state_wrong).",
+  "should_have_abstained": true,
+  "invalidation_occurred": true,
+  "prior_concerns_materialised": null,
+  "hindsight_detected": false,
+  "hindsight_evidence": [],
+  "outcome_alignment_verdict": "PARTIALLY_CORRECT",
+  "reasoning_trace": [
+    "Loaded PIT context as of 2026-08-01 12:00:00Z, Hermes-A forecast, and actual outcome; actual outcome consulted only for the audit, never written back.",
+    "Actual outcome: actual_next_state EXPANSION, actual_transition 1, actual_direction UP, hermes_scenario_covered_actual true.",
+    "Committed direction call: direction_bias DOWN vs actual_direction UP -> the committed directional forecast was WRONG.",
+    "Primary scenario (downside continuation to 4020-4026, conf 0.5) and expected state path ROTATION->REJECTION / TREND(down) / NO_DEFINED_STATE did not occur; actual next state is EXPANSION -> primary scenario and state forecast WRONG.",
+    "Alternative/bounce scenario (conf 0.35) was directionally right (UP) and its level-hold mechanism right (35-touch confluence, lower-wick bids, H4 +19.16), but its expected state (continued ROTATION, rotation back to 4050-4055.5) was wrong given actual EXPANSION -> direction_ok_state_wrong.",
+    "Correct reads credited: 4041.035 as decisive high-confluence support, downside continuation made conditional on a decisive break (which never occurred), lower-wick bid presence at 4035-4041, H4 +19.16 as counter-bid context, ACCEPTANCE label supporting the level holding, and continued range expansion (state EXPANSION).",
+    "Invalidation condition 'M5 closes back above 4046-4048 or H1 closes above 4051-4052.7' judged to have occurred: an UP move of sufficient magnitude to reach EXPANSION necessarily re-crossed the mid-rotation zone 4046-4048 (only ~4-6 above the 4042.025 close). Exact M5/H1 closes are not in the payload, so this is an inference from direction UP + state EXPANSION.",
+    "Abstain assessment: ambiguity_rate_8 0.75, multi-timeframe CONFLICT, all cross-market series UNKNOWN, and committed DOWN bias at only 0.5 confidence; the forecast leaned on H1 momentum that failed to follow through and no external confirmation existed -> should_have_abstained true.",
+    "No earlier adversarial auditor record is present in the payload, so prior_concerns_materialised is null (unassessable).",
+    "Screened all Hermes-A claims for hindsight: every number and claim traces to context available at 2026-07-31 21:58Z / forecast time 2026-08-01 12:00:00Z; no claim depends on knowledge of the outcome -> hindsight_detected false.",
+    "Verdict: PARTIALLY_CORRECT - committed direction bias and primary scenario were wrong and the state forecast missed EXPANSION, but the alternative scenario captured the UP direction and the level-hold, hermes_scenario_covered_actual is true, and several mechanism reads (support confluence, bid presence, expansion continuing) were sound."
+  ]
+}

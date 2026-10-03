@@ -1,0 +1,140 @@
+{
+ "task": "V1_R2_MARKET_READING_ARCHITECTURE_R1",
+ "status": "COMPLETE",
+ "ontology_hash": "8436866dfe71030ba7be036b2d73904ed2f817aa52673a5e27d583e931c354d8",
+ "registry_hash": "752bf2273f6a509d343dca633860605f927850d85fc491e402f40318df168f68",
+ "architecture_hash": "ddcee0a5cfc69a68a55b12274ef74369c1a6c15bb99475084e639e86acfebeb0",
+ "EXISTING_ASSETS_TOTAL": 45,
+ "KEEP": 25,
+ "REWORK": 13,
+ "REJECT": 0,
+ "UNVERIFIED": 7,
+ "ledger_entries": 140,
+ "bars": 1328,
+ "tests_passed": "27/27",
+ "PIT_TEST": "PASS",
+ "REPLAY_TEST": "PASS",
+ "DETERMINISTIC_TEST": "PASS",
+ "REGISTRY_HASH_TEST": "PASS",
+ "ONTOLOGY_HASH_TEST": "PASS",
+ "CAPABILITY_INVENTORY_TEST": "PASS",
+ "ALL_TESTS_PASS": true,
+ "MULTI_TIMEFRAME": {
+  "H4": 90,
+  "H1": 335,
+  "M15": 1328,
+  "M5": 3945
+ },
+ "narratives": {
+  "N1_trend_to_rejection": {
+   "M15": {
+    "candle_events": [
+     "DOJI",
+     "LONG_WICK",
+     "OUTSIDE_BAR",
+     "SPINNING_TOP"
+    ],
+    "price_structure": "FIRST_TEST",
+    "behavior": "REJECTION",
+    "momentum": "NORMAL"
+   },
+   "mechanism": "MEAN_REVERSION",
+   "mechanism_status": "UNCERTAIN",
+   "next_state_candidates": [
+    "EXHAUSTION",
+    "LIQUIDITY_WITHDRAWAL",
+    "MEAN_REVERSION",
+    "ROTATION"
+   ],
+   "invalidation": "acceptance beyond the boundary",
+   "confidence": "UNCERTAIN"
+  },
+  "N2_multi_timeframe_conflict": {
+   "H4": "UNAVAILABLE_SLICE",
+   "H1": "see multi_timeframe_block",
+   "M15": {
+    "M15": {
+     "candle_events": [
+      "DOJI",
+      "LONG_WICK",
+      "OUTSIDE_BAR",
+      "SPINNING_TOP"
+     ],
+     "price_structure": "FIRST_TEST",
+     "behavior": "REJECTION",
+     "momentum": "NORMAL"
+    },
+    "mechanism": "MEAN_REVERSION",
+    "mechanism_status": "UNCERTAIN",
+    "next_state_candidates": [
+     "EXHAUSTION",
+     "LIQUIDITY_WITHDRAWAL",
+     "MEAN_REVERSION",
+     "ROTATION"
+    ],
+    "invalidation": "acceptance beyond the boundary",
+    "confidence": "UNCERTAIN"
+   },
+   "M5": "built_from_ticks",
+   "statement": "higher-timeframe trend context can coexist with a lower-timeframe rejection state; the system does NOT compress them into one direction"
+  },
+  "N3_support_defense_weakening": {
+   "example_bar": 1143,
+   "reading": "SUPPORT_DEFENSE_WEAKENING (observational, NOT a sell signal)"
+  },
+  "N4_downward_rejection": {
+   "reading": "DOWNWARD_REJECTION + REVERSAL_ATTEMPT (NOT a buy signal)"
+  },
+  "N5_breakout_acceptance": {
+   "reading": "BREAKOUT_ACCEPTANCE (NOT a buy signal)"
+  },
+  "N6_ambiguity": {
+   "reading": "AMBIGUOUS with explicit 'what to observe next'"
+  }
+ },
+ "five_question_coverage": 1.0,
+ "unknown_separation": [
+  "INSUFFICIENT_DATA",
+  "CONFLICTING_EVIDENCE",
+  "AMBIGUOUS_STATE",
+  "UNOBSERVABLE_PREREQUISITE",
+  "NO_DEFINED_STATE",
+  "LOW_CONFIDENCE"
+ ],
+ "data_boundary": {
+  "DOM": "UNAVAILABLE",
+  "TRADE_DIRECTION": "UNAVAILABLE",
+  "SPREAD": "DIRECT",
+  "TICK_VOLUME": "DIRECT_BUT_ALL_ZERO_NOT_REAL_VOLUME",
+  "ABSORPTION": "PROXY_BAR",
+  "LIQUIDITY": "PROXY",
+  "NO_DATA_PURCHASE": true,
+  "spread_available_bars": 1328,
+  "spread_q33": 0.14000859494720308,
+  "spread_q67": 0.1799999999999872,
+  "evidence_hierarchy": [
+   "DIRECT",
+   "DERIVED",
+   "PROXY",
+   "UNKNOWN"
+  ],
+  "upgrade_forbidden": true,
+  "implication": "absorption / liquidity mechanisms must carry PROXY evidence level and cannot be upgraded"
+ },
+ "safety": {
+  "ORDER_SEND": 0,
+  "ORDER_CHECK": 0,
+  "BROKER_WRITE": 0,
+  "FORWARD": "OFF",
+  "SHADOW": "OFF",
+  "LIVE": "OFF",
+  "V2_WRITE": 0,
+  "V3_WRITE": 0,
+  "ENGINE_MODIFIED": 0,
+  "EXECUTION_MODIFIED": 0,
+  "RISK_MODIFIED": 0,
+  "ORDER_LOGIC_MODIFIED": 0,
+  "BOUNDARY_VIOLATION": 0
+ },
+ "ts_utc": "2026-09-27T02:33:51.030275+00:00"
+}

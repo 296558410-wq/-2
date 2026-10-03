@@ -1,0 +1,701 @@
+{
+ "ts_utc": "2026-09-28T05:27:21.303587+00:00",
+ "H_bars": 8,
+ "n_rows": 40546,
+ "n_dev": 33114,
+ "n_blind": 7306,
+ "crossmarket_source": {
+  "DXY": "OK",
+  "VIX": "OK",
+  "TNX": "OK"
+ },
+ "macro_available": false,
+ "targets": {
+  "STATE": {
+   "class_distribution_dev": {
+    "DECELERATION": 603,
+    "REJECTION": 8269,
+    "ACCEPTANCE": 1084,
+    "NO_DEFINED_STATE": 1311,
+    "EXPANSION": 5965,
+    "BREAKOUT_ATTEMPT": 1590,
+    "COMPRESSION": 6675,
+    "TREND": 3958,
+    "ROTATION": 3659
+   },
+   "majority_class": "REJECTION",
+   "label_entropy_bits": 2.79,
+   "n_classes_dev": 9,
+   "effective_n_blind": 7306,
+   "majority_baseline_acc": 0.2472,
+   "persistence_baseline_acc": 0.343,
+   "previous_state_baseline_acc": 0.3144,
+   "simple_transition_baseline_acc": 0.3612,
+   "PRICE_ONLY": {
+    "balanced_acc": 0.2014,
+    "macro_f1": 0.1629,
+    "n_te": 7306
+   },
+   "increments_vs_PRICE": {
+    "STATE_HISTORY": {
+     "balanced_acc": 0.2078,
+     "macro_f1": 0.1741,
+     "delta_balanced_acc": 0.0064,
+     "delta_macro_f1": 0.0112,
+     "available": true
+    },
+    "EVENT_HISTORY": {
+     "balanced_acc": 0.203,
+     "macro_f1": 0.1657,
+     "delta_balanced_acc": 0.0016,
+     "delta_macro_f1": 0.0028,
+     "available": true
+    },
+    "MTF": {
+     "balanced_acc": 0.2099,
+     "macro_f1": 0.1784,
+     "delta_balanced_acc": 0.0085,
+     "delta_macro_f1": 0.0155,
+     "available": true
+    },
+    "VOLATILITY": {
+     "balanced_acc": 0.2022,
+     "macro_f1": 0.1634,
+     "delta_balanced_acc": 0.0008,
+     "delta_macro_f1": 0.0005,
+     "available": true
+    },
+    "CROSS_MARKET": {
+     "available": false,
+     "reason": "NO_DEV_COVERAGE"
+    },
+    "MACRO": {
+     "balanced_acc": 0.2014,
+     "macro_f1": 0.1629,
+     "delta_balanced_acc": 0.0,
+     "delta_macro_f1": 0.0,
+     "available": true
+    }
+   },
+   "ALL_MODEL": {
+    "balanced_acc": 0.2169,
+    "macro_f1": 0.1938,
+    "n_te": 7306
+   },
+   "ablations": {
+    "minus_PRICE": {
+     "balanced_acc": 0.1777,
+     "delta_vs_ALL": -0.0392
+    },
+    "minus_STATE_HISTORY": {
+     "balanced_acc": 0.2127,
+     "delta_vs_ALL": -0.0042
+    },
+    "minus_EVENT_HISTORY": {
+     "balanced_acc": 0.2165,
+     "delta_vs_ALL": -0.0004
+    },
+    "minus_MTF": {
+     "balanced_acc": 0.2096,
+     "delta_vs_ALL": -0.0073
+    },
+    "minus_VOLATILITY": {
+     "balanced_acc": 0.2171,
+     "delta_vs_ALL": 0.0002
+    },
+    "minus_CROSS_MARKET": {
+     "balanced_acc": 0.2169,
+     "delta_vs_ALL": 0.0
+    },
+    "minus_MACRO": {
+     "balanced_acc": 0.2169,
+     "delta_vs_ALL": 0.0
+    }
+   },
+   "columns_dropped_no_dev_coverage": [
+    "xs_DXY",
+    "xs_DXY_d12",
+    "xs_TNX",
+    "xs_TNX_d12",
+    "xs_VIX",
+    "xs_VIX_d12"
+   ]
+  },
+  "TRANSITION": {
+   "class_distribution_dev": {
+    "1.0": 21448,
+    "0.0": 11666
+   },
+   "majority_class": 1.0,
+   "label_entropy_bits": 0.9361,
+   "n_classes_dev": 2,
+   "effective_n_blind": 7306,
+   "majority_baseline_acc": 0.657,
+   "PRICE_ONLY": {
+    "balanced_acc": 0.5,
+    "macro_f1": 0.3965,
+    "n_te": 7306
+   },
+   "increments_vs_PRICE": {
+    "STATE_HISTORY": {
+     "balanced_acc": 0.5009,
+     "macro_f1": 0.4159,
+     "delta_balanced_acc": 0.0009,
+     "delta_macro_f1": 0.0194,
+     "available": true
+    },
+    "EVENT_HISTORY": {
+     "balanced_acc": 0.5139,
+     "macro_f1": 0.4357,
+     "delta_balanced_acc": 0.0139,
+     "delta_macro_f1": 0.0392,
+     "available": true
+    },
+    "MTF": {
+     "balanced_acc": 0.5,
+     "macro_f1": 0.3965,
+     "delta_balanced_acc": 0.0,
+     "delta_macro_f1": 0.0,
+     "available": true
+    },
+    "VOLATILITY": {
+     "balanced_acc": 0.5011,
+     "macro_f1": 0.401,
+     "delta_balanced_acc": 0.0011,
+     "delta_macro_f1": 0.0045,
+     "available": true
+    },
+    "CROSS_MARKET": {
+     "available": false,
+     "reason": "NO_DEV_COVERAGE"
+    },
+    "MACRO": {
+     "balanced_acc": 0.5,
+     "macro_f1": 0.3965,
+     "delta_balanced_acc": 0.0,
+     "delta_macro_f1": 0.0,
+     "available": true
+    }
+   },
+   "ALL_MODEL": {
+    "balanced_acc": 0.5469,
+    "macro_f1": 0.5177,
+    "n_te": 7306
+   },
+   "ablations": {
+    "minus_PRICE": {
+     "balanced_acc": 0.5486,
+     "delta_vs_ALL": 0.0017
+    },
+    "minus_STATE_HISTORY": {
+     "balanced_acc": 0.5221,
+     "delta_vs_ALL": -0.0248
+    },
+    "minus_EVENT_HISTORY": {
+     "balanced_acc": 0.5083,
+     "delta_vs_ALL": -0.0386
+    },
+    "minus_MTF": {
+     "balanced_acc": 0.5438,
+     "delta_vs_ALL": -0.0031
+    },
+    "minus_VOLATILITY": {
+     "balanced_acc": 0.545,
+     "delta_vs_ALL": -0.0019
+    },
+    "minus_CROSS_MARKET": {
+     "balanced_acc": 0.5469,
+     "delta_vs_ALL": 0.0
+    },
+    "minus_MACRO": {
+     "balanced_acc": 0.5469,
+     "delta_vs_ALL": 0.0
+    }
+   },
+   "columns_dropped_no_dev_coverage": [
+    "xs_DXY",
+    "xs_DXY_d12",
+    "xs_TNX",
+    "xs_TNX_d12",
+    "xs_VIX",
+    "xs_VIX_d12"
+   ]
+  },
+  "DIRECTION": {
+   "class_distribution_dev": {
+    "NEUTRAL": 5064,
+    "DOWN": 14846,
+    "UP": 13204
+   },
+   "majority_class": "DOWN",
+   "label_entropy_bits": 1.4621,
+   "n_classes_dev": 3,
+   "effective_n_blind": 7306,
+   "majority_baseline_acc": 0.457,
+   "PRICE_ONLY": {
+    "balanced_acc": 0.3933,
+    "macro_f1": 0.3552,
+    "n_te": 7306
+   },
+   "increments_vs_PRICE": {
+    "STATE_HISTORY": {
+     "balanced_acc": 0.396,
+     "macro_f1": 0.3577,
+     "delta_balanced_acc": 0.0027,
+     "delta_macro_f1": 0.0025,
+     "available": true
+    },
+    "EVENT_HISTORY": {
+     "balanced_acc": 0.3908,
+     "macro_f1": 0.3528,
+     "delta_balanced_acc": -0.0025,
+     "delta_macro_f1": -0.0024,
+     "available": true
+    },
+    "MTF": {
+     "balanced_acc": 0.4003,
+     "macro_f1": 0.3622,
+     "delta_balanced_acc": 0.007,
+     "delta_macro_f1": 0.007,
+     "available": true
+    },
+    "VOLATILITY": {
+     "balanced_acc": 0.393,
+     "macro_f1": 0.355,
+     "delta_balanced_acc": -0.0003,
+     "delta_macro_f1": -0.0002,
+     "available": true
+    },
+    "CROSS_MARKET": {
+     "available": false,
+     "reason": "NO_DEV_COVERAGE"
+    },
+    "MACRO": {
+     "balanced_acc": 0.3933,
+     "macro_f1": 0.3552,
+     "delta_balanced_acc": 0.0,
+     "delta_macro_f1": 0.0,
+     "available": true
+    }
+   },
+   "ALL_MODEL": {
+    "balanced_acc": 0.4014,
+    "macro_f1": 0.3632,
+    "n_te": 7306
+   },
+   "ablations": {
+    "minus_PRICE": {
+     "balanced_acc": 0.3822,
+     "delta_vs_ALL": -0.0192
+    },
+    "minus_STATE_HISTORY": {
+     "balanced_acc": 0.4004,
+     "delta_vs_ALL": -0.001
+    },
+    "minus_EVENT_HISTORY": {
+     "balanced_acc": 0.4011,
+     "delta_vs_ALL": -0.0003
+    },
+    "minus_MTF": {
+     "balanced_acc": 0.3926,
+     "delta_vs_ALL": -0.0088
+    },
+    "minus_VOLATILITY": {
+     "balanced_acc": 0.4018,
+     "delta_vs_ALL": 0.0004
+    },
+    "minus_CROSS_MARKET": {
+     "balanced_acc": 0.4014,
+     "delta_vs_ALL": 0.0
+    },
+    "minus_MACRO": {
+     "balanced_acc": 0.4014,
+     "delta_vs_ALL": 0.0
+    }
+   },
+   "columns_dropped_no_dev_coverage": [
+    "xs_DXY",
+    "xs_DXY_d12",
+    "xs_TNX",
+    "xs_TNX_d12",
+    "xs_VIX",
+    "xs_VIX_d12"
+   ]
+  },
+  "SCENARIO": {
+   "class_distribution_dev": {
+    "RANGE": 12531,
+    "QUIET": 9070,
+    "DIRECTIONAL": 11513
+   },
+   "majority_class": "RANGE",
+   "label_entropy_bits": 1.5722,
+   "n_classes_dev": 3,
+   "effective_n_blind": 7306,
+   "majority_baseline_acc": 0.3893,
+   "PRICE_ONLY": {
+    "balanced_acc": 0.5207,
+    "macro_f1": 0.5199,
+    "n_te": 7306
+   },
+   "increments_vs_PRICE": {
+    "STATE_HISTORY": {
+     "balanced_acc": 0.5381,
+     "macro_f1": 0.5402,
+     "delta_balanced_acc": 0.0174,
+     "delta_macro_f1": 0.0203,
+     "available": true
+    },
+    "EVENT_HISTORY": {
+     "balanced_acc": 0.5222,
+     "macro_f1": 0.5211,
+     "delta_balanced_acc": 0.0015,
+     "delta_macro_f1": 0.0012,
+     "available": true
+    },
+    "MTF": {
+     "balanced_acc": 0.5394,
+     "macro_f1": 0.5395,
+     "delta_balanced_acc": 0.0187,
+     "delta_macro_f1": 0.0196,
+     "available": true
+    },
+    "VOLATILITY": {
+     "balanced_acc": 0.521,
+     "macro_f1": 0.5202,
+     "delta_balanced_acc": 0.0003,
+     "delta_macro_f1": 0.0003,
+     "available": true
+    },
+    "CROSS_MARKET": {
+     "available": false,
+     "reason": "NO_DEV_COVERAGE"
+    },
+    "MACRO": {
+     "balanced_acc": 0.5207,
+     "macro_f1": 0.5199,
+     "delta_balanced_acc": 0.0,
+     "delta_macro_f1": 0.0,
+     "available": true
+    }
+   },
+   "ALL_MODEL": {
+    "balanced_acc": 0.5505,
+    "macro_f1": 0.5531,
+    "n_te": 7306
+   },
+   "ablations": {
+    "minus_PRICE": {
+     "balanced_acc": 0.4771,
+     "delta_vs_ALL": -0.0734
+    },
+    "minus_STATE_HISTORY": {
+     "balanced_acc": 0.5408,
+     "delta_vs_ALL": -0.0097
+    },
+    "minus_EVENT_HISTORY": {
+     "balanced_acc": 0.5527,
+     "delta_vs_ALL": 0.0022
+    },
+    "minus_MTF": {
+     "balanced_acc": 0.5381,
+     "delta_vs_ALL": -0.0124
+    },
+    "minus_VOLATILITY": {
+     "balanced_acc": 0.5528,
+     "delta_vs_ALL": 0.0023
+    },
+    "minus_CROSS_MARKET": {
+     "balanced_acc": 0.5505,
+     "delta_vs_ALL": 0.0
+    },
+    "minus_MACRO": {
+     "balanced_acc": 0.5505,
+     "delta_vs_ALL": 0.0
+    }
+   },
+   "columns_dropped_no_dev_coverage": [
+    "xs_DXY",
+    "xs_DXY_d12",
+    "xs_TNX",
+    "xs_TNX_d12",
+    "xs_VIX",
+    "xs_VIX_d12"
+   ]
+  },
+  "TIMING": {
+   "class_distribution_dev": {
+    "<=2": 9730,
+    "3-8": 15382,
+    "9-24": 7502,
+    ">24": 500
+   },
+   "majority_class": "3-8",
+   "label_entropy_bits": 1.6097,
+   "n_classes_dev": 4,
+   "effective_n_blind": 7306,
+   "majority_baseline_acc": 0.4645,
+   "PRICE_ONLY": {
+    "balanced_acc": 0.25,
+    "macro_f1": 0.1586,
+    "n_te": 7306
+   },
+   "increments_vs_PRICE": {
+    "STATE_HISTORY": {
+     "balanced_acc": 0.2501,
+     "macro_f1": 0.1596,
+     "delta_balanced_acc": 0.0001,
+     "delta_macro_f1": 0.001,
+     "available": true
+    },
+    "EVENT_HISTORY": {
+     "balanced_acc": 0.2551,
+     "macro_f1": 0.1744,
+     "delta_balanced_acc": 0.0051,
+     "delta_macro_f1": 0.0158,
+     "available": true
+    },
+    "MTF": {
+     "balanced_acc": 0.2505,
+     "macro_f1": 0.1598,
+     "delta_balanced_acc": 0.0005,
+     "delta_macro_f1": 0.0012,
+     "available": true
+    },
+    "VOLATILITY": {
+     "balanced_acc": 0.25,
+     "macro_f1": 0.1592,
+     "delta_balanced_acc": 0.0,
+     "delta_macro_f1": 0.0006,
+     "available": true
+    },
+    "CROSS_MARKET": {
+     "available": false,
+     "reason": "NO_DEV_COVERAGE"
+    },
+    "MACRO": {
+     "balanced_acc": 0.25,
+     "macro_f1": 0.1586,
+     "delta_balanced_acc": 0.0,
+     "delta_macro_f1": 0.0,
+     "available": true
+    }
+   },
+   "ALL_MODEL": {
+    "balanced_acc": 0.2623,
+    "macro_f1": 0.2007,
+    "n_te": 7306
+   },
+   "ablations": {
+    "minus_PRICE": {
+     "balanced_acc": 0.2624,
+     "delta_vs_ALL": 0.0001
+    },
+    "minus_STATE_HISTORY": {
+     "balanced_acc": 0.2599,
+     "delta_vs_ALL": -0.0024
+    },
+    "minus_EVENT_HISTORY": {
+     "balanced_acc": 0.2499,
+     "delta_vs_ALL": -0.0124
+    },
+    "minus_MTF": {
+     "balanced_acc": 0.2634,
+     "delta_vs_ALL": 0.0011
+    },
+    "minus_VOLATILITY": {
+     "balanced_acc": 0.26,
+     "delta_vs_ALL": -0.0023
+    },
+    "minus_CROSS_MARKET": {
+     "balanced_acc": 0.2623,
+     "delta_vs_ALL": 0.0
+    },
+    "minus_MACRO": {
+     "balanced_acc": 0.2623,
+     "delta_vs_ALL": 0.0
+    }
+   },
+   "columns_dropped_no_dev_coverage": [
+    "xs_DXY",
+    "xs_DXY_d12",
+    "xs_TNX",
+    "xs_TNX_d12",
+    "xs_VIX",
+    "xs_VIX_d12"
+   ]
+  }
+ },
+ "pit_audit": {
+  "features_used": [
+   "dwell",
+   "ev_0",
+   "ev_1",
+   "evchg_1",
+   "evchg_2",
+   "evchg_4",
+   "evchg_8",
+   "f_acc",
+   "f_act3",
+   "f_atr_pctl",
+   "f_eff3",
+   "f_er10",
+   "f_rng_exp",
+   "f_slope5",
+   "f_vel4",
+   "mtf_0",
+   "mtf_1",
+   "mtf_2",
+   "mtf_3",
+   "mtf_4",
+   "mtf_5",
+   "nod8",
+   "st_0",
+   "st_1",
+   "st_2",
+   "vol_20",
+   "vol_5",
+   "volr",
+   "xs_DXY",
+   "xs_DXY_d12",
+   "xs_TNX",
+   "xs_TNX_d12",
+   "xs_VIX",
+   "xs_VIX_d12"
+  ],
+  "forbidden_used": [],
+  "shift_direction": "all lags use .shift(+k) (past only) and cross-market uses reindex(method='ffill') as-of t",
+  "available_at_t": true,
+  "status": "PASS"
+ },
+ "special_checks": {
+  "why_state_loses_to_persistence": {
+   "majority_share_dev": 0.2497,
+   "state_entropy_bits": 2.79,
+   "persistence_acc": 0.343,
+   "previous_state_acc": 0.3144,
+   "PRICE_ONLY_balanced_acc": 0.2014,
+   "note": "the state label is sticky (high persistence) AND the classes are imbalanced; a 9-class model with weak signal loses to copying the current state"
+  },
+  "why_transition_below_half": {
+   "PRICE_ONLY_balanced_acc": 0.5,
+   "majority_share_dev": 0.6477,
+   "note": "transition base rate and near-random balanced accuracy indicate little H=8 timing information in the current features"
+  },
+  "why_scenario_beats_state": {
+   "scenario_classes": 3,
+   "state_classes": 9,
+   "scenario_entropy_bits": 1.5722,
+   "state_entropy_bits": 2.79,
+   "scenario_PRICE_ONLY": {
+    "balanced_acc": 0.5207,
+    "macro_f1": 0.5199,
+    "n_te": 7306
+   },
+   "state_PRICE_ONLY": {
+    "balanced_acc": 0.2014,
+    "macro_f1": 0.1629,
+    "n_te": 7306
+   },
+   "note": "collapsing 9 states into 3 families removes most of the uncertainty, so coverage is high while exact STATE is not"
+  },
+  "cross_market_adds_information": {
+   "STATE": {
+    "available": false,
+    "note": "group empty or insufficient data"
+   },
+   "TRANSITION": {
+    "available": false,
+    "note": "group empty or insufficient data"
+   },
+   "DIRECTION": {
+    "available": false,
+    "note": "group empty or insufficient data"
+   },
+   "SCENARIO": {
+    "available": false,
+    "note": "group empty or insufficient data"
+   },
+   "TIMING": {
+    "available": false,
+    "note": "group empty or insufficient data"
+   }
+  },
+  "mtf_adds_information": {
+   "STATE": {
+    "balanced_acc": 0.2099,
+    "macro_f1": 0.1784,
+    "delta_balanced_acc": 0.0085,
+    "delta_macro_f1": 0.0155,
+    "available": true
+   },
+   "TRANSITION": {
+    "balanced_acc": 0.5,
+    "macro_f1": 0.3965,
+    "delta_balanced_acc": 0.0,
+    "delta_macro_f1": 0.0,
+    "available": true
+   },
+   "DIRECTION": {
+    "balanced_acc": 0.4003,
+    "macro_f1": 0.3622,
+    "delta_balanced_acc": 0.007,
+    "delta_macro_f1": 0.007,
+    "available": true
+   },
+   "SCENARIO": {
+    "balanced_acc": 0.5394,
+    "macro_f1": 0.5395,
+    "delta_balanced_acc": 0.0187,
+    "delta_macro_f1": 0.0196,
+    "available": true
+   },
+   "TIMING": {
+    "balanced_acc": 0.2505,
+    "macro_f1": 0.1598,
+    "delta_balanced_acc": 0.0005,
+    "delta_macro_f1": 0.0012,
+    "available": true
+   }
+  },
+  "direction_imbalance_impact": {
+   "direction_distribution_dev": {
+    "NEUTRAL": 5064,
+    "DOWN": 14846,
+    "UP": 13204
+   },
+   "majority_share_dev": 0.4483,
+   "majority_baseline_acc": 0.457,
+   "PRICE_ONLY_balanced_acc": 0.3933,
+   "note": "majority share is high; raw accuracy is dominated by the NEUTRAL class, balanced accuracy is the honest metric"
+  }
+ },
+ "classification": {
+  "STATE": "INFORMATION_WEAK",
+  "TRANSITION": "INFORMATION_ABSENT",
+  "DIRECTION": "INFORMATION_WEAK",
+  "SCENARIO": "INFORMATION_PRESENT",
+  "TIMING": "TARGET_PROBLEM"
+ },
+ "chance_levels": {
+  "STATE": 0.1111,
+  "TRANSITION": 0.5,
+  "DIRECTION": 0.3333,
+  "SCENARIO": 0.3333,
+  "TIMING": 0.25
+ },
+ "cross_market_note": "CROSS_MARKET increment could not be estimated: the cross-market series only cover ~63 days (from 2026-07-17), so the development window has no cross-market observations -> DATA_LIMITATION, not evidence of no value.",
+ "MAIN_BOTTLENECK": "MIXED",
+ "immutability": {
+  "R3": "PASS",
+  "R4": "PASS",
+  "R5": "PASS",
+  "R5_1": "PASS",
+  "R6": "PASS"
+ },
+ "tests": {
+  "pass": 12,
+  "fail": 0,
+  "total": 12
+ }
+}

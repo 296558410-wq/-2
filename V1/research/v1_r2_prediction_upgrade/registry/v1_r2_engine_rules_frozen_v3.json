@@ -1,0 +1,50 @@
+{
+ "rules_version": "v1r2-r1-rules-v3",
+ "frozen_at_utc": "2026-09-26T12:26:51.015952+00:00",
+ "parent_rules_version": "v1r2-r1-rules-v2",
+ "changes": [
+  {
+   "old_rule": "HOLD requires regime in (COMPRESSION,RANGE)",
+   "new_rule": "HOLD also allows EXPANSION when break_risk in (LOW,NORMAL) and touch_state in (NO_TOUCH,FIRST_TOUCH,REPEATED_TOUCH)",
+   "justification": "RULE_COVERAGE_GAP: EXPANSION 是合法 regime 但无出口分支 (structural, non-outcome)"
+  },
+  {
+   "old_rule": "REVERSAL regime has no branch",
+   "new_rule": "REVERSAL -> REVERSION when touch_state in (REPEATED_TOUCH,EXHAUSTION_BUILDING) and level present",
+   "justification": "RULE_COVERAGE_GAP: REVERSAL 明确指向反向，却无出口"
+  },
+  {
+   "old_rule": "REVERSION requires EXHAUSTION_CONFIRMED + STRONG absorption",
+   "new_rule": "REVERSION also fires on EXHAUSTION_BUILDING + absorption POSSIBLE + break_risk>=ELEVATED",
+   "justification": "UNOBSERVABLE_PREREQUISITE: EXHAUSTION_CONFIRMED 实际发生率 0.0000, STRONG 0.0021"
+  }
+ ],
+ "direction_rule": {
+  "name": "RULE_MU_minimal_sufficient",
+  "definition": "direction = sign(vel) iff next_state != UNKNOWN AND >=2 independent support groups (TREND/MOMENTUM/LEVEL/BREAK) AND 0 counter groups",
+  "evidence_groups": {
+   "groups": [
+    "TREND_GROUP",
+    "MOMENTUM_GROUP",
+    "LEVEL_GROUP",
+    "BREAK_GROUP"
+   ],
+   "counter_groups": [
+    "COUNTER_ABSORPTION",
+    "COUNTER_EXHAUSTION",
+    "COUNTER_BREAK_RISK",
+    "COUNTER_FAILED_EVENT",
+    "COUNTER_DECELERATION"
+   ],
+   "independence_check": {
+    "TREND_vs_MOMENTUM_same_underlying": "NO (regime 与 momentum 为不同状态量, 已在记录中分别计算)",
+    "TREND_vs_LEVEL_same_underlying": "NO (结构 vs 位置)",
+    "MOMENTUM_vs_BREAK_same_underlying": "PARTIAL(均由动量派生) -> 同时出现时只按 2 组计且已在 sup 中去重",
+    "rule": "each group contributes at most 1; duplicates removed via set()"
+   },
+   "teacher_leakage": "NO (V1 direction 未进入任何 feature/rule)"
+  }
+ },
+ "note": "方向仅作 reachability 设计；未使用任何未来收益",
+ "rules_hash": "69db133a7b879c2785d4dd4353c5280185167d3d21063bf5b286cb9bb9ab2f4a"
+}

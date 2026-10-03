@@ -1,0 +1,122 @@
+{
+ "schema": "v3_alpha_hypotheses_r1/1",
+ "round": "R1",
+ "ts_utc": "2026-09-25T10:21:13.377676+00:00",
+ "frozen_before_any_evaluation": true,
+ "count": 8,
+ "hypotheses": [
+  {
+   "hypothesis_id": "HF_A1_MOMENTUM_BREAKOUT60",
+   "family": "A_momentum",
+   "mechanism": "a close above the prior 60-minute high indicates short-term demand imbalance that continues",
+   "signal_definition": {
+    "feature": "close > rolling_max(high,60).shift(1)",
+    "direction": "LONG (+1)"
+   },
+   "entry_definition": "close of t+1",
+   "exit_definition": "close of t+1+hold",
+   "holding_period": 5,
+   "cost_model": "0.914bp base, stress 0x/1x/2x/3x",
+   "data_version": "histdata_2025_01_2026_09"
+  },
+  {
+   "hypothesis_id": "HF_A2_MOMENTUM_IMPULSE5",
+   "family": "A_momentum",
+   "mechanism": "a 5-minute impulse is followed by continuation over the next few minutes",
+   "signal_definition": {
+    "feature": "return_5m >= +25bp -> LONG ; return_5m <= -25bp -> SHORT",
+    "direction": "sign of return_5m"
+   },
+   "entry_definition": "close of t+1",
+   "exit_definition": "close of t+1+hold",
+   "holding_period": 3,
+   "cost_model": "0.914bp base, stress 0x/1x/2x/3x",
+   "data_version": "histdata_2025_01_2026_09"
+  },
+  {
+   "hypothesis_id": "HF_B1_REVERSION_IMPULSE3",
+   "family": "B_reversal",
+   "mechanism": "a 3-minute overextension reverts",
+   "signal_definition": {
+    "feature": "return_3m <= -20bp -> LONG ; return_3m >= +20bp -> SHORT",
+    "direction": "-sign(return_3m)"
+   },
+   "entry_definition": "close of t+1",
+   "exit_definition": "close of t+1+hold",
+   "holding_period": 5,
+   "cost_model": "0.914bp base, stress 0x/1x/2x/3x",
+   "data_version": "histdata_2025_01_2026_09"
+  },
+  {
+   "hypothesis_id": "HF_B2_REVERSION_BREAKDOWN60",
+   "family": "B_reversal",
+   "mechanism": "a breakdown below the prior 60-minute low fails and reverts (failed breakout)",
+   "signal_definition": {
+    "feature": "close < rolling_min(low,60).shift(1)",
+    "direction": "LONG (+1)"
+   },
+   "entry_definition": "close of t+1",
+   "exit_definition": "close of t+1+hold",
+   "holding_period": 5,
+   "cost_model": "0.914bp base, stress 0x/1x/2x/3x",
+   "data_version": "histdata_2025_01_2026_09"
+  },
+  {
+   "hypothesis_id": "HF_C1_VOLCOMP_BREAKOUT",
+   "family": "C_vol_state",
+   "mechanism": "after a volatility compression the market breaks in the direction of the latest push",
+   "signal_definition": {
+    "feature": "vol_percentile_240 < 0.20 AND range_5m_bp < 15",
+    "direction": "sign(return_5m)"
+   },
+   "entry_definition": "close of t+1",
+   "exit_definition": "close of t+1+hold",
+   "holding_period": 10,
+   "cost_model": "0.914bp base, stress 0x/1x/2x/3x",
+   "data_version": "histdata_2025_01_2026_09"
+  },
+  {
+   "hypothesis_id": "HF_C2_VOLEXP_FADE",
+   "family": "C_vol_state",
+   "mechanism": "a volatility expansion accompanied by a large 5-minute move is faded",
+   "signal_definition": {
+    "feature": "vol_change_5_30 > 2.0 AND abs(return_5m) >= 30bp",
+    "direction": "-sign(return_5m)"
+   },
+   "entry_definition": "close of t+1",
+   "exit_definition": "close of t+1+hold",
+   "holding_period": 5,
+   "cost_model": "0.914bp base, stress 0x/1x/2x/3x",
+   "data_version": "histdata_2025_01_2026_09"
+  },
+  {
+   "hypothesis_id": "HF_D1_NY_OPEN_MOMENTUM",
+   "family": "D_time_structure",
+   "mechanism": "NY-session momentum persists longer than the average hour",
+   "signal_definition": {
+    "feature": "session=='NY' AND hour in 13..16 AND abs(return_15m)>=40bp",
+    "direction": "sign(return_15m)"
+   },
+   "entry_definition": "close of t+1",
+   "exit_definition": "close of t+1+hold",
+   "holding_period": 15,
+   "cost_model": "0.914bp base, stress 0x/1x/2x/3x",
+   "data_version": "histdata_2025_01_2026_09"
+  },
+  {
+   "hypothesis_id": "HF_D2_ASIA_REVERSION",
+   "family": "D_time_structure",
+   "mechanism": "the quiet Asia session mean-reverts short overextensions",
+   "signal_definition": {
+    "feature": "session=='ASIA' AND abs(return_10m)>=20bp",
+    "direction": "-sign(return_10m)"
+   },
+   "entry_definition": "close of t+1",
+   "exit_definition": "close of t+1+hold",
+   "holding_period": 15,
+   "cost_model": "0.914bp base, stress 0x/1x/2x/3x",
+   "data_version": "histdata_2025_01_2026_09"
+  }
+ ],
+ "registry_hash": "77c48ac1b08f3062ea5cff8b4af5cdec15888064ba084add8767cc55490b3b04"
+}

@@ -1,0 +1,75 @@
+{
+  "hypothesis": "range regime 是否改变 momentum 有效性？",
+  "features": "mom_10_x_compression",
+  "parameters": {
+    "holding": 60,
+    "feature_params": {}
+  },
+  "dataset": "XAUUSD_M1_Dukascopy-HTTP_20260904_v001",
+  "train_period": "2023-09-01 00:00:00+00:00→2024-01-07 09:36:00+00:00",
+  "test_period": "2024-01-07 09:36:00+00:00→2024-03-16 23:59:00+00:00",
+  "OOS": {
+    "ic": -0.010988870499383106,
+    "p": 0.005
+  },
+  "FDR": {
+    "q": 0.009857142857142858,
+    "reject": true
+  },
+  "WF": {
+    "folds_ic": [
+      -0.0302,
+      0.0028,
+      -0.0672,
+      0.016,
+      0.0065
+    ],
+    "positive_frac": 0.6,
+    "n_folds": 5
+  },
+  "cost_stress": {
+    "1x": -8.6577,
+    "2x": -16.4487,
+    "3x": -23.6325,
+    "net_total": -0.3587199811092193,
+    "n_trades": 1496,
+    "subperiod": {
+      "n_parts": 4,
+      "parts": [
+        {
+          "segment": 1,
+          "n": 40421,
+          "sharpe": -0.259,
+          "mean": -3.5993375035485485e-06
+        },
+        {
+          "segment": 2,
+          "n": 40422,
+          "sharpe": -0.182,
+          "mean": -2.465402603677012e-06
+        },
+        {
+          "segment": 3,
+          "n": 40421,
+          "sharpe": -0.175,
+          "mean": -2.119344379497143e-06
+        },
+        {
+          "segment": 4,
+          "n": 40422,
+          "sharpe": -0.156,
+          "mean": -2.7033595611127507e-06
+        }
+      ],
+      "sharpe_positive_frac": 0.0,
+      "sharpe_min": -0.259,
+      "sharpe_max": -0.156,
+      "note": "子段 Sharpe 一致性低 → 结果可能依赖特定时期"
+    }
+  },
+  "subperiod": null,
+  "status": "REJECTED",
+  "git_commit": "47602de",
+  "alpha_id": "H9_range_x_momentum_01_mom_10_x_compression_h60_v001",
+  "created_at": "2026-09-04T12:42:16.181154+00:00"
+}

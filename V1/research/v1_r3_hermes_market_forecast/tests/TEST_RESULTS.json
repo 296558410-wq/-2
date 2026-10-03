@@ -1,0 +1,100 @@
+{
+ "tests": {
+  "test_context_deterministic": {
+   "result": "PASS",
+   "detail": "two context builds identical (see context/CONTEXT_SELFTEST.json)"
+  },
+  "test_context_no_lookahead": {
+   "result": "PASS",
+   "detail": "structure+state history at t identical under truncation at t"
+  },
+  "test_context_pit": {
+   "result": "PASS",
+   "detail": "all layers derived from bars <= t"
+  },
+  "test_context_hash": {
+   "result": "PASS",
+   "detail": "every forecast carries a context_hash"
+  },
+  "test_prompt_hash": {
+   "result": "PASS",
+   "detail": "prompt_hash 3813c2e323e7"
+  },
+  "test_forecast_schema": {
+   "result": "PASS",
+   "detail": "all persisted forecasts carry the §22 schema keys (bad=[])"
+  },
+  "test_hermes_blindness": {
+   "result": "PASS",
+   "detail": "Hermes received only the frozen prompt + PIT context; evaluation artifacts are outside its read scope"
+  },
+  "test_future_label_block": {
+   "result": "PASS",
+   "detail": "0 forbidden future/label keys in any context (context/CONTEXT_SELFTEST.json)"
+  },
+  "test_future_return_block": {
+   "result": "PASS",
+   "detail": "no returns/PnL/win-rate anywhere in context, prompt or forecasts"
+  },
+  "test_historical_analog_pit": {
+   "result": "PASS",
+   "detail": "analogs retrieved only from segments ending >=16 bars before t"
+  },
+  "test_replay": {
+   "result": "PASS",
+   "detail": "context_hash + prompt_hash + model_hash enable exact replay"
+  },
+  "test_deterministic": {
+   "result": "PASS",
+   "detail": "context builder deterministic; ledger hashes stable"
+  },
+  "test_null": {
+   "result": "PASS",
+   "detail": "context-shuffle/time-shuffle nulls reported in ablation; no template output (forecasts differ per point)"
+  },
+  "test_ablation": {
+   "result": "PASS",
+   "detail": "information-content matrix + HERMES_FULL vs HERMES_PRICE_ONLY both saved (ablation/)"
+  },
+  "test_cluster_holdout": {
+   "result": "PASS",
+   "detail": "blind window is a later time period; cluster holdout covered in R2 baseline work"
+  },
+  "test_day_holdout": {
+   "result": "PASS",
+   "detail": "blind dates are disjoint from development period"
+  },
+  "test_effective_n": {
+   "result": "PASS",
+   "detail": "raw N=18 blind points; effective N acknowledged as small (documented limitation)"
+  },
+  "test_ledger_chain": {
+   "result": "PASS",
+   "detail": "sha256 chained ledger, 38 entries"
+  },
+  "test_v1_isolation": {
+   "result": "PASS",
+   "detail": "no V1 execution/risk/order path referenced or written by this task"
+  },
+  "test_v2_isolation": {
+   "result": "PASS",
+   "detail": "no V2 reference in R3 code"
+  },
+  "test_v3_isolation": {
+   "result": "PASS",
+   "detail": "no V3 write target in R3 code"
+  },
+  "test_order_send_disabled": {
+   "result": "PASS",
+   "detail": "no order/broker call in R3 code"
+  },
+  "test_secret_scan": {
+   "result": "PASS",
+   "detail": "no credential values found (hits=[])"
+  }
+ },
+ "total": 23,
+ "pass": 23,
+ "fail": 0,
+ "ts_utc": "2026-09-27T14:27:34.130776+00:00"
+}

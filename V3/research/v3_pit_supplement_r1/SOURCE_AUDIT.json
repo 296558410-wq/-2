@@ -1,0 +1,75 @@
+{
+ "schema": "v3_pit_supplement_source_audit/1",
+ "ts_utc": "2026-10-01T13:07:04.625766+00:00",
+ "dictionary_frozen_hash": "1b33f28b7f4e81b85a02ede4772ef2ea2318c4716ed7a585a25b90f7b35c7c51",
+ "dictionary_frozen_at": "2026-10-01T13:10:00+00:00",
+ "probe_policy": "one attempt per candidate; no window retry; rate-limit/error pages are not data",
+ "sources": {
+  "YAHOO_DXY_1H_2Y": {
+   "tier": "T3_market",
+   "url": "https://query1.finance.yahoo.com/v8/finance/chart/DX-Y.NYB?interval=1h&range=2y",
+   "http_status": null,
+   "bytes": null,
+   "payload_verified": false,
+   "reproduced": null,
+   "prior_sha256": "9507d567ab1be9a460cf9555c246693d",
+   "error": "HTTPError:HTTP Error 403: Forbidden"
+  },
+  "YAHOO_VIX_1H_2Y": {
+   "tier": "T3_market",
+   "url": "https://query1.finance.yahoo.com/v8/finance/chart/%5EVIX?interval=1h&range=2y",
+   "http_status": null,
+   "bytes": null,
+   "payload_verified": false,
+   "reproduced": null,
+   "prior_sha256": null,
+   "error": "HTTPError:HTTP Error 403: Forbidden"
+  },
+  "YAHOO_DXY_5M_60D": {
+   "tier": "T3_market",
+   "url": "https://query1.finance.yahoo.com/v8/finance/chart/DX-Y.NYB?interval=5m&range=60d",
+   "http_status": null,
+   "bytes": null,
+   "payload_verified": false,
+   "reproduced": null,
+   "prior_sha256": "daf153ccd1c7244eb8ddf4acb041adf1",
+   "error": "HTTPError:HTTP Error 403: Forbidden"
+  },
+  "YAHOO_VIX_5M_60D": {
+   "tier": "T3_market",
+   "url": "https://query1.finance.yahoo.com/v8/finance/chart/%5EVIX?interval=5m&range=60d",
+   "http_status": null,
+   "bytes": null,
+   "payload_verified": false,
+   "reproduced": null,
+   "prior_sha256": "fd75313b15142072464fd99de1bb78f0",
+   "error": "HTTPError:HTTP Error 403: Forbidden"
+  },
+  "JIN10_MCP_list_calendar": {
+   "tier": "T2_event_calendar",
+   "endpoint": "https://mcp.jin10.com/mcp",
+   "http_status": 200,
+   "payload_verified": false,
+   "reproduced": null,
+   "token_echoed": false,
+   "rows": 0,
+   "raw_hash": "74234e98afe7498fb5daf1f36ac2d78a"
+  },
+  "US_TREASURY_YIELD_CURVE": {
+   "tier": "T1_official",
+   "name": "US_TREASURY_YIELD_CURVE",
+   "signal": "local-file-hash-check",
+   "entries": [
+    {
+     "source": "US_TREASURY_YIELD_CURVE_2024",
+     "hash_match": true
+    },
+    {
+     "source": "US_TREASURY_YIELD_CURVE_2026",
+     "hash_match": true
+    }
+   ],
+   "payload_verified": true
+  }
+ }
+}

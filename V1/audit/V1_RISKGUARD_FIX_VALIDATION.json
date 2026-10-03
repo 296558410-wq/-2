@@ -1,0 +1,101 @@
+{
+ "generated_utc": "2026-10-02T03:43:55.279213+00:00",
+ "python": "C:\\AIQuant\\.venv\\Scripts\\python.exe",
+ "regression_tests": {
+  "returncode": 0,
+  "pass": 12,
+  "total": 12,
+  "checks": [
+   [
+    "PASS",
+    "mcl_blocks_4th",
+    "3 losses cons=3 -> ['MAX_DAILY_LOSS', 'MAX_CONSECUTIVE_LOSS']"
+   ],
+   [
+    "PASS",
+    "mcl_allows_3rd",
+    "2 losses cons=2 -> allow=True []"
+   ],
+   [
+    "PASS",
+    "mdl_blocks",
+    "daily=-21.6 -> ['MAX_DAILY_LOSS', 'MAX_CONSECUTIVE_LOSS']"
+   ],
+   [
+    "PASS",
+    "mdl_below_not_blocked",
+    "daily=-9.2 -> allow=True"
+   ],
+   [
+    "PASS",
+    "stale_blocks",
+    "age=1000 -> ['STALE_DATA']"
+   ],
+   [
+    "PASS",
+    "fresh_allows",
+    "age=120 -> []"
+   ],
+   [
+    "PASS",
+    "age_same_source",
+    "tick(10500)-last_completed_close(9940+60)=500.0"
+   ],
+   [
+    "PASS",
+    "age_none_blocks",
+    "None age -> STALE_DATA (fail-closed)"
+   ],
+   [
+    "PASS",
+    "slippage_blocks",
+    "20 bps -> ['SLIPPAGE_LIMIT']"
+   ],
+   [
+    "PASS",
+    "normal_allows",
+    "[]"
+   ],
+   [
+    "PASS",
+    "day_isolation",
+    "daily=0.0 -> allow=True"
+   ],
+   [
+    "PASS",
+    "ledger_repro_should_reject",
+    "should-reject-but-allowed=8 (by day {'2026-09-30': 6, '2026-10-01': 2})"
+   ]
+  ]
+ },
+ "defect_repro": {
+  "returncode": 0,
+  "should_reject_but_allowed": 8,
+  "opens": 32,
+  "stability": "identical across price/net basis x UTC/server frame (see script output)"
+ },
+ "execution_path_proof": {
+  "cycle_order_send_occurrences": 1,
+  "cycle_order_check_occurrences": 1,
+  "patch_added_lines_with_order_send": 0,
+  "patch_added_lines_with_order_check": 0,
+  "send_gate": "order_send only under: action=='ENTER' and oi['trade'] and chk_ok and send_enabled",
+  "dry_run_branch": "in --dry-run the action is set to WOULD_ENTER, so the send block is unreachable"
+ },
+ "order_send_control": {
+  "runtime_config.order_send_enabled": true,
+  "note": "unchanged by this audit; the fix never bypasses this flag",
+  "orders_sent_by_this_audit": 0,
+  "order_check_by_this_audit": 0
+ },
+ "production_untouched": {
+  "fingerprints": {
+   "gates.py": "0e02a4240b517b2a987c377d4488945a75c701c144e56ca3691d0ed349f2c9d3",
+   "cycle.py": "dcb7edde220cfe07be93c72cda1fa55ae48ed71316b384a38c1898d7161b523b",
+   "run_gates.py": "c2fc89be0f27bb90f0fe7144e445e310c862418210d487ce483a1127ce7018a7",
+   "registry/runtime_config.json": "0732456adc415587763894506e0cd981460711966b2782d3bfda89acff062b38"
+  },
+  "unchanged": true
+ },
+ "verdict": "FIX_VALIDATED_NO_PRODUCTION_CHANGE"
+}

@@ -1,0 +1,139 @@
+V1 risk-guard wiring fix — unified diff (backup -> applied)
+
+--- a/gates.py
++++ b/gates.py
+@@ -12,7 +12,7 @@
+ import json
+ import os
+ import time
+-from datetime import datetime, timezone
++from datetime import datetime, timedelta, timezone
+ 
+ GENESIS = "0" * 64
+ EVENTS = ["DECISION", "ORDER_CHECK", "ORDER_REQUEST", "ORDER_SEND", "FILL", "POSITION", "CLOSE", "PNL"]
+@@ -170,3 +170,71 @@
+         if comment != COMMENT:
+             problems.append("COMMENT_MISMATCH")
+         return (len(problems) == 0, problems)
++
++
++# ---------------------------------------------------------------------------------------------
++# Risk-state rebuild + real-input helpers (V1 risk-guard wiring fix, operator-authorised 2026-10-02)
++# Rebuild the RiskGuard counters from ledger CLOSE/PNL facts; supply same-source staleness and the
++# last realised fill slippage. No limit value, alpha, mapping or execution path is changed here:
++# these helpers only make the already-declared guards able to fire (fail-closed, deny-only).
++# ---------------------------------------------------------------------------------------------
++SERVER_OFFSET_SEC = 10800          # FXTM demo server frame = UTC+3 (audit §9)
++
++
++def realized_close_utc(ev, server_offset_sec=SERVER_OFFSET_SEC):
++    """UTC instant at which the broker realised the close (broker_time_utc is server frame)."""
++    s = ev.get("broker_time_utc")
++    if s:
++        return datetime.fromisoformat(s) - timedelta(seconds=server_offset_sec)
++    return datetime.fromisoformat(ev["ts_utc"])
++
++
++def realized_pnl(ev, basis="net"):
++    """Realised PnL of a PNL event. basis='net' adds commission/swap when recorded on the event."""
++    price = float(ev.get("pnl") or 0.0)
++    if basis != "net":
++        return price
++    c, s = ev.get("commission"), ev.get("swap")
++    if c is None and s is None:
++        return price            # cost not recorded on the event -> price component (documented)
++    return price + float(c or 0.0) + float(s or 0.0)
++
++
++def rebuild_risk_state(rg, events, day, basis="net", server_offset_sec=SERVER_OFFSET_SEC):
++    """Rebuild daily_loss / consecutive_losses for `day` (UTC = NOW[:10]) from ledger PNL facts.
++
++    Only closes realised on `day` count (engine semantics: roll_day resets both counters at the
++    day boundary). Deterministic and idempotent: same ledger -> same counters.
++    """
++    day_closes = []
++    for e in events:
++        if e.get("event") != "PNL":
++            continue
++        utc = realized_close_utc(e, server_offset_sec)
++        if utc.date().isoformat() == day:
++            day_closes.append((utc, realized_pnl(e, basis)))
++    day_closes.sort(key=lambda t: t[0])
++    rg.roll_day(day)
++    for _, pnl in day_closes:
++        rg.note_close(pnl)
++    return rg
++
++
++def data_age_seconds(tick_server_time, m1_bars):
++    """Real staleness, SAME-SOURCE server frame (fixes the old UTC/server mixed -10590 bug).
++
++    Age = now(server) - close time(server) of the last COMPLETED M1 bar. None if unusable
++    (callers feed None into the guard, which returns STALE_DATA => deny).
++    """
++    if tick_server_time is None or m1_bars is None or len(m1_bars) < 2:
++        return None
++    return float(int(tick_server_time) - (int(m1_bars[-2]["time"]) + 60))
++
++
++def last_realized_slippage_bps(events):
++    """Most recent realised fill slippage from ORDER_SEND facts; None if never measured."""
++    val = None
++    for e in events:
++        if e.get("event") == "ORDER_SEND" and e.get("slippage_bps") is not None:
++            val = float(e["slippage_bps"])
++    return val
+
+--- a/cycle.py
++++ b/cycle.py
+@@ -18,7 +18,8 @@
+ from datetime import datetime, timedelta, timezone
+ 
+ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+-from gates import Ledger, RiskGuard, DemoGate, MAGIC, COMMENT  # noqa: E402
++from gates import (Ledger, RiskGuard, DemoGate, MAGIC, COMMENT,           # noqa: E402
++                   rebuild_risk_state, data_age_seconds, last_realized_slippage_bps)
+ import signal_baseline as SB  # noqa: E402
+ 
+ REPO = r"C:\AIQuant"
+@@ -232,7 +233,9 @@
+         lg.append("CLOSE", order_id=pid, position_id=pid, side=side, qty=qty, price=exit_px,
+                   reason=reason, broker_comment=cmt, broker_time_utc=close_ts)
+         lg.append("PNL", order_id=pid, position_id=pid, pnl=profit, entry=entry_px, exit=exit_px,
+-                  qty=qty, side=side, reason=reason, realized_R=rr, sl=sl, tp=tp, broker_time_utc=close_ts)
++                  qty=qty, side=side, reason=reason, realized_R=rr, sl=sl, tp=tp, broker_time_utc=close_ts,
++                  commission=round(float(getattr(c, "commission", 0.0) or 0.0), 2),
++                  swap=round(float(getattr(c, "swap", 0.0) or 0.0), 2))
+         out.append({"position_id": pid, "side": side, "reason": reason, "pnl": profit, "realized_R": rr})
+     return out
+ 
+@@ -284,10 +287,18 @@
+             res["reconcile_error"] = str(_e)[:150]
+         snap = snapshot(mt5)
+         atr = atr_m15(mt5)
+-        rg = RiskGuard(); rg.roll_day(NOW[:10])
++        # risk state is rebuilt from the ledger CLOSE/PNL facts => persists across cycles
++        _events = _ledger_rows(LEDGER)
++        rg = rebuild_risk_state(RiskGuard(), _events, NOW[:10])
+         intent = {"order_id": f"{MAGIC}-{NOW}", "already_sent": set()}
++        # real inputs: same-source (server frame) staleness + last realised fill slippage
++        _tick = mt5.symbol_info_tick(SYMBOL)
++        _m1 = mt5.copy_rates_from_pos(SYMBOL, mt5.TIMEFRAME_M1, 0, 3)
++        _age = data_age_seconds(getattr(_tick, "time", None), _m1)
++        _slip = last_realized_slippage_bps(_events)
+         allow, reasons = rg.evaluate(intent, {"spread_bps": (snap or {}).get("spread_bps") or 0,
+-                                                "slippage_bps": 0, "data_age_seconds": 0}, len(positions))
++                                                "slippage_bps": (_slip if _slip is not None else 0),
++                                                "data_age_seconds": _age}, len(positions))
+         mapping = SB.load_mapping(MAPPING)
+         if src == "BASELINE_TRANSITION":
+             ls = live_state_family(mt5)
+@@ -315,6 +326,8 @@
+                    not_hermes_alpha=True)
+         res.update({"action": action, "signal": sig, "order_intent": oi, "live_state": ls, "risk_allow": bool(allow),
+                      "risk_reasons": reasons, "snapshot": snap, "atr": atr, "account_positions": len(positions),
++                     "risk_daily_loss": rg.daily_loss, "risk_consecutive_losses": rg.consecutive_losses,
++                     "data_age_seconds": _age, "slippage_bps_used": _slip,
+                      "mapping_hash": mapping.get("mapping_hash", "")[:16]})
+         if action == "ENTER" and oi.get("trade"):
+             req_base = {"action": mt5.TRADE_ACTION_DEAL, "symbol": SYMBOL, "volume": float(oi["lots"]),

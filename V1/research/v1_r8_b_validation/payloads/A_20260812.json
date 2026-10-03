@@ -1,0 +1,105 @@
+{
+ "forecast_id": "R8B_A_20260812",
+ "sample_id": "A_20260812",
+ "timestamp": "2026-08-12T00:00:00+00:00",
+ "horizon": 4,
+ "scenario_family": "RANGE",
+ "scenario_alternative": "DIRECTIONAL",
+ "scenario_abstain": false,
+ "observations": [
+  "Price 4367 at 00:00, inside swing-low support 4365.4",
+  "Intraday M1-M15 contracting, 7 consecutive down bars",
+  "H1 trend_20 -45; H4 trend_20 +160; agreement CONFLICT",
+  "State COMPRESSION dwell 6, event REJECTION; DXY flat 99.8"
+ ],
+ "what_i_know": [
+  "Close 4367.5 M1; support level 4365.4 side DN",
+  "Trend_20 negative on M1 M5 M15 H1; positive H4",
+  "State COMPRESSION dwell 6; event REJECTION at t",
+  "DXY 99.797 flat; VIX and UST10Y unavailable"
+ ],
+ "what_i_do_not_know": [
+  "H4 close 4410.9 conflicts with M1 close 4367.5",
+  "Whether swing-low support 4365.4 holds or breaks",
+  "News and macro catalysts; VIX UST10Y absent",
+  "State transition timing within H=4 horizon"
+ ],
+ "evidence": [
+  "Support 4365.4 inside, 28 touches in 240 bars",
+  "REJECTION event; compression dwell 6 bars",
+  "Analog A34341 stays COMPRESSION through step 16",
+  "DXY flat; H4 uptrend medium-term intact"
+ ],
+ "counter_evidence": [
+  "7 consecutive down bars; trend_20 negative intraday",
+  "H1 trend_20 -45.4 short-term downside momentum",
+  "H4 close 4410.9 vs M1 close 4367.5 inconsistency",
+  "Analog A36983 shows DIRECTIONAL and ROTATION evolution"
+ ],
+ "possible_mechanisms": [
+  {
+   "mechanism": "support_rejection_bounce",
+   "status": "POSSIBLE",
+   "why": "REJECTION event; 28 touches hold level"
+  },
+  {
+   "mechanism": "trend_continuation",
+   "status": "POSSIBLE",
+   "why": "8-bar displacement -3.97; break confirms"
+  },
+  {
+   "mechanism": "compression_breakout",
+   "status": "WEAK",
+   "why": "dwell 6 contracting; direction unresolved"
+  },
+  {
+   "mechanism": "mean_reversion",
+   "status": "UNKNOWN",
+   "why": "H4 uptrend versus intraday downtrend conflict"
+  }
+ ],
+ "primary_scenario": {
+  "scenario": "RANGE",
+  "horizon": 4,
+  "trigger": "Price holds 4360-4390 band at swing-low",
+  "invalidation": "Decisive close below 4365.4 or above 4400"
+ },
+ "alternative_scenario": {
+  "scenario": "DIRECTIONAL",
+  "horizon": 4,
+  "trigger": "Break 4365.4 support or surge through 4390",
+  "invalidation": "Failure to sustain break, re-entry into band"
+ },
+ "expected_transition": "COMPRESSION -> RANGE",
+ "direction_bias": "NO_DIRECTIONAL_EDGE",
+ "time_horizon": "H4",
+ "evidence_strength": 0.4,
+ "confidence": 0.45,
+ "uncertainty": 0.6,
+ "confidence_reason": "Compression at tested support plus flat DXY; analogs mixed",
+ "uncertainty_reason": "Cross-timeframe conflict and H4 close anomaly reduce clarity",
+ "invalidation": "Decisive close below 4365.4 or above 4400 within H=4",
+ "change_my_mind": [
+  "M1 and M5 trend_20 flip positive",
+  "Break and hold below 4365.4",
+  "Reclaim above 4390 with expanding range",
+  "VIX or UST10Y data shows risk signal"
+ ],
+ "abstain": false,
+ "abstain_reason": "",
+ "questions": {
+  "Q1": "Only context-stated facts: close, level, states, DXY",
+  "Q2": "Next move direction, H4 anomaly, catalysts unknown",
+  "Q3": "Support holds, rejection, compression, flat DXY",
+  "Q4": "Intraday downtrend and possible support break",
+  "Q5": "Support bounce at level; not assertable as fact",
+  "Q6": "Break 4365.4, VIX spike, or reclaim 4400",
+  "Q7": "false; view formed despite cross-timeframe conflict"
+ },
+ "reasoning_trace": [
+  "Lower timeframes contracting at support 4365.4",
+  "H4 uptrend conflicts with intraday downtrend",
+  "REJECTION plus COMPRESSION favor near-term range",
+  "Analogs mixed; RANGE primary, DIRECTIONAL alternative"
+ ]
+}

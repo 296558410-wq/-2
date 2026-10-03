@@ -1,0 +1,93 @@
+{
+ "schema": "v3_phase2_pit_capability_alignment/1",
+ "tick_window_utc": [
+  "2026-09-21T01:08:06.326000+00:00",
+  "2026-10-01T12:54:06.646000+00:00"
+ ],
+ "tick_rows": 1712560,
+ "tick_days": 9,
+ "calendar_vintages": {
+  "JIN10_CALENDAR_20261001T130733Z.json": {
+   "events_total": 283,
+   "events_inside_tick_window": 223,
+   "by_day": {
+    "2026-09-27": 2,
+    "2026-09-28": 20,
+    "2026-09-29": 61,
+    "2026-09-30": 109,
+    "2026-10-01": 31
+   },
+   "by_importance": {
+    "None": 223
+   },
+   "window_original": [
+    "2026-09-28 07:50",
+    "2026-10-03 10:05"
+   ],
+   "captured_at_utc": "2026-10-01T13:07:33.075620+00:00"
+  },
+  "V3_JIN10_EVENT_PIT.json": {
+   "events_total": 158,
+   "events_inside_tick_window": 156,
+   "by_day": {
+    "2026-09-21": 8,
+    "2026-09-22": 30,
+    "2026-09-23": 50,
+    "2026-09-24": 50,
+    "2026-09-25": 18
+   },
+   "by_importance": {
+    "2": 78,
+    "1": 45,
+    "3": 30,
+    "4": 3
+   },
+   "window_original": [
+    "2026-09-20T23:01:00+00:00",
+    "2026-09-25T17:00:00+00:00"
+   ],
+   "captured_at_utc": "2026-09-25T09:05:59.931864+00:00"
+  }
+ },
+ "families": {
+  "A_microstructure": {
+   "status": "TESTABLE",
+   "granularity": "tick",
+   "change": "unchanged from R1",
+   "reason": "tick snapshot available"
+  },
+  "C_liquidity_spread_regime": {
+   "status": "TESTABLE",
+   "granularity": "tick",
+   "change": "unchanged from R1",
+   "reason": "tick snapshot available"
+  },
+  "F_nondirectional": {
+   "status": "TESTABLE",
+   "granularity": "tick",
+   "change": "unchanged from R1",
+   "reason": "tick snapshot available"
+  },
+  "D_event_microstructure": {
+   "status": "TESTABLE",
+   "granularity": "event-time + tick",
+   "change": "NOT_TESTABLE -> TESTABLE (this round)",
+   "reason": "the blocker was ZERO overlap between the calendar window and the FROZEN tick snapshot. A new immutable snapshot now covers 2026-09-21..2026-10-01 and overlaps BOTH frozen calendar vintages.",
+   "caveat": "thin: 9 trading days total, split across two non-overlapping vintages; eff_n per vintage will be small -> INSUFFICIENT_SAMPLE is a likely ladder outcome, reported honestly"
+  },
+  "E_crossmarket_leadlag": {
+   "status": "TESTABLE_AT_1H_PARTIAL",
+   "granularity": "1h bars (2y overlap)",
+   "change": "LIMITED -> TESTABLE_AT_1H (partial)",
+   "reason": "extant Yahoo 1h/2y DXY+VIX artifacts give a 624-day overlap",
+   "caveat": "live Yahoo re-fetch returned HTTP 403 this round -> conclusions rest on the previously stored artifacts; bar open/close semantics remain UNKNOWN; 5m overlap only ~63 days"
+  },
+  "B_execution_alpha": {
+   "status": "NOT_TESTABLE",
+   "granularity": "n/a",
+   "change": "UNCHANGED",
+   "reason": "NOT a calendar/cross-market problem. bid_vol/ask_vol are identically 0 (DATA_GAP) => no size-weighted microprice, no queue, no fill probability. Would require L2/order-book data (separate availability question). This round does not unlock B and does not claim to."
+  }
+ },
+ "rule_check": "no hypothesis definition was rewritten; capability upgrades only create NEW ids with fresh pre-registration"
+}

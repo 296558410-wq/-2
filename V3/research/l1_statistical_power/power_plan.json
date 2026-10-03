@@ -1,0 +1,88 @@
+{
+  "schema": "v3_l1_power_plan/1",
+  "task": "V3-HFT-L1-STATISTICAL-POWER-CLOSURE-001",
+  "created_utc": "2026-09-22T05:20:00Z",
+  "status": "IMMUTABLE — frozen before the first computation; any change requires power_plan_v2.json",
+  "mode": "AUDIT_ONLY / READ_ONLY / OFFLINE",
+  "question": "How much real FXTM L1 data is required, per horizon 5s-5min, for a future independent alpha replication to reach pre-registered statistical power?",
+
+  "forbidden": [
+    "alpha discovery", "model discovery", "feature mining", "strategy optimisation",
+    "forward validation", "trading", "rerunning strategy/model/feature selection",
+    "adding features/indicators/labels/models/signals/thresholds",
+    "session selection", "choosing horizons from current results",
+    "using observed +7.99bp/30s as an effect size"
+  ],
+
+  "DATA_SNAPSHOT_ID": "V3-SNAP-20260922T025312Z",
+  "DATA_MANIFEST_SHA256": "a036a808d5d924a7a99c5941919971ff00ce9e28c804e8e91860b6ffd7fa61b5",
+  "live_fxtm_read": false,
+
+  "inherited_frozen_facts": {
+    "V3_HFT_STATUS": "DATA_INSUFFICIENT",
+    "5s": "STATISTICALLY_USABLE_BUT_NET_NEGATIVE",
+    "10s": "INSUFFICIENT", "30s": "INSUFFICIENT", "60s": "INSUFFICIENT", "5min": "INSUFFICIENT",
+    "EXECUTABLE_ALPHA": "NOT_FOUND",
+    "LABEL_GAP_GUARD_BUG": "FIXED_IN_PREVIOUS_TASK",
+    "MECHANICAL_SIGNAL": "REJECTED",
+    "TAIL_DEPENDENCE": "OBSERVED"
+  },
+
+  "cost": {"COST_MODEL": "CALIBRATION_20RT_20260921", "ROUND_TRIP_COST_USD": 0.40,
+            "ROUND_TRIP_COST_BP": 0.914, "deprecated_0_314bp": "HISTORICAL_INVALID_FOR_CURRENT_RESEARCH",
+            "stress_multipliers": [1.0, 1.25, 1.5, 2.0]},
+
+  "horizons_ms": [5000, 10000, 30000, 60000, 300000],
+  "horizons_forbidden_ms": [50, 200, 1000, 2000],
+
+  "N_definitions": {
+    "raw_N": "ticks in the snapshot",
+    "eligible_N": "grid samples with a real forward tick inside the same segment (censoring rule)",
+    "label_valid_N": "eligible samples with a finite net markout",
+    "non_overlapping_N": "every ceil(rho)-th eligible sample, rho = h / median_inter_tick_ms",
+    "effective_N_method_A": "ACF-based: n / (1 + 2*sum_k rho_k) with the initial-positive-sequence truncation AND a cutoff of first k where |rho_k| < 2/sqrt(n)",
+    "effective_N_method_B": "block-based: n_nonoverlap / block_length (number of independent blocks)",
+    "INDEPENDENT_EVENT_N": "independent blocks x independent quote-event bursts",
+    "rule": "if A and B differ by more than 2x -> EFFECTIVE_N_UNCERTAIN = TRUE; both are reported, the more conservative is used downstream"
+  },
+
+  "block_length": {
+    "method": "first lag k where |ACF(k)| < 2/sqrt(n) (and >= the first non-positive ACF), computed on the 1-tick return series and on the h-horizon markout series",
+    "freeze_rule": "ONE block-length function is estimated from data and then FROZEN; no per-horizon cherry-picking",
+    "report": ["BLOCK_LENGTH_METHOD", "BLOCK_LENGTH_VALUE", "RATIONALE"]
+  },
+
+  "power": {
+    "alpha": 0.05, "sided": "two-sided",
+    "targets": [0.80, 0.90, 0.95],
+    "effect_sizes_net_bp": [0.10, 0.20, 0.30, 0.50, 1.00],
+    "effect_size_source": "PREDEFINED economic hypothesis only — never the observed +7.99bp",
+    "estimator": "one-sample t-test on the non-overlapping net series (mean != 0)",
+    "simulation": {"type": "block bootstrap on the EMPIRICAL non-overlapping net series (not normal)",
+                    "replications": 1000, "n_grid": [100, 200, 500, 1000, 2000, 5000, 10000, 20000, 50000],
+                    "add_effect": "delta added to every simulated sample",
+                    "reference_variants": ["empirical bootstrap", "block bootstrap", "winsorized 1% (SENSITIVITY ONLY)"]},
+    "analytic_crosscheck": "n = ((z_{1-a/2} + z_power) * sigma / delta)^2 with sigma from the real series"
+  },
+
+  "multiple_testing": {"method": "Benjamini-Hochberg", "q": 0.05,
+                        "families": {"per_horizon": 1, "replication_family_inherited": 140,
+                                      "note": "5 horizons x 7 feature families x 4 models = 140"},
+                        "report": ["single_test_power", "fdr_adjusted_practical_power", "required_N_with_FDR"]},
+
+  "economic_significance": {"NET_EDGE_MIN_USD_PER_RT": 0.10,
+                             "note": "STATISTICAL_SIGNIFICANCE != ECONOMIC_SIGNIFICANCE",
+                             "cost_stress": [1.0, 1.25, 1.5, 2.0]},
+
+  "calendar": {"must_report": ["calendar_days", "usable_days", "usable_hours", "coverage_ratio"],
+                "rule": "calendar days != usable data days; estimate from the OBSERVED event rate and dependence structure"},
+
+  "data_investment": {"checkpoints_weeks": [1, 4, 13, 26],
+                       "for_each": ["effective_N_gained", "reaches_target"]},
+
+  "allowed_final_states": ["POWER_CLOSED", "POWER_NOT_YET_CLOSED",
+                            "POWER_NOT_ECONOMICALLY_REACHABLE", "POWER_STRUCTUREALLY_LIMITED"],
+  "forbidden_phrasing": ["30s promising", "5min looks good", "a bit more data may be profitable",
+                          "the model is not strong enough", "Transformer may solve it", "alpha is emerging"],
+  "stop_at": "WAIT_FOR_CHATGPT_FINAL_AUDIT"
+}

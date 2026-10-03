@@ -1,0 +1,66 @@
+{
+ "schema": "alpha_drift_pit_audit/1",
+ "generated_utc": "2026-10-02T13:07:34.493359+00:00",
+ "word_table": {
+  "observation_time": "witness",
+  "publication_time": "release",
+  "availability_time": "retrievable",
+  "vintage_time": "revision"
+ },
+ "checks": [
+  {
+   "field_group": "V2 news evidence (published_at/retrieved_at)",
+   "rule": "availability_time <= decision_time",
+   "opportunities_checked": 2806,
+   "evidence_refs_checked": 16922,
+   "refs_missing_from_registry": 1482,
+   "refs_with_no_version_at_decision_time": 0,
+   "refs_published_after_decision": 0,
+   "refs_using_version_older_than_latest": 0,
+   "status": "PASS_NO_LEAK_OBSERVED",
+   "note": "earliest-retrieved version at/before decision time; conservative"
+  },
+  {
+   "field_group": "V2 K-line bars",
+   "rule": "no unclosed/future bar",
+   "status": "PASS",
+   "evidence": "trader_v2/research/PIT_VALIDATION_REPORT.md 未收盘bar=0 (5m/15m/60m/4h/1d), monotonic"
+  },
+  {
+   "field_group": "V2 macro releases vintage",
+   "rule": "release_timestamp + vintage",
+   "status": "FAIL_UNKNOWN",
+   "evidence": "878/878 release_timestamp_unknown=true, confidence=low; 38 revision_changed=true"
+  },
+  {
+   "field_group": "V2 evidence registry PIT flag",
+   "rule": "point_in_time_valid",
+   "status": "UNKNOWN",
+   "evidence": "75394/75394 rows point_in_time_valid=unknown"
+  },
+  {
+   "field_group": "V2 evidence content revisions (vintage)",
+   "rule": "earlier content reconstructible at decision time",
+   "status": "PARTIAL_CONTENT_UNRECONSTRUCTIBLE",
+   "evidence": "73315 evidence_ids carry previous_content_sha256 (content replaced) but only 31 retain >1 row -> earlier content not stored for the rest; stored content may be a later revision than what a decision saw",
+   "note": "availability-time leak NOT observed, but content-vintage for revised items is UNKNOWN"
+  },
+  {
+   "field_group": "V1_NEW decision snapshots",
+   "rule": "PIT_status recorded per decision",
+   "status": "PASS",
+   "evidence": "34 snapshots PIT_status={'PIT_OK': 34}"
+  },
+  {
+   "field_group": "V1_OLD decisions",
+   "rule": "availability_time <= decision_time",
+   "status": "UNKNOWN",
+   "evidence": "early-phase full inputs rotated; only state_summary remains (v1_audit class-E DATA_GAP)"
+  }
+ ],
+ "revision_backfill": {
+  "real_revision_ids": 73315,
+  "note": "multi-version rows = genuine revisions (previous_content_sha256 set); klines no backfill; macro revision unverifiable"
+ },
+ "leak_examples": []
+}

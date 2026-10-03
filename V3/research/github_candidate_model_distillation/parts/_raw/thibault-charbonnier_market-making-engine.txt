@@ -1,0 +1,80 @@
+### FILE README.md
+# Avellaneda-Stoikov Market Making Engine
+
+## Overview
+
+We use Modern C++ to implement the market making strategy described in the Avellaneda-Stoikov model: *"High-frequency trading in a limit order book"* (Marco Avellaneda & Sasha Stoikov, 2006).
+
+We use an object-oriented architecture with proper use of **abstract classes** and **polymorphism**. We also use safe memory management via **smart pointers** and **move semantics**.
+
+## Features
+
+We construct a market making engine which:
+
+- **Simulates a stream of market ticks** (market prices), either from:
+  - A synthetic stochastic model by generating a Brownian Motion
+  - A CSV to "replay" a real trading day
+  - Designed to be extendable with other sources of data
+
+- **Computes mid/bid/ask prices and spread** of a market-making strategy such as:
+  - The Avellaneda-Stoikov model, based on an indifference price of the market-maker
+  - The benchmark strategy, which considers the market price as the mid price
+  - Designed to be extendable with other strategies
+
+- **Models market order arrivals** via the **inventory evolution of the market maker** as a Poisson process. We modeled two inventories: sold stocks and bought stocks. The Poisson distribution intensities increase as quotes move closer to the mid price
+
+- **Simulates a full market-making session** (e.g. one trading day at high frequency), tracks inventory and P&L, and compares
+
+- **Simulates Monte Carlo simulations** of market-making sessions with different sets of market-maker parameters (e.g. risk aversion), and computes mean P&L, mean standard deviation of each set
+
+## Architecture
+
+```
+Market Making Engine
+│
+├── Core Data Structures
+│   ├── Tick
+│   ├── Quote
+│   ├── BookState
+│   ├── BookSnapshot
+│   └── TradingHistory
+│
+├── Strategy (IStrategy)
+│   ├── AsStrategy (Avellaneda-Stoikov)
+│   └── Benchmark
+│
+├── Market Data (IMarketDataStream)
+│   ├── BrownianStream
+│   └── CSVStream
+│
+├── Inventory (IInventoryModel)
+│   └── PoissonInventory
+│
+├── Simulation
+│   ├── MarketSimulator
+│   │   ├── → IStrategy
+│   │   ├── → IMarketDataStream
+│   │   └── → IInventoryModel
+│   ├── MCEngine (Monte Carlo)
+│   │   └── uses MCParameterSet
+│   ├── SimulationResult
+│   ├── MCStats
+│   └── Visualizer
+│
+└── Output
+    ├── CSV export
+    └── Terminal display
+```
+
+
+## Build & Run
+
+```bash
+./compile_and_run.sh
+```
+
+## Authors
+
+- Charbonnier Thibault
+- Chardigny Lola
+- Letaconnoux Lauryn

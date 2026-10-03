@@ -1,0 +1,36 @@
+{
+ "audit_id": "PO_20260725",
+ "timestamp": "2026-07-25T00:00:00+00:00",
+ "outcome_alignment_verdict": "PARTIAL",
+ "forecast_id": "R8B_A_20260725",
+ "horizon": 4,
+ "forecast_primary_scenario": "RANGE",
+ "forecast_alternative_scenario": "DIRECTIONAL",
+ "forecast_expected_transition": "COMPRESSION persists, or resolves to REJECTION",
+ "outcome_family_at_H": "DIRECTIONAL",
+ "outcome_state_at_H": "EXPANSION",
+ "outcome_state_now": "COMPRESSION",
+ "alignment_analysis": {
+  "primary_scenario": "MISS - primary scenario family RANGE (compression persists) did not materialise; realised family at H=4 is DIRECTIONAL",
+  "alternative_scenario": "HIT on family - Hermes-A's alternative DIRECTIONAL matches realised family; trigger ('break of 4048.995 extends downside') cannot be verified because the outcome file contains no price path",
+  "transition": "PARTIAL - realised state EXPANSION was not among the two enumerated transitions ('COMPRESSION persists' or 'REJECTION'); EXPANSION is the compression-resolution state, consistent in spirit with a directional resolution but not literally predicted",
+  "direction": "UNVERIFIABLE - outcome records only family/state labels; the direction of the break (down per the alternative trigger vs up) is not observable from the outcome file"
+ },
+ "process_defects": [
+  "Outcome file provides only family/state labels with no price path, so Hermes-A's invalidation condition ('close below 4048.995') and the alternative trigger ('break of 4048.995 extends downside') are not checkable from the provided data",
+  "Label taxonomy mismatch: outcome file uses family (QUIET/DIRECTIONAL) and state (COMPRESSION/EXPANSION), while the forecast uses scenario families (RANGE/DIRECTIONAL) and C1 states (COMPRESSION/ACCEPTANCE/REJECTION); the mapping between EXPANSION and REJECTION is undefined in the provided files, making direct state comparison ambiguous",
+  "Hermes-A enumerated only 'COMPRESSION persists' and 'REJECTION' as expected transitions; the realised EXPANSION state was absent from its transition set"
+ ],
+ "evidence": [
+  "OUTCOME: family_at_H=DIRECTIONAL, state_at_H=EXPANSION, H=4",
+  "FORECAST: scenario_family=RANGE, scenario_alternative=DIRECTIONAL, expected_transition='COMPRESSION persists, or resolves to REJECTION', invalidation='Close below 4048.995 flips to DIRECTIONAL down'",
+  "Alternative scenario family (DIRECTIONAL) equals realised family; primary scenario family (RANGE) does not",
+  "State labels diverge (EXPANSION vs enumerated COMPRESSION/REJECTION), with undefined taxonomy mapping"
+ ],
+ "reasoning_trace": [
+  "Compare primary scenario family RANGE against outcome family_at_H DIRECTIONAL -> primary MISS",
+  "Compare alternative scenario family DIRECTIONAL against outcome family_at_H DIRECTIONAL -> family HIT, trigger unverifiable (no price data in outcome)",
+  "Compare expected_transition set {COMPRESSION persists, REJECTION} against state_at_H EXPANSION -> literal MISS, spirit PARTIAL",
+  "Assign PARTIAL: alternative anticipated the realised directional resolution and invalidation was checkable in principle, but the primary call was wrong and the exact realised state was not enumerated"
+ ]
+}

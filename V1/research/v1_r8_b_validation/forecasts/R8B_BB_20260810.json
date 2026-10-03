@@ -1,0 +1,53 @@
+{
+  "audit_id": "BB_20260810",
+  "timestamp": "2026-08-10T00:00:00Z",
+  "current_state": "XAUUSD in REJECTION state (dwell 15 bars, frozen label COMPRESSION, event VOL_CONTRACTION) around 4341-4346, inside a broad multi-day uptrend (H4 trend_20 +190.5, H1 trend_20 +66.65) that peaked at 4371.7 on Aug 7 and is now consolidating between ~4330 and ~4352. Latest M1/M5 closes 4341.2/4345.9; H1/H4 current-bar closes 4332.5/4319.4 (inconsistent, see data_quality_flags).",
+  "structure": "Higher-timeframe uptrend intact: H4 +190.5 over 20 bars, H1 +66.65, M15 trend_50 +29.17. Short-term structure shows descending highs since the 4371.7 peak (4358.3 -> 4351.9) with support ~4332 (tested twice: Aug 7 15:00 low 4327.1, Aug 9 23:00 low 4332.0). Nearest swing level 4343.045 (SWING_HIGH_37783, 29 touches/240) was marginally exceeded (break_status BEYOND, +0.26 ATR) on the M5 close 4345.925, but the M1 close 4341.235 remains below it and reclaim_status is NONE. Compression/vol-contraction inside a range: M1 ranges 0.33-1.64; last M5 bar range_percentile 0.77.",
+  "mechanism": "Unresolved three-way candidate set (§13, none asserted): (1) breakout_pressure - close beyond 4343.045 by 0.26 ATR on M5, invalid if close returns inside; (2) failed_breakout - no reclaim observed yet, invalid on sustained acceptance beyond the level; (3) exhaustion - 15-bar REJECTION dwell (weak signal alone). Ambiguity rate 0.75 means no mechanism is reliably dominant; the final M5 bar momentum (body_ratio 0.88, range_expanding) is the main energy behind the breakout-press case, while H1/H4 closes argue for rejection pressure.",
+  "primary_scenario": {
+    "scenario": "Uptrend continuation: the marginal break above 4343.045 is confirmed intraday (reclaim/hold above it), REJECTION resolves to EXPANSION to the upside (analog A32653 path), price extends toward 4351.9 then retests 4358-4372.",
+    "confidence": 0.42,
+    "horizon": "INTRADAY",
+    "trigger": "Sustained close above 4343.045 on M5/M15 with M1 acceptance (reclaim_status turns positive); M5/M15 momentum persistence with range expansion to the upside.",
+    "invalidation": "Close back inside 4343.045 (breakout_pressure invalidation) or loss of 4332-4327 support; H1/H4 continuing to print bearish upper wicks above 4350."
+  },
+  "alternative_scenario": {
+    "scenario": "Failed breakout / rejection continuation: the move above 4343.045 is a bull trap, the descending-high structure (4358.3 -> 4351.9) persists, price rolls over and breaks 4332 support toward the 4312.9-4319.4 zone implied by the H1/H4 current closes.",
+    "confidence": 0.33,
+    "horizon": "INTRADAY",
+    "trigger": "M5/M15 reversal bar below 4340 with M1 rejecting 4343-4346; H1/H4 bearish closes confirmed by lower-TF data; break of 4332.015.",
+    "invalidation": "Sustained acceptance above 4352 or recovery of the 4347-4351 rejection zone with small wicks."
+  },
+  "expected_transition": "REJECTION -> EXPANSION (upside) most likely conditional on reclaim of 4343.045; otherwise REJECTION persists with eventual COMPRESSION/ROTATION (analog A34775) or ACCEPTANCE lower (analog A36169). Transition probability is materially degraded by the 0.75 ambiguity rate and cross-timeframe disagreement.",
+  "direction": "UP",
+  "horizon": "INTRADAY",
+  "confidence": 0.42,
+  "counter_evidence": [
+    "H1/H4 current-bar closes (4332.465 / 4319.405) are 9-26 points below the M1/M5/M15 closes (4341-4346) at the same timestamp - unresolved cross-timeframe inconsistency argues against trusting any single-TF directional signal.",
+    "Descending highs since the 4371.7 peak (4358.3 -> 4351.9) are consistent with REJECTION state, not fresh trend.",
+    "Break above 4343.045 is marginal (+0.26 ATR) and unconfirmed at M1 (close 4341.235 below the level); reclaim_status NONE.",
+    "High state ambiguity (ambiguity_rate_8 = 0.75) and 15-bar REJECTION dwell with zero transitions in the last 8 bars.",
+    "Recent H1 closes declining (4343.9 -> 4340.4 -> 4340.1 -> 4332.5) with large upper wicks (rejection at 4347-4351).",
+    "No cross-validation available: VIX and UST10Y UNKNOWN/absent, no NEWS/MACRO/CFTC/ETF_FLOWS; DXY only a PROXY (Yahoo, instrument definition UNKNOWN), weak/flat at 99.62."
+  ],
+  "invalidation": "The UP call is invalidated by: (a) a confirmed close back below 4343.045 followed by loss of the 4332-4327 support; (b) sustained acceptance below 4312.9 (H4 low zone); (c) resolution of the H1/H4 vs M5/M15 inconsistency toward the bearish side with lower-TF confirmation.",
+  "data_quality_flags": [
+    "H1/H4 current-bar closes inconsistent with M1/M5/M15 at same timestamp (RAW geometry mismatch; H1/H4 treated as suspect/stale or misaligned)",
+    "nearest_level break_status BEYOND rests on the M5 close only; M1 close still below the level (DERIVED, marginal)",
+    "ambiguity_rate_8 = 0.75 (DERIVED, high ambiguity)",
+    "DXY is PROXY (Yahoo, instrument definition UNKNOWN), never upgraded",
+    "UST10Y_PROXY_TNX UNKNOWN/STALE - not available",
+    "VIX UNKNOWN - not available",
+    "NEWS/MACRO_EVENTS/CFTC/ETF_FLOWS absent - no fundamental cross-check",
+    "M15/H1/H4 sequences contain a weekend gap (Aug 7 -> Aug 9 23:00); reopen-bar aggregation may distort geometry"
+  ],
+  "reasoning_trace": [
+    "Higher-TF trend read: H4 trend_20 +190.5 and H1 trend_20 +66.65 place price in a strong multi-day uptrend (rally from ~4129); current levels are post-peak consolidation, not trend-reversal evidence by themselves.",
+    "State read: REJECTION for 15 bars with VOL_CONTRACTION and frozen COMPRESSION label; no transitions in the last 8 bars; ambiguity 0.75 - market is coiling, direction unresolved.",
+    "Level read: 4343.045 swing high broken by a hair on M5 only; M1 below it; reclaim NONE - a contested, low-quality breakout, which keeps breakout_pressure and failed_breakout both live.",
+    "Momentum read: final M1/M5 bars strongly bullish (body_ratio 0.79/0.88, range_expanding) vs final H1 bars bearish with big upper wicks - the two disagree, so I weight the higher-frequency momentum only as a tentative intraday lean.",
+    "Cross-market read: DXY weak and flat (99.62, change_8 +0.001) - no dollar headwind, mildly supportive of gold; insufficient alone.",
+    "Analog read: A32653 (REJECTION->EXPANSION), A34775 (->COMPRESSION->ROTATION), A36169 (->ACCEPTANCE->ROTATION) - mixed; a slight majority resolves away from REJECTION but not uniformly up.",
+    "Net: lean UP on higher-TF trend + marginal breakout + weak USD, but confidence is low (0.42) because of the cross-TF inconsistency, contested level break, and 0.75 ambiguity; NO_DIRECTIONAL_EDGE would also be defensible."
+  ]
+}

@@ -1,0 +1,108 @@
+{
+  "forecast_id": "HERMES_FULL_CTX_20260909T120000Z",
+  "timestamp": "2026-09-09 12:00:00+00:00",
+  "current_state": "COMPRESSION",
+  "dominant_structure": "COMPRESSION beneath a fresh swing-high level with lower-timeframe upward displacement (L2 SWING_HIGH 4403.655, price INSIDE; L5 frozen label COMPRESSION, dwell 6 bars)",
+  "current_pressure": "Volatility contraction (VOL_CONTRACTION) while price presses the nearest swing-high; multi-timeframe direction conflict (M1/M5/M15/H1 up-tilted, H4 negative trend_20/trend_50)",
+  "primary_scenario": {
+    "scenario": "Compression resolves UP: price clears the swing-high level and continues the lower-timeframe displacement",
+    "confidence": 0.45,
+    "horizon": "SHORT_TERM",
+    "trigger": "A decisive M5/M15 close above 4403.655 with expanding range and sustained higher lows",
+    "invalidation": "A return into range with a break below the last swing low (approx 4386.015 / 4388.315 zone) before any reclaim of the level"
+  },
+  "alternative_scenario": {
+    "scenario": "Level rejection / DOWN continuation: the swing-high holds and the H4 downtrend reasserts, price rolls over toward the H4 lower structure (trend_20 -8.87, trend_50 -38.2)",
+    "confidence": 0.4,
+    "horizon": "INTRADAY",
+    "trigger": "A rejection wick or failed retest at 4403.655 followed by a breakdown of the recent M5/M1 higher-lows",
+    "invalidation": "Price holds above the level for several bars with no rejection and no lower-high formation"
+  },
+  "third_scenario": {
+    "scenario": "Extended compression: sideways drift inside the level with no directional resolution (state stays COMPRESSION/ROTATION)",
+    "confidence": 0.15,
+    "horizon": "IMMEDIATE",
+    "trigger": "Continued range contraction (M1 range_percentile falls) with no level break either way",
+    "invalidation": "Any decisive level break or state transition to TREND/REJECTION"
+  },
+  "direction_bias": "NO_DIRECTIONAL_EDGE",
+  "expected_state_transition": "COMPRESSION -> ROTATION -> TREND (upside-tilted on analog A36427 path, but unresolved; see counter-evidence)",
+  "time_horizon": "SHORT_TERM",
+  "confidence": 0.45,
+  "supporting_evidence": [
+    "L1 M1: strong bullish bar at t (close 4402.435, body_ratio 0.90, range_percentile 0.995, no lower wick), range expanding, consecutive_up 6",
+    "L1 M5: bullish close 4403.425, body_ratio 0.96, range expanding, trend_20 +5.1",
+    "L1 M15/H1: consecutive_up 8, positive trend_20 (+5.47 / +12.52)",
+    "L2: price inside the nearest swing-high level at 4403.655, only 0.056 ATR away (proximity to break)",
+    "L3/L5: COMPRESSION with VOL_CONTRACTION at t, typically precedes a volatility expansion",
+    "L4: mechanism candidate trend_continuation listed with supporting displacement evidence",
+    "L7: DXY marginally weak (change_8 -0.076), mildly constructive for gold; VIX low (16.39) though rising slightly"
+  ],
+  "counter_evidence": [
+    "L6: multi-timeframe agreement = CONFLICT; H4 trend_20 -8.87 and trend_50 -38.2 argue against sustained upside",
+    "L2: level side is UP (resistance above); price is INSIDE, not yet broken; break_status INSIDE, reclaim NONE",
+    "L3/L5: current event is VOL_CONTRACTION, which is neutral until the expansion direction resolves",
+    "L5: ambiguity_rate_8 = 0.25 and prior REJECTION states (dwell 3, 4) show the market recently rejected levels",
+    "L7: VIX change_32 +0.48 (rising) and DXY is only a PROXY series (instrument definition UNKNOWN); both low-quality for inference",
+    "Historical analogs split: A37443 evolved COMPRESSION -> REJECTION -> ROTATION (no upside resolution), versus A36427/A38576 evolving toward TREND"
+  ],
+  "trigger": "Decisive close through 4403.655 (up) or breakdown of the recent higher-lows near 4386-4388 (down); until then, no directional trigger fires",
+  "invalidation": "If price breaks below the last swing low (approx 4386.015) on H1 before reclaiming 4403.655, the upside-compression reading is invalid and the H4 downtrend dominates",
+  "change_my_mind": [
+    "A confirmed close above 4403.655 with range expansion on M5/M15 would flip me to UP bias",
+    "A rejection at 4403.655 plus a break below 4388/4386 would flip me to DOWN bias",
+    "New PIT data (macro calendar, news, order-flow) that resolves the cross-market ambiguity would raise confidence",
+    "A rise in H4 trend_20 toward positive, aligning timeframes, would support the UP scenario"
+  ],
+  "abstain": false,
+  "abstain_reason": null,
+  "reasoning_trace": [
+    "Read PIT context at 2026-09-09 12:00:00Z (XAUUSD) with all quality tags respected; UST10Y treated as unavailable (UNKNOWN), DXY/VIX treated as PROXY.",
+    "Observed near-term bullish displacement on M1/M5/M15/H1 but a negative H4 trend; recorded multi-timeframe CONFLICT instead of merging into one direction.",
+    "Identified the dominant structure as COMPRESSION pressing a swing-high level; state machine and historical analogs used only for state evolution, never for returns/PnL.",
+    "Assigned NO_DIRECTIONAL_EDGE: geometry is inside a level with conflicting TFs and no decisive break; gave a structural primary scenario (upside resolution) with explicit invalidation and a coherent alternative (level rejection / H4 downtrend).",
+    "Confidence 0.45 reflects subjectivity, not a statistical probability; abstention considered but rejected because enough causal evidence exists for a scenario forecast."
+  ],
+  "questions": {
+    "A": {
+      "question": "What is happening?",
+      "answer": "XAUUSD is in a volatility-compression state with aggressive lower-timeframe bullish displacement. Price closed 4402.435 (M1) / 4403.425 (M5) / 4403.325 (M15) / 4407.095 (H1) / 4418.505 (H4) as of 12:00Z, pressing against the nearest swing-high level at 4403.655 from inside. Recent M1 bars show expanding ranges (current range_percentile 0.995), rising ATR (1.642) and consecutive up bars; H4 remains negative-tilted (trend_20 -8.87, trend_50 -38.2). Cross-market is thin: DXY slightly weak, VIX low but ticking up, UST10Y unavailable."
+    },
+    "B": {
+      "question": "What is the dominant structure?",
+      "answer": "COMPRESSION (frozen label, L3/L5, dwell 6 bars, event VOL_CONTRACTION) inside/at a fresh swing-high resistance level (L2, 4403.655, distance only 0.056 ATR). Short timeframes show an upward impulse beneath that level; H4 shows a higher-timeframe downtrend. The dominant structure is a coiled low-volatility environment at a resistance boundary with unresolved direction."
+    },
+    "C": {
+      "question": "What pressures are building?",
+      "answer": "Directional: upward pressure from lower-TF displacement vs downward pressure from H4 trend. Volatility: contraction (VOL_CONTRACTION) building the potential for expansion. Liquidity-proxy: price sitting at a swing-high (67 touches/240) where resting orders/liquidity are likely; VIX rising slightly (+0.48 over 32 bars) hints at growing risk-off tension. All cross-market series are PROXY/UNKNOWN, so these are weak signals."
+    },
+    "D": {
+      "question": "What mechanisms could explain it?",
+      "answer": "1) trend_continuation (L4 candidate): lower-TF impulse continues once level breaks - partially supported by 8-bar displacement 5.05, not yet confirmed (break_status INSIDE). 2) Level rejection / mean reversion: swing-high holds, price fails, H4 downtrend resumes - supported by the negative H4 trend and prior REJECTION states. 3) Volatility expansion from compression: direction-neutral until resolved - strongly supported by the COMPRESSION/VOL_CONTRACTION labeling. No mechanism is asserted as fact; they are candidates."
+    },
+    "E": {
+      "question": "What is the strongest evidence?",
+      "answer": "The M1 current bar (body_ratio 0.90, range_percentile 0.995, expanding range, no lower wick) plus M5 body_ratio 0.96 and consecutive-up flags; price located 0.056 ATR beneath a swing-high with the mechanism candidate trend_continuation present; explicit COMPRESSION + VOL_CONTRACTION state at t."
+    },
+    "F": {
+      "question": "What is the strongest counter-evidence?",
+      "answer": "The H4 timeframe is decisively negative (trend_20 -8.87, trend_50 -38.2) creating a CONFLICT multi-timeframe agreement; the nearest level is UP (resistance) and unbroken (reclaim NONE); prior REJECTION states (dwell 3 and 4) show recent failed pushes; VIX is rising (change_32 +0.48); and the DXY/VIX sources are only PROXY with unknown instrument definitions."
+    },
+    "G": {
+      "question": "What could happen next?",
+      "answer": "PRIMARY: the compression resolves upward - price makes a decisive close above 4403.655 with expanding M5/M15 ranges and continues the lower-timeframe displacement toward the H1 high zone (4414.975) and beyond (primary confidence 0.45, SHORT_TERM)."
+    },
+    "H": {
+      "question": "What is the alternative?",
+      "answer": "ALTERNATIVE: the swing-high rejects price and the H4 downtrend reasserts, producing a rollover toward the recent lows (4386-4388 and below toward 4345-4340 H4 swing area) (alternative confidence 0.40, INTRADAY). A third path is continued sideways compression with no resolution (0.15, IMMEDIATE)."
+    },
+    "I": {
+      "question": "What would invalidate the forecast?",
+      "answer": "For the primary (up) scenario: a decisive break below the last swing low (~4386.015) on H1 before reclaiming 4403.655. For the alternative (down) scenario: price holding above 4403.655 for multiple bars with no rejection and no lower-high formation. Any state transition to REJECTION/TREND without a level break also contradicts the compression premise."
+    },
+    "J": {
+      "question": "What would change your mind?",
+      "answer": "A confirmed close above 4403.655 with range expansion flips me to UP. A rejection at the level plus a break of 4388/4386 flips me to DOWN. H4 trend turning positive (aligning timeframes) supports UP. New PIT macro/news/flow data that resolves cross-market ambiguity would raise confidence materially."
+    }
+  }
+}

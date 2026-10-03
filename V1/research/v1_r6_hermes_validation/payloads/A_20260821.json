@@ -1,0 +1,101 @@
+{
+ "sample_id": "A_20260821",
+ "forecast_id": "R6_A_20260821",
+ "timestamp": "2026-08-21 12:00:00+00:00",
+ "observations": [
+  "H1 high 4604.575 pierced swing high 4601.875",
+  "M1 close 4587.635, seven consecutive down bars",
+  "H4 lower wick 25.09, body ratio 0.07",
+  "Frozen label REJECTION, state TREND dwell 3"
+ ],
+ "what_i_know": [
+  "Price inside level 4601.875, break_status INSIDE",
+  "H1/H4 uptrends strong, trend_20 positive",
+  "M1 downtrend; multi-timeframe agreement CONFLICT",
+  "DXY up, VIX down; both PROXY quality"
+ ],
+ "what_i_do_not_know": [
+  "News and macro events absent",
+  "UST10Y proxy unavailable, STALE",
+  "Order flow and volume unknown",
+  "Post-12:00 price path unknown"
+ ],
+ "evidence": [
+  "H1 tested 4604.575 above level then closed below",
+  "H4/H1 trend_20 strongly positive",
+  "M1 seven down bars, trend_20 negative",
+  "Level touched twice in 240 bars"
+ ],
+ "counter_evidence": [
+  "M1 downtrend conflicts with higher timeframe",
+  "H4 body tiny, large lower wick indecision",
+  "Cross-market only PROXY data",
+  "Ambiguity rate 0.5 in state history"
+ ],
+ "possible_mechanisms": [
+  {
+   "mechanism": "trend_continuation",
+   "status": "SUPPORTED",
+   "why": "H1/H4 uptrend, price inside level"
+  },
+  {
+   "mechanism": "level_rejection_pullback",
+   "status": "POSSIBLE",
+   "why": "REJECTION label, M1 down"
+  },
+  {
+   "mechanism": "range_rotation",
+   "status": "POSSIBLE",
+   "why": "ambiguity 0.5, conflict timeframes"
+  },
+  {
+   "mechanism": "breakout_failure",
+   "status": "WEAK",
+   "why": "H1 pierced level then closed below"
+  }
+ ],
+ "primary_scenario": {
+  "scenario": "trend continuation above 4601.875",
+  "horizon": "4-16 H1 bars",
+  "trigger": "reclaim 4601.875 with H1 close",
+  "invalidation": "decisive break below 4586.985"
+ },
+ "alternative_scenario": {
+  "scenario": "rejection pullback toward support",
+  "horizon": "4-8 H1 bars",
+  "trigger": "failed reclaim, M1 lower lows",
+  "invalidation": "H1 close above 4604.575"
+ },
+ "expected_transition": "TREND resume on reclaim; pullback otherwise",
+ "direction_bias": "NEUTRAL",
+ "time_horizon": "4-16 H1 bars",
+ "evidence_strength": 0.4,
+ "confidence": 0.3,
+ "uncertainty": 0.6,
+ "confidence_reason": "Labels derived, cross-market proxy only, timeframe conflict",
+ "uncertainty_reason": "M1 opposes H1/H4; event data thin",
+ "invalidation": "H1 close below 4586.985 or above 4604.575",
+ "change_my_mind": [
+  "H1 close above 4604.575 confirms breakout",
+  "M1 flip up with level reclaim",
+  "NEWS or macro event arrives",
+  "Sustained H1 closes below 4586.985"
+ ],
+ "abstain": false,
+ "abstain_reason": "Context sufficient despite conflict",
+ "questions": {
+  "Q1": "Price inside 4601.875, H1/H4 uptrend, M1 down",
+  "Q2": "News, macro, order flow, post-12:00 path",
+  "Q3": "H1/H4 uptrend; level retest inside",
+  "Q4": "REJECTION label; M1 downtrend; conflict",
+  "Q5": "Level rejection pullback, not assertable",
+  "Q6": "H1 closes above 4604.575 decisively",
+  "Q7": "false; context adequate, conflict disclosed"
+ },
+ "reasoning_trace": [
+  "H1/H4 uptrend; price retesting swing high",
+  "REJECTION and M1 down suggest near-term pullback",
+  "Timeframe conflict caps confidence",
+  "Await reclaim or decisive break"
+ ]
+}

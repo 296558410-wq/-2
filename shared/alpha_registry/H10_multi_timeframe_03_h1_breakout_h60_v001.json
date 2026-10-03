@@ -1,0 +1,75 @@
+{
+  "hypothesis": "H1 状态是否改变 M1 条件分布？",
+  "features": "h1_breakout",
+  "parameters": {
+    "holding": 60,
+    "feature_params": {}
+  },
+  "dataset": "XAUUSD_M1_MT5-FXTM-Live_20260904_v001",
+  "train_period": "2026-05-26 03:43:00+00:00→2026-07-27 06:53:00+00:00",
+  "test_period": "2026-07-27 06:53:00+00:00→2026-09-04 11:22:00+00:00",
+  "OOS": {
+    "ic": 0.011817724084772684,
+    "p": 0.02
+  },
+  "FDR": {
+    "q": 0.03833333333333334,
+    "reject": true
+  },
+  "WF": {
+    "folds_ic": [
+      0.0289,
+      -0.0122,
+      0.0343,
+      -0.1032,
+      0.0535
+    ],
+    "positive_frac": 0.6,
+    "n_folds": 5
+  },
+  "cost_stress": {
+    "1x": 0.1567,
+    "2x": -0.966,
+    "3x": -2.0863,
+    "net_total": 0.0023361870537055296,
+    "n_trades": 565,
+    "subperiod": {
+      "n_parts": 4,
+      "parts": [
+        {
+          "segment": 1,
+          "n": 25000,
+          "sharpe": 0.044,
+          "mean": 7.202067125332257e-07
+        },
+        {
+          "segment": 2,
+          "n": 25000,
+          "sharpe": -0.035,
+          "mean": -5.1165499879589e-07
+        },
+        {
+          "segment": 3,
+          "n": 25000,
+          "sharpe": 0.034,
+          "mean": 4.3721692866404696e-07
+        },
+        {
+          "segment": 4,
+          "n": 25000,
+          "sharpe": -0.037,
+          "mean": -4.5230413261993103e-07
+        }
+      ],
+      "sharpe_positive_frac": 0.5,
+      "sharpe_min": -0.037,
+      "sharpe_max": 0.044,
+      "note": "子段 Sharpe 一致性低 → 结果可能依赖特定时期"
+    }
+  },
+  "subperiod": null,
+  "status": "REJECTED",
+  "git_commit": "c1d84d3",
+  "alpha_id": "H10_multi_timeframe_03_h1_breakout_h60_v001",
+  "created_at": "2026-09-04T11:58:36.330781+00:00"
+}

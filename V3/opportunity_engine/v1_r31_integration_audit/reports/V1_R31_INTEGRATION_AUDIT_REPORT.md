@@ -1,0 +1,106 @@
+# R31 V1 Integration Audit
+
+```text
+V1_R31_INTEGRATION_AUDIT = COMPLETE
+
+ENGINE_HASH = 7d95645678cf0615c77c0d1c91177cf1652ca1fa6b1f509ec99e415dba55c25d
+ENGINE_HASH_MATCH = PASS
+
+STRATEGY_UNCHANGED = PASS
+ENTRY_UNCHANGED = PASS
+EXIT_UNCHANGED = PASS
+RISK_UNCHANGED = PASS
+ORDER_UNCHANGED = PASS
+PARAMETERS_UNCHANGED = PASS
+
+STATE_PACKAGE_BOUNDARY = PASS
+LEDGER_BOUNDARY = PASS
+STATISTICS_BOUNDARY = PASS
+PNL_BOUNDARY = PASS
+RUN_ID_BOUNDARY = PASS
+RESET_GATE_INTEGRATION = PASS (R30.1 verified rule, unchanged)
+
+AUTOMATION_PAYLOAD_AUDIT = PASS
+AUTOMATION_STATUS = DISABLED
+
+V1_V2_ISOLATION = FAIL
+V1_V3_ISOLATION = PASS
+
+AUDIT_DETERMINISTIC = PASS
+AUDIT_REPLAY = PASS
+
+NEW_RUN_CREATED = 0
+RESET = 0
+LEGACY_RUN_CLOSED = 0
+
+MT5_ACCESS = 0
+ORDER_SEND = 0
+POSITION_CLOSE = 0
+POSITION_MODIFY = 0
+ORDER_CANCEL = 0
+
+V1_FILES_MODIFIED = 0
+V1_STATE_FILES_MODIFIED = 0
+V1_LEDGER_MODIFIED = 0
+V1_CONFIG_MODIFIED = 0
+
+BOUNDARY_VIOLATION = 0
+
+R31_GATE = FAIL
+```
+
+## evidence matrix (per item: baseline/current/comparison/status)
+
+```json
+{"engine_hash": {"baseline": "7d95645678cf0615c77c0d1c91177cf1652ca1fa6b1f509ec99e415dba55c25d", "current": "7d95645678cf0615c77c0d1c91177cf1652ca1fa6b1f509ec99e415dba55c25d", "baseline_file_hash": "7d95645678cf0615c77c0d1c91177cf1652ca1fa6b1f509ec99e415dba55c25d", "comparison": "sha256 exact-match (whole file, primary)", "status": "PASS", "evidence": "engine.py vs MV-R1 baseline constant AND vs archive baseline artifact"}, "logic_segments": {"strategy": {"baseline": "e39c020ad0ea3ef8c9bec19ac6b75a810c5e5a0d80f788e667f196d0f66b22c3", "current": "e39c020ad0ea3ef8c9bec19ac6b75a810c5e5a0d80f788e667f196d0f66b22c3", "lines_cur": 7, "lines_base": 7, "comparison": "sha256 over matched lines (current vs archive baseline)", "status": "PASS", "evidence": "same file bytes (whole-file hash equal) and equal segment hash"}, "entry": {"baseline": "f1cb83569175f224e098771972242333274678407a79a249693f814334816861", "current": "f1cb83569175f224e098771972242333274678407a79a249693f814334816861", "lines_cur": 33, "lines_base": 33, "comparison": "sha256 over matched lines (current vs archive baseline)", "status": "PASS", "evidence": "same file bytes (whole-file hash equal) and equal segment hash"}, "exit": {"baseline": "83ca1a5bcadf5e7e12c77050007a84006f3d715ad5981c7c655daf0a6f305a15", "current": "83ca1a5bcadf5e7e12c77050007a84006f3d715ad5981c7c655daf0a6f305a15", "lines_cur": 9, "lines_base": 9, "comparison": "sha256 over matched lines (current vs archive baseline)", "status": "PASS", "evidence": "same file bytes (whole-file hash equal) and equal segment hash"}, "risk": {"baseline": "84b550643ba04fa94458115c0a66aa5b28e0f72fdcc2ef3c981e6edb28d1219b", "current": "84b550643ba04fa94458115c0a66aa5b28e0f72fdcc2ef3c981e6edb28d1219b", "lines_cur": 38, "lines_base": 38, "comparison": "sha256 over matched lines (current vs archive baseline)", "status": "PASS", "evidence": "same file bytes (whole-file hash equal) and equal segment hash"}, "order": {"baseline": "0a7276cf20202d70f04bde1c60249563084d7edbbf7d1b8cb477ab589f1fa9e2", "current": "0a7276cf20202d70f04bde1c60249563084d7edbbf7d1b8cb477ab589f1fa9e2", "lines_cur": 5, "lines_base": 5, "comparison": "sha256 over matched lines (current vs archive baseline)", "status": "PASS", "evidence": "same file bytes (whole-file hash equal) and equal segment hash"}, "parameters": {"baseline": "b5a14efd9ba9305a5f310972edb2075ac9da798fb4f89171ec5cadeef1d021f1", "current": "b5a14efd9ba9305a5f310972edb2075ac9da798fb4f89171ec5cadeef1d021f1", "lines_cur": 2, "lines_base": 2, "comparison": "sha256 over matched lines (current vs archive baseline)", "status": "PASS", "evidence": "same file bytes (whole-file hash equal) and equal segment hash"}, "maximum_holding_time": {"baseline": "7d0834e1fe6d8735e53da2304a213e52bf264b3ca7b05530979965f9b7281158", "current": "7d0834e1fe6d8735e53da2304a213e52bf264b3ca7b05530979965f9b7281158", "lines_cur": 2, "lines_base": 2, "comparison": "sha256 over matched lines (current vs archive baseline)", "status": "PASS", "evidence": "same file bytes (whole-file hash equal) and equal segment hash"}, "sl_tp": {"baseline": "646513b9b3bdc1fe57588876112d0011f8b32301177cd6f98738706a59176557", "current": "646513b9b3bdc1fe57588876112d0011f8b32301177cd6f98738706a59176557", "lines_cur": 5, "lines_base": 5, "comparison": "sha256 over matched lines (current vs archive baseline)", "status": "PASS", "evidence": "same file bytes (whole-file hash equal) and equal segment hash"}, "position_management": {"baseline": "2f04832f65f2589713a656efa8f381a33140da22ba54f2d38829fb6522a81e3d", "current": "2f04832f65f2589713a656efa8f381a33140da22ba54f2d38829fb6522a81e3d", "lines_cur": 14, "lines_base": 14, "comparison": "sha256 over matched lines (current vs archive baseline)", "status": "PASS", "evidence": "same file bytes (whole-file hash equal) and equal segment hash"}, "broker_adapter": {"baseline": "0a7276cf20202d70f04bde1c60249563084d7edbbf7d1b8cb477ab589f1fa9e2", "current": "0a7276cf20202d70f04bde1c60249563084d7edbbf7d1b8cb477ab589f1fa9e2", "lines_cur": 5, "lines_base": 5, "comparison": "sha256 over matched lines (current vs archive baseline)", "status": "PASS", "evidence": "same file bytes (whole-file hash equal) and equal segment hash"}}, "state_package": {"baseline": null, "current": "e50c04ab6374f35d5f88bd47116fa51b15dcf2944b491a2c30a841aa0617c3e1", "comparison": "mtime vs MV-R1 baseline + run-boundary token scan", "status": "PASS", "evidence": "state_package.py sha256 recorded; run-boundary tokens found = 0", "run_boundary_tokens": 0}, "ledger": {"baseline": "0b90493cae0cdf7b73056bc72b1e5752f35c3eb20f9306c098d26f4bec819261", "current": "0b90493cae0cdf7b73056bc72b1e5752f35c3eb20f9306c098d26f4bec819261", "comparison": "sha256 vs R27 verified value", "status": "PASS", "evidence": "read-only; no append/truncate/rewrite/reorder/re-hash performed"}, "statistics": {"baseline": "ca42f624fde50df375dc877750e121e8d2d313986ea6d953766d5247ab76ee84", "current": "ca42f624fde50df375dc877750e121e8d2d313986ea6d953766d5247ab76ee84", "comparison": "sha256 vs R27 verified value", "status": "PASS", "evidence": "unchanged; per-run layout demonstrated in R30 (runs/<run_id>/statistics.json)"}, "run_meta": {"baseline": "597bd76970412c107c96475dfe8d5093ff7840aba73cb4ab65318f2b0f358950", "current": "597bd76970412c107c96475dfe8d5093ff7840aba73cb4ab65318f2b0f358950", "comparison": "sha256 vs R27 verified value", "status": "PASS", "evidence": "legacy run identity intact; no new RUN_META created"}, "run_id_boundary": {"legacy_run_id": "V1_RUN_20260924_RESET_01", "expected": "V1_RUN_20260924_RESET_01", "status": "PASS", "evidence": "RUN_META.json unchanged (hash match)"}, "run_boundary_hash": {"baseline": null, "current": "4a47735c011830e4e0c5a21eed19b11db9011b125fac14f7c840cbbed770867b", "comparison": "aggregate sha256 over implementation files", "status": "PASS", "evidence": "4 implementation files hashed", "files": ["research/v3_opportunity_engine/v1_r30_1_reset_gate/_r30_1_runner.py", "research/v3_opportunity_engine/v1_r30_1_reset_gate/implementation/scanner.py", "research/v3_opportunity_engine/v1_r30_run_boundary/_r30_runner.py", "research/v3_opportunity_engine/v1_r30_run_boundary/implementation/run_boundary.py"]}, "run_boundary_safe": {"status": "FAIL", "forbidden_trade_logic_hits": [{"file": "research/v3_opportunity_engine/v1_r30_1_reset_gate/implementation/scanner.py", "pattern": "order_send"}, {"file": "research/v3_opportunity_engine/v1_r30_1_reset_gate/implementation/scanner.py", "pattern": "positions_get"}, {"file": "research/v3_opportunity_engine/v1_r30_1_reset_gate/implementation/scanner.py", "pattern": "mt5."}], "v1_coupling_hits": [{"file": "research/v3_opportunity_engine/v1_r30_run_boundary/_r30_runner.py", "token": "state_package", "count": 1}, {"file": "research/v3_opportunity_engine/v1_r30_run_boundary/_r30_runner.py", "token": "engine.py", "count": 1}, {"file": "research/v3_opportunity_engine/v1_r30_run_boundary/_r30_runner.py", "token": "trader_v1", "count": 5}], "evidence": "no trade-decision symbols; no state_package/engine.py coupling"}, "automation": {"enabled": false, "status": "PASS", "config_hash": "ef2ab0603f364ca55b38820db97ef51df84bd1d912d9a874aaf774b20016caac", "references_trader_v1": true, "references_state_package": true, "references_ledger": false, "not_modified": "read-only audit; no enable/disable/update/delete/create/trigger"}, "isolation": {"v1_to_v2": [], "v1_to_v3": [], "v2_to_v1": ["research/hermes/trader_v2/tests/test_dashboard_fullchain.py", "research/hermes/trader_v2/tests/test_data_sources.py", "research/hermes/trader_v2/tests/test_module4_loop.py", "research/hermes/trader_v2/tests/test_module5_paths.py", "research/hermes/trader_v2/tests/test_paper_final_validation.py"], "v3_to_v1": [], "status": "FAIL"}, "v1_source_vs_mv_r1": {"changed": [], "missing": [], "added": [], "changed_count": 0, "missing_count": 0, "added_count": 0, "status": "PASS"}, "v2_source_vs_mv_r1": {"changed": [], "missing": [], "added": [], "changed_count": 0, "missing_count": 0, "added_count": 0, "status": "PASS"}}
+```
+
+## tests (21)
+
+```text
+{
+ "test_engine_hash": "PASS",
+ "test_strategy_hash": "PASS",
+ "test_entry_hash": "PASS",
+ "test_exit_hash": "PASS",
+ "test_risk_hash": "PASS",
+ "test_order_hash": "PASS",
+ "test_parameter_hash": "PASS",
+ "test_state_package_boundary": "PASS",
+ "test_ledger_boundary": "PASS",
+ "test_statistics_boundary": "PASS",
+ "test_pnl_boundary": "PASS",
+ "test_run_id_isolation": "PASS",
+ "test_automation_payload": "PASS",
+ "test_v1_v2_isolation": "FAIL",
+ "test_v1_v3_isolation": "PASS",
+ "test_no_v1_write": "PASS",
+ "test_no_new_run": "PASS",
+ "test_no_reset": "PASS",
+ "test_no_mt5": "PASS",
+ "test_no_order": "PASS",
+ "test_deterministic_audit": "PASS"
+}
+```
+
+## git
+
+```text
+before = {"head": "0f3d5d3 V3: validate mechanism tradability R1", "porcelain_total": 626}
+after  = {"head": "0f3d5d3 V3: validate mechanism tradability R1", "porcelain_total": 626}
+changed_by_this_task = audit files only; pre_existing_dirty untouched
+```
+
+## safety
+
+```text
+{"MT5_ACCESS": 0, "ORDER_SEND": 0, "POSITION_CLOSE": 0, "POSITION_MODIFY": 0, "ORDER_CANCEL": 0, "NEW_RUN_CREATED": 0, "RESET": 0, "LEGACY_RUN_CLOSED": 0, "V1_START": 0, "AUTOMATION_ENABLE": 0}
+BROKER_BASELINE = NOT_EXECUTED (MT5 not accessed in this phase - correct per task)
+```
+
+## final principle
+
+```text
+R31 proves Run Boundary can attach to V1 without changing V1.
+R31 PASS != V1 START. No migration, no close, no new run, no start, no automation.
+```

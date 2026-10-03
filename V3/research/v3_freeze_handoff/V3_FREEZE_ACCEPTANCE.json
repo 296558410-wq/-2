@@ -1,0 +1,47 @@
+{
+ "schema": "v3_freeze_acceptance/1",
+ "task": "V3-RESEARCH-FREEZE-HANDOFF",
+ "generated_utc": "2026-10-02T11:10:00+00:00",
+ "verdicts": {
+  "V3_RESEARCH_FREEZE": "PASS",
+  "V3_HANDOFF": "PASS",
+  "TEMPORAL_HOLD": "RUNNING",
+  "TRADING_EXECUTION": "DISABLED"
+ },
+ "checks": {
+  "git_traceable": {
+   "verdict": "PASS",
+   "detail": "V3 key commits listed in V3_RESEARCH_FINAL_STATUS.md §8; freeze commit(s) path-limited to research/hermes/trader_v3/**",
+   "freeze_commit": null
+  },
+  "sha256_manifest_complete": {
+   "verdict": "PASS",
+   "detail": "V3_FREEZE_MANIFEST.json: 414 artifacts + 9 protocol hashes + raw-data refs + snapshot manifest verification + freeze_dir_files"
+  },
+  "r4_reproducible": {
+   "verdict": "PASS",
+   "detail": "re-run byte-identical (results_v3_r4.json / DATA_REGISTRY.json / EVENT_REGISTRY.json vs SHA256_MANIFEST and pre/post); snapshot manifest 3417edf9814f9b0f… verified against the frozen protocol claim"
+  },
+  "temporal_hold_ok": {
+   "verdict": "PASS",
+   "detail": "HOLD_STATUS latest check 2026-10-02T10:42:39Z data_status=OK; daily zero-LLM job enabled (next 2026-10-03T01:40Z); append-only HOLD_LOG with instrument-fix record preserved"
+  },
+  "watcher_ok": {
+   "verdict": "PASS",
+   "detail": "v3-temporal-hold-ready-watch enabled, trigger=true, once=true, next run 2026-10-02T16:10Z; fires TEMPORAL_READY only (no auto revalidation)"
+  },
+  "v1_v2_untouched": {
+   "verdict": "PASS",
+   "detail": "This task performed no writes to V1/V2 (read-only ops + trader_v3 writes); freeze commits are path-limited. Pre-existing uncommitted drift in V1/V2 (legacy development artifacts + live-runtime appends) was documented and deliberately left untouched.",
+   "baseline_status_sha256": "8475d467a1bd8c9f89754d89afc8400c2bc9ebbe9e6be812e7a8348623c4f97d",
+   "baseline_status_count": 631,
+   "note": "V1/V2 live systems continue their own by-design appends (not attributable to this task)"
+  },
+  "no_demo_live_orders": {
+   "verdict": "PASS",
+   "detail": "V3 flags: EXECUTION_MODE=RESEARCH_READONLY, ORDER_SEND_ALLOWED=NO, FORWARD_ALLOWED=NO, LIVE_ALLOWED=NO, STRATEGY_FORWARD=NOT_ENABLED; no order path executed by this task; GPU infra generates no signals; the 2026-09-24 calibration pilot (account 160766418) is historical/complete and not active"
+  }
+ },
+ "freeze_commit": "535731cac17773e8a301ed8844a2a36769a8d020 (initial; record commit follows)",
+ "next_stage_entry": "Frozen R4 Revalidation — wait for TEMPORAL_READY + explicit user instruction; reuse F5_R4_FROZEN_PROTOCOL.json (adc5a94d…) unchanged"
+}

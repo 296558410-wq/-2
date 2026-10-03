@@ -1,0 +1,87 @@
+{
+  "forecast_id": "HERMES_FULL_CTX_20260903T120000Z",
+  "timestamp": "2026-09-03T12:00:00Z",
+  "current_state": "ROTATION (state_v2, dwell 11 bars, event NONE, ambiguity_rate_8 0.25); price 4426-4427 testing heavy swing-high level 4431.485 (INSIDE, distance 0.1193 ATR, 41 touches/240 bars) with rejection upper wicks on M1/M5",
+  "dominant_structure": "Range rotation beneath a heavy overhead swing-high level (4431.485). H1/H4 geometry is strongly bullish on the day (+71.07 / +31.49 trend_20), but the nearest actionable structure is the 4431.5 level with very high touch count; lower timeframes (M1/M5) show failed highs and a mild pullback, consistent with a rotation/consolidation just under supply.",
+  "current_pressure": {
+    "directional": "Mixed-to-up: H1 trend_20 +71.07, H4 trend_20 +31.49, M15 +11.16 vs M5 -8.89; multi-timeframe agreement CONFLICT. Near-term sellers defended 4431-4433 (M1 upper wick 2.06, M5 body 0.82 after 4428.99 high).",
+    "volatility": "Low and quiet at M1 (volatility 0.00015, ATR 1.237) but range_expanding flags true on all timeframes; H4 current bar range_percentile 0.955 suggests elevated H4 activity vs recent history.",
+    "liquidity_proxy": "DXY 99.117 nearly flat (-0.024 / 8 bars, -0.118 / 32 bars) offering no strong USD tailwind; VIX 15.38 low and drifting up slightly (+0.12) - no stress signal; UST10Y proxy UNKNOWN/absent."
+  },
+  "primary_scenario": {
+    "scenario": "Rejection / stall at the 4431.485 heavy level: price remains inside the level zone, fails to produce a decisive H1 close above it, and continues ROTATION or transitions to REJECTION, with near-term drift back toward 4424-4418 support (M5 recent low 4418.915, H1 11:00 low 4418.045).",
+    "confidence": 0.42,
+    "horizon": "INTRADAY",
+    "trigger": "Another lower-high on M5/M15 at 4431-4433 with a bearish body or long upper wick; state event (e.g. REJECTION) firing from the frozen labeler; M5 trend_20 staying negative.",
+    "invalidation": "A decisive break of the active level: M15 or H1 close above 4433+ sustaining above 4431.485 with expanding ranges (range_expanding already true) and no immediate reclaim failure."
+  },
+  "alternative_scenario": {
+    "scenario": "Breakout continuation UP: the strong H1/H4 bullish displacement (+71.07 / +31.49 trend_20) reflects real buying; price clears the 4431.485 swing high with a strong-bodied bar (like the 11:50 M5 bar pattern) and extends toward 4440-4446 (H1 current high 4445.785) and beyond, moving state to TREND or EXPANSION (analog A32384 / A28060).",
+    "confidence": 0.35,
+    "horizon": "INTRADAY",
+    "trigger": "M5/M15 body_ratio > 0.7 close above 4431.485; H1 fresh expansion with range_percentile > 0.8; M5 trend_20 turning positive; DXY weakening below 99.",
+    "invalidation": "Price fails back below 4424-4422 after tagging above the level (failed breakout), or a second upper-wick rejection at 4431-4433 on M5."
+  },
+  "third_scenario": {
+    "scenario": "Downside rotation / distribution: given the H4 trend_50 is deeply negative (-184.97) and M5 trend_20 is negative, the recent up-move may be corrective; price rolls over below 4424 (M5 11:15-11:20 lows 4418.9) toward 4406-4400, transitioning to DECELERATION/REJECTION (analog A35547).",
+    "confidence": 0.23,
+    "horizon": "SHORT_TERM",
+    "trigger": "H1 close below 4424.7 (current bar low) or M15 close below 4422; VIX rising above 16 with DXY rallying; H1 trend_20 rolling below +40.",
+    "invalidation": "H1 holds above 4424.7 and resumes higher; buyers defend 4418-4420 twice or more."
+  },
+  "direction_bias": "NO_DIRECTIONAL_EDGE",
+  "expected_state_transition": "ROTATION -> REJECTION or EXPANSION within ~16 steps (analogs A28060/A32384/A35547 all diverge from ROTATION by step 16); near-term resolution tied to the 4431.485 level break, otherwise extended ROTATION dwell",
+  "time_horizon": "INTRADAY",
+  "confidence": 0.42,
+  "supporting_evidence": [
+    "L2: heavy swing-high level 4431.485, break_status INSIDE, distance 0.1193 ATR, touch_count_240 = 41 - price parked at a high-touch supply zone",
+    "M1 current bar: body 0.04, upper_wick 2.06, range_percentile 0.795 - a rejection/gravestone-like print at the highs",
+    "M5 current bar: body 0.82, upper_wick 2.06 vs lower_wick 1.40 after 4428.995 high - failed high, mild pullback; M5 trend_20 -8.89",
+    "L3/L5: state ROTATION, dwell 11 bars, event NONE, ambiguity 0.25; L4 lists exhaustion candidate (dwell 11) alongside trend_continuation",
+    "DXY flat/slightly down (99.117, -0.024) and VIX low (15.38): no macro catalyst pushing gold through the level",
+    "H1 geometry strongly up on the day: 12:00 bar body 17.03, body_ratio 0.81, trend_20 +71.07 - higher-timeframe momentum is real"
+  ],
+  "counter_evidence": [
+    "Internal inconsistency: H1 current bar close 4443.965 and H4 current bar close 4485.155 at 12:00 contradict the coherent lower-TF picture (M1 4426.895 / M5 4426.115 / M15 4432.445 at the same timestamp) - current-bar aggregation appears misaligned; higher-TF closes cannot be trusted as simultaneous prints, only their trend_20/derived values",
+    "H1 trend_20 +71.07 and H4 trend_20 +31.49 argue for momentum that typically does not die at the first 41-touch level test",
+    "H4 current bar range_percentile 0.955 with body_ratio 0.82 suggests a strong expansion regime, which favors continuation over stall",
+    "M1 sequence: 7 consecutive up bars and only 4 down - micro-momentum is positive despite the last rejection wick",
+    "analog A32384 shows ROTATION -> TREND path, and A28060 ROTATION -> EXPANSION - half of the exact-match analogs resolve up",
+    "L4 trend_continuation candidate cites price inside level with 8-bar displacement -5.36 as support; exhaustion candidate self-rated 'dwell alone is a weak signal'"
+  ],
+  "trigger": "Resolution of the 4431.485 level: a decisive break with expanding range (breakout) vs a third failed high with a bearish M5/M15 body (rejection) - either should fire a labeler event (TREND/EXPANSION vs REJECTION), ending the 11-bar ROTATION dwell",
+  "invalidation": "The forecast is invalidated if price does not resolve the 4431-4433 zone within the next several M15 bars and instead forms a clear high-volume breakout above 4433.5 with sustained closes (kills rejection thesis) OR a breakdown below 4418 with H1 close (kills stall-above-support thesis); also invalidated if the lower-TF/current-bar data inconsistency is resolved showing true closes materially different from 4426-4427",
+  "change_my_mind": [
+    "M5/M15 close above 4431.485 with body_ratio > 0.7 and range_percentile > 0.7 (evidence of genuine breakout, not wick)",
+    "State labeler event fires TREND or EXPANSION with fresh expansion on M5",
+    "DXY breaks below ~98.8 or VIX spikes above 17 with gold holding gains (macro confirmation of up move)",
+    "A clean rejection: M5 bearish body closing below 4426 with expanding range and REJECTION event firing would raise rejection confidence toward 0.6+",
+    "Any resolution that produces three consecutive M15 closes in one direction on expanding range"
+  ],
+  "abstain": false,
+  "abstain_reason": "Abstention considered: H1/H4 current-bar closes conflict with M1/M5/M15 at the same timestamp, and UST10Y is UNKNOWN. Proceeded because the lower timeframes, L2 level, state machine and cross-market data form a coherent, checkable picture; higher-TF close inconsistencies are flagged as counter-evidence and only derived trend values are used from H1/H4.",
+  "reasoning_trace": [
+    "1. Read PIT context only; no future/outcome data used.",
+    "2. Anchored on L2 nearest level: 4431.485 swing high, 41 touches in 240 bars, price INSIDE at 0.1193 ATR - this is the dominant near-term structural fact.",
+    "3. Checked M1/M5 current bars: both show long upper wicks (2.06) with tiny bodies at 4426-4427 after tagging 4428.99 - evidence of supply at the level.",
+    "4. Checked L5/L3: ROTATION dwell 11, no event, ambiguity 0.25; L4 candidates split between trend_continuation and exhaustion with the latter self-flagged as weak.",
+    "5. Checked L6 MTF: agreement CONFLICT (M5 -8.89 vs H1 +71.07 / M15 +11.16 / H4 +31.49) - refused to merge timeframes into one direction per rules.",
+    "6. Cross-market: DXY flat, VIX low - no external forcing function; UST10Y absent.",
+    "7. Historical analogs (exact state+dwell): diverge at step 16 into EXPANSION / TREND / REJECTION - supports a pending transition but not its direction.",
+    "8. Flagged internal inconsistency of H1/H4 current-bar closes vs lower TFs; treated H1/H4 close prices as unreliable but their derived trend_20 as usable.",
+    "9. Synthesized: no directional edge; structural forecast centered on level resolution, rejection primary (42%), breakout continuation (35%), downside rotation (23%).",
+    "10. Set explicit invalidation and change-of-mind conditions that are checkable from future PIT context alone."
+  ],
+  "questions": {
+    "A": "What is happening? XAUUSD is trading around 4426-4427 at 2026-09-03 12:00Z, immediately below a heavy swing-high level at 4431.485 (41 touches in 240 bars, price INSIDE the level). M1/M5 show failed highs with long upper wicks (2.06) after tagging 4428.99, while H1/H4 derived trends are strongly positive on the day (+71.07 / +31.49). The frozen labeler says ROTATION (dwell 11, no event, ambiguity 0.25). DXY is flat (99.117), VIX low (15.38). Note: H1/H4 current-bar closes (4443.965 / 4485.155) conflict with lower-TF closes at the same timestamp and are treated as unreliable prints.",
+    "B": "What is the dominant structure? Rotation/consolidation beneath a high-touch overhead swing-high level (4431.485). The level's touch count (41) and the M1/M5 rejection wicks make it the controlling structure for the next move; H1/H4 momentum is higher-timeframe context, not the current battleground.",
+    "C": "What pressures are building? Directional: mixed - up-momentum from H1/H4 vs near-term seller defense at 4431-4433 and negative M5 trend_20 (-8.89). Volatility: quiet at M1 (0.00015) with range_expanding flags true on all TFs and an H4 range_percentile of 0.955 - compression/expansion tension. Liquidity-proxy: DXY flat, VIX low and only +0.12/8 bars - no catalyst; absence of NEWS/MACRO/CFTC data leaves liquidity conditions unknown.",
+    "D": "What mechanisms could explain it? (1) trend_continuation - supported: price inside the level with strong H1/H4 displacement; would be confirmed by a clean break above 4431.485. (2) exhaustion - supported weakly by the 11-bar ROTATION dwell; the mechanism list itself says dwell alone is weak. (3) supply rejection at a high-touch level (my reading): supported by M1/M5 upper wicks and the 41-touch level; would be confirmed by a bearish M5/M15 body closing below 4426. (4) Distribution/correction within a larger downtrend: supported by H4 trend_50 of -184.97; would be confirmed by an H1 close below 4424.7.",
+    "E": "What is the strongest evidence? (1) The 4431.485 swing-high level: 41 touches / 240 bars, price INSIDE at only 0.1193 ATR distance. (2) M1 current bar: body 0.04 with a 2.06 upper wick at range_percentile 0.795 - a clear rejection print. (3) M5 failed high at 4428.995 with negative trend_20 (-8.89). (4) ROTATION state, 11-bar dwell, no event - coiled and due for resolution. (5) H1 trend_20 +71.07 - genuine higher-TF upside momentum.",
+    "F": "What is the strongest counter-evidence? The bullish case is strong: H1 trend_20 +71.07, H4 trend_20 +31.49 with a 0.955 range_percentile bar and 0.82 body_ratio, M1 shows 7 consecutive up bars, and two of three exact-match analogs (A28060, A32384) resolve UP from ROTATION. Also, H1/H4 current bars are inconsistent with lower TFs, so the 'rejection' read rests mainly on M1/M5 geometry. If the H1/H4 prints are accurate, price is actually far above the level and the rejection thesis is wrong.",
+    "G": "What could happen next? PRIMARY: rejection/stall at 4431.485 - price fails to close decisively above the level, ROTATION persists or flips to REJECTION, drift toward 4424-4418 support (M5 low 4418.915, H1 low 4418.045). Confidence 0.42, INTRADAY.",
+    "H": "What is the alternative? (1) Breakout continuation UP: clean close above 4431.485 with expanding range, extension toward 4440-4446+, state to TREND/EXPANSION (confidence 0.35). (2) Downside rotation: rollover below 4424 toward 4406-4400 given H4 trend_50 -184.97 and M5 -8.89 (confidence 0.23).",
+    "I": "What would invalidate the forecast? A decisive, sustained break above 4433.5 with expanding ranges and no immediate reclaim failure (kills rejection); or an H1 close below 4418 (kills stall-above-support); or the data-inconsistency resolving to show true price materially different from the 4426-4427 lower-TF picture.",
+    "J": "What would change your mind? A strong-bodied (body_ratio > 0.7) M5/M15 close above 4431.485 with range expansion and a TREND/EXPANSION labeler event would flip me to bullish (confidence 0.6+); a DXY break below ~98.8 or VIX spike above 17 with gold holding gains would confirm macro tailwind; conversely a clean M5 bearish close below 4426 with expanding range and a REJECTION event would push rejection confidence to 0.6+. Three consecutive same-direction M15 closes on expanding range in either direction would resolve the NO_DIRECTIONAL_EDGE stance."
+  }
+}

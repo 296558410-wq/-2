@@ -1,0 +1,53 @@
+{
+  "audit_id": "BB_20260806",
+  "timestamp": "2026-08-06T00:00:00Z",
+  "current_state": "EXPANSION (dwell 23 bars), frozen behaviour ROTATION, event NONE; price ~4249-4252 on M1/M5 after a strong multi-timeframe rally. ambiguity_rate_8 = 0.5.",
+  "structure": "Strong multi-timeframe uptrend: all timeframes AGREE with positive trend_20 (H4 +218.86, H1 +150, M15 +11.51, M5 +5.84, M1 +0.25). H4 rallied from ~4058 (Aug 4) to ~4278. Nearest structure is swing-high 4253.795 (SWING_HIGH_37612, touch_count_240=13), break_status BEYOND (~0.35 ATR beyond). Price has pulled back from session highs (H1 high 4281.8, H4 high 4303.7) to ~4249-4252, now at/below the just-broken level. M5 last bar (23:55-00:00) is a strong bull bar toward 4252, hinting resumption.",
+  "mechanism": "breakout_pressure is the leading candidate (close beyond 4253.795, break_status BEYOND), against failed_breakout (price currently not reclaimed above the level) and exhaustion (dwell 23 bars; H4 current bar upper wick ~25.5 at the highs). All are CANDIDATES only, none asserted.",
+  "primary_scenario": {
+    "scenario": "Breakout resumes: price reclaims and holds above 4253.795, then extends toward 4280 and the 4300 area, riding the intact multi-TF uptrend with mildly soft DXY support.",
+    "confidence": 0.55,
+    "horizon": "INTRADAY",
+    "trigger": "Sustained M5/M15 close above 4253.795 with range expansion (reclaim of the broken swing high, ideally ~4256+).",
+    "invalidation": "A firm close back below ~4245-4247 (post-pullback consolidation lows) invalidates the UP continuation."
+  },
+  "alternative_scenario": {
+    "scenario": "Failed breakout / exhaustion reversal: the 4303 -> 4249 pullback marks distribution; price rolls over below 4247 targeting 4232 (H1 16:00 low) then 4224-4213, consistent with the EXPANSION->REJECTION analog and the exhaustion candidate.",
+    "confidence": 0.3,
+    "horizon": "INTRADAY",
+    "trigger": "Loss of 4245-4247 support on a firm close with downward range expansion.",
+    "invalidation": "A decisive reclaim above 4260 voids the rejection thesis; strong bid without follow-through lower also weakens it."
+  },
+  "expected_transition": "EXPANSION persists short-term; resolution toward TREND (up continuation) or REJECTION (down) is genuinely two-sided: ambiguity_rate_8 = 0.5, no transitions in the last 8 bars, and historical analogs diverge (A33867 -> TREND, A34913 -> COMPRESSION, A36223 -> REJECTION).",
+  "direction": "UP",
+  "horizon": "INTRADAY",
+  "confidence": 0.55,
+  "counter_evidence": [
+    "Cross-TF current-bar closes are inconsistent (M1 ~4249 vs H1/H4 ~4278); higher-TF 'current' bars appear to extend beyond as_of, so their intra-bar extremes may not be PIT-pure.",
+    "Price at 00:00 sits at/below the just-broken 4253.795 level, so the breakout is not yet reclaimed (failed_breakout candidate).",
+    "ambiguity_rate_8 = 0.5 with no transitions in the last 8 bars -> weak state signal.",
+    "Historical analogs split between TREND, COMPRESSION and REJECTION outcomes.",
+    "H4 current bar upper wick ~25.5 (rejection from the 4303 high) suggests supply overhead.",
+    "DXY change_8/change_32 slightly negative but negligible; no VIX or UST10Y to corroborate risk sentiment."
+  ],
+  "invalidation": "Sustained close below ~4245-4247 invalidates the UP continuation; sustained reclaim and hold above 4260 voids the downside alternative.",
+  "data_quality_flags": [
+    "L1 cross-timeframe close inconsistency (M1/M5/M15 vs H1/H4); higher-TF current bars may include post-as_of price action",
+    "DXY is PROXY (Yahoo, instrument definition UNKNOWN), never upgraded",
+    "VIX and UST10Y_PROXY_TNX UNKNOWN (stale/not covered)",
+    "L2 nearest level is DERIVED (causal pivot-swing)",
+    "L3/L5 labels are DERIVED (frozen C1 ontology + min-dwell lifecycle); ambiguity_rate_8 = 0.5",
+    "Historical analogs are state-evolution only (exact-state + dwell-bucket), no returns/PnL",
+    "NEWS/MACRO_EVENTS/CFTC_COT/ETF_FLOWS absent (recorded absent, not fabricated)"
+  ],
+  "reasoning_trace": [
+    "Read ONLY the prompt (hermes_b_blind_r6.txt) and PIT context (CTX_20260806T000000Z.json); no other analyst forecasts consulted.",
+    "All 5 timeframes show positive trend_20 and L6 agreement AGREE -> a strong directional tailwind UP.",
+    "Nearest swing-high 4253.795 is broken (BEYOND), consistent with the breakout_pressure candidate.",
+    "However the latest M1/M5 prints (~4249-4252) sit below that level and well off the H4 high 4303.7 -> pullback after breakout, level now being retested.",
+    "The M5 last bar is a strong bull bar toward 4252, hinting resumption, but 4253.795 is not yet reclaimed.",
+    "ambiguity_rate_8 = 0.5, no transitions, and divergent analogs -> keep confidence moderate (0.55); directional lean is a judgment, not a strong edge.",
+    "DXY mildly soft (supportive but PROXY and negligible move); no VIX/UST10Y cross-check.",
+    "Flag the cross-TF close inconsistency as a data-quality caveat and set the invalidation fence at 4245-4247."
+  ]
+}

@@ -1,0 +1,151 @@
+{
+ "schema": "v3_long_history_capability/1",
+ "ts_utc": "2026-09-25T09:05:59.931864+00:00",
+ "core_question_answer": "NO China-intranet source provides long-history XAUUSD 1m/tick acquisition. A long local 1m asset (Dukascopy, 2010-2026) EXISTS but its provider is unreachable from the China intranet (TCP/TLS timeouts), so the chain is not reproducible.",
+ "verdict": "V3_LONG_XAUUSD_HISTORY_PARTIAL",
+ "verdict_reason": "long 1m candle history exists locally (2010-01 -> 2026-08; >=2020 satisfied with gaps in 2018/2023/2024); definition documented (Dukascopy XAUUSD, E_CFD); quality auditable; BUT (a) NEW acquisition from the China intranet is BLOCKED (Dukascopy TCP/TLS timeouts), (b) tick files have UNRESOLVED timestamp semantics, (c) ticks cover only sparse periods",
+ "coverage": {
+  "candles": {
+   "files": 179,
+   "months": 179,
+   "first": "2010-01",
+   "last": "2026-08",
+   "total_unique_minutes": 7233120,
+   "per_year_minutes": {
+    "2010": 470880,
+    "2011": 462240,
+    "2012": 473760,
+    "2013": 470880,
+    "2014": 470880,
+    "2015": 470880,
+    "2016": 473760,
+    "2017": 470880,
+    "2018": 383040,
+    "2019": 470880,
+    "2020": 473760,
+    "2021": 470880,
+    "2022": 470880,
+    "2023": 286560,
+    "2024": 319680,
+    "2025": 460800,
+    "2026": 132480
+   },
+   "sample_months": [
+    {
+     "month": "2010-01",
+     "rows": 80640,
+     "unique_days": 28,
+     "unique_minutes": 40320,
+     "first_day": "2010-01-01",
+     "last_day": "2010-01-28"
+    },
+    {
+     "month": "2010-02",
+     "rows": 80640,
+     "unique_days": 28,
+     "unique_minutes": 40320,
+     "first_day": "2010-02-01",
+     "last_day": "2010-02-28"
+    },
+    {
+     "month": "2018-03",
+     "rows": 17280,
+     "unique_days": 6,
+     "unique_minutes": 8640,
+     "first_day": "2018-03-25",
+     "last_day": "2018-03-30"
+    },
+    {
+     "month": "2026-07",
+     "rows": 89280,
+     "unique_days": 31,
+     "unique_minutes": 44640,
+     "first_day": "2026-07-01",
+     "last_day": "2026-07-31"
+    },
+    {
+     "month": "2026-08",
+     "rows": 8640,
+     "unique_days": 3,
+     "unique_minutes": 4320,
+     "first_day": "2026-08-01",
+     "last_day": "2026-08-03"
+    }
+   ]
+  },
+  "ticks": {
+   "files": 147,
+   "first_keys": [
+    "202309",
+    "20230901",
+    "20230902",
+    "20230903",
+    "20230904",
+    "20230905"
+   ],
+   "last_keys": [
+    "20240330",
+    "202608",
+    "20260801",
+    "20260802",
+    "20260803",
+    "20260804"
+   ],
+   "total_rows": 31127936
+  }
+ },
+ "cross_validation": {
+  "scale_applied": 1000.0,
+  "duka_level_usd_after_scale": 4480.27,
+  "fxtm_level_usd": 4051.625,
+  "level_gap_pct": 10.58,
+  "TIMESTAMP_ALIGNMENT": "UNRESOLVED"
+ },
+ "coverage_simulation": {
+  "DUKASCOPY_1M": 0,
+  "FXTM_1M": 158,
+  "none": 0
+ },
+ "jin10_event_pit": {
+  "count": 158,
+  "raw_hash": "0c9c6ceabdec281dd1fcc887fac7636bf4deaae6a6a852eaa14f7952cdcef4e6"
+ },
+ "discipline": {
+  "no_new_hypothesis": true,
+  "no_h22_recompute": true,
+  "no_round4": true,
+  "no_forward": true,
+  "no_shadow": true,
+  "no_live": true,
+  "no_order": true,
+  "no_return_statistics": true
+ },
+ "git_head_before": {
+  "head": "88668093617b06e438ce671d1e623e0eada10964",
+  "short": "8866809",
+  "branch": "fix/v2-full-system-repair-20260917",
+  "status_lines": 538
+ },
+ "blockers": [
+  "acquisition_requires_overseas_network",
+  "tick_timestamp_semantics_unresolved",
+  "coverage_gaps_2018_2023_2024",
+  "bar_close_definition_unknown"
+ ],
+ "ready_criteria_check": {
+  "china_intranet": false,
+  "automatable": true,
+  "xau_definition_clear": true,
+  "at_least_2020": true,
+  "has_1m_or_tick": true,
+  "timestamp_clear": false,
+  "quality_auditable": true,
+  "raw_savable": true,
+  "repeatable": false
+ },
+ "mt5_native_history": {
+  "long_history_1m_from_this_venue": "NO (~7 weeks only)",
+  "long_history_h1_d1_from_this_venue": "YES (H1 10.7y, D1 22.3y), venue-correct, China-intranet, automatable, no new dependency"
+ },
+ "vm_new_finding": "venue-correct long history IS available at H1/D1 via the existing MT5 terminals; only M1/tick long history is unavailable"
+}

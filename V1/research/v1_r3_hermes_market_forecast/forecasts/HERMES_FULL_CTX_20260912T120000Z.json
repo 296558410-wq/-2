@@ -1,0 +1,78 @@
+{
+  "forecast_id": "HERMES_FULL_CTX_20260912T120000Z",
+  "timestamp": "2026-09-12 12:00:00+00:00",
+  "current_state": "COMPRESSION (event VOL_CONTRACTION, dwell 1 bar; 8-bar ambiguity rate 0.875; price 4347.508, inside swing-high level 4349.728, distance 0.31 ATR)",
+  "dominant_structure": "Post-impulse compression beneath a high-touch swing-high level. After an extreme H4 shock bar (2026-09-11 12:00: low 4291.951 / high 4402.268 / range 110.3) and a rejected breakout at 4401-4402, price compressed into a roughly 4342.5-4353.6 band and now sits 0.31 ATR under the swing-high 4349.728 (33 touches in 240 bars, break_status INSIDE). Frozen labeler and ATR contraction (M1 1.11, M5 2.82, H1 22.18) confirm the compression state; multi-timeframe agreement is CONFLICT.",
+  "current_pressure": "Liquidity: price pressing on swing-high resistance 4349.728 (33 touches/240 bars) - an absorption/breakout decision zone; the H4 shock bar's huge lower wick (45.3) shows a downside liquidity sweep at 4291-4320 that was aggressively bought. Volatility: contraction (VOL_CONTRACTION, range_contracting on M5/H1/H4, falling ATR) - expansion energy is building but its direction is unknown. Directional: conflicting across timeframes (M15 trend_20 -13.6 and H4 trend_20 -27.9 vs H1 trend_20 +18.3; H1 trend_50 -68.3 vs H4 trend_50 +18.8) - no aligned directional pressure.",
+  "primary_scenario": {
+    "scenario": "COMPRESSION persists: XAUUSD continues to oscillate inside the 4342.5-4353.6 band around the 4349.7 pivot for several more bars (state evolution analogs show COMPRESSION persisting 4-16 steps before changing state), with the first meaningful resolution attempt being a test of the swing-high 4349.728. Direction of the eventual expansion is not yet established from this context alone.",
+    "confidence": 0.55,
+    "horizon": "INTRADAY",
+    "trigger": "A volatility re-expansion event at the level (high range_percentile bar, ATR pickup on M1/M5) or a firm touch of the 4349.7 swing high / 4345 support edge that breaks the tight range",
+    "invalidation": "Decisive close outside the 4342.5-4353.6 band (e.g., M5 close below 4342.5 or above 4353.6 with follow-through) or the frozen state leaving COMPRESSION (transition to TREND or REJECTION)"
+  },
+  "alternative_scenario": {
+    "scenario": "BEARISH RESOLUTION: rejection at the swing high 4349.728 (consistent with the TREND->REJECTION->COMPRESSION history and REJECTION following COMPRESSION in 2 of 3 state analogs, and with the post-4402 drift lower: M15 trend_20 -13.6, H4 trend_20 -27.9), breakdown of 4345/4342.5, then retest of 4336.5-4329.9 and potentially the 4291.951 shock low.",
+    "confidence": 0.45,
+    "horizon": "SHORT_TERM",
+    "trigger": "A rejection bar (long upper wick / low close body_ratio) at 4349.7 followed by a close below 4345, then 4342.5",
+    "invalidation": "A close above 4353.6 or reclaim of 4349.728 with sustained follow-through (M5 closes above the level)"
+  },
+  "third_scenario": {
+    "scenario": "BULLISH RESOLUTION: break and reclaim of the swing-high 4349.728 (33 touches indicate strong two-way participation at the level; H1 trend_20 positive +18.3 and aggressive demand at the 4291-4320 shock low support upside), continuation toward the 4353.6-4364.5 zone and retest of the 4370-4376.9 rejection area.",
+    "confidence": 0.4,
+    "horizon": "SHORT_TERM",
+    "trigger": "An expansion bar closing above 4349.728 (range_percentile > 0.9 on M5/M15) followed by a higher low above the level",
+    "invalidation": "A close back below 4345 after the break attempt, or a decisive close below 4342.5"
+  },
+  "direction_bias": "NO_DIRECTIONAL_EDGE",
+  "expected_state_transition": "COMPRESSION -> COMPRESSION (persists, per analogs 4-16 steps) -> REJECTION or TREND upon resolution; ambiguity rate (0.875) stays high until the level resolves",
+  "time_horizon": "INTRADAY",
+  "confidence": 0.55,
+  "supporting_evidence": [
+    "Frozen behavior label COMPRESSION with event VOL_CONTRACTION at t (dwell 1); range_contracting=true on M5, H1, H4",
+    "ATR collapse across timeframes: M1 1.113 (vs 0.86-1.07 nearby), M5 2.817 (down from ~3.6), H1 22.18 (down from ~22.9); volatility 0.00017 on M1",
+    "Price INSIDE high-touch swing-high 4349.728 (level_side UP, 33 touches in 240 bars, distance 0.31 ATR) - the L2 structure marks this as the decision point",
+    "H4 12:00 shock bar (low 4291.951, high 4402.268, range 110.3, range_percentile 0.985) followed by rejection at 4401-4402 (15:00 H1 body -30.6) and a ~3h drift/consolidation down to 4347.5",
+    "State sequence NO_DEFINED_STATE->TREND->REJECTION->COMPRESSION shows an impulse that was rejected and is now compressing",
+    "State-evolution analogs A22271/A28461/A34291 (state-only, similarity 1.0) show COMPRESSION persisting 4-16 steps before changing state"
+  ],
+  "counter_evidence": [
+    "Multi-timeframe agreement = CONFLICT; H1 trend_20 is positive (+18.25) and H4 trend_50 is positive (+18.8) - higher-timeframe momentum is not uniformly down",
+    "8-bar ambiguity rate 0.875 - the frozen labeler itself is highly uncertain about the state",
+    "Price has held the 4345-4346 zone on repeated probes (21:40 low 4345.573, 21:50 low 4346.685, 21:53 low 4345.348) with supportive lower wicks - visible demand below",
+    "The H4 shock bar's lower wick (45.3) shows aggressive buying at 4291-4320 - downside fuel may be limited",
+    "Analog A34291 remained COMPRESSION through 16+ steps - compression can persist far beyond the typical dwell",
+    "All cross-market series (DXY, VIX, UST10Y proxy) are UNKNOWN/absent - there is zero confirmatory macro evidence for any direction"
+  ],
+  "trigger": "Expansion event at the swing-high 4349.728 (high range_percentile bar, M1/M5 ATR pickup, volatility re-expansion) or loss of the 4345-4342.5 support shelf",
+  "invalidation": "Decisive M5 close outside the 4342.5-4353.6 band with follow-through (below 4342.5 or above 4353.6); or the frozen state label leaving COMPRESSION (TREND/REJECTION) with a corresponding level break; or level break_status changing from INSIDE with reclaim_status set",
+  "change_my_mind": [
+    "Any of the currently UNKNOWN cross-market series becoming available (DXY, VIX, UST10Y proxy) with a clear directional reading - absent today, so no macro confirmation exists",
+    "A confirmed break and reclaim of 4349.728 (level reclaim_status set, M5 closes above) - flips judgement toward bullish continuation toward 4353.6-4364.5",
+    "A confirmed breakdown below 4345 and then 4342.5 with follow-through - flips judgement toward bearish continuation toward 4336.5-4329.9 and possibly 4291.95",
+    "A frozen state transition to TREND or REJECTION at t+1/t+2 resolving the ambiguity rate (currently 0.875)"
+  ],
+  "abstain": false,
+  "abstain_reason": "",
+  "reasoning_trace": [
+    "Read only the PIT context (as_of 2026-09-12 12:00 UTC); no future/label data used; all DXY/VIX/UST10Y treated as UNKNOWN and never fabricated",
+    "Frozen labeler + L2 level + state history are mutually consistent: impulse (TREND) -> rejection at 4401-4402 -> COMPRESSION under swing high 4349.728",
+    "Level analysis: price INSIDE swing high at 0.31 ATR with 33 touches/240 bars - high-participation pivot; break direction unresolved by geometry alone",
+    "Multi-timeframe CONFLICT and 0.875 ambiguity rate preclude a directional edge; structural compression scenario is the defensible forecast",
+    "Analogs used for state-evolution shape only (explicitly no returns/PnL); COMPRESSION persists 4-16 steps then typically REJECTION in this small sample",
+    "Emitted NO_DIRECTIONAL_EDGE with explicit checkable invalidation/change-my-mind conditions per prompt rules"
+  ],
+  "questions": {
+    "A": "XAUUSD is trading at ~4347.5 (last close 4347.508, 2026-09-11 21:59 UTC), in a freshly labeled COMPRESSION state (VOL_CONTRACTION, dwell 1 bar) after an extreme two-way event: the H4 12:00 UTC bar ranged 4291.951-4402.268 (range 110.3, percentile 0.985) and closed 4370.585, following which price was rejected from 4401-4402 and drifted/consolidated down to the 4342.5-4353.6 band. Price sits 0.31 ATR below a high-touch swing-high level at 4349.728 (break_status INSIDE, 33 touches in 240 bars). All cross-market series (DXY, VIX, UST10Y proxy) are UNKNOWN/absent; multi-timeframe agreement is CONFLICT.",
+    "B": "Post-impulse compression beneath swing-high resistance. Support: frozen label COMPRESSION + VOL_CONTRACTION; range_contracting true on M5/H1/H4; M1/M5 ATR near local lows (1.113 / 2.817); price oscillating in a tight ~11-point band after the H4 shock bar; state history NO_DEFINED_STATE->TREND->REJECTION->COMPRESSION records an impulse that failed and is now compressing under 4349.728.",
+    "C": "(1) Liquidity: price pressing against swing high 4349.728 (33 touches/240 bars) - an absorption/breakout decision zone; the H4 shock bar's 45.3 lower wick indicates a downside liquidity sweep at 4291-4320 that was bought aggressively. (2) Volatility: contraction (VOL_CONTRACTION, contracting ranges, falling ATR) - expansion energy building, direction unknown. (3) Directional: conflicting timeframes (M15 trend_20 -13.6, H4 trend_20 -27.9 vs H1 trend_20 +18.3; H1 trend_50 -68.3 vs H4 trend_50 +18.8) - no aligned directional pressure.",
+    "D": "Candidates: (1) Compression/absorption at supply under the swing high - SUPPORTED by frozen labels, level INSIDE status, high touch count; resolution direction unknown. (2) Failed-breakout continuation down / distribution - PARTIALLY SUPPORTED by the 4401-4402 rejection and post-impulse drift (M15/H4 trend_20 negative). (3) trend_continuation (L4 candidate) - WEAKLY SUPPORTED (only 'price inside level, 8-bar displacement 0.723'); cannot stand alone. (4) Post-shock mean reversion to the 4345-4349 equilibrium - PARTIALLY SUPPORTED by M1 stabilization (tiny ranges, closes 4346.8-4349.0) but no cross-market confirmation. No mechanism is asserted as fact.",
+    "E": "Frozen COMPRESSION + VOL_CONTRACTION with contracting ranges (M5/H1/H4); ATR collapse (M1 1.113, M5 2.817 vs ~3.6 earlier, H1 22.18); price INSIDE high-touch swing high 4349.728 at 0.31 ATR (33 touches/240 bars); the H4 shock bar (4291.95-4402.27) followed by rejection at 4401-4402 and 3h drift to 4347; state-evolution analogs (state-only, similarity 1.0) showing COMPRESSION persisting 4-16 steps.",
+    "F": "Multi-timeframe agreement is CONFLICT and H1 trend_20 (+18.25) / H4 trend_50 (+18.8) are positive, so higher-timeframe momentum is not uniformly bearish; 8-bar ambiguity rate is 0.875 (the labeler is itself uncertain); price has repeatedly defended 4345-4346 (wicks at 4345.348/4345.573/4346.685); the H4 shock bar's huge lower wick shows aggressive demand near 4291-4320; analog A34291 stayed COMPRESSION 16+ steps; zero cross-market confirmation exists (all UNKNOWN).",
+    "G": "PRIMARY: continued compression inside the 4342.5-4353.6 band around the 4349.7 pivot, persisting several more bars (analogs: 4-16 steps), with the first meaningful resolution attempt being a test of swing-high 4349.728; the expansion's direction is not established from this context. Confidence 0.55 (structural scenario), horizon INTRADAY.",
+    "H": "ALTERNATIVE 1 (bearish, ~0.45): rejection at 4349.7, breakdown of 4345/4342.5, retest of 4336.5-4329.9 and possibly the 4291.951 shock low - consistent with REJECTION following COMPRESSION in 2/3 analogs and negative M15/H4 trend_20. ALTERNATIVE 2 (bullish, ~0.4): break and reclaim of 4349.728 with continuation to 4353.6-4364.5 and retest of 4370-4376.9 - consistent with positive H1 trend_20 and strong demand at the shock low.",
+    "I": "Invalidation: decisive M5 close below 4342.5 or above 4353.6 with follow-through (expansion out of the band); frozen state leaving COMPRESSION (TREND/REJECTION) with the corresponding level break; or L2 break_status changing from INSIDE with reclaim_status set. Any of these ends the compression scenario and establishes the direction of resolution.",
+    "J": "Change my mind: (1) availability of DXY/VIX/UST10Y proxy with a clear reading (currently UNKNOWN - nothing would flip on absent data, everything could); (2) confirmed break and reclaim of 4349.728 (reclaim_status set, M5 closes above) -> flip to bullish continuation; (3) confirmed breakdown below 4345 then 4342.5 with follow-through -> flip to bearish continuation; (4) frozen state transition to TREND or REJECTION resolving the 0.875 ambiguity."
+  }
+}

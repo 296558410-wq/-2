@@ -1,0 +1,197 @@
+{
+ "task": "V1_R2_PHASE_B_R13",
+ "status": "COMPLETE",
+ "MEASUREMENT_POWER": "MEASUREMENT_POWER = SUFFICIENT",
+ "CONFIRMED_CAPABILITIES": [],
+ "WEAK_CAPABILITIES": [
+  "FAILED_EVENT",
+  "MOMENTUM",
+  "MOMENTUM_TRANSITION"
+ ],
+ "REJECTED_CAPABILITIES": [
+  "REGIME",
+  "LIQUIDITY_PROXY"
+ ],
+ "BEST_SUPPORTED_CAPABILITY": "NONE",
+ "PROMOTION_CANDIDATE": "NONE",
+ "FORMAL_RULE_CHANGE": "NOT_ALLOWED",
+ "NULL_SEPARATION_RATE": "3/5",
+ "NESTED_COMPARISONS": {
+  "M0": 1.2642,
+  "M0+MOMENTUM": 1.26348,
+  "M0+MOMENTUM+MOMENTUM_TRANSITION": 1.25818,
+  "M0+MOMENTUM+MOMENTUM_TRANSITION+REGIME": 1.25806,
+  "M0+FAILED_EVENT": 1.26332,
+  "M0+LIQUIDITY_PROXY": 1.26382
+ },
+ "PER_CANDIDATE": {
+  "FAILED_EVENT": {
+   "delta_logloss": 0.00016,
+   "null_p95": 0.00015,
+   "empirical_p": 0.045,
+   "block_deltas": [
+    0.0001,
+    0.00025,
+    0.00014
+   ],
+   "worst_block": 0.0001,
+   "train_delta": 0.00021,
+   "test_delta": 0.00016,
+   "OVERFIT_RISK": "LOW",
+   "NULL_SEPARATION": "PASS",
+   "final_status": "WEAK"
+  },
+  "MOMENTUM": {
+   "delta_logloss": 0.00073,
+   "null_p95": 0.00042,
+   "empirical_p": 0.005,
+   "block_deltas": [
+    2e-05,
+    0.00088,
+    0.00128
+   ],
+   "worst_block": 2e-05,
+   "train_delta": 0.00189,
+   "test_delta": 0.00073,
+   "OVERFIT_RISK": "LOW",
+   "NULL_SEPARATION": "PASS",
+   "final_status": "WEAK"
+  },
+  "MOMENTUM_TRANSITION": {
+   "delta_logloss": 0.00534,
+   "null_p95": 0.00032,
+   "empirical_p": 0.0,
+   "block_deltas": [
+    0.00539,
+    0.00535,
+    0.00527
+   ],
+   "worst_block": 0.00527,
+   "train_delta": 0.00648,
+   "test_delta": 0.00534,
+   "OVERFIT_RISK": "LOW",
+   "NULL_SEPARATION": "PASS",
+   "final_status": "WEAK"
+  },
+  "REGIME": {
+   "delta_logloss": 0.0002,
+   "null_p95": 0.00041,
+   "empirical_p": 0.19,
+   "block_deltas": [
+    0.00086,
+    0.0017,
+    -0.00195
+   ],
+   "worst_block": -0.00195,
+   "train_delta": 0.00143,
+   "test_delta": 0.0002,
+   "OVERFIT_RISK": "LOW",
+   "NULL_SEPARATION": "FAIL",
+   "final_status": "NOT_SUPPORTED"
+  },
+  "LIQUIDITY_PROXY": {
+   "delta_logloss": -0.00034,
+   "null_p95": 0.00049,
+   "empirical_p": 0.86,
+   "block_deltas": [
+    -0.00066,
+    -0.00041,
+    4e-05
+   ],
+   "worst_block": -0.00066,
+   "train_delta": 0.0006,
+   "test_delta": -0.00034,
+   "OVERFIT_RISK": "LOW",
+   "NULL_SEPARATION": "FAIL",
+   "final_status": "NOT_SUPPORTED"
+  }
+ },
+ "CHECKS": {
+  "PIT_TEST": "PASS",
+  "REPLAY_TEST": "PASS",
+  "DETERMINISTIC_TEST": "PASS",
+  "NULL_TEST": "PASS",
+  "DEPENDENCY_AUDIT": "PASS",
+  "NON_CIRCULAR_AUDIT": "PASS",
+  "BOUNDARY_SELECTION": "NONE"
+ },
+ "REPLAY": [
+  {
+   "truncation_bars": 398,
+   "rows_available": 398,
+   "past_decision_unchanged": true,
+   "note": "features/targets are strictly causal per bar; model refits use only prior bars"
+  },
+  {
+   "truncation_bars": 530,
+   "rows_available": 530,
+   "past_decision_unchanged": true,
+   "note": "features/targets are strictly causal per bar; model refits use only prior bars"
+  },
+  {
+   "truncation_bars": 663,
+   "rows_available": 663,
+   "past_decision_unchanged": true,
+   "note": "features/targets are strictly causal per bar; model refits use only prior bars"
+  },
+  {
+   "truncation_bars": 796,
+   "rows_available": 796,
+   "past_decision_unchanged": true,
+   "note": "features/targets are strictly causal per bar; model refits use only prior bars"
+  },
+  {
+   "truncation_bars": 928,
+   "rows_available": 928,
+   "past_decision_unchanged": true,
+   "note": "features/targets are strictly causal per bar; model refits use only prior bars"
+  },
+  {
+   "truncation_bars": 1061,
+   "rows_available": 1061,
+   "past_decision_unchanged": true,
+   "note": "features/targets are strictly causal per bar; model refits use only prior bars"
+  },
+  {
+   "truncation_bars": 1194,
+   "rows_available": 1194,
+   "past_decision_unchanged": true,
+   "note": "features/targets are strictly causal per bar; model refits use only prior bars"
+  },
+  {
+   "truncation_bars": 1260,
+   "rows_available": 1260,
+   "past_decision_unchanged": true,
+   "note": "features/targets are strictly causal per bar; model refits use only prior bars"
+  }
+ ],
+ "REG13_HASH": "82832c60980925923082371f1f99b433bb5e822addd501117beee5813e9336a6",
+ "DEF9_HASH": "f1c550975409752e7b8224e7e43c30f995481c4a18e6179dd79b088827131be8",
+ "REGISTRY_HASH": "014de1664566613f8038884a71e34e41bb0a2ce89315f0682cebfe4a2c51b7ed",
+ "REGISTRY_INTEGRITY": "PASS",
+ "safety": {
+  "ORDER_SEND": 0,
+  "ORDER_CHECK": 0,
+  "BROKER_WRITE": 0,
+  "FORWARD": "OFF",
+  "SHADOW": "OFF",
+  "LIVE": "OFF",
+  "V1_STOP": 0,
+  "V1_RESTART": 0,
+  "AUTOMATION_RUN": 0,
+  "V2_WRITE": 0,
+  "V3_WRITE": 0,
+  "ENGINE_PY_MODIFIED": 0,
+  "REGISTRY_MODIFIED": 0,
+  "PARAMETER_MODIFIED": 0,
+  "DIRECTION_MAPPING_MODIFIED": 0,
+  "FUTURE_RETURN_USED": "NO",
+  "PNL_USED": "NO",
+  "WIN_RATE_USED": "NO",
+  "TRADE_OUTCOME_USED": "NO",
+  "B_R4_SOURCE_DATA_CONFLICT": "UNCHANGED",
+  "BOUNDARY_VIOLATION": 0
+ },
+ "run_dir": "research/hermes/trader_v1/v1_r2_prediction_upgrade/v1_r2_research_runs/V1_R2_RUN_B13_20260927T000909",
+ "ts_utc": "2026-09-27T00:03:35.430332+00:00"
+}

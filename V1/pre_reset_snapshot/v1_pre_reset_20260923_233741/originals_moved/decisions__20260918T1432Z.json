@@ -1,0 +1,92 @@
+{
+ "schema": "hermes_decision_v1",
+ "utc_ts": "2026-09-18T14:32:00Z",
+ "cycle": "2026-09-18T14:32Z",
+ "decision_id": "DEC-2026-09-18T14:32Z",
+ "symbol": "XAUUSD",
+ "decision": "SHORT",
+ "plan_id": "TP-20260918T1432Z",
+ "confidence": 0.44,
+ "bias": "LEAN-SHORT 0.44 - with-momentum BREAKDOWN-CONTINUATION: the 4347.5-4353.5 demand shelf (H1 MA200 4350.18 / 13:45Z flush low 4347.29) that the 14:17Z plan was buying has BROKEN - the 14:15Z M15 closed 4343.15 (new low 4342.91) and 14:30Z printed 4342.62, so price is now BELOW the shelf and the shelf is resistance. M15 lower-highs (4356.50 -> 4355.05) + lower-lows (4347.29 -> 4342.91 -> 4342.62), H1 rolled down (14:00Z 4345.27 < MA20 4364.28, < MA200 4350.18), D1 below MA20 4431.29 = sell the retest. Only H4 (4345.27 > MA20 4321.17) is up but its forming bar is a large down bar (O 4368.79 -> 4345.27) = rolling over.",
+ "mtf_agreement": "short-lean (~3/4): M15 DOWN (LL/LH, RSI low) + H1 rolling DOWN (below MA20 4364.28 and MA200 4350.18) + D1 below MA20 4431.29 (RSI 42.3, llish) all support the sell; the lone counter is H4 still above its MA20 4321.17 - but the live H4 bar is a big down candle (4368.79 -> 4345.27), i.e. fading, not supporting. Net: SELL the broken 4344-4353.5 shelf / H1 MA200 4350.18 as resistance.",
+ "state_summary": "Gate 14:32Z Fri: armed=true open=true (exit 0). pkg 2026-09-18T14:32Z: live_days 10, live_ticks 1,973,629, gaps []. m15_live last_mid 4344.83, spread 0.32bps, tick 178/min, last6_max 14.8bps z 0.43 vs base 10.18 (vol normal). Broker demo tick 14:33Z bid 4346.51/ask 4346.64 mid 4346.575, spread 0.139pt (0.32bps); account balance/equity/margin_free 1980.63 USD, positions [] -> FLAT, single-position slot FREE. Live broker MTF (server GMT+3): D1 4345.27 < MA20 4431.29 (RSI 42.3) mixed-bearish / H4 4345.27 > MA20 4321.17 but forming bar O 4368.79 -> 4345.27 (big down, rolling) / H1 4345.27 < MA20 4364.28 > MA50 4335.98 < MA200 4350.18 (easing/down) / M15 4345.27 < MA20 < MA50, LL/LH (down). Day high 4399.70 / day low 4334.35. Tape: 4399.70 & 4398.27 double top -> 13:45Z flush 4347.29 -> 14:00Z bounce 4351.69 -> 14:15Z REJECTION to 4343.15 -> 14:30Z 4342.62 = shelf lost. Data caveat: pkg m15 bar feed offset/stale (last_close 4388.16) -> levels & triggers use live broker MT5 feed + pkg m15_live last_mid.",
+ "m15_change": "vs 14:17Z (mid ~4351.7): the shelf the prior cycle was buying has BROKEN. 14:00Z bar bounced 4347.60 -> 4351.69, but 14:15Z reversed hard (H 4355.05 lower-high, L 4342.91, C 4343.15) and 14:30Z printed a fresh low 4342.62 (now ticking back to ~4345.3-4346.6). So: LH (4356.50 -> 4355.05) + LL (4347.29 -> 4342.91 -> 4342.62) = M15 downtrend; price now sits BELOW the broken 4347.5-4353.5 shelf and below H1 MA200 4350.18. Read: sell the breakdown / retest of the shelf as resistance, not a dip-buy.",
+ "opportunity": "with-momentum BREAKDOWN-CONTINUATION (retest-sell): live mid ~4345.3-4346.6 is INSIDE the SHORT zone 4344.0-4347.9 (broken shelf / H1 MA200 4350.18 overhead), so trigger {zone_touch [4344.0,4347.9]} fires at market now. SL 4354.0 (reclaim of the broken shelf 4353.5 = thesis dead). T1 4336.0 (H1 MA50 4335.98), T2 4326.0, T3 4316.0. Entry-mid 4345.95, risk 8.05pt, blended target 4327.5 -> R 2.29; EV +0.42R. Slot FREE (broker positions []), active plans: only TP-20260918T1417Z (LONG 4348-4353.5) still pending - kept strictly BELOW 4348 so the two plans cannot both trigger.",
+ "opportunity_mechanism": "XAUUSD topped at 4399.70/4398.27, flushed to 4347.29, and after a weak 14:00Z bounce the 14:15Z bar rejected at a lower high 4355.05 and closed 4343.15, then 14:30Z made 4342.62. The 4347.5-4353.5 demand shelf (H1 MA200 4350.18) is now broken and flips to resistance; with M15 LL/LH and H1 below its MA20/MA200, the path of least resistance is down toward the H1 MA50 4335.98 / day low 4334.35 cluster and then 4326/4316. Invalidation = a decisive reclaim of the shelf, i.e. mid back above 4354.0, which would void the breakdown and re-arm the (pending) 1417Z long.",
+ "answers_14": {
+  "1_market_state": "Gate 14:32Z Fri armed=true open=true reason=open (exit 0). pkg 14:32Z: live_days 10, live_ticks 1,973,629, gaps []. m15_live mid 4344.83, spread 0.32bps, tick 178/min, last6_max 14.8bps z 0.43 vs base 10.18 = vol normal. Broker demo tick 14:33Z bid 4346.51/ask 4346.64 mid 4346.575 spread 0.32bps; connected=True, positions [] equity/balance/margin_free 1980.63 USD = FLAT, slot FREE. Clean broker MTF (GMT+3): D1 4345.27 < MA20 4431.29 (RSI 42.3) mixed-bearish / H4 4345.27 > MA20 4321.17 (forming bar O 4368.79 -> 4345.27 = rolling over) / H1 4345.27 < MA20 4364.28 > MA50 4335.98 < MA200 4350.18 (easing, down) / M15 < MA20 < MA50, LL/LH (down). Day high 4399.70 / day low 4334.35. ENV: terminal trade_allowed=False (AutoTrading disabled) -> new fills would reject retcode 10027 (same as 13:17/13:34/14:02Z). Data caveat: pkg m15 bar feed offset/stale (last_close 4388.16) ignored.",
+  "2_consistency": "short-lean (~3/4): M15 DOWN (LL/LH) + H1 rolling DOWN (below MA20 4364.28 & MA200 4350.18) + D1 below MA20 4431.29 favour the sell; only H4 (4345.27 > MA20 4321.17) is up but its live bar is a large down candle = fading. Net: SELL the broken shelf, conviction 0.44, qty 0.01.",
+  "3_m15_change": "vs 14:17Z: shelf BROKEN - 14:00Z bounce 4347.60->4351.69, then 14:15Z lower-high 4355.05 / new-low 4342.91 / close 4343.15, then 14:30Z low 4342.62. LH (4356.50->4355.05) + LL (4347.29->4342.91->4342.62) = M15 downtrend; price now below the broken 4347.5-4353.5 shelf. Prior 'higher-low shelf defence' read was based on the lagging pkg bar feed - the live broker bars show the shelf failed.",
+  "4_opportunity": "with-momentum BREAKDOWN-CONTINUATION sell - live mid ~4345.3-4346.6 INSIDE SHORT zone 4344.0-4347.9, trigger {zone_touch [4344.0,4347.9]} fires this cycle; SL 4354.0; T1 4336.0 / T2 4326.0 / T3 4316.0; R 2.29; EV +0.42R; slot FREE; kept below 4348 to avoid triggering together with the pending 1417Z LONG.",
+  "5_mechanism": "4399.70/4398.27 double top -> 13:45Z flush 4347.29 -> weak 14:00Z bounce -> 14:15Z lower-high rejection (4355.05) closing 4343.15 -> 14:30Z 4342.62. The 4347.5-4353.5 / H1 MA200 4350.18 demand shelf is now broken and flips to resistance; with M15 LL/LH and H1 below its MA20/MA200 the path of least resistance is DOWN toward H1 MA50 4335.98 / day low 4334.35, then 4326/4316. Invalidation = mid back above 4354.0 (shelf reclaimed).",
+  "6_trigger_condition": "{\"zone_touch\": [4344.0, 4347.9]} - live mid ~4345.3-4346.6 is ALREADY inside, so it fires at market this cycle (no close-wait). Staleness line (SHORT): if unfilled and mid < 4344.0 - 2*band with no fill -> plan expires unfilled, no chasing.",
+  "7_invalidation": "{\"price_cross_up\": 4354.0} (hard SL; a decisive reclaim of the broken shelf top 4353.5 / above H1 MA200 4350.18 voids the breakdown - and would re-arm the pending 1417Z LONG).",
+  "8_expected_return_R": "entry-mid 4345.95, blended target (4336.0 x0.4 / 4326.0 x0.35 / 4316.0 x0.25) = 4327.5 -> +18.45pt; SL 4354.0 -> risk 8.05pt; expected_R = 18.45/8.05 = 2.29R. (Filled at zone top 4347.9: risk 6.1pt, +20.4pt -> 3.34R; filled at zone bottom 4344.0: risk 10.0pt, +16.5pt -> 1.65R - all positive.)",
+  "9_expected_loss_R": "1R = 8.05pt = 8.05 USD on 0.01 lot ~ 0.41% of the 1980.63 USD demo balance. No position open (slot free).",
+  "10_cost_value": "live spread 0.32bps (~0.14pt @4346) + slippage 0.30bps (~0.13pt) = 0.62bps roundtrip ~ 0.27pt ~ 0.034R on the 8.05pt 1R.",
+  "11_net_EV_formula": "EV = p*R - (1-p)*1.0 - cost = 0.44*2.29 - 0.56*1.0 - 0.034 = 1.0076 - 0.560 - 0.034 = +0.414R ~ +0.41R. Positive -> SHORT authorised (0.6bps cost is not the constraint).",
+  "12_recurrence": "New sub-family: BREAKDOWN-CONTINUATION / broken-support-retest SELL, at the point where the with-trend dip-buy family (0347Z win, but 0647Z/1102Z/1302Z/1402Z longs stopped/chopped under the 4399.70 top) has failed. Same day, opposite side, of the 1417Z long - re-anchored to the live broker shelf that has now given way; never averaging, SL above the shelf.",
+  "13_decision": "SHORT - with-momentum breakdown-continuation sell into 4344.0-4347.9 (broken 4347.5-4353.5 shelf / H1 MA200 4350.18 as resistance) after the 14:15Z lower-high rejection and 14:30Z new low 4342.62; trigger zone_touch (fires now), SL 4354.0, T1 4336.0 (0.4) / T2 4326.0 (0.35) / T3 4316.0 (0.25), qty 0.01, expR 2.29, p0.44, EV +0.41R, bias lean-short 0.44.",
+  "14_reason": "Shelf 4347.5-4353.5 (H1 MA200 4350.18) BROKE: 14:15Z lower-high 4355.05 closed 4343.15, 14:30Z new low 4342.62; M15 LL/LH + H1 below MA20/MA200 + D1 below MA20 = sell the retest as resistance 4344-4347.9, SL 4354.0, T 4336/4326/4316, R2.29, EV+0.41R. Drag: H4 still > MA20 4321 (but fading). ENV: AutoTrading off (fills may reject 10027)."
+ },
+ "plan": {
+  "plan_id": "TP-20260918T1432Z",
+  "direction": "SHORT",
+  "entry_zone": {
+   "low": 4344.0,
+   "high": 4347.9
+  },
+  "trigger_condition": {
+   "zone_touch": [
+    4344.0,
+    4347.9
+   ]
+  },
+  "invalidation_condition": {
+   "price_cross_up": 4354.0
+  },
+  "stop_logic": {
+   "type": "structure",
+   "level_price": 4354.0
+  },
+  "target_logic": {
+   "levels": [
+    {
+     "price": 4336.0,
+     "frac": 0.4
+    },
+    {
+     "price": 4326.0,
+     "frac": 0.35
+    },
+    {
+     "price": 4316.0,
+     "frac": 0.25
+    }
+   ]
+  },
+  "expected_R": 2.29,
+  "expected_win_probability": 0.44,
+  "probability_source": "empirical: momentum/failed-breakout continuation family on the 10 live-days sample; held at 0.44 because M15 (LL/LH) + H1 (below MA20 4364.28 & MA200 4350.18) + D1 (below MA20 4431.29) align to the sell (+), while H4 is still above its MA20 4321.17 and the first targets sit on the H1 MA50 4335.98 / day low 4334.35 support cluster (-), i.e. ~3/4 TFs aligned but limited room before support -> no uplift above 0.44.",
+  "estimated_cost": {
+   "spread_bps": 0.32,
+   "slippage_bps": 0.3,
+   "total_bps": 0.62,
+   "note": "0.62bps roundtrip ~ 0.27pt ~ 0.034R on the 8.05pt 1R"
+  },
+  "spread_bps": 0.32,
+  "slippage_bps": 0.3,
+  "expected_net_EV": {
+   "value": 0.41,
+   "units": "R",
+   "note": "0.44*2.29 - 0.56*1.0 - 0.034 = +0.414R"
+  },
+  "maximum_holding_time": "M15*8",
+  "qty_lots": 0.01
+ },
+ "gap_to_tradable": "LOCAL: NONE - live mid ~4345.3-4346.6 is ALREADY inside the SHORT zone 4344.0-4347.9, so {zone_touch [4344.0,4347.9]} fires at market this cycle (auto-fill on trigger). Slot FREE (broker positions [], equity 1980.63). What still must hold: the broken shelf 4347.5-4353.5 must cap (mid stays < 4354.0); a reclaim = thesis dead. ENVIRONMENTAL: terminal trade_allowed=False (AutoTrading disabled) -> a new demo fill will be rejected retcode 10027 (as at 13:17Z/13:34Z/14:02Z). Plan is registered anyway; if AutoTrading is re-enabled it auto-fills, otherwise it cancels exec_fail with no zombie and the next cycle re-evaluates.",
+ "cost_note": "spread 0.32bps (0.14pt @4346) + slippage 0.30bps (0.13pt) = 0.62bps roundtrip (~0.27pt ~ 0.034R on the 8.05pt 1R).",
+ "ev_note": "EV = 0.44*2.29 - 0.56*1.0 - 0.034 = +0.414R. Positive -> SHORT authorised.",
+ "model": "deepseek/deepseek-v4-flash",
+ "prompt_version": "hermes-trader-m15-cycle/2026-09-12"
+}

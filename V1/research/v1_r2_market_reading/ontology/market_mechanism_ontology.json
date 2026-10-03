@@ -1,0 +1,143 @@
+{
+ "layer": "L3_MARKET_MECHANISM",
+ "version": "v1r2-mr-ontology-r1",
+ "principle": "mechanisms are HYPOTHESES, not facts (task §19); each carries SUPPORTING_EVIDENCE, COUNTER_EVIDENCE and INVALIDATION_CONDITION (task §20)",
+ "mechanisms": {
+  "TREND_CONTINUATION": {
+   "support": [
+    "regime TREND",
+    "momentum ACCELERATING/NORMAL",
+    "state persistence"
+   ],
+   "counter": [
+    "momentum DECELERATING",
+    "touch EXHAUSTION_*"
+   ],
+   "invalidation": "regime leaves TREND or momentum turns EXHAUSTING with counter evidence"
+  },
+  "BREAKOUT_ACCEPTANCE": {
+   "support": [
+    "close beyond level",
+    "no prompt return",
+    "momentum not DECELERATING"
+   ],
+   "counter": [
+    "rising opposing wick",
+    "prompt return"
+   ],
+   "invalidation": "close returns into the prior range"
+  },
+  "BREAKOUT_FAILURE": {
+   "support": [
+    "break attempt then close back inside",
+    "opposing wick rejection"
+   ],
+   "counter": [
+    "sustained close beyond",
+    "momentum accelerating with the break"
+   ],
+   "invalidation": "price re-accepts beyond the level"
+  },
+  "MEAN_REVERSION": {
+   "support": [
+    "range regime",
+    "touch at a boundary",
+    "momentum decelerating"
+   ],
+   "counter": [
+    "regime expansion",
+    "acceptance beyond the boundary"
+   ],
+   "invalidation": "acceptance beyond the boundary"
+  },
+  "EXHAUSTION": {
+   "support": [
+    "repeated touches",
+    "decreasing rebound amplitude",
+    "decelerating momentum"
+   ],
+   "counter": [
+    "fresh acceleration",
+    "break confirmation"
+   ],
+   "invalidation": "break confirmation or momentum re-acceleration"
+  },
+  "LIQUIDITY_WITHDRAWAL": {
+   "support": [
+    "spread widening proxy"
+   ],
+   "counter": [
+    "spread stable/below median"
+   ],
+   "invalidation": "spread back to median while structure holds",
+   "evidence_level": "PROXY"
+  },
+  "ABSORPTION": {
+   "support": [
+    "efficiency decline with activity rise (PROXY_BAR)"
+   ],
+   "counter": [
+    "efficiency rising"
+   ],
+   "invalidation": "efficiency and activity both fall",
+   "evidence_level": "PROXY"
+  },
+  "ROTATION": {
+   "support": [
+    "range regime",
+    "alternating boundary tests"
+   ],
+   "counter": [
+    "one-sided acceptance"
+   ],
+   "invalidation": "acceptance outside the range"
+  },
+  "ACCUMULATION_PROXY": {
+   "support": [
+    "range after decline",
+    "absorption proxy present"
+   ],
+   "counter": [
+    "new lows with acceleration"
+   ],
+   "invalidation": "decisive breakdown",
+   "evidence_level": "PROXY"
+  },
+  "DISTRIBUTION_PROXY": {
+   "support": [
+    "range after advance",
+    "absorption proxy among resistance tests"
+   ],
+   "counter": [
+    "new highs with acceleration"
+   ],
+   "invalidation": "decisive breakout",
+   "evidence_level": "PROXY"
+  }
+ },
+ "competition": {
+  "multiple_hypotheses_allowed": true,
+  "first_match_wins": false,
+  "output_scale": [
+   "DOMINANT",
+   "SECONDARY",
+   "UNCERTAIN"
+  ],
+  "probabilities_forbidden_until_calibrated": true,
+  "calibration_status": "NO_PROBABILITY_CALIBRATION -> categorical only"
+ },
+ "evidence_hierarchy": [
+  "DIRECT",
+  "DERIVED",
+  "PROXY",
+  "UNKNOWN"
+ ],
+ "evidence_record_fields": [
+  "source",
+  "calculation",
+  "timestamp",
+  "context"
+ ],
+ "evidence_upgrade_forbidden": true,
+ "circularity_guard": "a mechanism may not use its own output as supporting evidence"
+}

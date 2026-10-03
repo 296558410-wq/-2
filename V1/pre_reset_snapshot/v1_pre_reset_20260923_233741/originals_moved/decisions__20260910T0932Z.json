@@ -1,0 +1,32 @@
+{
+ "cycle": "2026-09-10T09:32Z",
+ "symbol": "XAUUSD",
+ "decision_id": "DEC-2026-09-10T09:32Z",
+ "generated_utc": "2026-09-10T09:33:00Z",
+ "decision": "WAIT",
+ "confidence": 0.5,
+ "bias": "SHORT-lean",
+ "opportunity": "主动猎手: live mid 4390.92 (quote 09:32Z) 已下破今日 4392 货架并失守 4396-4398 破位 MA 簇 (M15MA200 4397.94 / H1MA50 4398.27), 破位续空 setup 现价即具备。但该 setup 已由 armed TP-0917Z (trigger price_cross_down 4392.0) 覆盖, 且其触发价 4392.0 已被现价 4390.92 穿越满足 → 本轮引擎将市价建仓 SHORT。单仓约束下重复注册同向计划 = 重复成交(exec_fail:position_busy), 故本轮不新增开仓计划。离可交易 = 已在触发价上, 无缺口。",
+ "opportunity_mechanism": "range_lower_boundary_breakout_4392_v1 (已于 09:17Z 注册为 TP-0917Z): 4391-4394 为今日低位货架, 4392 为区间底破位线; 破位后 4396-4398 MA 簇翻转为上方第一压力带, 目标 = M15 60bar 低 4375.19 一线。机制 = D1 偏空 (close 4400.485 < MA20 4464.19, RSI42.66, llish5>hhish4, er0.147 range) + H4 区间下半 (pos35.0) + H1 区间 + 日内 lower-high 台阶 (4415.69→4391.17) 破位未收复 → 顺势续空至 4386/4379/4376。",
+ "mtf_agreement": "partial-bearish (bearish-lean): D1 偏空 (close 低于 MA20 63.7pt, RSI42.66, llish5>hhish4) + H4 区间下半 (pos35.0, er0.01) + 日内 lower-high 台阶破 4392 货架未收复 → 空方动能占优; 反向证据: H1 parquet pos89.9 (顶部) 系 parquet 收盘 4430.89 与 live 4390.92 价差 ~40pt 的滞后失真, 以 quote 为准 → 无多头证据。bias SHORT-lean 0.5。",
+ "position_note": "当前 FLAT (broker positions_get=0, quote 09:32Z 已验证)。在册 3 计划: TP-0847Z (zone 4398.5-4401.5, 现价 < zone_lo-2band=4392.5 → 本轮将被 engine price_left_setup 取消)、TP-0902Z (zone 4396.0-4398.0, 现价 < 4392.0 → 本轮取消)、TP-0917Z (trigger price_cross_down 4392.0 已满足 → 本轮 triggered+risk pass → demo 市价建仓 SHORT ~4391.2)。单仓约束: 本轮不注册新开仓计划, 避免与 TP-0917Z 重复成交。",
+ "answers_14": {
+  "1": "市场状态: XAUUSD live mid 4390.92 (quote 09:32Z, spread 0.319bps, tick~175/min, z2.11 波动偏高; state_pkg mid 4391.17)。D1 close 4400.485 < MA20 4464.19 (-63.7pt), RSI42.66, llish5>hhish4, er0.147 range, pos54.7 (high60 4696.87/low60 4042.58); H4 close 4408.74 >MA20 4401.13 <MA50 4409.29, RSI50.48, pos35.0, er0.01 range; H1 close 4430.89 (parquet, 滞后 ~40pt), pos89.9, er0.098; M15 parquet close 4416.595 (MA20 4414.99/MA50 4408.27/MA200 4397.94), RSI48.65 — live 4390.92 已破全部 M15 MA。近端: 上方 4392(破位货架回抽)/4396.0/4397.94(M15MA200)/4398.27(H1MA50)/4401.13(H4MA20) 压力; 下方 4386/4379/4376 支撑, M15 low60 4375.19。数据 ok (live_days4/ticks651993/gaps[]/context28d)。",
+  "2": "一致性: partial-bearish。D1 偏空 (close<MA20 63.7pt, llish5>hhish4) + H4 区间下半 (pos35.0) + 日内 lower-high 台阶破 4392 未收复 → 空方动能占优; M15/H1 parquet 读数偏高系滞后价差, 以 quote 为准 → 无多头共振。bias SHORT-lean 0.5。",
+  "3": "M15 变化: 今日自 4415.69 (07:45 bar 高) 连续下滑 4410→4406→4394→4391.17, 现价 4390.92 创日内新低并下破 4392 货架 + 4396-4398 破位 MA 簇; 近端 z2.11 (last6 max move 32.3bps vs baseline 10.08) 波动抬升, 下破后未见放量反抽 → 破位续空结构成立。",
+  "4": "有无可交易机会: 有, 且现价即可交易 —— 破位续空 setup (破 4392 货架 → 目标 4386/4379/4376, M15 low60 4375.19)。但该 setup 已由 armed TP-0917Z 完整覆盖, 其触发价 4392.0 已被现价穿越, 本轮自动市价成交; 单仓约束下重复注册同向计划会重复成交 → 本轮不新增计划 (与 06:02Z 同类处理一致)。",
+  "5": "机会机制: range_lower_boundary_breakout_4392_v1 (TP-0917Z, 09:17Z 注册)。破位后 4396-4398 MA 簇 (M15MA200 4397.94/H1MA50 4398.27) 翻转为上方压力, 下探目标 M15 60bar 低 4375.19; D1 偏空 + 破位动量顺势。",
+  "6": "触发条件[具体价]: 本轮 setup 触发 = {\"and\":[{\"price_cross_down\":4392.0},{\"spread_under_bps\":1.2}]} —— 现价 4390.92 ≤ 4392.0 且 spread 0.319 < 1.2, 条件已满足 (TP-0917Z armed, 引擎本轮建仓)。下一个可注册 setup (持仓了结后): 回抽 {\"zone_touch\":[4394.0,4396.0]} 破位货架下方 fade (SL 4400.0), 或续破 {\"price_cross_down\":4386.0} 二次腿 (SL 4392.5)。",
+  "7": "失效[具体价]: TP-0917Z 触发前 = {\"price_cross_up\":4397.5} (收复破位 MA 簇 4396.0/4397.94 → 破位失败, 计划取消); 触发后 = mid ≥ 4397.5 (SL, -1R 有界)。",
+  "8": "预期收益R (TP-0917Z 加权, ref fill 4392.0, 1R=5.5pt): T1 4386.0 (+6.0pt=1.09R)x0.40 / T2 4379.0 (+13.0pt=2.36R)x0.35 / T3 4376.0 (+16.0pt=2.91R)x0.25 → 加权 expected_R ≈ 1.99R。",
+  "9": "预期损失R: -1.0R 有界 (SL 4397.5, ref fill 4392.0, risk 5.5pt ≈ 12.5bps); 亏损不加仓不反手。",
+  "10": "成本数值: spread 0.319bps + slippage 0.30bps = 单边 0.62bps, 往返 1.24bps ≈ 0.545pt ≈ 0.10R (1R=5.5pt)。demo 执行费由 engine 统计, 非障碍。",
+  "11": "净EV算式: EV_R = R×Pwin − 1×Ploss − cost = 1.99×0.45 − 0.55 − 0.10 = 0.8955 − 0.65 = +0.25R (>0 通过; breakeven p≈0.30)。",
+  "12": "再现: 今日同结构已多次成交 (05:02Z/05:17Z/07:32Z SHORT; TP-0732Z broker_tp +6.43USD 08:17Z; 04:47Z +11.84USD); 破位货架续空为同日反复出现的同构 setup。",
+  "13": "决策: WAIT (合法, 有立场)。bias SHORT-lean 0.5。理由: 现价已在可交易区 (破 4392), 该破位续空 setup 已由 armed TP-0917Z 覆盖并触发, 本轮自动建仓; 单仓约束下重复注册同向计划 = 重复成交风险, 故不新增计划。非'无收盘确认'式观望 —— 触发价已到, 已经在成交。",
+  "14": "FLAT; live4390.9已破4392货架, 破位续空已由armed TP-0917Z触发(price_cross_down4392已满足)本轮市价成交; 单仓约束下重复注册会重复成交, 故不新增; bias SHORT-lean 0.5; 离可交易=已在触发价, 无缺口; 下一可注册点=持仓了结后回抽4394-96 fade 或续破4386。"
+ },
+ "plan": null,
+ "model": "deepseek/deepseek-v4-flash",
+ "data_quality_note": "data_quality ok (live_days=4, live_ticks=651993, gaps=[], context_days=28); 独立 quote 09:32Z bid4390.85/ask4390.99 mid4390.92 spread0.319bps 校验通过, broker positions_get=0 (FLAT); state_pkg m15_live mid4391.17; candle_latest.json 停滞于 09-07 已忽略 (以 quote 为准); parquet M15 close 4416.595 / H1 close 4430.89 与 live quote 背离 ~25-40pt, 以 quote 为准 (与 demo 成交带 4391-4418 一致)。"
+}

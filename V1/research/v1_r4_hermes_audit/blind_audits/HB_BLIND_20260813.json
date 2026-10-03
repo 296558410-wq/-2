@@ -1,0 +1,57 @@
+{
+  "audit_id": "HB_BLIND_20260813",
+  "timestamp": "2026-08-13 12:00:00+00:00",
+  "current_state": "COMPRESSION (frozen label at t), event VOL_CONTRACTION, dwell 2 bars; immediately preceded by a 7-bar TREND regime. Price parked at the nearest swing-low level 4393.565 (SWING_LOW_37894, side DN, status INSIDE, 44 touches in 240 bars, distance_atr 0.099). M1/M5/M15 short-horizon momentum positive, H1 negative, H4 strongly positive: multi-timeframe CONFLICT.",
+  "structure": "Higher-timeframe uptrend intact (H4 trend_50 +347.4, H4 trend_20 +47.9) after a large intraday drawdown from the 4449.455 high (01:00) to the 4363.905 low (09:00). The correction has been bought (large lower wicks on 07:00 H1 and the current H4 bar, lower_wick 30.73). Price is now consolidating directly on a high-touch swing-low level (4393.565) that has held 44 touches, i.e., a well-established support zone. Short-term momentum below the level is mixed: M1/M5/M15 trend_20 all positive, H1 trend_20 negative (-33.5). Intraday range expansion flags set at all timeframes, consistent with a coiled, pre-expansion tape.",
+  "mechanism": "Compression at a high-touch swing-low inside an intact higher-timeframe uptrend: most consistent with level-support/rejection behavior followed by trend continuation (L4 candidate: trend_continuation with 8-bar displacement 17.38; treated as candidate only, not asserted). Volatility contraction (VOL_CONTRACTION) after a 7-bar TREND run typically precedes an expansion; the balance of evidence (H4 uptrend, dip-buying lower wicks, DXY flat at 99.93, VIX low at 14.57) tilts the resolution upward, but the compressed micro-structure gives no mechanical direction until the level breaks one way.",
+  "primary_scenario": {
+    "scenario": "Rejection/hold of the 4393.565 swing-low zone (support band roughly 4388-4394): dip-buyers defend the level, compression resolves upward via EXPANSION, price recovers toward 4400-4402 (current H4 high 4401.965) and extends toward 4412-4418 (H4/H1 overhead zones) as the higher-timeframe uptrend re-asserts.",
+    "confidence": 0.45,
+    "horizon": "SHORT_TERM",
+    "trigger": "Price holds above the 4388.265 M5 low (level zone) and reclaims 4393.565, then a range-expanding push through 4396.475 (current H1 high) toward 4400+; expansion typically within ~4-8 bars given the 2-bar dwell and VOL_CONTRACTION event.",
+    "invalidation": "Decisive range-expanding break and hold below 4388 (below the swing-low level 4393.565 with a full close under the 4388.265 M5 low): the support fails and the upward premise is void."
+  },
+  "alternative_scenario": {
+    "scenario": "Support failure: the 4393.565 swing low (44 touches) finally gives way, compression resolves downward, and price re-tests the session lows 4369.795-4363.905, with potential extension toward 4352.755 (current H4 low) if the H4 uptrend correction deepens.",
+    "confidence": 0.35,
+    "horizon": "SHORT_TERM",
+    "trigger": "Range-expanding close below 4388.265 (M5 low) with sustained downside momentum and no immediate reclaim of 4393.565; accelerated by a deterioration in DXY/VIX (currently flat, no signal) or a UST10Y print (currently UNKNOWN).",
+    "invalidation": "A quick reclaim of 4393.565 and a close back above 4396.475 (H1 high) within a few bars, which would turn the failed break into a stop-run and re-arm the primary scenario."
+  },
+  "expected_transition": "COMPRESSION -> EXPANSION, with a plausible intermediate REJECTION tag at the swing-low level before the directional move (consistent with historical analog A20861: COMPRESSION -> REJECTION -> COMPRESSION -> REJECTION -> EXPANSION). Direction of the expansion is biased up but genuinely uncertain at the moment of the VOL_CONTRACTION event.",
+  "direction": "UP",
+  "horizon": "SHORT_TERM",
+  "confidence": 0.45,
+  "counter_evidence": [
+    "M1 12:00 bar closed nearly flat with a large upper wick (0.98) and M5 12:00 bar closed down 2.78 (4391.865 -> 4389.085), i.e., intraday selling pressure pressing into the level right now.",
+    "H1 trend_20 is -33.46: the most recent hourly momentum is still down despite the recovery from the 4363.905 low.",
+    "Multi-timeframe agreement is CONFLICT (M15 trend_50 -6.88 negative; H1 trend_50 +18.4 but trend_20 negative), so no clean stacked alignment.",
+    "UST10Y proxy unavailable (UNKNOWN, STALE_OR_NOT_COVERED): the key rates driver for gold is absent, so the macro tailwind cannot be verified.",
+    "NEWS, MACRO_EVENTS, GLD, GC, CFTC_COT, ETF_FLOWS all absent: no fundamental confirmation of either direction.",
+    "COMPRESSION/VOL_CONTRACTION by definition means the next break can be false; analogs show REJECTION and ROTATION paths as common, not just direct expansion."
+  ],
+  "invalidation": "Any of: (1) range-expanding close below 4388.265 (M5 low) without a reclaim of 4393.565 within a few bars - level breaks, downside opens; (2) failure to expand within ~8 bars while stuck at the level - no directional edge, downgrade to NEUTRAL; (3) a UST10Y or macro print (were it to arrive) that contradicts the bullish higher-timeframe frame. Given confidence 0.45, a move in either direction with full-range expansion through 4396.475/4401.965 (up) or 4388/4369.8 (down) is the decision point.",
+  "data_quality_flags": [
+    "L1 price klines RAW_GEOMETRY + DERIVED (causal, no lookahead)",
+    "L2 nearest level DERIVED (pivot swing levels, causal); level is an artifact of geometry, not a fundamental anchor",
+    "L3 COMPRESSION label OBSERVED via frozen C1 labeler; state_v2/event DERIVED from min-dwell lifecycle",
+    "L4 mechanism candidates DERIVED only, NOT asserted as fact",
+    "L5 state history DERIVED (frozen C1 ontology + min-dwell lifecycle)",
+    "L6 multi-timeframe CONFLICT - timeframes never merged into one direction",
+    "DXY and VIX are PROXY series (Yahoo 5m, instrument definition UNKNOWN), never upgraded to DIRECT",
+    "UST10Y PROXY (^TNX) UNKNOWN - STALE_OR_NOT_COVERED; treated as absent, not fabricated",
+    "NEWS/MACRO_EVENTS/GLD/GC/CFTC_COT/ETF_FLOWS absent; recorded as absent, not fabricated",
+    "Historical analogs are state-evolution only (no returns/PnL/labels); similarity is exact-state + dwell-bucket, not predictive evidence"
+  ],
+  "reasoning_trace": [
+    "1. State: after a 7-bar TREND regime, frozen label at t is COMPRESSION with VOL_CONTRACTION event and 2-bar dwell; this is a coiling phase, and expansion is the natural next lifecycle step.",
+    "2. Price location: nearest level is a swing low (4393.565, DN side) with 44 touches in 240 bars and price INSIDE it (distance_atr 0.099) - a heavily-tested, still-holding support, the single strongest geometric fact in the context.",
+    "3. Higher-timeframe bias: H4 trend_50 +347.4 and trend_20 +47.9 show the dominant trend is up; the 4449.455 -> 4363.905 selloff is a correction inside that uptrend, and buyers defended it (lower wicks of 12.04 on 07:00 H1 and 30.73 on the current H4 bar).",
+    "4. Short-term tape: M1/M5/M15 trend_20 positive and consecutive-up flags, but the very latest M1/M5 bars print small down closes with upper wicks, so the level is being tested from above rather than already rejected - the outcome is genuinely live.",
+    "5. Cross-market: DXY flat (99.925, change_8 +0.038) and VIX low/flat (14.57) give a mildly risk-on but non-informative backdrop; UST10Y is UNKNOWN, so the rates driver is missing - this caps confidence.",
+    "6. Absent data: no news, no macro events, no COT/ETF/GLD/GC - the context is purely technical; per the rules I record them as absent and do not fill them in.",
+    "7. Analogs: A20861 (COMPRESSION -> REJECTION -> ... -> EXPANSION), A26480 (extended compression), A32370 (COMPRESSION -> ROTATION) show compression can resolve as rejection/rotation as often as clean expansion - I treat them as evolution priors only, not as return forecasts.",
+    "8. Synthesis: at a 44-touch swing low inside an intact H4 uptrend, the path of least structural resistance is a rejection/reclaim of the level and upward EXPANSION (UP, SHORT_TERM, confidence 0.45); the compressed micro-structure, H1 downside momentum, absent UST10Y/macro, and CONFLICT multi-TF agreement force a modest confidence and a clear level-break invalidation (close below 4388.265).",
+    "9. Honesty check: I am not forced to be directional; if price fails to expand within ~8 bars or the level breaks decisively, the correct read is NO_DIRECTIONAL_EDGE / DOWN respectively - the primary call stands only while the level holds."
+  ]
+}

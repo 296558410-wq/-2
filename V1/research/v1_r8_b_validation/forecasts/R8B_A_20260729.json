@@ -1,0 +1,105 @@
+{
+  "forecast_id": "R8B_A_20260729",
+  "sample_id": "A_20260729",
+  "timestamp": "2026-07-29T00:00:00Z",
+  "horizon": 4,
+  "scenario_family": "RANGE",
+  "scenario_alternative": "DIRECTIONAL",
+  "scenario_abstain": false,
+  "observations": [
+    "price 4017-4024, pinned at swing low 4021.515",
+    "state COMPRESSION dwell 8, event ACCEPTANCE",
+    "H1 trend20 -24.5, H4 +4.95, MTF CONFLICT",
+    "whipsaw bars with long wicks both directions"
+  ],
+  "what_i_know": [
+    "XAUUSD 4017-4024 across timeframes at 00:00Z",
+    "nearest level swing low 4021.515, INSIDE, 20 touches",
+    "frozen state COMPRESSION, ACCEPTANCE, dwell 8",
+    "DXY flat 101.43; VIX, UST10Y, news unavailable"
+  ],
+  "what_i_do_not_know": [
+    "direction of compression resolution at H4",
+    "VIX, UST10Y, macro, news, order flow",
+    "why 4021.5 holds despite 20 touches",
+    "analog sample tiny, returns excluded"
+  ],
+  "evidence": [
+    "dwell 8 COMPRESSION bars, ambiguity 0.125",
+    "level touch count 20 per 240 bars",
+    "M1 ranges contracting, percentile 0.17",
+    "analog A33379 shows TREND by step 4"
+  ],
+  "counter_evidence": [
+    "MTF conflict: H1 down, H4 up",
+    "whipsaw M15 bars 7-27 range churn",
+    "two of three analogs stay COMPRESSION",
+    "ACCEPTANCE event may precede level break"
+  ],
+  "possible_mechanisms": [
+    {
+      "mechanism": "trend_continuation",
+      "status": "POSSIBLE",
+      "why": "H1 momentum down; break below level"
+    },
+    {
+      "mechanism": "exhaustion",
+      "status": "POSSIBLE",
+      "why": "long compression at support precedes reversal"
+    },
+    {
+      "mechanism": "range_rotation",
+      "status": "SUPPORTED",
+      "why": "20-touch level, churn, long wicks"
+    },
+    {
+      "mechanism": "accumulation",
+      "status": "WEAK",
+      "why": "acceptance at swing low, no volume data"
+    }
+  ],
+  "primary_scenario": {
+    "scenario": "RANGE",
+    "horizon": "H4",
+    "trigger": "oscillation 4013-4030 around 4021.5",
+    "invalidation": "4h close beyond 4030 or below 4010"
+  },
+  "alternative_scenario": {
+    "scenario": "DIRECTIONAL",
+    "horizon": "H4",
+    "trigger": "decisive break of 4021.5 level",
+    "invalidation": "return inside level within 4 hours"
+  },
+  "expected_transition": "COMPRESSION to RANGE or breakout",
+  "direction_bias": "NO_DIRECTIONAL_EDGE",
+  "time_horizon": "4H",
+  "evidence_strength": 0.45,
+  "confidence": 0.42,
+  "uncertainty": 0.58,
+  "confidence_reason": "heavy-touch compression favors range; MTF conflict, small sample cap confidence",
+  "uncertainty_reason": "breakout direction unknown; no cross-market confirmations",
+  "invalidation": "4h close below 4010 or above 4030",
+  "change_my_mind": [
+    "4h close below 4010 flips to DIRECTIONAL down",
+    "4h close above 4030 flips to DIRECTIONAL up",
+    "VIX spike or DXY move beyond 0.3",
+    "next state label flips to TREND"
+  ],
+  "abstain": false,
+  "abstain_reason": "context sufficient; conflict disclosed, abstention unwarranted",
+  "questions": {
+    "Q1": "price pinned at 4021.5, COMPRESSION dwell 8, MTF conflict, DXY flat",
+    "Q2": "breakout direction unknown; VIX, UST, news, flows absent; analog n=3",
+    "Q3": "heavy level touches, contracting ranges, low ambiguity, acceptance",
+    "Q4": "H1 downtrend momentum, whipsaw bars, analogs mostly stay compressed",
+    "Q5": "range_rotation at heavy-touch level — not assertable from price alone",
+    "Q6": "decisive close below 4010 or above 4030, or state flip to TREND",
+    "Q7": "false; data present, conflict disclosed, abstention unwarranted"
+  },
+  "reasoning_trace": [
+    "COMPRESSION dwell 8, ACCEPTANCE at swing low",
+    "H1 down vs H4 up gives no directional edge",
+    "heavy touches and contraction favor continued range",
+    "one analog breakout keeps DIRECTIONAL alternative"
+  ]
+}

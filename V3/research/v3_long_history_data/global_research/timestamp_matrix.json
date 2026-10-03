@@ -1,0 +1,25 @@
+{
+ "schema": "v3_timestamp_matrix/1",
+ "ts_utc": "2026-09-25T09:47:15.545056+00:00",
+ "histdata_xauusd": {
+  "timezone": "UNKNOWN (vendor docs not found: /faq/, /faqs/, /disclaimer/, /terms/ all HTTP 404)",
+  "UTC_conversion": "not documented by vendor",
+  "DST": "UNKNOWN",
+  "timestamp_precision": "minute (HHMMSS always :00 seconds)",
+  "bar_timestamp_semantics": "UNKNOWN (open vs close not stated)",
+  "EMPIRICAL_RELATIVE_ALIGNMENT": {
+   "offset_required": "+7 hours vs the local FXTM ts_utc series",
+   "common_minutes": 45482,
+   "return_corr": 0.96566,
+   "mean_price_diff_usd": -0.3359,
+   "minute_refinement_best": 0,
+   "verdict": "ALIGNED"
+  },
+  "caveat": "the +7h is measured RELATIVE to the FXTM ts_utc series; if that series is really broker server time (UTC+3) then HistData would be UTC-4 (EDT) which matches the vendor's commonly-cited EST/EDT-without-DST convention. This disambiguation was NOT completed.",
+  "BAR_TIMESTAMP": "UNKNOWN"
+ },
+ "dukascopy": {
+  "BAR_TIMESTAMP": "UNRESOLVED (unchanged from the previous audit)",
+  "asset": "REFERENCE_ONLY"
+ }
+}

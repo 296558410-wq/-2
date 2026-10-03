@@ -1,0 +1,78 @@
+{
+ "schema": "v3_pc_definition_r3/1",
+ "ts_utc": "2026-09-25T11:55:18.573329+00:00",
+ "control_id": "PC_R3_SYNTHETIC_STATE_TRANSITION",
+ "mechanism_type": "SYNTHETIC_STATE_TRANSITION",
+ "expected_mechanism": "M01",
+ "expected_decision": "MECHANISM_SUPPORTED",
+ "structure": [
+  "BASE_STATE",
+  "TRIGGER",
+  "TRANSITION",
+  "PERSISTENCE",
+  "DECAY",
+  "RETURN_TO_BASE_STATE"
+ ],
+ "synthetic_event_count": 16,
+ "episodes": 4,
+ "events_per_episode": 4,
+ "event_separation": {
+  "intra_episode_gaps_hours": [
+   7,
+   9,
+   8,
+   11
+  ],
+  "inter_episode_gaps_hours": [
+   240,
+   300,
+   264
+  ],
+  "separation_window_hours": 6,
+  "guarantee": "every gap is strictly greater than the frozen 6h separation window"
+ },
+ "variation_bounds": {
+  "persistence_bars": [
+   2,
+   5
+  ],
+  "intensity": [
+   1.0,
+   1.6
+  ],
+  "duration_bars": [
+   3,
+   6
+  ],
+  "note": "per-event variation inside frozen bounds so that signatures are NOT identical, which is what tripped R2's degeneracy rule"
+ },
+ "trigger_definition": "trigger signature held constant at PRICE_EXTREME (the planted trigger)",
+ "transition_definition": "one transition per event from BASE to the planted abnormal state",
+ "persistence_definition": "persistence drawn from [2, 5] bars, deterministic per event",
+ "decay_definition": "decay returns to BASE within the frozen duration bounds",
+ "random_seed": 20260925,
+ "grid": "1h",
+ "pre_registered": true,
+ "single_shot": true,
+ "no_adaptation": true,
+ "no_returns": true,
+ "no_lookahead": true,
+ "isolation": {
+  "separate_dataset": true,
+  "never_enters_real_ledgers": true,
+  "real_data_hash_unchanged_required": true
+ },
+ "acceptance": {
+  "expected_decision": "MECHANISM_SUPPORTED",
+  "fatal_artifact_allowed": false,
+  "min_independent_events": 8,
+  "independent_event_tolerance": {
+   "abs": 2,
+   "reason": "a boundary event may fall outside the synthetic span"
+  },
+  "no_duplicate": true,
+  "no_cross_grid_double_count": true
+ },
+ "definition_hash": "ca4d92baa9b022a5d2e2f72e55be23e8456c710f27378457d93410ff28829506",
+ "dataset_hash": "72d8593a2f8c2f291eef4a60cd9c0c4aee4a7c962bd870538b7f803152bdf18f"
+}

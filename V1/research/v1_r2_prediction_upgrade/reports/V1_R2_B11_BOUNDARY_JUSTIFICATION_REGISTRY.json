@@ -1,0 +1,68 @@
+{
+ "registry_id": "V1_R2_B11_BOUNDARY_JUSTIFICATION_REGISTRY",
+ "version": "v1r2-b11-justification-r1",
+ "PRE_REGISTERED": true,
+ "frozen_before_full_data_run": true,
+ "DIAGNOSTIC_ONLY": true,
+ "NO_SELECTION_OF_WINNER": true,
+ "BOUNDARY_SELECTION_PERFORMED": false,
+ "SHADOW_BOUNDARY_PROMOTED": false,
+ "formal_rules_untouched": {
+  "TOUCH_TOL_ATR": 0.25, "PENETRATION_ATR": 0.30, "BREAK_CLOSE_ATR": 0.15,
+  "BREAK_CONFIRM_BARS": 2, "RECLAIM_WINDOW_BARS": 8,
+  "RULE_CHANGE": 0, "PARAMETER_CHANGE": 0, "REGISTRY_CHANGE": 0, "ENGINE_CHANGE": 0, "DIRECTION_MAPPING_CHANGE": 0
+ },
+ "inputs_locked": {
+  "dataset": "V1_R2_RUN_B4_*/m15_tick_bid.parquet", "dataset_sha256_prefix": "aafbb44803555c1b",
+  "registry_version": "v1r2-r3", "registry_hash": "014de1664566613f8038884a71e34e41bb0a2ce89315f0682cebfe4a2c51b7ed",
+  "state_definition_sha256_prefix": "f1c550975409752e", "LOAD_AS_IS": true,
+  "B_R4_SOURCE_DATA_CONFLICT": "UNCHANGED"
+ },
+ "shadow_boundaries": [0.20, 0.25, 0.30, 0.35, 0.40, 0.50, 0.75, 1.00],
+ "shadow_boundaries_frozen": true,
+ "no_additional_boundary_allowed": true,
+ "continuous_variables": [
+  "penetration_ratio = distance_inside_level / ATR20 (continuous, never binarised first)",
+  "distance_to_level_atr = |close - level_price| / ATR20",
+  "bars_inside_level (running count inside the band episode)",
+  "max_excursion_inside_level (running max of penetration_ratio within the episode)",
+  "close_position_relative_to_level = (close - level_price) / ATR20",
+  "range_normalised_penetration = penetration_distance / (bar high - bar low)",
+  "atr_normalised_penetration = penetration_ratio"
+ ],
+ "penetration_definitions_compared": {
+  "PEN_DEF_FORMAL": "in_band AND penetration_ratio >= boundary  (requires the touch band)",
+  "PEN_DEF_GEOMETRY_ONLY": "close crossed to the opposite side of level_price (side flip); does NOT require the touch band",
+  "purpose": "PEN_DEF_GEOMETRY_ONLY makes P(PENETRATION | NOT_TOUCH) measurable"
+ },
+ "natural_separation_rules_preregistered": {
+  "density_valley_rule": "NATURAL_SEPARATION only if two local maxima exist >= 0.15 ATR apart, each >= 5% of sample mass, separated by a local minimum with density <= 0.5 x min(peak_left, peak_right)",
+  "mixture_diagnostic": "fit 1- and 2-component Gaussian mixtures on log(penetration_ratio); a structural split requires delta_BIC(1->2) >= 10 AND component mean separation >= 0.15 ATR AND the implied split point to lie within the observed support",
+  "monotone_rule": "if the density over the support is unimodal or monotonically non-increasing -> NO_NATURAL_SEPARATION",
+  "otherwise": "INCONCLUSIVE",
+  "auto_split_search": "FORBIDDEN"
+ },
+ "temporal_blocks_preregistered": {"n_blocks": 3, "method": "equal thirds of the touch-episode sequence in time order (EARLY/MIDDLE/LATE)", "chosen_after_results": false},
+ "level_type_split_preregistered": ["PIVOT", "RANGE"],
+ "direction_split_preregistered": ["UP_LEVEL", "DN_LEVEL"],
+ "replay": {"truncation_points": 8, "fractions": [0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 0.95],
+             "requirement": "FULL_PREFIX == TRUNCATED for state/penetration/boundary/transition hashes"},
+ "deterministic_runs": 2,
+ "null_tests": ["price_sequence_shuffle", "label_shuffle"],
+ "circularity_guard": "PENETRATION -> BREAK_ATTEMPT / EXHAUSTION transition frequencies are DESCRIPTIVE ONLY and must never be used as the sole proof that PENETRATION is a legitimate state (task 17)",
+ "forbidden_inputs": ["future_return", "PnL", "win_rate", "Sharpe", "trade_outcome", "future_break", "future_reclaim"],
+ "judgement_axes": ["GEOMETRIC_INDEPENDENCE", "PERSISTENCE_INDEPENDENCE", "TRANSITION_STRUCTURE", "NATURAL_DENSITY_SEPARATION",
+                     "TEMPORAL_STABILITY", "LEVEL_TYPE_STABILITY", "DIRECTION_STABILITY", "COUNTER_EVIDENCE"],
+ "final_verdicts_allowed": ["SUPPORTED", "WEAKLY_SUPPORTED", "NOT_SUPPORTED", "INCONCLUSIVE"],
+ "next_step_allowed": ["KEEP_CURRENT_DEFINITION", "STUDY_ALTERNATIVE_DEFINITION", "REMOVE_PENETRATION_AS_SEPARATE_STATE_FOR_RESEARCH", "INSUFFICIENT_EVIDENCE"],
+ "decision_rules_preregistered": {
+  "GEOMETRIC_INDEPENDENCE": "NO if penetration is structurally conditional on TOUCH (P(PEN|NOT_TOUCH)=0) AND expressible as a threshold on one continuous variable",
+  "PERSISTENCE_INDEPENDENCE": "NO if shadow-episode durations change smoothly/monotonically with the boundary and no boundary produces a distinct duration regime",
+  "TRANSITION_STRUCTURE": "INCONCLUSIVE by construction when the ONLY available evidence is the circular PENETRATION->BREAK chain",
+  "NATURAL_DENSITY_SEPARATION": "from the pre-registered valley + mixture rules",
+  "TEMPORAL_STABILITY": "YES if the 3 blocks have overlapping IQRs and medians within 0.10 ATR; NO if monotone drift or disjoint IQRs; INCONCLUSIVE otherwise",
+  "LEVEL_TYPE_STABILITY": "YES if PIVOT and RANGE medians differ by < 0.15 ATR; NO if >= 0.15 ATR; INCONCLUSIVE if either n < 30",
+  "DIRECTION_STABILITY": "same rule on UP_LEVEL vs DN_LEVEL",
+  "COUNTER_EVIDENCE": "WEAKEN if >= 3 of the 5 counter-evidence questions answer YES; SUPPORT if <= 1 answers YES; INCONCLUSIVE otherwise"
+ }
+}

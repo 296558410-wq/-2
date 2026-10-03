@@ -1,0 +1,29 @@
+{
+ "task": "V1_R2_FULL_AUTONOMOUS_OPTIMIZATION_R1",
+ "phase": "PHASE_7_8_9_DETERMINISM_FORECAST_STRATEGY",
+ "frozen_before_analysis": true,
+ "frozen_at_utc": "2026-09-27T21:00:00+08:00",
+ "scope": [
+  "P7: determinism (same fit twice -> identical posteriors) and causal replay (truncation: labels up to T identical to full run)",
+  "P8: forecast engine artifact for H=8 (ts, state, dwell, predicted next state, confidence, p_change, abstain)",
+  "P9: strategy posture map derived from the states + transition risk + abstention gate"
+ ],
+ "return_free": true,
+ "protocol": {
+  "model": "multinomial logistic C=1.0, TRAIN-only StandardScaler, features = A2 + one-hot(state) + dwell + NO_DEFINED rate(8) + H1 context",
+  "blind_split": 0.6,
+  "abstain_threshold": 0.50 on max posterior (chosen from Phase 5+6 calibration ECE 0.0164)",
+  "truncations": [0.50, 0.65, 0.80],
+  "posture_rules": {
+   "STAND_ASIDE_LOW_CONFIDENCE": "max posterior < 0.50",
+   "STAND_ASIDE_TRANSITION_RISK": "p_change_h8 >= 0.60",
+   "CONTINUATION_POSTURE": "state in {EXPANSION, TREND, BREAKOUT_CONFIRMATION, ACCEPTANCE} and low transition risk",
+   "RANGE_FADE_POSTURE": "state in {COMPRESSION, RANGE, ROTATION}",
+   "REJECTION_FADE_POSTURE": "state = REJECTION",
+   "NEUTRAL_MONITOR": "otherwise"
+  }
+ },
+ "explicit_limits": "the posture map is NOT a validated strategy and uses NO returns. Profitability and the frozen cost gate belong to the V3 alpha line.",
+ "forbidden": ["returns/PnL/win-rate", "orders/broker", "live/shadow/forward", "editing frozen artifacts", "tuning thresholds"],
+ "write_scope": "research/hermes/trader_v1/v1_r2_full_autonomous_optimization_r1/** ONLY"
+}

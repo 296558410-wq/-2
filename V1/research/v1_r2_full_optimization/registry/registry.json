@@ -1,0 +1,125 @@
+{
+ "task": "V1_R2_FULL_AUTONOMOUS_OPTIMIZATION",
+ "protocol_version": "v1r2-full-r1",
+ "frozen": true,
+ "frozen_before_analysis": true,
+ "frozen_at_utc": "2026-09-27T12:56:01.389234+00:00",
+ "baseline": {
+  "c1_git_head": "0f3d5d3c88a701a80b42d520b2b510f1aa07ccf3",
+  "c1_summary_hash": "528d4255ec73467d9813a575a0806f708d0a1d68545da94809348fc2413ff783",
+  "c15_summary_hash": "a9ca151c936819d469fe392773dfa813a0adacd0cc5e104d7436a7bb11f85b65",
+  "c1_ontology_hash": "8436866dfe71030ba7be036b2d73904ed2f817aa52673a5e27d583e931c354d8",
+  "c1_label_mapping_hash": "21e0f842edc14f6feee8cade3d6d919f879b6d36a58ffb056437b382428d7cf4",
+  "c15_target_registry_hash": "58022bdb5572d33a98d93af914fe7771378fc164c5593d0759c9bbcdbd475d88"
+ },
+ "must_preserve": {
+  "C1_STATE_RECOGNITION": "UNSUPPORTED",
+  "C1_DIRECTION_ACCURACY": 0.69,
+  "C1_DIRECTION_MAJORITY": 0.79,
+  "C15_TARGET_VALIDITY": "TARGET_UNCERTAIN",
+  "C15_C2_GATE": "C2_BLOCKED",
+  "C15_PERSISTENCE_M15": 0.1447,
+  "C15_STATE_CHURN_M15": 0.6473,
+  "C15_DURATION_MEDIAN": 1,
+  "C15_BOUNDARY_STABILITY": "UNSUPPORTED",
+  "C15_TECHNICAL_VALIDATION": "FAIL",
+  "note": "§3/§4: these must stay reported as-is; C2_BLOCKED must not be lifted by editing history"
+ },
+ "practical_effect_floor": {
+  "log_loss_bits": 0.01,
+  "auc": 0.55,
+  "accuracy_abs": 0.02,
+  "note": "§37 pre-registered"
+ },
+ "abstention_coverage_grid": [
+  1.0,
+  0.9,
+  0.8,
+  0.7,
+  0.6
+ ],
+ "max_structural_corrections_per_question": 3,
+ "max_forecast_target_classes": 4,
+ "splits": [
+  "time",
+  "day",
+  "cluster"
+ ],
+ "purge_bars": 480,
+ "embargo_bars": 1,
+ "shuffle_nulls": [
+  "label_shuffle",
+  "time_shuffle",
+  "sequence_shuffle"
+ ],
+ "baselines": [
+  "majority",
+  "persistence",
+  "previous_state",
+  "previous_event",
+  "random",
+  "simple_transition"
+ ],
+ "forecast_targets_ranked": [
+  "STATE",
+  "EVENT",
+  "STATE_TRANSITION",
+  "EVENT_SEQUENCE"
+ ],
+ "auto_failure_branch": [
+  "STATE",
+  "EVENT",
+  "EVENT_SEQUENCE",
+  "TRANSITION_PRESSURE"
+ ],
+ "data_quality_levels": [
+  "DIRECT",
+  "DERIVED",
+  "PROXY",
+  "UNKNOWN"
+ ],
+ "no_history_expansion": true,
+ "no_data_purchase": true,
+ "hard_safety": {
+  "ORDER_SEND": 0,
+  "ORDER_CHECK": 0,
+  "BROKER_WRITE": 0,
+  "FORWARD": "OFF",
+  "SHADOW": "OFF",
+  "LIVE": "OFF",
+  "V2_WRITE": 0,
+  "V3_WRITE": 0,
+  "V1_EXECUTION_MODIFIED": 0,
+  "V1_RISK_MODIFIED": 0,
+  "V1_ORDER_LOGIC_MODIFIED": 0,
+  "BOUNDARY_VIOLATION": 0
+ },
+ "verdict_vocabulary": [
+  "PREDICTION_CAPABILITY_SUPPORTED",
+  "PARTIAL_PREDICTION_CAPABILITY_SUPPORTED",
+  "MARKET_READING_SUPPORTED_BUT_FORECAST_UNSUPPORTED",
+  "FORECAST_TARGET_UNSUPPORTED",
+  "DATA_LIMITED"
+ ],
+ "directory_tree": [
+  "registry",
+  "diagnostics",
+  "targets",
+  "ontology",
+  "events",
+  "states",
+  "transitions",
+  "forecast",
+  "blind_validation",
+  "ablation",
+  "replay",
+  "strategy_mapping",
+  "audit",
+  "ledger",
+  "reports",
+  "tests"
+ ],
+ "registry_hash": "0d9733eb4a46e70cbe8756f53eb6591abf193babb6b81bb8ef6b7fd01659ae91",
+ "architecture_hash": "704ed95dc33312340ae1ceaa6ac0077ea298b0cd31c6b7afa86cda9b44d53d76",
+ "context_hash": "df2448b84f4e29f366b2aff3bd3b5fe83c1c5141e0bcf3223cf5f65b33221f5c"
+}

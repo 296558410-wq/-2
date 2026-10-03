@@ -1,0 +1,285 @@
+{
+ "schema": "v3_m03_closeout_tests/1",
+ "total": 25,
+ "pass": 25,
+ "fail": 0,
+ "results": [
+  {
+   "test": "test_m03_input_count_63",
+   "result": "PASS",
+   "detail": {
+    "loaded": 63,
+    "events": 63,
+    "missing": 0,
+    "duplicate": 0
+   },
+   "sec": 0.0
+  },
+  {
+   "test": "test_input_manifest_hash",
+   "result": "PASS",
+   "detail": {
+    "M03_INPUT_HASH": "202db652b9732aa92feb0866",
+    "rows": 63
+   },
+   "sec": 0.0
+  },
+  {
+   "test": "test_input_immutable",
+   "result": "PASS",
+   "detail": {
+    "four_ledger_hashes_match": true
+   },
+   "sec": 0.13
+  },
+  {
+   "test": "test_r4_method_hash",
+   "result": "PASS",
+   "detail": {
+    "r4_method_changed": false,
+    "m03_status_in": "UNCERTAIN"
+   },
+   "sec": 0.0
+  },
+  {
+   "test": "test_r4_registry_immutable",
+   "result": "PASS",
+   "detail": {
+    "r2_registry_hash": "9913dd6d9860f5e0fb3b",
+    "unchanged": true
+   },
+   "sec": 0.0
+  },
+  {
+   "test": "test_freeze_hash",
+   "result": "PASS",
+   "detail": {
+    "FREEZE_HASH": "2116ec8e812c322a34604e51",
+    "reproducible": true
+   },
+   "sec": 0.0
+  },
+  {
+   "test": "test_no_lookahead",
+   "result": "PASS",
+   "detail": {
+    "events_checked": 63,
+    "future_return_absent": true
+   },
+   "sec": 0.0
+  },
+  {
+   "test": "test_pit_timestamp",
+   "result": "PASS",
+   "detail": {
+    "baseline_bars": 240,
+    "min_periods": 60,
+    "events": 63
+   },
+   "sec": 0.0
+  },
+  {
+   "test": "test_shock_definition_frozen",
+   "result": "PASS",
+   "detail": {
+    "threshold": 2.0,
+    "sources": [
+     "DXY",
+     "VIX",
+     "UST10Y_PROXY"
+    ],
+    "no_sweep_declared": true
+   },
+   "sec": 0.0
+  },
+  {
+   "test": "test_event_independence",
+   "result": "PASS",
+   "detail": {
+    "unique_events": 63,
+    "DIRECTION_MIRROR": "ARITHMETIC_IDENTITY",
+    "note": "opposite = -aligned by construction; not independent evidence"
+   },
+   "sec": 0.0
+  },
+  {
+   "test": "test_episode_dependency",
+   "result": "PASS",
+   "detail": {
+    "raw_n": 63,
+    "effective_n": 21,
+    "events_per_episode": 3.0,
+    "note": "63 events are NOT 63 independent return observations"
+   },
+   "sec": 0.0
+  },
+  {
+   "test": "test_response_window_frozen",
+   "result": "PASS",
+   "detail": {
+    "windows": {
+     "R0": 1,
+     "R1": 3,
+     "R2": 6,
+     "R3": 12
+    }
+   },
+   "sec": 0.0
+  },
+  {
+   "test": "test_entry_delay_frozen",
+   "result": "PASS",
+   "detail": {
+    "delays": [
+     0,
+     1
+    ],
+    "keys_checked": 16
+   },
+   "sec": 0.0
+  },
+  {
+   "test": "test_cost_model_frozen",
+   "result": "PASS",
+   "detail": {
+    "anchor": 0.914,
+    "gross": 26.7942,
+    "net1x": 25.8802,
+    "net2x": 24.9662,
+    "net3x": 24.0522
+   },
+   "sec": 0.0
+  },
+  {
+   "test": "test_block_bootstrap",
+   "result": "PASS",
+   "detail": {
+    "block": 5,
+    "iters": 2000,
+    "CI95": [
+     10.5104,
+     49.9205
+    ]
+   },
+   "sec": 0.0
+  },
+  {
+   "test": "test_permutation",
+   "result": "PASS",
+   "detail": {
+    "p": 0.0065,
+    "iters": 2000,
+    "seed": 20260925
+   },
+   "sec": 0.0
+  },
+  {
+   "test": "test_negative_control",
+   "result": "PASS",
+   "detail": {
+    "status": "PASS_WITH_LIMITATION",
+    "runs": 300,
+    "control_mean": -2.5663,
+    "observed_mean": 26.7942,
+    "NEGATIVE_CONTROL_LIMITATION": "reuses the permutation null - a consistency check, NOT an independent second-layer control experiment"
+   },
+   "sec": 0.0
+  },
+  {
+   "test": "test_multiple_testing",
+   "result": "PASS",
+   "detail": {
+    "family": 8,
+    "status": "PASS",
+    "significant": [
+     "VIX/opposite",
+     "MULTI_SOURCE/opposite"
+    ]
+   },
+   "sec": 0.0
+  },
+  {
+   "test": "test_walk_forward_3fold",
+   "result": "PASS",
+   "detail": {
+    "folds": [
+     8.2659,
+     19.1354,
+     50.2393
+    ],
+    "status": "CONSISTENT"
+   },
+   "sec": 0.0
+  },
+  {
+   "test": "test_deterministic",
+   "result": "PASS",
+   "detail": {
+    "freeze_hash": "2116ec8e812c322a3460",
+    "output_hash": "43249b90c44ce5f718a3",
+    "ledger_ok": true
+   },
+   "sec": 0.0
+  },
+  {
+   "test": "test_replay",
+   "result": "PASS",
+   "detail": {
+    "content_derived_ids": true,
+    "history_immutable": true
+   },
+   "sec": 0.0
+  },
+  {
+   "test": "test_tnx_proxy_audit",
+   "result": "PASS",
+   "detail": {
+    "tnx_events": 10,
+    "without_tnx_net_1x": 29.1353,
+    "status": "NOT_PROXY_DEPENDENT",
+    "note": "shows the result does not depend on ^TNX; it does NOT establish economic causality"
+   },
+   "sec": 0.0
+  },
+  {
+   "test": "test_timestamp_sensitivity",
+   "result": "PASS",
+   "detail": {
+    "shifts": {
+     "shift_-1": 31.7961,
+     "shift_+0": 25.8802,
+     "shift_+1": 11.3182
+    },
+    "conclusion": "POSITIVE_BUT_TIMESTAMP_SENSITIVE",
+    "note": "NOT 'timestamp robust'"
+   },
+   "sec": 0.0
+  },
+  {
+   "test": "test_no_order_send",
+   "result": "PASS",
+   "detail": {
+    "ast_clean": true,
+    "trading_status": {
+     "ORDER_SEND": 0,
+     "V3_FORWARD": "OFF",
+     "V3_SHADOW": "OFF",
+     "V3_LIVE": "OFF"
+    }
+   },
+   "sec": 0.03
+  },
+  {
+   "test": "test_v1_v2_isolation",
+   "result": "PASS",
+   "detail": {
+    "v1_source_modified": 0,
+    "v2_source_modified": 0,
+    "lookback_hours": 1
+   },
+   "sec": 0.98
+  }
+ ],
+ "TEST_STATUS": "PASS",
+ "FAILED_TESTS": []
+}

@@ -1,0 +1,36 @@
+# CANDIDATE TRIGGER — 候选触发登记（v0，2026-09-07）
+# 本文件记录【通过了经济相关性门 + §六 升级判据】的微结构状态变化（观察级）。
+# 状态机: OBSERVED(engine 打标) → ECON_RELEVANT(周评审过经济门) → UNPROVEN_MECHANISM(§六 六条齐) →
+# 预注册研究队列。目前为空: 观察环刚启动, live 日数=0, 无任何触发。
+# 空 = 诚实。禁止为了"有产出"而填充。
+
+# Schema（单条触发记录）
+# yaml 示例见下:
+# - id: CT-001                 # 顺序号
+#   triggered_utc: 2026-09-07T00:00:00Z
+#   field: median_spr_bps
+#   window: medium_21d
+#   drift: {cur: 0.0, base: 0.0, z: 0.0, rel: 0.0}
+#   channels: [COST]
+#   evidence:
+#     repeat_windows: 0        # §六.1 ≥2
+#     regime_spread: 0         # §六.2 ≥2 波动/spread 状态
+#     sessions_stable: false   # §六.3
+#     periods_separated: 0     # §六.4
+#     forward_effect: null     # §六.5 前瞻关联测试结果
+#     economic_scale: null     # §六.6 幅度 vs 成本/信号上界
+#   stage: OBSERVED | ECON_RELEVANT | UNPROVEN_MECHANISM
+#   verdict_note: ""
+#   ref: ""
+
+# 升级判据（§六，六条全满足才 UNPROVEN_MECHANISM）
+# 1. 历史中重复出现（≥2 独立窗口/时段命中）
+# 2. 不是单一 regime（跨波动/spread 状态）
+# 3. 不是单一 session（跨 session 同向稳定）
+# 4. 不是单一时期（时间分离出现）
+# 5. 对未来变量有稳定影响（前瞻可测，如 activity→future vol）
+# 6. 有潜在经济意义（过经济门 + 幅度足以改变净 EV 结构）
+
+triggers: []
+last_updated_utc: "2026-09-07T00:00:00Z"
+note: "观察环 v0 启动; live_days=0 → WARMUP; 无候选。按任务书: 不启动新正式 alpha 实验, 等待前瞻数据积累。"

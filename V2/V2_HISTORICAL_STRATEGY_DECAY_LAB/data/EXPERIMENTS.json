@@ -1,0 +1,461 @@
+{
+  "schema": "experiments/1",
+  "code_commit": "2b6a14d454ff6130661e21ef490d03169bab25e1",
+  "seed": 20261003,
+  "alpha": 0.05,
+  "n_experiments": 19,
+  "experiments": [
+    {
+      "experiment": 1,
+      "name": "Fresh-start effect [V1_OLD]",
+      "verdict": "INCONCLUSIVE",
+      "detail": {
+        "n": 109,
+        "early_mean": 1.8407,
+        "late_mean": -2.5876,
+        "early_ci95": [
+          -1.1733,
+          4.8565
+        ],
+        "late_ci95": [
+          -5.9155,
+          0.8382
+        ]
+      },
+      "effect": 4.4284,
+      "p": 0.0644,
+      "effective_n": 109
+    },
+    {
+      "experiment": 1,
+      "name": "Fresh-start effect [V1_NEW]",
+      "verdict": "INCONCLUSIVE",
+      "detail": {
+        "n": 32,
+        "early_mean": -0.33,
+        "late_mean": -0.7862,
+        "early_ci95": [
+          -5.3487,
+          4.8769
+        ],
+        "late_ci95": [
+          -5.92,
+          4.79
+        ]
+      },
+      "effect": 0.4562,
+      "p": 0.9002,
+      "effective_n": 32
+    },
+    {
+      "experiment": 2,
+      "name": "Cross-system replication of fresh-start effect",
+      "verdict": "INCONCLUSIVE",
+      "detail": {
+        "effects": {
+          "V1_OLD": 4.4284,
+          "V1_NEW": 0.4562
+        },
+        "same_sign": true,
+        "independent_hermes_systems": 1,
+        "note": "V1_OLD (Hermes candidate) and V1_NEW (BASELINE control arm) both show early>late, but V1_NEW is a different strategy, so this is NOT independent replication of a Hermes fresh-start edge. INCONCLUSIVE."
+      },
+      "effective_n": 1
+    },
+    {
+      "experiment": 3,
+      "name": "Universal decay time",
+      "verdict": "INCONCLUSIVE",
+      "detail": {
+        "v1_old_peak_age_h": null,
+        "v1_new_peak_age_h": null,
+        "note": "no shared decay constant; n_systems_with_trades=2 and one is a control arm"
+      }
+    },
+    {
+      "experiment": 4,
+      "name": "Decay-time distribution",
+      "verdict": "INCONCLUSIVE",
+      "detail": {
+        "note": "see DECAY_TIME_DISTRIBUTION.json - single-system estimates only"
+      }
+    },
+    {
+      "experiment": 5,
+      "name": "Pre-exhaustion signal",
+      "verdict": "INCONCLUSIVE",
+      "detail": {
+        "note": "see PRE_EXHAUSTION_SIGNAL_REPORT.json - in-sample only, no OOS"
+      }
+    },
+    {
+      "experiment": 6,
+      "name": "Reset effect (fresh-start after state reset)",
+      "verdict": "INCONCLUSIVE",
+      "detail": {
+        "pre_reset_n": 91,
+        "post_reset_n": 18,
+        "first72h_pre_reset": {
+          "n": 28,
+          "mean": 0.9736
+        },
+        "first72h_post_reset": {
+          "n": 16,
+          "mean": -3.1212
+        }
+      },
+      "effect": -4.0948,
+      "p": 0.2679,
+      "effective_n": 44
+    },
+    {
+      "experiment": 7,
+      "name": "48h decay hypothesis [V1_OLD]",
+      "verdict": "INCONCLUSIVE",
+      "detail": {
+        "n_le48h": 20,
+        "n_gt48h": 89,
+        "mean_le48h": -0.1495,
+        "mean_gt48h": -0.4487
+      },
+      "effect": 0.2992,
+      "p": 0.9239,
+      "effective_n": 109
+    },
+    {
+      "experiment": 7,
+      "name": "48h decay hypothesis [V1_NEW]",
+      "verdict": "INCONCLUSIVE",
+      "detail": {
+        "n_le48h": 18,
+        "n_gt48h": 14,
+        "mean_le48h": 1.7006,
+        "mean_gt48h": -3.4621
+      },
+      "effect": 5.1627,
+      "p": 0.1903,
+      "effective_n": 32
+    },
+    {
+      "experiment": 14,
+      "name": "Placebo pseudo-start (all split points) [V1_OLD]",
+      "verdict": "INCONCLUSIVE",
+      "detail": {
+        "observed_early_minus_late": 4.4284,
+        "p_any_split": 0.1874,
+        "note": "a real 'fresh-start' effect must beat the best random split"
+      },
+      "p": 0.1874,
+      "effective_n": 109
+    },
+    {
+      "experiment": 14,
+      "name": "Placebo pseudo-start (all split points) [V1_NEW]",
+      "verdict": "INCONCLUSIVE",
+      "detail": {
+        "observed_early_minus_late": 0.4562,
+        "p_any_split": 0.9668,
+        "note": "a real 'fresh-start' effect must beat the best random split"
+      },
+      "p": 0.9668,
+      "effective_n": 32
+    },
+    {
+      "experiment": 8,
+      "name": "Reverse test (time-reversed series) [V1_OLD]",
+      "verdict": "INCONCLUSIVE",
+      "detail": {
+        "reversed_early_minus_late": -3.7683,
+        "p": 0.1137,
+        "note": "if decay is real, reversal should invert the sign"
+      },
+      "effect": -3.7683,
+      "p": 0.1137,
+      "effective_n": 109
+    },
+    {
+      "experiment": 8,
+      "name": "Reverse test (time-reversed series) [V1_NEW]",
+      "verdict": "INCONCLUSIVE",
+      "detail": {
+        "reversed_early_minus_late": -0.4562,
+        "p": 0.8961,
+        "note": "if decay is real, reversal should invert the sign"
+      },
+      "effect": -0.4562,
+      "p": 0.8961,
+      "effective_n": 32
+    },
+    {
+      "experiment": 9,
+      "name": "Rolling restart (within-block first half) [V1_OLD]",
+      "verdict": "INCONCLUSIVE",
+      "detail": {
+        "n_blocks": 11,
+        "mean_within_block_first_half": -0.3448,
+        "note": "tests whether early-in-block trades are stronger; n too small for CI"
+      },
+      "effective_n": 11
+    },
+    {
+      "experiment": 9,
+      "name": "Rolling restart (within-block first half) [V1_NEW]",
+      "verdict": "INCONCLUSIVE",
+      "detail": {
+        "n_blocks": 4,
+        "mean_within_block_first_half": -2.9355,
+        "note": "tests whether early-in-block trades are stronger; n too small for CI"
+      },
+      "effective_n": 4
+    },
+    {
+      "experiment": 10,
+      "name": "Adaptive Evolution experiment (V2)",
+      "verdict": "PRECONDITION_NOT_MET",
+      "detail": {
+        "reason": "historical decay evidence (a statsig fresh-start effect in the real-trade systems) is absent; per brief, evolution is only tested if decay evidence exists. V2 has 0 executed trades => NOT_EVALUABLE regardless."
+      }
+    },
+    {
+      "experiment": 11,
+      "name": "Market-regime control",
+      "verdict": "INCONCLUSIVE",
+      "detail": {
+        "V1_OLD": {
+          "n_high_vol": 60,
+          "n_low_vol": 49,
+          "mean_high": -0.2677,
+          "mean_low": -0.5482,
+          "p": 0.9105
+        },
+        "V1_NEW": {
+          "n_high_vol": 27,
+          "n_low_vol": 5,
+          "mean_high": -0.6863,
+          "mean_low": 0.134,
+          "p": 0.8522
+        }
+      }
+    },
+    {
+      "experiment": 12,
+      "name": "Time-of-day control",
+      "verdict": "INCONCLUSIVE",
+      "detail": {
+        "note": "descriptive only; cells too small for inference",
+        "by_system": {
+          "V1_OLD": {
+            "1": {
+              "n": 3,
+              "mean": 12.547
+            },
+            "2": {
+              "n": 5,
+              "mean": -1.648
+            },
+            "3": {
+              "n": 8,
+              "mean": 1.266
+            },
+            "4": {
+              "n": 7,
+              "mean": -1.489
+            },
+            "5": {
+              "n": 4,
+              "mean": 10.107
+            },
+            "6": {
+              "n": 3,
+              "mean": -11.047
+            },
+            "7": {
+              "n": 5,
+              "mean": 2.092
+            },
+            "8": {
+              "n": 6,
+              "mean": -7.413
+            },
+            "9": {
+              "n": 4,
+              "mean": 1.768
+            },
+            "10": {
+              "n": 4,
+              "mean": 0.815
+            },
+            "11": {
+              "n": 3,
+              "mean": 3.703
+            },
+            "12": {
+              "n": 5,
+              "mean": 2.456
+            },
+            "13": {
+              "n": 5,
+              "mean": -1.496
+            },
+            "14": {
+              "n": 6,
+              "mean": 2.68
+            },
+            "15": {
+              "n": 4,
+              "mean": -10.828
+            },
+            "16": {
+              "n": 11,
+              "mean": -0.732
+            },
+            "17": {
+              "n": 7,
+              "mean": 2.399
+            },
+            "18": {
+              "n": 5,
+              "mean": 1.68
+            },
+            "19": {
+              "n": 4,
+              "mean": -2.75
+            },
+            "20": {
+              "n": 2,
+              "mean": 4.6
+            },
+            "21": {
+              "n": 4,
+              "mean": -6.94
+            },
+            "22": {
+              "n": 4,
+              "mean": -7.973
+            }
+          },
+          "V1_NEW": {
+            "1": {
+              "n": 1,
+              "mean": 8.52
+            },
+            "4": {
+              "n": 2,
+              "mean": -7.435
+            },
+            "6": {
+              "n": 1,
+              "mean": 9.84
+            },
+            "7": {
+              "n": 1,
+              "mean": 9.69
+            },
+            "8": {
+              "n": 1,
+              "mean": -5.92
+            },
+            "10": {
+              "n": 2,
+              "mean": 1.42
+            },
+            "11": {
+              "n": 1,
+              "mean": -8.52
+            },
+            "12": {
+              "n": 2,
+              "mean": -7.74
+            },
+            "14": {
+              "n": 4,
+              "mean": -1.88
+            },
+            "16": {
+              "n": 3,
+              "mean": -0.51
+            },
+            "17": {
+              "n": 3,
+              "mean": -0.323
+            },
+            "18": {
+              "n": 5,
+              "mean": -5.03
+            },
+            "19": {
+              "n": 1,
+              "mean": 18.79
+            },
+            "20": {
+              "n": 1,
+              "mean": -9.66
+            },
+            "21": {
+              "n": 2,
+              "mean": 0.98
+            },
+            "23": {
+              "n": 2,
+              "mean": 10.06
+            }
+          }
+        }
+      }
+    },
+    {
+      "experiment": 13,
+      "name": "Day-of-week control",
+      "verdict": "INCONCLUSIVE",
+      "detail": {
+        "note": "descriptive only",
+        "by_system": {
+          "V1_OLD": {
+            "Fri": {
+              "n": 22,
+              "mean": 0.602
+            },
+            "Mon": {
+              "n": 28,
+              "mean": 2.365
+            },
+            "Thu": {
+              "n": 22,
+              "mean": -1.866
+            },
+            "Tue": {
+              "n": 27,
+              "mean": 1.179
+            },
+            "Wed": {
+              "n": 10,
+              "mean": -11.316
+            }
+          },
+          "V1_NEW": {
+            "Fri": {
+              "n": 2,
+              "mean": -7.435
+            },
+            "Mon": {
+              "n": 3,
+              "mean": 5.18
+            },
+            "Thu": {
+              "n": 12,
+              "mean": -2.8
+            },
+            "Tue": {
+              "n": 5,
+              "mean": 3.012
+            },
+            "Wed": {
+              "n": 10,
+              "mean": 0.001
+            }
+          }
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,62 @@
+{
+ "schema": "v3_source_quality/1",
+ "ts_utc": "2026-09-25T09:05:59.931864+00:00",
+ "source_name": "DUKASCOPY_XAUUSD",
+ "sampled": {
+  "candles": {
+   "file": "data/staging_duka/candles_201803.parquet",
+   "rows": 17280,
+   "duplicate_timestamps": 15840,
+   "nan_counts": {
+    "sec": 0,
+    "open": 0,
+    "close": 0,
+    "low": 0,
+    "high": 0
+   },
+   "open_nonpositive": 0,
+   "high_nonpositive": 0,
+   "low_nonpositive": 0,
+   "close_nonpositive": 0,
+   "high_lt_low": 0,
+   "high_lt_max_oc": 0,
+   "low_gt_min_oc": 0,
+   "jumps_gt_1pct": 1,
+   "jumps_gt_2pct": 0,
+   "jumps_gt_5pct": 0,
+   "jumps_gt_8pct": 0,
+   "median_step_s": 0.0,
+   "max_gap_s": 60.0,
+   "gaps_gt_5min": 0,
+   "weekend_rows": 0
+  },
+  "ticks": {
+   "file": "data/staging_duka/ticks_20240106.parquet",
+   "rows": 103003,
+   "duplicate_timestamps": null,
+   "nan_counts": {
+    "ask": 0,
+    "bid": 0
+   },
+   "bid_nonpositive": 0,
+   "ask_nonpositive": 0
+  }
+ },
+ "anomaly_policy": "record + flag + explain; NOTHING was deleted or repaired",
+ "coverage_gaps": {
+  "2018": "383,040 of ~470k minutes (81%)",
+  "2023": "286,560 (61%)",
+  "2024": "319,680 (68%)",
+  "2026": "to 2026-08-03 only"
+ },
+ "timerange": {
+  "candles": [
+   "2010-01",
+   "2026-08"
+  ],
+  "ticks": [
+   "2023-09",
+   "2024-03 (+2026-08-01..04)"
+  ]
+ }
+}

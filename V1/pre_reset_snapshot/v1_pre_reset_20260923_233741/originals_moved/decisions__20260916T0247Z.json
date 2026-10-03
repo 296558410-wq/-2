@@ -1,0 +1,85 @@
+{
+ "cycle": "2026-09-16T02:47Z",
+ "utc_ts": "2026-09-16T02:50:00Z",
+ "decision_id": "DEC-2026-09-16T02:47Z",
+ "decision": "SHORT",
+ "confidence": 0.56,
+ "bias": "SHORT-lean 0.56 - a +40pt counter-trend bounce (3h) has pinned XAUUSD right AT H4-MA20 4314.99 and the 4316.0-4317.6 M15-60bar-high / Sept-14-15 daily-high cluster with M15 RSI 73.5 overbought while D1/H4 remain below their MA20/MA50/MA200 -> fade the resistance test; counterweight = D1 RSI 31.5 oversold + H1 bull-engulfing momentum that could extend toward H4-MA50 4368.73",
+ "opportunity": "YES - active setup, registered: fade the overextended counter-trend rally at the 4316-4318 resistance shelf (H4-MA20 4314.99 + M15 60-bar high 4316.03 + Sept-14/15 daily highs 4317.62/4317.29). Live mid 4314.2 is only ~1.8pt below the zone -> a touch of 4316.0-4324.0 auto-fills the SHORT. 'What is missing to tradable' = ONLY the touch of the 4316-4324 band (price is at the doorstep); no new signal needed.",
+ "opportunity_mechanism": "mean-reversion / with-HTF fade: the market fell from 4510.94 (Sep-03) to 4253.56 (Sep-14) and has bounced +40pt in the last 3h; that bounce has arrived at H4-MA20 (4314.99) and the prior daily-high cluster (4317.3-4317.6) with M15 RSI 73.5 (overbought) and rising tick-rate - the classic stall/reject location inside a D1 downtrend. Path after rejection: 4300 (round + H1-MA50 4298.81) -> 4288 (H1-MA20 4287.95). Confirmation = failure to hold >4316/4318 and loss of the 4310 base.",
+ "mtf_agreement": "MIXED / CONFLICT: HTF bearish (D1 close 4293.04 << MA20 4444.32, RSI 31.5, but > MA50 4279.86; H4 close 4314.63 ~= MA20 4314.99 < MA50 4368.73 < MA200 4385.12, RSI 44.1) vs intraday bullish (H1 02:00Z bull-engulfing reclaimed H1-MA50 4298.81, H1 RSI 61.8; M15 above all MAs, RSI 73.5, 60-bar high 4316.03). Net = a counter-trend rally into H4-MA20 resistance in a D1 downtrend -> with-HTF lean SHORT.",
+ "answers_14": {
+  "1_market_state": "XAUUSD live mid 4314.2 (broker/quote_latest 02:48Z; pkg m15_live 4313.83 @02:47Z, spread 0.42bps, tick 102/min, abnormal z 0.37 vs base 10.06 = normal); D1 trend-down/oversold (close 4293.04, MA20 4444.32, MA50 4279.86, RSI 31.5, low60 3942.72/high60 4696.78); H4 bearish-cap (close 4314.63 pinned at MA20 4314.99, MA50 4368.73, MA200 4385.12, RSI 44.1); H1 reclaim (close 4314.63 > MA20 4287.95 & MA50 4298.81 < MA200 4376.97, RSI 61.8, 02:00Z bull-engulfing); M15 trend-up/overbought (close 4314.63 > MA20 4290.41, MA50 4292.36, MA200 4299.33, RSI 73.5, 60-bar high 4316.03/low 4271.54); market OPEN (gate armed), Wed 10:47 CST",
+  "2_mtf_consistency": "CONFLICT: D1 + H4 below their MA20/MA50/MA200 (bearish) while H1 + M15 have flipped up (H1 02:00Z bull-engulfing above MA50; M15 RSI 73.5 above all MAs). The rally is therefore counter-trend and has arrived at the H4-MA20 / daily-high resistance shelf -> HTF and intraday disagree at a well-defined level = with-HTF SHORT-lean (0.56)",
+  "3_m15_change": "M15 ripped +32 over the last ~45min (4282.66 @02:00Z -> high 4316.03 @02:30Z -> 4314.63 now) on a strong impulse bar, then stalled 4310-4316 just under H4-MA20 4314.99 / M15 60-bar high 4316.03 with M15 RSI 73.5 = an overbought push into resistance, not a fresh base",
+  "4_opportunity": "YES - registered SHORT fade of the 4316-4318 resistance shelf (H4-MA20 4314.99 + M15 high 4316.03 + daily highs 4317.62/4317.29). Price is on the doorstep (mid 4314.2, ~1.8pt below the zone). 'What is missing to tradable' = only the touch of 4316.0-4324.0 (auto-fill on zone_touch); no chase, no add",
+  "5_mechanism": "counter-trend-rally fade at HTF resistance: a 3h +40pt bounce in a D1 downtrend reached H4-MA20 4314.99 and the Sept-14/15 daily-high cluster 4317.3-4317.6 with M15 RSI 73.5 -> highest-probability next move = rejection back to the 4300 shelf (round + H1-MA50 4298.81) then 4288 (H1-MA20 4287.95); invalidation = a clean reclaim/hold above 4316-4318 (confirmed by >4330)",
+  "6_trigger_condition": "zone_touch [4316.0, 4322.0] -> engine sells the resistance test on touch (live mid 4314.2 is ~1.8pt below the zone; auto-fill on touch, no close-wait)",
+  "7_invalidation": "price_cross_up 4330.0 (a sustained reclaim above the 4316-4318 cluster + 12pt buffer voids the fade = plan cancelled if still pending); soft pre-entry tell: loss of the 4310 base before entry means the rally is still in control",
+  "8_expected_return": "SHORT entry ~4320 (zone mid), T1 4300 (20pt = 1.67R, frac 0.5), T2 4288 (32pt = 2.67R, frac 0.5); blended expected_R ~2.17R. (Engine attaches broker TP = T1 4300, so the realistic single-exit R ~1.67R.)",
+  "9_expected_loss": "1R = stop 4332 vs entry 4320 = ~12pt (~0.28% of price); broker SL auto-fills ~ -1R (~ -12 USD on 0.01 lot)",
+  "10_cost": "spread 0.42bps + slippage 0.30bps = 0.72bps roundtrip ~ 0.31pt ~ 0.026R",
+  "11_net_EV": "EV = 0.47*2.17 - 0.53*1.00 - 0.026 = +0.46R (positive). Conservative single-target-to-T1 basis: 0.47*1.67 - 0.53*1.00 - 0.026 = +0.23R, still positive. Costs (0.3bps) are immaterial.",
+  "12_reproducibility": "yes - mechanical: zone_touch / price_cross_up are deterministic on the quote mid; the level set is fixed; any replay with the same quote stream yields the same trigger/stop/target",
+  "13_decision": "SHORT (fade of the 4316-4322 resistance shelf), qty 0.01 lot",
+  "14_reason": "D1下行中3h逆势+40反弹撞H4 MA20 4314.99与前高4316-4318、M15 RSI 73.5超买，回落做空4316-4324，止损4332，T1 4300/T2 4288，EV+0.46R",
+  "14": "D1 trend-down; a 3h +40pt counter-trend bounce is pinned at H4-MA20 4314.99 + the 4316-4318 daily-high cluster with M15 RSI 73.5 overbought -> fade SHORT 4316-4324, stop 4332, T1 4300 / T2 4288; EV +0.46R; zone_touch auto-fill"
+ },
+ "plan": {
+  "direction": "SHORT",
+  "opportunity_type": "counter_trend_rally_fade_at_htf_resistance",
+  "entry_style": "limit_zone_touch",
+  "entry_zone": {
+   "low": 4316.0,
+   "high": 4322.0
+  },
+  "trigger_condition": {
+   "zone_touch": [
+    4316.0,
+    4322.0
+   ]
+  },
+  "invalidation_condition": {
+   "price_cross_up": 4330.0
+  },
+  "stop_logic": {
+   "type": "structure",
+   "level_price": 4330.0,
+   "reason": "above M15 60-bar high 4316.03 / Sept-14-15 daily highs 4317.62-4317.29 and H4-MA20 4314.99; a sustained reclaim >4330 voids the fade"
+  },
+  "target_logic": {
+   "levels": [
+    {
+     "price": 4300.0,
+     "frac": 0.5,
+     "reason": "round figure / prior 4300 shelf + H1-MA50 4298.81"
+    },
+    {
+     "price": 4288.0,
+     "frac": 0.5,
+     "reason": "H1-MA20 4287.95"
+    }
+   ]
+  },
+  "expected_R": 2.17,
+  "expected_win_probability": 0.47,
+  "probability_source": "heuristic: with-HTF fade of an overbought (+40pt in 3h) counter-trend rally into H4-MA20 4314.99 + the 4316.0/4317.3-17.6 resistance cluster with M15 RSI 73.5; tempered to 0.47 by the strong H1 02:00Z bull-engulfing momentum that could extend toward H4-MA50 4368.73",
+  "estimated_cost": {
+   "spread_bps": 0.42,
+   "slippage_bps": 0.3,
+   "total_bps": 0.72
+  },
+  "spread_bps": 0.42,
+  "slippage_bps": 0.3,
+  "expected_net_EV": {
+   "value": 0.46,
+   "units": "R",
+   "note": "0.47*2.17 - 0.53*1.00 - 0.026 = +0.46R (ref entry zone-mid 4320, SL 4332 = 12pt = 1R; engine broker TP = T1 4300)"
+  },
+  "maximum_holding_time": "M15*8",
+  "qty_lots": 0.01,
+  "plan_id": "TP-20260916T0247Z"
+ },
+ "data_note": "state_package parquet tick feed disagrees with the live broker/quote feed this cycle (parquet last tick 02:39Z @ ~4285 vs broker/quote_latest 02:48Z @ ~4314 = ~29pt basis); trigger/stop/target are anchored to the broker/quote_latest space (the engine's trigger source) and cross-checked vs MT5 copy_rates; MAs cited from broker feed where they differ from the package.",
+ "model": "deepseek/deepseek-v4-flash"
+}

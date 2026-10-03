@@ -1,0 +1,769 @@
+{
+ "schema": "v3_mvr1_mechanisms/1",
+ "ts_utc": "2026-09-25T14:06:56.788803+00:00",
+ "mechanisms": {
+  "M01": {
+   "mechanism_id": "M01",
+   "mechanism_name": "PRICE_STATE_TRANSITION",
+   "raw_opportunities": 28817,
+   "independent_events": 6798,
+   "unique_episodes": 6798,
+   "unique_cross_grid_parents": 8583,
+   "detector_families": [
+    "F1_SHORT_STATE_JUMP",
+    "F2_SHORT_SHOCK_STRUCTURE"
+   ],
+   "grids": [
+    "15m",
+    "1m",
+    "30m",
+    "5m"
+   ],
+   "events_with_future_data_used": 0,
+   "cross_family_dependent_events": 3425,
+   "cross_grid_dependent_events": 12365,
+   "artifact_risk": "MEDIUM",
+   "FATAL_ARTIFACT": false,
+   "artifact_classes": {
+    "timestamp artifact": "MEDIUM",
+    "grid artifact": "LOW",
+    "duplicate event": "NONE",
+    "stale data": "LOW",
+    "source discontinuity": "MEDIUM",
+    "price-definition artifact": "MEDIUM",
+    "feature construction artifact": "MEDIUM",
+    "boundary artifact": "MEDIUM",
+    "proxy artifact": "NONE"
+   },
+   "semantic_dependency": "MEDIUM",
+   "counter_evidence": {
+    "checks": {
+     "time contradiction": "NONE",
+     "session contradiction": "NONE",
+     "market-state contradiction": "NONE",
+     "cross-market contradiction": "NONE",
+     "grid contradiction": "NONE",
+     "source contradiction": "WEAK",
+     "internal mechanism contradiction": "WEAK",
+     "artifact contradiction": "NONE"
+    },
+    "counter_evidence_level": "WEAK",
+    "FATAL_COUNTER": false,
+    "supporting_evidence": {
+     "events": 28817,
+     "families": [
+      "F1_SHORT_STATE_JUMP",
+      "F2_SHORT_SHOCK_STRUCTURE"
+     ]
+    },
+    "answer_why_not_overturned": "artifact risk and semantic dependency are reported, and the parent-level and episode-level dependency figures are stated separately so the mechanism is not supported by double-counted independence"
+   },
+   "null_result": {
+    "observed": 5.457049,
+    "null_mean": 0.999826,
+    "null_distribution_summary": {
+     "min": 0.98187,
+     "max": 1.016258,
+     "p50": 1.000116
+    },
+    "p_value": 0.0,
+    "n_perm": 500,
+    "seed": 20260925,
+    "stability_status": "HIGH",
+    "null_definition": "uniform event times over the mechanism's own span, same count",
+    "interpretation_bound": "a small p only means the observed structure differs from the specified null"
+   },
+   "temporal_stability": "HIGH",
+   "session_stability": "NOT_INFORMATIVE",
+   "state_stability": "NOT_INFORMATIVE",
+   "grid_stability": "NOT_INFORMATIVE",
+   "Hermes_investigated": true,
+   "Hermes_alternative_mechanisms": [
+    "M02 volatility-regime explanation"
+   ],
+   "final_status": "SUPPORTED"
+  },
+  "M02": {
+   "mechanism_id": "M02",
+   "mechanism_name": "VOLATILITY_REGIME_TRANSITION",
+   "raw_opportunities": 7241,
+   "independent_events": 3634,
+   "unique_episodes": 3634,
+   "unique_cross_grid_parents": 3839,
+   "detector_families": [
+    "F6_STATE_CONDITIONAL_HF"
+   ],
+   "grids": [
+    "15m",
+    "1m",
+    "30m",
+    "5m"
+   ],
+   "events_with_future_data_used": 0,
+   "cross_family_dependent_events": 2763,
+   "cross_grid_dependent_events": 2633,
+   "artifact_risk": "MEDIUM",
+   "FATAL_ARTIFACT": false,
+   "artifact_classes": {
+    "timestamp artifact": "MEDIUM",
+    "grid artifact": "LOW",
+    "duplicate event": "NONE",
+    "stale data": "LOW",
+    "source discontinuity": "MEDIUM",
+    "price-definition artifact": "MEDIUM",
+    "feature construction artifact": "MEDIUM",
+    "boundary artifact": "MEDIUM",
+    "proxy artifact": "NONE"
+   },
+   "semantic_dependency": "MEDIUM",
+   "counter_evidence": {
+    "checks": {
+     "time contradiction": "NONE",
+     "session contradiction": "NONE",
+     "market-state contradiction": "NONE",
+     "cross-market contradiction": "NONE",
+     "grid contradiction": "NONE",
+     "source contradiction": "WEAK",
+     "internal mechanism contradiction": "WEAK",
+     "artifact contradiction": "NONE"
+    },
+    "counter_evidence_level": "WEAK",
+    "FATAL_COUNTER": false,
+    "supporting_evidence": {
+     "events": 7241,
+     "families": [
+      "F6_STATE_CONDITIONAL_HF"
+     ]
+    },
+    "answer_why_not_overturned": "artifact risk and semantic dependency are reported, and the parent-level and episode-level dependency figures are stated separately so the mechanism is not supported by double-counted independence"
+   },
+   "null_result": {
+    "observed": 2.963749,
+    "null_mean": 1.000409,
+    "null_distribution_summary": {
+     "min": 0.960899,
+     "max": 1.034717,
+     "p50": 0.9999
+    },
+    "p_value": 0.0,
+    "n_perm": 500,
+    "seed": 20260925,
+    "stability_status": "HIGH",
+    "null_definition": "uniform event times over the mechanism's own span, same count",
+    "interpretation_bound": "a small p only means the observed structure differs from the specified null"
+   },
+   "temporal_stability": "HIGH",
+   "session_stability": "NOT_INFORMATIVE",
+   "state_stability": "NOT_INFORMATIVE",
+   "grid_stability": "NOT_INFORMATIVE",
+   "Hermes_investigated": true,
+   "Hermes_alternative_mechanisms": [
+    "M11"
+   ],
+   "final_status": "SUPPORTED"
+  },
+  "M07": {
+   "mechanism_id": "M07",
+   "mechanism_name": "EXTREME_REVERSION",
+   "raw_opportunities": 473,
+   "independent_events": 436,
+   "unique_episodes": 436,
+   "unique_cross_grid_parents": 437,
+   "detector_families": [
+    "F5_SHORT_EXTENSION_REVERSION"
+   ],
+   "grids": [
+    "15m",
+    "1m",
+    "30m",
+    "5m"
+   ],
+   "events_with_future_data_used": 0,
+   "cross_family_dependent_events": 377,
+   "cross_grid_dependent_events": 45,
+   "artifact_risk": "MEDIUM",
+   "FATAL_ARTIFACT": false,
+   "artifact_classes": {
+    "timestamp artifact": "MEDIUM",
+    "grid artifact": "LOW",
+    "duplicate event": "NONE",
+    "stale data": "LOW",
+    "source discontinuity": "MEDIUM",
+    "price-definition artifact": "MEDIUM",
+    "feature construction artifact": "MEDIUM",
+    "boundary artifact": "MEDIUM",
+    "proxy artifact": "NONE"
+   },
+   "semantic_dependency": "MEDIUM",
+   "counter_evidence": {
+    "checks": {
+     "time contradiction": "NONE",
+     "session contradiction": "NONE",
+     "market-state contradiction": "NONE",
+     "cross-market contradiction": "NONE",
+     "grid contradiction": "NONE",
+     "source contradiction": "WEAK",
+     "internal mechanism contradiction": "WEAK",
+     "artifact contradiction": "NONE"
+    },
+    "counter_evidence_level": "WEAK",
+    "FATAL_COUNTER": false,
+    "supporting_evidence": {
+     "events": 473,
+     "families": [
+      "F5_SHORT_EXTENSION_REVERSION"
+     ]
+    },
+    "answer_why_not_overturned": "artifact risk and semantic dependency are reported, and the parent-level and episode-level dependency figures are stated separately so the mechanism is not supported by double-counted independence"
+   },
+   "null_result": {
+    "observed": 1.154116,
+    "null_mean": 1.000169,
+    "null_distribution_summary": {
+     "min": 0.892414,
+     "max": 1.20554,
+     "p50": 0.99681
+    },
+    "p_value": 0.006,
+    "n_perm": 500,
+    "seed": 20260925,
+    "stability_status": "HIGH",
+    "null_definition": "uniform event times over the mechanism's own span, same count",
+    "interpretation_bound": "a small p only means the observed structure differs from the specified null"
+   },
+   "temporal_stability": "HIGH",
+   "session_stability": "NOT_INFORMATIVE",
+   "state_stability": "NOT_INFORMATIVE",
+   "grid_stability": "NOT_INFORMATIVE",
+   "Hermes_investigated": true,
+   "Hermes_alternative_mechanisms": [
+    "M11"
+   ],
+   "final_status": "SUPPORTED"
+  },
+  "M03": {
+   "mechanism_id": "M03",
+   "mechanism_name": "CROSS_MARKET_SHOCK",
+   "raw_opportunities": 1836,
+   "independent_events": 135,
+   "unique_episodes": 135,
+   "unique_cross_grid_parents": 135,
+   "detector_families": [
+    "F4_CROSSMARKET_LEADING_ASSOCIATION"
+   ],
+   "grids": [
+    "5m"
+   ],
+   "events_with_future_data_used": 0,
+   "cross_family_dependent_events": 96,
+   "cross_grid_dependent_events": 0,
+   "artifact_risk": "HIGH",
+   "FATAL_ARTIFACT": false,
+   "artifact_classes": {
+    "timestamp artifact": "MEDIUM",
+    "grid artifact": "LOW",
+    "duplicate event": "NONE",
+    "stale data": "LOW",
+    "source discontinuity": "MEDIUM",
+    "price-definition artifact": "MEDIUM",
+    "feature construction artifact": "MEDIUM",
+    "boundary artifact": "MEDIUM",
+    "proxy artifact": "HIGH"
+   },
+   "semantic_dependency": "HIGH",
+   "counter_evidence": {
+    "checks": {
+     "time contradiction": "NONE",
+     "session contradiction": "NONE",
+     "market-state contradiction": "NONE",
+     "cross-market contradiction": "HIGH",
+     "grid contradiction": "NONE",
+     "source contradiction": "MODERATE",
+     "internal mechanism contradiction": "WEAK",
+     "artifact contradiction": "NONE"
+    },
+    "counter_evidence_level": "HIGH",
+    "FATAL_COUNTER": false,
+    "supporting_evidence": {
+     "events": 1836,
+     "families": [
+      "F4_CROSSMARKET_LEADING_ASSOCIATION"
+     ]
+    },
+    "answer_why_not_overturned": "artifact risk and semantic dependency are reported, and the parent-level and episode-level dependency figures are stated separately so the mechanism is not supported by double-counted independence"
+   },
+   "null_result": {
+    "observed": 4.656436,
+    "null_mean": 0.999524,
+    "null_distribution_summary": {
+     "min": 0.935283,
+     "max": 1.07228,
+     "p50": 0.999032
+    },
+    "p_value": 0.0,
+    "n_perm": 500,
+    "seed": 20260925,
+    "stability_status": "HIGH",
+    "null_definition": "uniform event times over the mechanism's own span, same count",
+    "interpretation_bound": "a small p only means the observed structure differs from the specified null"
+   },
+   "temporal_stability": "HIGH",
+   "session_stability": "NOT_INFORMATIVE",
+   "state_stability": "NOT_INFORMATIVE",
+   "grid_stability": "NOT_INFORMATIVE",
+   "Hermes_investigated": true,
+   "Hermes_alternative_mechanisms": [
+    "M11"
+   ],
+   "final_status": "UNCERTAIN"
+  },
+  "M04": {
+   "mechanism_id": "M04",
+   "mechanism_name": "CROSS_MARKET_DIVERGENCE",
+   "raw_opportunities": 0,
+   "independent_events": 0,
+   "unique_episodes": 0,
+   "unique_cross_grid_parents": 0,
+   "detector_families": [],
+   "grids": [],
+   "events_with_future_data_used": 0,
+   "cross_family_dependent_events": 0,
+   "cross_grid_dependent_events": 0,
+   "artifact_risk": "MEDIUM",
+   "FATAL_ARTIFACT": false,
+   "artifact_classes": {
+    "timestamp artifact": "MEDIUM",
+    "grid artifact": "LOW",
+    "duplicate event": "NONE",
+    "stale data": "LOW",
+    "source discontinuity": "MEDIUM",
+    "price-definition artifact": "MEDIUM",
+    "feature construction artifact": "MEDIUM",
+    "boundary artifact": "MEDIUM",
+    "proxy artifact": "NONE"
+   },
+   "semantic_dependency": "HIGH",
+   "counter_evidence": {
+    "checks": {
+     "time contradiction": "NONE",
+     "session contradiction": "NONE",
+     "market-state contradiction": "NONE",
+     "cross-market contradiction": "NONE",
+     "grid contradiction": "NONE",
+     "source contradiction": "MODERATE",
+     "internal mechanism contradiction": "WEAK",
+     "artifact contradiction": "NONE"
+    },
+    "counter_evidence_level": "MODERATE",
+    "FATAL_COUNTER": false,
+    "supporting_evidence": {
+     "events": 0,
+     "families": []
+    },
+    "answer_why_not_overturned": "artifact risk and semantic dependency are reported, and the parent-level and episode-level dependency figures are stated separately so the mechanism is not supported by double-counted independence"
+   },
+   "null_result": {
+    "observed": null,
+    "null_mean": null,
+    "null_distribution_summary": null,
+    "p_value": null,
+    "stability_status": "INSUFFICIENT",
+    "n_perm": 0,
+    "seed": 20260925
+   },
+   "temporal_stability": "INSUFFICIENT",
+   "session_stability": "NOT_INFORMATIVE",
+   "state_stability": "NOT_INFORMATIVE",
+   "grid_stability": "NOT_INFORMATIVE",
+   "Hermes_investigated": false,
+   "Hermes_alternative_mechanisms": [
+    "M11"
+   ],
+   "final_status": "NOT_TESTABLE"
+  },
+  "M05": {
+   "mechanism_id": "M05",
+   "mechanism_name": "LIQUIDITY_REPRICING",
+   "raw_opportunities": 0,
+   "independent_events": 0,
+   "unique_episodes": 0,
+   "unique_cross_grid_parents": 0,
+   "detector_families": [],
+   "grids": [],
+   "events_with_future_data_used": 0,
+   "cross_family_dependent_events": 0,
+   "cross_grid_dependent_events": 0,
+   "artifact_risk": "MEDIUM",
+   "FATAL_ARTIFACT": false,
+   "artifact_classes": {
+    "timestamp artifact": "MEDIUM",
+    "grid artifact": "LOW",
+    "duplicate event": "NONE",
+    "stale data": "LOW",
+    "source discontinuity": "MEDIUM",
+    "price-definition artifact": "MEDIUM",
+    "feature construction artifact": "MEDIUM",
+    "boundary artifact": "MEDIUM",
+    "proxy artifact": "NONE"
+   },
+   "semantic_dependency": "HIGH",
+   "counter_evidence": {
+    "checks": {
+     "time contradiction": "NONE",
+     "session contradiction": "NONE",
+     "market-state contradiction": "NONE",
+     "cross-market contradiction": "NONE",
+     "grid contradiction": "NONE",
+     "source contradiction": "WEAK",
+     "internal mechanism contradiction": "WEAK",
+     "artifact contradiction": "NONE"
+    },
+    "counter_evidence_level": "WEAK",
+    "FATAL_COUNTER": false,
+    "supporting_evidence": {
+     "events": 0,
+     "families": []
+    },
+    "answer_why_not_overturned": "artifact risk and semantic dependency are reported, and the parent-level and episode-level dependency figures are stated separately so the mechanism is not supported by double-counted independence"
+   },
+   "null_result": {
+    "observed": null,
+    "null_mean": null,
+    "null_distribution_summary": null,
+    "p_value": null,
+    "stability_status": "INSUFFICIENT",
+    "n_perm": 0,
+    "seed": 20260925
+   },
+   "temporal_stability": "INSUFFICIENT",
+   "session_stability": "NOT_INFORMATIVE",
+   "state_stability": "NOT_INFORMATIVE",
+   "grid_stability": "NOT_INFORMATIVE",
+   "Hermes_investigated": false,
+   "Hermes_alternative_mechanisms": [
+    "M11"
+   ],
+   "final_status": "NOT_TESTABLE"
+  },
+  "M06": {
+   "mechanism_id": "M06",
+   "mechanism_name": "RISK_SENTIMENT_TRANSMISSION",
+   "raw_opportunities": 0,
+   "independent_events": 0,
+   "unique_episodes": 0,
+   "unique_cross_grid_parents": 0,
+   "detector_families": [],
+   "grids": [],
+   "events_with_future_data_used": 0,
+   "cross_family_dependent_events": 0,
+   "cross_grid_dependent_events": 0,
+   "artifact_risk": "MEDIUM",
+   "FATAL_ARTIFACT": false,
+   "artifact_classes": {
+    "timestamp artifact": "MEDIUM",
+    "grid artifact": "LOW",
+    "duplicate event": "NONE",
+    "stale data": "LOW",
+    "source discontinuity": "MEDIUM",
+    "price-definition artifact": "MEDIUM",
+    "feature construction artifact": "MEDIUM",
+    "boundary artifact": "MEDIUM",
+    "proxy artifact": "NONE"
+   },
+   "semantic_dependency": "HIGH",
+   "counter_evidence": {
+    "checks": {
+     "time contradiction": "NONE",
+     "session contradiction": "NONE",
+     "market-state contradiction": "NONE",
+     "cross-market contradiction": "NONE",
+     "grid contradiction": "NONE",
+     "source contradiction": "WEAK",
+     "internal mechanism contradiction": "WEAK",
+     "artifact contradiction": "NONE"
+    },
+    "counter_evidence_level": "WEAK",
+    "FATAL_COUNTER": false,
+    "supporting_evidence": {
+     "events": 0,
+     "families": []
+    },
+    "answer_why_not_overturned": "artifact risk and semantic dependency are reported, and the parent-level and episode-level dependency figures are stated separately so the mechanism is not supported by double-counted independence"
+   },
+   "null_result": {
+    "observed": null,
+    "null_mean": null,
+    "null_distribution_summary": null,
+    "p_value": null,
+    "stability_status": "INSUFFICIENT",
+    "n_perm": 0,
+    "seed": 20260925
+   },
+   "temporal_stability": "INSUFFICIENT",
+   "session_stability": "NOT_INFORMATIVE",
+   "state_stability": "NOT_INFORMATIVE",
+   "grid_stability": "NOT_INFORMATIVE",
+   "Hermes_investigated": false,
+   "Hermes_alternative_mechanisms": [
+    "M11"
+   ],
+   "final_status": "NOT_TESTABLE"
+  },
+  "M08": {
+   "mechanism_id": "M08",
+   "mechanism_name": "STATE_BREAK_MOMENTUM",
+   "raw_opportunities": 0,
+   "independent_events": 0,
+   "unique_episodes": 0,
+   "unique_cross_grid_parents": 0,
+   "detector_families": [],
+   "grids": [],
+   "events_with_future_data_used": 0,
+   "cross_family_dependent_events": 0,
+   "cross_grid_dependent_events": 0,
+   "artifact_risk": "MEDIUM",
+   "FATAL_ARTIFACT": false,
+   "artifact_classes": {
+    "timestamp artifact": "MEDIUM",
+    "grid artifact": "LOW",
+    "duplicate event": "NONE",
+    "stale data": "LOW",
+    "source discontinuity": "MEDIUM",
+    "price-definition artifact": "MEDIUM",
+    "feature construction artifact": "MEDIUM",
+    "boundary artifact": "MEDIUM",
+    "proxy artifact": "NONE"
+   },
+   "semantic_dependency": "MEDIUM",
+   "counter_evidence": {
+    "checks": {
+     "time contradiction": "NONE",
+     "session contradiction": "NONE",
+     "market-state contradiction": "NONE",
+     "cross-market contradiction": "NONE",
+     "grid contradiction": "NONE",
+     "source contradiction": "WEAK",
+     "internal mechanism contradiction": "WEAK",
+     "artifact contradiction": "NONE"
+    },
+    "counter_evidence_level": "WEAK",
+    "FATAL_COUNTER": false,
+    "supporting_evidence": {
+     "events": 0,
+     "families": []
+    },
+    "answer_why_not_overturned": "artifact risk and semantic dependency are reported, and the parent-level and episode-level dependency figures are stated separately so the mechanism is not supported by double-counted independence"
+   },
+   "null_result": {
+    "observed": null,
+    "null_mean": null,
+    "null_distribution_summary": null,
+    "p_value": null,
+    "stability_status": "INSUFFICIENT",
+    "n_perm": 0,
+    "seed": 20260925
+   },
+   "temporal_stability": "INSUFFICIENT",
+   "session_stability": "NOT_INFORMATIVE",
+   "state_stability": "NOT_INFORMATIVE",
+   "grid_stability": "NOT_INFORMATIVE",
+   "Hermes_investigated": false,
+   "Hermes_alternative_mechanisms": [
+    "M11"
+   ],
+   "final_status": "NOT_TESTABLE"
+  },
+  "M09": {
+   "mechanism_id": "M09",
+   "mechanism_name": "EVENT_REPRICING",
+   "raw_opportunities": 0,
+   "independent_events": 0,
+   "unique_episodes": 0,
+   "unique_cross_grid_parents": 0,
+   "detector_families": [],
+   "grids": [],
+   "events_with_future_data_used": 0,
+   "cross_family_dependent_events": 0,
+   "cross_grid_dependent_events": 0,
+   "artifact_risk": "MEDIUM",
+   "FATAL_ARTIFACT": false,
+   "artifact_classes": {
+    "timestamp artifact": "MEDIUM",
+    "grid artifact": "LOW",
+    "duplicate event": "NONE",
+    "stale data": "LOW",
+    "source discontinuity": "MEDIUM",
+    "price-definition artifact": "MEDIUM",
+    "feature construction artifact": "MEDIUM",
+    "boundary artifact": "MEDIUM",
+    "proxy artifact": "NONE"
+   },
+   "semantic_dependency": "MEDIUM",
+   "counter_evidence": {
+    "checks": {
+     "time contradiction": "NONE",
+     "session contradiction": "NONE",
+     "market-state contradiction": "NONE",
+     "cross-market contradiction": "NONE",
+     "grid contradiction": "NONE",
+     "source contradiction": "WEAK",
+     "internal mechanism contradiction": "WEAK",
+     "artifact contradiction": "NONE"
+    },
+    "counter_evidence_level": "WEAK",
+    "FATAL_COUNTER": false,
+    "supporting_evidence": {
+     "events": 0,
+     "families": []
+    },
+    "answer_why_not_overturned": "artifact risk and semantic dependency are reported, and the parent-level and episode-level dependency figures are stated separately so the mechanism is not supported by double-counted independence"
+   },
+   "null_result": {
+    "observed": null,
+    "null_mean": null,
+    "null_distribution_summary": null,
+    "p_value": null,
+    "stability_status": "INSUFFICIENT",
+    "n_perm": 0,
+    "seed": 20260925
+   },
+   "temporal_stability": "INSUFFICIENT",
+   "session_stability": "NOT_INFORMATIVE",
+   "state_stability": "NOT_INFORMATIVE",
+   "grid_stability": "NOT_INFORMATIVE",
+   "Hermes_investigated": false,
+   "Hermes_alternative_mechanisms": [
+    "M11"
+   ],
+   "final_status": "NOT_TESTABLE"
+  },
+  "M10": {
+   "mechanism_id": "M10",
+   "mechanism_name": "DATA_MEASUREMENT_ARTIFACT",
+   "raw_opportunities": 0,
+   "independent_events": 0,
+   "unique_episodes": 0,
+   "unique_cross_grid_parents": 0,
+   "detector_families": [],
+   "grids": [],
+   "events_with_future_data_used": 0,
+   "cross_family_dependent_events": 0,
+   "cross_grid_dependent_events": 0,
+   "artifact_risk": "MEDIUM",
+   "FATAL_ARTIFACT": false,
+   "artifact_classes": {
+    "timestamp artifact": "MEDIUM",
+    "grid artifact": "LOW",
+    "duplicate event": "NONE",
+    "stale data": "LOW",
+    "source discontinuity": "MEDIUM",
+    "price-definition artifact": "MEDIUM",
+    "feature construction artifact": "MEDIUM",
+    "boundary artifact": "MEDIUM",
+    "proxy artifact": "NONE"
+   },
+   "semantic_dependency": "MEDIUM",
+   "counter_evidence": {
+    "checks": {
+     "time contradiction": "NONE",
+     "session contradiction": "NONE",
+     "market-state contradiction": "NONE",
+     "cross-market contradiction": "NONE",
+     "grid contradiction": "NONE",
+     "source contradiction": "WEAK",
+     "internal mechanism contradiction": "WEAK",
+     "artifact contradiction": "NONE"
+    },
+    "counter_evidence_level": "WEAK",
+    "FATAL_COUNTER": false,
+    "supporting_evidence": {
+     "events": 0,
+     "families": []
+    },
+    "answer_why_not_overturned": "artifact risk and semantic dependency are reported, and the parent-level and episode-level dependency figures are stated separately so the mechanism is not supported by double-counted independence"
+   },
+   "null_result": {
+    "observed": null,
+    "null_mean": null,
+    "null_distribution_summary": null,
+    "p_value": null,
+    "stability_status": "INSUFFICIENT",
+    "n_perm": 0,
+    "seed": 20260925
+   },
+   "temporal_stability": "INSUFFICIENT",
+   "session_stability": "NOT_INFORMATIVE",
+   "state_stability": "NOT_INFORMATIVE",
+   "grid_stability": "NOT_INFORMATIVE",
+   "Hermes_investigated": false,
+   "Hermes_alternative_mechanisms": [
+    "M11"
+   ],
+   "final_status": "NOT_TESTABLE"
+  },
+  "M11": {
+   "mechanism_id": "M11",
+   "mechanism_name": "UNKNOWN_MECHANISM",
+   "raw_opportunities": 0,
+   "independent_events": 0,
+   "unique_episodes": 0,
+   "unique_cross_grid_parents": 0,
+   "detector_families": [],
+   "grids": [],
+   "events_with_future_data_used": 0,
+   "cross_family_dependent_events": 0,
+   "cross_grid_dependent_events": 0,
+   "artifact_risk": "MEDIUM",
+   "FATAL_ARTIFACT": false,
+   "artifact_classes": {
+    "timestamp artifact": "MEDIUM",
+    "grid artifact": "LOW",
+    "duplicate event": "NONE",
+    "stale data": "LOW",
+    "source discontinuity": "MEDIUM",
+    "price-definition artifact": "MEDIUM",
+    "feature construction artifact": "MEDIUM",
+    "boundary artifact": "MEDIUM",
+    "proxy artifact": "NONE"
+   },
+   "semantic_dependency": "MEDIUM",
+   "counter_evidence": {
+    "checks": {
+     "time contradiction": "NONE",
+     "session contradiction": "NONE",
+     "market-state contradiction": "NONE",
+     "cross-market contradiction": "NONE",
+     "grid contradiction": "NONE",
+     "source contradiction": "WEAK",
+     "internal mechanism contradiction": "WEAK",
+     "artifact contradiction": "NONE"
+    },
+    "counter_evidence_level": "WEAK",
+    "FATAL_COUNTER": false,
+    "supporting_evidence": {
+     "events": 0,
+     "families": []
+    },
+    "answer_why_not_overturned": "artifact risk and semantic dependency are reported, and the parent-level and episode-level dependency figures are stated separately so the mechanism is not supported by double-counted independence"
+   },
+   "null_result": {
+    "observed": null,
+    "null_mean": null,
+    "null_distribution_summary": null,
+    "p_value": null,
+    "stability_status": "INSUFFICIENT",
+    "n_perm": 0,
+    "seed": 20260925
+   },
+   "temporal_stability": "INSUFFICIENT",
+   "session_stability": "NOT_INFORMATIVE",
+   "state_stability": "NOT_INFORMATIVE",
+   "grid_stability": "NOT_INFORMATIVE",
+   "Hermes_investigated": false,
+   "Hermes_alternative_mechanisms": [
+    "M11"
+   ],
+   "final_status": "NOT_TESTABLE"
+  }
+ }
+}

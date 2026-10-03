@@ -1,0 +1,117 @@
+{
+  "forecast_id": "HERMES_A_R5_20260813",
+  "timestamp": "2026-08-13 12:00:00+00:00",
+  "observations": [
+    "XAUUSD M1 close 4391.785 at 2026-08-13 12:00:00+00:00; M1 range 1.29, body 0.08, upper_wick 0.98, range_percentile 0.46, ATR 1.237",
+    "M1 trend_20 +3.44; M5 trend_20 +9.30; M15 trend_20 +18.46; H1 trend_20 -33.46; H4 trend_20 +47.95",
+    "M15 close 4394.175 with lower_wick 3.60; H1 close 4387.435 with both wicks ~4.6-4.7 (indecision); H4 close 4383.485 with lower_wick 30.73 (buy-side rejection into close)",
+    "L2 nearest level: SWING_LOW_37894 at 4393.565, side DN, age 230 bars, touch_count_240 44, distance_atr 0.09946, break_status INSIDE, reclaim_status NONE",
+    "L3/L5 state: COMPRESSION, event VOL_CONTRACTION, dwell 2 bars, ambiguity_rate_8 0.125, transition TREND->COMPRESSION within last 8",
+    "L4 mechanism candidates: only trend_continuation with supporting evidence 'price inside level, 8-bar displacement 17.38'; explicitly NOT asserted as fact",
+    "L6 multi-timeframe agreement: CONFLICT (H1 trend_20 negative vs M1/M5/M15/H4 positive; H4 trend_50 +347.43 vs H1 trend_50 +18.40)",
+    "L7 cross-market: DXY 99.925 (change_8 +0.038, change_32 -0.017, PROXY), VIX 14.57 (change_8 0.0, change_32 -0.1, PROXY); UST10Y_PROXY_TNX unavailable",
+    "Absent series: GLD, GC, CFTC_COT, ETF_FLOWS, NEWS, MACRO_EVENTS (recorded absent, never fabricated)",
+    "Historical analogs (state evolution only): A20861 COMPRESSION->REJECTION->COMPRESSION->REJECTION->EXPANSION; A26480 stays COMPRESSION; A32370 -> ROTATION"
+  ],
+  "what_i_know": [
+    "Price at 12:00Z sits inside swing-low level 4393.565 (break_status INSIDE), within ~0.1 ATR of it",
+    "The frozen labeler at t classifies state as COMPRESSION with VOL_CONTRACTION event, dwell 2, immediately after a 12-bar TREND run",
+    "M1/M5/M15 trend_20 are positive; H1 trend_20 is negative; agreement is explicitly CONFLICT and must not be merged",
+    "H4 bar closed with a large lower wick (30.73) suggesting downside was rejected at H4 scale in the current bar",
+    "DXY and VIX are available only as PROXY series from Yahoo with UNKNOWN instrument definition; both near-flat over the last 8 bars",
+    "Only one mechanism candidate (trend_continuation) is listed by L4, flagged DERIVED and non-asserted",
+    "No news, macro events, CFTC, ETF flows, or GLD/GC data are available at this PIT"
+  ],
+  "what_i_do_not_know": [
+    "Direction of the imminent expansion out of COMPRESSION: analogs disagree (REJECTION vs stay-COMPRESSION vs ROTATION)",
+    "True DXY/VIX values: they are PROXY substitutes with UNKNOWN instrument definition and 5m sampling; change_32 of DXY is -0.017 (stale-adjacent signal, not actionable)",
+    "Why price is inside the swing-low level: pullback vs failed break is indeterminate from geometry alone",
+    "Any fundamental/news/macro driver: NEWS and MACRO_EVENTS are absent at this PIT",
+    "Whether VOL_CONTRACTION precedes expansion and in which direction - mechanism status is only POSSIBLE",
+    "H1 trend_20 -33.46 vs H4 trend_20 +47.95 conflict resolution: no higher-timeframe arbiter in context",
+    "Level 4393.565 touch_count_240 of 44: whether it will hold as support or break is unknown",
+    "Liquidity/order-flow context: no DOM, no trade-flow data present"
+  ],
+  "evidence": [
+    "Price inside a 230-bar-old swing-low level that has been touched 44 times in 240 bars and is being tested at ~0.1 ATR distance (level has structural significance)",
+    "H4 current bar rejected the low with a 30.73 lower wick, printing a bullish rejection at the largest available timeframe",
+    "M15 trend_20 +18.46 and H4 trend_20 +47.95 with H4 trend_50 +347.43 indicate the higher-timeframe backdrop is up",
+    "M5/M15 sequence shows consecutive_up counts of 5 and 10 respectively with positive trend_20, short-term momentum up",
+    "VOL_CONTRACTION event with ATRs falling across timeframes (H1 ATR 20.5->17.1, H4 ATR 35.9->36.2 flattening) is consistent with a compression that historically precedes range expansion",
+    "DXY near-flat (change_8 +0.038) offers no headwind evidence against gold at this PIT"
+  ],
+  "counter_evidence": [
+    "H1 bar closed at 4387.435 with near-symmetric wicks (4.61 up / 4.72 down) and H1 trend_20 -33.46 - the most recent hourly trend is DOWN",
+    "L2 level_side is DN: the swing low at 4393.565 is a support that price sits INSIDE; a closing break below it would flip the structure bearish",
+    "L6 agreement is explicitly CONFLICT - intraday timeframes say up, H1 says down, so any directional claim is weakly anchored",
+    "Analog A20861 shows COMPRESSION resolving into REJECTION (downside) before EXPANSION, not immediate upside",
+    "M1 current bar has upper_wick 0.98 vs body 0.08 - immediate rejection of the high at the close",
+    "DXY is a PROXY and its change_32 is slightly negative, so the 'no headwind' reading is low-grade evidence, not confirmation"
+  ],
+  "possible_mechanisms": [
+    {
+      "mechanism": "trend_continuation (upside breakout from compression at swing-low support)",
+      "status": "POSSIBLE",
+      "why": "L4 lists it as a candidate only (DERIVED, not asserted); supported by H4 bullish rejection and positive H4/M15 trend_20, but H1 trend_20 is negative and level_side is DN, so I am not entitled to assert it"
+    },
+    {
+      "mechanism": "support-break continuation (downside through 4393.565)",
+      "status": "POSSIBLE",
+      "why": "Price sits INSIDE a DN swing low; H1 trend_20 is negative; a decisive close below the level would support this, but no break has occurred"
+    },
+    {
+      "mechanism": "prolonged compression / rotation",
+      "status": "POSSIBLE",
+      "why": "Analog A26480 stays COMPRESSION and A32370 rotates; with VIX low (14.57) and no news catalysts, range continuation is as consistent as any breakout"
+    }
+  ],
+  "primary_scenario": {
+    "scenario": "Upside resolution: price holds the swing-low zone 4393.565 (INSIDE, high touch count), compression expands upward, reclaiming the level and pushing toward the H4 high 4401.965 then prior H1 supply 4413-4418",
+    "horizon": "4-12 hours (H1-H4 scale)",
+    "trigger": "M15/M5 close above 4393.565 with expanding range (range_expanding true) and H1 trend_20 turning positive",
+    "invalidation": "A decisive H1 close below 4393.565 (level break with reclaim_status NONE persisting) or a new swing low below 4352.755"
+  },
+  "alternative_scenario": {
+    "scenario": "Downside resolution: the DN swing-low level fails, price breaks 4393.565 and extends toward 4380 / 4368.7 / 4352.755, consistent with H1 trend_20 -33.46 and analog A20861's REJECTION step",
+    "horizon": "4-12 hours",
+    "trigger": "H1 or M15 close below 4393.565 with follow-through (close below 4388.265 M5 low zone)",
+    "invalidation": "Price reclaims and holds above 4396.475 (H1 current high) without breaking the level first"
+  },
+  "expected_transition": "COMPRESSION -> EXPANSION (direction unresolved; level 4393.565 is the decision point)",
+  "direction_bias": "NO_DIRECTIONAL_EDGE",
+  "time_horizon": "4-12 hours",
+  "evidence_strength": 0.35,
+  "confidence": 0.3,
+  "uncertainty": 0.7,
+  "confidence_reason": "A complete-looking story (compression + swing-low support + H4 bullish wick) is not itself evidence of direction: L6 agreement is CONFLICT, the level is INSIDE not reclaimed, H1 trend_20 is negative, analogs split three ways, and DXY/VIX are PROXY. Low confidence is the disciplined output here.",
+  "uncertainty_reason": "State is COMPRESSION (low information); direction of the next expansion is unknown; cross-market data are PROXY/UNKNOWN; news/macro absent; the only mechanism candidate is explicitly non-asserted; analogs disagree on resolution path.",
+  "invalidation": "Decisive H1 close below 4393.565 with no reclaim (bearish resolution) OR a decisive H1 close above 4396.475 followed by higher closes (bullish resolution); either makes the primary scenario moot",
+  "change_my_mind": [
+    "M15 and H1 both close above 4393.565 with expanding ranges and H1 trend_20 flips positive -> upgrade upside scenario",
+    "H1 or M15 closes decisively below 4393.565 (break with follow-through) -> flip to downside scenario",
+    "A non-PROXY DXY or a NEWS/MACRO_EVENT entry arrives with a directionally consistent shock",
+    "State label moves to EXPANSION with a defined event (e.g., VOL_EXPANSION) showing which side expanded first",
+    "New analog with higher similarity showing a consistent first-4-step direction"
+  ],
+  "abstain": false,
+  "abstain_reason": "Context is sufficient to state what is known and what is not; it is not self-contradictory (CONFLICT is a declared, non-merged multi-timeframe report, not an inconsistency in the data). I therefore answer with NO_DIRECTIONAL_EDGE and low confidence rather than abstaining, while explicitly flagging the level test as the decision point.",
+  "questions": {
+    "Q1": "what_do_i_know: Price is 4391.785 (M1 close) inside swing-low level 4393.565 (INSIDE, 44 touches/240 bars); state is COMPRESSION with VOL_CONTRACTION, dwell 2; M1/M5/M15 trend_20 positive, H1 trend_20 negative, H4 positive; L6 agreement CONFLICT; DXY 99.925 and VIX 14.57 available only as PROXY; no news/macro/COT/ETF/GLD/GC data; only mechanism candidate is trend_continuation, explicitly non-asserted; analogs A20861/A26480/A32370 show divergent resolutions.",
+    "Q2": "what_do_i_not_know: Direction of the expansion out of COMPRESSION; whether 4393.565 holds or breaks; true DXY/VIX values (PROXY, instrument definition UNKNOWN); H1 vs H4 trend conflict resolution; any fundamental driver (NEWS/MACRO absent); order flow/liquidity context; which analog path applies.",
+    "Q3": "evidence_for_primary: Price at a high-touch-count swing-low support (~0.1 ATR away); H4 current bar's 30.73 lower wick (downside rejected at H4); H4 trend_20 +47.95 / trend_50 +347.43 and M15 trend_20 +18.46; compression with expanding-range flag historically precedes expansion; DXY flat (PROXY) gives no gold headwind.",
+    "Q4": "evidence_against_primary: H1 trend_20 -33.46 with a symmetric-wick indecision close at 4387.435; level_side is DN (a support, not a reclaimed breakout); L6 CONFLICT; M1 close bar shows upper_wick 0.98 vs body 0.08 (high rejected); analog A20861 resolves to REJECTION first; DXY is PROXY so the flat reading is weak evidence.",
+    "Q5": "mechanism_that_is_only_possible: That the compression resolves via upward trend_continuation from the swing-low level - I am NOT entitled to assert this because L4 marks it a non-asserted candidate, H1 trend_20 is negative, and the level is INSIDE rather than reclaimed.",
+    "Q6": "what_would_change_my_mind: M15+H1 closes above 4393.565 with range expansion and H1 trend_20 positive (upgrade upside); decisive H1/M15 close below 4393.565 with follow-through (flip to downside); arrival of non-PROXY DXY or NEWS/MACRO event; state transition to EXPANSION showing which side expanded; higher-similarity analog with consistent direction.",
+    "Q7": "should_i_abstain_now: false - the context is sufficient to enumerate knowledge and gaps and is internally consistent (CONFLICT is declared, not contradictory); the disciplined answer is low-confidence NO_DIRECTIONAL_EDGE with the 4393.565 level test as the decision point."
+  },
+  "reasoning_trace": [
+    "t1: Parsed PIT context v1r3-r1, as_of 2026-08-13 12:00:00Z, symbol XAUUSD",
+    "t2: Established facts only from context: state COMPRESSION/VOL_CONTRACTION, level 4393.565 INSIDE, L6 CONFLICT, proxies only",
+    "t3: Checked both directions: H4 wick+trends argue up; H1 trend_20 and DN level side argue down -> genuine conflict",
+    "t4: Checked mechanism discipline: L4 candidate is DERIVED/non-asserted -> downgraded to POSSIBLE, no assertion",
+    "t5: Checked analogs: three divergent paths -> no statistical resolution, state-evolution only (no returns/PnL used)",
+    "t6: Confidence: low (0.3) because direction is unresolved; uncertainty high (0.7)",
+    "t7: Abstain check: context sufficient and consistent -> abstain=false with NO_DIRECTIONAL_EDGE output",
+    "t8: Defined triggers/invalidation for both scenarios at the level decision point"
+  ]
+}

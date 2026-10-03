@@ -1,0 +1,55 @@
+{
+  "audit_id": "HB_BLIND_20260906",
+  "timestamp": "2026-09-06T12:00:00Z",
+  "current_state": "DECELERATION (dwell 3) with REJECTION event. Price consolidating in a very tight range just below the heavily-touched swing level 4431.915 (close 4430.455, beyond the level by 0.21968 ATR, no reclaim). Preceded by: rally to 4510.635 (Sep 3), violent crash to 4365.305 with a 62-point lower wick dip-buying recovery (Sep 4 12:00 H4), then two-sided chop 4411.955-4448.545 settling near 4430. NOTE: price data ends 2026-09-04 21:59 UTC (Friday close) while context is stamped 2026-09-06 12:00 UTC, i.e. a weekend snapshot; next session open is unknown (gap risk).",
+  "structure": "Higher timeframe: downtrend (H4 trend_50 -240.77 implies price ~4671 eight days ago; H4 trend_20 +98.91 is only the rebound off the crash low). Medium term: failed rally at 4510.635 followed by a 145-point crash to 4365.305; strong recovery wick shows dip-buying. Immediate: price is below a 41-touch (240-bar) swing level 4431.915 which has flipped from support to resistance; break_status BEYOND, reclaim_status NONE. Multi-timeframe agreement = CONFLICT: M1 up-lean (+1.09/20) vs M15 (-8.03) and H1 (-48.06) down-leans; timeframes never merged. Cross-market (DXY, VIX, UST10Y^TNX) entirely unavailable, so no macro confirmation.",
+  "mechanism": "The live mechanism is the test of broken support as resistance: (a) failed_breakout — the move beyond 4431.915 to the downside has not been reclaimed; in a HTF downtrend the structurally favored resolution is rejection at the level and a new down-leg toward 4411.955 then the 4365-4380 zone; (b) breakout_pressure downward is only weakly evidenced (0.22 ATR beyond, no expansion yet); the counter-mechanism is a reclaim of 4431.915 triggering short-covering bounce toward 4448/4465. Candidates only, not asserted: price is on a knife-edge at the level with decelerating volatility (~0.0001-0.0004), which typically precedes an expansion (analogs A968/A12862/A27169 all leave DECELERATION into TREND/BREAKOUT_ATTEMPT/EXPANSION within ~8 steps, direction unspecified).",
+  "primary_scenario": {
+    "scenario": "Downside continuation: rejection at broken level 4431.915, next down-leg retests 4411.955 (H4 low) and then the 4365-4380 crash-low zone, consistent with the HTF downtrend (H4 trend_50 -240.77) and failed 4510 rally.",
+    "confidence": 0.45,
+    "horizon": "SHORT_TERM",
+    "trigger": "Next session: sustained trading below 4431.915 with M5/M15 range expansion and a down-close; break below 4422.275 confirms, 4411.955 targets the crash zone.",
+    "invalidation": "Close back above 4431.915 (reclaim, reclaim_status flips) and holding — invalidates the breakdown, flips to bounce-continuation."
+  },
+  "alternative_scenario": {
+    "scenario": "Reclaim and bounce continuation: price regains 4431.915, breaks 4438.225/4448.545, extends toward 4465-4472 (prior breakdown shelf), driven by the strong dip-buying wick (62 pts) and positive M1/H4-20 momentum.",
+    "confidence": 0.35,
+    "horizon": "SHORT_TERM",
+    "trigger": "Reclaim of 4431.915 with upward range expansion on M5/M15 and a close above 4438.225.",
+    "invalidation": "Another rejection at 4431.915 without a higher close; failure below 4428-4422 area while trying to reclaim."
+  },
+  "expected_transition": "DECELERATION -> BREAKOUT_ATTEMPT or EXPANSION within the next few sessions (analog A968 shows breakout attempt by step 8; A12862 -> TREND; A27169 -> TREND->REJECTION->EXPANSION). Direction of resolution is the open question; structural tilt favors a downside breakout unless the 4431.915 level is reclaimed first. Weekend data gap makes the exact transition timing (Monday open) uncertain.",
+  "direction": "DOWN",
+  "horizon": "SHORT_TERM",
+  "confidence": 0.42,
+  "counter_evidence": [
+    "Crash bar (Sep 4 12:00 H4) printed a 62.07-point lower wick: aggressive dip-buying, price recovered ~65 pts off the 4365.305 low.",
+    "H4 trend_20 +98.91: recent 20-bar rebound momentum is positive.",
+    "M1 closed with 8 consecutive up bars and rising lows into Friday's close (21:52-21:59).",
+    "Two huge range bars (110.32 and 69.18 pts) show two-sided aggression, not one-way distribution.",
+    "MTF agreement = CONFLICT: M1 leans up while M15/H1 lean down; no clean alignment.",
+    "All cross-market context absent (DXY, VIX, UST10Y^TNX UNKNOWN): no confirmation that the HTF downtrend driver is intact.",
+    "Historical analogs agree only that expansion follows; they do not specify direction.",
+    "Weekend gap risk: Monday open could gap either way; the 0.22-ATR break beyond the level is marginal."
+  ],
+  "invalidation": "A close above 4431.915 with sustained acceptance (reclaim) invalidates the down thesis and reopens 4448.545/4465-4472. A close below 4365.305 would strongly confirm it but is not required for the scenario. Absence of cross-market data means I cannot confirm via DXY/UST10Y; a directional move gapping over 4431.915 at the open is treated as reclaim until a close below it.",
+  "data_quality_flags": [
+    "L1: RAW_GEOMETRY + DERIVED (observed candles; derived stats)",
+    "L2: DERIVED (causal pivot/swing levels)",
+    "L3: OBSERVED frozen label (REJECTION) + DERIVED state (DECELERATION)",
+    "L4: DERIVED mechanism candidates only, NOT asserted",
+    "L5: DERIVED (frozen C1 ontology + min-dwell lifecycle), ambiguity_rate_8 = 0.25",
+    "L6: DERIVED, agreement CONFLICT — never merged",
+    "L7: UNKNOWN — DXY, VIX, UST10Y_PROXY_TNX all STALE_OR_NOT_COVERED; NEWS/MACRO/CFTC/ETF_FLOWS absent, never fabricated",
+    "TIMING: price data ends 2026-09-04 21:59 UTC vs context as_of 2026-09-06 12:00 UTC (weekend snapshot; next open unknown)"
+  ],
+  "reasoning_trace": [
+    "Established big picture from H4 trend_50 (-240.77): market is in an 8-day downtrend from ~4671; H1 trend_50 +53.67 and H4 trend_20 +98.91 are rebound artifacts of the crash-recovery, not trend reversals.",
+    "The Sep 3 rally failed at 4510.635 (upper-wick rejection bar) and was followed by a crash to 4365.305 — consistent with a lower high in a downtrend.",
+    "Key focal point: level 4431.915, a 41-touch swing level now broken to the downside (BEYOND by 0.22 ATR) with NO reclaim. In HTF-downtrend context, un-reclaimed broken support is resistance; this dominates my read.",
+    "Frozen labeler says REJECTION + DECELERATION with 3-bar dwell and range contraction across M1/M5: momentum is exhausted and the market is coiling below the level — a setup that usually resolves into expansion (analogs A968/A12862/A27169), and the structural bias favors the downside breakout.",
+    "I assigned primary DOWN only 0.45 confidence because: the level-break is marginal (0.22 ATR), dip-buying was strong (62-pt wick), MTF agreement is CONFLICT, and no cross-market data exists to confirm the down driver. The 0.35 alternative (reclaim -> bounce to 4448/4465) is close.",
+    "Direction DOWN, horizon SHORT_TERM (next 1-3 sessions); trigger timing carries TIMING_UNCERTAIN risk due to the weekend data gap and unknown Monday open.",
+    "Invalidation disciplined by the level itself: close above 4431.915 = reclaim, down thesis dead."
+  ]
+}

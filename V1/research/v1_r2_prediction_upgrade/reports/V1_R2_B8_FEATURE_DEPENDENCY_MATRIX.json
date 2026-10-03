@@ -1,0 +1,97 @@
+{
+ "matrix": [
+  {
+   "A": "LEVEL",
+   "B": "TOUCH",
+   "raw_input_overlap": [
+    "OHLC_15M"
+   ],
+   "formula_dependency": "TOUCH computed only from the LEVEL object",
+   "classification": "DERIVED",
+   "evidence": "research/hermes/trader_v1/v1_r2_prediction_upgrade/_v1r2_phaseB_R1.py L180-194"
+  },
+  {
+   "A": "LEVEL",
+   "B": "BREAK",
+   "raw_input_overlap": [
+    "OHLC_15M"
+   ],
+   "formula_dependency": "all BREAK groups inside `if nl:` (L205)",
+   "classification": "DERIVED",
+   "evidence": "research/hermes/trader_v1/v1_r2_prediction_upgrade/_v1r2_phaseB_R1.py L204-221"
+  },
+  {
+   "A": "TOUCH",
+   "B": "BREAK",
+   "raw_input_overlap": [
+    "OHLC_15M"
+   ],
+   "formula_dependency": "4/6 BREAK groups read LEVEL touch stats",
+   "classification": "DERIVED",
+   "evidence": "research/hermes/trader_v1/v1_r2_prediction_upgrade/_v1r2_phaseB_R1.py L208,210,212,218"
+  },
+  {
+   "A": "BREAK",
+   "B": "COUNTER_BREAK",
+   "raw_input_overlap": [
+    "OHLC_15M"
+   ],
+   "formula_dependency": "COUNTER_BREAK_RISK is a boolean of break_risk.state",
+   "classification": "DERIVED",
+   "evidence": "research/hermes/trader_v1/v1_r2_prediction_upgrade/_v1r2_phaseB_R2.py L148"
+  },
+  {
+   "A": "MOMENTUM",
+   "B": "COUNTER_DECELERATION",
+   "raw_input_overlap": [
+    "OHLC_15M",
+    "ATR20"
+   ],
+   "formula_dependency": "COUNTER_DECELERATION is `momentum=='DECELERATING'`",
+   "classification": "DERIVED",
+   "evidence": "research/hermes/trader_v1/v1_r2_prediction_upgrade/_v1r2_phaseB_R2.py L152"
+  },
+  {
+   "A": "REGIME",
+   "B": "MOMENTUM",
+   "raw_input_overlap": [
+    "OHLC_15M close",
+    "ATR20",
+    "VEL4"
+   ],
+   "formula_dependency": "different transforms (ATR_PCTL/ER10/SLOPE5 vs ACC/RNG_EXP)",
+   "classification": "PARTIALLY_DEPENDENT",
+   "evidence": "research/hermes/trader_v1/v1_r2_prediction_upgrade/_v1r2_phaseB_R1.py L151-166 vs L225-236"
+  },
+  {
+   "A": "ABSORPTION",
+   "B": "MOMENTUM",
+   "raw_input_overlap": [
+    "OHLC_15M",
+    "TR",
+    "ATR20"
+   ],
+   "formula_dependency": "EFF3 is an efficiency transform of the same close path as VEL4; ACT3 shares the TR/ATR family",
+   "classification": "PARTIALLY_DEPENDENT",
+   "evidence": "research/hermes/trader_v1/v1_r2_prediction_upgrade/_v1r2_phaseB_R1.py L198-201 vs L225-236"
+  },
+  {
+   "A": "FAILED_EVENT",
+   "B": "BREAK",
+   "raw_input_overlap": [
+    "OHLC_15M",
+    "LEVEL.price",
+    "ATR20"
+   ],
+   "formula_dependency": "failed_event = break-attempt + reclaim at the same level (gated by `if nl`)",
+   "classification": "DERIVED",
+   "evidence": "research/hermes/trader_v1/v1_r2_prediction_upgrade/_v1r2_phaseB_R1.py failed_event block"
+  }
+ ],
+ "allowed_relationships": [
+  "PROVEN_INDEPENDENT",
+  "PARTIALLY_DEPENDENT",
+  "DERIVED",
+  "UNKNOWN"
+ ]
+}

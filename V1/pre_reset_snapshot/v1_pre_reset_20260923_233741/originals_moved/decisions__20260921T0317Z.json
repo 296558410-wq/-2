@@ -1,0 +1,106 @@
+{
+ "schema": "hermes_decision_v1",
+ "utc_ts": "2026-09-21T03:22Z",
+ "cycle": "2026-09-21T03:17Z",
+ "decision_id": "DEC-2026-09-21T03:17Z",
+ "symbol": "XAUUSD",
+ "mid": 4364.79,
+ "decision": "SHORT",
+ "confidence": 0.42,
+ "bias": "NEUTRAL 0.50 (two-sided range fade, no trend bet). The book is being run as a two-edge range fade: lower edge = 4359.0-4362.9 defended base + the still-armed TP-20260921T0248Z LONG [4357.0,4362.0]; upper edge = the 4370.8-4374.3 flipped MA wall that this cycle's SHORT sits on. D1 (er0.091), H4 (er0.098) and H1 (er0.162) are all ranges; only H4 leans up (live close 4364.70 > H4 MA20 4341.48 > H4 MA50 4342.41, below H4 MA200 4410.83). The only directional TF is M15 and it is DOWN but decelerating (pkg er 0.463 -> 0.303, exp_cont 0.74 contracting, live lows 4361.12/4364.01/4362.85/4359.03 = a base, not a slide). Neutral, not conviction: hence p 0.42 on the fade and 0.01 lots.",
+ "mtf_agreement": "mixed_neutral",
+ "state_summary": "Gate 03:17Z: armed=true open=true reason=open (exit 0; Mon 11:17 CST). Book FLAT (demo broker 160759434 ForexTimeFXTM-Demo01, balance/equity 1963.52, margin 0.00, zero positions). Live MT5 tick 03:17:50Z (server 06:17:50) bid 4364.70 / ask 4364.88, mid 4364.79, spread 0.18pt = 0.41bps. Pkg m15_live last_mid 4364.07, spread 0.41bps, tick 138/min, last6 max move 6.8bps vs baseline 10.16bps (z -0.32, quiet/normal). Pkg 4TF (HTF bars = Fri closes): D1 RANGE close 4378.645 < MA20 4419.985 RSI 45.4 pos 51.4 er 0.091; H4 RANGE close 4378.645 > MA20 4334.42 > MA50 4342.95 < MA200 4404.47 RSI 54.9 hhish5/llish4 pos 69.7 er 0.098; H1 mixed/range close 4372.67 ~ MA20 4375.225 > MA200 4347.84 > MA50 4342.908 RSI 41.9 er 0.162 pos 83.5; M15 mixed-down close 4372.67 < MA20 4379.295 > MA50 4373.329 > MA200 4343.339 RSI 34.8 hhish3/llish6 er 0.303 exp_cont 0.74 contracting. Live MT5 4TF: M15 MA20 4370.84 / MA50 4372.86 / MA200 4351.56, hi60 4397.07, lo60 4342.62; H1 MA20 4374.25 / MA50 4352.74 / MA200 4345.06, hi60 4399.70; H4 MA20 4341.48 / MA50 4342.41 / MA200 4410.83; D1 MA20 4407.17. Today's session (server day) range 4359.03 - 4383.42. Level map (live 4364.79): resistance 4370.84 (M15 MA20) / 4372.86 (M15 MA50) / 4374.25 (H1 MA20) = the triple-MA wall -> 4377.86 / 4380.71 / 4382.98 / 4383.42 (today's spike cluster) -> 4397.07 / 4399.70 (60-bar highs) -> 4410.83 (H4 MA200); support 4359.03 (today's session low) / 4361.12-4362.85 (the defended base) / 4358.34 (prior session base) -> 4352.74 (H1 MA50) / 4351.56 (M15 MA200) -> 4345.06 (H1 MA200) / 4342.62 (M15 lo60) / 4342.41 (H4 MA50) / 4341.48 (H4 MA20) six-MA shelf. Caveat: candle_latest.json stale (ts 2026-09-07) ignored; H1/H4/D1 pkg bars are Friday closes and the live H4/D1 bars are still open, so intraday levels are anchored to the live MT5 feed (MA/OHLC recomputed this cycle) + m15_live.",
+ "m15_change": "Since the 03:02Z cycle (live 4359.70): the down leg STOPPED and built a base. Live M15 lows/close into the last four bars: 05:15 low 4361.12 close 4369.74, 05:30 low 4364.01 close 4366.38, 05:45 low 4362.85 close 4364.05, 06:00 low 4359.03 close 4363.39, 06:15 (open bar) 4363.39 / 4365.42 / 4361.38 / 4364.70. Pkg er fell 0.463 -> 0.303 and exp_cont stays 0.74 (contracting) with M15 ATR ~5.0pt (0.114%) and no capitulation (last6 max 6.8bps < 10.16bps baseline, z -0.32). So what changed is the character: the trend push that broke the 4362.0-4365.4 pocket at 03:02Z is over and price is now rotating inside a 4359.0-4365.4 micro-base, sitting 6.2pt below the 4370.8 M15 MA20 wall that has rejected all four bars since 05:00 (highs 4372.59 / 4370.41 / 4367.00 / 4365.42 - each lower, each closed back below it).",
+ "opportunity": "range_fade",
+ "opportunity_mechanism": "Range-fade at a retested MA confluence that has flipped from support to resistance. The 4370.8-4374.3 stack (live M15 MA20 4370.84 / M15 MA50 4372.86 / H1 MA20 4374.25) carried price up at 02:00-04:30Z and was lost at 05:00Z; every bar since has probed and closed back under it (4372.59 / 4370.41 / 4367.00 / 4365.42). With D1 er 0.091, H4 er 0.098 and H1 er 0.162 there is no HTF directional commitment, so a retest of that wall is a fade, not a breakout. Stop above the 4377.86 lower spike of today's high cluster makes stop-out coincide with thesis death. This is the mirror of the lower-edge idea that is ALREADY armed (TP-20260921T0248Z LONG [4357.0,4362.0]) - so the cycle adds the missing upper edge instead of duplicating the lower one. Note the armed LONG self-cancels at mid > 4372.0, i.e. precisely when the SHORT band is reached, so arming the upper edge costs the lower edge only inside the narrow 4370.0-4372.0 strip.",
+ "answers_14": {
+  "1_market_state": "Gate 03:17Z armed=true open=true reason=open (exit 0; Mon 11:17 CST). Book FLAT (demo 160759434, balance=equity 1963.52, margin 0.00, 0 positions). Live 4364.79 (bid 4364.70/ask 4364.88, spread 0.41bps); pkg m15_live 4364.07, tick 138/min, z -0.32 normal. Pkg 4TF: D1 RANGE 4378.645 < MA20 4419.99 RSI45.4 pos51.4 er0.091 / H4 RANGE 4378.645 > MA20 4334.42 > MA50 4342.95 < MA200 4404.47 RSI54.9 hh5/ll4 pos69.7 er0.098 / H1 mixed 4372.67 ~ MA20 4375.23 > MA200 4347.84 > MA50 4342.91 RSI41.9 er0.162 pos83.5 / M15 mixed-down 4372.67 < MA20 4379.30 > MA50 4373.33 > MA200 4343.34 RSI34.8 hh3/ll6 er0.303 exp_cont0.74. Live MT5: M15 MA20 4370.84/MA50 4372.86/MA200 4351.56 hi60 4397.07 lo60 4342.62; H1 MA20 4374.25/MA50 4352.74/MA200 4345.06; H4 MA20 4341.48/MA50 4342.41/MA200 4410.83; D1 MA20 4407.17. Session range 4359.03-4383.42.",
+  "2_consistency": "MIXED / range, no aligned trend. D1 er0.091, H4 er0.098, H1 er0.162 = three ranges; H4 is the only up-leaning TF (4364.70 > MA20 4341.48 > MA50 4342.41) but is capped by H4 MA200 4410.83; D1 is 42pt below its MA20 (4407.17); H1 sits at pos 83.5 of its 60-bar range. M15 is the only directional leg and it is down-but-decelerating (er 0.463 -> 0.303, exp_cont 0.74). The TFs agree on 'range', not on direction -> fade both edges, never chase. This is exactly why the cycle's new risk is a wall fade with a hard bracket, not a directional bet.",
+  "3_m15_change": "Since 03:02Z live 4359.70: the M15 push ended and price built a base. Last four M15 bars (server 05:15->06:15) lows 4361.12 / 4364.01 / 4362.85 / 4359.03 with closes 4369.74 / 4366.38 / 4364.05 / 4363.39 and the open bar 4363.39/4365.42/4361.38/4364.70. Pkg er 0.463 -> 0.303, exp_cont 0.74 contracting, M15 ATR ~5.0pt, last6 max 6.8bps < 10.16bps baseline (no capitulation). The 4362.0-4365.4 pocket that broke at 03:02Z is now being rebuilt as a micro-base, and the 4370.8-4374.3 MA wall has rejected four consecutive bars (highs 4372.59 / 4370.41 / 4367.00 / 4365.42).",
+  "4_opportunity": "The tradeable opportunity this cycle is the UPPER-edge fade: SHORT {zone_touch:[4370.0,4375.0]} at the 4370.84 (M15 MA20) / 4372.86 (M15 MA50) / 4374.25 (H1 MA20) triple-MA wall, SL 4379.5 (above the 4377.86 spike), T 4364.0/4357.0/4349.0, 1R 7.0pt, expR 2.10R, p 0.42, EV +0.258R. The lower edge is NOT re-registered because it is already armed (TP-20260921T0248Z LONG [4357.0,4362.0], live mid 4364.79 = 2.8pt above its band top, EV ~+0.26R at fill 4359.70). The current price itself is NOT a favourable entry: a market buy at 4364.79 with any honest structure stop under the base (4355.0) gives 1R ~9.8pt against a 4370.8/4376/4383 ladder = expR ~1.1R and EV ~-0.16R at p 0.42, i.e. negative - so no chase is registered at market.",
+  "5_mechanism": "Mechanism = range-fade at a retested, flipped MA confluence inside a 3-HTF range. The 4370.8-4374.3 stack was support for the 02:00-04:30Z leg; price lost it at 05:00Z and has failed four reclaims since. Support that has just failed and is being retested from below is the classic short location in a range: the stop sits above the 4377.86 spike so that stop-out = thesis death, and the runway is the 4359.0-4362.9 base (T1), the 4358.34 prior base / 4357.0 (T2) and the top of the 4352.74/4351.56/4345.06/4342.62/4342.41/4341.48 six-MA shelf (T3 4349.0) - scaled out before the shelf itself. The fail case is a decisive reclaim and hold above 4379.5, which re-opens 4383.42 -> 4397.07/4399.70 and would invalidate the whole upper-edge idea. The mirror lower-edge mechanism (buy the defended 4359-4362 base, stop under it) is already armed and unchanged (its own death = a decisive M15 hold below 4352.5).",
+  "6_trigger_condition": "NEW: {\"zone_touch\":[4370.0,4375.0]} for the SHORT - live mid 4364.79 (pkg mid 4364.07) is ~6.2-6.4pt BELOW the band, so any tick into it fills at market on the next engine run (entry_style market_on_trigger). Also live and unchanged: TP-20260921T0248Z LONG {\"zone_touch\":[4357.0,4362.0]} (2.8pt below mid; pending, not filling). Self-cancel for the new SHORT: mid < 4360.0 (price_left_setup = zone_lo 4370.0 - 2 x band 5.0) or age > 2h; hard cancel: mid >= 4379.5 (invalidation).",
+  "7_invalidation": "For this SHORT: price_cross_up 4379.5 = a reclaim/hold above the whole M15 MA20 4370.84 / M15 MA50 4372.86 / H1 MA20 4374.25 wall and above today's 4377.86 spike; that opens 4380.71/4382.98/4383.42 then the 4397.07/4399.70 60-bar highs and the fade is void. Plan also dies at mid < 4360.0 (price_left_setup) or age > 2h. For the already-armed LONG TP-20260921T0248Z: death = decisive M15 hold below 4352.5 (through H1 MA50 4352.74 / M15 MA200 4351.56 into the 4345.06/4342.62/4342.41/4341.48 shelf); its opportunity-gone trigger = mid > 4372.0. Wider lower-edge idea dies at a decisive M15 hold below 4341.48 (H4 MA20).",
+  "8_expected_return_R": "Ref fill = zone mid 4372.5; 1R = 4379.5 - 4372.5 = 7.0pt. T1 4364.0 = +8.5pt = 1.21R x0.40; T2 4357.0 = +15.5pt = 2.21R x0.35; T3 4349.0 = +23.5pt = 3.36R x0.25 -> expected_R = 0.40*1.21 + 0.35*2.21 + 0.25*3.36 = 0.484 + 0.775 + 0.839 = +2.10R. A fill anywhere in [4370.0,4375.0] moves 1R between 5.5pt (fill 4374.0) and 9.5pt (fill 4370.0); at the best-case fill 4374.0 the same ladder pays ~2.5R, at the worst-case 4370.0 ~1.7R.",
+  "9_expected_loss_R": "Full stop = 7.0pt @ref 4372.5 = 7.00 USD on 0.01 lot XAUUSD = 0.36% of the 1963.52 USD demo book = 1.00R. Worst-case stop at the band bottom (fill 4370.0 -> 4379.5) = 9.5pt = 9.50 USD = 0.48% = 1.00R at that fill's own 1R. No averaging, no size add, no loser pyramiding: the position is only ever closed by its broker bracket (SL 4379.5 / TP ladder) or a reconcile.",
+  "10_cost_value": "live spread 0.41bps (0.18pt @4364.79) + slippage 0.30bps (0.13pt) = 0.71bps roundtrip ~ 0.31pt ~ 0.044R on the 7.0pt 1R. Demo execution cost is negligible and is explicitly not a decision obstacle (job note: cost already at ~0.3bps).",
+  "11_net_EV_formula": "0.42 * 2.10R - 0.58 * 1.00R - 0.044R = 0.882 - 0.580 - 0.044 = +0.258R per unit risk (breakeven p = 1.044 / 3.10 = 0.337). Positive EV before any entry, as required. Cross-check at the pessimistic end: p 0.38 -> 0.798 - 0.62 - 0.044 = +0.134R; p 0.35 -> +0.005R, i.e. the plan needs a hit rate only slightly above one in three to pay.",
+  "12_recurrence": "Range-fade family on 2026-09-21: 20260921T0132Z LONG filled 4376.17 -> broker_sl 4365.4 (-10.77 USD, 02:33Z); 20260921T0147Z SHORT cancelled price_left_setup (02:04Z); 20260921T0233Z SHORT [4371.5,4375.5] SL4382.5 armed 02:34Z and cancelled price_left_setup at 03:04Z (mid 4362.08 < zone_lo-2band 4363.5); 20260921T0248Z LONG [4357.0,4362.0] armed 02:49Z, still pending. This plan is the 0233Z wall band rebuilt on the LIVE MA values (4370.0-4375.0 instead of 4371.5-4375.5) with the stop tightened to 4379.5 and the price_left_setup floor pushed down to 4360.0 so the aggressive 2x-band rule does not kill it at the current mid. Condition-based: the upper edge re-arms whenever price retests 4370.8-4374.3 while D1/H4/H1 stay er < 0.17; the lower edge re-arms on a retrace into 4357-4362 (already armed) or into the 4341.5-4352.7 shelf once flat. Single position; never averaged.",
+  "13_decision": "SHORT (new registration at the upper edge). Rationale: the favourable upper zone (3-MA wall, four failed reclaims) is NOT yet covered by any armed plan, while the favourable lower zone already is (TP-20260921T0248Z) and is therefore not duplicated. EV +0.258R > 0 at p 0.42.",
+  "14_reason": "上沿4370.8-4374.3三重MA墙四连拒(高4372.59/4370.41/4367/4365.4), HTF全range→挂SHORT[4370,4375] SL4379.5 目标4364/4357/4349, EV+0.26R。下沿LONG[4357,4362]已挂不重复; 现价4364.8在两沿间无优势不追。"
+ },
+ "gap_to_tradable": "PRICE only, ~6pt up: the new SHORT needs a tick into [4370.0,4375.0] (live mid 4364.79 = 5.2pt below the band bottom, pkg mid 4364.07 = 5.9pt below) and the engine fills at market on the next run - the wall is the first live resistance overhead (M15 MA20 4370.84 / M15 MA50 4372.86 / H1 MA20 4374.25) and today's rejected highs 4372.59/4370.41/4367.00 sit right there, so the required intraday behaviour (a retrace into the wall that fails to hold) is the base case, not a stretch. Separately the armed lower edge needs only a ~2.8pt dip into TP-20260921T0248Z [4357.0,4362.0]. What is genuinely missing is neither price nor signal but REACH: both edges are 3-6pt away and the session is quiet (z -0.32, M15 ATR 5pt, exp_cont 0.74), so the honest expectation is that one of the two edges is tagged in the next few M15 bars; until then neither plan should be chased at market (a market entry at 4364.79 is EV-negative, see answer 4). If the base 4359.03 breaks instead of the wall being retested, the next re-arm is LONG {zone_touch:[4344.0,4352.0]} SL 4334.0 at the 4352.74/4351.56/4345.06/4342.62/4342.41/4341.48 six-MA shelf - held back this cycle only because the lower edge is already armed and pre-arming a second long below an armed long invites a two-loss knife sequence.",
+ "cost_note": "spread 0.41bps (0.18pt @4364.79) + slippage 0.30bps (0.13pt) = 0.71bps roundtrip (~0.31pt ~ 0.044R on the new SHORT's 7.0pt 1R).",
+ "ev_note": "New SHORT: 0.42 * 2.10R - 0.58 * 1.00R - 0.044R = +0.258R (breakeven p 0.337). Armed LONG TP-0248Z reference: 0.44 * 1.96R - 0.56 - 0.043 = +0.259R at fill 4359.70 (unchanged, left to execute).",
+ "plan": {
+  "plan_id": "TP-20260921T0317Z",
+  "direction": "SHORT",
+  "opportunity_type": "range_fade_upper_edge_at_flipped_MA_confluence (live M15 MA20 4370.84 / M15 MA50 4372.86 / H1 MA20 4374.25, four consecutive failed reclaims) inside a 3-HTF range (D1 er0.091, H4 er0.098, H1 er0.162)",
+  "entry_style": "market_on_trigger",
+  "entry_zone": {
+   "low": 4370.0,
+   "high": 4375.0
+  },
+  "trigger_condition": {
+   "zone_touch": [
+    4370.0,
+    4375.0
+   ]
+  },
+  "invalidation_condition": {
+   "price_cross_up": 4379.5
+  },
+  "stop_logic": {
+   "type": "structure",
+   "level": "just above today's 4377.86 spike and the whole 4370.84-4374.25 MA cluster; 1R = 7.0pt @ref 4372.5 (zone mid)",
+   "level_price": 4379.5,
+   "reason": "A reclaim and hold above 4379.5 means the flipped confluence failed and the range is rotating back to its upper edge; the fade is void and the next real resistance is 4382.98/4383.42 then the 4397.07/4399.70 60-bar highs and 4410.83 (H4 MA200). Placing the stop above the 4377.86 spike but below the 4380.71/4382.98 cluster makes stop-out coincide with thesis death without paying for the full spike-cluster width."
+  },
+  "target_logic": {
+   "type": "price_levels",
+   "levels": [
+    {
+     "price": 4364.0,
+     "frac": 0.4
+    },
+    {
+     "price": 4357.0,
+     "frac": 0.35
+    },
+    {
+     "price": 4349.0,
+     "frac": 0.25
+    }
+   ],
+   "reason": "T1 4364.0 = top of the 4359.03-4365.42 micro-base built since 05:15Z (+8.5pt = 1.21R) x0.40 - banked before the base is actually tested; T2 4357.0 = the armed LONG band top / the 4358.34 prior session base, i.e. the middle of the base-to-shelf gap (+15.5pt = 2.21R) x0.35; T3 4349.0 = just above the 4352.74 (H1 MA50) / 4351.56 (M15 MA200) / 4345.06 (H1 MA200) / 4342.62 (M15 lo60) / 4342.41 (H4 MA50) / 4341.48 (H4 MA20) six-MA shelf (+23.5pt = 3.36R) x0.25 - scaled out before the shelf itself."
+  },
+  "expected_R": 2.1,
+  "expected_win_probability": 0.42,
+  "probability_source": "Range-fade base rate: retest of a just-lost MA confluence inside an HTF range with the H1 at pos 83.5 (upper half of its 60-bar range, room down) and the retest already rejected four times (highs 4372.59/4370.41/4367.00/4365.42). Analogous 2026-09-21 fades: the 0233Z equivalent band never got its retest (price left setup), the 0132Z lower-edge long filled and stopped - so the family's realised hit rate on M15 targets is unproven and p is set conservatively at 0.42 (breakeven 0.337), well below the 0.5+ a perfect confluence would suggest, because H4 remains above its MA20/MA50 and a quiet range can simply never retrace the 6pt to the band (z -0.32, M15 ATR 5pt).",
+  "estimated_cost": {
+   "spread_bps": 0.41,
+   "slippage_bps": 0.3,
+   "total_roundtrip_bps": 0.71,
+   "roundtrip_pt": 0.31,
+   "cost_in_R": 0.044
+  },
+  "spread_bps": 0.41,
+  "slippage_bps": 0.3,
+  "expected_net_EV": {
+   "value": 0.258,
+   "units": "R",
+   "note": "0.42*2.10R - 0.58*1.00R - 0.044R = +0.258R (1R = 7.0pt @ref fill 4372.5, SL 4379.5; breakeven p ~0.337)."
+  },
+  "maximum_holding_time": "M15*8",
+  "qty_lots": 0.01,
+  "cancel_conditions": [
+   "mid <= 4360.0 (price_left_setup: zone_lo 4370.0 - 2 x band 5.0) = the base broke and price left the retest idea, opportunity gone, rebuilt by a newer cycle",
+   "mid >= 4379.5 (invalidation price_cross_up) = wall reclaimed, thesis dead, no entry",
+   "engine age cap: 2h / 8 M15 bars (stale plan cancelled)",
+   "spread widens beyond 1.0bps at check (risk layer veto)",
+   "note: price_left_setup floor is deliberately pushed to 4360.0 (the base low) rather than the previous 0233Z floor of 4363.5, so the aggressive 2x-band rule does not kill this plan at the current mid 4364.79"
+  ]
+ },
+ "model": "deepseek/deepseek-v4-flash",
+ "prompt_version": "hermes-trader-m15-cycle/2026-09-12"
+}

@@ -1,0 +1,45 @@
+{
+ "rules_version": "v1r2-r1-rules-v2",
+ "frozen_at_utc": "2026-09-26T12:19:08.002981+00:00",
+ "params": {
+  "ATR_N": 20,
+  "ER_N": 10,
+  "PIVOT_L": 2,
+  "PIVOT_R": 2,
+  "CONFIRM_LAG": 2,
+  "LEVEL_MAX": 60,
+  "RANGE_W": 96,
+  "TOUCH_TOL_ATR": 0.25,
+  "TOUCH_W": 240,
+  "RECOVERY_W": 8,
+  "ABS_PEN": 0.15,
+  "ABS_EFF_DEC": 0.4,
+  "ABS_ACT_RISE": 0.3,
+  "BREAK_CRIT": 4,
+  "BREAK_ELEV": 2,
+  "MOM_FAST": 0.8,
+  "MOM_ACC": 0.35,
+  "EV_PEN": 0.3,
+  "EV_MOM": 1.0,
+  "EV_NEAR_ATR": 0.5,
+  "EV_WIN": 240,
+  "DECAY_BARS": 12,
+  "EXPIRE_BARS": 24,
+  "BREAK_CLOSE_ATR": 0.15,
+  "ATR_HI_PCTL": 80,
+  "ATR_LO_PCTL": 20
+ },
+ "changed_vs_v1": [
+  "level identity (merge + boundary_transition)",
+  "touch event dedup (enter/stay/exit)",
+  "break evidence groups + window/lifecycle",
+  "next-state reachability + unknown_reason",
+  "direction layer separated from next_state"
+ ],
+ "rule_notes": [
+  "证据按 evidence_group 去重；证据带 240bar 窗口与 DECAY/EXPIRE 语义",
+  "NEXT_STATE 允许反证共存，只有 decisive_counter 才否决",
+  "UNKNOWN 必须给出 unknown_reason，且不是默认出口"
+ ],
+ "rules_hash": "73efc0cead842f5d04757abd77e00f969a718d9c8db90183b191f2ba99ce43ad"
+}

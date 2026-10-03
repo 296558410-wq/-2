@@ -1,0 +1,132 @@
+{
+ "schema": "v3_pc_results_r3/1",
+ "ts_utc": "2026-09-25T11:55:18.573329+00:00",
+ "distribution": {
+  "MECHANISM_SUPPORTED": 1,
+  "MECHANISM_UNCERTAIN": 0,
+  "MECHANISM_REJECTED": 0
+ },
+ "rows": {
+  "M01": {
+   "mechanism_id": "M01",
+   "mechanism_name": "PRICE_STATE_TRANSITION",
+   "events": 16,
+   "opportunities": 16,
+   "cluster_count": 1,
+   "evidence_matrix": {
+    "TRIGGER_CONSISTENCY": "HIGH",
+    "TIME_STABILITY": "HIGH",
+    "SESSION_STABILITY": "NOT_INFORMATIVE",
+    "STATE_STABILITY": "NOT_INFORMATIVE",
+    "INDEPENDENT_EVENTS": "SUFFICIENT",
+    "COUNTER_EVIDENCE_LEVEL": "WEAK",
+    "FATAL_ARTIFACT": false,
+    "ARTIFACT_CLASSES": {
+     "DATA_ARTIFACT": {
+      "count": 0,
+      "fatal": false,
+      "reason": "merged rows inside one event carry identical signatures"
+     },
+     "TIMESTAMP_ARTIFACT": {
+      "count": 0,
+      "fatal": false,
+      "reason": "two-vendor bar semantics UNKNOWN (alignment risk, not a proven error)"
+     },
+     "PROXY_ARTIFACT": {
+      "count": 0,
+      "fatal": false,
+      "reason": "the only cross-market confirmation is the ^TNX proxy"
+     },
+     "DUPLICATION_ARTIFACT": {
+      "count": 0,
+      "fatal": false,
+      "reason": "residual duplication is measured at EVENT level only (single stage)"
+     },
+     "SELECTION_ARTIFACT": {
+      "count": 0,
+      "fatal": false,
+      "reason": "only states flagged abnormal by the frozen detectors are reviewed"
+     },
+     "UNKNOWN_ARTIFACT": {
+      "count": 0,
+      "fatal": false,
+      "reason": ""
+     }
+    },
+    "detail": {
+     "events": 16,
+     "trigger_consistency_ratio": 1.0
+    }
+   },
+   "counter_evidence": {
+    "codes": {
+     "C10": 16
+    },
+    "level": "WEAK",
+    "parent_id": "CE_P_UNKNOWN",
+    "why": "minor counter-evidence"
+   },
+   "causality_level": "CO_MOVEMENT",
+   "proxy_dependency": "LOW",
+   "decision": "MECHANISM_SUPPORTED",
+   "decision_rule": "B5",
+   "decision_reason": "beats the random null on time structure with acceptable counter-evidence",
+   "lifecycle": "SUPPORTED"
+  }
+ },
+ "stats": {
+  "M01": {
+   "TIME_STABILITY": {
+    "observed": 1.743092,
+    "null_mean": 0.911779,
+    "null_std": 0.210675,
+    "null_quantiles": {
+     "5": 0.621258,
+     "25": 0.765319,
+     "50": 0.880926,
+     "75": 1.035024,
+     "95": 1.291648
+    },
+    "p_value": 0.002,
+    "n_perm": 500,
+    "conclusion": "HIGH",
+    "seed": 20260925,
+    "null_definition": "uniform event times over the mechanism's own span, same count"
+   },
+   "SESSION_STABILITY": {
+    "observed": 1.0,
+    "null_mean": 1.0,
+    "null_std": 0.0,
+    "null_quantiles": {
+     "5": 1.0,
+     "25": 1.0,
+     "50": 1.0,
+     "75": 1.0,
+     "95": 1.0
+    },
+    "p_value": 1.0,
+    "n_perm": 500,
+    "conclusion": "NOT_INFORMATIVE",
+    "seed": 20260925,
+    "null_definition": "session labels shuffled across the mechanism's events"
+   },
+   "STATE_STABILITY": {
+    "observed": 1.0,
+    "null_mean": 1.0,
+    "null_std": 0.0,
+    "null_quantiles": {
+     "5": 1.0,
+     "25": 1.0,
+     "50": 1.0,
+     "75": 1.0,
+     "95": 1.0
+    },
+    "p_value": 1.0,
+    "n_perm": 500,
+    "conclusion": "NOT_INFORMATIVE",
+    "seed": 20260925,
+    "null_definition": "state labels shuffled across the mechanism's events"
+   }
+  }
+ }
+}

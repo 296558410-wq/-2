@@ -1,0 +1,84 @@
+{
+ "schema": "v3_revalidation_blocked/1",
+ "ts_utc": "2026-09-25T08:20:35.835034+00:00",
+ "completed": {
+  "H25_UST_YIELD_STATE": "run over the extended window"
+ },
+ "blocked_by_predictor_coverage": {
+  "H24_DXY_INVERSE_STATE": "needs DXY daily (long history unavailable: sina 'DX'=13 rows; yahoo 403; stooq/stooq-alternates blocked)",
+  "H26_VIX_RISK_STATE": "needs VIX daily (sina 'VIX'=0 rows; yahoo 403)",
+  "H28_DXY_UST_DOUBLE_STATE": "needs DXY",
+  "H29_DXY_VIX_STRESS_COMBO": "needs DXY + VIX",
+  "H30_CROSS_MARKET_AGREEMENT": "needs DXY + UST + VIX",
+  "H31_CROSS_MARKET_STATE_TRANSITION": "needs DXY"
+ },
+ "blocked_by_definition": {
+  "H27_GC_XAUUSD_CONFIRMATION": "frozen definition has no operational trigger; needs a NEW pre-registered hypothesis id"
+ },
+ "alternate_source_attempts": {
+  "query2_yahoo_DXY": {
+   "name": "DXY",
+   "tag": "query2_yahoo",
+   "ok": false,
+   "rows": 0,
+   "error": "HTTPError: HTTP Error 403: Forbidden"
+  },
+  "stooq_dx_f_DXY": {
+   "name": "DXY",
+   "tag": "stooq_dx_f",
+   "ok": false,
+   "rows": 3,
+   "error": null,
+   "http": 200
+  },
+  "query2_yahoo_VIX": {
+   "name": "VIX",
+   "tag": "query2_yahoo",
+   "ok": false,
+   "rows": 0,
+   "error": "HTTPError: HTTP Error 403: Forbidden"
+  },
+  "stooq_vi_f_VIX": {
+   "name": "VIX",
+   "tag": "stooq_vi_f",
+   "ok": false,
+   "rows": 3,
+   "error": null,
+   "http": 200
+  }
+ },
+ "no_proxy_substitution": true,
+ "note": "no hypothesis was run with a substitute predictor or an invented threshold",
+ "final_bounded_attempt": {
+  "EM_DXY_100.UDI": {
+   "ok": true,
+   "rows": 200,
+   "kind": "eastmoney"
+  },
+  "EM_DXY_100.DINIW": {
+   "ok": false,
+   "rows": 0,
+   "kind": "eastmoney"
+  },
+  "EM_VIX_100.VIX": {
+   "ok": false,
+   "rows": 0,
+   "kind": "eastmoney"
+  },
+  "SINA_USDX": {
+   "ok": false,
+   "rows": 2,
+   "kind": "csv"
+  }
+ },
+ "correction_20260925": {
+  "note": "eastmoney 100.UDI serves a DXY daily series (200 rows at lmt=200) -> a POTENTIAL DXY path whose span/quality still need verification; VIX remains unavailable (100.VIX = 0 rows)",
+  "impact": {
+   "H24_DXY_INVERSE_STATE": "possibly unblockable after verification",
+   "H28_DXY_UST_DOUBLE_STATE": "possibly unblockable after verification",
+   "H31_CROSS_MARKET_STATE_TRANSITION": "possibly unblockable after verification",
+   "H26/H29/H30": "still blocked (VIX)",
+   "H27": "still blocked (definition)"
+  }
+ }
+}

@@ -1,0 +1,31 @@
+{
+ "hypothesis_id": "H27_GC_XAUUSD_CONFIRMATION",
+ "frozen_definition": {
+  "needs": "XAUUSD spot DAILY",
+  "hold_days": 1
+ },
+ "frozen_hypothesis": "a GC/XAUUSD divergence is resolved in favour of XAUUSD on the next day",
+ "blocking_finding": "the frozen H27 definition specifies only {'needs': 'XAUUSD spot DAILY', 'hold_days': 1} and an invalidation ('divergence widens') — it contains NO operational trigger: no divergence measure, no lookback, no threshold, no direction rule. Any implementation would require INVENTING the signal rule, which the task forbids (thresholds/signal definition must stay unchanged; §12 forbids re-choosing samples or rules).",
+ "verdict": "INSUFFICIENT_SAMPLE",
+ "reason": "effective_n = 0: no signal can be generated without fabricating a trigger. A test requires a NEW hypothesis id with a pre-registered operational definition (project rule: changing/adding any parameter requires a new hypothesis_id).",
+ "data_readiness_evidence": {
+  "gc_f_rows": 505,
+  "xau_rows": 5186,
+  "overlap_days": 505,
+  "overlap_span": [
+   "2024-09-24",
+   "2026-09-25"
+  ],
+  "basis_stats": {
+   "mean": 18.736,
+   "stdev": 26.553,
+   "min": -115.29,
+   "max": 123.8
+  },
+  "note": "DESCRIPTIVE ONLY — this is not a test and produces no signal"
+ },
+ "hypothesis_hash": "1a60a6074c88a61a58ffe1e5329588684ab68d0aa2adf6520c0f91ec4407296f",
+ "final_status": "INSUFFICIENT_SAMPLE",
+ "fdr_applied": false,
+ "final_reason": "effective_n = 0: no signal can be generated without fabricating a trigger. A test requires a NEW hypothesis id with a pre-registered operational definition (project rule: changing/adding any parameter requires a new hypothesis_id)."
+}

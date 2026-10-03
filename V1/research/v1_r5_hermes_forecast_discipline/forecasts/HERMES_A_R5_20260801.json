@@ -1,0 +1,132 @@
+{
+  "forecast_id": "HERMES_A_R5_20260801T120000Z",
+  "timestamp": "2026-08-01T12:00:00Z",
+  "observations": [
+    "Context v1r3-r1, symbol XAUUSD, as_of 2026-08-01 12:00:00 UTC; all price data end 2026-07-31 ~21:58 UTC.",
+    "Last M1 bar 21:58: close 4042.025, range 9.05 (range_percentile 1.0), lower wick 6.94 vs upper wick 0.74, body_ratio 0.15.",
+    "M1 sequence flags: consecutive_down 7, range_expanding true, trend_20 -8.73.",
+    "M5: close 4042.025, trend_20 -6.86; M15: trend_20 -4.11; H1: trend_20 -42.22; H4: trend_20 +19.16.",
+    "L6 multi-timeframe agreement: CONFLICT (all intraday trend_20 negative, H4 trend_20 positive).",
+    "L2 nearest level SWING_LOW_37318 at 4041.035, side DN, age 17 bars, touch_count_240 35, distance_atr 0.16655, break_status INSIDE, reclaim_status NONE.",
+    "L3/L5: state ROTATION, event ACCEPTANCE, current_dwell_bars 4, ambiguity_rate_8 0.75.",
+    "L4 candidates: [trend_continuation] with supporting evidence 'price inside level, 8-bar displacement -8.54', data_quality DERIVED, note 'candidates only, not asserted'.",
+    "L7 cross-market: DXY/VIX/TNX unavailable (UNKNOWN, STALE_OR_NOT_COVERED); absent series GLD, GC, CFTC_COT, ETF_FLOWS, NEWS, MACRO_EVENTS.",
+    "Historical analogs A4173/A14240/A25116: state-evolution only (no returns); two of three reach REJECTION by step 8.",
+    "H1 current bar: open 4051.055, low 4035.085, close 4042.025, body 9.03, range_percentile 0.73; H1 sequence consecutive_down 8."
+  ],
+  "what_i_know": [
+    "Price at last observed bar is 4042.025, sitting just 1.0 above swing-low level 4041.035 (distance_atr 0.17); level is INSIDE, not broken.",
+    "Labeler state is ROTATION with ACCEPTANCE event; ambiguity_rate_8 is 0.75; dwell 4 bars.",
+    "M1/M5/M15/H1 trend_20 are negative; H4 trend_20 is positive; L6 explicitly labels agreement as CONFLICT.",
+    "Latest bars show expanding range with long lower wicks (6.94 on M1, 6.94 on M5, 6.94 on H1 current bar).",
+    "Cross-market series are unavailable/absent; nothing else is stated in the context."
+  ],
+  "what_i_do_not_know": [
+    "The forward path: no data after 2026-07-31 21:58 UTC exists in context.",
+    "Whether the swing low 4041.035 will hold or break — level is inside with 35 touches but break_status INSIDE, reclaim NONE.",
+    "Which timeframe's trend dominates: L6 agreement is CONFLICT and timeframes must never be merged (§15).",
+    "Cross-market drivers (DXY, VIX, UST10Y) and macro/news/flow data: UNKNOWN/absent — cannot be used, must not be fabricated.",
+    "Whether the lower wicks represent genuine demand vs liquidity sweep/stops — not distinguishable from raw geometry.",
+    "Analogs' outcomes beyond state labels: no returns/PnL included (§18/§72)."
+  ],
+  "evidence": [
+    "H1 trend_20 -42.22 and consecutive_down 8 indicate sustained intraday displacement lower.",
+    "M1 consecutive_down 7 with range_expanding confirms the near-term down sequence into the level.",
+    "L4 candidate trend_continuation cites price inside level with 8-bar displacement -8.54.",
+    "Price 4042.025 is pressing the swing-low level 4041.035 (distance_atr 0.17, INSIDE) with ACCEPTANCE event.",
+    "Ambiguity_rate_8 0.75 and two of three analogs transitioning to REJECTION/NO_DEFINED_STATE by step 4-8 are consistent with near-term level testing."
+  ],
+  "counter_evidence": [
+    "Large lower wicks (6.94 on M1/M5/H1 current bars) show aggressive buying/rejection at lows — against clean downside continuation.",
+    "H4 trend_20 is +19.16: the higher timeframe is not aligned with the down move (L6 CONFLICT).",
+    "Swing low 4041.035 has 35 touches in 240 bars — a well-tested level that has repeatedly held.",
+    "M1 body_ratio 0.15 and H1 current close above bar low suggest sellers failed to hold below ~4035.",
+    "Range_percentile 1.0 bars can be climax/absorption rather than continuation."
+  ],
+  "possible_mechanisms": [
+    {
+      "mechanism": "trend_continuation (downside displacement through the swing low)",
+      "status": "POSSIBLE",
+      "why": "Context lists it only as a candidate with DERIVED evidence (price inside level, displacement -8.54); counter-evidence (long lower wicks, H4 positive trend) prevents SUPPORTED."
+    },
+    {
+      "mechanism": "mean_reversion / rejection at well-tested swing low (35 touches)",
+      "status": "POSSIBLE",
+      "why": "Long lower wicks and level touch_count 240=35 are consistent with a bounce, but no direct demand evidence exists in raw geometry."
+    },
+    {
+      "mechanism": "liquidity_sweep / stop-run below 4041 before reversal",
+      "status": "WEAK",
+      "why": "Long lower wicks near a level could indicate sweeps, but order-flow data is absent; this is speculation, not evidenced."
+    },
+    {
+      "mechanism": "fundamental/macro direction from DXY, VIX, yields, news",
+      "status": "UNKNOWN",
+      "why": "All cross-market and news series are UNKNOWN/absent; any assertion here would be fabrication."
+    }
+  ],
+  "primary_scenario": {
+    "scenario": "Continued downside drift: price presses and breaks the swing low 4041.035 with acceptance, extending toward the 4035.085 area / lower.",
+    "horizon": "next 4-8 hours (~8-16 M15 bars)",
+    "trigger": "M1/M5 close below 4041.035 with acceptance (break_status flips to BROKEN) and range stays expanded.",
+    "invalidation": "Reclaim above 4052.705 (21:30 high) with acceptance, or H4/MTF agreement flipping positive."
+  },
+  "alternative_scenario": {
+    "scenario": "Rejection at the swing low: a higher low forms above 4035.085 and price rotates back into the 4046-4051 range.",
+    "horizon": "next 4-8 hours (~8-16 M15 bars)",
+    "trigger": "Higher low above 4035.085 with range contraction (range_contracting true) and acceptance back above 4046.",
+    "invalidation": "Loss of 4035.085 without prompt reclaim."
+  },
+  "expected_transition": "ROTATION -> NO_DEFINED_STATE or REJECTION within ~4-8 bars (consistent with analogs A4173 and A14240; A25116 suggests COMPRESSION instead — evolution only, no returns).",
+  "direction_bias": "NO_DIRECTIONAL_EDGE",
+  "time_horizon": "4-8 hours (~8-16 M15 bars)",
+  "evidence_strength": 0.3,
+  "confidence": 0.25,
+  "uncertainty": 0.75,
+  "confidence_reason": "All inputs are RAW_GEOMETRY/DERIVED labels; the only mechanism is a labeled candidate; ambiguity_rate_8 is 0.75; no cross-market or fundamental confirmation exists, so a complete story cannot raise confidence.",
+  "uncertainty_reason": "L6 agreement is CONFLICT, cross-market series are UNKNOWN, macro/news/flow are absent, and the swing low outcome (hold vs break) is unresolved at distance_atr 0.17.",
+  "invalidation": "Decisive reclaim above 4052.705 with acceptance, or a clean break of 4035.085 that is not reclaimed; either removes the downside-drift primary.",
+  "change_my_mind": [
+    "A confirmed M5/M15 close below 4041.035 with break_status BROKEN and range still expanding → strengthens downside continuation.",
+    "Acceptance back above 4052.705 (then 4055.535) → flips bias to UP.",
+    "L6 agreement converging to a single direction (CONFLICT resolved) → directional bias becomes actionable.",
+    "DXY/VIX/UST10Y or news data becoming available with a clear cross-market signal → re-evaluate primary scenario.",
+    "Ambiguity_rate_8 falling below ~0.5 with a stable state label → higher confidence in the labeled regime."
+  ],
+  "abstain": false,
+  "abstain_reason": "Context is sufficient for a low-conviction structural read: CONFLICT is an explicit, expected label (not an internal contradiction), the mechanism is explicitly a candidate, and the level geometry is well-defined; therefore abstain is not mandatory — but directional edge is withheld (NO_DIRECTIONAL_EDGE) because directional confidence is too low.",
+  "questions": {
+    "Q1": {
+      "what_do_i_know": "Only what the context states: XAUUSD at 4042.025 (last bar 2026-07-31 21:58 UTC); state ROTATION, event ACCEPTANCE, dwell 4, ambiguity 0.75; price inside swing low 4041.035 (INSIDE, 35 touches/240); M1/M5/M15/H1 trend_20 negative, H4 positive → L6 CONFLICT; cross-market UNKNOWN/absent; analogs state-evolution only."
+    },
+    "Q2": {
+      "what_do_i_not_know": "Forward path after 21:58 UTC; whether 4041.035 holds or breaks; which timeframe dominates (CONFLICT, never merged); all cross-market and macro/news data (PROXY/UNKNOWN/stale); whether lower wicks are demand or liquidity sweeps; analog outcomes beyond state labels."
+    },
+    "Q3": {
+      "evidence_for_primary": "H1 trend_20 -42.22 with consecutive_down 8; M1 consecutive_down 7, range expanding; price pressing the level with ACCEPTANCE; L4 candidate cites 8-bar displacement -8.54; 2/3 analogs reach REJECTION/NO_DEFINED_STATE by step 8."
+    },
+    "Q4": {
+      "evidence_against_primary": "Long lower wicks (6.94) on M1/M5/H1 show rejection of lows; H4 trend_20 +19.16 opposes the down move (MTF CONFLICT); swing low has 35 touches/240 (well-tested support); M1 body_ratio 0.15 indicates weak close momentum; range_percentile 1.0 bars may be absorption."
+    },
+    "Q5": {
+      "mechanism_that_is_only_possible": "Liquidity sweep / stop-run below 4041.035: the long lower wicks are consistent with sweeps, but with no order-flow or footprint data I am NOT entitled to assert it — status WEAK; the context's own trend_continuation is only a candidate (POSSIBLE), not a fact."
+    },
+    "Q6": {
+      "what_would_change_my_mind": "Close below 4041.035 with acceptance (break_status BROKEN) → downside; reclaim above 4052.705 with acceptance → upside; L6 agreement resolving to one direction; arrival of DXY/VIX/yield or news data; ambiguity_rate_8 dropping below ~0.5."
+    },
+    "Q7": {
+      "should_i_abstain_now": "false — context is internally consistent and sufficient for a structural, non-directional read with explicitly low confidence; abstain is not triggered because the CONFLICT is a labeled condition and no observation is fabricated."
+    }
+  },
+  "reasoning_trace": [
+    "Read context: all price data end 2026-07-31 21:58 UTC; as_of is 2026-08-01 12:00 UTC; nothing later exists — treat as PIT.",
+    "State: ROTATION + ACCEPTANCE, ambiguity 0.75 → regime is poorly defined; do not assert direction from labels.",
+    "Level: price 1.0 above swing low 4041.035, INSIDE, 35 touches → meaningful support but unresolved.",
+    "MTF: intraday trend_20 all negative, H4 positive; L6 says CONFLICT and never merge → cannot claim a single direction → NO_DIRECTIONAL_EDGE.",
+    "Mechanism: only candidate is trend_continuation; counter-evidence (long lower wicks, H4 positive) → POSSIBLE, not SUPPORTED.",
+    "Cross-market: all UNKNOWN/absent → no fundamental layer; document gap rather than fill it.",
+    "Synthesize primary (downside drift through level) vs alternative (rejection at level) with concrete triggers and invalidations.",
+    "Confidence discipline: complete story ≠ high confidence; set evidence_strength 0.3, confidence 0.25, uncertainty 0.75.",
+    "abstain=false with reason: context sufficient for structural read; directional edge withheld instead."
+  ]
+}

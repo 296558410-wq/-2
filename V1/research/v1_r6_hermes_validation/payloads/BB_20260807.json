@@ -1,0 +1,51 @@
+{
+ "audit_id": "BB_20260807",
+ "timestamp": "2026-08-07 12:00:00+00:00",
+ "current_state": "EXPANSION (dwell 4 bars) with event ACCEPTANCE at active swing-high level 4320.585; price is INSIDE the level (break_status INSIDE, reclaim NONE, 4 touches in 240 bars, distance ~0.06 ATR). Recently transitioned REJECTION->EXPANSION.",
+ "structure": "Multi-timeframe bullish alignment: trend_20 positive on every TF (M1 +3.27, M5 +16.66, M15 +36.86, H1 +87.44, H4 +287.69); H1 consecutive_up 8. Strong up-day structure from ~4229 low (01:00) pressing into the 4320-4327 zone. Intraday structure now shows early supply: M15 and H1 current bars print meaningful upper wicks (6.03 and 6.65) with closes below their highs (4326.085 / 4327.645), and the H1 11:00 bar was a doji with a large lower wick at the highs. Note: H4 current-bar geometry is internally inconsistent with all lower TFs (see data_quality_flags) and is not relied upon for levels.",
+ "mechanism": "Mechanism candidate trend_continuation (DERIVED, not asserted): price accepted INSIDE the swing-high level (4320.585) within an EXPANSION lifecycle, consistent with continuation if the level holds as support; supportive cross-market: DXY drifting down (change_8 -0.069) and VIX low at 15.2 (risk-on). Counter-structural pressure: move already extended (H1 trend_20 +87.4, H4 +287.7), upper-wick rejections at 4326-4327, and all three historical analogs resolve EXPANSION to REJECTION within ~8-16 steps (2/3 to REJECTION, 1/3 to TREND), so expansion persistence is not a high-probability given.",
+ "primary_scenario": {
+  "scenario": "Expansion continuation: price holds the swing-high level as support and carries through the 4326-4330 supply zone on acceptance, extending the up-day toward higher structure.",
+  "confidence": 0.52,
+  "horizon": "INTRADAY",
+  "trigger": "Hold above 4320.585 with a decisive close/break of the H1 high 4327.645 on momentum (e.g., a strong M5/M15 up bar), keeping the EXPANSION/ACCEPTANCE state intact.",
+  "invalidation": "A decisive rejection at 4326-4330 followed by a loss of the level: close back below ~4316 (recent consolidation low 4316.055) and return to REJECTION state before clearing 4327-4330."
+ },
+ "alternative_scenario": {
+  "scenario": "Distribution/rejection of an extended move: upper wicks at 4326-4327 mark fading buying interest; price rolls over from the swing-high zone toward the 4300-4290 area.",
+  "confidence": 0.38,
+  "horizon": "SHORT_TERM",
+  "trigger": "Failure to clear 4327-4330 on the next push with a bearish M15/H1 bar and loss of 4320.585 support, flipping state to REJECTION.",
+  "invalidation": "A clean break above 4330 with sustained acceptance (new expansion leg higher), which would confirm the primary scenario instead."
+ },
+ "expected_transition": "Short further EXPANSION (likely 1-4 more bars) while price resolves the 4326-4330 supply zone; outcome is binary between trend continuation (break and hold above 4327.645) and transition back to REJECTION (loss of 4320.585/4316). The swing-high level and the M15/H1 wick cluster are the decision points. Monitor whether ACCEPTANCE at the level converts to rejection at the 4326-4330 shelf.",
+ "direction": "UP",
+ "horizon": "INTRADAY",
+ "confidence": 0.55,
+ "counter_evidence": [
+  "M15 current bar: upper wick 6.03, close 4320.055 well below high 4326.085 (body_ratio 0.35) - supply at the shelf.",
+  "H1 current bar: upper wick 6.65, close 4320.995 below high 4327.645; H1 11:00 bar was a doji (body 0.8) with large lower wick 8.01 at the highs - hesitation near the top of the move.",
+  "Move is already extended: H1 trend_20 +87.4 and H4 trend_20 +287.7 leave limited marginal room before mean-reversion pressure.",
+  "Historical analogs (A11710, A20151, A28608): 2 of 3 EXPANSION paths transition to REJECTION by step 12-16; only 1 of 3 goes to TREND.",
+  "M1 sequence shows 7 consecutive down bars immediately before the 12:00 bounce - micro-structure had been fading even within the up-move.",
+  "H4 current-bar geometry (high 4371.695, low 4300.825) is not corroborated by any lower timeframe (M1 high 4319.895, M5 4324.115, M15 4326.085, H1 4327.645) - anomalous data reduces overall confidence."
+ ],
+ "invalidation": "Loss of the active swing-high level 4320.585 by decisive close below ~4316-4310 (below consolidation low 4316.055) with a return to REJECTION state before any break of 4327-4330; alternatively an upward blow-off spike (as suggested by the anomalous H4 high) followed by a fast reversal would also invalidate the continuation reading.",
+ "data_quality_flags": [
+  "H4 current bar ANOMALY: high 4371.695 / low 4300.825 internally consistent but uncorroborated by M1/M5/M15/H1 current bars (max corroborated high 4327.645) - treated as DERIVED/unreliable, excluded from level analysis.",
+  "UST10Y_PROXY_TNX UNKNOWN (STALE_OR_NOT_COVERED) - no rates input.",
+  "DXY and VIX are PROXY (Yahoo 5m, instrument definition UNKNOWN) - cross-market read is directional only.",
+  "L2 levels DERIVED (pivot swing levels) and L4 mechanism is DERIVED candidate only, not asserted fact.",
+  "No NEWS/MACRO_EVENTS/CFTC/ETF_FLOWS series available - fundamental catalyst absent by design (absent_rule).",
+  "L5 ambiguity_rate_8 = 0.5 - state machine itself is ambiguous at this point."
+ ],
+ "reasoning_trace": [
+  "All timeframes trend_20 positive with H1 consecutive_up 8: clear multi-TF uptrend into 2026-08-07 12:00 - directional bias is UP, not neutral.",
+  "L3/L5 label ACCEPTANCE in EXPANSION with price INSIDE swing-high 4320.585 (4 touches, 0.06 ATR) reads as constructive: the level is being treated as support, consistent with trend_continuation candidate.",
+  "However, M15/H1 current bars print upper wicks at 4326-4327 and the H1 11:00 bar was a doji - the first real supply signature since the 01:00 low, capping the immediate upside.",
+  "Analog evidence is not encouraging for pure expansion persistence: 2/3 EXPANSION analogs reach REJECTION by step 12-16.",
+  "Cross-market mildly supportive (DXY drifting down, VIX 15.2) but both PROXY and UST10Y absent, so no strong independent confirmation.",
+  "H4 bar geometry (high 4371.695) is not corroborated by any lower timeframe - flagged as anomalous and excluded from inference, capping confidence at 0.55.",
+  "Net: modest long/continuation bias with INTRADAY horizon; the 4326-4330 shelf and the swing-high level are the binary decision points; confidence deliberately moderate."
+ ]
+}

@@ -1,0 +1,96 @@
+{
+ "schema": "hermes_decision_v1",
+ "utc_ts": "2026-09-21T05:38Z",
+ "cycle": "2026-09-21T05:38Z",
+ "decision_id": "DEC-2026-09-21T05:38Z",
+ "symbol": "XAUUSD",
+ "mid": 4356.97,
+ "decision": "LONG",
+ "confidence": 0.58,
+ "bias": "NEUTRAL-lean-LONG 0.58 for the immediate trade (range-low fade): the 05:30Z M15 bar swept the session low to 4352.06 (taking out the live long's 4352.5 stop at 4352.43) and then reclaimed 4355.01, i.e. a fast dip-and-reclaim at the M15 MA200 4354.71 / H1 MA50 4355.25 pivot. The bigger picture stays bearish - D1 trades 51.6pt below its MA20 4406.68, the session prints lower highs (4383.4 -> 4365.4 -> 4362.15) and M15 price sits under MA20 4365.34 / MA50 4373.78 - so targets are capped at the M15 MA20/MA50 and the stop is tight (4.5pt) below the sweep low. Range regime on every TF (er 0.036-0.10) => fade edges, no trend trade.",
+ "mtf_agreement": "mixed_range_long_lean",
+ "opportunity": "ARMED LONG at the 4352.06 sweep-low retest: entry_zone {zone_touch:[4351.5,4354.5]} (the sweep low 4352.06 -> M15 MA200 4354.71 / H1 MA50 4355.25 pivot band), invalidation {\"price_cross_down\":4350.3}, stop 4349.0, targets 4362.0 / 4365.3 / 4373.8, expect R 2.80, p 0.42 -> EV +0.53R. gap-to-tradable = a 2.5-5.5pt dip into the band (mid 4356.97 sits 2.5pt above the zone top); nothing else is missing - the slot is FREE (broker stopped the previous long out at 4352.43 and the local state is reconciled), the live mid/spread are fresh (quote_latest 10s thread) and the spread is 0.39bps. Mirror idea (NOT registered): SHORT a retest of 4362.1-4365.4 (05:30Z bar high 4362.15 / M15 MA20 4365.34) targeting 4352.06 then the 4342-4345 shelf - that becomes primary if 4360.5+ is reclaimed before the dip.",
+ "opportunity_mechanism": "Two-hour coil at the bottom of the session range after a clean sweep. The 04:45Z bar broke the 4355.99 base (o4361.94 h4362.42 l4355.06 c4356.05); the 05:00Z bar probed 4352.67 and reclaimed 4356.04; the 05:15Z bar bounced to 4361.18 but closed 4357.38; the 05:30Z bar then printed a fresh low 4352.06 (through the 4352.5 stop that our long carried) and closed back at 4355.01. That is the third dip-and-reclaim in this 4352.0-4362.4 box, with tick volume 1794 / 1819 / 1178 (normal-to-active, pkg abnormal z 1.99, tick_rate 138/min = real two-way participation, not a liquidity vacuum). Mechanically: buyers keep defending 4352.0-4353.0 and sellers keep capping 4361.2-4362.4, while the M15 MA200 4354.71 and H1 MA50 4355.25 sit inside the box as the pivot. The higher-quality structural support is the four-MA shelf just below (H4 MA20 4344.92 / H1 MA200 4344.50 / M15 lo60 4342.62 / H4 MA50 4342.04), which is where the downleg would have to be bought if this pivot fails. So the trade is: buy the retest of the sweep low with a stop under it; if 4350.3 goes, stand down and wait for the shelf instead.",
+ "answers_14": {
+  "1": "市场状态: XAUUSD live mid 4356.97 (pkg m15_live quote_latest, spread 0.39bps = 0.17pt; MT5 tick 05:36Z bid 4355.01/ask 4355.17 mid 4355.09, spread 0.367bps - the tape is moving fast inside the 05:30Z bar, so levels are quoted from the 05:36Z MT5 recompute and the trigger zone is intentionally narrow). 数据 ok: live_days 11, live_ticks 2,107,507, context_days 35, gaps[]. 时段 OPEN (gate armed=true/open=true, Mon 13:38 CST, exit 0). 持仓: FLAT - POS-20260921T0248Z LONG 0.01 @4359.79 was stopped by the broker at 4352.43 (reason_code 4, 05:35Z), realized -7.36 USD; account 160759434 balance 1955.94 / equity 1955.94 / margin 0.0. MT5 重算 05:36Z: M15 MA20 4365.34 / MA50 4373.78 / MA200 4354.71 (RSI 37.2, hi60 4397.07, lo60 4342.62, pos_in_range 22.8, ATR 0.171%); H1 MA20 4370.25 / MA50 4355.25 / MA200 4344.50 (pos 72.8); H4 MA20 4344.92 / MA50 4342.04 / MA200 4412.15 (pos 57.7); D1 MA20 4406.68 / MA50 4295.44 (pos 54.7). 阻力 4357.45 -> 4360.0 -> 4361.18-4362.42 (05:15Z/05:30Z highs) -> 4365.34 (M15 MA20) -> 4370.25 (H1 MA20) -> 4373.78 (M15 MA50). 支撑 4354.71 (M15 MA200) / 4355.25 (H1 MA50) -> 4352.06 (session low, swept) -> 4344.92 (H4 MA20) -> 4344.50 (H1 MA200) -> 4342.62 (M15 lo60) -> 4342.04 (H4 MA50).",
+  "2": "一致性: MIXED, 短线偏多但非趋势对齐. pkg er: D1 0.091 / H4 0.061 / H1 0.036 / M15 0.10 = 四个时段全区间. H4 price 4356.97 > H4 MA20 4344.92 > H4 MA50 4342.04 (H4 背景偏多, 被 H4 MA200 4412.15 压制); H1 pos_in_range 72.8 vs M15 pos_in_range 22.8 (相互矛盾, 正是区间特征); D1 在自己 MA20 下方 49.7pt. 结论: 区间市, 不给趋势单, 只做区间边缘 fade; 多头只在 4352-4355 pivot 接, 目标止于 M15 MA20/MA50, 不追求 D1 修复.",
+  "3": "M15变化: 自 05:17Z 周期以来发生质变 - 仓位被扫出场, 账上转 FLAT. MT5 M15 (UTC): 04:45 o4361.94 h4362.42 l4355.06 c4356.05 (base 4355.99 破位并收其下); 05:00 o4355.80 h4357.45 l4352.67 c4356.04 (首次探底 4352.67 后全部收回); 05:15 o4356.03 h4361.18 l4353.89 c4357.38 (反弹被 4361.18 压住); 05:30 o4357.66 h4362.15 l4352.06 c4355.01 (v1178) = 新低 4352.06, 直接扫掉 4352.5 止损 (成交 4352.43), 随后又收回到 4355.01. 三点: (a) 4352.0-4353.0 第三次被下探又收回, 买方在此有实盘防守; (b) 4352.5 止损被精确扫掉的宽度只有 0.44pt = 典型的止损猎杀式下影; (c) 价格被夹在 4352.06 与 4362.15 之间的 10pt 箱体里, 量能 1794/1819/1178 正常偏活跃. 结论: 箱体边缘触价即决策, 不等 M15 收盘.",
+  "4": "机会 / gap-to-tradable: 有具体机会, 且价格侧只差一次回踩 - 缺口 = 2.5-5.5pt 的下探. 机会 = 4352.06 扫损后回踩接多: {zone_touch:[4351.5,4354.5]}, 失效 {\"price_cross_down\":4350.3}, SL 4349.0, 目标 4362.0/4365.3/4373.8 (expect R 2.80, p 0.42 -> EV +0.53R). 现价 4356.97 距触发带上沿 +2.47pt, 触价即自动成交 (engine 每轮以 quote_latest 实时 mid 判定 zone_touch). slot 已空 (POS-20260921T0248Z 被 broker 4352.43 平掉, 本地已 reconcile), 数据新鲜, spread 0.39bps, 无任何其他阻塞. 镜像 (本轮不注册, 记入候选): SHORT 回抽 4362.1-4365.4 (05:30Z 高 4362.15 / M15 MA20 4365.34), 失效 {\"price_cross_up\":4366.5}, SL 4366.5, 目标 4352.06/4344.92 (若 4360.5 上方被有效收回则它转为主选).",
+  "5": "机制: 同一条区间下沿逻辑, 从'被扫损的持仓'变为'可注册的机会'. 4355.99 base 破位后, 价格三次测试 4352.0-4353.0 并三次收回 (4352.67 / 4352.06), 说明该带下方有实盘买盘; 但每次反弹都被 4361.2-4362.4 压回, 说明卖方仍控制 4360 上方. 这是一个 10pt 箱体 (4352.06-4362.15) 内的消耗战, M15 MA200 4354.71 / H1 MA50 4355.25 正好在箱体中部作为枢轴. 交易含义: 在箱体下沿买入、止损放在下沿之下 3pt (4349.0)、目标打到箱体上沿及其上方第一条 MA (4362.0/4365.3), 是区间市的自然做法; 若下沿被 4350.3 有效打破, 则说明这不是消耗而是延续, 该逻辑作废, 下一站是 4344.9/4342.6 四重 MA 架 (那才是更高一级的接多位置). 两侧都以盘中触价 + 行为佐证判定, 不等收盘.",
+  "6": "触发条件[具体价]: LONG 计划已注册: trigger_condition {\"zone_touch\":[4351.5,4354.5]} (即回踩 4352.06 扫损低点 / M15 MA200 4354.71 / H1 MA50 4355.25 构成的枢轴带, 实时 mid 进入该带即自动市价成交), invalidation_condition {\"price_cross_down\":4350.3} (入带前若有效跌破扫损低点缓冲则不接刀, 计划自动取消), stop 4349.0, 目标 4362.0 (0.40) / 4365.3 (0.35) / 4373.8 (0.25), qty 0.01 手, maximum_holding_time M15*8 (2h). 镜像 SHORT 4362.1-4365.4 本轮不注册 (单仓约束 + 当前价格更接近多头的带).",
+  "7": "失效[具体价]: 计划失效 = price_cross_down 4350.3 (实时 mid <= 4350.3 则取消, 不入场); 成交后硬失效 = 4349.0 (结构性失效, 位于扫损低点 4352.06 下方 3.06pt). 若 4349.0 被有效跌破, 多头论点作废, 下一站 4344.92 (H4 MA20) / 4344.50 (H1 MA200) / 4342.62 (M15 lo60) / 4342.04 (H4 MA50) 四重架. 机会错过型失效 = 实时 mid > 4360.5 (engine 僵尸计划规则: ez_hi 4354.5 + 2*band 6.0 = 4360.5) 或 M15 有效收在 4365.34 (M15 MA20) 之上 -> 多头带逻辑作废, 交由镜像 SHORT 处理.",
+  "8": "预期收益R: expect R 2.80. 以现实成交价 4353.5 (带上沿附近) 与 SL 4349.0 计, 1R = 4.5pt: T1 4362.0 = +8.5pt = 1.89R x0.40; T2 4365.3 = +11.8pt = 2.62R x0.35; T3 4373.8 = +20.3pt = 4.51R x0.25 -> 0.756 + 0.917 + 1.128 = 2.80R. 0.01 手 = 1 oz -> 1R = 4.50 USD = demo 余额 1955.94 的 0.23%. 若在带下沿 4352.0 成交, 同样 R 会更好 (期望 3.3R).",
+  "9": "预期损失R: 满额止损 = 1R = 4.50 USD = 余额的 0.23% (0.01 手 XAUUSD). 不加仓 / 不摊平 / 不向亏损方向补单 (position.py 对 ADD 直接抛错); 单仓约束: 同一时间只允许一个持仓, 本计划成交后本轮不再注册任何计划. 止损随单 (broker 侧硬 SL 4349.0), 不自主移动止损.",
+  "10": "成本数值: spread 0.39bps (0.17pt) + slippage 0.30bps (0.13pt) = 0.67bps 往返 ~ 0.29pt = 该计划 4.5pt 的 1R 上的 0.07R. demo 执行成本可忽略 (作业条款 ~0.3bps), 不构成决策障碍, 已计入 EV.",
+  "11": "净EV算式: EV = p*expect_R - (1-p)*1R - cost = 0.42*2.80R - 0.58*1.00R - 0.07R = 1.176 - 0.580 - 0.070 = +0.53R > 0 -> LONG 成立 (可注册可执行). 盈亏平衡 p = (1 + 0.07)/3.80 = 0.282 << 0.42. 对照: 镜像 SHORT (4362.1-4365.4, SL 4366.5, 目标 4352.06/4344.92, expect R ~2.6) 的 EV 约 +0.42R (p 0.42), 略低于主选, 且需先反弹 +5pt 才可能触发, 故本轮以 LONG 为主.",
+  "12": "再现: 2026-09-21 session 家族: 0132Z LONG@4376.17 -> broker_sl @4365.4 (realized -10.77 USD); 0248Z LONG@4359.79 -> broker_sl @4352.43 (realized -7.36 USD, 05:35Z); 0147Z/0233Z SHORT 均 price_left_setup 撤销; 0317Z SHORT [4370,4375] price_left_setup 作废. 教训: 最近两笔区间下沿接多都是被 3-8pt 的扫损下影打掉的 (4352.5 被打到 4352.43), 说明入场带必须压在扫损低点上/附近而不是在上方 - 本轮因此把带设为 4351.5-4354.5 并把止损压到 4349.0. 条件复用: 回踩 4351.5-4354.5 且快速收回 -> LONG; 有效破 4350.3 -> 停手, 改等 4342-4345 四重架; 有效收回 4365.34 上方 -> 转镜像 SHORT. 只要 D1/H4/H1 er < 0.10 只做区间边缘, 单仓, 永不摊平.",
+  "13": "LONG (主动猎手, 触价即成交): 账上 FLAT, slot 已释放, 数据与价差就绪, 故本轮注册而非 WAIT. 计划 = 回踩 4351.5-4354.5 接多 (trigger zone_touch, 实时 mid 判定), 失效 4350.3, SL 4349.0, 阶梯目标 4362.0/4365.3/4373.8, qty 0.01 手, 最长持有 M15*8. 若实时 mid 在引擎判定时已落在带内则立即市价成交; 若价格先反弹跑出 4360.5 上方则由 engine 僵尸规则自动取消, 下轮重建. 不加仓 / 不摊平 / 不移动止损.",
+  "14": "破4352.06扫损后快速收回+站在M15MA200 4354.7/H1MA50 4355.3枢轴上=区间下沿fade; 回踩4351.5-4354.5挂多, 失效4350.3, SL4349.0, 目标4362/4365.3/4373.8, p0.42 EV+0.53R; slot已空故主动注册; 日线偏空故目标止于M15 MA、止损仅4.5pt."
+ },
+ "state_summary": "XAUUSD live mid 4356.97 (pkg cycle 2026-09-21T05:38Z, quote_latest 10s thread, spread 0.39bps; MT5 tick 05:36Z bid 4355.01/ask 4355.17 mid 4355.09, spread 0.367bps). data_quality ok (live_days 11, live_ticks 2,107,507, context_days 35, gaps[]). MARKET OPEN (gate armed=true/open=true, Mon 13:38 CST, exit 0). POSITION: FLAT - POS-20260921T0248Z LONG 0.01 @4359.79 was stopped by the broker at 4352.43 (05:35Z, reason_code 4), realized -7.36 USD; account 160759434 balance/equity 1955.94, margin 0.0, slot FREE. MT5 levels 05:36Z: M15 MA20 4365.34 / MA50 4373.78 / MA200 4354.71 (RSI 37.2, hi60 4397.07, lo60 4342.62, pos 22.8, ATR 0.171%); H1 MA20 4370.25 / MA50 4355.25 / MA200 4344.50 (pos 72.8); H4 MA20 4344.92 / MA50 4342.04 / MA200 4412.15 (pos 57.7); D1 MA20 4406.68 / MA50 4295.44 (pos 54.7). Session box 4352.06 (swept low, 05:30Z) - 4362.15 (05:30Z high); the previous 4355.99 base broke at 04:45Z and price has dipped-and-reclaimed three times into 4352.0-4353.0 on normal-to-active volume (1794/1819/1178).",
+ "data_note": "All trigger/stop/target levels are quoted in MT5 LIVE-QUOTE space (execution venue, account 160759434), from a read-only MT5 recompute at 05:36Z (M15/H1/H4/D1 MA, RSI, hi60/lo60, pos_in_range, ATR, last 16 M15 bars, tick, positions, deals history) - identical method to the prior cycles. WORKFLOW CAVEAT (important): run_state/state_package_latest.json (regenerated this cycle, cycle 2026-09-21T05:38Z) derives its MA/structure series from data/live_fxtm/ticks_*.parquet, and that feed DIVERGES from the MT5 execution feed by roughly +7 to +18pt at the same timestamps (e.g. pkg M15 04:00Z bar o4366.74 h4380.78 l4366.55 c4380.50 vs MT5 04:00Z o4358.99 h4361.29 l4355.99 c4360.16; pkg M15 last_close 4369.1 vs MT5 05:00Z close 4356.04). The pkg's m15_live overlay (quote_latest, 10s thread) is MT5-consistent and IS what engine.py feeds into trigger evaluation as ctx.last_mid. run_state/candle_latest.json STALE (last ts 2026-09-07 12:15) - ignored; no close_above/close_below/m15_close_in_zone triggers used. Position state: run_state/positions/POS-20260921T0248Z.json reconciled to CLOSED (broker_sl @4352.43) this cycle; broker positions [] and local open [] agree.",
+ "position_note": "FLAT - single slot is FREE. POS-20260921T0248Z LONG 0.01 @4359.79 (SL 4352.5, broker TP 4368.5) was taken out by the 05:30Z M15 sweep to 4352.06; broker closing deal price 4352.43, realized -7.36 USD (classification broker_sl, local state transitioned OPEN -> EXIT_FILL via reconcile, ledger closed, exec_mode demo). Account 160759434: balance 1955.94, equity 1955.94, margin 0.0. No averaging, no re-adding, no manual close of an open position this cycle (there is none) - the only new risk is the freshly armed LONG below.",
+ "m15_change": "Since the 05:17Z cycle the book changed qualitatively: the position was swept out and the account is FLAT. MT5 M15 bars (UTC): 04:45 o4361.94 h4362.42 l4355.06 c4356.05 (base 4355.99 broken, closed below); 05:00 o4355.80 h4357.45 l4352.67 c4356.04 (first dip to 4352.67, fully reclaimed); 05:15 o4356.03 h4361.18 l4353.89 c4357.38 (bounce capped at 4361.18); 05:30 o4357.66 h4362.15 l4352.06 c4355.01 v1178 (fresh session low 4352.06, swept the 4352.5 stop at 4352.43, then reclaimed to 4355.01). Three readings: (a) 4352.0-4353.0 has now been defended three times (4352.67 / 4352.06) - real bids there; (b) the stop was taken by a 0.44pt overshoot = classic stop-hunt wick, not a breakdown; (c) price is coiled in a 10pt box 4352.06-4362.15 with the M15 MA200 4354.71 / H1 MA50 4355.25 as the mid-pivot, volume 1794/1819/1178 normal-to-active (pkg abnormal z 1.99, tick_rate 138/min). Trigger/stop levels therefore sit ON the box floor rather than above it, and no M15 close is waited for.",
+ "gap_to_tradable": "PRICE, by 2.5-5.5pt - everything else is ready. The plan LONG {zone_touch:[4351.5,4354.5]} is registered this cycle with the live mid 4356.97 sitting 2.47pt above the zone top, so a dip into the 4352.06 sweep-low / M15 MA200 4354.71 pivot band triggers an automatic market fill. The slot is FREE (broker stopped the prior long at 4352.43 and the local state is reconciled this cycle), data freshness ok, spread 0.39bps (ceiling 1.0bps), no open position, qty 0.01 lot inside the 0.01-0.05 band. If instead price first reclaims 4360.5+, engine's stale rule cancels the plan and the mirror SHORT 4362.1-4365.4 (SL 4366.5, targets 4352.06/4344.92) becomes the primary next cycle. The deeper alternative - LONG the 4342.0-4346.5 four-MA shelf (H4 MA20 4344.92 / H1 MA200 4344.50 / M15 lo60 4342.62 / H4 MA50 4342.04, stop 4337.5, expect R ~2.8) - stays on the bench as the next base if 4349.0 gives way.",
+ "cost_note": "spread 0.39bps (0.17pt) + slippage 0.30bps (0.13pt) = 0.67bps roundtrip (~0.29pt ~ 0.065R of the plan's 4.5pt 1R). Ceiling 1.0bps (risk_check) not breached.",
+ "ev_note": "EV = 0.42 * 2.80R - 0.58 * 1.00R - 0.07R = +0.53R (breakeven p = 0.282). Positive EV, so the LONG is registered and executable this cycle. Mirror SHORT EV ~+0.42R (p 0.42, expect R ~2.6R) - recorded, not registered (single-position rule).",
+ "active_plan_id": null,
+ "plan_source": "sweep_low_retest_long_registered_this_cycle(slot free after broker_sl)",
+ "plan": {
+  "direction": "LONG",
+  "entry_zone": {
+   "low": 4351.5,
+   "high": 4354.5
+  },
+  "trigger_condition": {
+   "zone_touch": [
+    4351.5,
+    4354.5
+   ]
+  },
+  "invalidation_condition": {
+   "price_cross_down": 4350.3
+  },
+  "stop_logic": {
+   "type": "structure_below_sweep_low",
+   "level_price": 4349.0
+  },
+  "target_logic": {
+   "levels": [
+    {
+     "price": 4362.0,
+     "frac": 0.4
+    },
+    {
+     "price": 4365.3,
+     "frac": 0.35
+    },
+    {
+     "price": 4373.8,
+     "frac": 0.25
+    }
+   ]
+  },
+  "expected_R": 2.8,
+  "expected_win_probability": 0.42,
+  "probability_source": "Range regime on all four TFs (pkg er D1 0.091 / H4 0.061 / H1 0.036 / M15 0.10) => edge-fade base rate; the 4352.0-4353.0 band has been dipped-and-reclaimed three consecutive times in the last hour (4352.67, then 4352.06) with normal-to-active tick volume (1794/1819/1178 vs ~1700 average; pkg abnormal z 1.99, tick_rate 138/min), and the entry sits at the M15 MA200 4354.71 / H1 MA50 4355.25 pivot. Discounted from the ~0.45-0.50 four-confluence hold rate for (a) the D1 backdrop (price 51.6pt below D1 MA20 4406.68) and (b) the 3-8pt sweep wicks that have been killing fades in this session (two long stops already taken).",
+  "estimated_cost": {
+   "spread_bps": 0.39,
+   "slippage_bps": 0.3,
+   "roundtrip_bps": 0.67,
+   "roundtrip_usd_per_0.01lot": 0.29
+  },
+  "spread_bps": 0.39,
+  "slippage_bps": 0.3,
+  "expected_net_EV": {
+   "value": 0.53,
+   "units": "R",
+   "note": "0.42*2.80R - 0.58*1.00R - 0.07R = +0.53R (breakeven p 0.282); 1R = 4.5pt = 4.50 USD on 0.01 lot = 0.23% of the 1955.94 demo balance"
+  },
+  "maximum_holding_time": "M15*8",
+  "qty_lots": 0.01
+ },
+ "plan_id": null,
+ "model": "deepseek/deepseek-v4-flash",
+ "prompt_version": "hermes-trader-m15-cycle/2026-09-12"
+}

@@ -1,0 +1,94 @@
+{
+ "decision_id": "DEC-2026-09-21T14:02Z",
+ "cycle": "2026-09-21T14:02Z",
+ "utc_ts": "2026-09-21T14:02:00Z",
+ "symbol": "XAUUSD",
+ "decision": "LONG",
+ "confidence": 0.6,
+ "bias": "LONG-lean 0.60 at the swept shelf only: the 14:00Z M15 bar flushed the whole day floor 4339.98 to 4322.62 (a 17pt vertical break, 13pt under the prior-20-bar low) and the tape has already reclaimed 9.4pt of it (mid 4332.02, the last M5 bar closed back above the M5 shelf it swept); the measured edge is to BUY the retest of the just-swept shelf 4323.5-4327.0, not to chase the bounce (the chase frame is measured negative: 3000-bar probe F, entry at the reclaim close, p 0.25-0.51, gross R negative at every stop/target cell). H1 is still a downtrend (er 0.438) and D1 sits under its MA20, so this is a countertrend scalp at support, not a trend position: small qty, tight structural stop under the flush low, 2h cap.",
+ "opportunity": "sweep_reclaim_long (retest of the just-swept 3-day low shelf 4322.62/4339.98 after the 17pt flush)",
+ "opportunity_mechanism": "The 14:00Z M15 bar broke the session floor 4339.98 and printed 4322.62 - the lowest price since 2026-09-16 - on a 27pt range (open 4346.26). The break was not accepted: the tape has bounced 9.4pt off the low (4332.02) and the current M5 bar (o 4327.41 h 4333.92 l 4322.62 c 4332.02) closed back above the M5 shelf 4325.98 that it had swept. That is the one shape this cycle measures as clearly positive on the review window (3000 MT5 M15 bars, non-overlapping, ambiguity -> SL): event = bar sweeps the prior-20-bar low and closes back above it; entry = long AT the swept shelf (not at the reclaim close); stop = shelf - 3..5pt; target = shelf + 3..8pt. Grid A s3_t3 p 0.713 gross +0.427R / s4_t4 p 0.762 +0.524R / s5_t5 p 0.768 +0.537R / s5_t8 p 0.662 +0.723R / s6_t12 p 0.579 +0.737R; with the below-MA200 regime filter that matches today (B) s5_t5 p 0.784 +0.568R, s4_t6 p 0.712 +0.779R; requiring the reclaim bar to close >1pt over the shelf (E, the strongest cell) s4_t6 p 0.754 +0.885R. The mirror is the reason the entry is a limit into the shelf and not a market buy: probe F (entry at the reclaim bar close) is negative at every cell (s4_t6 p 0.39 gross -0.024R; s5_t6 p 0.46 +0.012R) because the reclaim close sits a median 7.9pt above the swept low, so the real risk balloons while the target does not. Everything else measured in this live regime came back non-positive and must not be traded: the momentum SHORT at the break close (probe S3, p 0.320 gross -0.168R at 8pt / p 0.243 -0.173R at 12pt), the LONG the flush close with a fixed 5pt stop (probe D, p 0.473 gross +0.04R at +6pt, p 0.375 -0.025R at +8pt), the same flush long with a structural stop under the flush low (probe A, negative in all 6 target cells, and the 'break >= 12pt' bucket that matches today is p 0.167, n=6), and the deep-break retest SHORT at the broken shelf (probe mb8 n=14 p 0.357-0.429, weakly positive only at 10-12pt targets; the >=12pt-break bucket n=6 is p 0.167 negative) - the last one is also geometrically blocked this cycle: a short zone at 4339.5-4340.5 sits 8-9pt above the live mid, outside the engine's anti-zombie tolerance (zone_lo - 2 x band), so it would be cancelled on the next pass.",
+ "mtf_agreement": "long_at_the_shelf_only (H1/D1 countertrend is the reason for the tight stop and the 0.01 size)",
+ "answers_14": {
+  "1": "Market state (pkg 14:02Z + fresh MT5 14:05Z): D1 range (er 0.091, last close 4378.645 under MA20 4419.985, RSI 45.4, pos_in_range 51.4, hi60 4696.87 / lo60 4042.58, hhish 4 / llish 5); H4 mixed (er 0.302, MA20 4346.494 / MA50 4340.077, RSI 45.7, pos 57.4) - price 4326-4332 now sits UNDER both H4 MAs, so the H4 has flipped short-term bearish; H1 trend (er 0.438, RSI 37.9, ll6, MA200 4343.103 = the first resistance overhead); M15 range-turned-breakout-down (er 0.089 at the 13:30Z print, RSI 42.3, MA20 4355.021 / MA50 4357.007 / MA200 4362.920 all far above). Live tape: the 14:00Z M15 bar printed 4346.26 -> 4322.62 (a 17pt break of the day floor 4339.98) then bounced to 4332.02; spread 0.13pt = 0.30bps; tick rate normal; no gaps (pkg live_days 11, live_ticks 2,179,244).",
+  "2": "Timeframe agreement: NOT aligned - D1 range/under MA20 and H1 trend-down (er 0.438) both point down, while the intraday tape just reclaimed the flush low and the M15/M5 breadth is repairing. Agreement is therefore only local (M5/M15 reclaim) and the trade is sized/stopped as a countertrend scalp. The H4 has lost its MA20/MA50 (4346.49/4340.08) on the flush, which is the main argument against holding long beyond ~2h.",
+  "3": "M15 change this cycle: the box that held 4340-4354 all session was destroyed - the 14:00Z bar took out the day floor 4339.98 (the same shelf that stopped the 13:30Z sweep at 4349.09) and printed 4322.62, the lowest price since 2026-09-16. The prior pending SHORT at 4354.5-4357.5 (the M15 MA20 fade) is now 22pt above the market and geometrically dead (its own anti-zombie threshold was 4348.5). Net: the structure changed from 'box fade' to 'broken floor + reclaim attempt', which is what this plan trades.",
+  "4": "Opportunity: LONG the retest of the swept shelf 4323.5-4327.0 (the flush low 4322.62 / the M5 shelf 4325.98), stop 4320.0 (under the flush low), first target 4332.5, second 4337.5, third 4341.5 (the broken day floor + the H1 MA200 4343.10).",
+  "5": "Mechanism: the flush is a liquidity sweep of the last 3 days' floor; the prints after it (bounce 4322.62 -> 4333.92, the M5 close back above the swept M5 shelf 4325.98, the 14:00Z M15 wick structure) say the break is being sold into by dip buyers, not accepted. The measured base rate for exactly this entry (long at the swept shelf, stop 3-5pt below, target 3-8pt above) is p 0.71-0.78 with gross +0.43 to +0.55R over n=164 M15 events (n=111 in the below-MA200 regime of today), while the same event traded at the reclaim close is negative - the edge is in the LIMIT into the shelf, i.e. in not paying up.",
+  "6": "Trigger condition: zone_touch [4323.5, 4327.0] - one tick into the shelf band fills at market; the live mid 4332.02 is 5.0pt above the zone top, so the plan arms and waits for the dip. No close confirmation is required.",
+  "7": "Invalidation: price_cross_down 4320.0 (2.6pt under the flush low 4322.62). A decisive trade back under the flush low means the sweep was accepted after all and the measured reclaim edge is void - the plan dies with the stop, no averaging, no re-entry this cycle.",
+  "8": "Expected return: T1 4332.5 = +6.5pt from the headline fill 4326.0 = 1.08R (T2 4337.5 = 1.92R, T3 4341.5 = 2.58R; demo banks tp_levels[0] only).",
+  "9": "Expected loss: 1R = 6.0pt = 0.138% of price = 6.00 USD on 0.01 lot = 0.304% of the 1971.70 balance; worst in-zone fill 4327.0 -> 7.0pt = 7.00 USD, best in-zone fill 4323.5 -> 3.5pt = 3.50 USD.",
+  "10": "Costs: spread 0.13pt = 0.301bps live + modelled slippage 0.3bps = 0.60bps round trip = 0.26 USD per 0.01 lot = 0.043R at the 6.0pt risk (0.037R at the 7.0pt worst fill).",
+  "11": "Net EV = p x R_T1 - (1-p) - c = 0.62 x 1.08 - 0.38 - 0.043 = +0.247R (headline, zone-centre fill 4325.25: 1R 5.25pt, R_T1 1.38 -> +0.41R). Breakeven p = 1.043 / 2.08 = 0.501. Sensitivity: measured analog p 0.71 -> +0.375R; p 0.768 (s5_t5 cell) -> +0.44R; p 0.50 -> 0.000R; worst in-zone fill frame (4327.0, 1R 7.0pt, R_T1 0.79, p held at 0.62) -> +0.073R, still positive; best fill frame (4323.5, 1R 3.5pt, R_T1 2.57) -> +1.14R.",
+  "12": "Reproducibility: the geometry is defined by traded prices only (the prior-20-bar low shelf 4339.98 swept to 4322.62; the M5 shelf 4325.98; the flush low 4322.62; the H1 MA200 4343.103), so the same plan can be re-derived from the bars alone; the base rate is re-runnable from run_state/tmp/baserate_1402Z_reclaimlong.py (probe A/B/E/F grids) and the rejections from baserate_1402Z_break.py, baserate_1402Z_flushlong.py and baserate_1402Z_deepretest.py.",
+  "13": "Decision: LONG (limit into the swept shelf), qty_lots 0.01, one plan this cycle, no adds.",
+  "14": "Reason: the 17pt flush of the day floor was reclaimed twice inside 12 minutes (4322.62 low, M5 close 4332.02 back over the swept M5 shelf), and the measured edge for buying the retest of a swept 20-bar low is p 0.71-0.78 (n=164) while buying the reclaim close is negative - so the plan is a limit into 4323.5-4327.0 with the stop under 4322.62 and a 2h cap. Everything trend-following measured this cycle (short the break close, long the flush close) is non-positive, and the short-the-retrace variant is outside the engine's zone tolerance."
+ },
+ "plan": {
+  "plan_id": "TP-20260921T1402Z",
+  "direction": "LONG",
+  "entry_zone": {
+   "low": 4323.5,
+   "high": 4327.0
+  },
+  "trigger_condition": {
+   "zone_touch": [
+    4323.5,
+    4327.0
+   ]
+  },
+  "invalidation_condition": {
+   "price_cross_down": 4320.0
+  },
+  "stop_logic": {
+   "type": "flush_low_4322.62_minus_2.6pt_(the_swept_shelf_from_this_cycle;_the_measured_probe_used_shelf_-_3..5pt,_so_4320.0_sits_inside_the_measured_band_while_staying_under_the_M5_shelf_4325.98_by_5.98pt_and_under_the_zone_low_by_3.5pt)",
+   "level_price": 4320.0
+  },
+  "target_logic": {
+   "levels": [
+    {
+     "price": 4332.5,
+     "frac": 0.5
+    },
+    {
+     "price": 4337.5,
+     "frac": 0.3
+    },
+    {
+     "price": 4341.5,
+     "frac": 0.2
+    }
+   ]
+  },
+  "expected_R": 1.08,
+  "expected_win_probability": 0.62,
+  "probability_source": "Read-only geometry-matched base-rate probe run this cycle: run_state/tmp/baserate_1402Z_reclaimlong.py over 3000 MT5 XAUUSD M15 bars (2026-08-05 -> 2026-09-21, non-overlapping, intrabar ambiguity -> SL, horizon 8 bars). Event = bar i sweeps the prior-20-bar low (L[i] < min(L[i-20:i])) AND closes back above it; entry = LONG at the shelf level lvl; walk starts at i+1; stop = lvl - s, target = lvl + t. Headline cell (A s5_t5: stop 5pt under the shelf, target 5pt over): n=164, 126 tp / 38 sl -> p 0.768, gross +0.537R. Regime-matched cell (B, previous close below the M15 MA200, i.e. today's state): s5_t5 n=111 87tp/24sl p 0.784 gross +0.568R; s4_t6 p 0.712 gross +0.779R; s5_t8 p 0.682 gross +0.773R. Strongest qualifying cell (E, reclaim bar must close >1pt above the shelf): s4_t6 n=130 98tp/32sl p 0.754 gross +0.885R. Cross-check that shaped the limit order (F, entry at the reclaim bar CLOSE instead of at the shelf): s4_t6 p 0.390 gross -0.024R, s5_t6 p 0.460 gross +0.012R - negative to flat, which is why the plan waits for a 5pt dip to the shelf rather than buying the 4332 mid. Competing shapes measured the same cycle on the same bars and rejected: momentum SHORT at the break close (baserate_1402Z_break.py S3: s5_t8 n=75 p 0.320 gross -0.168R; s5_t12 p 0.243 gross -0.173R), LONG the flush close (probe D in baserate_1402Z_flushlong.py: fixed 5pt stop, +6pt target p 0.473 gross +0.040R; +8pt p 0.375 gross -0.025R; structural stop under the flush low negative in all 6 cells), and the deep-break retest SHORT (baserate_1402Z_deepretest.py: break>=8pt n=14 p 0.357-0.429 with only 10-12pt targets positive; break>=12pt n=6 p 0.167, i.e. the bucket that matches today's 17pt break is the negative one). p is held to 0.62, far below the measured 0.768, for: the countertrend H1/D1 backdrop, the possibility of a fill at the zone high (4327.0 -> 1R 7.0pt, R_T1 0.79) and the fact that the probe event was measured on completed M15 bars while the live shelf is still being formed by an open bar.",
+  "estimated_cost": {
+   "spread_bps": 0.301,
+   "slippage_bps": 0.3,
+   "roundtrip_bps": 0.601,
+   "roundtrip_usd_per_0.01lot": 0.26
+  },
+  "spread_bps": 0.301,
+  "slippage_bps": 0.3,
+  "expected_net_EV": {
+   "value": 0.247,
+   "units": "R",
+   "note": "Headline frame: fill at the zone centre 4325.25, 1R = 5.25pt (stop 4320.0), R_T1 = 1.38 (T1 4332.5), p = 0.62, c = 0.049R -> EV = 0.62 x 1.38 - 0.38 - 0.049 = +0.41R; breakeven p = 1.049 / 2.38 = 0.441. Conservative frame quoted in answers_14 (fill 4326.0, 1R 6.0pt, R_T1 1.08, c 0.043R): +0.247R, breakeven p 0.501. Sensitivity: measured analog p 0.768 -> +0.44R (centre fill: +0.66R); p 0.501 -> 0.000R. Worst in-zone fill 4327.0 (1R 7.0pt, R_T1 0.79, p 0.62) -> +0.073R - still positive, so the plan does not depend on the fill landing at the zone low. Best in-zone fill 4323.5 (1R 3.5pt, R_T1 2.57) -> +1.14R. Demo banks tp_levels[0] = 4332.5 only; the 4337.5 / 4341.5 rungs are geometry (the 4341.5 rung is the broken day floor / H1 MA200 retest and would need the H1 trend to have flipped)."
+  },
+  "maximum_holding_time": "M15*8",
+  "qty_lots": 0.01
+ },
+ "gap_to_tradable": "PRICE only, 5.0pt of it - and nothing else. The armed band [4323.5, 4327.0] sits 5.0pt under the live mid 4332.02 (bid 4332.02 / ask 4332.16, spread 0.13pt = 0.301bps), i.e. the plan needs a routine pullback to the shelf that was just swept (4322.62 low, the M5 shelf 4325.98) and the engine fills at market on the first sample inside the band, no close confirmation needed. The band clears the engine's anti-zombie guard on the correct side (a long zone BELOW the mid: threshold zone_high + 2 x band = 4327.0 + 7.0 = 4334.0 > mid 4332.02) - the mirror-image short-the-retrace plan could NOT be armed at all, because its zone (4339.5-4340.5) sits 8-9pt ABOVE the mid and its threshold (zone_lo - 2 x band) was already breached. Nothing else is missing: the stop, the invalidation, the targets and the R are all defined off traded prices, and the account is flat (MT5 positions_get [], no pending orders, balance = equity = 1971.70) so the single-position slot is free.",
+ "bench_not_registered": [
+  "SHORT the retrace into the broken floor 4339.5-4340.5 (stop 4344.5 over the H1 MA200 4343.103, target 4327.5): REJECTED TWICE - (a) measurement: the deep-break retest analog is thin (baserate_1402Z_deepretest.py, break >= 8pt: n=14 p 0.357-0.429, positive gross only at the 10-12pt targets; break >= 12pt, i.e. today's 17pt break: n=6 p 0.167 gross -0.33 to -0.67R) and the wider-window version (probe S1, all break depths, n=67) is p 0.381-0.409 for gross +0.14 to +0.23R, which costs mostly eat at a 4-5pt stop; (b) geometry: the zone sits 8-9pt above the live mid 4332.02, outside the engine's anti-zombie tolerance (zone_lo 4339.5 - 2 x band 3.0 = 4333.5 > mid), so the plan would be cancelled on the next pass.",
+  "SHORT the break close / momentum continuation (baserate_1402Z_break.py S3, entry at the flush-bar close, stop above): n=75, 8pt target p 0.320 gross -0.168R, 12pt target p 0.243 gross -0.173R. Measured negative, and the live tape immediately contradicted it (the flush low 4322.62 was bought back to 4332.02 within one M5 bar).",
+  "LONG the flush close with a fixed 5pt stop (baserate_1402Z_flushlong.py D): n=91, +6pt target p 0.473 gross +0.040R, +8pt p 0.375 gross -0.025R; with the structural stop under the flush low (A) every one of the 6 target cells is negative (p 0.478 -> 0.247 for +4 -> +15pt), and the clustered/overlapping sample (probe #9 A/B/C, n=90) is negative too - the earlier non-overlapping probe #7 S2 read (p 0.574 gross +0.262R) does not survive the overlapping-sample correction, so it is not traded.",
+  "SHORT the first touch of the M15 MA20 from below (the house shape that produced the last three cycles' plans): the MA20 is 4355.021 and the MA50/MA200 are 4357.007/4362.920, i.e. 23-31pt above the mid. Zone placement is impossible inside the anti-zombie tolerance, and the filtered analog this cycle reads only p 0.537 gross +0.075R (s6_t6) / p 0.475 gross +0.235R (s5_t8) - not worth stretching the engine rules for."
+ ],
+ "risk_discipline": "qty_lots 0.01 (inside the 0.01-0.05 mandate, default size); ONE plan this cycle (single-position rule: MT5 positions_get [] -> slot FREE, no pending orders); no averaging, no adding, no manual close, no stop move (stop_authority = initial); 1R = 6.0pt = 6.00 USD = 0.304% of the 1971.70 demo balance; maximum_holding_time M15*8 (2h) - if the shelf is not bought in 2 hours the thesis (fast reclaim of a swept floor) is stale and the plan simply ages out; the opposite-side plan (TP-20260921T1347Z SHORT 4354.5-4357.5) is 22pt above the market and dies on this engine pass (its own threshold was 4348.5) - no ledger surgery, no registry edits.",
+ "data_quality_note": "pkg live_days 11, live_ticks 2,179,244, context_days 35, gaps[]; spread 0.13pt = 0.301bps measured on the 14:05Z server tick (live MT5, XAUUSD bid 4332.02 / ask 4332.16); tick rate normal, no abnormal-move flag. run_state/candle_latest.json is STALE (last bar 2026-09-07 12:15Z, bearish engulfing pair) and was ignored - every structure call comes from fresh MT5 bars pulled this cycle (M5/M15/H1/H4/D1) plus the pkg snapshot. Probes are read-only (no orders, no state writes) and are listed under reproducibility: /tmp files baserate_1402Z.py, baserate_1402Z_sweep.py, baserate_1402Z_limit.py, baserate_1402Z_mirror.py, baserate_1402Z_mirror2.py, baserate_1402Z_reclaimlong.py, baserate_1402Z_break.py, baserate_1402Z_retest.py, baserate_1402Z_flushlong.py, baserate_1402Z_deepretest.py, structure_1402Z.py.",
+ "model": "deepseek/deepseek-v4-flash",
+ "prompt_version": "hermes_trader_m15_v1"
+}

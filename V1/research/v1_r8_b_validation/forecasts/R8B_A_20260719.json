@@ -1,0 +1,88 @@
+{
+  "sample_id": "A_20260719",
+  "forecast_id": "R8B_A_20260719",
+  "timestamp": "2026-07-19 00:00:00+00:00",
+  "horizon": 4,
+  "scenario_family": "RANGE",
+  "scenario_alternative": "QUIET",
+  "scenario_abstain": false,
+  "observations": [
+    "Close 4013.975 inside swing-low 4014.045, break_status INSIDE",
+    "State COMPRESSION, event REJECTION, dwell 2 bars",
+    "H4 trend_20 -39.9, MTF agreement CONFLICT",
+    "Cross-market DXY VIX TNX news macro all absent"
+  ],
+  "what_i_know": [
+    "Latest data 2026-07-17 21:59 UTC, close 4013.975",
+    "State COMPRESSION with REJECTION event, dwell 2",
+    "Nearest level swing-low 4014.045, 23 touches",
+    "All H4 analogs remain COMPRESSION at step 4"
+  ],
+  "what_i_do_not_know": [
+    "Cross-market DXY VIX TNX news macro absent",
+    "Weekend gap direction and size at open",
+    "L4 mechanisms derived candidates only",
+    "Forecast time exceeds last price by weekend"
+  ],
+  "evidence": [
+    "COMPRESSION state with contracting M1 ranges 0.035 percentile",
+    "H4 current bar range_percentile 0.07, range contracting",
+    "Price pinned inside 4014.045 after rejection at 4017.9",
+    "Three analogs all COMPRESSION at H=4 step"
+  ],
+  "counter_evidence": [
+    "H4 trend_20 -39.9 and trend_50 -83.6 bearish",
+    "M5 and M15 show range_expanding true",
+    "Recent H4 ranges 43.96, ATR 30.8 high",
+    "MTF agreement CONFLICT across five timeframes"
+  ],
+  "possible_mechanisms": [
+    {"mechanism": "compression_continuation", "status": "POSSIBLE", "why": "COMPRESSION dwell grows, analogs hold at H=4"},
+    {"mechanism": "level_rejection_mean_reversion", "status": "POSSIBLE", "why": "REJECTION event, price pulled to swing-low"},
+    {"mechanism": "trend_continuation", "status": "WEAK", "why": "price inside level, no decisive break yet"},
+    {"mechanism": "weekend_gap_directional", "status": "UNKNOWN", "why": "no cross-market or news data"}
+  ],
+  "primary_scenario": {
+    "scenario": "RANGE",
+    "horizon": 4,
+    "trigger": "Oscillate within 4002-4023 band holding 4014.045",
+    "invalidation": "Decisive close beyond 4014.045 or band"
+  },
+  "alternative_scenario": {
+    "scenario": "QUIET",
+    "horizon": 4,
+    "trigger": "Compression deepens, ranges shrink, no break",
+    "invalidation": "Volatility expansion or decisive level break"
+  },
+  "expected_transition": "COMPRESSION persists as range",
+  "direction_bias": "NO_DIRECTIONAL_EDGE",
+  "time_horizon": "4 hours",
+  "evidence_strength": 0.3,
+  "confidence": 0.35,
+  "uncertainty": 0.7,
+  "confidence_reason": "State and analogs consistent, supports range continuation",
+  "uncertainty_reason": "Cross-market absent, weekend gap unknown, MTF conflict",
+  "invalidation": "Decisive close beyond 4014.045 or outside 4002-4023 band",
+  "change_my_mind": [
+    "Decisive break of 4014.045 swing low on open",
+    "Expansion move beyond 4023 or below 4002",
+    "Any cross-market or news data released"
+  ],
+  "abstain": false,
+  "abstain_reason": "",
+  "questions": {
+    "Q1": "Context states close 4013.975, COMPRESSION, REJECTION, level INSIDE",
+    "Q2": "Weekend gap direction size and cross-market state unknown",
+    "Q3": "COMPRESSION state, analogs H4 COMPRESSION, range contracting",
+    "Q4": "H4 bearish trends, MTF conflict, recent violent ranges",
+    "Q5": "trend_continuation — no decisive level break evidenced",
+    "Q6": "Break of 4014.045 or 4002-4023 band with expansion",
+    "Q7": "false — sufficient context for low-confidence call"
+  },
+  "reasoning_trace": [
+    "Read prompt and context files only",
+    "Assessed state, levels, analogs, MTF, cross-market gaps",
+    "Primary RANGE per COMPRESSION and analog consensus",
+    "Alternative QUIET; DIRECTIONAL tracked via invalidation"
+  ]
+}

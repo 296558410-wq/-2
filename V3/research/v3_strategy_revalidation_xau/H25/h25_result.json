@@ -1,0 +1,112 @@
+{
+ "hypothesis_id": "H25_UST_YIELD_STATE",
+ "frozen_definition": {
+  "ust10y_change_bp_threshold": 5.0,
+  "direction": "inverse",
+  "hold_days": 1,
+  "entry": "close(t+1)",
+  "exit": "close(t+2)"
+ },
+ "target_series": "V3_XAU_SPOT_DAILY (XAU spot)",
+ "counts": {
+  "raw_rows": {
+   "xau": 5186,
+   "ust10y": 3935
+  },
+  "aligned_rows": 3738,
+  "eligible_rows": 3734,
+  "signal_rows": 1158
+ },
+ "effective_n": 1158,
+ "overlap_ratio": 0.309,
+ "stats": {
+  "n": 1158,
+  "mean": 0.143,
+  "median": 1.988,
+  "win_rate": 0.5147,
+  "gross": 165.62,
+  "profit_factor": 1.004,
+  "max_dd": -5227.79
+ },
+ "cost_stress": {
+  "cost_0x": {
+   "n": 1158,
+   "mean_bp": 1.057,
+   "gross_bp": 1224.03,
+   "win_rate": 0.519
+  },
+  "cost_1x": {
+   "n": 1158,
+   "mean_bp": 0.143,
+   "gross_bp": 165.62,
+   "win_rate": 0.5147
+  },
+  "cost_2x": {
+   "n": 1158,
+   "mean_bp": -0.771,
+   "gross_bp": -892.79,
+   "win_rate": 0.506
+  },
+  "cost_3x": {
+   "n": 1158,
+   "mean_bp": -1.685,
+   "gross_bp": -1951.2,
+   "win_rate": 0.5009
+  }
+ },
+ "walk_forward": {
+  "fold1": 1.971,
+  "fold2": 2.743,
+  "fold3": -4.881
+ },
+ "segments": {
+  "2006-2010": {
+   "n": 242,
+   "mean_bp": 0.896,
+   "insufficient": false
+  },
+  "2011-2015": {
+   "n": 251,
+   "mean_bp": 2.222,
+   "insufficient": false
+  },
+  "2016-2020": {
+   "n": 245,
+   "mean_bp": 5.843,
+   "insufficient": false
+  },
+  "2021-2026": {
+   "n": 420,
+   "mean_bp": -4.858,
+   "insufficient": false
+  }
+ },
+ "regime_vol_tercile": {
+  "low": {
+   "n": 382,
+   "mean_bp": -3.921,
+   "insufficient": false
+  },
+  "mid": {
+   "n": 382,
+   "mean_bp": 0.62,
+   "insufficient": false
+  },
+  "high": {
+   "n": 394,
+   "mean_bp": 3.622,
+   "insufficient": false
+  }
+ },
+ "bootstrap_ci95": [
+  -6.351,
+  5.947
+ ],
+ "permutation_p": 0.78681,
+ "t_stat": 0.045,
+ "initial_verdict": "REJECT",
+ "initial_reason": "cost-fragile at 2x",
+ "final_status": "REJECT",
+ "fdr_applied": false,
+ "fdr_note": "only one hypothesis reached the FDR stage in this run; BH-FDR with m=1 is a no-op (decision unchanged) — recorded for completeness"
+}

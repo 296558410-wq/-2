@@ -1,0 +1,58 @@
+{
+  "audit_id": "BB_20260819",
+  "timestamp": "2026-08-19T13:10:00+08:00",
+  "current_state": "TREND (event ACCEPTANCE at t, dwell 4 bars), freshly transitioned from a 10-bar REJECTION phase; ambiguity_rate_8 = 0.5; multi-timeframe agreement = CONFLICT.",
+  "structure": "Price oscillating in a wide recent range (H1 lows ~4323-4335, recent high ~4374). Key reference is swing high 4371.505 (13 touches / 240 bars, 0.25 ATR away), labelled break_status BEYOND. Intraday TFs (M1/M5/M15) show a fresh up-leg into/through 4371.5 with strong close geometry; H1 remains below its 50-bar mean (trend_50 -30.5) and closed 4364.3, below the level. H4 trend metrics are driven by an internally inconsistent current bar (high 4498.2, close 4488.0) that contradicts every lower timeframe (max ~4373.8) and is treated as anomalous/unreliable.",
+  "mechanism": "Live candidate is breakout_pressure: a close beyond swing level 4371.505 by ~0.25 ATR with the newest M5 (close 4370.8, body_ratio 0.98) and M15 (close 4373.2, body_ratio 0.90) bars showing acceptance-style momentum. Failed_breakout is the live counter-candidate because the break margin is thin (0.25 ATR), only M15 confirms beyond the level (M1/M5/H1 closes are still below it), no reclaim pattern has formed yet, and the preceding 10 bars were REJECTION. Candidates only, not asserted (§13).",
+  "primary_scenario": {
+    "scenario": "Breakout acceptance holds: price sustains M5/M15 closes above ~4371.5 and extends the intraday up-leg toward the 4380-4395 zone as TREND continues.",
+    "confidence": 0.35,
+    "horizon": "SHORT_TERM",
+    "trigger": "Next several M5/M15 bars close and hold above 4371.505; M1-M5 momentum stays up (no deep retrace below ~4367); H1 starts to flip its trend_20 positive.",
+    "invalidation": "A M5/M15 close returns inside/below the 4371.505 level (per L4 breakout_pressure invalidation: 'close returns inside the level'), or a clear rejection candle forms at 4371.5-4374."
+  },
+  "alternative_scenario": {
+    "scenario": "Failed breakout: acceptance above 4371.505 fails, price rolls back into the range and re-enters REJECTION, retesting 4362-4355, then the 4354-4348 shelf.",
+    "confidence": 0.3,
+    "horizon": "SHORT_TERM",
+    "trigger": "Failure to hold above 4371.5 within the next few bars, upper-wick rejection at 4371.5-4374, or H1 close below ~4362 confirming the still-negative H1 50-bar drift.",
+    "invalidation": "Sustained acceptance beyond 4371.505 (multiple higher-TF closes beyond the level) per L4 failed_breakout invalidation."
+  },
+  "expected_transition": "Decision point at ~4371.5: either sustained TREND (acceptance holds, up-leg continues intraday) or reversion to REJECTION (failed breakout). Historical analogs with identical t0 (TREND, dwell bucket) diverge immediately (A9594->ROTATION, A19479->NO_DEFINED_STATE->ACCEPTANCE, A29385->REJECTION), so the near-term path is genuinely uncertain; expect an oscillatory resolution around the level rather than a clean extension.",
+  "direction": "UP",
+  "horizon": "SHORT_TERM",
+  "confidence": 0.35,
+  "counter_evidence": [
+    "H1 trend_20 -0.37 and trend_50 -30.52: the H1 timeframe still carries negative 50-bar drift and its 12:00 close (4364.325) sits below the 4371.505 level.",
+    "Break is marginal and timeframe-dependent: only M15 close (4373.165) is beyond 4371.505; M1 (4368.485), M5 (4370.755) and H1 (4364.325) closes are all still below the level, so break_status BEYOND is not confirmed on most TFs.",
+    "H4 current bar (high 4498.235, close 4487.975) is inconsistent with every lower-timeframe bar (max ~4373.8) and with the prior H4 close (4367.045); H4 trend_20/+50 (+106.8/+152.7) are therefore untrustworthy at this snapshot.",
+    "H1 12:00 close (4364.325) and high/low (4373.965/4362.965) do not reconcile with M1/M5/M15 12:00 closes (4368.485/4370.755/4373.165): a timeframe aggregation/alignment inconsistency.",
+    "ambiguity_rate_8 = 0.5 and L6 agreement = CONFLICT; state history shows 10 consecutive REJECTION bars before this young 4-bar TREND.",
+    "Historical analogs (similarity 1.0) diverge at step 4+ (ROTATION / NO_DEFINED_STATE->ACCEPTANCE / REJECTION): no robust forward template.",
+    "Cross-market offers no confirmation: DXY flat (+0.015 over 8) and VIX low/flat (15.72, -0.03); UST10Y unavailable; no news/macro/COT/ETF data present. DXY/VIX are PROXY quality.",
+    "Acceptance event is only ~0.25 ATR beyond the level with high ambiguity; a thin-break rejection is a common failure mode."
+  ],
+  "invalidation": "Directional UP view is invalidated by a M5 or M15 close back below 4371.505 (failed breakout, per L4), especially if followed by a close below ~4362 (H1) confirming the negative H1 drift; sustained acceptance beyond 4371.5 across multiple timeframes invalidates the alternative.",
+  "data_quality_flags": [
+    "H4 current-bar anomaly: high 4498.235 / close 4487.975 contradict all lower-TF bars and prior H4 close; H4 trend metrics excluded from reasoning",
+    "H1 current-bar close (4364.325) inconsistent with M1/M5/M15 12:00 closes; TF aggregation mismatch",
+    "L2 break_status BEYOND is timeframe-dependent (only M15 confirms); DERIVED label treated with caution",
+    "UST10Y: UNKNOWN/absent (STALE_OR_NOT_COVERED); no rates input",
+    "DXY and VIX: PROXY quality (Yahoo, instrument definition UNKNOWN); never treated as DIRECT",
+    "NEWS/MACRO_EVENTS/CFTC_COT/ETF_FLOWS/GLD/GC: absent; mechanism inference limited to price geometry",
+    "ambiguity_rate_8 = 0.5: elevated labelling ambiguity at snapshot",
+    "L4 mechanism entries are DERIVED candidates, not asserted facts"
+  ],
+  "reasoning_trace": [
+    "Read L5 state history: REJECTION (dwell 10) -> TREND (dwell 4) with event ACCEPTANCE; this is a fresh state change, not a mature trend.",
+    "Checked L2: swing high 4371.505, 13 touches/240 bars, 0.25 ATR away, break_status BEYOND but reclaim_status NONE -> breakout unconfirmed.",
+    "Compared 12:00 closes across TFs: M1 4368.485, M5 4370.755, M15 4373.165, H1 4364.325, H4 4487.975 -> H1 and H4 do not reconcile with lower TFs; H4 massively anomalous; excluded H4 from directional reasoning.",
+    "Assessed microstructure: last M5 bar (close 4370.755, body_ratio 0.98, tiny wicks) and last M15 bar (close 4373.165, body_ratio 0.90) are strong bullish bars breaking the level; M1 shows 3 consecutive up bars with expanding range after 8 down -> immediate momentum is up.",
+    "Weighted L6: M1/M5/M15 trend_20 positive, H1 trend_20 -0.37 / trend_50 -30.52 -> intraday up vs higher-TF down conflict; agreement=CONFLICT lowers confidence.",
+    "Evaluated L4 candidates: breakout_pressure has supporting evidence (close beyond level), failed_breakout has none yet but thin margin + young acceptance keeps it live; both kept, breakout_pressure primary.",
+    "Checked L7: DXY flat, VIX low/flat, no UST10Y, no news/macro -> no external confirmation; PROXY quality noted.",
+    "Checked historical analogs: identical t0 states diverge within 4-8 steps -> no reliable forward template; treats expected_transition as oscillatory resolution around 4371.5.",
+    "Conclusion: directional lean UP strictly for the intraday/short-term horizon driven by acceptance momentum, but confidence capped at 0.35 due to TF conflict, data anomalies, 0.5 ambiguity, thin break margin, and divergent analogs; alternative failed-breakout DOWN leg equally plausible.",
+    "Honesty check: context is sufficient to identify a decision point but not to assert a robust direction; confidence reflects genuine uncertainty, not statistical probability."
+  ]
+}

@@ -1,0 +1,57 @@
+{
+  "audit_id": "HB_BLIND_20260903",
+  "timestamp": "2026-09-03T12:00:00Z",
+  "current_state": "Frozen labeler: ROTATION (dwell 11 bars, event NONE, ambiguity_rate_8 0.25). Price ~4426.9 sits 0.12 ATR below a heavily-tested swing-high resistance (4431.485, 41 touches in 240 bars, break_status INSIDE) after a strong multi-hour impulse (H1 trend_20 +71.1; H4 current bar body +58.2, range_percentile 0.955). Immediate M1/M5 microstructure shows a low-body, long-upper-wick rejection bar (M1 body 0.04, upper wick 2.06, range_percentile 0.795) at the level after 7 consecutive up M1 bars.",
+  "structure": "Multi-TF agreement CONFLICT. Momentum alignment: M15/H1/H4 trend_20 strongly positive (+11.2 / +71.1 / +31.5) with price above 20-bar means; M5 trend_20 negative (-8.9). H4 trend_50 -185.0 shows price still far below the longer H4 mean — the rally from the 09-02 low (~4300) is a violent recovery within a larger corrective/downtrend context, not a mature uptrend. Nearest structure: swing high 4431.485 (41 touches — heavy supply, price INSIDE the level); above it the H4 high zone ~4495. Supports: 4424.7-4421.9 (recent M5/M15 swing cluster), 4418.9 (11:15 low), 4406.5 (03:00 H1 low), 4380-4384 (09-02 consolidation).",
+  "mechanism": "Trend-continuation attempt (strong M15/H1 impulse, price inside the active level per L2, higher closes) vs. exhaustion at supply (11-bar ROTATION dwell, last-bar upper-wick rejection, 41-touch level). L4 lists both as DERIVED candidates only — not asserted. Cross-market backdrop mildly supportive but thin: DXY softening (change_32 -0.118), VIX low at 15.38 (complacency), UST10Y unavailable.",
+  "primary_scenario": {
+    "scenario": "Rotation resolves upward: price breaks and holds above the 4431.485 swing high (M15/H1 close beyond the level), extending the H1/H4 impulse toward the 4445-4495 zone (H4 current-bar high area), consistent with the trend_continuation candidate and analog A28060 (ROTATION -> EXPANSION).",
+    "confidence": 0.45,
+    "horizon": "INTRADAY",
+    "trigger": "M15/H1 close above 4431.485 with follow-through (level break_status flips from INSIDE to BREAKED and the next M5/M15 bars hold above the level).",
+    "invalidation": "M15/H1 close back below ~4424.7 and failure to hold the level; decisive loss of 4421.9/4418.9 swing cluster."
+  },
+  "alternative_scenario": {
+    "scenario": "Exhaustion rejection at the 41-touch swing high: 4431.485 holds, price rolls over into a pullback toward 4406.5 then 4380-4384 (H1 lows / 09-02 base), consistent with analog A35547 (ROTATION -> REJECTION -> DECELERATION) and the immediate M1 rejection candle.",
+    "confidence": 0.35,
+    "horizon": "INTRADAY",
+    "trigger": "M5/M15 print a lower high below 4431.485 followed by an M15 close below 4424.7 (loss of the breakout zone).",
+    "invalidation": "Price reclaims and holds above 4431.485 with a strong M15/H1 close."
+  },
+  "expected_transition": "ROTATION -> TREND (up) on a confirmed break of 4431.485; ROTATION -> REJECTION if the level holds and price loses 4424.7-4421.9; otherwise continued ROTATION within the 4421.9-4431.5 range. Near-term bias: a pause/small pullback first (M1 upper-wick rejection after 7 up bars), then resolution at the level.",
+  "direction": "UP",
+  "horizon": "INTRADAY",
+  "confidence": 0.45,
+  "counter_evidence": [
+    "M1 12:00 bar: body 0.04 with 2.06 upper wick (range_percentile 0.795) after 7 consecutive up bars — immediate rejection/absorption right under the level.",
+    "L2 swing high 4431.485 has 41 touches in 240 bars — heavily defended supply; price only 0.12 ATR below it.",
+    "Frozen labeler state ROTATION with dwell 11 bars and zero transitions in last 8 — no confirmed trend at the decision point; ambiguity_rate 0.25.",
+    "Multi-TF CONFLICT: M5 trend_20 -8.9 vs H1 +71.1; H4 trend_50 -185.0 (price far below longer H4 mean) — recovery not yet a repaired uptrend.",
+    "Historical analogs diverge: A28060 -> EXPANSION, A32384 -> TREND -> ROTATION, A35547 -> REJECTION -> DECELERATION — no consensus.",
+    "Cross-TF current-bar inconsistency: M1 close 4426.9 vs M15 4432.4 vs H1 4443.9 vs H4 4485.2 — higher-TF 'current' bars appear to include data beyond the 12:00:00 as_of (per-TF snapshot skew); their strong bullish closes may overstate the breakout.",
+    "Macro catalysts absent: no NEWS/MACRO_EVENTS/UST10Y (UNKNOWN); VIX 15.38 low (complacency); DXY softening is mild (-0.12 over 32 bars)."
+  ],
+  "invalidation": "Primary bullish view invalidated by a confirmed rejection: M15/H1 close below ~4424.7 followed by loss of the 4421.9/4418.9 swing cluster, which opens 4406.5-4384 and flips the mechanism to exhaustion. Conversely, a decisive M15/H1 close above 4431.485 invalidates the bearish alternative.",
+  "data_quality_flags": [
+    "L1 price: RAW_GEOMETRY + DERIVED (DIRECT-derived); very large bar counts (M1 592k) available.",
+    "L2 levels: DERIVED (causal pivot swing) — 4431.485 swing high, 41 touches, break_status INSIDE.",
+    "L3: OBSERVED frozen C1 labeler (ROTATION) + DERIVED state_v2/event_at_t.",
+    "L4 mechanisms: DERIVED candidates only, explicitly not asserted as fact.",
+    "L5 state history: DERIVED; dwell 11; transitions_last_8 empty.",
+    "L6 multi-TF: DERIVED; agreement CONFLICT; timeframes never merged into one direction.",
+    "L7: DXY and VIX are PROXY (Yahoo, instrument definition UNKNOWN) — never DIRECT; UST10Y (^TNX) UNKNOWN/STALE_OR_NOT_COVERED; GLD/GC/CFTC_COT/ETF_FLOWS/NEWS/MACRO absent and not fabricated.",
+    "Cross-TF integrity: current bars inconsistent across timeframes (M1 4426.9 vs H4 4485.2) — likely per-TF snapshot skew; higher-TF bars weighted lower.",
+    "forbidden_included false — no future information in context."
+  ],
+  "reasoning_trace": [
+    "Impulse context: H1 trend_20 +71.1 and H4 current bar (range_percentile 0.955, body +58.2) show a strong recovery from the 09-02 low ~4300; M15/H1 trend_20 strongly positive.",
+    "But H4 trend_50 -185.0 and the H4 history (4302.7 low at 09-02 00:00) frame this as a sharp rebound within a larger downtrend — momentum up, longer structure not yet repaired.",
+    "Price is 0.12 ATR under the 4431.485 swing high (41 touches) — a high-information decision point; break_status INSIDE means the level is being actively tested now.",
+    "Immediate microstructure: 7 consecutive up M1 bars into a long-upper-wick, near-zero-body bar at 12:00 — classic short-term rejection at resistance; expect at least a pause before any break.",
+    "Frozen labeler: ROTATION dwell 11, no transitions — direction not confirmed by the system; mechanism candidates split between continuation and exhaustion.",
+    "Cross-market: DXY softening (PROXY) mildly supports gold; VIX low = calm; UST10Y missing so the dominant macro driver is unknown — caps confidence.",
+    "Historical analogs give no consensus (expansion / trend-then-rotation / rejection-deceleration) — consistent with a pivotal ROTATION state.",
+    "Weighing impulse strength and level proximity vs level density and the immediate rejection candle: lean UP on a break of 4431.485 with modest confidence; rejection toward 4406-4384 is a live alternative.",
+    "Cross-TF OHLC inconsistency in current bars (snapshot skew) lowers the weight given to the H1/H4 bullish closes, keeping confidence at 0.45."
+  ]
+}

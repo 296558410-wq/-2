@@ -1,0 +1,69 @@
+{
+ "forecast_id": "HERMES_PRICE_ONLY_CTX_20260729T120000Z",
+ "timestamp": "2026-07-29T12:00:00Z",
+ "current_state": "XAUUSD is trading near 4028 as of 12:00 UTC. On M1, price recovered into the close with an above-average range (percentile 0.77) after a quiet, low-volatility consolidation (~4026 area). On M15 and H1, the 12:00 bar shows a recovery off a local low near 4024.7 (long lower wick, close near the top), rebounding from a softer session that peaked near 4047 around 08:00 UTC. The H4 'current' bar, however, carries a close of 4004.7 and a low of 3995.7 that is not corroborated by any H1 bar in the window, making the cross-timeframe picture internally inconsistent.",
+ "dominant_structure": "Lower-timeframe recovery within a broader intraday pullback from the 4047-4048 high: H1 closes stepped down from ~4044 to ~4027 across 08:00-11:00, then price firmed off 4024-4026 into 4028-4032. The H4 series shows a bearish macro-bar (lower high from 4047) but its current bar cannot be reconciled with M1/H1 geometry, so the dominant structure at H4 is not reliably named.",
+ "current_pressure": "Directional pressure is weak and mixed: a downward drift in the H1 sequence is being met by an intraday bid/rejection near 4024-4026 (long lower wicks on M15/H1). Volatility pressure is contracting on M1 (ATR ~0.95) and moderate on H1 (ATR ~11.7, vol 0.0019). No liquidity/volume proxy is available in this price-only variant, so liquidity-pressure claims are UNKNOWN and not asserted.",
+ "primary_scenario": {
+  "scenario": "Intraday range/consolidation between ~4024 and ~4036 with no directional resolution; price continues to oscillate inside the recent band, respecting the 4024-4026 bid and the 4036-4047 supply zone.",
+  "confidence": 0.25,
+  "horizon": "INTRADAY",
+  "trigger": "M1/M5 continue to print small-bodied, sub-median-range bars and repeatedly hold above 4024-4026 while failing to close above 4036.",
+  "invalidation": "A decisive close above 4036 or below 4024 with expansion would break the range; the scenario is also invalid if the H4 inconsistency is resolved such that structure implies a clear trend."
+ },
+ "alternative_scenario": {
+  "scenario": "Downside continuation: the incomplete H4 bearish bar (close 4004.7, low 3995.7) is genuine, meaning the pullback extends toward the 3995-4005 zone and the intraday bounce is merely a retracement within a larger down-move from 4047.",
+  "confidence": 0.2,
+  "horizon": "INTRADAY",
+  "trigger": "Price breaks and holds below 4024, then loses 4010 with expanding range on M15/H1.",
+  "invalidation": "A reclaim of 4036 or a confirmed upward close sequence would negate the down-move reading."
+ },
+ "third_scenario": null,
+ "direction_bias": "NO_DIRECTIONAL_EDGE",
+ "expected_state_transition": "From low-volatility recovery/chop toward either a re-test of the 4036 supply zone or a break below 4024 depending on which bar geometry is authoritative; not resolvable at this confidence from price-only data.",
+ "time_horizon": "INTRADAY",
+ "confidence": 0.2,
+ "supporting_evidence": [
+  "M1 12:00 bar closed 4028.1 near its high with range_percentile 0.77, showing a short-term bid into the close.",
+  "M15 12:00 bar has a long lower wick (2.65) with a negligible upper wick and closed near the top, indicating rejection of the 4024.7 low.",
+  "H1 12:00 bar recovered from 4024.7 to close 4032.6 with a long lower wick, confirming support/rejection around 4024-4026.",
+  "M1 ATR contracted to ~0.95 and volatility to 0.00016, consistent with a quiet consolidation regime."
+ ],
+ "counter_evidence": [
+  "The H4 'current' bar (close 4004.655, low 3995.655) is irreconcilable with the M1/M5/M15/H1 closes (4027.9-4032.6) at the same timestamp - the data are self-contradictory.",
+  "No H1 bar in the 08:00-12:00 window prints a low near 3995, so the H4 low is unsupported by the sub-timeframe record.",
+  "The H1 sequence 10:00-11:00 closed lower (4032.4 -> 4027.3), showing a persistent intraday down-drift against the recovery read.",
+  "Variant note states this is price-only: no structure, behaviour, mechanism, state history, MTF or cross-market data, so pressure/mechanism claims cannot be verified.",
+  "H1 07:00-08:00 printed a strong up-bar then rolled over (4044.6 high, close 4043.6 -> 4027.3), leaving supply overhead near 4036-4047."
+ ],
+ "trigger": "No actionable trigger is asserted given abstention; the immediate watch is 4024 and 4036 as the two-sided boundaries.",
+ "invalidation": "The forecast (abstention) is invalidated only if the underlying data conflict is resolved; a corrected/reconciled H4 series (or confirmation that 3995 is a real low) would permit a real directional forecast.",
+ "change_my_mind": [
+  "Show a consistent H4 bar for 2026-07-29 12:00 that reconciles with M1/H1 (close ~4028-4032): then a neutral range/consolidation forecast with modest confidence is supportable.",
+  "Confirm the 3995-4005 low as a genuine H4 print with matching H1 sub-bar: then a downside-continuation bias (toward 3995-4000) would be favored.",
+  "Provide any volume, order-flow, or higher-timeframe structure data: would materially upgrade or downgrade directional confidence."
+ ],
+ "abstain": true,
+ "abstain_reason": "The context is self-contradictory at the highest timeframe shown: the H4 'current' bar closes at 4004.7 with a low of 3995.7 while M1/M5/M15/H1 at the same 12:00 timestamp close near 4028-4032, and no H1 bar supports a print near 3995. Per the rules, a self-contradictory or insufficient context requires abstention rather than guessing. Additionally, this price-only variant explicitly omits the structure/behaviour/mechanism information that questions B-D ask for, so directional and scenario confidence cannot exceed a guess.",
+ "reasoning_trace": [
+  "Read the prompt: ten questions, rules, output schema, abstention capability.",
+  "Read CTX_PO_20260729T120000Z: price-only L1 klines M1/M5/M15/H1/H4.",
+  "M1/M5/M15/H1 all agree price is ~4028-4032 at 12:00 UTC with an intraday bounce off ~4024.7.",
+  "H4 current bar shows close 4004.655 and low 3995.655, contradicting every other timeframe at the same timestamp.",
+  "Cross-checked: no H1 bar in the 08:00-12:00 window approaches 3995; H4 low is uncorroborated.",
+  "Conclusion: internal contradiction + insufficient non-price evidence -> abstain (abstain=true), direction NO_DIRECTIONAL_EDGE, low confidence.",
+  "Documented per-question reasoning and explicit change-my-mind conditions for future confirmation."
+ ],
+ "questions": {
+  "A": "At 12:00 UTC XAUUSD is ~4028-4032. Intraday sequence: price peaked near 4047 at 08:00, drifted lower through 11:00 to ~4027, then bounced off 4024-4026 into 4028-4032 with a strong close on M1 and long lower wicks on M15/H1. Low-volatility consolidation on M1. However, the H4 current bar (close 4004.7, low 3995.7) cannot be reconciled with the intraday record, so 'what is happening' is only reliably established on sub-H4 timeframes.",
+  "B": "On M1-M15-H1 the prevailing structure is an intraday pullback from 4047 that has found a bid near 4024-4026 (long lower wicks, closes near highs), i.e., lower-timeframe recovery within a broader down-drag. On H4 the named structure would be a bearish rejection bar, but its data are internally inconsistent, so the dominant structure at H4 is UNDEFINED / unreliable.",
+  "C": "Directional pressure: mildly two-sided - sellers dominated 09:00-11:00, buyers are defending 4024-4026 into 12:00. Volatility pressure: contracting at M1 (ATR 0.95, vol 0.00016), moderate at H1 (ATR 11.7, vol 0.0019). Liquidity-proxy pressure: UNKNOWN - no volume/order-flow data exist in this price-only variant; no claim made.",
+  "D": "Candidate mechanism 1 - support/rejection at a prior low (4024-4026 acting as intraday floor): supported by long lower wicks and closes near highs on M15/H1. Candidate mechanism 2 - supply overhead from the 4044-4047 high capping rallies: supported by the failed push near 4036-4037 in H1. Candidate mechanism 3 - an H4-level down-leg toward 3995-4005: NOT supported by the intraday record and contradicted by the inconsistent H4 bar; treated as data artifact until confirmed.",
+  "E": "Strongest supporting observations: (1) M1 close near its high with elevated range_percentile 0.77; (2) M15/H1 long lower wicks rejecting 4024.7; (3) H1 12:00 bar recovering 4024.7 -> 4032.6; (4) consistent 4027-4032 pricing across M1/M5/M15/H1.",
+  "F": "Counter-evidence actively searched: the H4 current bar (close 4004.7, low 3995.7) contradicts all other timeframes at the same timestamp; no H1 sub-bar prints a low near 3995, so the H4 bearish reading is unsupported; H1 closed lower from 4032.4 to 4027.3 across 10:00-11:00, arguing for continued weakness rather than a base; the price-only variant supplies no volume, flow, or cross-market confirmation of any recovery thesis.",
+  "G": "Primary scenario (low confidence): continued intraday range/consolidation between ~4024 and ~4036, price oscillating inside the band with no clear breakout, given the two-sided push-pull seen on sub-H4 timeframes.",
+  "H": "Alternative scenarios: (1) downside continuation toward 3995-4005 if the H4 bearish bar is genuine and 4024 is broken with expansion; (2) upside resolution above 4036 toward a re-test of 4044-4047 if the intraday bid strengthens and the H4 contradiction is resolved in favor of the ~4028-4032 reading.",
+  "I": "Invalidation: if the H4/multi-timeframe data conflict is not resolved, no directional forecast is valid (this is why abstention applies). For the primary range scenario specifically: a confirmed close below 4024 or above 4036 with range expansion invalidates it. The alternative down-scenario is invalidated if 4036 is reclaimed with a confirmed up-close sequence.",
+  "J": "Evidence that would change my mind: (1) a reconciled H4 bar for 12:00 UTC consistent with M1/H1 (~4028-4032) would support a modest-confidence neutral/range forecast; (2) confirmation of the 3995-4005 low via matching H1 sub-bars would flip me toward a downside-continuation bias; (3) any volume/order-flow or higher-timeframe structure data would let me upgrade from NO_DIRECTIONAL_EDGE to a real directional call."
+ }
+}

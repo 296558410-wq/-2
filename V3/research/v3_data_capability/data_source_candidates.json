@@ -1,0 +1,128 @@
+{
+ "schema": "v3_data_source_candidates/1",
+ "ts_utc": "2026-09-25T02:06:04.237377+00:00",
+ "count": 17,
+ "hard_constraint": "China intranet + no VPN/proxy/relay + no manual copy + automatable",
+ "search_bound": "<=20 candidates; stop early when the P0 set is conclusively blocked",
+ "candidates": [
+  {
+   "source_id": "NBS_API",
+   "name": "国家统计局 easyquery API",
+   "category": "CN_OFFICIAL",
+   "gap_priority": "P0_MACRO",
+   "endpoint": "https://data.stats.gov.cn/easyquery.htm?m=QueryData&dbcode=hgyd&rowcode=zb&colcode=sj&wds=%5B%5D&dfwds=%5B%5D&k1=1700000000000"
+  },
+  {
+   "source_id": "NBS_SITE",
+   "name": "国家统计局网站",
+   "category": "CN_OFFICIAL",
+   "gap_priority": "P0_MACRO",
+   "endpoint": "https://www.stats.gov.cn/"
+  },
+  {
+   "source_id": "PBOC_SITE",
+   "name": "中国人民银行",
+   "category": "CN_OFFICIAL",
+   "gap_priority": "P0_MACRO",
+   "endpoint": "http://www.pbc.gov.cn/"
+  },
+  {
+   "source_id": "SAFE_SITE",
+   "name": "国家外汇管理局",
+   "category": "CN_OFFICIAL",
+   "gap_priority": "P0_MACRO",
+   "endpoint": "https://www.safe.gov.cn/"
+  },
+  {
+   "source_id": "CHINABOND",
+   "name": "中国债券信息网（中债收益率曲线）",
+   "category": "CN_OFFICIAL",
+   "gap_priority": "P1_CROSS",
+   "endpoint": "https://www.chinabond.com.cn/"
+  },
+  {
+   "source_id": "SGE_SITE",
+   "name": "上海黄金交易所",
+   "category": "CN_OFFICIAL",
+   "gap_priority": "P0_GOLD",
+   "endpoint": "https://www.sge.com.cn/"
+  },
+  {
+   "source_id": "SGE_QUOTES",
+   "name": "上金所行情页",
+   "category": "CN_OFFICIAL",
+   "gap_priority": "P0_GOLD",
+   "endpoint": "https://www.sge.com.cn/sjzx/mrhq"
+  },
+  {
+   "source_id": "SHFE_DAILY",
+   "name": "上海期货交易所 日行情数据",
+   "category": "CN_OFFICIAL",
+   "gap_priority": "P0_GOLD",
+   "endpoint": "https://www.shfe.com.cn/data/dailydata/kx/kx20260924.dat"
+  },
+  {
+   "source_id": "SHFE_SITE",
+   "name": "上海期货交易所",
+   "category": "CN_OFFICIAL",
+   "gap_priority": "P0_GOLD",
+   "endpoint": "https://www.shfe.com.cn/"
+  },
+  {
+   "source_id": "CFFEX",
+   "name": "中国金融期货交易所",
+   "category": "CN_OFFICIAL",
+   "gap_priority": "P1_CROSS",
+   "endpoint": "https://www.cffex.com.cn/"
+  },
+  {
+   "source_id": "CHINAMONEY",
+   "name": "中国外汇交易中心 CFETS",
+   "category": "CN_OFFICIAL",
+   "gap_priority": "P1_CROSS",
+   "endpoint": "https://www.chinamoney.com.cn/"
+  },
+  {
+   "source_id": "SINA_QUOTE",
+   "name": "新浪财经 现货黄金报价",
+   "category": "CN_COMMERCIAL",
+   "gap_priority": "P0_GOLD",
+   "endpoint": "https://hq.sinajs.cn/list=hf_XAU"
+  },
+  {
+   "source_id": "SINA_KLINE",
+   "name": "新浪 全球期货历史K线",
+   "category": "CN_COMMERCIAL",
+   "gap_priority": "P0_GOLD",
+   "endpoint": "https://stock2.finance.sina.com.cn/futures/api/jsonp.php/var%20_XAU/GlobalFuturesService.getGlobalFuturesDailyKLine?symbol=XAU"
+  },
+  {
+   "source_id": "EM_KLINE_XAU",
+   "name": "东方财富 K线 (黄金 secid 探测)",
+   "category": "CN_COMMERCIAL",
+   "gap_priority": "P0_GOLD",
+   "endpoint": "https://push2his.eastmoney.com/api/qt/stock/kline/get?secid=133.XAU&fields1=f1,f2,f3&fields2=f51,f53&klt=101&fqt=1&end=20500101&lmt=120"
+  },
+  {
+   "source_id": "EM_KLINE_GC",
+   "name": "东方财富 K线 (COMEX金 secid 探测)",
+   "category": "CN_COMMERCIAL",
+   "gap_priority": "P0_GOLD",
+   "endpoint": "https://push2his.eastmoney.com/api/qt/stock/kline/get?secid=101.GC00Y&fields1=f1,f2,f3&fields2=f51,f53&klt=101&fqt=1&end=20500101&lmt=120"
+  },
+  {
+   "source_id": "TX_KLINE",
+   "name": "腾讯 黄金K线",
+   "category": "CN_COMMERCIAL",
+   "gap_priority": "P0_GOLD",
+   "endpoint": "https://web.ifzq.gtimg.cn/appstock/app/kline/mkline?param=hf_XAU,m5,,320"
+  },
+  {
+   "source_id": "TX_QUOTE",
+   "name": "腾讯 行情报价",
+   "category": "CN_COMMERCIAL",
+   "gap_priority": "P0_GOLD",
+   "endpoint": "https://qt.gtimg.cn/q=hf_XAU"
+  }
+ ]
+}

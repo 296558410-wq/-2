@@ -1,0 +1,161 @@
+{
+  "schema": "strategy_lifecycle_database/1",
+  "code_commit": "2b6a14d454ff6130661e21ef490d03169bab25e1",
+  "note": "Only V1_OLD and V1_NEW have real closed trades. V2/V3 = 0 executed trades.",
+  "systems": {
+    "V1_OLD": {
+      "strategy_provenance": "Hermes LLM plan engine (candidate, PIT-unverifiable early inputs)",
+      "execution_mode": "MT5_DEMO",
+      "magic": 90002,
+      "epoch_start": "2026-09-07T11:46:00Z",
+      "reset_boundary": "2026-09-23T23:39:46Z",
+      "epoch_end": "2026-09-28T03:49:17+00:00",
+      "performance": {
+        "n_closed": 109,
+        "n_win": 48,
+        "win_rate": 0.4404,
+        "net_after_cost": -42.92,
+        "net_before_cost": -20.43,
+        "cost_total": -22.49,
+        "mean_after": -0.394,
+        "median_after": -1.78,
+        "stdev_after": 12.381,
+        "entry_min": "2026-09-07T16:11:21+00:00",
+        "entry_max": "2026-09-28T03:49:17+00:00",
+        "age_hours_max": 357.34
+      },
+      "age_buckets": {
+        "0-6h": {
+          "n": 5,
+          "net": 7.45,
+          "wins": 1,
+          "win_rate": 0.2
+        },
+        "0-24h": {
+          "n": 10,
+          "net": -9.96,
+          "wins": 3,
+          "win_rate": 0.3
+        },
+        "0-48h": {
+          "n": 20,
+          "net": -44.81,
+          "wins": 10,
+          "win_rate": 0.5
+        },
+        "0-72h": {
+          "n": 6,
+          "net": 29.31,
+          "wins": 4,
+          "win_rate": 0.667
+        },
+        "0-120h": {
+          "n": 14,
+          "net": 92.1,
+          "wins": 9,
+          "win_rate": 0.643
+        },
+        "0-240h": {
+          "n": 20,
+          "net": -58.37,
+          "wins": 8,
+          "win_rate": 0.4
+        },
+        ">240h": {
+          "n": 33,
+          "net": -53.03,
+          "wins": 13,
+          "win_rate": 0.394
+        },
+        "0-12h": {
+          "n": 1,
+          "net": -5.61,
+          "wins": 0,
+          "win_rate": 0.0
+        }
+      }
+    },
+    "V1_NEW": {
+      "strategy_provenance": "BASELINE_CONTROL (not_hermes_alpha=true) - control arm",
+      "execution_mode": "MT5_DEMO",
+      "magic": 90011,
+      "epoch_start": "2026-09-28T12:33:29Z",
+      "epoch_end": "2026-10-02T04:48:02+00:00",
+      "performance": {
+        "n_closed": 32,
+        "n_win": 12,
+        "win_rate": 0.375,
+        "net_after_cost": -17.86,
+        "net_before_cost": -11.44,
+        "cost_total": -6.42,
+        "mean_after": -0.558,
+        "median_after": -6.995,
+        "stdev_after": 10.931,
+        "entry_min": "2026-09-28T18:35:14+00:00",
+        "entry_max": "2026-10-02T04:48:02+00:00",
+        "age_hours_max": 88.24
+      },
+      "age_buckets": {
+        "0-12h": {
+          "n": 3,
+          "net": 15.54,
+          "wins": 2,
+          "win_rate": 0.667
+        },
+        "0-24h": {
+          "n": 1,
+          "net": 8.52,
+          "wins": 1,
+          "win_rate": 1.0
+        },
+        "0-48h": {
+          "n": 6,
+          "net": -8.21,
+          "wins": 2,
+          "win_rate": 0.333
+        },
+        "0-72h": {
+          "n": 14,
+          "net": 21.96,
+          "wins": 6,
+          "win_rate": 0.429
+        },
+        "0-120h": {
+          "n": 8,
+          "net": -55.67,
+          "wins": 1,
+          "win_rate": 0.125
+        }
+      }
+    },
+    "V2_PAPER_SHADOW": {
+      "strategy_provenance": "reference_rules placeholder (signal_from_agents=false)",
+      "execution_mode": "PAPER_LOCAL",
+      "magic": 90003,
+      "n_decision_rows": 1666,
+      "n_executed": 0,
+      "performance": null,
+      "verdict": "NOT_EVALUABLE (0 executed trades)"
+    },
+    "V3_CALIBRATION": {
+      "strategy_provenance": "V3 research (alpha discovery)",
+      "execution_mode": "DISABLED",
+      "performance": null,
+      "verdict": "NOT_EVALUABLE (execution disabled, 0 trades)"
+    }
+  },
+  "ledger_verification": {
+    "ledger_fills": 32,
+    "ledger_closes": 32,
+    "ledger_pnls": 32,
+    "ledger_pnl_net_sum": -11.44
+  },
+  "input_hashes": {
+    "v1_trade_db": "C:\\AIQuant\\research\\hermes\\audit\\hermes_alpha_drift_pit\\V1_HERMES_TRADE_DATABASE.jsonl",
+    "v1_upgrade_ledger": "C:\\AIQuant\\research\\hermes\\trader_v1\\v1_upgrade\\ledger\\v1_upgrade_ledger.jsonl",
+    "v2_trade_db": "C:\\AIQuant\\research\\hermes\\audit\\hermes_alpha_drift_pit\\V2_HERMES_TRADE_DATABASE.jsonl",
+    "v2_ledger": "C:\\AIQuant\\research\\hermes\\trader_v2\\ledger\\hermes_v2_ledger.jsonl",
+    "v1_run_meta": "C:\\AIQuant\\research\\hermes\\trader_v1\\run_state\\RUN_META.json",
+    "archive_manifest": "C:\\AIQuant\\archive\\v1_pre_reset_20260923_233741\\MANIFEST.json"
+  }
+}

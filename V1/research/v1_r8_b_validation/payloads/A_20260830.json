@@ -1,0 +1,105 @@
+{
+ "sample_id": "A_20260830",
+ "horizon": 4,
+ "scenario_family": "DIRECTIONAL",
+ "scenario_alternative": "RANGE",
+ "scenario_abstain": false,
+ "forecast_id": "R8B_A_20260830",
+ "timestamp": "2026-08-30T00:00:00Z",
+ "observations": [
+  "close 4450.065 beyond swing low 4452.855 by 0.202 ATR",
+  "trend_20 negative on all five timeframes; H4 -204.42",
+  "state REJECTION dwell 3, event NONE, ambiguity 0.5",
+  "H4 crash bar 137.62 range at 100th percentile"
+ ],
+ "what_i_know": [
+  "price broke below 10-touch swing low; reclaim NONE",
+  "H1 eight consecutive down bars; H1/H4 contracting",
+  "M1/M5/M15 range_expanding true at latest close",
+  "all cross-market series absent or stale"
+ ],
+ "what_i_do_not_know": [
+  "whether marginal break sustains or fails",
+  "weekend gap direction at Sunday reopen",
+  "news or macro catalysts; all absent",
+  "analog step-4 states disagree: TREND REJECTION COMPRESSION"
+ ],
+ "evidence": [
+  "close beyond level; break_status BEYOND; reclaim NONE",
+  "L6 AGREE; all timeframes negative trend_20",
+  "H1 consecutive_down 8; M1 range expanding",
+  "analog A26729 REJECTION to TREND at step 4"
+ ],
+ "counter_evidence": [
+  "break marginal at 0.202 ATR on 10-touch level",
+  "REJECTION state with event NONE; ambiguity 0.5",
+  "H1/H4 range_contracting; H4 range percentile 0.13",
+  "analogs A30739 A35153 persist or compress"
+ ],
+ "possible_mechanisms": [
+  {
+   "mechanism": "breakout_pressure",
+   "status": "SUPPORTED",
+   "why": "close beyond level by 0.202 ATR"
+  },
+  {
+   "mechanism": "failed_breakout",
+   "status": "POSSIBLE",
+   "why": "no reclaim; break marginal"
+  },
+  {
+   "mechanism": "post-impulse exhaustion",
+   "status": "WEAK",
+   "why": "contraction after 137-point crash bar"
+  },
+  {
+   "mechanism": "weekend-gap continuation",
+   "status": "UNKNOWN",
+   "why": "no cross-market or news data"
+  }
+ ],
+ "primary_scenario": {
+  "scenario": "DIRECTIONAL",
+  "horizon": 4,
+  "trigger": "sustained acceptance below 4449.135 with expanding range",
+  "invalidation": "close reclaims 4452.855"
+ },
+ "alternative_scenario": {
+  "scenario": "RANGE",
+  "horizon": 4,
+  "trigger": "oscillation 4449-4466 around broken level",
+  "invalidation": "decisive break beyond 4445 or 4466"
+ },
+ "expected_transition": "REJECTION to TREND or COMPRESSION",
+ "direction_bias": "DOWN",
+ "time_horizon": "4 bars",
+ "evidence_strength": 0.4,
+ "confidence": 0.38,
+ "uncertainty": 0.58,
+ "confidence_reason": "momentum and structure agree down; break marginal",
+ "uncertainty_reason": "ambiguity 0.5; cross-market absent; analogs disagree",
+ "invalidation": "close back above 4452.855",
+ "change_my_mind": [
+  "M15 close reclaims 4452.855",
+  "M1/M5 contraction without new lows",
+  "sustained close below 4445 expanding",
+  "positive DXY or macro data appears"
+ ],
+ "abstain": false,
+ "abstain_reason": "sufficient data despite explicit ambiguity",
+ "questions": {
+  "Q1": "all TF negative trend_20; break beyond 4452.855; REJECTION dwell 3",
+  "Q2": "break validity, weekend gap, catalysts; cross-market absent",
+  "Q3": "break beyond level, eight down bars, expanding M1 range",
+  "Q4": "marginal 0.202 ATR break; contraction; analogs persist",
+  "Q5": "breakout_pressure continuation only candidate, not fact",
+  "Q6": "reclaim 4452.855 or contraction without new lows",
+  "Q7": "false; ambiguous but sufficient, abstain unnecessary"
+ },
+ "reasoning_trace": [
+  "confirmed all-TF negative trend and break beyond level",
+  "weighed marginal break and 10-touch level as counter",
+  "analogs split; momentum chosen over ambiguity",
+  "low confidence; RANGE alternative remains viable"
+ ]
+}

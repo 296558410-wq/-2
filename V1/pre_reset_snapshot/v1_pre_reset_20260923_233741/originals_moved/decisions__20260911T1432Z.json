@@ -1,0 +1,98 @@
+{
+ "cycle": "2026-09-11T14:32Z",
+ "symbol": "XAUUSD",
+ "decision_id": "DEC-2026-09-11T14:32Z",
+ "utc_ts": "2026-09-11T14:32Z",
+ "generated_utc": "2026-09-11T14:32Z",
+ "decision": "SHORT",
+ "confidence": 0.57,
+ "bias": "SHORT-lean 0.57 - with-trend fade: D1 close < MA20 4462.60 (struct down, RSI 32.3), H4 close 4372.03 < MA50 4393.83, and price just got rejected at 4402.52. Price 4372 is retesting the BROKEN intraday MA cluster (M15 MA200 4373.46 / H1 MA50 4373.36 / H4 MA20 4375.64) from below -> sell the retest into 4374-4380, thesis void on a stand back above the 4385.33 swing high.",
+ "opportunity": "retrace_fade_at_broken_ma_cluster",
+ "opportunity_mechanism": "XAUUSD 12:00Z data-spike swept 4292.60 then V-recovered +110pt to a fresh high 4402.52 (13:45Z) which tagged the HTF MA resistance cluster (H4 MA50 4393.83 / H1 MA200 4396.83 / round 4400). The 14:00Z M15 rejected there hard (bearish engulf O4401.36 H4402.27 L4381.91 C4383.23) and 14:15-14:30Z continued lower (highs 4385.33->4375.71, lows 4374.49->4371.15). Price 4372 now sits right under the broken intraday MA cluster (M15 MA200 4373.46 / H1 MA50 4373.36 / H4 MA20 4375.64) which flips to resistance - classic retest-fade with HTF (D1<MA20, H4<MA50). Sell the retest, SL above the swing high, targets the liquidity below: 4359.3 (M15 MA20) / 4345.9 (M15 MA50) / 4337.0 (prior H4/H1 low 4336.62).",
+ "mtf_agreement": "conflict",
+ "state_summary": "XAUUSD live mid 4371.53 (pkg m15_live, spread 0.32bps, quote_source=quote_latest, tick 159/min; MT5-direct probe bid4372.03/ask4372.16 mid4372.09, spread0.30bps). data_quality ok (live_days5, live_ticks937495, context_days29, gaps[]). FLAT: broker POSITIONS 0 / ORDERS 0 (single-position slot free). MT5-true MAs: D1 close<MA20 4462.60 (struct down, RSI 32.3, er 0.354); H4 close 4372.03 vs MA20 4375.64 / MA50 4393.83 / MA200 4366.27 (range er 0.075); H1 close 4372.03 < MA50 4373.36 > MA20 4339.93 < MA200 4396.83; M15 close 4372.03 < MA200 4373.46 > MA20 4359.27 > MA50 4345.95. Structure: 4292.60 sweep -> +110pt V-recovery -> 4402.52 peak rejected -> retrace to 4372 pressing the broken MA cluster.",
+ "data_note": "state_package parquet OHLC still diverges from the MT5 broker feed (pkg m15 last_close 4338.42 vs broker ~4372, ~-34pt gap): triggers are evaluated on pkg.m15_live (quote_latest = broker-consistent) and structure/MA levels are taken from MT5 server bars (probe). Prior plan TP-20260911T1417Z (zone 4391-4400) is now stale (price left the setup downward) and will be cancelled by the engine; this cycle re-anchors lower onto the broken MA cluster.",
+ "m15_change": "vs 14:17Z (mid ~4378.2): -6.6pt. Latest M15 (srv->Z): 16:45srv(13:45Z) O4394.91 H4402.52 L4387.15 C4401.71 (peak); 17:00srv(14:00Z) O4401.36 H4402.27 L4381.91 C4383.23 (bearish engulf / top rejected); 17:15srv(14:15Z) O4382.90 H4385.33 L4374.49 C4375.30 (lower high); 17:30srv(14:30Z, forming) O4375.59 H4375.71 L4371.15 C4372.03 (continuation lower). Resistance 4373.4/4373.36/4375.64 (broken MA cluster) -> 4385.33 (swing high) -> 4393.8 (H4 MA50) -> 4396.8 (H1 MA200) -> 4402.5. Support 4366.3 (H4 MA200) / 4359.3 (M15 MA20) / 4345.9 (M15 MA50) / 4337.0.",
+ "answers_14": {
+  "1": "Market state: XAUUSD live mid 4371.53 (MT5 probe bid4372.03/ask4372.16, spread 0.30bps; pkg m15_live 4371.53, tick 159/min, z 0.76); data_quality ok (live_days5, ticks937495, context_days29, gaps[]); FLAT (0 positions / 0 orders). HTF: D1 close < MA20 4462.60 (struct down, RSI 32.3, er 0.354); H4 close 4372.03 < MA50 4393.83 (MA20 4375.64, MA200 4366.27); H1 close < MA50 4373.36 (MA20 4339.93, MA200 4396.83); M15 close < MA200 4373.46 (MA20 4359.27, MA50 4345.95). Structure: 4292.60 sweep -> +110pt V-recovery -> 4402.52 peak rejected -> retracing to 4372.",
+  "2": "Agreement: conflict. HTF bearish (D1<MA20 struct down, H4<MA50) vs the intraday up-leg that is now rolling over (M15 lower highs 4385.33->4375.71). Net SHORT-lean 0.57: the 4373-4376 broken intraday MA cluster (M15 MA200/H1 MA50/H4 MA20) is now resistance; fade the retest into it while price stays below the 4385.33 swing high.",
+  "3": "M15 change vs 14:17Z (mid ~4378.2): -6.6pt. 13:45Z(16:45srv) peak H4402.52 C4401.71; 14:00Z(17:00srv) O4401.36 H4402.27 L4381.91 C4383.23 = bearish engulf / top rejected; 14:15Z(17:15srv) H4385.33 L4374.49 (lower high); 14:30Z(17:30srv, forming) H4375.71 L4371.15 C4372.03. Resistance 4373.4/4375.6/4385.3/4393.8/4396.8/4402.5; support 4366.3/4359.3/4345.9/4337.0.",
+  "4": "Opportunity / gap-to-tradable: FLAT (single-position slot free) -> a new plan is allowed. Gap to tradable = only ~+2.5pt: price 4371.5 sits just below the 4374.0-4380.0 zone, so the plan fills AUTOMATICALLY the moment price ticks back into the broken MA cluster (no bar close needed). Do NOT chase the breakdown below 4371; if price just runs down without retracing, this plan expires via price_left_setup and the next cycle re-anchors (the 4359/4346/4337 liquidity is what it would seek).",
+  "5": "Mechanism: post-flush V-recovery (12:00Z sweep 4292.60, +110pt) tagged the 4393.8-4402.5 HTF MA resistance cluster and was rejected (14:00Z bearish engulf, C4383.23). With D1<MA20 and H4<MA50 the high-recurrence play is selling the retest of the broken intraday MA cluster (4373.4-4375.6) back into that rejection, stop above the 4385.33 swing high.",
+  "6": "Trigger [specific price]: SHORT {and:[{zone_touch:[4374.0,4380.0]},{spread_under_bps:0.8}]} - live mid 4371.5 sits ~2.5pt below zone_lo; fills automatically the moment price trades back into 4374.0-4380.0 (no bar close required).",
+  "7": "Invalidation [specific price]: {price_cross_up:4386.5} (stand back above the 4385.33 swing high -> fade void, cancel). Post-fill hard stop 4388.5.",
+  "8": "Expected return R (ref fill 4377.0, SL 4388.5, 1R=11.5pt): T1 4359.3=-17.7pt=1.54R x0.40; T2 4345.9=-31.1pt=2.70R x0.35; T3 4337.0=-40.0pt=3.48R x0.25; weighted = 0.40*1.54+0.35*2.70+0.25*3.48 = 2.43R.",
+  "9": "Expected loss R: hard SL 4388.5 = -11.5pt = -1.0R (0.01 lot ~= -11.5 USD). No averaging down ever.",
+  "10": "Cost values: spread 0.30bps + slippage 0.30bps = round trip 0.60bps ~= 0.263pt (~0.26 USD on 0.01 lot); 1R=11.5pt (~26.3bps) -> cost 0.023R. Cost is negligible, not an obstacle.",
+  "11": "Net EV formula: EV_R = p*R - (1-p)*1 - cost = 0.45*2.43 - 0.55*1.00 - 0.023 = 1.094 - 0.573 = +0.520R (>0). p=0.45 = retrace-fade sub-family base rate (demo series 33 closed, WR 0.576 haircut to 0.45).",
+  "12": "Reproducibility: family 'HTF bearish + with-trend sell-the-retrace into broken/HTF MA cluster' (TP-1102Z/1132Z/1217Z/1235Z/1247Z/1302Z/1317Z/1334Z/1402Z/1417Z, n~10); this cycle is the same-family re-anchor after the 4402.5 top rejection, one level lower. Iron rule: sell the retest, never chase down, never average, abandon on a stand back above the cluster.",
+  "13": "SHORT",
+  "14": "HTF偏空(D1<MA20/H4<MA50);4402.5顶被吞没拒绝,价4372回踩破位MA簇4373-4376。卖4374-4380回抽,SL4388.5,T4359/4346/4337,EV+0.52R,q0.01"
+ },
+ "cost_note": "spread_bps=0.30, slippage_bps=0.30, round_trip=0.60bps (=0.263pt ~0.26USD on 0.01 lot; 1R=11.5pt -> cost_in_R 0.023).",
+ "ev_note": "SHORT: EV_R = 0.45*(0.40*1.54+0.35*2.70+0.25*3.48) - 0.55*1.00 - 0.023 = 0.45*2.43 - 0.573 = +0.520R (>0). ref fill 4377.0, SL 4388.5, 1R=11.5pt.",
+ "plan": {
+  "plan_id": "TP-20260911T1432Z",
+  "direction": "SHORT",
+  "entry_zone": {
+   "low": 4374.0,
+   "high": 4380.0
+  },
+  "trigger_condition": {
+   "and": [
+    {
+     "zone_touch": [
+      4374.0,
+      4380.0
+     ]
+    },
+    {
+     "spread_under_bps": 0.8
+    }
+   ]
+  },
+  "invalidation_condition": {
+   "price_cross_up": 4386.5
+  },
+  "stop_logic": {
+   "type": "hard_sl",
+   "level_price": 4388.5
+  },
+  "target_logic": {
+   "levels": [
+    {
+     "price": 4359.3,
+     "frac": 0.4
+    },
+    {
+     "price": 4345.9,
+     "frac": 0.35
+    },
+    {
+     "price": 4337.0,
+     "frac": 0.25
+    }
+   ]
+  },
+  "expected_R": 2.43,
+  "expected_win_probability": 0.45,
+  "probability_source": "retrace-fade sub-family base rate (demo series 33 closed, WR 0.576 haircut to 0.45; TP-1102Z..1417Z series, n~10)",
+  "estimated_cost": {
+   "spread_bps": 0.3,
+   "slippage_bps": 0.3,
+   "round_trip_bps": 0.6,
+   "round_trip_price": 0.263
+  },
+  "spread_bps": 0.3,
+  "slippage_bps": 0.3,
+  "expected_net_EV": {
+   "value": 0.52,
+   "units": "R",
+   "note": "0.45*2.43 - 0.55*1.00 - 0.023"
+  },
+  "maximum_holding_time": "M15*8",
+  "qty_lots": 0.01
+ },
+ "model": "deepseek/deepseek-v4-flash",
+ "prompt_version": "hermes_trader_v1_active_hunter"
+}

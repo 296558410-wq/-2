@@ -1,0 +1,112 @@
+### FILE README.md
+# depth-map
+
+Cross-venue order book depth panel for SPCX: diverging bid/ask bars and cost-to-move in bps across trade.xyz, Binance, OKX, Lighter, and Aster. Replicates the [hl.eco](https://hl.eco/spcx) liquidity panel.
+
+![Cross-Venue Liquidity dashboard](docs/hl-eco-reference-2.png)
+
+---
+
+## What it shows
+
+- **Headline ratio**: HL (trade.xyz) depth vs. sum of competitor depth within ±1% of mid
+- **Diverging bar chart**: bid depth (teal, left) and ask depth (red, right) per venue, sorted by total depth
+- **Cost-to-move table**: slippage in bps for $5k, $25k, and $100k orders on each side. Tightest cell per column in bold. `exh` when the book runs out before the target size.
+
+Polls all venues every 5 seconds. HL books are fetched live via HIP-3; external venues (Binance, OKX, Lighter, Aster) are polled via REST.
+
+---
+
+## Venues
+
+| Venue | Type | Symbol |
+|-------|------|--------|
+| trade.xyz | HL HIP-3 DEX | `xyz:SPCX` |
+| Binance | CEX futures | `SPCXUSDT` |
+| OKX | CEX swap | `SPCX-USDT-SWAP` |
+| Lighter | DEX | `SPCX` |
+| Aster | DEX | `SPCX` |
+
+---
+
+## Quickstart
+
+```bash
+git clone git@github.com:yodablocks/depth-map.git
+cd depth-map
+
+# Install (requires Python 3.12+)
+pip install -e ".[dev]"
+
+# Web dashboard
+streamlit run app.py
+
+# Terminal output
+depth-map --token SPCX --once
+
+# JSON snapshot
+depth-map --token SPCX --once --json
+```
+
+> **Note:** requires [`perp-liquidity`](https://github.com/yodablocks/perp-liquidity) installed as a path dependency.
+> Update the path in `pyproject.toml` to match your local clone:
+> ```toml
+> "perp-liquidity @ file:///YOUR/PATH/TO/perp-liquidity"
+> ```
+
+---
+
+## Adding tokens
+
+Edit `config/symbols.yaml` to add a new token and its per-venue symbol:
+
+```yaml
+BTC:
+  xyz:     null          # not a HIP-3 token
+  lighter: "BTC"
+  aster:   "BTC"
+  binance: "BTCUSDT"
+  okx:     "BTC-USDT-SWAP"
+```
+
+Set a venue to `null` to skip it for that token.
+
+---
+
+## Project layout
+
+```
+app.py                  # Streamlit dashboard
+src/depth_map/
+  fetchers/
+    hl_hip3.py          # Hyperliquid HIP-3 client (xyz: prefix)
+    binance.py          # Binance USDM futures
+    okx.py              # OKX SWAP (contract -> base unit conversion)
+  analyzers/
+    depth.py            # compute_depth_band(), compute_cost_to_move()
+  collector.py          # parallel async fetcher
+  output.py             # rich terminal renderer
+  cli.py                # depth-map CLI
+config/symbols.yaml     # venue -> symbol map per token
+tests/                  # 13 unit tests, no network required
+```
+
+---
+
+## CLI reference
+
+```
+depth-map --token SPCX              # continuous poll, rich terminal UI
+depth-map --token SPCX --once       # single snapshot
+depth-map --token BTC --once --json # JSON to stdout
+depth-map --interval 10             # custom poll interval (seconds)
+```
+
+---
+
+## Notes
+
+- OKX sizes are in contracts; converted to base units via `ctVal` from the instruments endpoint.
+- Binance and HL HIP-3 sizes are already in base units.
+- The ±1% depth band is computed against each venue's own mid, not a shared reference price.
+- Inspired by [hl.eco/spcx](https://hl.eco/spcx).

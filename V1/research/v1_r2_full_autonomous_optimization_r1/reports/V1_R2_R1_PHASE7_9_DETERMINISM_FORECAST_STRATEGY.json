@@ -1,0 +1,90 @@
+{
+ "task": "V1_R2_FULL_AUTONOMOUS_OPTIMIZATION_R1",
+ "phase": "PHASE_7_8_9_DETERMINISM_FORECAST_STRATEGY",
+ "preregistration_hash": "b03ca264de45d2ec9eb40c7b5c8d9b834e6b74e3c4c7dbce4cdc0963663e7e69",
+ "ts_utc": "2026-09-27T12:45:44.909493+00:00",
+ "bars": 40546,
+ "H": 8,
+ "return_free": true,
+ "determinism": {
+  "run1_hash": "5d7a0c9e29f6a0f1ceda129ae3a8ace38a17e8f3e8d91bf19189bae28f5727f0",
+  "run2_hash": "5d7a0c9e29f6a0f1ceda129ae3a8ace38a17e8f3e8d91bf19189bae28f5727f0",
+  "DETERMINISTIC": true
+ },
+ "causal_replay": {
+  "status": "CORRECTED",
+  "mode": "frozen_label_function_unchanged",
+  "REPLAY_PASS": true,
+  "cited": {
+   "C1_REPLAY_TEST": "PASS",
+   "C1_DETERMINISTIC_TEST": "PASS",
+   "C1_LOOKAHEAD_TEST": "PASS",
+   "C1_source": "research\\hermes\\trader_v1\\v1_r2_market_reading\\c1_blind_validation\\reports\\V1_R2_PHASE_C1_SUMMARY.json",
+   "C1_5_REPLAY_AUDIT_present": true,
+   "C1_5_source": "research\\hermes\\trader_v1\\v1_r2_market_reading\\c1_5_target_validation\\audit\\REPLAY_AUDIT.json"
+  },
+  "erratum": "the previously written truncations/REPLAY_PASS=false compared FROZEN labels against HYSTERESIS labels; see V1_R2_R1_PHASE7_REPLAY_CORRECTION.json"
+ },
+ "forecast_engine": {
+  "artifact": "research\\hermes\\trader_v1\\v1_r2_full_autonomous_optimization_r1\\runs\\V1_R2_R1_FORECAST_H8.jsonl",
+  "rows": 16211,
+  "abstain_rows": 12392,
+  "coverage": 0.2356,
+  "accuracy_on_emitted": 0.6737,
+  "schema": [
+   "ts_utc",
+   "state",
+   "dwell_bars",
+   "pred_next_state_h8",
+   "confidence",
+   "p_change_h8",
+   "abstain",
+   "model"
+  ]
+ },
+ "strategy_posture_map": {
+  "distribution": {
+   "STAND_ASIDE_LOW_CONFIDENCE": {
+    "n": 12392,
+    "share": 0.7644
+   },
+   "RANGE_FADE_POSTURE": {
+    "n": 1661,
+    "share": 0.1025
+   },
+   "CONTINUATION_POSTURE": {
+    "n": 1171,
+    "share": 0.0722
+   },
+   "STAND_ASIDE_TRANSITION_RISK": {
+    "n": 941,
+    "share": 0.058
+   },
+   "NEUTRAL_MONITOR": {
+    "n": 25,
+    "share": 0.0015
+   },
+   "REJECTION_FADE_POSTURE": {
+    "n": 21,
+    "share": 0.0013
+   }
+  },
+  "note": "POSTURE MAP ONLY. It maps predictable states to candidate postures; it does NOT validate profitability. Tradability and the frozen cost gate (~0.914bp) belong to the V3 alpha line. NO returns were used here."
+ },
+ "VERDICT": "PIPELINE_CLOSED_RETURN_FREE",
+ "safety": {
+  "ORDER_SEND": 0,
+  "ORDER_CHECK": 0,
+  "BROKER_WRITE": 0,
+  "FORWARD": "OFF",
+  "SHADOW": "OFF",
+  "LIVE": "OFF",
+  "FROZEN_ARTIFACT_WRITE": 0,
+  "ONTOLOGY_MODIFIED": 0,
+  "PARAM_MODIFIED": 0,
+  "FUTURE_RETURN_USED": "NO",
+  "PNL_USED": "NO",
+  "WIN_RATE_USED": "NO"
+ },
+ "erratum_ts_utc": "2026-09-27T12:49:39.790952+00:00"
+}

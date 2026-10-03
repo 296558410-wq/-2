@@ -1,0 +1,55 @@
+{
+  "audit_id": "HERMES-B_20260726T120000Z",
+  "timestamp": "2026-07-26T12:00:00Z",
+  "current_state": "COMPRESSION (dwell 1) with event ACCEPTANCE, entered from a TREND state that dwelled 7 bars; price 4049.125 is sitting essentially ON the active swing-low level 4048.995 (INSIDE, distance 0.027 ATR, 54 touches in 240 bars). Multi-timeframe trend_20 is negative on M1/M5/M15/H4 (-4.49/-0.35/-25.48/-32.87) but positive on H1 (+5.75); H4 trend_50 is +4.84. Cross-market and macro series are entirely absent/UNKNOWN.",
+  "structure": "Downtrend structure from the 4140.895 swing high (Jul-23) with a swing low at 4048.995 (level SWING_LOW_36869, 54 touches in 240 bars, currently INSIDE with price 0.13 above it). Below sits the 4022-4024 prior low; above, the breakdown zone is ~4053.5-4057.7 (20:30-21:00 range highs) and 4063. The last price bar is the Friday 21:59 UTC close; the market is closed through the weekend, so the next tradable resolution is at the Sunday 21:00 UTC reopen.",
+  "mechanism": "Mechanism candidate (DERIVED, not asserted): trend_continuation — 8-bar displacement -5.06 with price inside the active swing-low level. Supporting geometry: recent M1 shows a high-range down bar (21:57, range_percentile 0.965, consecutive_down 8) followed by range contraction (range_contracting true on M1/H1/H4) and near-zero volatility (0.00018), i.e. downside impulse now compressing at support. Counter-structure: the level has been defended 54 times, so rejection/accumulation is a live alternative.",
+  "primary_scenario": {
+    "scenario": "Downward resolution: a decisive break and acceptance below swing-low 4048.995 resumes the trend_continuation mechanism, targeting the 4022-4024 prior low and extension toward new session lows; the COMPRESSION resolves into a (down) TREND.",
+    "confidence": 0.38,
+    "horizon": "SHORT_TERM",
+    "trigger": "On the next session (Sunday 21:00 UTC reopen / Monday): a strong M5/M15 down close below ~4048.9-4047 with range expansion (the current contraction must give way), confirming acceptance beneath the level.",
+    "invalidation": "Price fails to hold below the level and reclaims the breakdown zone with acceptance, specifically a close back above ~4055.5 (above the 20:30 high 4057.735 / the 4053.5 breakdown pivot)."
+  },
+  "alternative_scenario": {
+    "scenario": "Rejection/bounce at a heavily-defended level: the 54-touch swing low 4048.995 holds, the COMPRESSION resolves into REJECTION, and price bounces back into the 4055-4063 zone (retracing the late-Friday decline and the post-bounce slide from 4081.895).",
+    "confidence": 0.32,
+    "horizon": "SHORT_TERM",
+    "trigger": "Price holds above 4048.995 and produces an impulsive up move / reclaim of 4053.5-4055.5 with a high body_ratio candle, flipping the compressed range upward.",
+    "invalidation": "A break below ~4048.9 without a quick recovery into the 4053+ zone (this collapses into the primary downward scenario)."
+  },
+  "expected_transition": "COMPRESSION (dwell 1) is a decision point parked on a knife-edge level. Expected resolution at the reopen is binary: decisive break of 4048.995 -> TREND (down) toward 4022-4024; or hold-and-reclaim of 4055+ -> REJECTION (up) into 4055-4063. A weekend gap can skip the compression resolution entirely. Rough residual mass (~0.30) stays in continued compression/whipsaw with no directional edge.",
+  "direction": "DOWN",
+  "horizon": "SHORT_TERM",
+  "confidence": 0.38,
+  "counter_evidence": [
+    "State is COMPRESSION (not TREND): frozen C1 label at t, ambiguity_rate_8 = 0.375, no asserted continuation.",
+    "Swing-low 4048.995 has 54 touches in 240 bars — an unusually heavily defended level, raising rejection/bounce odds.",
+    "Multi-timeframe agreement is CONFLICT and never merged: H1 trend_20 is positive (+5.75) and H4 trend_50 is positive (+4.84).",
+    "Historical analogs from the same COMPRESSION state are mixed: A19573 and A25757 evolve toward REJECTION/compression persistence, only A31035 evolves toward TREND.",
+    "All cross-market/macro series (DXY, VIX, UST10Y PROXY, GLD, GC, COT, flows, news) are UNKNOWN/absent — no confirming macro tailwind for a breakdown.",
+    "Price sits within 0.03 ATR of the level: the directional call is knife-edge and only resolves on an actual breakout/reclaim.",
+    "M5/M15 current bars print a large down close (body_ratio 0.94-0.96) but M1 flags range_contracting — momentum is compressing, not yet confirmed as expansion."
+  ],
+  "invalidation": "Directional call DOWN is invalidated if the swing low 4048.995 fails to break decisively and price is accepted back above ~4055.5 (above the 4053.5 breakdown pivot / 20:30 high 4057.735), i.e. the compression resolves as a rejection/bounce instead of a continuation breakdown.",
+  "data_quality_flags": [
+    "L1 RAW_GEOMETRY + DERIVED (kline geometry/percentiles are derived from raw bars)",
+    "L2 DERIVED (pivot swing levels, causal)",
+    "L3 frozen behavior label OBSERVED (frozen C1) / state_v2 DERIVED (min-dwell lifecycle)",
+    "L4 mechanism DERIVED candidate only, NOT asserted as fact",
+    "L6 multi-timeframe CONFLICT — timeframes reported separately, never merged",
+    "L7 cross-market UNKNOWN/absent: DXY, VIX, UST10Y(PROXY ^TNX), GLD, GC, COT, ETF flows, NEWS, MACRO all unavailable — macro tailwind cannot be assessed",
+    "PRICE_DATA_STALENESS: last bar 2026-07-24 21:59 UTC vs as_of 2026-07-26 12:00 UTC (weekend market closure); forecast applies to next session reopen and is gap-exposed",
+    "Historical analog similarity=1.0 is state+dwell only; contains no returns/PnL — directional inference from it is weak"
+  ],
+  "reasoning_trace": [
+    "Read L1 across M1/M5/M15/H1/H4: all current closes print 4049.125, and the last bar is Friday 21:59 UTC, confirming a weekend-closed PIT snapshot at as_of 2026-07-26 12:00 UTC.",
+    "L2 shows price INSIDE swing-low 4048.995 at 0.027 ATR distance with 54 touches/240 bars — a heavily defended support directly under price.",
+    "L3/L5: frozen label COMPRESSION with ACCEPTANCE at dwell 1, following a 7-bar TREND; transition TREND->COMPRESSION. Interpretation: the prior downtrend is now compressing at a key level.",
+    "L4 offers only trend_continuation as a DERIVED candidate (8-bar displacement -5.06) — consistent with the negative trend_20 on 4 of 5 timeframes.",
+    "L6 CONFLICT (H1 trend_20 +5.75, H4 trend_50 +4.84 vs negative elsewhere) prevents a strong directional assertion.",
+    "L7 fully absent macro/cross-market series -> no external confirmation; confidence must be capped.",
+    "Analog set A19573/A25757/A31035 is mixed (2 toward rejection/compression, 1 toward trend), so it neither confirms nor refutes continuation.",
+    "Net judgement: the structural lean is DOWN (trend bias + price pressed against a support that in a downtrend tends to yield), but COMPRESSION + knife-edge position + absent macro cap confidence at 0.38; the primary resolution is a break-and-accept below 4048.995, invalidated by a reclaim above ~4055.5."
+  ]
+}

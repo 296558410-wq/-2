@@ -1,0 +1,88 @@
+{
+ "schema": "hermes_decision_v1",
+ "utc_ts": "2026-09-18T12:17:30Z",
+ "cycle": "2026-09-18T12:17Z",
+ "decision_id": "DEC-2026-09-18T12:17Z",
+ "symbol": "XAUUSD",
+ "decision": "LONG",
+ "plan_id": "TP-20260918T1217Z",
+ "confidence": 0.52,
+ "bias": "LONG-lean 0.52 - with-trend PULLBACK-BUY at the range floor. Broker mid 4372.4 is INSIDE the 4370.5-4376.5 confluence (12:00 M15 bar low 4370.58 + the 4373.38 higher-low that launched the recovery) -> zone_touch fires on this cycle's engine run and auto-fills at market. H4/H1 up-legs intact (H1 higher-lows 4334.35->4360->4370.58; H4 4399.70 high); the 4399.70/4399.77 double-top rejection is a 3h 4370.5-4383 consolidation, not a trend break while 4370 holds. SL 4357 below the 4360 ledge.",
+ "mtf_agreement": "constructive-for-long (3/4): H1 up-leg intact (broker closes 4356.29->4359.16->4367.08->4377.24->4393.25 with pullback low 4373.38 held, 12:00 bar low 4370.58); H4 up (rally 4259.9->4399.70, current H4 bar consolidating 4370.58-4398.27); M15 trend (pkg er 0.497) retracing into support. D1 range/mildly-bearish (4341.735 << MA20 4431.29, RSI 42.3, pos 45.7) = background caution only. Net: buying the dip at the 4370.5 range floor / 4373.38 higher-low aligns with the H4/H1 uptrend.",
+ "state_summary": "pkg 2026-09-18T12:17Z: live_days 10, live_ticks 1,953,175, gaps []. m15_live last_mid 4372.33, spread 0.32bps, tick 145/min, last6_max 13.1bps z 0.28 vs base 10.18 = vol normal. Broker (execution truth): bid 4372.40 / ask 4372.53 mid 4372.4, spread 0.30bps; positions 0, margin_free 2009.64 = slot FREE. 4TF: D1 4341.735<<MA20 4431.29 RSI42.28 pos45.7 mixed / H4 4392.47>MA50 4345.19>MA20 4321.17 RSI66.5 pos61.6 mixed-up / H1 4392.47>MA20 4362.54>MA50 4333.80 RSI67.1 pos95.6 up / M15 trend(er0.497) retracing. Broker M15 last bars(UTC): 11:45 c4381.22, 12:00 o4381.49 h4382.92 l4370.58 c4373.58, 12:15(in-progress) 4372.4. Real range last 3h = 4370.5-4383. Day low 4334.35 (03:00Z), session high 4399.70/4399.77 (07:00Z), pullback low 4373.38 (09:00Z H1). Data caveat: pkg bar-feed diverges from broker (pkg m15 last_close 4392.47 @11:45 vs broker M15 close 4381.22 @11:45, ~+11pt) so pkg M15/H1 bar-derived RSI/pos are stale-stretched; candle_latest.json stale (2026-09-07) ignored; used broker tick/mid as execution truth.",
+ "m15_change": "vs 12:02Z (mid 4380.87): mid -8.5pt to 4372.4 = the retrace finally reached and is now INSIDE the entry zone [4370.5,4376.5] (broker 12:00 M15 bar low 4370.58 = zone low; close 4373.58; 12:15 in-progress 4372.4). Sequence: 4399.70/4399.77 double-top failed -> pullback low 4373.38 (09:00Z) -> chop 4370.5-4383 -> now at the range floor. H1/H4 structure unchanged (up). Vol normal. The prior-cycles' entry zone [4370.5,4376.5] is therefore no longer 'pending-a-dip' - the dip is HERE and the zone is being touched.",
+ "opportunity": "actionable with-trend PULLBACK-BUY: broker mid 4372.4 is INSIDE 4370.5-4376.5 (range floor + 4373.38 higher-low), so trigger {zone_touch [4370.5,4376.5]} fires on this cycle's engine run and auto-fills at market (no close-wait). SL 4357.0 (below the 4360.0 ledge that launched the up-leg); T1 4397.4 (double-top high 4397.41/4399.77), T2 4412.0 (measured continuation).",
+ "opportunity_mechanism": "H4/H1 up-legs intact; gold has spent 3h consolidating 4370.5-4383 after the 4399.70 double-top. Price is now at the range floor / the 4373.38 higher-low with the 12:00 bar printing 4370.58 and holding. Hold of 4370.5 -> resume the up-leg -> reclaim 4383 range top -> 4397.4 -> stretch 4412. Invalidation = losing the 4360 ledge -> hard SL 4357.0.",
+ "answers_14": {
+  "1_market_state": "Gate: Fri 12:17Z / 20:17 CST, armed=true open=true reason=open (exit 0). pkg 12:17Z: live_days 10, live_ticks 1,953,175, gaps []. m15_live 4372.33, spread 0.32bps, tick 145/min, last6_max 13.1bps z 0.28 vs base 10.18 = vol normal. Broker mid 4372.4, spread 0.30bps, positions 0, equity 2009.64 = slot FREE. 4TF: D1 4341.735<<MA20 4431.29 RSI42.28 pos45.7 mixed / H4 4392.47>MA50 4345.19>MA20 4321.17 RSI66.5 / H1 4392.47>MA20 4362.54>MA50 4333.80 RSI67.1 pos95.6 / M15 trend(er0.497). Real 3h range 4370.5-4383 (broker M15 12:00 l4370.58 c4373.58). Day low 4334.35, high 4399.70/4399.77, pullback low 4373.38. Data caveat: pkg bar feed diverges ~+11pt from broker (m15 last_close 4392.47 @11:45 vs broker 4381.22) -> used broker tick/mid.",
+  "2_consistency": "constructive-for-long (3/4): H1 up-leg (4356.29->4359.16->4367.08->4377.24->4393.25, pullback low 4373.38 held, 12:00 bar l4370.58) and H4 up (4259.9->4399.70, current H4 consolidating) remain intact; M15 retraces into the 4370.5 range floor. D1 range/mildly-bearish (4341.735 << MA20 4431.29) = background caution. Net: dip-buy at the floor aligns with the higher-TF uptrend.",
+  "3_m15_change": "vs 12:02Z (mid 4380.87): mid -8.5pt to 4372.4 = the retrace is now INSIDE the entry zone [4370.5,4376.5]; broker 12:00 M15 bar low 4370.58 (zone low) close 4373.58, 12:15 in-progress 4372.4. 4399.70/4399.77 double-top failed -> 4373.38 higher-low held -> chop 4370.5-4383 -> now at the range floor. H1/H4 structure unchanged (up). Vol normal (last6_max 13.1bps z 0.28).",
+  "4_opportunity": "with-trend PULLBACK-BUY into 4370.5-4376.5, trigger zone_touch [4370.5,4376.5]; mid 4372.4 is ALREADY inside the zone -> fires and auto-fills at market this cycle; targets 4397.4 then 4412.0; invalidation below 4357.0.",
+  "5_mechanism": "H4/H1 up-leg intact; price consolidates 4370.5-4383 for 3h after the 4399.70 double-top and is now at the range floor / 4373.38 higher-low. Hold of 4370.5 -> resume -> reclaim 4383 -> 4397.4 -> stretch 4412. Invalidation = losing the 4360 ledge -> hard SL 4357.0.",
+  "6_trigger_condition": "{\"zone_touch\": [4370.5,4376.5]} - broker mid 4372.4 is ALREADY inside [4370.5,4376.5] (12:00 M15 low 4370.58) -> the plan fires on this cycle's engine run and auto-fills at market (no close-wait). Staleness threshold ez_hi+2band = 4376.5+12.0 = 4388.5.",
+  "7_invalidation": "{price_cross_down: 4357.0} (hard SL; below the 4360.0 session-low ledge that launched the up-leg -> pullback-buy thesis void). Pre-trigger: n/a, mid is already inside the zone so the fill occurs before any 'price left setup' cancel.",
+  "8_expected_return_R": "entry-mid 4373.5, blended target (4397.4 0.6 / 4412.0 0.4) = 4403.24 -> +29.74pt; SL 4357.0 -> risk 16.5pt; expected_R = 29.74/16.5 = 1.80R (live fill ~4372.4 -> risk 15.4pt, R ~2.0).",
+  "9_expected_loss_R": "1R = 16.5pt (4373.5 -> 4357.0). Max loss on 0.01 lot = 16.5pt * 0.01 * 100oz = 16.5USD ~ 0.82% of the 2009.64USD demo equity.",
+  "10_cost_value": "spread 0.30bps (~0.13pt @4372.4) + slippage 0.30bps (~0.13pt) = 0.60bps roundtrip ~ 0.26pt ~ 0.016R on the 16.5pt 1R.",
+  "11_net_EV_formula": "EV = p*R - (1-p)*1.0 - cost = 0.48*1.80 - 0.52*1.0 - 0.016 = 0.864 - 0.520 - 0.016 = +0.328R ~ +0.33R (p held at 0.48 for the D1-range squeeze + the price sitting at the range floor rather than bouncing yet; only 3/4 TFs aligned). Positive EV -> LONG authorised (cost 0.3-0.6bps is not the constraint).",
+  "12_recurrence": "Recurrent: gold's H4/H1 up-leg + 4370.5-4376.5 pullback-support family re-presenting; today 0347Z LONG banked broker TP, 0647Z LONG stopped -1R. The 11:02Z/11:17Z/11:32Z/11:47Z/12:02Z cycles armed this exact zone; this cycle price has finally retraced INTO it (broker 12:00 low 4370.58), so the family now triggers.",
+  "13_decision": "LONG - with-trend pullback-buy at the 4370.5-4376.5 range floor (4373.38 higher-low + 12:00 M15 low 4370.58). Broker mid 4372.4 is already inside the zone -> zone_touch auto-fills this cycle. SL 4357.0, T1 4397.4 (0.6) / T2 4412.0 (0.4), qty 0.01, EV +0.33R. bias LONG-lean 0.52.",
+  "14_reason": "顺势回撤做多: 现价4372.4已进入4370.5-4376.5区间(12:00低点4370.58+4373.38低点), 触价即市价成交; H1/H4上升未破; SL4357, T4397.4/4412, EV+0.33R; 不追高不空等。"
+ },
+ "plan": {
+  "plan_id": "TP-20260918T1217Z",
+  "direction": "LONG",
+  "entry_zone": {
+   "low": 4370.5,
+   "high": 4376.5
+  },
+  "trigger_condition": {
+   "zone_touch": [
+    4370.5,
+    4376.5
+   ]
+  },
+  "invalidation_condition": {
+   "price_cross_down": 4357.0
+  },
+  "stop_logic": {
+   "type": "structure",
+   "level_price": 4357.0
+  },
+  "target_logic": {
+   "levels": [
+    {
+     "price": 4397.4,
+     "frac": 0.6
+    },
+    {
+     "price": 4412.0,
+     "frac": 0.4
+    }
+   ]
+  },
+  "expected_R": 1.8,
+  "expected_win_probability": 0.48,
+  "probability_source": "empirical: with-trend dip-buy / pullback-retest family on the 10 live-days sample (same-family fills banked broker TP today); held at 0.48 for the D1-range squeeze + price sitting at the range floor; only 3/4 TFs aligned",
+  "estimated_cost": {
+   "spread_bps": 0.3,
+   "slippage_bps": 0.3,
+   "total_bps": 0.6,
+   "note": "0.60bps roundtrip ~ 0.26pt ~ 0.016R on the 16.5pt 1R"
+  },
+  "spread_bps": 0.3,
+  "slippage_bps": 0.3,
+  "expected_net_EV": {
+   "value": 0.33,
+   "units": "R",
+   "note": "0.48*1.80 - 0.52*1.0 - 0.016 = +0.328R"
+  },
+  "maximum_holding_time": "M15*12",
+  "qty_lots": 0.01
+ },
+ "gap_to_tradable": "LOCAL: broker mid 4372.4 is ALREADY inside the entry zone [4370.5,4376.5] (12:00 M15 bar low 4370.58) -> the {zone_touch [4370.5,4376.5]} trigger fires on this cycle's engine run and auto-fills at market; SLOT is FREE (broker positions 0 / margin_free 2009.64). What is missing right now: NOTHING price-wise - the dip the prior cycles waited for has arrived; the only remaining step is the engine consuming this plan. Failure mode: if price instead keeps bleeding below 4370.5 without reclaiming, the fill still happens (market) with SL 4357 guarding; if it runs straight to 4397.4 pre-fill the older same-family plans cover it. ENVIRONMENTAL: nothing blocks (demo account live, AutoTrading on).",
+ "cost_note": "spread 0.30bps (0.13pt @4372.4) + slippage 0.30bps = 0.60bps roundtrip (~0.26pt ~ 0.016R on the 16.5pt 1R)",
+ "ev_note": "EV = 0.48*1.80 - 0.52*1.0 - 0.016 = +0.328R. Positive -> LONG authorised (cost 0.3-0.6bps is not the constraint).",
+ "model": "deepseek/deepseek-v4-flash",
+ "prompt_version": "hermes-trader-m15-cycle/2026-09-12"
+}

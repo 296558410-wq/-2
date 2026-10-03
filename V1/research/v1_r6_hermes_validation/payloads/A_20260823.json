@@ -1,0 +1,101 @@
+{
+ "sample_id": "A_20260823",
+ "forecast_id": "A_20260823",
+ "timestamp": "2026-08-23T12:00:00Z",
+ "observations": [
+  "Price 4602.055 sits just above swing high 4601.875 (INSIDE)",
+  "M1 M5 M15 trend_20 negative; H1 H4 trend_20 strongly positive",
+  "Frozen state COMPRESSION, event VOL_CONTRACTION, dwell 2 bars",
+  "Last price bar 2026-08-21 21:59; as_of 2026-08-23 12:00"
+ ],
+ "what_i_know": [
+  "Close 4602.055 at swing high 4601.875, break_status INSIDE",
+  "State COMPRESSION with VOL_CONTRACTION at t",
+  "Higher timeframes up, lower timeframes down, agreement CONFLICT",
+  "Three historical analogs diverge: persist, reject, trend"
+ ],
+ "what_i_do_not_know": [
+  "Price action between 08-21 21:59 and 08-23 12:00",
+  "Cross-market DXY VIX TNX all UNKNOWN",
+  "Breakout direction of compression unknown",
+  "News, macro events, order flow absent"
+ ],
+ "evidence": [
+  "M5 ten consecutive down bars, trend_20 -20.05",
+  "M1 range_percentile 0.155, range contracting",
+  "VOL_CONTRACTION event and two-bar compression dwell",
+  "Analog A21233 stayed COMPRESSION through step 16"
+ ],
+ "counter_evidence": [
+  "H1 trend_20 +71.51, H4 trend_20 +247.96",
+  "H4 nine consecutive up bars before pullback",
+  "Level touched 11 times in 240 bars",
+  "Analog A32777 moved COMPRESSION to TREND"
+ ],
+ "possible_mechanisms": [
+  {
+   "mechanism": "lower-TF downtrend continuation",
+   "status": "POSSIBLE",
+   "why": "L4 candidate; M5 ten down bars"
+  },
+  {
+   "mechanism": "higher-TF uptrend resumption",
+   "status": "POSSIBLE",
+   "why": "H1 H4 trend_20 strongly positive"
+  },
+  {
+   "mechanism": "compression breakout expansion",
+   "status": "POSSIBLE",
+   "why": "VOL_CONTRACTION after expansion history"
+  },
+  {
+   "mechanism": "level rejection at swing high",
+   "status": "WEAK",
+   "why": "11 touches; one analog shows REJECTION"
+  }
+ ],
+ "primary_scenario": {
+  "scenario": "Sideways compression near 4601 with short-term downward drift",
+  "horizon": "next 4-16 M15 bars (intraday)",
+  "trigger": "Range contracting, VOL_CONTRACTION persists",
+  "invalidation": "Decisive H1 break above 4616.7 resumes uptrend"
+ },
+ "alternative_scenario": {
+  "scenario": "Downside volatility expansion breaking 4601.875 level",
+  "horizon": "within 16 bars of compression",
+  "trigger": "Fresh momentum bar with range expansion below level",
+  "invalidation": "Close back above 4604.7 reclaims range"
+ },
+ "expected_transition": "COMPRESSION to REJECTION or EXPANSION within 16 bars",
+ "direction_bias": "NO_DIRECTIONAL_EDGE",
+ "time_horizon": "intraday 4-16 M15 bars",
+ "evidence_strength": 0.3,
+ "confidence": 0.25,
+ "uncertainty": 0.8,
+ "confidence_reason": "Multi-timeframe conflict and stale price data cap confidence",
+ "uncertainty_reason": "No fresh bars, no cross-market, analogs diverge",
+ "invalidation": "Decisive break of 4601.875 or 4616.7 with expansion",
+ "change_my_mind": [
+  "Fresh price bar within six hours of as_of",
+  "Available DXY or TNX cross-market data",
+  "State transition to TREND or EXPANSION",
+  "Range expansion through 4601.875 or 4616.7"
+ ],
+ "abstain": true,
+ "abstain_reason": "Stale price data, absent cross-market, conflicting timeframes preclude direction",
+ "questions": {
+  "Q1": "Only price geometry through 08-21; state COMPRESSION; level 4601.875 INSIDE",
+  "Q2": "Action since 08-21; cross-market; breakout direction; macro drivers unknown",
+  "Q3": "Down momentum lower TFs; contraction; analog persistence supports drift down",
+  "Q4": "Strong H1 H4 uptrend; level 11 touches; analog TREND transition",
+  "Q5": "Breakout expansion direction is only possible, never asserted",
+  "Q6": "Fresh bars, state transition, or decisive expansion through level",
+  "Q7": "True; stale data, no cross-market, MTF conflict, no directional edge"
+ },
+ "reasoning_trace": [
+  "Lower TFs down, higher TFs up; agreement CONFLICT",
+  "Price inside 4601.875 level; COMPRESSION dwell two",
+  "Last bar 38 hours stale; cross-market absent",
+  "Abstain with conditional scenarios, NO_DIRECTIONAL_EDGE"
+ ]
+}

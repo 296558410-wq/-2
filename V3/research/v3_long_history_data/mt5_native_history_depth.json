@@ -1,0 +1,46 @@
+{
+ "schema": "v3_mt5_native_history_depth/1",
+ "ts_utc": "2026-09-25T09:16:20.316665+00:00",
+ "terminal_used": {
+  "login": 160759434,
+  "data_path": "C:\\Users\\surface\\AppData\\Roaming\\MetaQuotes\\Terminal\\158904DFD898D640E9B813D10F9EB397"
+ },
+ "correction": "the earlier version of this task's report stated that MT5-native history returned 0 rows on all timeframes. That was WRONG and had two probe causes: (1) portable=True was passed for the V1 host terminal, which is NOT portable (its data lives in AppData); (2) count requests of 100,000-300,000 silently return 0 rows in this MT5 build.",
+ "api_rule_learned": "copy_rates_from_pos / copy_rates_range return 0 rows when count >= 100,000; use <= 50,000",
+ "depth_by_timeframe": {
+  "D1": {
+   "rows": 5729,
+   "first": "2004-06-11",
+   "last": "2026-09-25",
+   "years": 22.29
+  },
+  "H1": {
+   "rows_50k_pos": 50000,
+   "first_50k_pos": "2018-01-02T21:00:00+00:00",
+   "range_from_2016_01_01": {
+    "rows": 61316,
+    "first": "2016-01-04T01:00:00+00:00",
+    "last": "2026-09-25T09:00:00+00:00",
+    "years": 10.73
+   },
+   "years_max_observed": 10.73
+  },
+  "M5": {
+   "rows_50k_pos": 50000,
+   "first_50k_pos": "2026-01-12T05:45:00+00:00"
+  },
+  "M1": {
+   "rows_50k_pos": 50000,
+   "first_50k_pos": "2026-08-05T21:21:00+00:00",
+   "range_from_2026_01_01": {
+    "rows": 0
+   },
+   "interpretation": "the FXTM demo server/terminal retains only ~7 weeks of M1"
+  }
+ },
+ "answer_to_core_question": {
+  "long_history_1m_from_this_venue": "NO (~7 weeks only)",
+  "long_history_h1_d1_from_this_venue": "YES (H1 10.7y, D1 22.3y), venue-correct, China-intranet, automatable, no new dependency"
+ },
+ "consequence_for_v3": "multi-year research IS possible at H1/D1 on the execution venue's own data; minute-level event-window research remains limited to the recent ~7 weeks"
+}

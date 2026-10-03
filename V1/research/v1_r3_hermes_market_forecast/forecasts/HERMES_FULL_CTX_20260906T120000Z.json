@@ -1,0 +1,78 @@
+{
+  "forecast_id": "HERMES_FULL_CTX_20260906T120000Z",
+  "timestamp": "2026-09-06T12:00:00Z",
+  "current_state": "DECELERATION (event: REJECTION, dwell_bars: 3, state path NO_DEFINED_STATE->ROTATION->DECELERATION)",
+  "dominant_structure": "Post-spike rejection/consolidation below the swing-low level 4431.915 (SWING_LOW_39616, side DN, BEYOND) following an extreme H1/H4 down-shock from the 4475-4510 zone down to 4365-4374 lows, with price now stalling around 4428-4431 and multi-timeframe structure in explicit CONFLICT",
+  "current_pressure": "Volatility pressure: extreme but contracting (M1 range_percentile 0.62 rising to 0.815 then falling; H1/H4 recent bars 0.02-0.07 percentile => after-shock compression). Liquidity-proxy: near absent (L7 cross-market all UNKNOWN/absent; no volume). Directional pressure: conflicting (M1 up +1.09, M5 -0.24, M15 -8.03, H1 -48.06, H4 +98.91 trend_20; H4 trend_50 -240.77). Structural pressure: breakout_pressure candidate (close beyond 4431.915 by 0.22 ATR) vs failed_breakout candidate (no reclaim yet).",
+  "primary_scenario": {
+    "scenario": "DECELERATION persists into a compressed consolidation around 4423-4438 with an eventual breakout attempt in a nondeterministic direction: price remains capped under 4431.915/4438 while digesting the shock, matching analog A968 (DECELERATION -> BREAKOUT_ATTEMPT) and A12862 (-> TREND). Direction of the break is not inferable from price alone given the CONFLICT multi-timeframe agreement.",
+    "confidence": 0.55,
+    "horizon": "INTRADAY to SHORT_TERM",
+    "trigger": "Sustained low-range (M1 range_percentile < 0.3) M5/M15 compression around 4428-4430 with repeated tests of 4431.915, followed by a directional expansion bar (state transition to BREAKOUT_ATTEMPT or TREND).",
+    "invalidation": "Close reclaims and holds above 4431.915 for consecutive M15 bars while M1 range_percentile stays > 0.6 AND/OR a fresh expansion breaks 4438.225 on H1, converting the structure into an unambiguous upside or downside breakout before any further compression."
+  },
+  "alternative_scenario": {
+    "scenario": "Rejection at 4431.915 resumes the dominant down-move: the REJECTION event repeats, price loses 4422.275 (H4 low) and 4411.955 (H1/H4 support), extending toward a retest of the 4365-4374 crash lows, consistent with analog A27169 (DECELERATION -> TREND -> REJECTION -> EXPANSION) and the still-negative M5/M15/H1 trend_20.",
+    "confidence": 0.30,
+    "horizon": "INTRADAY",
+    "trigger": "A new lower swing with M15 close < 4422 and H1 range_expanding, plus M5 consecutive_down resumption.",
+    "invalidation": "Price makes a higher high above 4438.225 before reaching 4422, or H1 trend_20 flips positive."
+  },
+  "third_scenario": {
+    "scenario": "Upside continuation toward 4448.545 / 4475.625: the BEYOND break of 4431.915 proves genuine, reclaim converts to a higher timeframe recovery of the 4472-4485 area.",
+    "confidence": 0.15,
+    "horizon": "SHORT_TERM",
+    "trigger": "Sustained M15 closes above 4431.915 followed by acceptance above 4438.225 with H1 range_expanding.",
+    "invalidation": "A close back below 4428.995 (M1 low) before 4438.225 is exceeded."
+  },
+  "direction_bias": "NO_DIRECTIONAL_EDGE",
+  "expected_state_transition": "DECELERATION -> BREAKOUT_ATTEMPT (per analogs A968/A12862/A27169, all consistent with a resolution of the current compression; direction unresolved by evidence)",
+  "time_horizon": "INTRADAY",
+  "confidence": 0.55,
+  "supporting_evidence": [
+    "L3/L5 frozen state: DECELERATION with REJECTION event, dwell 3, transitions NO_DEFINED_STATE->ROTATION->DECELERATION (DERIVED, frozen C1 labeler)",
+    "L4 candidate breakout_pressure: close beyond swing level 4431.915 by 0.21968 ATR (DERIVED)",
+    "Historical analogs (exact_state + dwell_bucket similarity 1.0) all resolve DECELERATION into a later directional phase (BREAKOUT_ATTEMPT / TREND / REJECTION->EXPANSION) within ~4-16 steps",
+    "M1 compression into 4428-4431 with range_percentile collapsing from 0.815 to 0.015-0.165 and ATR inching up (0.68->0.90) - coil signature",
+    "H1/H4 current bars at range_percentile 0.02-0.07 after the 100+ point shock bar (range_percentile 0.99-1.0) - volatility contraction post-shock"
+  ],
+  "counter_evidence": [
+    "Multi-timeframe agreement is CONFLICT (§15): H4 trend_20 +98.91 vs H1 -48.06, H4 trend_50 -240.77 - higher timeframe direction is ambiguous, weakens any single-scenario read",
+    "L4 candidate failed_breakout has NO supporting evidence and the note states candidates are NOT asserted as fact (§13)",
+    "L2 level is a SWING_LOW (side DN) with break_status BEYOND but reclaim_status NONE - the break's validity is unconfirmed",
+    "No L7 cross-market data (DXY/VIX/UST10Y all UNKNOWN) - absence of macro corroboration limits confidence",
+    "M5 sequence shows 8 consecutive down bars and range_contracting - residual downside momentum not yet fully exhausted"
+  ],
+  "trigger": "Range compression (M1 range_percentile < 0.3) sustained across M5/M15 around 4428-4430 with repeated level tests of 4431.915",
+  "invalidation": "A decisive expansion that either reclaims 4431.915 with sustained acceptance above 4438.225 (upside) or loses 4422.275/4411.955 (downside) before further compression",
+  "change_my_mind": [
+    "If a sustained H1 range_expanding bar forms with H1 trend_20 flipping positive, I would upgrade to an upside continuation bias",
+    "If L7 cross-market data becomes available (e.g., DXY/UST10Y) with a coherent directional signal, I would incorporate it",
+    "If price repeatedly rejects 4431.915 with a new lower swing below 4422.275, I would downgrade to a downside bias",
+    "If state transitions to EXPANSION or TREND on the frozen labeler with confirming M15 trend, I would raise directional confidence"
+  ],
+  "abstain": false,
+  "abstain_reason": null,
+  "reasoning_trace": [
+    "Confirmed PIT: as_of 2026-09-06 12:00:00Z, all data timestamps <= 2026-09-04 21:59Z, no future info.",
+    "State evidence: DECELERATION + REJECTION (frozen labeler), dwell 3, lifecycle ROTATION->DECELERATION.",
+    "Price geometry: crash 4475.625->4365.305 (H1 range 101.48, percentile 1.0) then partial recovery to ~4430 with rejection under 4431.915.",
+    "Multi-timeframe: CONFLICT flagged; refused to merge timeframes per §15; hence NO_DIRECTIONAL_EDGE.",
+    "Level: 4431.915 SWING_LOW, BEYOND, reclaim NONE; breakout_pressure vs failed_breakout both only candidates (§13).",
+    "Analogs: A968->BREAKOUT_ATTEMPT, A12862->TREND, A27169->REJECTION->EXPANSION; state-only, no returns (§18/§72).",
+    "Cross-market all UNKNOWN/absent (§6/§16/§75); never fabricated.",
+    "Conclusion: compression likely resolving into a breakout attempt; direction unsupported by evidence -> NO_DIRECTIONAL_EDGE with stated invalidation/change_my_mind conditions."
+  ],
+  "questions": {
+    "A": "What is happening? XAUUSD is in a post-shock consolidation near 4430 after a violent H1/H4 down-move from the 4475-4510 zone to 4365-4374 lows on 2026-09-04. The frozen labeler reads DECELERATION with a REJECTION event; price sits just below the swing-low level 4431.915 (level price 4431.915, break_status BEYOND, reclaim NONE). M1 shows a brief up-burst (+1.09 trend_20, 8 consecutive up bars) followed by compression; M5/M15/H1 trends are negative; H4 trend_20 is strongly positive but its trend_50 is very negative.",
+    "B": "What is the dominant structure? A post-crash rejection/consolidation: a massive bearish impulse (H1 13:00 bar range 101.48 at percentile 1.0, H4 12:00 bar range 110.32 at percentile 0.99) that reversed the prior 4477->4510 push, now decelerating into a tight range beneath the broken swing level 4431.915. The lifecycle structure is ROTATION->DECELERATION with REJECTION, i.e., a downtrend decelerating into a potential base or continuation zone.",
+    "C": "What pressures are building? (a) Volatility pressure: extreme but contracting - current H1/H4 bars are at 0.02-0.07 range percentile while M1 ATR is slowly rising, a coil/buildup signature. (b) Directional pressure: conflicting across timeframes (M1 up, M5/M15/H1 down, H4 up/down mixed) - unresolved tug-of-war. (c) Liquidity-proxy pressure: essentially absent (all L7 series UNKNOWN, no volume data), so liquidity assessment is unavailable. (d) Structural pressure: breakout_pressure (beyond 4431.915) vs failed_breakout (no reclaim) are both live candidates.",
+    "D": "What mechanisms could explain it? (1) Crash-and-digest: a news/flow-driven impulse (support unknown; no news data) followed by absorption and consolidation - supported by the shock-bar geometry and DECELERATION state. (2) Breakout_pressure: close beyond the 4431.915 swing level by 0.22 ATR - supported (DERIVED). (3) Failed_breakout: rejection without reclaim - unsupported as stated (no supporting evidence, and reclaim_status NONE is the only counter-evidence listed). (4) Trend continuation (down) per M5/M15/H1 - partially supported by negative trends, counter-supported by H4 trend_20 positive. No mechanism is asserted as fact; the evidence can support a base OR a continuation zone.",
+    "E": "What is the strongest evidence? The frozen C1 label DECELERATION + REJECTION at dwell 3 following a clean ROTATION phase; the 100+ point H1/H4 shock bar at range_percentile 1.0/0.99 followed by range compression to 0.02-0.07 percentile; the level 4431.915 BEYOND with 0.22 ATR distance; and three exact-state analogs (similarity 1.0) that all transition out of DECELERATION into a directional phase within 4-16 steps.",
+    "F": "What is the strongest counter-evidence? The multi-timeframe agreement is explicitly CONFLICT (§15) - H4 trend_20 (+98.91) directly opposes H1 trend_20 (-48.06) and H4 trend_50 (-240.77) opposes the positive H4 trend_20, so no higher-timeframe direction can be trusted. Also, the failed_breakout candidate has zero supporting evidence and L2 shows reclaim_status NONE; and the complete absence of cross-market data (DXY/VIX/UST10Y) means nothing externally corroborates any directional view.",
+    "G": "What could happen next? PRIMARY: continued DECELERATION into a compressed range (roughly 4423-4438) and then a BREAKOUT_ATTEMPT, per analog A968. Because timeframes conflict and no macro data exists, the break's direction is not forecastable from evidence; expect a volatility expansion resolving the current coil rather than a drift.",
+    "H": "What is the alternative? ALTERNATIVE 1 (downside): REJECTION at 4431.915 resumes the down-move, losing 4422.275 then 4411.955 toward a retest of 4365-4374 (analog A27169, negative M5/M15/H1 trends). ALTERNATIVE 2 (upside): the BEYOND break is genuine and price reclaims 4431.915 then clears 4438.225 toward 4448.545/4475.625 (recovery of the prior range).",
+    "I": "What would invalidate the forecast? The primary compression view is invalidated by a decisive expansion before further compression: sustained H1 range_expanding with a close above 4438.225 (upside) or a close below 4422.275/4411.955 (downside). The state no longer being DECELERATION (transition to TREND or EXPANSION on the frozen labeler) also invalidates the 'consolidation persists' read.",
+    "J": "What would change your mind? Evidence that would flip my NO_DIRECTIONAL_EDGE: (1) H1 trend_20 turning positive together with a range_expanding H1 bar -> upside bias; (2) a new lower swing below 4422.275 with M5 consecutive_down and H1 range_expanding -> downside bias; (3) any recovered L7 series (DXY/UST10Y) providing a coherent directional macro signal; (4) a frozen-label transition to EXPANSION or TREND with confirming M15 geometry -> directional confidence upgrade."
+  }
+}

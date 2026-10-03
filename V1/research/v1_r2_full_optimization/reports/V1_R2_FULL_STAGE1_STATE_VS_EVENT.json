@@ -1,0 +1,308 @@
+{
+ "task": "V1_R2_FULL_AUTONOMOUS_OPTIMIZATION",
+ "stage": "STATE_VS_EVENT_5MODELS",
+ "ts_utc": "2026-09-27T13:01:29.634329+00:00",
+ "bars": 40546,
+ "H": 8,
+ "n_train": 24209,
+ "n_test": 16211,
+ "state_levels": [
+  "ACCEPTANCE",
+  "BREAKOUT_ATTEMPT",
+  "COMPRESSION",
+  "DECELERATION",
+  "EXPANSION",
+  "NO_DEFINED_STATE",
+  "REJECTION",
+  "ROTATION",
+  "TREND"
+ ],
+ "event_levels": [
+  "ACCEPTANCE",
+  "BREAK",
+  "BREAK_ATTEMPT",
+  "FAILED_BREAK",
+  "MOM_ACCELERATION",
+  "MOM_DECELERATION",
+  "NONE",
+  "REJECTION",
+  "RETEST",
+  "VOL_CONTRACTION",
+  "VOL_EXPANSION"
+ ],
+ "effect_floor_bits": 0.01,
+ "abstention_grid": [
+  1.0,
+  0.9,
+  0.8,
+  0.7,
+  0.6
+ ],
+ "models": {
+  "M_A_STATE_FORECAST": {
+   "dll": 0.37769,
+   "n_test": 16211,
+   "accuracy": 0.4084,
+   "majority_accuracy": 0.2533,
+   "balanced_accuracy": 0.2598,
+   "macro_f1": 0.235,
+   "ECE": 0.0224,
+   "per_class_recall": {
+    "ACCEPTANCE": 0.0,
+    "BREAKOUT_ATTEMPT": 0.388,
+    "COMPRESSION": 0.6772,
+    "DECELERATION": 0.0,
+    "EXPANSION": 0.6173,
+    "NO_DEFINED_STATE": 0.0017,
+    "REJECTION": 0.4294,
+    "ROTATION": 0.1257,
+    "TREND": 0.0994
+   },
+   "selective_accuracy": {
+    "cov_100": 0.4084,
+    "cov_90": 0.4248,
+    "cov_80": 0.4463,
+    "cov_70": 0.4703,
+    "cov_60": 0.4952
+   },
+   "n_train": 24209
+  },
+  "M_B_EVENT_FORECAST": {
+   "dll": 0.19238,
+   "n_test": 16211,
+   "accuracy": 0.2995,
+   "majority_accuracy": 0.2828,
+   "balanced_accuracy": 0.1645,
+   "macro_f1": 0.1284,
+   "ECE": 0.0254,
+   "per_class_recall": {
+    "ACCEPTANCE": 0.035,
+    "BREAK": 0.0,
+    "BREAK_ATTEMPT": 0.363,
+    "FAILED_BREAK": 0.0,
+    "MOM_ACCELERATION": 0.0,
+    "MOM_DECELERATION": 0.0,
+    "NONE": 0.0027,
+    "REJECTION": 0.767,
+    "RETEST": 0.0,
+    "VOL_CONTRACTION": 0.3623,
+    "VOL_EXPANSION": 0.2799
+   },
+   "selective_accuracy": {
+    "cov_100": 0.2995,
+    "cov_90": 0.3015,
+    "cov_80": 0.3018,
+    "cov_70": 0.3043,
+    "cov_60": 0.3071
+   },
+   "n_train": 24209
+  },
+  "M_C_STATE_PLUS_EVENT": {
+   "dll": 0.42296,
+   "n_test": 16211,
+   "accuracy": 0.4189,
+   "majority_accuracy": 0.2533,
+   "balanced_accuracy": 0.2781,
+   "macro_f1": 0.2559,
+   "ECE": 0.0205,
+   "per_class_recall": {
+    "ACCEPTANCE": 0.0,
+    "BREAKOUT_ATTEMPT": 0.48,
+    "COMPRESSION": 0.7098,
+    "DECELERATION": 0.0,
+    "EXPANSION": 0.6182,
+    "NO_DEFINED_STATE": 0.0,
+    "REJECTION": 0.4109,
+    "ROTATION": 0.1744,
+    "TREND": 0.1095
+   },
+   "selective_accuracy": {
+    "cov_100": 0.4189,
+    "cov_90": 0.438,
+    "cov_80": 0.4596,
+    "cov_70": 0.4815,
+    "cov_60": 0.5087
+   },
+   "n_train": 24209
+  },
+  "M_D_EVENT_SEQUENCE": {
+   "dll": 0.19327,
+   "n_test": 16211,
+   "accuracy": 0.3003,
+   "majority_accuracy": 0.2828,
+   "balanced_accuracy": 0.1654,
+   "macro_f1": 0.1319,
+   "ECE": 0.0261,
+   "per_class_recall": {
+    "ACCEPTANCE": 0.04,
+    "BREAK": 0.0169,
+    "BREAK_ATTEMPT": 0.3493,
+    "FAILED_BREAK": 0.0,
+    "MOM_ACCELERATION": 0.0,
+    "MOM_DECELERATION": 0.0,
+    "NONE": 0.0031,
+    "REJECTION": 0.7644,
+    "RETEST": 0.0,
+    "VOL_CONTRACTION": 0.3665,
+    "VOL_EXPANSION": 0.2793
+   },
+   "selective_accuracy": {
+    "cov_100": 0.3003,
+    "cov_90": 0.3019,
+    "cov_80": 0.3034,
+    "cov_70": 0.3057,
+    "cov_60": 0.3079
+   },
+   "n_train": 24209
+  },
+  "M_E_STATE_TRANSITION": {
+   "dll": 0.05969,
+   "auc": 0.6678,
+   "n_test": 16211,
+   "n_train": 24209
+  }
+ },
+ "safety": {
+  "ORDER_SEND": 0,
+  "ORDER_CHECK": 0,
+  "BROKER_WRITE": 0,
+  "FORWARD": "OFF",
+  "SHADOW": "OFF",
+  "LIVE": "OFF",
+  "V2_WRITE": 0,
+  "V3_WRITE": 0,
+  "FUTURE_RETURN_USED": "NO",
+  "PNL_USED": "NO",
+  "WIN_RATE_USED": "NO"
+ },
+ "ablation_state_target": {
+  "A0_priors_only": 0.0,
+  "A1_candle_behavior": 0.24964,
+  "A2_structure": 0.05146,
+  "A3_momentum": 0.00195,
+  "A6_state_plus_dwell": 0.25425,
+  "A8_mtf_only": 0.04949,
+  "A9_counter_evidence": 0.33217,
+  "A10_full": 0.4777
+ },
+ "nulls": {
+  "label_shuffle": {
+   "mean": -0.00792,
+   "p95": -0.0061,
+   "max": -0.00543,
+   "empirical_p": 0.0
+  },
+  "time_shuffle": {
+   "mean": -0.0292,
+   "p95": -0.0198,
+   "max": -0.01755,
+   "empirical_p": 0.0
+  }
+ },
+ "effective_n": {
+  "raw_n": 40420,
+  "effective_n": 9419.61,
+  "autocorr_sum": 1.6455,
+  "unique_days": 533,
+  "unique_clusters": 975
+ },
+ "concentration": {
+  "top5_cluster_share": 0.0059,
+  "top10_cluster_share": 0.0119,
+  "max_cluster_share": 0.0012,
+  "max_day_share": 0.0023
+ },
+ "splits": {
+  "time": {
+   "dll": 0.37769,
+   "n_test": 16211,
+   "accuracy": 0.4084,
+   "majority_accuracy": 0.2533,
+   "balanced_accuracy": 0.2598,
+   "macro_f1": 0.235,
+   "ECE": 0.0224,
+   "per_class_recall": {
+    "ACCEPTANCE": 0.0,
+    "BREAKOUT_ATTEMPT": 0.388,
+    "COMPRESSION": 0.6772,
+    "DECELERATION": 0.0,
+    "EXPANSION": 0.6173,
+    "NO_DEFINED_STATE": 0.0017,
+    "REJECTION": 0.4294,
+    "ROTATION": 0.1257,
+    "TREND": 0.0994
+   },
+   "selective_accuracy": {
+    "cov_100": 0.4084,
+    "cov_90": 0.4248,
+    "cov_80": 0.4463,
+    "cov_70": 0.4703,
+    "cov_60": 0.4952
+   },
+   "n_train": 24209
+  },
+  "day_holdout": {
+   "dll": 0.44176,
+   "n_test": 11301,
+   "accuracy": 0.397,
+   "majority_accuracy": 0.2422,
+   "balanced_accuracy": 0.2513,
+   "macro_f1": 0.2375,
+   "ECE": 0.0208,
+   "per_class_recall": {
+    "ACCEPTANCE": 0.0027,
+    "BREAKOUT_ATTEMPT": 0.292,
+    "COMPRESSION": 0.6768,
+    "DECELERATION": 0.0,
+    "EXPANSION": 0.6691,
+    "NO_DEFINED_STATE": 0.0,
+    "REJECTION": 0.441,
+    "ROTATION": 0.0965,
+    "TREND": 0.0836
+   },
+   "selective_accuracy": {
+    "cov_100": 0.397,
+    "cov_90": 0.414,
+    "cov_80": 0.4341,
+    "cov_70": 0.4561,
+    "cov_60": 0.4847
+   }
+  },
+  "cluster_holdout": {
+   "dll": 0.38924,
+   "n_test": 11959,
+   "accuracy": 0.3912,
+   "majority_accuracy": 0.2527,
+   "balanced_accuracy": 0.2453,
+   "macro_f1": 0.2302,
+   "ECE": 0.0233,
+   "per_class_recall": {
+    "ACCEPTANCE": 0.0,
+    "BREAKOUT_ATTEMPT": 0.2419,
+    "COMPRESSION": 0.6632,
+    "DECELERATION": 0.0,
+    "EXPANSION": 0.6495,
+    "NO_DEFINED_STATE": 0.0047,
+    "REJECTION": 0.4394,
+    "ROTATION": 0.1222,
+    "TREND": 0.0871
+   },
+   "selective_accuracy": {
+    "cov_100": 0.3912,
+    "cov_90": 0.408,
+    "cov_80": 0.4273,
+    "cov_70": 0.4458,
+    "cov_60": 0.4698
+   }
+  }
+ },
+ "effect_floor_check": {
+  "best_model": "M_C_STATE_PLUS_EVENT",
+  "best_dll": 0.42296,
+  "floor": 0.01,
+  "PASSES_FLOOR": true,
+  "null_separated": true,
+  "beats_majority": true
+ },
+ "STAGE1_VERDICT": "STATE_FORECAST_SUPPORTED"
+}

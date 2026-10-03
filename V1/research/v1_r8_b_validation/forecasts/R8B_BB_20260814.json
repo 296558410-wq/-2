@@ -1,0 +1,58 @@
+{
+  "audit_id": "BB_20260814",
+  "timestamp": "2026-08-14T00:00:00Z",
+  "current_state": "COMPRESSION (frozen label, dwell 4) immediately after a REJECTION sequence (dwell 7-10); volatility contraction event at t; price ~4348-4356 (M1/M5/H1 closes) inside the band of the active swing-high resistance 4362.575 (break_status INSIDE, reclaim NONE)",
+  "structure": "Higher-timeframe downtrend: H4/13Aug rally to 4449.455 reversed; price sold off sharply over the last ~24h to H4 low 4310.375 and H1 lows ~4350.9-4352.8, then stabilized. Price now compressing in a ~4348-4364 zone directly below a heavily-tested swing-high resistance at 4362.575 (22 touches/240 bars, distance 0.35 ATR). Short-term trends negative across M1/M5/M15/H1 (trend_20: -7.79/-2.97/-2.54/-44.06) and H4 trend_20 -82.76; H4 trend_50 +256.38 shows the medium-term uptrend remains intact (down-leg is a correction, not confirmed reversal). Nearest level is resistance above; no support level provided. DXY 99.916, marginally weaker (-0.039/-0.054).",
+  "mechanism": "Compression under resistance within an active short-term downtrend: the market rejected the highs, contracted volatility, and is coiling below a 22-touch supply level at 4362.575. L4 candidate 'trend_continuation' (price inside level, 8-bar displacement 10.2) implies continuation of the down move on a failure at resistance, i.e., a downside break of the compression floor is the path of least resistance; historical analogs (state-evolution only) show COMPRESSION typically resolves to BREAKOUT_ATTEMPT within ~4 steps, direction unresolved by the analog data.",
+  "primary_scenario": {
+    "scenario": "Downside continuation: compression resolves downward - price fails to reclaim 4362.575, loses the compression floor ~4348 (then the 4343.365 swing low), extending the corrective leg toward the 4310-4315 H4 low region, consistent with trend_20 negative on all timeframes and the heavy untested resistance overhead.",
+    "confidence": 0.52,
+    "horizon": "INTRADAY",
+    "trigger": "Decisive break and hourly close below ~4348, followed by loss of 4343.365; range expansion on M5/M15 with momentum confirmation.",
+    "invalidation": "Hourly close above 4362.575 (decisive break/reclaim of the active level) or an upward state transition out of COMPRESSION to TREND."
+  },
+  "alternative_scenario": {
+    "scenario": "Upside breakout attempt: after 22 touches, the 4362.575 resistance finally breaks on the mild USD weakness (DXY -0.039/-0.054), triggering a squeeze back toward 4383-4391 (H1 swing highs) and the 4401-4406 zone, consistent with analogs resolving to BREAKOUT_ATTEMPT and the still-positive H4 trend_50.",
+    "confidence": 0.33,
+    "horizon": "INTRADAY",
+    "trigger": "Hourly close above 4362.575 with range/volatility expansion and a reclaim label on the active level.",
+    "invalidation": "Rejection back below ~4355 with another upper-wick failure at 4362.575, reasserting the downside bias."
+  },
+  "expected_transition": "COMPRESSION -> BREAKOUT_ATTEMPT within ~4-8 bars per analogs A16307/A23475/A30857 (one analog stays compressed then goes TREND); direction decided by which side of the 4348/4362.6 band breaks first, with the near-term bias tilted down by trend alignment.",
+  "direction": "DOWN",
+  "horizon": "INTRADAY",
+  "confidence": 0.5,
+  "counter_evidence": [
+    "Cross-timeframe current-bar closes are mutually inconsistent at the same timestamp (M5 4348.375 vs M15 4360.325 vs H4 4315.045 vs H1 4356.035) - data alignment risk that lowers confidence in the precise micro read.",
+    "Current H1/H4 high prints 4364.005, above the declared swing-high 4362.575, while break_status=INSIDE and reclaim_status=NONE - level-status ambiguity.",
+    "DXY marginally weaker (-0.039/-0.054) is mildly supportive for gold, an upside risk to the down bias (PROXY quality).",
+    "H4 trend_50 +256.38: medium-term uptrend intact; the down leg may be a correction within a larger bullish structure.",
+    "COMPRESSION is by definition a balanced state; historical analogs resolve to breakout attempts of unknown direction, and one analog (A30857) stays compressed then trends.",
+    "M15 current bar shows a strong recovery (lower wick 6.0, close at bar high 4360.325) - early evidence of buying into the lows, though inconsistent with M1/M5 closes.",
+    "No VIX, UST10Y, news, or macro data available to confirm; absent series were not fabricated."
+  ],
+  "invalidation": "Hourly close above 4362.575 with reclaim (switches to the upside breakout scenario), or a decisive hourly close below 4343.365 confirming full downside continuation (scenario validated, not invalidated). Direction call invalidated by any confirmed state transition to TREND upward.",
+  "data_quality_flags": [
+    "L1 M1/M5/M15/H1/H4: RAW_GEOMETRY + DERIVED",
+    "CROSS-TIMEFRAME CURRENT-BAR CLOSE INCONSISTENCY (M5 4348.4 / M15 4360.3 / H1 4356.0 / H4 4315.0 at same timestamp)",
+    "L2 nearest level: DERIVED (pivot swing levels, causal)",
+    "L3 COMPRESSION: OBSERVED frozen C1 label at t + DERIVED lifecycle (min-dwell)",
+    "L4 mechanism: DERIVED candidate only, NOT asserted as fact",
+    "DXY: PROXY (Yahoo, instrument definition UNKNOWN) - never upgraded",
+    "VIX: UNKNOWN (STALE_OR_NOT_COVERED)",
+    "UST10Y_PROXY_TNX: UNKNOWN (STALE_OR_NOT_COVERED)",
+    "GLD/GC/CFTC_COT/ETF_FLOWS/NEWS/MACRO_EVENTS: ABSENT, recorded as absent, not fabricated",
+    "Historical analogs: STATE EVOLUTION ONLY, no returns/PnL/labels"
+  ],
+  "reasoning_trace": [
+    "Read PIT context only; no other analyst forecast consulted (blind).",
+    "L1: M1 shows 7 consecutive down closes with trend_20 -7.79 and a strong bearish M5 current bar (body_ratio 0.93), indicating active selling into the snapshot; H1/H4 trend_20 deeply negative (-44.06/-82.76) confirm a multi-hour down leg from ~4401-4449.",
+    "L2: only nearest level is resistance 4362.575 (22 touches, INSIDE, no reclaim) - supply overhead, no defined support below; in a downtrend this favors downside continuation.",
+    "L3/L5: REJECTION (dwell 7-10) -> COMPRESSION (dwell 4) with VOL_CONTRACTION: coiling after rejection, typical pre-breakout setup; ambiguity_rate_8 0.375.",
+    "L6: multi-timeframe agreement is down on the short term (all trend_20 negative); H4 trend_50 still positive caps conviction that the whole trend has reversed.",
+    "L7: only DXY available (PROXY, mildly weaker); VIX/UST10Y/news absent - no macro confirmation, so confidence capped.",
+    "Analog state evolution: COMPRESSION resolves to BREAKOUT_ATTEMPT in 2/3 analogs within 4 steps, 1/3 stays compressed then TREND; direction is not in the data.",
+    "Weighing: trend alignment + resistance overhead + intra-snapshot selling favor DOWN; compression balance + data inconsistencies (esp. cross-TF current-bar closes and the 4364.005 high vs level 4362.575) + mild USD weakness cap confidence at 0.50 and make the call INTRADAY.",
+    "Honest assessment: edge is modest; this is a compressed range awaiting a directional resolution, so a NO_DIRECTIONAL_EDGE stance was considered but rejected in favor of a low-confidence DOWN tilt given the confluence of short-term momentum and untested resistance."
+  ]
+}

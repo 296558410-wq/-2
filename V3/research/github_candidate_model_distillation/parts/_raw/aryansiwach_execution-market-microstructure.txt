@@ -1,0 +1,352 @@
+### FILE README.md
+# Execution & Market Microstructure on Millisecond TAQ
+
+Reconstruct the National Best Bid and Offer from WRDS millisecond TAQ, measure
+the cost of demanding liquidity across a panel of stocks spanning liquidity
+tiers and across a calm month (July 2019) versus a stressed month (March 2020),
+decompose the spread into adverse selection and order processing, fit a
+market-impact model, and use it to backtest optimal-execution schedules against
+the real tape with a queue-aware fill simulator.
+
+**Research question.** How large is the cost of demanding liquidity in US
+equities, how does it decompose into adverse selection versus
+inventory/processing cost, how does it scale with order size and market stress,
+and how much of the implementation shortfall of a large order can a schedule
+(TWAP / VWAP / Almgren–Chriss) actually save versus a naive market order?
+
+## Data
+
+WRDS Daily TAQ (millisecond), regular trading hours only. Licensed — nothing
+under `data/` is committed.
+
+| Block | WRDS table | Content |
+|---|---|---|
+| Trades | `taqm_YYYY.ctm_YYYYMMDD` | consolidated trades: time, price, size, exchange, sale condition |
+| NBBO | `taqm_YYYY.complete_nbbo_YYYYMMDD` | best bid/ask and sizes (last per 1-second bucket; full tick for three check days) |
+| Master | `taqm_YYYY.mastm_YYYYMMDD` | round-lot size, primary exchange |
+
+Universe: 20 names, five per liquidity tier (mega / large / mid / small-cap).
+Periods: July 2019 (VIX ~13) and March 2020 (VIX to 82).
+
+Time is carried through the whole pipeline as **integer nanoseconds since
+09:30 ET** — no timezone handling, no `datetime64` in the hot path.
+
+## Layout
+
+```
+config/config.yaml     universe, dates, filter thresholds, model parameters
+scripts/
+  taq_pull.py          Stage A: the one online step (separate environment)
+  build_results.py      regenerates every table and figure
+  make_notebooks.py     emits notebooks/01..10 (executed)
+src/
+  data_loader.py        offline readers, the ns time axis
+  clean.py              trade & quote filters, NBBO series, as-of match to trades
+  classify.py           Lee-Ready / EMO / tick-test trade signing
+  liquidity.py          quoted / effective / realised spread, impact, Roll, Amihud
+  decomposition.py      Glosten-Harris (1988), Madhavan-Richardson-Roomans (1997)
+  impact.py             Kyle's lambda, metaorder reconstruction, sqrt-impact fit
+  execution.py          Almgren-Chriss trajectory, TWAP, VWAP volume profile
+  fills.py              queue-position-aware limit-order fill simulator
+  backtest.py           schedule x size x tape -> implementation shortfall
+  evaluation.py         cross-sectional regressions, bootstrap, hypothesis verdicts
+  viz.py, pipeline.py
+tests/                  one module per src module, synthetic fixtures, no network
+notebooks/              01 data+clean .. 10 execution backtest
+report/                 report.md, defense.md, audit.md
+```
+
+## Reproducing
+
+Two environments — the `wrds` client pins an old pandas that the offline
+pipeline cannot use, and on CPython 3.14 that old pandas additionally segfaults
+on datetime columns, so the pull is isolated and writes integer timestamps.
+
+```bash
+python -m venv venv
+venv/Scripts/pip install -r requirements.txt
+
+python -m venv venv-pull
+venv-pull/Scripts/pip install -r requirements-pull.txt
+venv-pull/Scripts/python scripts/taq_probe.py
+venv-pull/Scripts/python scripts/taq_pull.py
+
+venv/Scripts/python -m pytest -q
+venv/Scripts/python scripts/build_results.py
+venv/Scripts/python scripts/make_notebooks.py
+```
+
+## Key numbers
+
+- **Effective spread** (value-weighted, bps, calm → March 2020): mega
+  1.1 → 3.1, large 1.5 → 5.3, mid 3.5 → 10.1, small 9.8 → 21.5. Below quoted
+  on 90% of stock-days.
+- **MRR adverse-selection share** (calm): 0.17 mega → 0.30 small — monotone in
+  illiquidity, but flat-to-down under stress.
+- **Realised spread** turns negative for small-caps in March 2020 (−2.6 bps):
+  market making lost money.
+- **Impact concavity**: fitted exponent 0.11–0.23, every fit *t* > 6.
+- **Implementation shortfall** (bps, 0.5% → 10% ADV): market 81 → 101, TWAP
+  24 → 35, passive-at-touch 17 → 31. TWAP beats the market order by −65 bps
+  (paired bootstrap, *p* < 0.001).
+- **Cross-sectional**: +26 bps small-cap premium, +39 bps stress premium on the
+  shortfall — cost is first-order about *what* you trade.
+
+See [`report/report.md`](report/report.md).
+
+## Status
+
+Complete: 12 source modules, 59 tests, 8 executed notebooks, graduate report
+with 22 defence questions and a 15-category self-audit.
+
+
+### CODE src/execution.py
+"""Execution schedules -- the target trade trajectory before it meets the tape.
+
+    twap                 equal shares per slice.
+    volume_profile       fraction of the day's volume in each slice, from a
+                         U-shaped fit to the realised intraday profile.
+    vwap                 shares per slice proportional to that profile.
+    almgren_chriss       Almgren & Chriss (2000) closed-form trajectory that
+                         trades faster when risk aversion or volatility is high:
+                             x_k = X · sinh(κ(T − t_k)) / sinh(κ T)
+                         with κ = sqrt(λ σ² / η̃), η̃ = η(1 − γ/(2η)).
+                         λ → 0 recovers TWAP.
+
+All return `shares_per_slice`, a non-negative vector summing to the parent
+quantity X (a signed intent -- the sign is applied by the backtester).
+"""
+from __future__ import annotations
+
+import numpy as np
+import pandas as pd
+
+
+def twap(total_qty: float, n_slices: int) -> np.ndarray:
+    return np.full(n_slices, total_qty / n_slices)
+
+
+def volume_profile(trades_by_day: dict[str, pd.DataFrame], n_slices: int,
+                   open_ns: int, close_ns: int) -> np.ndarray:
+    """Average fraction of daily share volume in each of `n_slices` equal-time
+    bins, across the supplied stock-days. Falls back to a flat profile if no
+    data is given."""
+    edges = np.linspace(open_ns, close_ns, n_slices + 1)
+    acc = np.zeros(n_slices)
+    m = 0
+    for df in trades_by_day.values():
+        if df.empty:
+            continue
+        b = np.clip(np.searchsorted(edges, df["ns"].to_numpy("int64"),
+                                    side="right") - 1, 0, n_slices - 1)
+        v = np.bincount(b, weights=df["size"].to_numpy("float64"),
+                        minlength=n_slices)
+        s = v.sum()
+        if s > 0:
+            acc += v / s
+            m += 1
+    if m == 0:
+        return np.full(n_slices, 1.0 / n_slices)
+    prof = acc / m
+    return prof / prof.sum()
+
+
+def vwap(total_qty: float, profile: np.ndarray) -> np.ndarray:
+    p = np.asarray(profile, "float64")
+    p = p / p.sum()
+    return total_qty * p
+
+
+_KAPPA_MAX = 3.0                                       # urgency 1 -> steeply front-loaded
+
+
+def ac_urgency(sigma_per_slice: float, eta: float, risk_aversion: float,
+               gamma: float = 0.0) -> float:
+    """Map the Almgren-Chriss primitives to a dimensionless urgency in [0, 1]:
+    0 = TWAP, 1 = the most front-loaded trajectory allowed. Bounded (tanh) so an
+    extreme impact/volatility ratio cannot collapse the schedule to one order."""
+    eta_tilde = eta - 0.5 * gamma
+    if risk_aversion <= 0 or eta_tilde <= 0 or sigma_per_slice <= 0:
+        return 0.0
+    return float(np.tanh(np.sqrt(
+        risk_aversion * sigma_per_slice ** 2 / eta_tilde)))
+
+
+def almgren_chriss(total_qty: float, n_slices: int, urgency: float) -> np.ndarray:
+    """Almgren-Chriss (2000) liquidation trajectory
+    x_k = X sinh(kappa(n-k)) / sinh(kappa n),  kappa = urgency * KAPPA_MAX.
+    urgency 0 -> TWAP, urgency 1 -> a bounded front-load."""
+    n = n_slices
+    kappa = float(np.clip(urgency, 0.0, 1.0)) * _KAPPA_MAX
+    if kappa < 1e-4:
+        return twap(total_qty, n)
+    j = np.arange(n + 1)
+    x = total_qty * np.sinh(kappa * (n - j)) / np.sinh(kappa * n)
+    x[0], x[-1] = total_qty, 0.0
+    return -np.diff(x)
+
+
+def schedule(name: str, total_qty: float, n_slices: int, *,
+             urgency: float = 0.5, profile: np.ndarray | None = None) -> np.ndarray:
+    if name == "market":                              # everything at the open
+        s = np.zeros(n_slices)
+        s[0] = total_qty
+        return s
+    if name in ("twap", "passive_touch"):
+        return twap(total_qty, n_slices)
+    if name == "vwap":
+        return vwap(total_qty, profile if profile is not None
+                    else np.full(n_slices, 1.0 / n_slices))
+    if name == "almgren_chriss":
+        return almgren_chriss(total_qty, n_slices, urgency)
+    raise ValueError(f"unknown schedule {name!r}")
+
+
+### CODE src/backtest.py
+"""Metaorder execution backtest.
+
+For a parent order of `qty` shares (a fraction of the day's volume), split it
+into `n_slices` 15-minute child orders per an execution schedule, run each child
+through the real tape with the fill simulator, and measure the implementation
+shortfall against the arrival midpoint -- decomposed into spread cost, market-
+impact cost and timing risk.
+
+    run_schedule       one (schedule, side, size) on one stock-day.
+    metaorder_backtest all schedules x sizes x sides on one stock-day.
+
+Aggressive child orders (market / twap / vwap / almgren_chriss) cross the
+spread and pay a fitted temporary impact for their size; the passive schedule
+posts at the touch, simulates a queue fill over the slice, and sweeps any
+residual with a marketable order at the slice close.
+"""
+from __future__ import annotations
+
+import numpy as np
+import pandas as pd
+
+import execution as ex
+from data_loader import load_config
+from execution import schedule as make_schedule
+from fills import FillResult, simulate_limit, simulate_market
+
+NS_PER_MIN = 60_000_000_000
+
+
+def _slice_edges(open_ns: int, close_ns: int, n: int) -> np.ndarray:
+    return np.linspace(open_ns, close_ns, n + 1).astype("int64")
+
+
+def _quotes_at(nbbo: pd.DataFrame, ns_points: np.ndarray) -> pd.DataFrame:
+    """Prevailing NBBO (bid/ask/mid/bidsz/asksz) at each ns in `ns_points`."""
+    cols = [c for c in ("ns", "bid", "ask", "mid", "bidsz", "asksz")
+            if c in nbbo.columns]
+    q = nbbo[cols].sort_values("ns")
+    return pd.merge_asof(pd.DataFrame({"ns": np.asarray(ns_points, "int64")}),
+                         q, on="ns", direction="backward")
+
+
+def _mid_at(nbbo: pd.DataFrame, ns_points: np.ndarray) -> np.ndarray:
+    return _quotes_at(nbbo, ns_points)["mid"].to_numpy("float64")
+
+
+def temp_impact_bps(size_frac_adv: float, sigma_bps: float,
+                    eta: float, delta: float) -> float:
+    if size_frac_adv <= 0 or not np.isfinite(eta):
+        return 0.0
+    return float(eta * sigma_bps * size_frac_adv ** delta)
+
+
+def implementation_shortfall(side: int, filled_qty: float, cash: float,
+                             arrival_mid: float, final_mid: float,
+                             target_qty: float) -> dict:
+    """IS in bps of the arrival mid, with the unfilled quantity marked to the
+    final mid (opportunity cost)."""
+    if filled_qty <= 0:
+        exec_cost = 0.0
+    else:
+        avg_px = abs(cash) / filled_qty
+        exec_cost = side * (avg_px - arrival_mid) / arrival_mid * 1e4
+    unfilled = max(0.0, target_qty - filled_qty)
+    opp = (side * (final_mid - arrival_mid) / arrival_mid * 1e4
+           * unfilled / target_qty) if target_qty > 0 else 0.0
+    w = filled_qty / target_qty if target_qty > 0 else 0.0
+    return {"is_bps": w * exec_cost + opp, "exec_cost_bps": exec_cost,
+            "opportunity_bps": opp, "fill_ratio": w}
+
+
+def run_schedule(trades_q: pd.DataFrame, nbbo: pd.DataFrame, *, side: int,
+                 qty: float, schedule_name: str, adv: float, sigma_bps: float,
+                 eta: float, delta: float, vol_profile: np.ndarray,
+                 cfg: dict | None = None) -> dict:
+    cfg = cfg or load_config()
+    n = cfg["execution"]["almgren_chriss"]["n_slices"]
+    open_ns, close_ns = int(trades_q["ns"].iloc[0]), int(trades_q["ns"].iloc[-1])
+    edges = _slice_edges(open_ns, close_ns, n)
+    arrival_mid = _mid_at(nbbo, np.array([open_ns]))[0]
+    final_mid = _mid_at(nbbo, np.array([close_ns]))[0]
+
+    ac = cfg["execution"]["almgren_chriss"]
+    urgency = ex.ac_urgency(
+        sigma_per_slice=sigma_bps / 1e4 / np.sqrt(n),
+        eta=max(eta, 1e-6) * delta,           # marginal impact slope near δ<1
+        risk_aversion=ac["risk_aversion"])
+    per_slice = make_schedule(schedule_name, qty, n, urgency=urgency,
+                              profile=vol_profile)
+
+    edge_q = _quotes_at(nbbo, edges)
+    cash = 0.0
+    filled = 0.0
+    for k in range(n):
+        s_qty = float(per_slice[k])
+        if s_qty <= 0:
+            continue
+        s0, s1 = int(edges[k]), int(edges[k + 1])
+        q0 = edge_q.iloc[k]
+        if schedule_name == "passive_touch":
+            price = float(q0["bid"] if side > 0 else q0["ask"])
+            if not np.isfinite(price):
+                continue
+            r = simulate_limit(trades_q, side, price, s_qty, s0,
+                               queue_ahead=_queue_ahead(q0, side, cfg),
+                               deadline_ns=s1)
+            filled += r.filled_qty
+            cash += r.cash
+            resid = s_qty - r.filled_qty
+            if resid > 1e-6:                                   # sweep at slice close
+                imp = temp_impact_bps(resid / adv, sigma_bps, eta, delta)
+                m = simulate_market(edge_q.iloc[k + 1], side, resid, imp)
+                filled += m.filled_qty
+                cash += m.cash
+        else:
+            imp = temp_impact_bps(s_qty / adv, sigma_bps, eta, delta)
+            m = simulate_market(q0, side, s_qty, imp)
+            filled += m.filled_qty
+            cash += m.cash
+
+    out = implementation_shortfall(side, filled, cash, arrival_mid, final_mid, qty)
+    out.update({"schedule": schedule_name, "side": side, "qty": qty,
+                "qty_frac_adv": round(qty / adv, 6), "arrival_mid": arrival_mid})
+    return out
+
+
+def _queue_ahead(qrow, side: int, cfg: dict) -> float:
+    disp = qrow.get("bidsz" if side > 0 else "asksz", np.nan)
+    base = float(disp) if disp is not None and np.isfinite(disp) else 300.0
+    return base * cfg["fills"]["queue_ahead_fraction"]
+
+
+def metaorder_backtest(trades_q: pd.DataFrame, nbbo: pd.DataFrame, *,
+                       adv: float, sigma_bps: float, eta: float, delta: float,
+                       vol_profile: np.ndarray, cfg: dict | None = None
+                       ) -> pd.DataFrame:
+    cfg = cfg or load_config()
+    rows = []
+    for name in cfg["execution"]["schedules"]:
+        for frac in cfg["execution"]["metaorder_sizes_pct_adv"]:
+            qty = frac / 100.0 * adv
+            for side in (1, -1):
+                rows.append(run_schedule(
+                    trades_q, nbbo, side=side, qty=qty, schedule_name=name,
+                    adv=adv, sigma_bps=sigma_bps, eta=eta, delta=delta,
+                    vol_profile=vol_profile, cfg=cfg))
+    return pd.DataFrame(rows)

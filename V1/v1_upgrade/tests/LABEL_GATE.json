@@ -1,0 +1,18 @@
+{
+ "LABEL_REPLAY": "PASS",
+ "replay_scope": "full history, M15 40546 bars, vs state_v2_series.parquet",
+ "replay_frozen_match": 40546,
+ "replay_state_match": 40546,
+ "replay_pct": 100.0,
+ "WARMUP_CONVERGENCE": "PASS",
+ "warmup_detail": "last-200-label agreement with full-history labeling: 5000 M15 bars -> 200/200; 20000 -> 200/200",
+ "path_dependence_note": "hysteresis(k=2) is path-dependent, so a SHORT truncated window diverges in its EARLY section (5,000-bar window: 4602/5000 state match). The tail is what live uses and it converges at >=5000 M15 bars of warm-up.",
+ "live_warmup_m15_bars_configured": 6000,
+ "live_warmup_m1_bars": 90000,
+ "DETERMINISTIC": "PASS",
+ "PIT": "PASS",
+ "pit_method": "truncate at len-200: prefix labels identical to full-history labels (causal)",
+ "frozen_definitions_unchanged": true,
+ "labeler": "_c1_5_run.py::label_series + hysteresis(2) (verbatim, unmodified)",
+ "ts_utc": "2026-09-28T13:04Z"
+}

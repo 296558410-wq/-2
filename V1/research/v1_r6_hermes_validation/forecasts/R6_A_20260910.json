@@ -1,0 +1,96 @@
+{
+  "sample_id": "A_20260910",
+  "forecast_id": "R6_A_20260910",
+  "timestamp": "2026-09-10 12:00:00+00:00",
+  "observations": [
+    "H4 close 4357.925, trend_20 -33.59, range percentile 0.93",
+    "All timeframes negative trend_20 (M1..H4), MTF AGREE",
+    "Nearest level swing high 4384.335 UP, INSIDE, distance 0.13 ATR",
+    "State DECELERATION dwell 2 after long REJECTION; frozen label TREND"
+  ],
+  "what_i_know": [
+    "Multi-timeframe downtrend consistent to as_of_utc",
+    "Price below nearest UP swing-high level 4384.335",
+    "DXY and VIX both rising at as_of_utc",
+    "Mechanism candidate trend_continuation only, not asserted"
+  ],
+  "what_i_do_not_know": [
+    "Future price path entirely unknown",
+    "DXY, VIX are PROXY, instrument definition UNKNOWN",
+    "UST10Y, NEWS, MACRO_EVENTS absent (UNKNOWN)",
+    "Analog outcomes no returns/PnL, state evolution only"
+  ],
+  "evidence": [
+    "Uniform negative trend_20 across M1, M5, M15, H1, H4",
+    "H4 close 4357.925 near lows, large bearish bar",
+    "H1 8-bar displacement -11.51 inside level (L4)",
+    "Frozen label TREND with DECELERATION state"
+  ],
+  "counter_evidence": [
+    "M1/M5 rebound into 4383 range at as_of_utc",
+    "DECELERATION implies fading downside momentum",
+    "Level 4384.335 touched 21 times in 240 bars",
+    "Historical analogs diverge, no single path dominant"
+  ],
+  "possible_mechanisms": [
+    {
+      "mechanism": "trend_continuation",
+      "status": "POSSIBLE",
+      "why": "L4 candidate; uniform MTF downtrend, price below level"
+    },
+    {
+      "mechanism": "deceleration_reversal",
+      "status": "POSSIBLE",
+      "why": "DECELERATION state after long REJECTION sequence"
+    },
+    {
+      "mechanism": "mean_reversion_to_level",
+      "status": "WEAK",
+      "why": "price inside 4384.335 level with high touch count"
+    }
+  ],
+  "primary_scenario": {
+    "scenario": "Downtrend resumes after brief consolidation",
+    "horizon": "4-12 hours",
+    "trigger": "decisive break below H4 low 4323.915",
+    "invalidation": "close above 4384.335 swing-high level"
+  },
+  "alternative_scenario": {
+    "scenario": "Sideways rotation inside level before resolution",
+    "horizon": "2-8 hours",
+    "trigger": "price holds 4374-4384 band, contraction",
+    "invalidation": "clear trend state change to EXPANSION"
+  },
+  "expected_transition": "DECELERATION to TREND or BREAKOUT_ATTEMPT within 16 steps",
+  "direction_bias": "DOWN",
+  "time_horizon": "H4",
+  "evidence_strength": 0.55,
+  "confidence": 0.5,
+  "uncertainty": 0.55,
+  "confidence_reason": "Uniform MTF downtrend and level position support downside bias",
+  "uncertainty_reason": "DECELERATION state, absent macro/news data, analog paths diverge",
+  "invalidation": "decisive close above 4384.335 swing-high level",
+  "change_my_mind": [
+    "H4 close above 4384.335",
+    "UST10Y or news shows dovish shift",
+    "DXY proxy falls sharply",
+    "State transitions to EXPANSION upward"
+  ],
+  "abstain": false,
+  "abstain_reason": "Context sufficient though moderate; no self-contradiction",
+  "questions": {
+    "Q1": "Context states uniform MTF downtrend, price below swing-high, state DECELERATION",
+    "Q2": "Gaps: future path, macro/news, UST10Y; DXY/VIX are PROXY",
+    "Q3": "Evidence for primary: MTF negative trends, bearish H4, inside level",
+    "Q4": "Evidence against: intraday rebound, DECELERATION, high level touch count",
+    "Q5": "Trend_continuation only POSSIBLE; cannot assert causality",
+    "Q6": "Flip: close above 4384.335 or dovish macro data",
+    "Q7": "Abstain false; coherent PIT context, moderate confidence"
+  },
+  "reasoning_trace": [
+    "MTF agreement is primary evidence for downside",
+    "DECELERATION caps confidence, not a guarantee",
+    "Level proximity gives concrete invalidation",
+    "Absent macro/news keeps uncertainty moderate"
+  ]
+}

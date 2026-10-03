@@ -1,0 +1,82 @@
+{
+ "decision_id": "DEC-2026-09-21T08:02Z",
+ "cycle": "2026-09-21T08:02Z",
+ "symbol": "XAUUSD",
+ "decision": "LONG",
+ "confidence": 0.55,
+ "opportunity": "XAUUSD range-floor defense buy: 3h compression box 4341.88-4362.15 (~20.5pt = 3.0x M15 ATR); price 4345.90 sits 1.4pt above the H4 MA20 4344.46 / H4 MA50 4341.86 / 60-bar low 4341.88 cluster that was swept-and-reclaimed twice today; T1 back up at the M15 MA20 4354.59 wall.",
+ "opportunity_mechanism": "Mean reversion at a range extreme in an all-TF range regime (pkg er D1 0.091 / H4 0.061 / H1 0.077). The floor is a three-way confluence of H4 MA20 4344.461, H4 MA50 4341.861 and the 60-bar low 4341.88; the tape shows absorption there - twice today the low was swept and reclaimed on elevated volume (07:00Z: low 4345.80 -> close 4352.92, v2640; 07:30Z: new low 4341.88 -> close 4347.06, v2383) and the forming 08:00Z bar printed a higher low 4343.36 above the H4 MA50. Buying the retest of that cluster with the stop just through it fades the intraday sell-off at the box floor, targeting the M15 MA20 wall 4354.59 that has capped every counter-bounce today.",
+ "mtf_agreement": "Mixed / intraday-bearish vs higher-TF-constructive: D1 RANGE neutral (price 4378.645 -93.5 below MA20 4419.98, RSI 45.4, pos_in_range 51.4, er 0.091); H4 RANGE constructive (last 4345.83 above MA20 4344.46 and MA50 4341.86, RSI 53.0, pos 64.0, er 0.061); H1 RANGE bearish (below MA20 4365.27 and MA50 4358.62, RSI 46.1, llish 7, er 0.077); M15 bearish in pkg terms (below MA20 4354.59/MA50 4366.51/MA200 4357.68, RSI 30.9, exp_cont expanding 1.33, but er 0.382 is parquet-series noise - in MT5 live space M15 is a 3-hour 20pt compression box with six mechanically lower highs 4362.42->4347.61). Net: no TF has a directional edge (all-range) => fade edges, and this plan buys the tested edge that is 1.4pt away.",
+ "answers_14": {
+  "1": "market_state: 全TF区间。D1 range er0.091 (close 4378.645, MA20 4419.98, -93.5pt, RSI45.4, pos51.4); H4 range er0.061 (live 4345.83, MA20 4344.46, MA50 4341.86, RSI53.0, pos64.0); H1 range er0.077 (MA20 4365.27/MA50 4358.62 上方压制, RSI46.1, llish7); M15 pkg er0.382/expanding1.33 但MT5实盘为3小时20pt压缩箱体 (lo 4341.88 / hi 4362.15), price 4345.90 位于箱体下三分之一, 正贴 H4 MA20 4344.46。spread 0.322bps, tick_rate 102/min, 无异常 (z0.83)。",
+  "2": "一致性: 部分一致/混合。M15+H1 空头排列 (价格在全均线下方, 高点六级下移), H4 仍多头结构 (价 ≥ MA20 > MA50), D1 中性区间。=> 无趋势级方向优势, 只有区间均值回归 edge; 本轮做多属于逆盘中动量的箱底 fade。",
+  "3": "M15变化 (MT5实盘): 07:30Z bar o4350.52 h4355.03 l4341.88 c4347.06 v2383 = 扫破前低 4345.80 至新低 4341.88 后收回 +5.18pt, 当日第二大量; 07:45Z o4346.96 h4349.91 l4344.18 c4344.46 v2275 = 回吐, 收在低位; 08:00Z forming o4344.04 h4347.61 l4343.36 c4345.83 v591 = 抬高低点 (4341.88 -> 4343.36)。高点仍六级下移 4362.42->4362.15->4356.26->4355.74->4355.03->4349.91->4347.61, 低点序列 4345.80->4347.01->4349.06->4341.88->4343.36。",
+  "4": "机会: 箱底 (H4 MA20 4344.46 / H4 MA50 4341.86 / 60-bar low 4341.88 三重支撑, 今日二次扫破收回) 买入, 目标回到箱体中上部 M15 MA20 4354.59 墙下沿, 风险 7.0pt / 收益 9.5pt。",
+  "5": "机制: 区间机制 (全TF er<0.20) 的边界均值回归 + 支撑带吸收: 扫破收回 (sweep-and-reclaim) + 抬高低点 + 量能放大 (2383/2640 vs 小时均量~2280) 表明箱底有承接; 上行目标即今日六次反弹全部失效的 M15 MA20 墙 4354.59。",
+  "6": "触发条件 (具体价): {\"zone_touch\":[4340.5,4344.5]} — engine 采样 mid 落入 4340.5-4344.5 即市价成交 (当前 mid 4345.90, 距上沿仅 1.4pt ≈ 0.2x M15 ATR 6.9pt; 无需等收盘确认)。",
+  "7": "失效 (具体价): {\"price_cross_down\":4336.0} — mid ≤ 4336.0 视为三重支撑带被实体破坏, 未触发计划立即取消 (broker 硬止损 4337.5 更近, 先到先执行)。",
+  "8": "预期收益R: 1.357R (demo 可实现 = T1 4354.0; 保守按 zone 上沿 4344.5 成交, 1R = 7.0pt)。阶梯 T2 4357.5 = 1.857R / T3 4362.0 = 2.500R 不计入 (demo 模式 hard TP 全平于 T1)。",
+  "9": "预期损失R: 1.000R = 7.0pt = 7.00 USD (0.01 手 XAUUSD = 1 oz) = 账户 1957.90 USD 的 0.36%。",
+  "10": "成本数值: spread 0.322bps (0.14 USD/oz) + slippage 0.3bps/边 ≈ 往返 0.622bps = 0.27 USD/0.01手 = 0.039R; 成本占风险 3.9%, 非障碍。",
+  "11": "净EV算式: EV = p*R_T1 - (1-p)*1.000R - cost = 0.55*1.357R - 0.45*1.000R - 0.039R = 0.746 - 0.489 = +0.257R (>0)。盈亏平衡 p = (1+0.039)/2.357 = 0.441。",
+  "12": "再现性: 高。只要 4341.86-4344.46 支撑带未被实体收破, 每次回踩到带内 + 扫破收回 (今日已两次: 07:00Z 4345.80 / 07:30Z 4341.88, 均在放量 bar 上收回) 即同一 setup; 反向的墙 fade 今日已再现 6 次 (一个已落袋 +5.18 USD)。",
+  "13": "决策: LONG (主动注册箱底买入计划, 触价自动成交)。",
+  "14": "理由: 全TF区间, 价贴 H4 MA20 4344.46/H4 MA50 4341.86/60-bar low 4341.88 三重支撑, 今日两次扫破均放量收回且低点抬高; 目标 M15 MA20 4354.59 墙下沿, 1R7pt 给 1.36R, p0.55 净EV+0.26R。不做逆势追空 (墙位计划 0747Z 仍挂), 不等收盘确认。"
+ },
+ "plan": {
+  "plan_id": "TP-20260921T0802Z",
+  "direction": "LONG",
+  "entry_zone": {
+   "low": 4340.5,
+   "high": 4344.5
+  },
+  "trigger_condition": {
+   "zone_touch": [
+    4340.5,
+    4344.5
+   ]
+  },
+  "invalidation_condition": {
+   "price_cross_down": 4336.0
+  },
+  "stop_logic": {
+   "type": "below_h4ma20_h4ma50_and_60bar_low_cluster",
+   "level_price": 4337.5
+  },
+  "target_logic": {
+   "levels": [
+    {
+     "price": 4354.0,
+     "frac": 0.4
+    },
+    {
+     "price": 4357.5,
+     "frac": 0.35
+    },
+    {
+     "price": 4362.0,
+     "frac": 0.25
+    }
+   ]
+  },
+  "expected_R": 1.357,
+  "expected_win_probability": 0.55,
+  "probability_source": "MT5 live-quote space. Range-floor defense base rate: the 4341.86-4344.46 band is a triple confluence (H4 MA20 4344.461 / H4 MA50 4341.861 / 60-bar low 4341.88) that has already been swept and reclaimed twice today - 07:00Z bar swept 4345.80 then closed 4352.92 (+7.12pt, v2640), and the 07:30Z bar swept to a new session low 4341.88 and closed 4347.06 (+5.18pt, v2383 = 2nd heaviest of the session). Lows are now rising (4341.88 -> 4344.18 -> 4343.36) while price holds the cluster. Discounted from ~0.60 for (a) the M15/H1 bearish MA stack (M15 MA20 4354.59 / MA50 4366.51 / MA200 4357.68, H1 MA20 4365.27 / MA50 4358.62 all above price) and six mechanically lower highs (4362.42 -> 4347.61) = counter-trend intraday, (b) the all-TF range regime (pkg er D1 0.091 / H4 0.061 / H1 0.077) offering mean reversion but no directional tailwind, and (c) M15 RSI 30.9 / exp_cont expanding 1.33 showing the down-swing still carries energy. T1 4354.0 sits just under the M15 MA20 4354.59 wall, the level that killed every counter-bounce today, so it is bankable without needing a wall break.",
+  "estimated_cost": {
+   "spread_bps": 0.322,
+   "slippage_bps": 0.3,
+   "roundtrip_bps": 0.622,
+   "roundtrip_usd_per_0.01lot": 0.27
+  },
+  "spread_bps": 0.322,
+  "slippage_bps": 0.3,
+  "expected_net_EV": {
+   "value": 0.257,
+   "units": "R",
+   "note": "Demo-realizable: trader_core forces a full close at hard TP when EXEC_MODE=='demo' and open_position_from_plan puts the broker TP at tp_levels[0] = T1 4354.0, so the payoff is R_T1 = 1.357, NOT the ladder-weighted R (T2 1.857R / T3 2.500R are not bankable and are excluded). Conservative fill at the zone high 4344.5 vs stop 4337.5 => 1R = 7.0pt = 7.00 USD on 0.01 lot = 0.36% of the 1957.90 demo balance. EV = 0.55*1.357R - 0.45*1.000R - 0.039R = +0.257R; breakeven p = 0.441. Sensitivity: p 0.50 -> +0.190R, p 0.60 -> +0.325R. Fill at the zone low 4342.5 would give 1R = 5.0pt and R_T1 = 2.30R. Rejected alternatives: SHORT at the 4354.6-4358.6 M15 MA20/MA50+H1 MA50 wall (already armed as TP-20260921T0747Z, expR 1.167R / EV +0.162R - kept on the book for the other side of the box), breakdown SHORT {price_cross_down:4341.5} (T1 squeezed to ~0.5-0.7R, EV negative), and re-buying the mid-box 4348-4352 (today's three long stop-outs all entered there, MFE only +2.9/+3.1pt)."
+  },
+  "maximum_holding_time": "M15*8",
+  "qty_lots": 0.01
+ },
+ "model": "deepseek/deepseek-v4-flash"
+}

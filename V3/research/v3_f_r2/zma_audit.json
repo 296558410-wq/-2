@@ -1,0 +1,55 @@
+{
+ "schema": "v3_zma_audit/1",
+ "frozen_def": "zma = (close - sma20) / (close * sig20 * sqrt(20))",
+ "n": 20,
+ "theory": {
+  "n_bars_ma": 20,
+  "var_factor_numerator": 741,
+  "var_factor_denominator": 120,
+  "var_factor": 6.175,
+  "correct_std_constant_K": 2.4849547279578355,
+  "frozen_constant_sqrt_n": 4.47213595499958,
+  "scale_error_ratio": 1.7996850826633903,
+  "frozen_is_too_wide_by_pct": 79.96850826633903,
+  "p_abs_z_ge_2_correct": 0.045500263896358195,
+  "frozen_z2_equals_correct_z": 3.5993701653267807,
+  "p_abs_z_ge_2_frozen": 0.00031898884888037493
+ },
+ "synthetic": {
+  "gaussian": {
+   "n": 199979,
+   "emp_std_frozen": 0.5803888313665796,
+   "emp_std_correct": 1.044517121954871,
+   "emp_ratio_std": 0.5556527692723219,
+   "trigger_rate_frozen_at_2": 0.001255131788837828,
+   "trigger_n_frozen": 251,
+   "trigger_rate_correct_at_2": 0.05618589951944954,
+   "trigger_n_correct": 11236
+  },
+  "student_t_df4": {
+   "n": 199979,
+   "emp_std_frozen": 0.588475375169674,
+   "emp_std_correct": 1.0590703542076043,
+   "emp_ratio_std": 0.5556527692723217,
+   "trigger_rate_frozen_at_2": 0.0020002100220523154,
+   "trigger_n_frozen": 400,
+   "trigger_rate_correct_at_2": 0.057351021857295015,
+   "trigger_n_correct": 11469
+  }
+ },
+ "real_distribution_only": {
+  "bars": 47963,
+  "segments": 1055,
+  "emp_std_frozen": 0.5705759729054211,
+  "emp_std_correct": 1.0268570669640371,
+  "emp_ratio_std": 0.5556527692723217,
+  "trigger_rate_frozen_at_2": 0.002215609183917284,
+  "trigger_n_frozen": 102,
+  "valid_frozen": 46037,
+  "trigger_rate_correct_at_2": 0.05156721767274149,
+  "trigger_n_correct": 2374,
+  "valid_correct": 46037,
+  "observed_vs_theory_frozen": 6.94572613335511
+ },
+ "note": "distribution-only audit: no forward returns, no markouts, no ladder verdicts, no protocol change"
+}

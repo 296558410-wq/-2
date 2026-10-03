@@ -1,0 +1,66 @@
+{
+ "generated_utc": "2026-10-02T04:28:38.199228+00:00",
+ "verdict": "PASS",
+ "policy": "unknown position/daily/consecutive/age/slippage => WAIT_RISK/BLOCK (no default allow)",
+ "cases": [
+  {
+   "case": "position_state_unknown",
+   "blocked": true,
+   "reasons": [
+    "POSITION_STATE_UNKNOWN"
+   ],
+   "expected": "POSITION_STATE_UNKNOWN",
+   "verdict": "PASS"
+  },
+  {
+   "case": "pnl_state_unknown(reconcile_failed)",
+   "blocked": true,
+   "reasons": [
+    "PNL_STATE_UNKNOWN"
+   ],
+   "expected": "PNL_STATE_UNKNOWN",
+   "verdict": "PASS"
+  },
+  {
+   "case": "data_age_unknown",
+   "blocked": true,
+   "reasons": [
+    "STALE_DATA"
+   ],
+   "expected": "STALE_DATA",
+   "verdict": "PASS"
+  },
+  {
+   "case": "slippage_unknown",
+   "blocked": true,
+   "reasons": [
+    "SLIPPAGE_UNKNOWN"
+   ],
+   "expected": "SLIPPAGE_UNKNOWN",
+   "verdict": "PASS"
+  },
+  {
+   "case": "slippage_no_history",
+   "blocked": true,
+   "reasons": [
+    "SLIPPAGE_UNKNOWN"
+   ],
+   "expected": "SLIPPAGE_UNKNOWN",
+   "verdict": "PASS"
+  },
+  {
+   "case": "negative_control_all_available",
+   "blocked": false,
+   "reasons": [],
+   "expected": "__ALLOW__",
+   "verdict": "PASS"
+  },
+  {
+   "case": "age_helper_none",
+   "blocked": true,
+   "reasons": [],
+   "expected": "None",
+   "verdict": "PASS"
+  }
+ ]
+}

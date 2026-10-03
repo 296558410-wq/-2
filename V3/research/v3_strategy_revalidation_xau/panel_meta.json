@@ -1,0 +1,90 @@
+{
+ "schema": "v3_h27h30_panel/1",
+ "ts_utc": "2026-09-25T07:42:38.687983+00:00",
+ "data_version": {
+  "schema": "v3_data_version_freeze/1",
+  "ts_utc": "2026-09-25T02:19:53.223312+00:00",
+  "dataset_id": "V3_XAU_SPOT_DAILY",
+  "raw_sha256": "1e946fa8df2a85fd892b62f102b51e86309ca3486da518190e5a6e47e91e3ee7",
+  "normalized_sha256": "902313acacf0e8ec4eb2256fc1f8f3848a762e07f813f7cfa4e8c8b06451f63b",
+  "rows": 5186,
+  "start": "2006-09-25",
+  "end": "2026-09-25",
+  "availability_rule": "PIT: daily bar dated D -> available at D+1 00:00:00Z (conservative; same rule as the V3 PIT layer)",
+  "note": "frozen data version for any future recomputation; any change requires a new freeze",
+  "recomputation_executed": false
+ },
+ "coverage": {
+  "xau": [
+   "2006-09-25",
+   "2026-09-25",
+   5186
+  ],
+  "ust10y": [
+   "2007-01-02",
+   "2026-09-24",
+   3936
+  ],
+  "dxy": [
+   "2024-09-24",
+   "2026-09-25",
+   504
+  ],
+  "vix": [
+   "2024-09-24",
+   "2026-09-24",
+   503
+  ],
+  "gc_f": [
+   "2024-09-24",
+   "2026-09-25",
+   505
+  ]
+ },
+ "ust_yearly_rows": {
+  "2006": -1,
+  "2007": 251,
+  "2008": -1,
+  "2009": 250,
+  "2010": -1,
+  "2011": -1,
+  "2012": 250,
+  "2013": 250,
+  "2014": 250,
+  "2015": 251,
+  "2016": 250,
+  "2017": 250,
+  "2018": 249,
+  "2019": 250,
+  "2020": 251,
+  "2021": 251,
+  "2022": -1,
+  "2023": 250,
+  "2024": 250,
+  "2025": 249,
+  "2026": 184
+ },
+ "source_meta": {
+  "dxy": {
+   "fallback": "STORED_ROUND3_FILE",
+   "path": "research/hermes/trader_v3/data/pit_macro/r3_yahoo_dxy_daily.json",
+   "rows": 504,
+   "sha256": "b6e96496a3726050853c68cc74747225d6bb1d12b6ce48bb2183aca08d090dac"
+  },
+  "vix": {
+   "fallback": "STORED_ROUND3_FILE",
+   "path": "research/hermes/trader_v3/data/pit_macro/r3_yahoo_vix_daily.json",
+   "rows": 503,
+   "sha256": "803f5d5573bfe2416424f022e71218ebb8db04eff03228a0a14ea34c381e5ad0"
+  },
+  "gc_f": {
+   "fallback": "STORED_ROUND3_FILE",
+   "path": "research/hermes/trader_v3/data/pit_macro/r3_yahoo_gc_daily.json",
+   "rows": 505,
+   "sha256": "047792be939715de27f474a1a2df9c7f9497ce1ffddffb37d6004c58607907a8"
+  }
+ },
+ "rules": "identical to Round 3: daily bar D -> available D+1 00:00Z; signal at t -> entry close(t+1) -> exit close(t+2); 0.914bp anchor; stress 0/1/2/3x",
+ "predictor_note": "predictor coverage extended uniformly (no selection); the ONLY intended change vs Round 3 is the gold leg (GC -> XAU spot)",
+ "panel_hash": "e4d18a7dda5ba3155af459619993aa3fb7308c4fb8d9665da0e3179c2f880e9f"
+}

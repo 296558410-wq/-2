@@ -1,0 +1,30 @@
+{
+ "schema": "v3_github_search_registry/1",
+ "task": "V3-HFT-GITHUB-MICROSTRUCTURE-DISTILLATION-003",
+ "generated_utc": "2026-09-22T05:35:00Z",
+ "method": "GitHub public API only (https://api.github.com). Read-only. No clone of large data, no purchases, no signups.",
+ "verification_rule": "a repo is only reported if GET /repos/<slug> returned HTTP 200; otherwise NOT_FOUND",
+ "priority_order": [
+  "1 XAUUSD + Tick + MT5 + Execution",
+  "2 FX / OTC / CFD microstructure",
+  "3 Market making / adverse selection / markout / execution",
+  "4 LOB / OFI / queue (method source only)",
+  "5 Deep learning (last; complexity never raises a score)"
+ ],
+ "named_targets": [
+  {"slug": "RobertN1D/XAUUSD-GOLD-SCALPER-MT5-EA-FREE-SOURCE-CODE", "bucket": "1", "reason": "tick buffer / DOM gating / tick velocity / setup ranking"},
+  {"slug": "NadirAliOfficial/snipe-fx-ea", "bucket": "2", "reason": "public real-tick vs synthetic-tick discrepancy + fixed per-trade negative (cost-type failure)"},
+  {"slug": "Leotaby/Market-Making-Simulator", "bucket": "3", "reason": "fill probability / adverse selection / inventory / markout / quote distance; author-declared limits"},
+  {"slug": "diegourda/Statistical-Arb-MM", "bucket": "3", "reason": "toxicity / OFI / inventory / MM / execution sim / walk-forward"}
+ ],
+ "search_queries_dispatched": [
+  "q=XAUUSD+MT5+EA+tick", "q=gold+scalper+order+flow+MT5", "q=market+making+adverse+selection",
+  "q=markout+microstructure", "q=fill+probability+order+book", "q=implementation+shortfall",
+  "q=execution+cost+aware+backtest", "q=cost+aware+loss+trading", "q=HFT+failed",
+  "q=latency+discount+backtest", "q=limit+order+fill+probability"
+ ],
+ "delegation": {"group_A": "XAUUSD/MT5 (dist-a)", "group_B": "market making / adverse selection (dist-b)",
+                 "group_C": "execution-aware + failed research (dist-c)"},
+ "results": [],
+ "note": "results are appended by the distillation pipeline from parts/group_*.md after each repo passes the HTTP-200 verification."
+}

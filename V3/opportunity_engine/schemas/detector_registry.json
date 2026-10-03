@@ -1,0 +1,123 @@
+{
+ "schema": "v3_detector_registry/1",
+ "ts_utc": "2026-09-25T11:22:45.775703+00:00",
+ "detectors": [
+  {
+   "detector_id": "D1_STATE_BREAK",
+   "detector_name": "State Break",
+   "version": "R1.0.0",
+   "description": "current state deviates strongly from its recent rolling distribution",
+   "input_features": [
+    "return_60m",
+    "vol_pct_240",
+    "vol_state"
+   ],
+   "threshold_definition": {
+    "return_z_abs": 3.0,
+    "vol_pct": 0.95
+   },
+   "lookback_definition": "rolling 240 bars (min 60)",
+   "cooldown_bars": 6,
+   "clustering_rule": "consecutive same-type detections within 3 bars join one cluster",
+   "data_dependencies": [
+    "xau"
+   ],
+   "output_type": "OPP_STATE_BREAK"
+  },
+  {
+   "detector_id": "D2_STATE_TRANSITION",
+   "detector_name": "State Transition",
+   "version": "R1.0.0",
+   "description": "volatility regime transition between adjacent bars",
+   "input_features": [
+    "vol_state"
+   ],
+   "threshold_definition": {
+    "transitions": [
+     "VOL_NORMAL->VOL_EXTREME",
+     "VOL_CONTRACTION->VOL_EXPANSION",
+     "VOL_EXTREME->VOL_NORMAL"
+    ]
+   },
+   "lookback_definition": "1 bar",
+   "cooldown_bars": 6,
+   "clustering_rule": "same as D1",
+   "data_dependencies": [
+    "xau"
+   ],
+   "output_type": "OPP_STATE_TRANSITION"
+  },
+  {
+   "detector_id": "D3_CROSSMARKET_SHOCK",
+   "detector_name": "Cross-Market Shock",
+   "version": "R1.0.0",
+   "description": "external market shows an abnormal move; XAU response is observed only after the fact",
+   "input_features": [
+    "DXY_RETURN_60M_z",
+    "VIX_RETURN_60M_z",
+    "UST10Y_PROXY_RETURN_60M_z"
+   ],
+   "threshold_definition": {
+    "abs_z": 2.0
+   },
+   "lookback_definition": "rolling 240 bars",
+   "cooldown_bars": 6,
+   "clustering_rule": "same as D1",
+   "data_dependencies": [
+    "dxy",
+    "vix",
+    "tnx"
+   ],
+   "output_type": "OPP_CROSSMARKET_SHOCK"
+  },
+  {
+   "detector_id": "D4_CROSSMARKET_DIVERGENCE",
+   "detector_name": "Cross-Market Divergence",
+   "version": "R1.0.0",
+   "description": "external shock without a normal XAU response (or the reverse)",
+   "input_features": [
+    "XAU_vs_DXY",
+    "XAU_vs_VIX",
+    "XAU_vs_UST10Y_PROXY"
+   ],
+   "threshold_definition": {
+    "external_abs_z": 2.0,
+    "xau_abs_z_max": 0.5
+   },
+   "lookback_definition": "rolling 240 bars",
+   "cooldown_bars": 6,
+   "clustering_rule": "same as D1",
+   "data_dependencies": [
+    "xau",
+    "dxy",
+    "vix",
+    "tnx"
+   ],
+   "output_type": "OPP_CROSSMARKET_DIVERGENCE"
+  },
+  {
+   "detector_id": "D5_VOL_TRANSITION",
+   "detector_name": "Volatility Regime Transition",
+   "version": "R1.0.0",
+   "description": "low->abnormal volatility or abnormally fast volatility decay",
+   "input_features": [
+    "vol_pct_240",
+    "vol_ratio_5_30"
+   ],
+   "threshold_definition": {
+    "low": 0.2,
+    "high": 0.9,
+    "ratio_jump": 2.0,
+    "ratio_decay": 0.5
+   },
+   "lookback_definition": "rolling 240 bars",
+   "cooldown_bars": 6,
+   "clustering_rule": "same as D1",
+   "data_dependencies": [
+    "xau"
+   ],
+   "output_type": "OPP_VOL_TRANSITION"
+  }
+ ],
+ "no_hidden_parameters": true
+}

@@ -1,0 +1,89 @@
+{
+  "sample_id": "A_20260727",
+  "forecast_id": "A_20260727_H4",
+  "timestamp": "2026-07-27T00:00:00Z",
+  "horizon": 4,
+  "scenario_family": "RANGE",
+  "scenario_alternative": "DIRECTIONAL",
+  "scenario_abstain": false,
+  "observations": [
+    "State EXPANSION dwell 2; event REJECTION at t",
+    "Price beyond swing high 4081.895; reclaim NONE",
+    "H4 upper wick 22.71 rejected 4116.145",
+    "Multi-TF CONFLICT; lower TFs contracting"
+  ],
+  "what_i_know": [
+    "PIT snapshot as_of 2026-07-27 00:00 UTC",
+    "EXPANSION state with REJECTION event label",
+    "Swing high 4081.895 broken beyond; reclaim none",
+    "DXY 101.237 mild drift; PROXY quality"
+  ],
+  "what_i_do_not_know": [
+    "Future price action at H=4",
+    "News and macro events absent from context",
+    "VIX and UST10Y unavailable",
+    "Higher-TF bar timestamp semantics conflict"
+  ],
+  "evidence": [
+    "H4 rejection wick 22.71 at 4116.145",
+    "M1 M5 M15 range_contracting true",
+    "Multi-timeframe trend agreement CONFLICT",
+    "Analog step 4 split; no dominant direction"
+  ],
+  "counter_evidence": [
+    "EXPANSION state favors high-volatility continuation",
+    "Breakout beyond level supports breakout_pressure",
+    "H1 trend_20 strongly positive 64.8",
+    "Two analogs of three persist EXPANSION"
+  ],
+  "possible_mechanisms": [
+    {"mechanism": "breakout_pressure", "status": "POSSIBLE", "why": "close beyond level 0.33 ATR"},
+    {"mechanism": "failed_breakout", "status": "POSSIBLE", "why": "no reclaim; 4116 rejected"},
+    {"mechanism": "two_sided_expansion", "status": "POSSIBLE", "why": "rejection plus lower-TF contraction"},
+    {"mechanism": "range_reversion", "status": "WEAK", "why": "trend conflict and weak DXY signal"}
+  ],
+  "primary_scenario": {
+    "scenario": "RANGE",
+    "horizon": 4,
+    "trigger": "Oscillation between 4082 support and 4096 resistance",
+    "invalidation": "Sustained close above 4096 or below 4082"
+  },
+  "alternative_scenario": {
+    "scenario": "DIRECTIONAL",
+    "horizon": 4,
+    "trigger": "Sustained acceptance beyond broken swing high 4081.895",
+    "invalidation": "Close back inside level 4081.895"
+  },
+  "expected_transition": "EXPANSION persists; REJECTION resolves into RANGE",
+  "direction_bias": "NO_DIRECTIONAL_EDGE",
+  "time_horizon": "H=4",
+  "evidence_strength": 0.3,
+  "confidence": 0.35,
+  "uncertainty": 0.6,
+  "confidence_reason": "Coherent rejection setup offset by multi-TF conflict",
+  "uncertainty_reason": "Proxy cross-market, absent news, ambiguous state labels",
+  "invalidation": "Sustained close above 4096 or below 4080 flips family",
+  "change_my_mind": [
+    "Clean H4 close above 4096 expanding range",
+    "Multi-timeframe trend agreement converges",
+    "Macro or news catalyst emerges at H=4",
+    "Level 4081.895 reclaimed with acceptance"
+  ],
+  "abstain": false,
+  "abstain_reason": "Sufficient coherent structure; abstention not required",
+  "questions": {
+    "Q1": "EXPANSION state, REJECTION event, level break beyond",
+    "Q2": "Future outcome, news, macro, VIX, timestamp semantics",
+    "Q3": "Rejection wick, lower-TF contraction, trend conflict",
+    "Q4": "EXPANSION regime, breakout candidate, positive H1 trend",
+    "Q5": "Two-sided expansion resolving breakout direction",
+    "Q6": "Sustained close beyond 4096 or multi-TF convergence",
+    "Q7": "false; context sufficient, abstention unnecessary"
+  },
+  "reasoning_trace": [
+    "Assessed state event labels and level geometry",
+    "Weighed breakout against failed-breakout candidates",
+    "Checked cross-timeframe agreement: CONFLICT",
+    "Chose RANGE primary with DIRECTIONAL alternative"
+  ]
+}

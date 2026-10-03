@@ -1,0 +1,20 @@
+{
+ "selection": {
+  "version": "c1-sample-selection-r1",
+  "frozen": true,
+  "selection_seed": 20260927,
+  "selection_rule": "stratified by (REGIME_BUCKET x STRUCTURE_BUCKET) then seeded random within strata; candidate bars require index >= WARMUP and index + HORIZON + 2 < n",
+  "stratification": [
+   "REGIME",
+   "PRICE_STRUCTURE"
+  ],
+  "purge_bars": 10,
+  "horizon_bars": 8,
+  "n_target": 200,
+  "labels_used_only_for_reveal_and_evaluation": true,
+  "labels_never_used_to_pick_predictions": true
+ },
+ "picked": 200,
+ "unique_regimes": 7,
+ "unique_structures": 7
+}

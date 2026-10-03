@@ -1,0 +1,41 @@
+{
+  "audit_id": "POST_20260726",
+  "timestamp": "2026-09-27T22:44:00+08:00",
+  "correct_calls": [
+    "Binding structure identification: SWING_LOW_36869 at 4048.995 as the pivotal level — price was indeed parked on it and the level defined the subsequent resolution",
+    "Compression was nearing resolution (decision imminent): the M5 intra-bar expansion signal was validated — the actual next state was EXPANSION, i.e. the squeeze resolved",
+    "The downside-break condition (decisive break below 4048.995) did not occur — consistent with the counter-evidence that the 54-touch level was defended",
+    "Alternative scenario's direction (UP bounce off the level) matched the actual UP outcome (hermes_scenario_covered_actual = true)"
+  ],
+  "wrong_calls": [
+    "Direction bias DOWN contradicted the actual UP move",
+    "Primary scenario (downside continuation toward 4040.5 then 4022.755 after a break of 4048.995) did not occur",
+    "Expected state transitions (COMPRESSION -> TREND downside, or COMPRESSION -> REJECTION -> COMPRESSION) did not occur — actual next state was EXPANSION"
+  ],
+  "right_but_wrong_reason": [
+    "Compression-resolution call: correct that the compression would resolve imminently, but it resolved UP into EXPANSION, not as the DOWN continuation the M5-expansion/8-bar-displacement read was used to support",
+    "Level-defence call: correct that the level held (no downside break), but it held as the springboard for an upward expansion rather than the expected extended grind or rejection-then-re-compression"
+  ],
+  "direction_ok_state_wrong": [
+    "Alternative rejection/bounce scenario: direction UP was right, but the expected state path (REJECTION then re-COMPRESSION inside 4053.5-4057.7) was wrong — the actual next state was EXPANSION (transition 1), not REJECTION -> COMPRESSION"
+  ],
+  "state_ok_direction_wrong": [],
+  "should_have_abstained": true,
+  "invalidation_occurred": true,
+  "prior_concerns_materialised": null,
+  "hindsight_detected": false,
+  "hindsight_evidence": [],
+  "outcome_alignment_verdict": "PARTIALLY_CORRECT",
+  "reasoning_trace": [
+    "Read only the frozen prompt and the payload; no other files.",
+    "Actual outcome: next state EXPANSION, transition 1, direction UP; hermes_scenario_covered_actual = true; baseline persistence state COMPRESSION, previous state TREND.",
+    "Hermes-A's primary scenario (confidence 0.42, DOWN continuation below 4048.995) failed: no downside break occurred; direction bias DOWN contradicted the actual UP move.",
+    "The alternative scenario (confidence 0.33) captured the UP direction, but its expected state evolution (REJECTION episode then re-COMPRESSION in the 4053.5-4057.7 band) is inconsistent with an EXPANSION next state — direction right, state wrong.",
+    "The 'decision imminent / squeeze nearing resolution' call was validated in form (state EXPANSION means the compression resolved) but the resolution direction was the opposite of the primary lean — right for the wrong reason.",
+    "Invalidation of the primary: the level held without a downside break; the no-break/upward-resolution branch materialised, so invalidation_occurred = true.",
+    "The payload contains no earlier adversarial auditor section, so prior_concerns_materialised = null (not assessable).",
+    "No hindsight detected: Hermes-A itself flagged the ~38h stale price snapshot and the CONFLICT multi-TF agreement; nothing in its reasoning requires knowledge of the present.",
+    "Staleness of the price snapshot (~38h before as_of), all cross-market series UNKNOWN, CONFLICT multi-TF agreement, and a defended 54-touch level argue Hermes-A should have abstained from emitting a DOWN directional bias instead of a 0.42-confidence lean.",
+    "Verdict PARTIALLY_CORRECT: 1 of 3 scenarios (the 0.33 alternative) captured the actual UP direction; the primary scenario, the DOWN bias, and the expected state paths were wrong."
+  ]
+}

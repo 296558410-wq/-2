@@ -1,0 +1,91 @@
+{
+ "schema": "hermes_decision_v1",
+ "utc_ts": "2026-09-18T16:32:00Z",
+ "cycle": "2026-09-18T16:32Z",
+ "decision_id": "DEC-2026-09-18T16:32Zb",
+ "symbol": "XAUUSD",
+ "decision": "LONG",
+ "plan_id": null,
+ "confidence": 0.45,
+ "bias": "LONG-lean 0.45 - WITH-TREND DIP-BUY at the M15 MA50 retest. Slot FREE (broker flat, POSITIONS []). Live broker (GMT+3) mid 4379.05 bid 4378.97/ask 4379.13 spread 0.365bps; pkg m15_live mid 4375.36. The 16:00Z M15 bar broke the 4348-4358 2h rotation UP (H4365.03 C4361.70) and price ran through the M15 MA50 4372.74 into the M15 MA20 4379.58 on elevated vol (z 2.3). H4 structure is UP (hhish6/llish3, close > MA20 4324.00 > MA50 4343.84). Near-price with-trend entry = the shallow retest of the broken M15 MA50: entry 4370.5-4374.0. (Correction of the first 16:32Z draw, whose 4396-4402 top-fade SHORT was mechanically cancelled by the plan-age/distance guard: 4396-4402 sits 21pt above price, beyond 2x band = 4384.0 -> 'price_left_setup'. Not a risk veto; re-anchored to a level within reach of price, per 'close-to-boundary' pre-arm.)",
+ "mtf_agreement": "range regime with an H4 up-structure; long-lean (~2.5/4). H4 (+): close 4368.84 > MA20 4324.00 > MA50 4343.84 < MA200 4401.23, RSI 57.2, structure hhish6/llish3 (ER 0.143 = range). M15 (+ -> basing): close 4371.65 < MA20 4379.58 > MA50 4372.74 > MA200 4337.55, RSI 46, fresh 16:00Z up bar. H1 (<->): close 4368.84 > MA20 4365.74 > MA200 4350.02 > MA50 4337.74, RSI 63.3, but pos_in_range 81.2 (upper) and recent_move -55.6. D1 (-): close ~4341.7 << MA20 4431.29, RSI 42.3, structure down. Net: H4-up with H1/M15 MAs as the pivot; the shallow M15 MA50 4372.74 retest is the with-trend entry, continuation target = M15 MA20 4379.6 then 4392.5 / day-high 4399.7. D1/H1-stretch are the drags.",
+ "state_summary": "Gate 16:32Z Fri: armed=true open=true reason=open (exit 0; UTC Fri inside Sun20:00Z->Fri21:00Z armed window). pkg 2026-09-18T16:32Z: live_days 10, live_ticks 1,996,409, gaps []. Broker demo FLAT (POSITIONS []) -> single-position slot FREE. Live broker (GMT+3) mid 4379.05, spread 0.365bps. pkg m15_live mid 4375.36, tick 184/min, last6_max 34.6bps z 2.3 vs base 10.17 = vol elevated. Live/broker MTF levels (GMT+3): D1 close ~4341.7 < MA20 4431.29 (RSI 42.3); H4 4368.84 > MA20 4324.00 > MA50 4343.84 < MA200 4401.23 (RSI 57.2, structure up, ER range); H1 4368.84 > MA20 4365.74 > MA200 4350.02 > MA50 4337.74 (RSI 63.3, pos 81.2 upper); M15 4371.65 < MA20 4379.58 > MA50 4372.74 > MA200 4337.55 (hi60 4399.77 / lo60 4339.76, RSI 46). Day high 4399.70 / low 4334.35 / session low 4342.62 (14:30Z). Caveats: candle_latest stale (2026-09-07) ignored; pkg m15 feed ~10-14pt off broker -> all levels anchored to live broker MT5. NOTE: prior draw's 4396-4402 SHORT (DEC-...16:32Z) was cancelled by the mechanical plan-age/distance guard (4396-4402 21pt above price > 2xband 4384.0), not by risk; this decision re-anchors to a reachable level.",
+ "m15_change": "vs 16:17Z (mid ~4362.64): UP +16.4pt to live 4379.05. The 16:00Z M15 bar (open 4356.83 / high 4365.03 / close 4361.70) broke the 4348-4358 two-hour rotation UP; the run then took out the M15 MA50 4372.74 and is testing the M15 MA20 4379.58. Vol elevated (z 2.3). Read: with-trend continuation attempt; a shallow retest of the broken M15 MA50 4372.74 is the highest-EV with-trend entry. Room-up: 4379.6 -> 4392.5 -> 4399.7; room-down (thesis-dead): 4365.7 (H1 MA20) -> 4352 -> 4343.0 (H4 MA50).",
+ "opportunity": "With-trend PULLBACK-BUY retest of the broken M15 MA50 4372.74 (near-price, engine-reachable). Slot FREE -> register. Entry zone 4370.5-4374.0 (M15 MA50 4372.74; also the 16:00Z breakout-bar body), trigger {zone_touch[4370.5,4374.0]}, SL 4363.5 (below the H1 MA20 4365.74 and the 16:00Z bar close 4361.70), T1 4385.0 (x0.3) / T2 4392.5 (x0.35) / T3 4399.7 (day high, x0.35). Entry-mid 4372.25, risk 8.75pt, blended target 4392.77 -> reward 20.52pt -> R 2.35, p 0.45, EV +0.47R. Price (pkg 4375.36 / live 4379.05) is only ~1.4-8.8pt above the band, so this is a close-to-boundary pre-arm that fires on the first shallow dip; I do NOT chase at the M15 MA20 4379.58.",
+ "opportunity_mechanism": "XAUUSD topped 4399.70/4399.77, flushed to a 4342.62 session low (14:30Z) that tagged the H4 MA50 4343.84 and HELD, V-reclaimed the 4348-4358 shelf, rotated ~2h (4348.06-4361.88), then broke that rotation UP at 16:00Z with an above-average body. The run then took out the M15 MA50 4372.74 and pushed into the M15 MA20 4379.58 on elevated vol. With H4 structure still UP (MA20 4324.00 / MA50 4343.84) the failed breakdown + fresh upside break keep the path of least resistance higher, and a shallow retest of the broken M15 MA50 (4370.5-4374.0) is the highest-EV with-trend entry. Invalidation of the wider thesis = break/hold below 4363.5, re-opening 4352 and 4343.0 (H4 MA50).",
+ "answers_14": {
+  "1_market_state": "Gate 16:32Z Fri armed=true open=true reason=open (exit 0; UTC Fri inside the armed window). pkg 16:32Z: live_days 10, live_ticks 1,996,409, gaps []. Broker demo FLAT (POSITIONS []) -> slot FREE. Live broker (GMT+3) mid 4379.05 bid 4378.97/ask 4379.13 spread 0.365bps. pkg m15_live mid 4375.36, tick 184/min, last6_max 34.6bps z2.3 vs base 10.17 = vol elevated. Regime = RANGE with H4 up-structure: D1 close ~4341.7 << MA20 4431.29 (RSI 42.3, pos45.7); H4 4368.84 > MA20 4324.00 > MA50 4343.84 < MA200 4401.23 (RSI 57.2, structure up, ER 0.143 range); H1 4368.84 > MA20 4365.74 > MA200 4350.02 > MA50 4337.74 (RSI 63.3, pos 81.2 upper); M15 4371.65 < MA20 4379.58 > MA50 4372.74 > MA200 4337.55 (hi60 4399.77 / lo60 4339.76, RSI 46). Day high 4399.70 / low 4334.35 / session low 4342.62. Caveat: candle_latest stale (2026-09-07) ignored; pkg m15 feed ~10-14pt off broker -> levels vs live broker MT5.",
+  "2_consistency": "long-lean (~2.5/4): H4 UP (structure, above MA20/MA50) and the fresh 16:00Z upside break off the H4 MA50 base support the with-trend long; H1 (pos 81.2, RSI 63.3) and D1 (below MA20) are the drags. Net: register a with-trend LONG on a shallow retest of the broken M15 MA50 4372.74; conviction 0.45 - do not chase into the M15 MA20 4379.58.",
+  "3_m15_change": "vs 16:17Z (mid ~4362.64): UP +16.4pt to live 4379.05. 16:00Z bar broke the 4348-4358 rotation up (H4365.03 C4361.70); run took out M15 MA50 4372.74 and is testing M15 MA20 4379.58. Vol elevated (z 2.3). Room-up 4379.6 -> 4392.5 -> 4399.7; room-down 4365.7 -> 4352 -> 4343.0.",
+  "4_opportunity": "With-trend PULLBACK-BUY retest of the broken M15 MA50 4372.74. Entry 4370.5-4374.0 {zone_touch[4370.5,4374.0]}, SL 4363.5, T1 4385.0 (x0.3)/T2 4392.5 (x0.35)/T3 4399.7 (x0.35). Entry-mid 4372.25, risk 8.75pt, blended 4392.77 -> R 2.35, p 0.45, EV +0.47R. Slot FREE -> registered this cycle. NOTE: the first 16:32Z draw (4396-4402 SHORT top-fade) was cancelled by the mechanical distance guard; re-anchored to a reachable level.",
+  "5_mechanism": "4399.70/4399.77 top -> flush to 4342.62 session low tagging H4 MA50 4343.84 and HOLDING -> V-reclaim of the 4348-4358 shelf -> ~2h rotation -> 16:00Z upside break (H4365.03 C4361.70) -> run through M15 MA50 4372.74 into M15 MA20 4379.58. With H4 UP the failed breakdown + fresh break = with-trend long; best entry is the shallow retest 4370.5-4374.0. Invalidation = break/hold below 4363.5, re-opening 4352/4343.0.",
+  "6_trigger_condition": "{\"zone_touch\": [4370.5, 4374.0]} - fires on live mid entering the M15 MA50 retest band (no close required). Staleness line for a LONG = mid > zone_hi + 2*band = 4374.0 + 7.0 = 4381.0 -> if price runs away up the engine cancels and next cycle rebuilds.",
+  "7_invalidation": "{\"price_cross_down\": 4363.5} - below the H1 MA20 4365.74 and the 16:00Z bar close 4361.70; a decisive break/hold under it voids the upside break and re-opens 4352 / 4343.0 (H4 MA50). Hard SL also 4363.5.",
+  "8_expected_return_R": "Entry-mid 4372.25, blended target (4385.0 x0.3 / 4392.5 x0.35 / 4399.7 x0.35) = 4392.77 -> +20.52pt; SL 4363.5 -> risk 8.75pt; expected_R = 20.52/8.75 = 2.35R.",
+  "9_expected_loss_R": "1R = 8.75pt = 8.75 USD on 0.01 lot XAUUSD (1 lot = 100 oz) ~ 0.44% of the 1989.33 USD demo balance.",
+  "10_cost_value": "live spread 0.365bps (~0.16pt @4373) + slippage 0.30bps (~0.13pt) = 0.665bps roundtrip ~ 0.29pt ~ 0.033R on the 8.75pt 1R.",
+  "11_net_EV_formula": "EV = p*R - (1-p)*1.0 - cost = 0.45*2.35 - 0.55*1.0 - 0.033 = 1.058 - 0.550 - 0.033 = +0.475R ~ +0.47R (positive -> register LONG).",
+  "12_recurrence": "With-trend dip-buy / support-retest family (20260918T0347Z LONG banked; 20260918T1302Z LONG; 20260918T1417Z LONG closed green @TP). Re-armed by the 16:00Z upside break off the H4 MA50 base + the fresh M15 MA50 reclaim; entry on the shallow retest. Never averaging; one position at a time.",
+  "13_decision": "LONG (with-trend retest-buy, near-price). Slot FREE (broker flat). Plan: entry 4370.5-4374.0 {zone_touch}, SL 4363.5, T1 4385.0/T2 4392.5/T3 4399.7, qty 0.01, R 2.35, p 0.45, EV +0.47R. Bias LONG-lean 0.45. (First 16:32Z draw's far 4396-4402 SHORT was cancelled by the mechanical distance guard; re-anchored.)",
+  "14_reason": "H4结构向上+16:00Z上破4348-4358箱体, 价格站上M15 MA50 4372.7; 不追高M15 MA20 4379.6, 预挂回踩4370.5-4374做多, SL4363.5, T4385/4392.5/4399.7, R2.35, EV+0.47R; 现价距带仅1.4-8.8pt即触"
+ },
+ "plan": {
+  "direction": "LONG",
+  "entry_zone": {
+   "low": 4370.5,
+   "high": 4374.0
+  },
+  "trigger_condition": {
+   "zone_touch": [
+    4370.5,
+    4374.0
+   ]
+  },
+  "invalidation_condition": {
+   "price_cross_down": 4363.5
+  },
+  "stop_logic": {
+   "type": "structure",
+   "level_price": 4363.5
+  },
+  "target_logic": {
+   "levels": [
+    {
+     "price": 4385.0,
+     "frac": 0.3
+    },
+    {
+     "price": 4392.5,
+     "frac": 0.35
+    },
+    {
+     "price": 4399.7,
+     "frac": 0.35
+    }
+   ]
+  },
+  "expected_R": 2.35,
+  "expected_win_probability": 0.45,
+  "probability_source": "with-trend dip-buy / support-retest family on the 10 live-days sample; realised base rate ~0.42-0.48; held at 0.45 (H4 up supports continuation, but H1 pos 81.2 / D1 bearish cap it)",
+  "estimated_cost": {
+   "spread_bps": 0.365,
+   "slippage_bps": 0.3,
+   "roundtrip_pt": 0.29,
+   "note": "0.665bps roundtrip ~0.29pt ~0.033R on the 8.75pt 1R"
+  },
+  "spread_bps": 0.365,
+  "slippage_bps": 0.3,
+  "expected_net_EV": {
+   "value": 0.47,
+   "units": "R",
+   "note": "0.45*2.35 - 0.55*1.0 - 0.033 = +0.475R"
+  },
+  "maximum_holding_time": "M15*8",
+  "qty_lots": 0.01
+ },
+ "gap_to_tradable": "STRUCTURAL: slot is FREE (broker POSITIONS [] = flat); no position is open, so a new open plan CAN be registered. What is missing is only PRICE: pkg mid 4375.36 / live mid 4379.05 sits only ~1.4-8.8pt ABOVE the 4370.5-4374.0 buy band (just under the M15 MA20 4379.58), so buying now = chasing into the M15 MA20. The plan is pre-armed close-to-boundary: any shallow dip into 4370.5-4374.0 fires {zone_touch[4370.5,4374.0]} and auto-fills at mid with SL 4363.5. Next cycle: if price dips into the band -> fill; if price runs away up (mid > 4381.0) -> engine cancels, rebuild higher; if price fails < 4363.5 -> thesis dead, stand down / next cycle rebuilds a breakdown short.",
+ "cost_note": "spread 0.365bps (0.16pt @4373) + slippage 0.30bps (0.13pt) = 0.665bps roundtrip (~0.29pt).",
+ "ev_note": "Plan EV = 0.45*2.35 - 0.55*1.0 - 0.033 = +0.475R (positive -> LONG registered).",
+ "model": "deepseek/deepseek-v4-flash",
+ "prompt_version": "hermes-trader-m15-cycle/2026-09-12"
+}

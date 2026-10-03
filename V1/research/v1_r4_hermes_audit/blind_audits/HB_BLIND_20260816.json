@@ -1,0 +1,53 @@
+{
+  "audit_id": "HB_BLIND_20260816",
+  "timestamp": "2026-08-16T12:00:00Z",
+  "current_state": "COMPRESSION (frozen C1 label, dwell 3 bars) with event ACCEPTANCE at t; prior regime TREND (dwell 7) then TREND->COMPRESSION transition. Price 4374.205 sits just above the swing-high level 4373.145 (break_status BEYOND, reclaim_status NONE). Regime follows a violent two-way H4 excursion: 4449.455 -> 4310.375 -> 4396.765 -> 4370.6 area, now contracting.",
+  "structure": "Heavily-tested pivot at 4373.145 (SWING_HIGH, age 107 bars, 30 touches/240 bars, distance 0.215 ATR) with price marginally above it; M1 21:58 bar spiked to 4373.115 (below the level) and closed back at 4374.145 with a 1.03 lower wick, then 21:59 closed 4374.205. Multi-TF CONFLICT: M1/M5/M15 trend_20 negative (-1.55/-1.95/-15.33) vs H1 trend_20 +56.32; M5 trend_50 -12.03 vs H4 trend_50 +298.94. Range contraction on M1/M15/H1/H4 (range_contracting true), M5 range_expanding. M15 shows lower highs since 4382.625 (19:30).",
+  "mechanism": "Two live candidates, neither asserted: (1) breakout_pressure - close beyond level 4373.145 by 0.215 ATR, invalidated if close returns inside the level; (2) failed_breakout - no reclaim observed yet (reclaim_status NONE), invalidated by sustained acceptance beyond the level. The M1 intra-bar pierce to 4373.115 and recovery makes the breakout marginal and unconfirmed.",
+  "primary_scenario": {
+    "scenario": "Level-hold compression: price continues consolidating above the 4373.145 swing-high (marginal 0.215 ATR acceptance), grinding inside roughly 4371-4380.5; the M1 retest of the level already held. If the level holds through the contraction, resolution tilts up toward 4390-4396 (H4 medium-term uptrend intact, H4 trend_50 +298.9, H1 trend_20 +56.3).",
+    "confidence": 0.38,
+    "horizon": "SHORT_TERM",
+    "trigger": "M1/M5 closes stay >= 4373.15 with continuing range contraction; a subsequent M5 close > 4380.5 confirms upside expansion",
+    "invalidation": "M1 or M5 close < 4373.145 (price back inside the level -> failed breakout regime); sustained loss of the 4371 low cluster"
+  },
+  "alternative_scenario": {
+    "scenario": "Failed breakout / downside resolution: price fails to hold 4373.145 (M1 already pierced to 4373.115), confirming the failed_breakout candidate; the short-term downtrend resumes (M5 trend_50 -12.03, M15 lower highs since 4382.6, post-4449 rejection regime with a 42.7-point H4 upper wick). Retest 4370.6, then 4363.9-4356.7; consistent with analog A31686 (COMPRESSION -> REJECTION at step 12).",
+    "confidence": 0.32,
+    "horizon": "SHORT_TERM",
+    "trigger": "M5 close < 4373.145, or two consecutive M1 closes below the level with no intra-bar reclaim",
+    "invalidation": "Rapid reclaim with M5 close back above 4375.5 (level hold re-established)"
+  },
+  "expected_transition": "COMPRESSION persists near-term (analogs A19166/A25738 show 16+ steps of continued compression; A31686 turns REJECTION at step 12). The single decisive pivot is 4373.145: hold -> up-tilted expansion toward 4390-4396; break -> downside expansion toward 4363-4348. Direction and timing of the eventual expansion are unresolved at PIT.",
+  "direction": "NO_DIRECTIONAL_EDGE",
+  "horizon": "TIMING_UNCERTAIN",
+  "confidence": 0.30,
+  "counter_evidence": [
+    "Short-term momentum negative: M5/M15 trend_20 -1.95/-15.33 and M5 trend_50 -12.03, with M15 lower highs since 4382.625",
+    "Violent rejection at 4449.455 (H4 upper wicks of 42.7 and 15.3 points) signals distribution / regime-change risk",
+    "Acceptance is marginal: only 0.215 ATR beyond the level, and M1 pierced to 4373.115 intra-bar before recovering",
+    "Level reclaim_status NONE despite price above it - the breakout is unconfirmed",
+    "Analog A31686 resolved COMPRESSION -> REJECTION (downside) at step 12",
+    "All cross-market context absent (DXY/VIX/UST10Y all UNKNOWN/STALE, no news/macro) - no external confirmation of any direction"
+  ],
+  "invalidation": "A decisive resolution of the 4373.145 pivot: (a) M5 close < 4373.145 confirms failed breakout and the NO_DIRECTIONAL_EDGE stance converts to downside; (b) sustained M5 closes > 4380.5 confirm upside expansion and the stance converts to up. Until either occurs, the compression + multi-TF conflict keep the directional edge at zero.",
+  "data_quality_flags": [
+    "L1 RAW_GEOMETRY + DERIVED (kline stats computed from observed bars, causal)",
+    "L2 DERIVED (pivot swing levels, causal)",
+    "L3/L4/L5 DERIVED (frozen C1 labeler + min-dwell lifecycle; L4 mechanism candidates NOT asserted as fact per context note)",
+    "L6 CONFLICT - timeframes reported separately, never merged into one direction",
+    "L7 UNKNOWN: DXY, VIX, UST10Y_PROXY_TNX all STALE_OR_NOT_COVERED; GLD/GC/CFTC_COT/ETF_FLOWS/NEWS/MACRO_EVENTS absent - never fabricated",
+    "No PROXY series actually present at this PIT; UST10Y PROXY (^TNX) rule noted and respected"
+  ],
+  "reasoning_trace": [
+    "State read: COMPRESSION dwell 3 after TREND dwell 7 - volatility contraction following a large two-way H4 excursion (4449.455 -> 4310.375 -> 4396.765 -> ~4370.6).",
+    "Price 4374.205 is 1.06 above swing-high level 4373.145 (0.215 ATR, 30 touches in 240 bars) - a heavily-tested pivot, not a clean breakout.",
+    "M1 21:58 bar spiked to 4373.115 (below the level) and closed 4374.145 with a 1.03 lower wick - the level held on first retest, mildly constructive.",
+    "However, reclaim_status NONE and acceptance of only 0.215 ATR mean the breakout is unconfirmed; the failed_breakout candidate stays live.",
+    "Multi-TF CONFLICT: M1/M5/M15 trend_20 negative vs H1 trend_20 +56.3; M5 trend_50 -12.0 vs H4 trend_50 +298.9 - short-term bears vs medium-term bulls, no merged direction.",
+    "Range contraction across M1/M15/H1/H4 with M5 range_expanding - compression building toward an expansion of unknown sign.",
+    "Cross-market entirely UNKNOWN (DXY/VIX/TNX stale or absent) with no news/macro - no external confirmation available, forcing low confidence.",
+    "Analogs: 2/3 remain COMPRESSION for 16+ steps, 1/3 (A31686) -> REJECTION - supports persistence of compression; the mixed record mildly favors eventual downside resolution.",
+    "Headline: NO_DIRECTIONAL_EDGE with 4373.145 as the single decisive pivot - hold gives an up-tilted primary (0.38), break gives a downside alternative (0.32); overall confidence 0.30 due to compression + conflict + absent cross-market."
+  ]
+}

@@ -1,0 +1,107 @@
+{
+ "schema": "hermes_decision_v1",
+ "cycle": "2026-09-15T13:17Z",
+ "symbol": "XAUUSD",
+ "decision_id": "DEC-2026-09-15T13:17Z",
+ "utc_ts": "2026-09-15T13:17Z",
+ "generated_utc": "2026-09-15T13:17Z",
+ "decision": "SHORT",
+ "confidence": 0.45,
+ "bias": "SHORT-lean 0.62. Slot FREE (POS-20260915T0917Z stopped by broker SL @4288.01, -12.81USD/-1.0R; slot freed 13:05:57Z). PRIOR PENDING PLAN: TP-20260915T1302Z (SHORT zone_touch [4305,4318], stop 4327) is still registered but the bounce it was meant to fade FAILED - price rolled back down from 4293.44 to 4288.74 (live) and never reached the 4305 wall. HTF intact bearish ladder (D1 4297.93 << MA20 4455.32 RSI 28.4; H4 4262.80 < MA20 4333.15 < MA50 4384.50, lo60 4253.62 lower third pos3.6; H1 4268.50 < MA20 4290.55 < MA50 4321.32, range pos10.0). The near actionable setup is now the retest of the broken M15 MA50 4292.56 / H1 MA20 4290.55 confluence (just under the 4295.85 prior spike high) as resistance inside that ladder -> with-trend continuation SHORT. Caution: M15 RSI14 32.6 + pos_in_range 12.4 (near range low) + multi-TF floor 4253.62 held repeatedly = bounce risk -> qty 0.01, structural stop.",
+ "opportunity": "SHORT the retest of the 4289-4296 broken MA confluence (M15 MA50 4292.56 / H1 MA20 4290.55 / prior spike high 4295.85) now that the intraday bounce has failed 16pt short of the 4305 wall. Price is 4288.74, sitting ~1-7pt below the band; a tick back into 4289 auto-fills (zone_touch). Stop 4302.0 above the 4296 band high / 4295.85 spike; targets 4270.0 (prior higher-low shelf / M15 support) then 4253.6 (multi-TF floor). With-trend failure-retest short of a broken MA in an intact bearish ladder = highest-quality near setup available this cycle, and it is triggerable NOW (unlike the 1302Z wall plan which needs a +17pt rally).",
+ "opportunity_mechanism": "failed_bounce_continuation_short_at_broken_MA: the D1/H4 downtrend drove price to the 4253.6 floor; an oversold bounce ran 4261.5 -> 4295.85, stalled at the 4295.85 spike, then rolled back to 4288.74 WITHOUT tagging the 4305-4318 wall. That failure converts the M15 MA50 4292.56 / H1 MA20 4290.55 band (just reclaimed on the bounce) back into resistance. In a bearish ladder, failed bounces resume the down-leg at the first MA retest -> sell the touch of 4289-4296, tight structural stop above 4302, targets back to 4270 / 4253.6. Complementary to (not a duplicate of) TP-1302Z: 1302Z fades a rally to 4305-4318; this plan shorts a roll-over from the band below it. Single-position guard (position_busy) prevents any double-fill.",
+ "mtf_agreement": "3/4 TF bearish HTF, intraday bounce now FAILING (rolling over) -> continuation short: D1 close 4297.93 << MA20 4455.32 (-3.53%) RSI14 28.44 er0.431 recent -246.6bps pos39.0 (oversold, trend down); H4 close 4262.80 < MA20 4333.15 < MA50 4384.50 RSI38.78 er0.224 pos3.6 llish7 (lower third); H1 close 4268.50 < MA20 4290.55 < MA50 4321.32 < MA200 4381.77 RSI43.95 range er0.121 pos10.0; M15 close 4268.50, live 4288.74 > MA20 4284.66 but < MA50 4292.56 < MA200 4321.52 RSI32.61 er0.348 mixed pos12.4 (bounce leg stalling). Net: HTF bearish + bounce failing at the MA band -> with-trend SHORT the 4289-4296 retest; caution = D1 oversold + 3-TF floor 4253.62 held repeatedly (why qty 0.01 and stop is structural, not a flip to long).",
+ "state_summary": "XAUUSD live mid 4288.74 (quote_latest 13:17:09Z bid 4288.67/ask 4288.81, spread 0.14usd=0.33bps; pkg m15_live last_mid 4288.43, spread 0.30bps, tick_rate 149/min, abnormal last6_max 13.2bps z0.3 vs base 10.11 = normal tape). Session OPEN (gate armed=true exit0). Slot FREE. Pending: TP-20260915T1302Z SHORT zone_touch [4305,4318] stop 4327 (untriggered; price fell away). Levels (pkg + live cross-check): resistance 4289-4296 (retest band: H1 MA20 4290.55 / M15 MA50 4292.56 / 4295.85 spike high) / 4305 (1302Z zone lo) / 4314.73 (H1 MA50) / 4317.29-4317.69 (M15 hi60) / 4321.52 (M15 MA200) / 4333.15 (H4 MA20); support 4284.66 (M15 MA20) / 4270.0 (prior higher-low shelf) / 4261.53 (M15 lo60) / 4253.62 (multi-TF floor) / 4042.58 (D1 lo60).",
+ "m15_change": "Real-time vs pkg M15: pkg last_close 4268.5 (bar 12:45 server = ~09:45 real, stale) -> live mid 4288.74 = +20.24pt above it. Vs the last cycle pkg (12:47Z live ~4282.14) and 13:02Z (last_mid 4293.44): price 4293.44 -> 4288.74 = -4.7pt intraday, i.e. the bounce has FLATTENED and is now drifting back DOWN (it failed 4295.85 and could not reach the 4305 wall). M15 RSI14 32.61 (oversold), er0.348 mixed, structure last_vs_5ago up (stale bar), pos_in_range 12.4 near range low, hi60 4317.69 / lo60 4261.53, recent_move_bps +1.5 (flat). CAUTION: run_state/candle_latest.json (last ts 2026-09-07 12:15, engulfing_bear) and bars_cache.json are STALE and ignored; pkg bar context is also ~3h stale (server-time parquet, UTC+3) so levels are cross-checked vs live MT5 broker/quote rates.",
+ "data_note": "Levels/quote from pkg run_state/state_package_latest.json (cycle 2026-09-15T13:17Z, regenerated this cycle; m15_live last_mid 4288.43, spread 0.30bps, tick_rate 149/min, abnormal z 0.3 vs base 10.11) cross-checked against data/live_fxtm/quote_latest.json (13:17:09Z mid 4288.74, bid 4288.67/ask 4288.81, spread 0.14=0.33bps). live_days 7, live_ticks 1,331,171, context_days 31, gaps[]. NOTE: parquet tick feed is in broker SERVER time (UTC+3) -> its bars lag ~3h vs real time, so pkg MA/close context is stale; all decision levels cross-checked in real time vs the live quote series. run_state/candle_latest.json (2026-09-07) and bars_cache.json STALE -> ignored.",
+ "position_note": "Slot FREE. POS-20260915T0917Z SHORT 0.01@4275.2 was closed by the broker SL at 4288.01 (realized -12.81USD ~ -1.0R on 1R=12.8pt) at 13:05:57Z. Broker positions_get() empty; equity=balance=2103.81 - 12.81 = 2091.00 (approx, may lag). No averaging down anywhere. This is a NEW independent plan at the broken-MA band (entry ~4292.5, ~17pt below the prior closed entry's stop region). Single-position constraint respected (no position open); position_busy guard will veto any double-fill vs the pending TP-1302Z.",
+ "answers_14": {
+  "1": "Market state: XAUUSD live mid 4288.74 (quote_latest 13:17:09Z bid4288.67/ask4288.81 spread0.14usd=0.33bps; pkg m15_live last_mid 4288.43 spread0.30bps tick_rate149/min abnormal last6_max 13.2bps z0.3 vs base 10.11 = normal tape). Session OPEN (gate armed=true exit0). Data ok (live_days7 ticks1,331,171 context31 gaps[]); NOTE parquet bars server-time (UTC+3) ~3h stale -> levels cross-checked vs live quote. Position FLAT. Pending TP-20260915T1302Z SHORT zone_touch [4305,4318] stop4327 untriggered (price fell away). MAs: M15 MA20 4284.66/MA50 4292.56/MA200 4321.52; H1 MA20 4290.55/MA50 4321.32/MA200 4381.77; H4 MA20 4333.15/MA50 4384.50; D1 MA20 4455.32. Resistance 4289-4296 (H1 MA20/M15 MA50 + 4295.85 spike) /4305 (1302Z lo)/4314.73(H1 MA50)/4317.69(M15 hi60)/4321.52(M15 MA200)/4333.15(H4 MA20); support 4284.66(M15 MA20)/4270(prior higher-low shelf)/4261.53(M15 lo60)/4253.62(multi-TF floor).",
+  "2": "MTF agreement: 3/4 TF bearish HTF (D1 4297.93<<MA20 4455.32 RSI28.44 er0.431 pos39.0; H4 4262.80<MA20 4333.15<MA50 4384.50 RSI38.78 pos3.6 llish7; H1 4268.50<MA20 4290.55<MA50 4321.32 RSI43.95 range pos10.0) vs M15 bounce stalling (live 4288.74>MA20 4284.66 but <MA50 4292.56, RSI32.61, er0.348). Net: HTF bearish + bounce failed short of the 4305 wall -> with-trend SHORT the 4289-4296 broken-MA retest. Caution: D1 oversold + 4253.62 floor held repeatedly -> qty 0.01, structural stop 4302 above the band.",
+  "3": "M15 change: price 4293.44 (13:02Z pkg) -> 4288.74 (live 13:17Z) = -4.7pt, bounce FLATTENED/rolling over and never reached the 4305 wall it was supposed to reach; vs prior cycle 4282.14 it is -4.7pt as well (flat-drift). M15 RSI14 32.61 oversold, exp_cont neutral ratio 1.11, er0.348 mixed, pos_in_range 12.4 (near range low), hi60 4317.69 / lo60 4261.53. The +20.24pt vs pkg last_close 4268.5 is stale-bar artifact only. CAUTION stale candle_latest.json (2026-09-07)/bars_cache.json ignored.",
+  "4": "Opportunity / gap-to-tradable: slot FREE -> new entry allowed. We are ~1-7pt BELOW the 4289-4296 broken-MA retest band, so the gap-to-tradable = A TICK BACK INTO THE BAND. Register the SHORT now with zone_touch [4289,4296]: a tick up into it auto-fills (trigger+risk -> instant order), no close needed. What is still missing = a rejection print at the band; the touch-trigger supplies the entry and the stop above 4302 defines the risk. (Alternative scenario already covered by pending TP-1302Z: a +17pt rally to 4305-4318.)",
+  "5": "Mechanism: failed_bounce_continuation_short_at_broken_MA - downtrend to the 4253.6 floor, oversold bounce to 4295.85 that FAILED to tag the 4305 wall, then rolled to 4288.74; the reclaimed M15 MA50 4292.56 / H1 MA20 4290.55 band becomes resistance and the down-leg resumes at its first retest. Sell the 4289-4296 touch, stop above 4302, targets 4270 / 4253.6. No averaging down; complementary to TP-1302Z, guarded by position_busy.",
+  "6": "Trigger condition [specific price]: zone_touch [4289.0, 4296.0] on live mid -> auto-fill at market. I.e. buy-side fill when price prints >= 4289.0 (fills into the H1 MA20 4290.55 / M15 MA50 4292.56 confluence / 4295.85 spike high). Entry ~4292.5 (zone mid). If price instead never ticks up into 4289 and breaks 4283 down, the plan self-cancels at mid < 4283.0 (setup left behind).",
+  "7": "Invalidation [specific price]: price_cross_up 4302.0 (band high 4296 + buffer / the 4295.85 spike reclaimed decisively) = the failed-bounce/roll-over thesis is void -> stand down (also the hard stop). Downside confirmation after fill: price_cross_down 4270.0 (prior higher-low shelf) then 4261.53 (M15 lo60) then 4253.62 (multi-TF floor).",
+  "8": "Expected reward R (SHORT, entry ~4292.5 zone mid, 1R=9.5pt to stop 4302.0): T1 4270.0 = -22.5pt = 2.37R x0.50; T2 4253.6 = -38.9pt = 4.09R x0.50; weighted = +3.23R (breakeven p ~0.236).",
+  "9": "Expected loss R: hard stop 4302.0 = +9.5pt = -1.0R (~-9.5USD on 0.01 lot). No averaging down, no add. (Reference: the just-closed POS-0917Z lost -12.81USD = -1.0R.)",
+  "10": "Cost value: spread 0.33bps + slippage 0.30bps = 0.63bps roundtrip ~= 0.27pt ~= 0.028R (vs 1R=9.5pt). Extremely low, not a barrier.",
+  "11": "Net EV formula: 0.42 x (0.50x2.37 + 0.50x4.09) - 0.58 x 1.00 - 0.028 = 0.42x3.23 - 0.608 = 1.357 - 0.608 = +0.75R. Positive -> valid SHORT.",
+  "12": "Reproducibility: family 'failed-bounce continuation short at a broken MA band in a bearish HTF ladder'. Rules: touch-fill (zone_touch), no close requirement, structural stop above the band, no averaging down, single-position constraint (position_busy guard vs any other pending plan), qty 0.01-0.05, ignore stale candle_latest.json/bars_cache.json, cross-check levels vs live quote (server-time parquet is ~3h stale). Same-family priors: with-trend closes POS-20260915T0217Z +20.24USD / POS-20260915T0632Z +8.52USD; counter-fade loss POS-20260915T0917Z -12.81USD (stopped by the bounce, hence stop now sits above the band).",
+  "13": "SHORT (new plan TP-20260915T1317Z): entry zone [4289,4296], trigger zone_touch, stop 4302.0, T1 4270.0/T2 4253.6, 0.01 lot, EV +0.75R.",
+  "14": "Bounce failed 16pt short of the 4305 wall and rolled to 4288.74 -> with-trend SHORT the 4289-4296 broken M15 MA50/H1 MA20 retest; zone_touch, stop 4302, TP 4270/4253.6, 0.01 lot, EV +0.75R."
+ },
+ "plan": {
+  "plan_id": "TP-20260915T1317Z",
+  "direction": "SHORT",
+  "opportunity_type": "failed_bounce_continuation_short_at_broken_MA",
+  "entry_style": "market_on_trigger",
+  "entry_zone": {
+   "low": 4289.0,
+   "high": 4296.0
+  },
+  "trigger_condition": {
+   "zone_touch": [
+    4289.0,
+    4296.0
+   ]
+  },
+  "invalidation_condition": {
+   "price_cross_up": 4302.0
+  },
+  "stop_logic": {
+   "type": "structure",
+   "level": "above the 4289-4296 retest band high / 4295.85 prior spike high (~6.15pt buffer above the spike)",
+   "level_price": 4302.0
+  },
+  "target_logic": {
+   "type": "price_levels",
+   "levels": [
+    {
+     "price": 4270.0,
+     "frac": 0.5
+    },
+    {
+     "price": 4253.6,
+     "frac": 0.5
+    }
+   ],
+   "reason": "T1 4270.0 = prior higher-low shelf / M15 support (zone-mid 4292.5 -22.5pt = 2.37R) x0.50; T2 4253.6 = multi-TF floor (zone-mid -38.9pt = 4.09R) x0.50"
+  },
+  "expected_R": 3.23,
+  "expected_win_probability": 0.42,
+  "probability_source": "subjective: intact 3/4-TF bearish ladder (D1/H4/H1 all at/below their MA stacks, H4 lo60 4253.62 lower third) + intraday bounce FAILED 16pt short of the 4305 wall (4293.44 -> 4288.74) so the MA band flips back to resistance + normal tape (abnormal z 0.3); haircut below 0.50 for D1 oversold (RSI 28.4), M15 RSI 32.6 near range low, and the multi-TF floor 4253.62 having held repeatedly (bounce risk); breakeven p ~0.236 at 3.23R",
+  "expected_loss": {
+   "units": "R",
+   "value": 1.0
+  },
+  "estimated_cost": {
+   "spread_bps": 0.33,
+   "slippage_bps": 0.3,
+   "total_roundtrip_bps": 0.63,
+   "cost_in_R": 0.028
+  },
+  "spread_bps": 0.33,
+  "slippage_bps": 0.3,
+  "expected_net_EV": {
+   "value": 0.75,
+   "units": "R",
+   "note": "0.42 x (0.50x2.37 + 0.50x4.09) - 0.58 x 1.00 - 0.028 = 0.42x3.23 - 0.608 = +0.75R (1R=9.5pt, entry ~4292.5, stop 4302.0; breakeven p ~0.236)"
+  },
+  "maximum_holding_time": "M15*16",
+  "qty_lots": 0.01,
+  "cancel_conditions": [
+   "age > M15*16 (240min) untriggered",
+   "price_left_setup: mid < 4283.0 -> price broke down away from the band before the touch",
+   "price_cross_up 4302.0 (invalidation) = band high / 4295.85 spike reclaimed decisively"
+  ],
+  "validation": {
+   "ok": true,
+   "issues": []
+  }
+ },
+ "cost_note": "spread 0.33bps + slip 0.30bps = 0.63bps roundtrip ~0.27pt ~0.028R on 0.01 lot (1R=9.5pt). Not a barrier.",
+ "ev_note": "EV_R = 0.42 x 3.23 - 0.58 - 0.028 = +0.75R (breakeven p 0.236). Positive -> SHORT registered.",
+ "model": "deepseek/deepseek-v4-flash",
+ "prompt_version": "hermes-trader-m15-cycle"
+}

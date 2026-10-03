@@ -1,0 +1,37 @@
+{
+ "schema": "v3_market_state_schema/1",
+ "dimensions": {
+  "price": [
+   "return_1m..return_60m",
+   "range_5",
+   "atr_range_14",
+   "dist_from_high_60",
+   "dist_from_low_60",
+   "trend_slope_20"
+  ],
+  "volatility": [
+   "vol_1m..vol_60m",
+   "vol_ratio_5_30",
+   "vol_pct_240",
+   "vol_state in {VOL_NORMAL,VOL_EXPANSION,VOL_CONTRACTION,VOL_EXTREME}"
+  ],
+  "cross_market": [
+   "DXY_RETURN_*",
+   "VIX_RETURN_*",
+   "UST10Y_PROXY_RETURN_*",
+   "*_VOL_STATE",
+   "XAU_vs_DXY/XAU_vs_VIX/XAU_vs_UST10Y_PROXY in {CROSSMARKET_NORMAL,CROSSMARKET_DIVERGENCE,CROSSMARKET_EXTREME}"
+  ],
+  "time": [
+   "utc_hour",
+   "utc_minute",
+   "day_of_week",
+   "session_bucket"
+  ],
+  "event": [
+   "EVENT_STATE in {EVENT_PRESENT,EVENT_ABSENT,EVENT_UNKNOWN}",
+   "EVENT_PIT"
+  ]
+ },
+ "note": "descriptive state only; no field is a trading signal"
+}

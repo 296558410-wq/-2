@@ -1,0 +1,443 @@
+{
+ "schema": "v3_global_network_test/1",
+ "ts_utc": "2026-09-25T09:47:15.545056+00:00",
+ "network_mode": {
+  "allowed": [
+   "HTTPS",
+   "HTTP",
+   "public pages",
+   "public APIs",
+   "public docs",
+   "public download"
+  ],
+  "actual_path": "DIRECT",
+  "proxy_used": false,
+  "vpn_used": false,
+  "note": "no VPN/proxy/relay was enabled; failures recorded as-is"
+ },
+ "previously_blocked_now": {
+  "dukascopy_datafeed": "TCP/TLS_FAIL:TimeoutError",
+  "dukascopy_www": 200,
+  "dukascopy_freeserv": 404,
+  "yahoo_query2_GC": 200,
+  "stooq": 200,
+  "databento": 200,
+  "truefx": 200
+ },
+ "recovered_count": 6,
+ "still_blocked": {
+  "datafeed_dukascopy": "TCP/TLS timeout",
+  "yahoo_XAUUSD=X": "HTTP 404 (symbol does not exist)",
+  "fxcm": "HTTP 403",
+  "tickstory": "HTTP 403",
+  "twelvedata": "HTTP 401 (key required)",
+  "polygon": "HTTP 401 (key required)"
+ },
+ "all_results": [
+  {
+   "name": "dukascopy_datafeed",
+   "url": "https://datafeed.dukascopy.com/datafeed/",
+   "tag": "PREV_BLOCKED",
+   "dns": [
+    "194.8.15.180"
+   ],
+   "tcp_tls": null,
+   "http": null,
+   "latency_ms": 8007.4,
+   "error": "TCP/TLS_FAIL:TimeoutError",
+   "network_path": "DIRECT",
+   "bytes": 0
+  },
+  {
+   "name": "dukascopy_www",
+   "url": "https://www.dukascopy.com/",
+   "tag": "PREV_BLOCKED",
+   "dns": [
+    "104.20.28.213",
+    "172.66.145.22"
+   ],
+   "tcp_tls": "TLSv1.3",
+   "http": 200,
+   "latency_ms": 2889.4,
+   "error": null,
+   "network_path": "DIRECT",
+   "bytes": 60000,
+   "sample": "<!DOCTYPE html>\n<html lang=\"en\" prefix=\"og: http://ogp.me/ns#\" class=\"\">\n<head>\n<script nonce=\"WpU5wrFr41nfk6Gz1oho2A\">\n(function(){\n  var orig=docume"
+  },
+  {
+   "name": "dukascopy_freeserv",
+   "url": "https://freeserv.dukascopy.com/",
+   "tag": "PREV_BLOCKED",
+   "dns": [
+    "194.8.15.155"
+   ],
+   "tcp_tls": "TLSv1.3",
+   "http": 404,
+   "latency_ms": 1526.9,
+   "error": "HTTP 404",
+   "network_path": "DIRECT",
+   "bytes": 0,
+   "sample": "<html>\r\n<head><title>404 Not Found</title></head>\r\n<body>\r\n<center><h1>404 Not Found</h1></center>\r\n<hr><center>nginx</center>\r\n</body>\r\n</html>\r\n<!--"
+  },
+  {
+   "name": "yahoo_query1",
+   "url": "https://query1.finance.yahoo.com/v8/finance/chart/XAUUSD=X?range=5d&interval=1m",
+   "tag": "PREV_403",
+   "dns": [
+    "87.248.114.11",
+    "87.248.114.12"
+   ],
+   "tcp_tls": "TLSv1.3",
+   "http": 404,
+   "latency_ms": 1521.0,
+   "error": "HTTP 404",
+   "network_path": "DIRECT",
+   "bytes": 0,
+   "sample": "{\"chart\":{\"result\":null,\"error\":{\"code\":\"Not Found\",\"description\":\"No data found, symbol may be delisted\"}}}"
+  },
+  {
+   "name": "yahoo_query2",
+   "url": "https://query2.finance.yahoo.com/v8/finance/chart/GC=F?range=5d&interval=1m",
+   "tag": "PREV_403",
+   "dns": [
+    "87.248.114.11",
+    "87.248.114.12"
+   ],
+   "tcp_tls": "TLSv1.3",
+   "http": 200,
+   "latency_ms": 2232.5,
+   "error": null,
+   "network_path": "DIRECT",
+   "bytes": 60000,
+   "sample": "{\"chart\":{\"result\":[{\"meta\":{\"currency\":\"USD\",\"symbol\":\"GC=F\",\"exchangeName\":\"CMX\",\"fullExchangeName\":\"COMEX\",\"instrumentType\":\"FUTURE\",\"firstTradeDat"
+  },
+  {
+   "name": "stooq",
+   "url": "https://stooq.com/q/d/l/?s=xauusd&i=d",
+   "tag": "PREV_THROTTLED",
+   "dns": [
+    "159.69.202.225",
+    "78.47.47.99"
+   ],
+   "tcp_tls": "TLSv1.3",
+   "http": 200,
+   "latency_ms": 1557.5,
+   "error": null,
+   "network_path": "DIRECT",
+   "bytes": 796,
+   "sample": "<!DOCTYPE html><html><head><meta charset=\"utf-8\"><meta name=\"robots\" content=\"noindex,nofollow\"></head><body><noscript>This site requires JavaScript t"
+  },
+  {
+   "name": "databento",
+   "url": "https://databento.com/",
+   "tag": "OVERSES",
+   "dns": [
+    "52.222.177.125",
+    "52.222.177.5"
+   ],
+   "tcp_tls": "TLSv1.3",
+   "http": 200,
+   "latency_ms": 1478.1,
+   "error": null,
+   "network_path": "DIRECT",
+   "bytes": 17781,
+   "sample": "<!DOCTYPE html>\n<html lang=\"en\">\n  <head>\n    <meta charset=\"utf-8\" />\n\n    <link rel=\"icon\" href=\"/brand/favicon.ico\" sizes=\"32x32\" />\n    <link rel="
+  },
+  {
+   "name": "truefx",
+   "url": "https://www.truefx.com/",
+   "tag": "OVERSES",
+   "dns": [
+    "198.71.233.129"
+   ],
+   "tcp_tls": "TLSv1.3",
+   "http": 200,
+   "latency_ms": 1744.8,
+   "error": null,
+   "network_path": "DIRECT",
+   "bytes": 60000,
+   "sample": "<!DOCTYPE html>\n<!--[if lt IE 7]>      <html class=\"no-js lt-ie9 lt-ie8 lt-ie7\" lang=\"en-US\"> <![endif]-->\n<!--[if IE 7]>         <html class=\"no-js l"
+  },
+  {
+   "name": "oanda",
+   "url": "https://www.oanda.com/",
+   "tag": "BROKER",
+   "dns": [
+    "104.17.37.191",
+    "104.17.38.191"
+   ],
+   "tcp_tls": "TLSv1.3",
+   "http": 200,
+   "latency_ms": 2771.4,
+   "error": null,
+   "network_path": "DIRECT",
+   "bytes": 60000,
+   "sample": "<!DOCTYPE html>\n<html  dir=\"ltr\" prefix=\"og: https://ogp.me/ns#\" lang=\"en-ie\" data-lang=\"en\">\n<head>\n  <link rel=\"preconnect\" href=\"https://www.google"
+  },
+  {
+   "name": "fxcm",
+   "url": "https://www.fxcm.com/",
+   "tag": "BROKER",
+   "dns": [
+    "104.18.42.40",
+    "172.64.145.216"
+   ],
+   "tcp_tls": "TLSv1.3",
+   "http": 403,
+   "latency_ms": 1439.8,
+   "error": "HTTP 403",
+   "network_path": "DIRECT",
+   "bytes": 0,
+   "sample": "<!DOCTYPE html><html lang=\"en-US\"><head><title>Just a moment...</title><meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\"><meta http-e"
+  },
+  {
+   "name": "pepperstone",
+   "url": "https://pepperstone.com/",
+   "tag": "BROKER",
+   "dns": [
+    "18.245.253.103",
+    "18.245.253.36"
+   ],
+   "tcp_tls": "TLSv1.3",
+   "http": 200,
+   "latency_ms": 4348.1,
+   "error": null,
+   "network_path": "DIRECT",
+   "bytes": 60000,
+   "sample": "<!DOCTYPE html><html dir=\"ltr\" lang=\"en-gb\"><head><meta charSet=\"utf-8\"/><meta name=\"viewport\" content=\"width=device-width, initial-scale=1\"/><link re"
+  },
+  {
+   "name": "icmarkets",
+   "url": "https://www.icmarkets.com/",
+   "tag": "BROKER",
+   "dns": [
+    "13.226.144.19",
+    "13.226.144.38"
+   ],
+   "tcp_tls": "TLSv1.3",
+   "http": 200,
+   "latency_ms": 5896.0,
+   "error": null,
+   "network_path": "DIRECT",
+   "bytes": 60000,
+   "sample": "<!DOCTYPE html>\n<html dir=\"ltr\" lang=\"en\" data-branch=\"3\"\ndata-country=\"gb\" data-ip=\"74.220.20.240\" data-start=\"25/09/2026 09:35:03\"\nclass=\"www2 branc"
+  },
+  {
+   "name": "eightcap",
+   "url": "https://www.eightcap.com/",
+   "tag": "BROKER",
+   "dns": [
+    "64.239.109.1",
+    "64.239.123.1"
+   ],
+   "tcp_tls": "TLSv1.3",
+   "http": 200,
+   "latency_ms": 4605.0,
+   "error": null,
+   "network_path": "DIRECT",
+   "bytes": 60000,
+   "sample": "<!DOCTYPE html><html data-dpl-id=\"dpl_7PouWBpogxYZwuGymr4Fp38SdGWM\" lang=\"en\" class=\"__variable_d4ab64\"><head><meta charSet=\"utf-8\"/><meta name=\"viewp"
+  },
+  {
+   "name": "lmax",
+   "url": "https://www.lmax.com/",
+   "tag": "BROKER",
+   "dns": [
+    "104.18.39.165",
+    "172.64.148.91"
+   ],
+   "tcp_tls": "TLSv1.3",
+   "http": 200,
+   "latency_ms": 1728.9,
+   "error": null,
+   "network_path": "DIRECT",
+   "bytes": 60000,
+   "sample": "\n\n<!DOCTYPE html>\n<html prefix=\"og: http://ogp.me/ns#\" lang=\"en-US\">\n\n<!--[if lt IE 10]>\n\t<link rel=\"stylesheet\" type=\"text/css\" href=\"https://www.lma"
+  },
+  {
+   "name": "saxo",
+   "url": "https://www.home.saxo/",
+   "tag": "BROKER",
+   "dns": [
+    "23.214.138.141"
+   ],
+   "tcp_tls": "TLSv1.3",
+   "http": 200,
+   "latency_ms": 2047.8,
+   "error": null,
+   "network_path": "DIRECT",
+   "bytes": 60000,
+   "sample": "<!DOCTYPE html><html lang=\"en\" dir=\"ltr\"><head><meta charset=\"utf-8\"><meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\"><title>Be Invested. Trade gl"
+  },
+  {
+   "name": "ig",
+   "url": "https://www.ig.com/",
+   "tag": "BROKER",
+   "dns": [
+    "23.208.243.33"
+   ],
+   "tcp_tls": "TLSv1.3",
+   "http": 200,
+   "latency_ms": 2882.9,
+   "error": null,
+   "network_path": "DIRECT",
+   "bytes": 60000,
+   "sample": "<!DOCTYPE html>\n<!--[if IE 10]><html class=\"ie10 nojs\" lang=\"en-GB\" prefix=\"og: http://ogp.me/ns# fb: http://ogp.me/ns/fb#\" xmlns:og=\"http://opengraph"
+  },
+  {
+   "name": "cmc",
+   "url": "https://www.cmcmarkets.com/",
+   "tag": "BROKER",
+   "dns": [
+    "23.214.68.134"
+   ],
+   "tcp_tls": "TLSv1.3",
+   "http": 200,
+   "latency_ms": 3741.8,
+   "error": null,
+   "network_path": "DIRECT",
+   "bytes": 60000,
+   "sample": "<!DOCTYPE html><html lang=\"en-gb\" dir=\"ltr\"><head><meta charSet=\"utf-8\" data-next-head=\"\"/><meta name=\"viewport\" content=\"width=device-width\" data-nex"
+  },
+  {
+   "name": "histdata",
+   "url": "https://www.histdata.com/",
+   "tag": "DATA",
+   "dns": [
+    "51.77.23.84"
+   ],
+   "tcp_tls": "TLSv1.2",
+   "http": 200,
+   "latency_ms": 2639.5,
+   "error": null,
+   "network_path": "DIRECT",
+   "bytes": 60000,
+   "sample": "<!doctype html>\r\n<html lang=\"en-US\">\r\n<head>\r\n\t<meta charset=\"UTF-8\">\r\n\t<meta name=\"viewport\" content=\"width=device-width\" />\r\n\t<link rel=\"profile\" hr"
+  },
+  {
+   "name": "histdata_dl",
+   "url": "https://www.histdata.com/download-free-forex-historical-data/",
+   "tag": "DATA",
+   "dns": [
+    "51.77.23.84"
+   ],
+   "tcp_tls": "TLSv1.2",
+   "http": 200,
+   "latency_ms": 2342.8,
+   "error": null,
+   "network_path": "DIRECT",
+   "bytes": 32335,
+   "sample": "<!doctype html>\r\n<html lang=\"en-US\">\r\n<head>\r\n\t<meta charset=\"UTF-8\">\r\n\t<meta name=\"viewport\" content=\"width=device-width\" />\r\n\t<link rel=\"profile\" hr"
+  },
+  {
+   "name": "tickstory",
+   "url": "https://tickstory.com/",
+   "tag": "DATA",
+   "dns": [
+    "104.21.89.32",
+    "172.67.136.146"
+   ],
+   "tcp_tls": "TLSv1.3",
+   "http": 403,
+   "latency_ms": 1433.5,
+   "error": "HTTP 403",
+   "network_path": "DIRECT",
+   "bytes": 0,
+   "sample": "<!DOCTYPE html><html lang=\"en-US\"><head><title>Just a moment...</title><meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\"><meta http-e"
+  },
+  {
+   "name": "twelvedata",
+   "url": "https://api.twelvedata.com/time_series?symbol=XAU/USD&interval=1min&outputsize=5",
+   "tag": "DATA_FREE_TIER",
+   "dns": [
+    "104.26.12.157",
+    "104.26.13.157"
+   ],
+   "tcp_tls": "TLSv1.3",
+   "http": 401,
+   "latency_ms": 1534.2,
+   "error": "HTTP 401",
+   "network_path": "DIRECT",
+   "bytes": 0,
+   "sample": "{\"code\":401,\"message\":\"**apikey** parameter is incorrect or not specified. You can get your free API key instantly following this link: https://twelve"
+  },
+  {
+   "name": "alphavantage",
+   "url": "https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=IBM&interval=1min&apikey=demo",
+   "tag": "DATA_FREE_TIER",
+   "dns": [
+    "104.20.25.228",
+    "172.66.170.11"
+   ],
+   "tcp_tls": "TLSv1.3",
+   "http": 200,
+   "latency_ms": 1975.2,
+   "error": null,
+   "network_path": "DIRECT",
+   "bytes": 21723,
+   "sample": "{\n    \"Meta Data\": {\n        \"1. Information\": \"Intraday (1min) open, high, low, close prices and volume\",\n        \"2. Symbol\": \"IBM\",\n        \"3. Las"
+  },
+  {
+   "name": "polygon",
+   "url": "https://api.polygon.io/v2/aggs/ticker/X:XAUUSD/range/1/minute/2026-09-01/2026-09-02",
+   "tag": "DATA",
+   "dns": [
+    "198.44.194.36"
+   ],
+   "tcp_tls": "TLSv1.3",
+   "http": 401,
+   "latency_ms": 1804.0,
+   "error": "HTTP 401",
+   "network_path": "DIRECT",
+   "bytes": 0,
+   "sample": "{\"status\":\"ERROR\",\"request_id\":\"3e44087710f05cbf0c5a86ed8956fa8d\",\"error\":\"API Key was not provided\"}"
+  },
+  {
+   "name": "barchart",
+   "url": "https://www.barchart.com/",
+   "tag": "DATA",
+   "dns": [
+    "18.244.124.100",
+    "18.244.124.106"
+   ],
+   "tcp_tls": "TLSv1.3",
+   "http": 202,
+   "latency_ms": 1372.7,
+   "error": null,
+   "network_path": "DIRECT",
+   "bytes": 0,
+   "sample": ""
+  },
+  {
+   "name": "github_raw",
+   "url": "https://raw.githubusercontent.com/",
+   "tag": "OPEN",
+   "dns": [
+    "185.199.108.133",
+    "185.199.109.133"
+   ],
+   "tcp_tls": "TLSv1.3",
+   "http": 200,
+   "latency_ms": 3046.7,
+   "error": null,
+   "network_path": "DIRECT",
+   "bytes": 60000,
+   "sample": "\n\n\n\n\n\n\n\n<!DOCTYPE html>\n<html\n  lang=\"en\"\n  data-color-mode=\"dark\" data-dark-theme=\"dark\"\n  data-color-mode=\"light\" data-light-theme=\"light\" data-dark"
+  },
+  {
+   "name": "kaggle",
+   "url": "https://www.kaggle.com/",
+   "tag": "OPEN",
+   "dns": [
+    "35.244.233.98"
+   ],
+   "tcp_tls": "TLSv1.3",
+   "http": 200,
+   "latency_ms": 1796.7,
+   "error": null,
+   "network_path": "DIRECT",
+   "bytes": 20329,
+   "sample": "<!doctype html><html lang=\"en-US\" dir=\"ltr\"><head><base href=\"https://www.google.com/recaptcha/challengepage/\"><link rel=\"preconnect\" href=\"//www.gsta"
+  }
+ ]
+}

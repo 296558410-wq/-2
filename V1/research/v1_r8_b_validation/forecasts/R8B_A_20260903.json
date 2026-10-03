@@ -1,0 +1,88 @@
+{
+ "sample_id": "A_20260903",
+ "horizon": 4,
+ "scenario_family": "RANGE",
+ "scenario_alternative": "QUIET",
+ "scenario_abstain": false,
+ "forecast_id": "R8B_A_20260903",
+ "timestamp": "2026-09-03 00:00:00+00:00",
+ "observations": [
+  "Price 4384, pinned inside swing low 4383.675",
+  "State COMPRESSION, event REJECTION, dwell 2",
+  "MTF CONFLICT: H4 down, M15/H1 up",
+  "DXY 99.59 flat; no VIX/UST/news"
+ ],
+ "what_i_know": [
+  "Level 4383.675 held, 20 touches in 240",
+  "Frozen label REJECTION, state COMPRESSION",
+  "H4 trend_20 -40.75, H1 +82.54",
+  "DXY change_32 -0.012, change_8 +0.023"
+ ],
+ "what_i_do_not_know": [
+  "No VIX, UST10Y, news, macro data",
+  "DXY proxy instrument definition UNKNOWN",
+  "H4 current close anomalous vs open 4384",
+  "Direction absent: MTF agreement CONFLICT"
+ ],
+ "evidence": [
+  "Level support held, 20 touches 240 bars",
+  "REJECTION event printed at swing low",
+  "M5/M15 trend_20 positive near level",
+  "Analog A27687 COMPRESSION to EXPANSION"
+ ],
+ "counter_evidence": [
+  "H4 trend_20 -40.75, dominant down bias",
+  "M1 trend_20 -2.83, short-term down",
+  "MTF agreement CONFLICT, no conviction",
+  "range_expanding true on M1/M5/M15"
+ ],
+ "possible_mechanisms": [
+  { "mechanism": "level_rejection_bounce", "status": "SUPPORTED", "why": "REJECTION event at held swing low" },
+  { "mechanism": "range_consolidation", "status": "POSSIBLE", "why": "COMPRESSION state, inside level" },
+  { "mechanism": "trend_continuation", "status": "WEAK", "why": "H4 down but near-term up" },
+  { "mechanism": "compression_breakout", "status": "UNKNOWN", "why": "no expansion trigger yet" }
+ ],
+ "primary_scenario": {
+  "scenario": "RANGE",
+  "horizon": 4,
+  "trigger": "price oscillates 4383-4391 without break",
+  "invalidation": "decisive break of 4383.675 or 4392.8"
+ },
+ "alternative_scenario": {
+  "scenario": "QUIET",
+  "horizon": 4,
+  "trigger": "compression persists, ranges contract",
+  "invalidation": "range_expanding continues"
+ },
+ "expected_transition": "COMPRESSION to RANGE continuation",
+ "direction_bias": "NEUTRAL",
+ "time_horizon": "H4",
+ "evidence_strength": 0.4,
+ "confidence": 0.45,
+ "uncertainty": 0.55,
+ "confidence_reason": "Level support plus rejection observed",
+ "uncertainty_reason": "MTF conflict, missing macro/news data",
+ "invalidation": "close beyond 4383.675 or 4392.8",
+ "change_my_mind": [
+  "Close below 4383.675 confirms down break",
+  "Close above 4392.8 confirms up breakout",
+  "VIX or news confirms directional catalyst"
+ ],
+ "abstain": false,
+ "abstain_reason": "Context sufficient for scenario family",
+ "questions": {
+  "Q1": "Price inside swing low, COMPRESSION, REJECTION event",
+  "Q2": "Direction, catalyst, news, VIX all UNKNOWN",
+  "Q3": "Level held, rejection, near-term up tilt",
+  "Q4": "H4 downtrend and MTF conflict oppose",
+  "Q5": "Level_rejection_bounce mechanism only possible",
+  "Q6": "Level break or expansion confirms direction",
+  "Q7": "false, adequate for family not direction"
+ },
+ "reasoning_trace": [
+  "Level 4383.675 support with rejection event",
+  "MTF conflict blocks directional call",
+  "DXY flat provides no cross-market edge",
+  "Range most defensible at H4"
+ ]
+}

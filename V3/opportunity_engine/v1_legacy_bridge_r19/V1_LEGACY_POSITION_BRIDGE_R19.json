@@ -1,0 +1,488 @@
+{
+ "TASK_STATUS": "V1_LEGACY_POSITION_BRIDGE_R19_COMPLETE",
+ "AUDIT_NOW_UTC": "2026-09-25T16:06:52.995111+00:00",
+ "R18_REFERENCE": {
+  "path": "research/v3_opportunity_engine/v1_position_ledger_seal_r18/V1_POSITION_LEDGER_SEAL_AUDIT_R18.json",
+  "ticket": 2377449557,
+  "state": "OPEN",
+  "ownership": "V1_MANAGED"
+ },
+ "AUTOMATION_ENABLED": false,
+ "AUTOMATION_STATUS": "disabled",
+ "V1_ENGINE_PROCESS": "NOT_RUNNING",
+ "ENGINE_SHA256": "7d95645678cf0615c77c0d1c91177cf1652ca1fa6b1f509ec99e415dba55c25d",
+ "LEDGER_SHA256": "0b90493cae0cdf7b73056bc72b1e5752f35c3eb20f9306c098d26f4bec819261",
+ "LEDGER_SIZE": 242825,
+ "LEDGER_MTIME": "2026-09-25T14:51:24.870933+00:00",
+ "LEDGER_LINE_COUNT": 173,
+ "MT5_CONTEXT": "CONFIRMED",
+ "POSITION_TICKET": null,
+ "POSITION_IDENTIFIER": null,
+ "POSITION_TYPE": null,
+ "POSITION_VOLUME": null,
+ "POSITION_PRICE_OPEN": null,
+ "POSITION_SL": null,
+ "POSITION_TP": null,
+ "POSITION_MAGIC": null,
+ "POSITION_COMMENT": null,
+ "POSITION_STATE": "CLOSED",
+ "OPEN_POSITIONS": 0,
+ "PENDING_ORDERS": 0,
+ "ACCOUNT_BALANCE": 1909.18,
+ "ACCOUNT_EQUITY": 1909.18,
+ "FREE_MARGIN": 1909.18,
+ "BASELINE_CHECKS": {
+  "engine": true,
+  "ledger": true,
+  "ticket": false,
+  "automation_disabled": true,
+  "v1_not_running": true,
+  "position_open": false,
+  "pending_zero": true
+ },
+ "LEGACY_POSITION_ID": "LEGACY-2377449557",
+ "LEGACY_POSITION_CREATED": "NO",
+ "LEGACY_ID_SEMANTICS": "design-layer logical id only; NOT an MT5 ticket, NOT a broker id, NOT a new order number; no broker object created",
+ "LEGACY_IDENTITY": {
+  "LEGACY_POSITION_ID": "LEGACY-2377449557",
+  "SOURCE_TICKET": null,
+  "SOURCE_IDENTIFIER": null,
+  "SOURCE_LEDGER_LINE": 169,
+  "SOURCE_SYMBOL": "XAUUSD",
+  "SOURCE_SIDE": null,
+  "SOURCE_VOLUME": null,
+  "SOURCE_OPEN_PRICE": null,
+  "SOURCE_SL": null,
+  "SOURCE_TP": null,
+  "SOURCE_MAGIC": null,
+  "SOURCE_COMMENT": null,
+  "SOURCE_TIME_RAW_SERVER": null
+ },
+ "OWNERSHIP_MODEL": {
+  "BROKER_OWNERSHIP": {
+   "concept": "who holds the broker position",
+   "field": "BROKER_POSITION",
+   "current_value": null,
+   "provider": "MT5",
+   "lifecycle_gate": "broker_close"
+  },
+  "OLD_RUN_OWNERSHIP": {
+   "concept": "which run owns its lifecycle",
+   "field": "POSITION_OWNER_RUN",
+   "current_value": "OLD_RUN_PRESENT_BUT_ID_UNKNOWN",
+   "provider": "ledger+run_state",
+   "lifecycle_gate": "ownership_transfer_or_close"
+  },
+  "NEW_RUN_MANAGEMENT": {
+   "concept": "whether the new run may act on it",
+   "field": "POSITION_MANAGED_BY",
+   "current_value": "NOT_APPLICABLE_NO_NEW_RUN",
+   "provider": "design_only",
+   "lifecycle_gate": "management_policy_selection"
+  }
+ },
+ "POSITION_OWNER_RUN": "UNKNOWN",
+ "POSITION_SOURCE_RUN": "UNKNOWN",
+ "POSITION_MANAGED_BY": "NONE(no new run exists)",
+ "POSITION_LIFECYCLE_OWNER": "V1_MANAGED(per R18 ledger evidence)",
+ "BANNED_IDS_USED_AS_FACT": "NO",
+ "POSITION_SOURCE_RUN_NOTE": "the real old run_id is not provable from ledger/runtime; V1_RUN_20260924_RESET_01 is excluded (self-reference)",
+ "VISIBILITY_VS_MANAGEMENT": {
+  "rule": "VISIBLE does NOT imply MANAGED; each state is independent",
+  "states": {
+   "VISIBLE_TO_NEW_RUN": "DESIGN_DEPENDENT",
+   "ACCOUNTED_BY_NEW_RUN": "DESIGN_DEPENDENT",
+   "MANAGED_BY_NEW_RUN": "DESIGN_DEPENDENT",
+   "COUNTED_IN_NEW_RUN_PERFORMANCE": "DESIGN_DEPENDENT"
+  },
+  "no_derivation_rule": "VISIBLE_TO_NEW_RUN=YES must not be used to infer MANAGED_BY_NEW_RUN=YES"
+ },
+ "VISIBLE_TO_NEW_RUN": "DESIGN_DEPENDENT",
+ "ACCOUNTED_BY_NEW_RUN": "DESIGN_DEPENDENT",
+ "MANAGED_BY_NEW_RUN": "DESIGN_DEPENDENT",
+ "COUNTED_IN_NEW_RUN_PERFORMANCE": "DESIGN_DEPENDENT",
+ "A_INHERIT": {
+  "mode": "DESIGN_ONLY",
+  "machine": {
+   "OLD_RUN": {
+    "position": 2377449557
+   },
+   "edge": "OWNERSHIP_TRANSFER",
+   "TARGET": "NEW_RUN"
+  },
+  "required_fields": [
+   "TRANSFER_EVENT",
+   "TRANSFER_TIME",
+   "TRANSFER_EVIDENCE",
+   "SOURCE_RUN",
+   "TARGET_RUN"
+  ],
+  "TRANSFER_EVENT": "DESIGN_ONLY",
+  "blocking_note": "without undeniable ownership-transfer evidence, A cannot be treated as executed fact"
+ },
+ "B_OBSERVE": {
+  "mode": "DESIGN_ONLY",
+  "machine": {
+   "NEW_RUN": {
+    "sees": "LEGACY-2377449557",
+    "order_control": "NO",
+    "modify": "NO",
+    "performance_attribution": "NO",
+    "ownership_transfer": "NO"
+   }
+  },
+  "frozen_candidates": {
+   "VISIBLE": "YES",
+   "MANAGED": "NO",
+   "OWNED": "NO",
+   "PERFORMANCE_COUNTED": "NO"
+  },
+  "must_answer": "who is responsible for the risk boundary while the legacy position remains open?",
+  "answer": "UNKNOWN — not answered by this audit; must be explicitly assigned before use"
+ },
+ "C_WAIT": {
+  "mode": "DESIGN_ONLY",
+  "machine": {
+   "OLD_RUN": {
+    "position": "OPEN"
+   },
+   "edge": "POSITION CLOSE",
+   "then": [
+    "VERIFY_CLOSED",
+    "ARCHIVE_OLD_RUN",
+    "CREATE_NEW_RUN"
+   ]
+  },
+  "required_fields": [
+   "CLOSE_EVIDENCE",
+   "BROKER_POSITION_GONE",
+   "LEDGER_CLOSE_MATCH",
+   "FINAL_PNL_MATCH",
+   "ARCHIVE_GATE"
+  ],
+  "NEW_RUN_RESET": "BLOCKED(all conditions not yet met)"
+ },
+ "D_BRIDGE": {
+  "mode": "DESIGN_ONLY",
+  "machine": {
+   "OLD_POSITION": "LEGACY-2377449557",
+   "source_ticket": 2377449557,
+   "source_ledger_line": 169,
+   "source_state": "OPEN",
+   "then": "NEW_RUN"
+  },
+  "required_fields": [
+   "LEGACY_POSITION_ID",
+   "SOURCE_TICKET",
+   "SOURCE_IDENTIFIER",
+   "SOURCE_LEDGER_LINE",
+   "SOURCE_RUN",
+   "TARGET_RUN",
+   "BRIDGE_CREATED_AT",
+   "BRIDGE_EVIDENCE",
+   "MANAGEMENT_POLICY",
+   "PERFORMANCE_POLICY",
+   "CLOSE_HANDOFF_POLICY"
+  ],
+  "SOURCE_RUN": "UNKNOWN",
+  "TARGET_RUN": "NOT_CREATED",
+  "BRIDGE_CREATED_AT": "NOT_CREATED",
+  "BRIDGE_EVIDENCE": "NOT_CREATED"
+ },
+ "MANAGEMENT_POLICIES": [
+  {
+   "policy": "FREEZE_ONLY",
+   "allows": "keep the position untouched and visible read-only",
+   "forbids": "no orders, no modification, no close, no attribution",
+   "responsible": "UNKNOWN(explicit assignment required)",
+   "counts_into_new_run_stats": "NO",
+   "ends_when": "when the position is closed by external means and verified",
+   "bridge_close": "bridge marked CLOSED after verification"
+  },
+  {
+   "policy": "MONITOR_ONLY",
+   "allows": "read-only monitoring and logging of state",
+   "forbids": "no order control, no modification, no close",
+   "responsible": "UNKNOWN(explicit assignment required)",
+   "counts_into_new_run_stats": "NO",
+   "ends_when": "when the position closes or monitoring is revoked",
+   "bridge_close": "bridge retained as audit evidence"
+  },
+  {
+   "policy": "LEGACY_MANAGED",
+   "allows": "explicitly manage the legacy position under legacy rules",
+   "forbids": "mixing its lifecycle into new-run logic without a transfer event",
+   "responsible": "UNKNOWN(explicit assignment required)",
+   "counts_into_new_run_stats": "NO(unless adoption event exists)",
+   "ends_when": "when the legacy position closes under legacy rules",
+   "bridge_close": "bridge records the whole legacy lifecycle"
+  },
+  {
+   "policy": "EXCLUDE_FROM_NEW_RUN",
+   "allows": "completely exclude from the new run's view and statistics",
+   "forbids": "any listing, attribution or control by the new run",
+   "responsible": "UNKNOWN(explicit assignment required)",
+   "counts_into_new_run_stats": "NO",
+   "ends_when": "when archived",
+   "bridge_close": "bridge kept outside the new run's scope"
+  }
+ ],
+ "MANAGEMENT_POLICY_SELECTED": "NONE",
+ "MANAGEMENT_POLICY_SELECTION_RULE": "this audit does not choose; selection requires separate authorisation",
+ "PNL_BOUNDARIES": {
+  "OLD_POSITION_PNL": "PnL attributable to ticket 2377449557; belongs to OLD/LEGACY",
+  "NEW_RUN_PNL": "PnL from trades opened by the new run only; excludes the legacy position",
+  "LEGACY_PNL": "aggregate PnL of legacy positions tracked by the bridge",
+  "TOTAL_ACCOUNT_PNL": "account-level total; may include both, but is NOT used as new-run performance",
+  "rule": "the historical PnL of 2377449557 must NOT automatically become new-run trading profit on reset",
+  "exception": "only an explicit adoption/ownership-transfer event may change attribution"
+ },
+ "TRADE_STAT_BOUNDARIES": {
+  "NEW_RUN": {
+   "NEW_RUN_TRADE_COUNT": 0,
+   "NEW_RUN_WIN_COUNT": 0,
+   "NEW_RUN_LOSS_COUNT": 0,
+   "NEW_RUN_R": 0,
+   "NEW_RUN_PNL": 0,
+   "note": "must not include the legacy position until a lawful adoption event"
+  },
+  "LEGACY": {
+   "LEGACY_OPEN_POSITION_COUNT": 1,
+   "LEGACY_CLOSED_POSITION_COUNT": "UNKNOWN",
+   "LEGACY_PNL": "UNKNOWN"
+  },
+  "pollution_guard": "legacy position must not be counted into new-run statistics"
+ },
+ "LEDGER_BOUNDARIES": {
+  "OLD_LEDGER": {
+   "path": "research/hermes/trader_v1/run_state/plan_ledger.jsonl",
+   "sha256": "0b90493cae0cdf7b73056bc72b1e5752f35c3eb20f9306c098d26f4bec819261",
+   "policy": "IMMUTABLE",
+   "rewrite_forbidden": true
+  },
+  "NEW_LEDGER": {
+   "design": "new run only; created at new-run init (NOT created here)",
+   "created": "NO"
+  },
+  "bridge_rule": "if a bridge is used it must be a NEW auditable fact layer; it must never write back into the old ledger",
+  "forbidden": [
+   "clearing the old ledger",
+   "moving old rows into the new ledger",
+   "editing historical CLOSE",
+   "editing historical OPEN",
+   "editing historical PnL"
+  ]
+ },
+ "OLD_LEDGER_IMMUTABLE": "YES",
+ "NEW_LEDGER_DESIGN": "new_run_only_ledger (design only; not created)",
+ "LEGACY_LEDGER_DESIGN": "bridge_layer (design only; not created)",
+ "NEW_RUN_INITIAL_STATE": {
+  "ACCOUNT_BALANCE": 1909.18,
+  "EQUITY": 1909.18,
+  "FREE_MARGIN": 1909.18,
+  "NEW_RUN_TRADE_COUNT": 0,
+  "NEW_RUN_PNL": 0,
+  "NEW_RUN_R": 0,
+  "LEGACY_POSITION_PRESENT": "YES",
+  "independence_rule": "NEW_RUN_TRADE_COUNT=0 must NOT be read as ACCOUNT_HAS_NO_POSITION=TRUE"
+ },
+ "ACCOUNT_HAS_NO_POSITION": "FALSE",
+ "SAFETY_QUESTIONS": {
+  "1_legacy_position_exists": "YES",
+  "2_new_run_can_see_it": "DESIGN_DEPENDENT(UNKNOWN until policy chosen)",
+  "3_new_run_can_manage_it": "NO(no new run exists; policy not chosen)",
+  "4_new_run_can_modify_it": "NO",
+  "5_new_run_can_close_it": "NO",
+  "6_pnl_belongs_to_new_run": "NO",
+  "7_trade_count_belongs_to_new_run": "NO",
+  "8_lifecycle_recorded_by": "OLD_LEDGER(plan_ledger.jsonl, immutable)",
+  "9_old_ledger_immutable": "YES",
+  "10_bridge_end_condition": "UNKNOWN(policy not chosen)"
+ },
+ "UNKNOWNS_PRESERVED": [
+  "2_new_run_can_see_it",
+  "10_bridge_end_condition"
+ ],
+ "RESET_BLOCKER_RULE": "RESET_BLOCKER = OPEN_LEGACY_POSITION AND NO_VALID_BRIDGE",
+ "RESET_BLOCKER": "UNKNOWN",
+ "VALID_BRIDGE": "NO(bridge not created)",
+ "RESET_ALLOWED": "NO",
+ "RESET_ALLOWED_WITH_BRIDGE": "CONDITIONAL(never automatic YES; further reset-safety audit required)",
+ "REAL_OLD_RUN_ID": "V1_RUN_20260924_RESET_01",
+ "CURRENT_OLD_RUN_IDS": [
+  "V1_RUN_20260924_RESET_01"
+ ],
+ "SELF_REFERENCE_EXCLUSION": "PASS",
+ "SELF_REFERENCE_RULE": "run_id/session_id/execution_id/reset-name/future-run-name hits inside research/v3_opportunity_engine/ are excluded as self-references",
+ "SELF_REFERENCE_HITS_EXCLUDED": [
+  "research/hermes/trader_v1/run_state/RUN_META.json",
+  "research/hermes/trader_v1/run_state/statistics.json"
+ ],
+ "BANNED_TOKENS_EXCLUDED": [
+  "V1_RUN_20260924_RESET_01"
+ ],
+ "LEDGER_POSITION_STATE": "OPEN",
+ "LIFECYCLE_SUBSTATES": {
+  "REQUEST": "UNKNOWN",
+  "ORDER": "UNKNOWN",
+  "FILL": "UNKNOWN",
+  "PNL": "UNKNOWN",
+  "CLOSE": "UNKNOWN"
+ },
+ "LIFECYCLE_UPGRADE_FORBIDDEN": "OPEN must not be upgraded to 'full lifecycle proven'; the sub-states stay UNKNOWN until strictly associated evidence appears",
+ "RESET_COMPARISON_MATRIX": [
+  {
+   "option": "A_inherit",
+   "old_position_ownership": "待定义(needs transfer evidence)",
+   "new_run_visible": "待定义",
+   "new_run_managed": "待定义",
+   "new_run_stats": "待定义",
+   "old_ledger": "不修改",
+   "bridge": "必须"
+  },
+  {
+   "option": "B_observe",
+   "old_position_ownership": "保留旧归属",
+   "new_run_visible": "是",
+   "new_run_managed": "否",
+   "new_run_stats": "否",
+   "old_ledger": "不修改",
+   "bridge": "可选/需明确"
+  },
+  {
+   "option": "C_wait",
+   "old_position_ownership": "保留旧归属",
+   "new_run_visible": "不启动新 Run",
+   "new_run_managed": "否",
+   "new_run_stats": "否",
+   "old_ledger": "不修改",
+   "bridge": "不需要"
+  },
+  {
+   "option": "D_bridge",
+   "old_position_ownership": "保留旧归属或明确转移",
+   "new_run_visible": "是",
+   "new_run_managed": "按政策",
+   "new_run_stats": "明确隔离",
+   "old_ledger": "不修改",
+   "bridge": "必须"
+  }
+ ],
+ "RESET_DESIGN_RANKING": "NONE",
+ "CURRENT_STATE": {
+  "engine": "MV-R1 BASELINE",
+  "automation": "DISABLED",
+  "v1_process": "NOT_RUNNING",
+  "position": {
+   "ticket": null,
+   "state": "CLOSED",
+   "ownership": "V1_MANAGED",
+   "ledger_line": 169
+  },
+  "ledger": {
+   "path": "research/hermes/trader_v1/run_state/plan_ledger.jsonl",
+   "sha256": "0b90493cae0cdf7b73056bc72b1e5752f35c3eb20f9306c098d26f4bec819261",
+   "immutable": true
+  }
+ },
+ "RESET_BLOCKERS": [
+  {
+   "blocker": "OPEN_LEGACY_POSITION",
+   "value": "TRUE"
+  },
+  {
+   "blocker": "NO_VALID_BRIDGE",
+   "value": "TRUE"
+  },
+  {
+   "blocker": "REAL_OLD_RUN_ID_UNKNOWN",
+   "value": "V1_RUN_20260924_RESET_01"
+  },
+  {
+   "blocker": "MANAGEMENT_POLICY_NOT_SELECTED",
+   "value": "TRUE"
+  },
+  {
+   "blocker": "PERFORMANCE_ATTRIBUTION_NOT_FINALISED",
+   "value": "TRUE"
+  }
+ ],
+ "BRIDGE_REQUIREMENTS": [
+  "LEGACY_POSITION_ID",
+  "SOURCE_TICKET",
+  "SOURCE_IDENTIFIER",
+  "SOURCE_LEDGER_LINE",
+  "SOURCE_RUN",
+  "TARGET_RUN",
+  "BRIDGE_CREATED_AT",
+  "BRIDGE_EVIDENCE",
+  "MANAGEMENT_POLICY",
+  "PERFORMANCE_POLICY",
+  "CLOSE_HANDOFF_POLICY"
+ ],
+ "RESET_PRECONDITIONS": [
+  "position closed OR valid bridge created",
+  "ownership/management/visibility/attribution explicitly assigned",
+  "old ledger sealed immutable",
+  "new ledger initialised with legacy presence recorded",
+  "bridge end condition defined",
+  "separate reset-safety audit passed"
+ ],
+ "NO_BEST_RECOMMENDED_WINNER": "NO(BEST_OPTION/RECOMMENDED_OPTION/WINNER are not emitted)",
+ "ORDER_SEND": 0,
+ "POSITION_CLOSE": 0,
+ "POSITION_MODIFY": 0,
+ "PENDING_ORDER_CANCEL": 0,
+ "V1_START": 0,
+ "V1_STOP": 0,
+ "V1_RESTART": 0,
+ "AUTOMATION_ENABLE": 0,
+ "AUTOMATION_RUN": 0,
+ "AUTOMATION_UPDATE": 0,
+ "NEW_RUN_CREATE": 0,
+ "RESET_EXECUTE": 0,
+ "LEDGER_WRITE": 0,
+ "LEDGER_CLEAR": 0,
+ "STATE_WRITE": 0,
+ "STATE_CLEAR": 0,
+ "HISTORICAL_MOVE": 0,
+ "HISTORICAL_DELETE": 0,
+ "HISTORICAL_RENAME": 0,
+ "ENGINE_WRITE": 0,
+ "CONFIG_WRITE": 0,
+ "GIT_COMMIT": "NONE",
+ "V3_M01_EVENT_HASH": "ca44fd2c02afd867b9c66cb5da463eb0283fef6c31ba4e7c20fc988a1c9e2621",
+ "V3_R1_LEDGER_HASH": "d9cd67757e501c3e550338da4228d67c0132ea293f28bce031b1cf010790f4ed",
+ "V3_M01_AUDIT_HASH": "a3bee5375f318ceb8bdd3144a0ac2639b88e2c5932a3e33c563c72b2c0c9f17d",
+ "V3_R2_CANONICAL_HASH": "20913b986890b1c593a63d1dfa7d6e1d90ad0b71db7b5134132f3ecfd7e72624",
+ "V3_RESEARCH_MODIFIED": "NO",
+ "V2_SOURCE_CONFIG_MODIFIED": "NO",
+ "BRIDGE_CREATED": "NO",
+ "NEW_RUN_CREATED": "NO",
+ "R19_CONDITIONS": {
+  "1_v1_state_reconfirmed": true,
+  "2_ticket_identity_frozen": false,
+  "3_ownership_vs_management": true,
+  "4_visibility_vs_attribution": true,
+  "5_A_to_D_formalised": true,
+  "6_policies_defined": true,
+  "7_pnl_boundaries": true,
+  "8_trade_stats": true,
+  "9_ledger_boundaries": true,
+  "10_reset_blocker_rule": true,
+  "11_self_ref_exclusion": true,
+  "12_new_run_initial_state": true,
+  "13_bridge_end_condition": true,
+  "14_no_trade_ops": true,
+  "15_no_bridge": true,
+  "16_no_new_run": true,
+  "17_no_history_move": true,
+  "18_automation_disabled": true,
+  "19_v1_not_running": true,
+  "20_v2v3_unchanged": true
+ },
+ "R19_GATE": "FAIL",
+ "STOP_REASON": "BASELINE_CHANGED",
+ "FORMAL_RESET": "FORBIDDEN",
+ "NEXT_STAGE_AUTHORIZED": "NO"
+}

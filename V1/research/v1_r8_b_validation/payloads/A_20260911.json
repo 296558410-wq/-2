@@ -1,0 +1,105 @@
+{
+ "forecast_id": "R8B_A_20260911",
+ "sample_id": "A_20260911",
+ "horizon": 4,
+ "timestamp": "2026-09-11 00:00:00+00:00",
+ "scenario_family": "DIRECTIONAL",
+ "scenario_alternative": "RANGE",
+ "scenario_abstain": false,
+ "observations": [
+  "H4 close 4322.635 below swing low 4323.915, break_status BEYOND",
+  "H1 trend_20 -93.89, H4 trend_20 -83.46, downtrend intact",
+  "H4 current bar long upper wick, body_ratio 0.15, range_expanding",
+  "MTF agreement CONFLICT; M1 up, M15/H1/H4 down"
+ ],
+ "what_i_know": [
+  "Price broke below swing low 4323.915; no reclaim yet",
+  "H1/H4/M15 strong negative trend_20; down regime",
+  "State TREND dwell 4; prior REJECTION dwell 5",
+  "DXY proxy stable 99.07; VIX and yields UNKNOWN"
+ ],
+ "what_i_do_not_know": [
+  "Whether breakdown sustains or reverts inside level",
+  "VIX, UST10Y, news, macro events unavailable",
+  "Next H4 close direction; range expansion timing",
+  "DXY instrument definition UNKNOWN; proxy only"
+ ],
+ "evidence": [
+  "Breakdown beyond swing low; strong negative H4 trend_20",
+  "H4 consecutive_down 7; H1 consecutive_down 8",
+  "H4 bar rejects highs with long upper wick",
+  "Fresh breakdown with no reclaim supports continuation"
+ ],
+ "counter_evidence": [
+  "Analog majority step4 REJECTION, not trend continuation",
+  "M1/M5 trend_20 positive; MTF agreement CONFLICT",
+  "Ambiguity rate 0.625; high label uncertainty",
+  "M1 range_contracting true; possible stall"
+ ],
+ "possible_mechanisms": [
+  {
+   "mechanism": "breakdown_continuation",
+   "status": "POSSIBLE",
+   "why": "Fresh break below swing low, no reclaim, down trend"
+  },
+  {
+   "mechanism": "failed_breakout_mean_reversion",
+   "status": "POSSIBLE",
+   "why": "No reclaim yet; analogs lean REJECTION; long wicks"
+  },
+  {
+   "mechanism": "range_expansion_selloff",
+   "status": "WEAK",
+   "why": "H4 range expanding during decline"
+  },
+  {
+   "mechanism": "quiet_consolidation",
+   "status": "WEAK",
+   "why": "Short timeframe contracting; low conviction"
+  }
+ ],
+ "primary_scenario": {
+  "scenario": "DIRECTIONAL",
+  "horizon": 4,
+  "trigger": "Sustained close below 4323.915",
+  "invalidation": "Close returns inside level 4323.915"
+ },
+ "alternative_scenario": {
+  "scenario": "RANGE",
+  "horizon": 4,
+  "trigger": "Price reclaims 4323.915 without follow-through",
+  "invalidation": "Clean expansion beyond 4310/4340 band"
+ },
+ "expected_transition": "TREND to down continuation or REJECTION stall",
+ "direction_bias": "DOWN",
+ "time_horizon": "H4 x4 (16h)",
+ "evidence_strength": 0.45,
+ "confidence": 0.4,
+ "uncertainty": 0.6,
+ "confidence_reason": "Fresh breakdown plus strong higher-TF downtrend; but ambiguity high, analogs split, MTF conflict",
+ "uncertainty_reason": "High ambiguity 0.625, no reclaim, missing VIX/news, analog majority favors stall",
+ "invalidation": "Price closes back above 4323.915 reclaiming swing low",
+ "change_my_mind": [
+  "Clean H4 close below 4310 with expanding range",
+  "Reclaim above 4323.915 with strong M1/M5 momentum",
+  "DXY confirms direction; break below 98.5 or above 100",
+  "Fresh news/macro event or VIX data arrives"
+ ],
+ "abstain": false,
+ "abstain_reason": "Enough price evidence to lean; conviction remains low",
+ "questions": {
+  "Q1": "Context states downtrend, breakdown below swing low, TREND state",
+  "Q2": "VIX, yields, news absent; reclaim unknown; DXY proxy only",
+  "Q3": "Breakdown beyond level; negative H1/H4 trend_20; long upper wick",
+  "Q4": "Analog majority REJECTION; M1 up; high ambiguity; no reclaim",
+  "Q5": "Breakdown continuation — only POSSIBLE, not entitled to assert",
+  "Q6": "H4 close below 4310 expansion, or reclaim above 4323.915",
+  "Q7": "false — enough signal for lean despite low confidence"
+ },
+ "reasoning_trace": [
+  "Read prompt and context only; no future data",
+  "Classified family: DIRECTIONAL down continuation, RANGE alternative",
+  "Not QUIET: ATR elevated, H4 range expanding",
+  "Abstain false; confidence low given conflicts"
+ ]
+}

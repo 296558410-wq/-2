@@ -1,0 +1,185 @@
+{
+ "schema": "v3_f_r1_protocol/1",
+ "task_id": "V3-PHASE2-F-R1",
+ "round": "F-R1",
+ "ts_utc": "2026-10-01T15:20:00+00:00",
+ "frozen_before_evaluation": true,
+ "objective": "XAUUSD 1m-60m: does a repeatable short-horizon structure exist that can cover the transaction cost? NOT strategy development.",
+ "bounds": {
+  "v1_modified": "NO",
+  "v1_v2_trade_state_as_input": "NO",
+  "historical_returns_as_input": "NO",
+  "inherited_parameters": "NO (every threshold below is declared a priori in THIS document; none was carried over from another round and none is fitted to any result)",
+  "execution": "NO",
+  "order_send": "NO",
+  "protocol_tuned_to_results": "NO",
+  "future_data": "NO",
+  "unbounded_threshold_or_combo_mining": "NO",
+  "declared_hypothesis_count": 8,
+  "declared_threshold_set": "one (|z|>=2) plus trailing-regime terciles; no sweep"
+ },
+ "data": {
+  "SNAPSHOT_ID": "V3-SNAP-20260922T025312Z",
+  "tick_dir": "research/hermes/trader_v3/data/snapshots/V3-SNAP-20260922T025312Z",
+  "files": 36,
+  "ticks": 7285000,
+  "span_utc": [
+   "2026-08-04T01:05:00.093Z",
+   "2026-09-22T02:39:05.572Z"
+  ],
+  "tick_sha256_verify": "36/36 MATCH",
+  "manifest_sha256": "13fb5d1720a3b25768d0bca59eda897e85e66ba6d7741d538fc32ed33ef8eb54",
+  "timestamp_field": "ts_utc",
+  "timestamp_unit": "ms",
+  "timezone": "UTC",
+  "volume_status": "DATA_GAP (volume/volume_real/last identically 0) - every flow feature is a quote-based _PROXY",
+  "bars": "1m bars built from ticks per segment; a bar's close timestamp = the ts of its last tick; the bar is USABLE at that close (PIT)"
+ },
+ "cost_model": {
+  "COST_MODEL_VERSION": "CALIBRATION_20RT_20260921",
+  "REAL_RT_COST_BP": 0.914,
+  "components": {
+   "spread": "MEASURED (calibration 0.18bp; snapshot median full spread 0.34bp; half-spread charged at entry)",
+   "slippage": "MEASURED signed distribution from the 19-RT pilot; only the unfavourable leg is charged",
+   "commission": "MEASURED 0.22 USD/RT",
+   "latency": "entry signal->fill median ~272ms; reported separately, not double-charged",
+   "adverse_selection": "MEASURED as the execution markout itself, never added again"
+  },
+  "stress": [
+   0.0,
+   1.0,
+   2.0,
+   3.0
+  ],
+  "rule": "0.314bp is HISTORICAL_INVALID_FOR_CURRENT_RESEARCH and must not be used"
+ },
+ "execution_model": {
+  "entry": "first tick with ts > the trigger bar's close ts; long at ask, short at bid",
+  "exit": "mid at the first tick with ts >= entry_ts + h",
+  "ceiling": "HORIZON_CENSORED when the forward window leaves the segment (tick gap > 60s) or the sample ends; excluded and counted",
+  "mid_markout": "dir*(future_mid-entry_mid)",
+  "exec_markout": "dir>0 ? future_mid-entry_ask : entry_bid-future_mid",
+  "cost_adjusted": "mid_markout_bp - 0.914*stress_mult"
+ },
+ "frozen_thresholds": {
+  "horizons_min": [
+   1,
+   5,
+   15,
+   30,
+   60
+  ],
+  "bar_minutes": 1,
+  "sigma_window_bars": 20,
+  "impulse_window_bars": 5,
+  "momentum_window_bars": 20,
+  "sma_window_bars": 20,
+  "rv_window_bars": 5,
+  "regime_window_bars": 1000,
+  "abs_z": 2.0,
+  "regime_quantiles": [
+   0.33,
+   0.67
+  ],
+  "min_effective_n": 30,
+  "alpha": 0.05,
+  "causality": "every rolling statistic uses bars up to and including the trigger bar only; regime quantiles are causal trailing quantiles"
+ },
+ "hypotheses": [
+  {
+   "id": "F1a_IMPULSE_CONT",
+   "family": "F1_trend_continuation",
+   "kind": "directional",
+   "feature": "z5 = ret5 / (sigma_ret20 * sqrt(5)), ret5 = 5-bar return, sigma_ret20 = trailing 20-bar std of 1-bar returns",
+   "trigger": "|z5| >= 2.0 at a bar close",
+   "direction": "follow sign(ret5)",
+   "holding": "1/5/15/30/60 min"
+  },
+  {
+   "id": "F1b_VOLADJ_MOMENTUM_CONT",
+   "family": "F1_trend_continuation",
+   "kind": "directional",
+   "feature": "z20 = ret20 / (sigma_ret20 * sqrt(20))  (volatility-adjusted momentum)",
+   "trigger": "|z20| >= 2.0",
+   "direction": "follow sign(ret20)",
+   "holding": "1/5/15/30/60 min"
+  },
+  {
+   "id": "F1c_RETURN_AUTOCORR",
+   "family": "F1_trend_continuation",
+   "kind": "descriptive",
+   "metric": "lag-1..10 autocorrelation of 1m returns with block-bootstrap 95% CI, per session; no trade claim"
+  },
+  {
+   "id": "F2a_ANOMALY_REVERT",
+   "family": "F2_reversion",
+   "kind": "directional",
+   "feature": "same z5",
+   "trigger": "|z5| >= 2.0",
+   "direction": "fade sign(ret5)",
+   "holding": "1/5/15/30/60 min"
+  },
+  {
+   "id": "F2b_MA_REVERSION",
+   "family": "F2_reversion",
+   "kind": "directional",
+   "feature": "zma = (close - sma20) / (close * sigma_ret20 * sqrt(20))",
+   "trigger": "|zma| >= 2.0",
+   "direction": "fade sign(zma)",
+   "holding": "1/5/15/30/60 min"
+  },
+  {
+   "id": "F3a_VOL_EXPANSION",
+   "family": "F3_regime_switch",
+   "kind": "non_directional",
+   "feature": "rv5 = trailing 5-bar std of 1-bar returns; regime = causal trailing q33/q67 of rv5 over 1000 bars",
+   "trigger": "onset of LOW rv5 regime",
+   "metric": "forward |move| and P(switch to HIGH within h) vs the deterministic baseline",
+   "hypothesis": "volatility EXPANDS after a low-vol regime"
+  },
+  {
+   "id": "F3b_VOL_DECAY",
+   "family": "F3_regime_switch",
+   "kind": "descriptive",
+   "metric": "after a HIGH rv5 onset, the median number of bars until rv5 falls back below the trailing median (half-life)"
+  },
+  {
+   "id": "F3c_REGIME_TRANSITION_DIR",
+   "family": "F3_regime_switch",
+   "kind": "directional",
+   "feature": "onset of HIGH rv5 regime; direction = sign(ret5) of the transition bar",
+   "trigger": "onset of HIGH rv5 regime",
+   "direction": "follow sign(ret5) (fade is reported as the mirror)",
+   "holding": "1/5/15/30/60 min",
+   "note": "the transition direction is a byproduct of the regime, so the mirror is reported rather than frozen as a separate id"
+  }
+ ],
+ "validation": {
+  "train_test_isolation": "time-ordered split at 70% of the sample by event time; no shuffle, no k-fold across time",
+  "oos": "the final 30% of event time is held out and reported separately",
+  "permutation": "sign-flip, n=2000, two-sided",
+  "bootstrap": "block bootstrap over events, n=2000, 50 blocks",
+  "overlap_check": "report raw event n, overlap ratio at each horizon, effective_n = greedy non-overlapping count; floor 30",
+  "robustness": [
+   "sub-segment by session (ASIA/LONDON/NY)",
+   "sub-segment by trailing volatility tercile",
+   "cost stress 0/1/2/3x",
+   "stability of the sign across IS/OOS and across sub-segments"
+  ],
+  "verdicts": [
+   "VALIDATED_EDGE",
+   "NO_VALIDATED_EDGE"
+  ],
+  "ladder": [
+   "INSUFFICIENT_SAMPLE",
+   "COST_INSUFFICIENT",
+   "REJECT",
+   "EDGE_UNCERTAIN",
+   "EXECUTION_UNREALISTIC",
+   "CANDIDATE"
+  ],
+  "VALIDATED_EDGE_requires": "cost-adjusted positive on IS AND OOS at 1x, permutation p<0.05, bootstrap CI excluding 0, effective_n>=30, sign stable across sub-segments, survives 2x cost",
+  "direction_policy": "every directional source is reported BOTH ways (follow and fade)"
+ },
+ "registry_hash_sha256": "b0f20e6618b69861727c0fb2492b340a7e2103ea19563bfae3587c3be1edb9ab"
+}

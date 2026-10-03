@@ -1,0 +1,119 @@
+{
+  "forecast_id": "R6_A_20260724",
+  "sample_id": "A_20260724",
+  "timestamp": "2026-07-24T12:00:00Z",
+  "observations": [
+    "XAUUSD as_of 2026-07-24 12:00:00 UTC; M1 close 4058.655, M5 close 4062.125, M15 close 4061.095, H1 close 4057.545, H4 close 4063.185 (current forming bars, closes differ by aggregation).",
+    "Nearest L2 level: SWING_HIGH_36828 at 4060.615, side UP, 13 touches in 240 bars, distance 0.078 ATR, break_status INSIDE, reclaim_status NONE, level age 8 bars.",
+    "Frozen behavior label at t: REJECTION; state_v2 TREND; current dwell 12 bars; transitions_last_8 empty; ambiguity_rate_8 = 0.5.",
+    "L4 mechanism candidates only: trend_continuation (8-bar displacement 7.13) and exhaustion (dwell 12, self-flagged weak); explicitly NOT asserted as fact.",
+    "M1 last bars: 11:53 down bar (4059.285->4057.075, range_pct 0.945), recovery 11:57-11:58 (4058.415->4060.005, near-zero wicks), 11:59 stall (body 0.04), 12:00 bar open 4060.075 high 4060.125 low 4058.265 close 4058.655, bearish body 1.42, upper_wick 0.05, lower_wick 0.39, range_percentile 0.875.",
+    "M1 sequence_flags: consecutive_up 7, consecutive_down 4, range_expanding true. M5: consecutive_up 6, consecutive_down 5, range_expanding true.",
+    "MTF per-timeframe: M1 trend_20 -0.68 / trend_50 -0.41; M5 +9.41 / +26.53; M15 +24.56 / +12.19; H1 +9.02 / -60.61; H4 +0.47 / -21.73. agreement: CONFLICT.",
+    "H1 context: 03:00 big down bar (4043.345->4024.305, range 25.55); 07:00-11:00 recovery bars to ~4060; 12:00 H1 current bar high 4063.285 low 4051.195 close 4057.545, lower_wick 6.35, upper_wick 3.21, body 2.53.",
+    "H4 context: decline from 4148.265 (07-22 16:00) to low 4022.755 (07-24 03:00); 08:00 H4 strong up bar (4035.535->4059.955, body 24.42); current H4 bar high 4069.825 low 4044.515 close 4063.185, lower_wick 15.56; H4 range_contracting true.",
+    "Cross-market: DXY 101.451 change_8 +0.08 (PROXY Yahoo, instrument UNKNOWN); VIX 18.75 change_8 +0.01 (PROXY); UST10Y TNX unavailable (STALE_OR_NOT_COVERED); GLD/GC/COT/ETF_FLOWS/NEWS/MACRO_EVENTS absent.",
+    "Historical analogs (state evolution only, no returns): A27558 TREND->COMPRESSION at step12; A31259 TREND through step16; A33750 TREND->ROTATION->REJECTION->COMPRESSION."
+  ],
+  "what_i_know": [
+    "Price sits immediately beneath a 240-bar swing-high resistance 4060.615 that has been defended 13 times and is currently inside the level (0.078 ATR).",
+    "The frozen C1 label at t is REJECTION and the state has been TREND for 12 consecutive bars with zero transitions in the last 8 bars.",
+    "Short-term momentum before t was up (recovery from 4022.755 low; M5/M15 trend_20 strongly positive; 7 consecutive up M1 bars) but the t-bar itself is a rejection candle at the level.",
+    "Medium-term context is negative: H1 trend_50 -60.61 and H4 trend_50 -21.73 imply price is well below its 50-bar references.",
+    "Cross-market inputs are PROXY at best (DXY slightly up, VIX flat) and provide no strong confirmation either way.",
+    "No news, macro events, positioning, or flow data are present; absent series are recorded as absent, never fabricated."
+  ],
+  "what_i_do_not_know": [
+    "News/macro drivers (NEWS, MACRO_EVENTS absent) that could be the actual cause of the 07-22 to 07-24 drawdown and recovery.",
+    "True cross-market relationship: DXY/VIX are PROXY with instrument definition UNKNOWN; UST10Y stale; TNX unavailable.",
+    "Who is defending the 4060.6 level and whether the 13 touches represent persistent supply or transient churn; no order flow / L2 depth data.",
+    "Whether the REJECTION is exhaustion of the up-leg, distribution, or a pause before continuation - L4 itself flags dwell-only as weak.",
+    "Why current-bar closes disagree across timeframes (M1 4058.655 vs M5 4062.125 vs H4 4063.185); aggregation of forming bars is inconsistent/unverifiable.",
+    "Level inventory below price (support structure below 4051/4044/4022 is not provided).",
+    "Future price, by definition."
+  ],
+  "evidence": [
+    "Frozen REJECTION label at t with price inside the swing-high level at 0.078 ATR distance.",
+    "t-bar (M1 12:00) is a bearish bar: body 1.42, upper_wick 0.05, close 4058.655 below the level, range_percentile 0.875 (expanded move down).",
+    "Preceding M1 11:59 bar stalled (body 0.04) after reaching 4060.145, i.e., momentum faded right below the level.",
+    "H1 and H4 trend_50 are strongly negative (-60.61, -21.73), consistent with a medium-term downtrend where this rally is a retracement.",
+    "H4 shows range_contracting true and the current H1 bar a 6.35 lower wick (sellers pressed down to 4051.195).",
+    "DXY proxy ticked up (+0.08) at t, a mild headwind for gold."
+  ],
+  "counter_evidence": [
+    "Powerful recovery off 4022.755 low: H1 07:00-11:00 up bars and H4 08:00 bar body 24.42 - momentum is currently up, not down.",
+    "M5/M15 trend_20 strongly positive (+9.41, +24.56); M5 current close 4062.125 is ABOVE the level; M15 current high 4063.285 poked above it.",
+    "M1 sequence showed 7 consecutive up bars immediately before t.",
+    "H4 current close 4063.185 is above the level; H4 trend_20 +0.47 has flattened, not rolled over.",
+    "ambiguity_rate_8 = 0.5 - the recent label sequence is highly ambiguous.",
+    "transitions_last_8 empty: the TREND state has NOT actually reversed yet by the lifecycle rules.",
+    "Analogs diverge: A31259 stays TREND for 16 steps; only A27558/A33750 show compression/rotation."
+  ],
+  "possible_mechanisms": [
+    {
+      "mechanism": "exhaustion of the up-leg at the swing high (distribution)",
+      "status": "POSSIBLE",
+      "why": "L4 lists it but flags dwell-only as a weak signal; no volume/flow data exists to confirm. I am not entitled to assert it."
+    },
+    {
+      "mechanism": "liquidity-grab / stop hunt above 4060.6 (M15/H1 highs 4063.3) before continuation",
+      "status": "POSSIBLE",
+      "why": "The higher-timeframe highs did poke above the level then close back below, which is consistent with a grab, but L2 depth is unavailable."
+    },
+    {
+      "mechanism": "trend continuation of the medium-term downtrend after retracement",
+      "status": "WEAK",
+      "why": "Supported only by H1/H4 trend_50 negativity and the rejection candle; short-term momentum and MTF CONFLICT prevent a stronger rating."
+    }
+  ],
+  "primary_scenario": {
+    "scenario": "Rejection at the 4060.615 swing high holds; gold stalls in the 4055-4062 zone then drifts lower toward the 4051/4044 recent lows (H1/H4 current-bar lows), consistent with a retracement within the medium-term downtrend.",
+    "horizon": "1-4 hours (next 4-16 M15 bars)",
+    "trigger": "M15/H1 close below 4058.0 with range expansion; loss of the 4055 intraday shelf",
+    "invalidation": "M15 close decisively above 4060.615 with expanding range (reclaim_status changes from NONE), or H1 close above 4063.3"
+  },
+  "alternative_scenario": {
+    "scenario": "The rejection fails: price breaks and holds above 4060.615, extending the recovery toward 4070-4085 (H4 current high 4069.825 and prior structure), i.e., the up-leg is not over.",
+    "horizon": "1-4 hours",
+    "trigger": "M15 range expansion closing above the level; consecutive_up resets on M5 with range_expanding",
+    "invalidation": "Failure back below 4055 with a strong bearish M15 bar"
+  },
+  "expected_transition": "TREND -> REJECTION persists short-term; if the level holds, transition toward ROTATION or COMPRESSION within ~4-12 bars (analogs A27558/A33750 show compression at step 12; A31259 keeps TREND). No transition has occurred in the last 8 bars.",
+  "direction_bias": "DOWN",
+  "time_horizon": "4h",
+  "evidence_strength": 0.35,
+  "confidence": 0.3,
+  "uncertainty": 0.7,
+  "confidence_reason": "The only concrete, causal edge is the REJECTION label at a 13-touch swing-high with a bearish t-bar and negative H1/H4 50-bar trends. But MTF agreement is CONFLICT, ambiguity_rate_8 is 0.5, momentum immediately before t was strongly up, and all cross-market inputs are PROXY; a complete narrative does not raise confidence.",
+  "uncertainty_reason": "No news/macro/flow/positioning data; DXY/VIX are PROXY with unknown instruments; TNX stale; cross-timeframe current-bar closes are inconsistent (4058.7 vs 4062.1 vs 4063.2); L4 itself downgrades the exhaustion signal; analog outcomes diverge at step 12.",
+  "invalidation": "Decisive M15 close above 4060.615 with expanding range (level reclaim), or H1 close above 4063.3 - either flips the primary scenario off.",
+  "change_my_mind": [
+    "M15 closes above 4060.615 with range_expanding and reclaim_status changes from NONE -> flip bias to UP.",
+    "H1 closes below 4051.195 (current H1 low) -> strengthens DOWN materially (confirmed rejection, downside continuation).",
+    "DXY moves down more than 0.3 or VIX jumps above 20 with real news -> weakens the DOWN case (macro headwind argument invalidated).",
+    "M5 trend_20 turns negative while M15 stays positive -> resolves MTF conflict in favor of DOWN.",
+    "Appearance of a NEWS/MACRO event in a re-supplied context that explains the 07-22 drawdown -> re-baseline the scenario."
+  ],
+  "abstain": false,
+  "abstain_reason": "Context is sufficient for a disciplined low-confidence call: the derived labels and level data are causal and internally consistent at the level of the frozen labeler. I do not abstain, but confidence is deliberately low because the multi-timeframe picture conflicts and fundamentals are absent. Caveat: current-bar aggregation differs across timeframes, which feeds uncertainty rather than invalidating the level/label signal.",
+  "questions": {
+    "Q1": "what_do_i_know: price ~4058-4063 at 12:00 UTC; swing-high resistance 4060.615 (13 touches/240, price inside at 0.078 ATR); frozen label REJECTION, TREND state dwell 12, no transitions in last 8, ambiguity 0.5; MTF CONFLICT (M1 trend_20 -0.68 vs M5 +9.41/M15 +24.56; H1 trend_50 -60.61, H4 trend_50 -21.73); DXY 101.45 PROXY +0.08, VIX 18.75 flat, TNX unavailable; NEWS/MACRO/COT/ETF/GLD/GC absent; analogs state-evolution only and divergent at step 12.",
+    "Q2": "what_do_i_not_know: macro/news drivers; true cross-market (all PROXY/UNKNOWN/stale); order flow and who defends the level; whether REJECTION is exhaustion vs pause (L4 flags dwell-only weak); level inventory below 4051/4044; why current-bar closes disagree across timeframes; future price.",
+    "Q3": "evidence_for_primary: REJECTION at t at a 13-touch swing high; bearish t-bar (body 1.42, upper_wick 0.05) after 11:59 stall; H1/H4 trend_50 strongly negative; H4 range contracting; DXY up a tick.",
+    "Q4": "evidence_against_primary: strong recovery off 4022.755; M5/M15 trend_20 positive and M5 close above the level; 7 consecutive up M1 bars before t; H4 current close above level; ambiguity 0.5; zero transitions in last 8 bars; one analog stays TREND 16 steps.",
+    "Q5": "mechanism_that_is_only_possible: exhaustion/distribution at the swing high (POSSIBLE - dwell alone is weak, no volume/flow to confirm); liquidity-grab above 4060.6 (POSSIBLE - no L2 depth). I assert neither as fact.",
+    "Q6": "what_would_change_my_mind: M15 close above 4060.615 with expansion (UP flip); H1 close below 4051.195 (DOWN confirmed); real DXY/VIX/news moves; M5 trend_20 rolling negative; a re-supplied context containing the macro catalyst.",
+    "Q7": "should_i_abstain_now: false - context is sufficient, labels causal and consistent; low confidence and high uncertainty are the honest expression instead. Cross-TF bar inconsistency noted as a caveat, not as grounds for abstention."
+  },
+  "reasoning_trace": [
+    "Read prompt and PIT context only; no future data consulted.",
+    "Extracted L2 level (4060.615, 13 touches, INSIDE, distance 0.078 ATR) as the anchor: price is at a well-defended supply zone.",
+    "Read frozen L3/L5 labels: REJECTION at t in TREND state, dwell 12, ambiguity 0.5 - label is causal, take it as observation, not as asserted fact.",
+    "Checked MTF per §15 without merging: short TFs up, H1/H4 50-bar strongly negative -> CONFLICT; this caps confidence.",
+    "Weighed t-bar geometry (bearish rejection candle, tiny upper wick) and 11:59 stall as immediate rejection evidence.",
+    "Cross-checked against recovery momentum and analogs (A31259 stays TREND) as counter-evidence.",
+    "Chose DOWN bias with low confidence: rejection-at-resistance plus negative higher-TF 50-bar trends is the strongest coherent signal; everything else is conflicting or absent.",
+    "Set invalidation as decisive M15 close above 4060.615 (reclaim), and change_my_mind items as concrete observable flips.",
+    "Decided not to abstain: context is sufficient for a low-confidence disciplined forecast; recorded cross-TF inconsistencies in uncertainty."
+  ]
+}

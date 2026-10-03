@@ -1,0 +1,415 @@
+{
+ "inventory": [
+  {
+   "capability": "PIT",
+   "source": "Phase A/B",
+   "current_status": "implemented",
+   "evidence": "audited",
+   "new_architecture_home": "L1/L4",
+   "action": "KEEP",
+   "note": ""
+  },
+  {
+   "capability": "Replay",
+   "source": "B-R9..B-R13",
+   "current_status": "implemented",
+   "evidence": "PASS",
+   "new_architecture_home": "audit",
+   "action": "KEEP",
+   "note": ""
+  },
+  {
+   "capability": "Deterministic",
+   "source": "B-R9..B-R13",
+   "current_status": "implemented",
+   "evidence": "PASS",
+   "new_architecture_home": "audit",
+   "action": "KEEP",
+   "note": ""
+  },
+  {
+   "capability": "Data Quality / Timestamp Audit / Source Provenance",
+   "source": "Phase A/B",
+   "current_status": "implemented",
+   "evidence": "audited",
+   "new_architecture_home": "audit",
+   "action": "KEEP",
+   "note": ""
+  },
+  {
+   "capability": "REGIME",
+   "source": "F-REGIME",
+   "current_status": "implemented",
+   "evidence": "audited (B-R6/B-R7)",
+   "new_architecture_home": "Market Reading",
+   "action": "REWORK",
+   "note": "fine-grained regimes leave many UNKNOWN; treat as reading axis"
+  },
+  {
+   "capability": "TREND",
+   "source": "registry F-NEXT",
+   "current_status": "implemented",
+   "evidence": "audited",
+   "new_architecture_home": "Market Reading",
+   "action": "KEEP",
+   "note": ""
+  },
+  {
+   "capability": "RANGE",
+   "source": "registry F-NEXT",
+   "current_status": "implemented",
+   "evidence": "audited",
+   "new_architecture_home": "Market Reading",
+   "action": "KEEP",
+   "note": ""
+  },
+  {
+   "capability": "COMPRESSION",
+   "source": "F-REGIME",
+   "current_status": "implemented",
+   "evidence": "audited",
+   "new_architecture_home": "Market Reading",
+   "action": "KEEP",
+   "note": ""
+  },
+  {
+   "capability": "EXPANSION",
+   "source": "F-REGIME",
+   "current_status": "implemented",
+   "evidence": "audited",
+   "new_architecture_home": "Market Reading",
+   "action": "KEEP",
+   "note": ""
+  },
+  {
+   "capability": "REVERSAL",
+   "source": "F-REGIME",
+   "current_status": "implemented",
+   "evidence": "audited",
+   "new_architecture_home": "Market Reading",
+   "action": "REWORK",
+   "note": "no working branch in the old state machine"
+  },
+  {
+   "capability": "EVENT_DRIVEN",
+   "source": "F-REGIME",
+   "current_status": "implemented",
+   "evidence": "audited",
+   "new_architecture_home": "Market Reading",
+   "action": "REWORK",
+   "note": "mapped straight to UNKNOWN"
+  },
+  {
+   "capability": "MOMENTUM",
+   "source": "F-MOM",
+   "current_status": "implemented",
+   "evidence": "B-R13 OOS 0.00073 bits (WEAK)",
+   "new_architecture_home": "Market Behavior",
+   "action": "KEEP",
+   "note": "statistically real, below the practical floor"
+  },
+  {
+   "capability": "MOMENTUM_TRANSITION",
+   "source": "B-R13",
+   "current_status": "weak hypothesis",
+   "evidence": "B-R13 OOS 0.00534 bits (best, still WEAK)",
+   "new_architecture_home": "Market Behavior/Transition",
+   "action": "UNVERIFIED",
+   "note": "NOT_PROMOTED / NOT_REJECTED"
+  },
+  {
+   "capability": "PRICE_STRUCTURE (LEVEL/TOUCH/BREAK)",
+   "source": "F-KEYLEVEL/F-TOUCH/F-BREAK",
+   "current_status": "implemented",
+   "evidence": "B-R7 one derived axis",
+   "new_architecture_home": "Price Structure",
+   "action": "REWORK",
+   "note": "must collapse into ONE axis"
+  },
+  {
+   "capability": "LEVEL",
+   "source": "F-KEYLEVEL",
+   "current_status": "implemented",
+   "evidence": "PIT audited",
+   "new_architecture_home": "Price Structure",
+   "action": "KEEP",
+   "note": ""
+  },
+  {
+   "capability": "TOUCH",
+   "source": "F-TOUCH",
+   "current_status": "implemented",
+   "evidence": "audited; boundary issues (B-R10/B-R11)",
+   "new_architecture_home": "Price Structure",
+   "action": "REWORK",
+   "note": ""
+  },
+  {
+   "capability": "BREAK",
+   "source": "F-BREAK",
+   "current_status": "implemented",
+   "evidence": "audited; lifecycle issues (B-R9)",
+   "new_architecture_home": "Price Structure",
+   "action": "REWORK",
+   "note": ""
+  },
+  {
+   "capability": "FAILED_EVENT",
+   "source": "F-FAILED",
+   "current_status": "implemented",
+   "evidence": "B-R12/B-R13: derived, tiny increment",
+   "new_architecture_home": "Price Structure",
+   "action": "REWORK",
+   "note": "DERIVED_FROM_PRICE_STRUCTURE"
+  },
+  {
+   "capability": "PENETRATION",
+   "source": "B-R9..B-R11",
+   "current_status": "diagnostic",
+   "evidence": "B-R11: state & threshold justification INCONCLUSIVE",
+   "new_architecture_home": "Price Structure",
+   "action": "UNVERIFIED",
+   "note": "retained as OBSERVATION only"
+  },
+  {
+   "capability": "ABSORPTION",
+   "source": "F-ABSORB",
+   "current_status": "PROXY",
+   "evidence": "B-R12 REJECTED as incremental (0.0448 < floor)",
+   "new_architecture_home": "Mechanism",
+   "action": "REWORK",
+   "note": "PROXY_BAR; never direct"
+  },
+  {
+   "capability": "LIQUIDITY_PROXY / LIQUIDITY_WITHDRAWAL",
+   "source": "F-LIQ",
+   "current_status": "PROXY",
+   "evidence": "B-R13 REJECTED out-of-sample (train +0.0006 -> test -0.00034)",
+   "new_architecture_home": "Mechanism",
+   "action": "REWORK",
+   "note": "spread is DIRECT but liquidity inference is PROXY"
+  },
+  {
+   "capability": "F-COUNTER (counter evidence)",
+   "source": "F-COUNTER",
+   "current_status": "implemented",
+   "evidence": "B-R7: mostly restatement; B-R12 REJECTED (0.0336)",
+   "new_architecture_home": "Market Reading",
+   "action": "REWORK",
+   "note": "keep as evidence vocabulary, not as a predictor"
+  },
+  {
+   "capability": "F-NEXT (next_state)",
+   "source": "F-NEXT",
+   "current_status": "implemented",
+   "evidence": "B-R6: UNKNOWN-adjacent; 71 UNKNOWN at decisions",
+   "new_architecture_home": "Market State",
+   "action": "REWORK",
+   "note": "replace the single label with a STATE_VECTOR"
+  },
+  {
+   "capability": "F-TRANS (transition)",
+   "source": "F-TRANS",
+   "current_status": "implemented",
+   "evidence": "B-R9 lifecycle audit",
+   "new_architecture_home": "Market Transition",
+   "action": "REWORK",
+   "note": ""
+  },
+  {
+   "capability": "F-DQ (data quality)",
+   "source": "F-DQ",
+   "current_status": "not implemented in engine",
+   "evidence": "audit shows engines_v2 emits no DQ field",
+   "new_architecture_home": "Perception/audit",
+   "action": "REWORK",
+   "note": ""
+  },
+  {
+   "capability": "MULTI_TIMEFRAME",
+   "source": "new + partial",
+   "current_status": "partial",
+   "evidence": "H1/H4 resampled; M5 from ticks",
+   "new_architecture_home": "Perception",
+   "action": "KEEP",
+   "note": ""
+  },
+  {
+   "capability": "K-LINE / JAPANESE_CANDLESTICK",
+   "source": "new (R1)",
+   "current_status": "defined, not yet validated",
+   "evidence": "theory registry",
+   "new_architecture_home": "Perception",
+   "action": "UNVERIFIED",
+   "note": "CANDLE_EVENT only, never a signal"
+  },
+  {
+   "capability": "UNKNOWN taxonomy",
+   "source": "new (R1)",
+   "current_status": "defined",
+   "evidence": "ontology",
+   "new_architecture_home": "Reading/State",
+   "action": "KEEP",
+   "note": ""
+  },
+  {
+   "capability": "MECHANISM layer",
+   "source": "new (R1)",
+   "current_status": "defined",
+   "evidence": "ontology",
+   "new_architecture_home": "Mechanism",
+   "action": "UNVERIFIED",
+   "note": ""
+  },
+  {
+   "capability": "STATE_VECTOR",
+   "source": "new (R1)",
+   "current_status": "defined",
+   "evidence": "ontology",
+   "new_architecture_home": "State",
+   "action": "UNVERIFIED",
+   "note": ""
+  },
+  {
+   "capability": "FORECAST (next state)",
+   "source": "new (R1)",
+   "current_status": "defined",
+   "evidence": "ontology",
+   "new_architecture_home": "Forecast",
+   "action": "UNVERIFIED",
+   "note": ""
+  },
+  {
+   "capability": "STRATEGY_ADAPTER",
+   "source": "new (R1)",
+   "current_status": "interface only",
+   "evidence": "ontology",
+   "new_architecture_home": "L5",
+   "action": "UNVERIFIED",
+   "note": "not implemented by design"
+  },
+  {
+   "capability": "Phase B-R1 research",
+   "source": "B-R1",
+   "current_status": "research record",
+   "evidence": "preserved",
+   "new_architecture_home": "audit",
+   "action": "KEEP",
+   "note": "retained as history; not deleted"
+  },
+  {
+   "capability": "Phase B-R2 research",
+   "source": "B-R2",
+   "current_status": "research record",
+   "evidence": "preserved",
+   "new_architecture_home": "audit",
+   "action": "KEEP",
+   "note": "retained as history; not deleted"
+  },
+  {
+   "capability": "Phase B-R3 research",
+   "source": "B-R3",
+   "current_status": "research record",
+   "evidence": "preserved",
+   "new_architecture_home": "audit",
+   "action": "KEEP",
+   "note": "retained as history; not deleted"
+  },
+  {
+   "capability": "Phase B-R4 research",
+   "source": "B-R4",
+   "current_status": "research record",
+   "evidence": "preserved",
+   "new_architecture_home": "audit",
+   "action": "KEEP",
+   "note": "retained as history; not deleted"
+  },
+  {
+   "capability": "Phase B-R5 research",
+   "source": "B-R5",
+   "current_status": "research record",
+   "evidence": "preserved",
+   "new_architecture_home": "audit",
+   "action": "KEEP",
+   "note": "retained as history; not deleted"
+  },
+  {
+   "capability": "Phase B-R6 research",
+   "source": "B-R6",
+   "current_status": "research record",
+   "evidence": "preserved",
+   "new_architecture_home": "audit",
+   "action": "KEEP",
+   "note": "retained as history; not deleted"
+  },
+  {
+   "capability": "Phase B-R7 research",
+   "source": "B-R7",
+   "current_status": "research record",
+   "evidence": "preserved",
+   "new_architecture_home": "audit",
+   "action": "KEEP",
+   "note": "retained as history; not deleted"
+  },
+  {
+   "capability": "Phase B-R8 research",
+   "source": "B-R8",
+   "current_status": "research record",
+   "evidence": "preserved",
+   "new_architecture_home": "audit",
+   "action": "KEEP",
+   "note": "retained as history; not deleted"
+  },
+  {
+   "capability": "Phase B-R9 research",
+   "source": "B-R9",
+   "current_status": "research record",
+   "evidence": "preserved",
+   "new_architecture_home": "audit",
+   "action": "KEEP",
+   "note": "retained as history; not deleted"
+  },
+  {
+   "capability": "Phase B-R10 research",
+   "source": "B-R10",
+   "current_status": "research record",
+   "evidence": "preserved",
+   "new_architecture_home": "audit",
+   "action": "KEEP",
+   "note": "retained as history; not deleted"
+  },
+  {
+   "capability": "Phase B-R11 research",
+   "source": "B-R11",
+   "current_status": "research record",
+   "evidence": "preserved",
+   "new_architecture_home": "audit",
+   "action": "KEEP",
+   "note": "retained as history; not deleted"
+  },
+  {
+   "capability": "Phase B-R12 research",
+   "source": "B-R12",
+   "current_status": "research record",
+   "evidence": "preserved",
+   "new_architecture_home": "audit",
+   "action": "KEEP",
+   "note": "retained as history; not deleted"
+  },
+  {
+   "capability": "Phase B-R13 research",
+   "source": "B-R13",
+   "current_status": "research record",
+   "evidence": "preserved",
+   "new_architecture_home": "audit",
+   "action": "KEEP",
+   "note": "retained as history; not deleted"
+  }
+ ],
+ "counts": {
+  "KEEP": 25,
+  "REWORK": 13,
+  "UNVERIFIED": 7
+ },
+ "total": 45
+}

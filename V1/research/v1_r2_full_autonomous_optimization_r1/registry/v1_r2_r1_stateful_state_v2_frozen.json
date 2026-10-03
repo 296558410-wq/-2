@@ -1,0 +1,61 @@
+{
+ "definition_id": "V1_R2_R1_STATEFUL_STATE_V2",
+ "definition_version": "v1r2-r1-stateful-v2-r1",
+ "status": "RESEARCH_ONLY",
+ "DIAGNOSTIC_ONLY": true,
+ "enters_formal_v1_r2": false,
+ "frozen_before_analysis": true,
+ "frozen_at_utc": "2026-09-27T20:42:00+08:00",
+ "provenance": {
+  "base_ontology": "C1 (c1_label_ontology.json / c1_label_mapping_registry.json) — UNCHANGED",
+  "base_labeler": "c1_5_target_validation/_c1_5_run.py::label_series (frozen) — UNCHANGED",
+  "derivation": "STATE_V2 = frozen MARKET_BEHAVIOR sequence + minimum-dwell lifecycle (k=2)",
+  "derived_from_phase": ["PHASE_1_AUTONOMOUS_DIAGNOSIS", "PHASE_2_STATE_VS_EVENT", "PHASE_3_STATEFUL_V2"],
+  "not_written_back_to": ["C1 registry", "C1.5 registry", "Phase B registry", "live engine", "feature registry"]
+ },
+ "why_lifecycle": {
+  "phase1_finding": "the frozen MARKET_BEHAVIOR is a per-bar classifier with NO persistence requirement: churn 0.6473 (short M15) / 0.6292 (20-month M15) / 0.6194 (H1); duration median = 1 bar at M5, M15 and H1; surrogate random series (same returns) churn 0.618-0.624 ~= observed",
+  "phase1_attribution": {
+   "F_no_hysteresis": "DOMINANT — min-dwell k=2 on the SAME frozen labels lifts median duration 1 -> 5 bars and cuts churn 0.6473 -> 0.1507",
+   "E_not_market_specific": "DOMINANT — churn is a property of the labeler applied to any similar-volatility series",
+   "B_scale_invariant": "churn ~= 0.61-0.67 at M5, M15, H1 => label is re-drawn per bar",
+   "A_dead_branch": "REVERSAL_ATTEMPT branch is UNREACHABLE (labeler never emits REGIME=REVERSAL)",
+   "D_noise_sensitivity": "0.9418 mean label agreement under 0.01*ATR noise",
+   "C_boundary": "negligible (boundary/interior churn ratio 1.105)",
+   "G_unknown": "NO_DEFINED_STATE rate 0.061-0.067"
+  }
+ },
+ "state_definition": {
+  "STATE_V2(t)": "the most recent frozen MARKET_BEHAVIOR label that has persisted for >= k consecutive bars, carried forward otherwise",
+  "k": 2,
+  "k_chosen_by": "pre-registered from Phase 1 diagnostics (k=2 was the smallest dwell that collapsed churn from 0.6473 to 0.1507); NOT tuned against any target metric",
+  "lifecycle": {
+   "entry": "a candidate label C != current(current) is registered; C becomes the state once it has been observed k consecutive bars",
+   "exit": "the current state exits only by the entry of a new state (no separate exit rule)",
+   "persistence": "runs of the accepted label; minimum run length = k bars by construction",
+   "carry_forward": "bars whose candidate has not yet reached k are labelled with the current accepted state"
+  },
+  "measured_properties_H8_M15": {
+   "persistence_frozen": 0.2398,
+   "persistence_stateful_k2": 0.3501,
+   "note": "H=8 bars (~2h) on 40546 M15 bars, 2025-01-01..2026-09-18"
+  }
+ },
+ "evidence": {
+  "phase2": {"T2_stateful_DeltaLL_bits": 0.27661, "T2_empirical_p": 0.0, "T2_acc_model": 0.3906, "T2_acc_majority": 0.2533,
+              "null_mean": -0.00978, "null_max": -0.00442},
+  "phase3_strict_blind": {"best_variant": "A2_VOL_MOM_STRUCT", "DeltaLL_bits": 0.29128, "acc_model": 0.3926, "acc_majority": 0.2533,
+                           "n_train": 24209, "n_test": 16211},
+  "phase3_stability_4blocks": {"DeltaLL_mean": 0.24077, "DeltaLL_min": 0.21421, "all_positive": true},
+  "phase3_mtf_increment": {"base_A3_DeltaLL": 0.24077, "plus_H1_context_DeltaLL": 0.29605, "delta_deltaLL": 0.05528, "MTF_ADDS_VALUE": true}
+ },
+ "limitations": [
+  "research-only; the frozen C1 ontology and all frozen registries are UNCHANGED and unwritten",
+  "features are pure OHLC-derived (labeler outputs excluded) — no circularity — but the TARGET is the labeler's own output, so this measures predictability of the C1 state space, not of returns",
+  "no order, no broker write, no forward/shadow/live; no future return, PnL or win-rate used anywhere",
+  "single instrument (XAUUSD M15) and single 20-month window; H4 excluded (sample too small)"
+ ],
+ "safety": {"ORDER_SEND": 0, "ORDER_CHECK": 0, "BROKER_WRITE": 0, "FORWARD": "OFF", "SHADOW": "OFF", "LIVE": "OFF",
+             "FROZEN_ARTIFACT_WRITE": 0, "ONTOLOGY_MODIFIED": 0, "PARAM_MODIFIED": 0, "FUTURE_RETURN_USED": "NO",
+             "PNL_USED": "NO", "WIN_RATE_USED": "NO"}
+}

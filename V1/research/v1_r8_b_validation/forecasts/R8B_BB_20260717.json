@@ -1,0 +1,55 @@
+{
+  "audit_id": "BB_20260717",
+  "timestamp": "2026-07-17T00:00:00Z",
+  "current_state": "XAUUSD is in a sharp multi-day downtrend (H4 trend_50 ~ -157.6, H1 trend_20 ~ -50.2) that accelerated into a crash bar on 2026-07-16 13:00 UTC (4043 -> 3990, range percentile 0.99). Price is now rotating/consolidating in the 3969-3996 zone at the lows, sitting right at a heavily-tested swing-low level (3979.775, 12 touches in 240 bars, break_status INSIDE). Frozen label: ROTATION; state_v2: REJECTION (dwell 7 bars, ambiguity 0.5); event at t: NONE. Short-term M1 shows 8 consecutive up bars and dip-buying at ~3974.5 (00:00 bar with large lower wick).",
+  "structure": "Bearish higher-timeframe structure: lower highs/lower lows from ~4080 (H4 high 4080.935 on 07-15); price is below H1/H4 trend and beneath the post-crash supply zone 3995-4016. The current 3969-3996 band is a rotation/absorption zone at the lows. Nearest level: SWING_LOW_36310 @ 3979.775 (DN side, INSIDE, reclaim NONE). Key levels: support 3969-3970 (recent low) and 3974.5 (00:00 low); resistance 3979.775 (pivot/supply), 3995-3996 (H4 upper-wick rejection), 4006-4016 (earlier supply).",
+  "mechanism": "Post-crash rotation/absorption beneath broken structure. Higher-timeframe sellers remain in control after the 4043->3990 displacement; the 3969-3996 band is a likely continuation base (bear-flag / re-accumulation) unless reclaimed. A near-term bid exists (M1 8-up streak, dip bought at 3974.5), but the H4 current bar printed a large upper wick to 3995.875 (body_ratio 0.04) showing supply overhead. The context mechanism candidate trend_continuation (price inside level, 8-bar displacement) is consistent with a downside-continuation read; it is a candidate only, not asserted.",
+  "primary_scenario": {
+    "scenario": "Downside continuation: rotation resolves downward. Price fails to clear the 3995-3996 supply, loses the 3979.775 pivot and then the 3969-3970 support, extending the HTF downtrend toward the next support zone (~3950-3960 area).",
+    "confidence": 0.52,
+    "horizon": "SHORT_TERM",
+    "trigger": "Rejection at 3995-3996 or a failed reclaim of 3979.775, followed by a decisive break and close below 3969.045 (recent low)",
+    "invalidation": "Sustained acceptance above 3995-3996 - in particular a closing H1/H4 bar above the rejection high together with a reclaim of the 3979.775 swing low; also a break back above 4000."
+  },
+  "alternative_scenario": {
+    "scenario": "Range-bound basing / short-term squeeze: the 3969-3970 lows hold and dip-buying persists; price reclaims 3979.775 and retests 3995-4016, with the range resolving sideways (state drift toward COMPRESSION/DECELERATION per analogs A31156/A32708) rather than a new leg down.",
+    "confidence": 0.35,
+    "horizon": "INTRADAY",
+    "trigger": "Higher low above 3974.5 holding, reclaim of 3979.775 with acceptance, and momentum through 3995",
+    "invalidation": "Loss of 3969.045 with acceptance below, which reverts to the primary downside scenario."
+  },
+  "expected_transition": "From REJECTION (dwell 7) toward either DECELERATION (rotation exhausting, volatility collapsing) or EXPANSION (range break). The analog set is divergent (A31156 -> DECELERATION, A32708 -> COMPRESSION/ROTATION, A34888 -> EXPANSION), consistent with the 0.5 ambiguity rate; the direction of any EXPANSION is unresolved, though the HTF trend favors down. Event at t: NONE.",
+  "direction": "DOWN",
+  "horizon": "SHORT_TERM",
+  "confidence": 0.5,
+  "counter_evidence": [
+    "M1 shows 8 consecutive up bars and the 00:00 bar has a large lower wick (low 3974.555, close 3976.895): an immediate-term bid is defending ~3974-3975",
+    "Nearest swing-low level 3979.775 is INSIDE with reclaim NONE - the breakdown below it is not yet decisive; 3969.045 has held so far",
+    "Multi-timeframe agreement = CONFLICT: M1/M5 trend_20 positive while M15/H1/H4 trend_20 negative",
+    "State ambiguity rate (8-bar) = 0.5 and historical analogs diverge (DECELERATION / COMPRESSION / EXPANSION), so the rotation could also resolve sideways",
+    "Current-bar geometry does not reconcile across timeframes at 00:00 (H1 close 3985.835 and M15 close 3979.785 vs M1 close 3976.895) - higher-TF current-bar closes treated with caution",
+    "All cross-market series absent (DXY, VIX, UST10Y_PROXY_TNX, GLD, GC, COT, ETF flows, news, macro): no external confirmation of the down move"
+  ],
+  "invalidation": "Sustained close above 3995-3996 (with reclaim of swing-low 3979.775 and acceptance) invalidates the downside bias; conversely, a clean break of 3969-3970 confirms it. Any fresh directional view should wait for an event at t (currently NONE) or a decisive level break.",
+  "data_quality_flags": [
+    "L1 M1/M5: RAW_GEOMETRY + DERIVED (direct bars)",
+    "L1 current-bar reconciliation FAILS across timeframes at 00:00 (H1/M15 current closes inconsistent with M1) - higher-TF 'current' bar geometry treated as suspect",
+    "L2 level SWING_LOW_36310: DERIVED (causal pivot swing)",
+    "L3/L5 state labels: DERIVED (frozen C1 labeler + min-dwell lifecycle); frozen label OBSERVED",
+    "L4 mechanism candidate: DERIVED, candidate only, not asserted",
+    "L7 cross-market: ALL UNKNOWN/absent (DXY, VIX, UST10Y_PROXY_TNX, GLD, GC, COT, ETF, NEWS, MACRO) - no external confirmation; UST10Y would be PROXY in any case",
+    "trend_20/trend_50: DERIVED",
+    "Historical analogs: state-evolution only, no return/PnL/labels included"
+  ],
+  "reasoning_trace": [
+    "Read only PIT context CTX_20260717T000000Z.json; no other data accessed.",
+    "Higher-timeframe trend strongly down: H4 trend_50 ~ -157.6, H4 trend_20 ~ -21.6, H1 trend_20 ~ -50.2; price is near the lows of the 07-15/07-16 crash off ~4080.",
+    "Crash bar 07-16 13:00 UTC (H1, range percentile 0.99) displaced price 4043->3990; subsequent bars show rotation 3969-3996 with repeated wicks (H4 current bar upper wick 17.07 to 3995.875).",
+    "Price sits inside the nearest level (swing low 3979.775, 12 touches) - a pivot; reclaim_status NONE.",
+    "Short-term counter-signal: M1 8 consecutive up bars, 23:55 strong bullish bar (body_ratio 0.88-0.92), dip-buying at 3974.5 - a near-term bid exists.",
+    "State machine: REJECTION dwell 7, ambiguity 0.5, event NONE; frozen label ROTATION; analogs divergent (DECELERATION/COMPRESSION/EXPANSION) - no strong directional signal from state history.",
+    "Cross-market data all absent - cannot confirm or refute; lowers confidence.",
+    "Data inconsistency in current-bar closes across timeframes - treat higher-TF current closes cautiously, weight completed bars and trend metrics instead.",
+    "Weighing HTF downtrend + rejection structure vs near-term bid + high ambiguity + absent external data: DOWN bias, SHORT_TERM horizon, confidence 0.5."
+  ]
+}

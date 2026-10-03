@@ -1,0 +1,82 @@
+{
+ "cycle": "2026-09-10T19:17Z",
+ "symbol": "XAUUSD",
+ "decision_id": "DEC-2026-09-10T19:17Z",
+ "utc_ts": "2026-09-10T19:17Z",
+ "generated_utc": "2026-09-10T19:17Z",
+ "decision": "SHORT",
+ "confidence": 0.57,
+ "bias": "SHORT-lean 0.62",
+ "opportunity": "Slot FREE (MT5 demo positions=0, pending=0). Two-sided coverage on the freshly-broken day-low structure: (A) IN-BOOK fade TP-20260910T1902Z already covers the bounce case (SHORT zone[4322.5,4326.5] zone_touch, just +1.1pt above live); (B) THIS cycle registers the DOWN-continuation leg the fade does not cover. Live tick 19:17:22Z UTC mid4321.41 (bid4321.34/ask4321.49). Fresh flush: 22:00 srv(19:00Z) M15 bar O4332.69 H4332.81 L4313.66 C4322.38 (day-low/key support 4323.99==M15/H1 low60 4324.06 broke, new session low 4313.66), then 22:15 (19:15Z) bounced to H4323.81 but closed back 4321.34. Register SHORT breakdown-continuation: entry_zone{4308.5,4313.0}, trigger {\"price_cross_down\":4313.0} (break of the 4313.66 fresh low -> auto-fill at market), stop4321.0 (above 19:15 bar low 4319.34 + buffer, below the retest-zone 4322.5), targets 4300.0/4288.0/4276.0, qty0.01, EV+0.50R. What-blocks-trade: armed fade needs +2.5pt tick up into 4322.5; THIS plan needs a break below 4313.66 (4313.0 cross). If instead price reclaims >4327.0 -> continuation plan invalidated (engine auto-cancel).",
+ "opportunity_mechanism": "flush_low_break_continuation_v2 -- day's resistance/floor-fade chain continues, but the KEY day-low/HTF support 4323.99-4324.06 (M15 low60==H1 low60) just broke (22:00 srv bar L4313.66). The in-book fade TP-1902Z monetises the first retest as resistance; this plan monetises the trend-continuation break: sell a break of the fresh flush low 4313.66 inside an aligned 4TF downtrend (H4 trend er0.37 pos16.5 RSI31.5; all 4TF below key MAs). Same mechanism family (broken structure -> continuation) exercised repeatedly today (12:33Z SL, 14:34Z TP+7.20, 17:03Z TP+19.55/+1.86R).",
+ "mtf_agreement": "bearish (4TF aligned down). Live mid4321.41: D1 close4400.485 < MA20 4464.19 (range er0.147, llish5>hhish4, RSI42.66, pos54.7); H4 close4340.22 < MA20 4397.36 & MA50 4405.30 (trend er0.37, pos16.5, RSI31.5, recent -157.7bps); H1 live ~4321 < MA20 4396.14 & MA50 4393.02 & MA200 4412.69 (mixed er0.247, llish8); M15 live ~4321 far below MA20/MA50/MA200 (pkg M15 last_close 4365.765 stale, lag >40pt -> live tick + MT5 M15 bars used). No bullish TF opposition -> aligned SHORT.",
+ "position_note": "MT5 demo: positions=0, pending=0 (slot FREE). Balance 2032.26, equity 2032.26. Prior POS-133408 SHORT realized +1.86R (broker TP4352.00 @4351.96, 18:02Z). Active plans: TP-20260910T1902Z SHORT zone[4322.5,4326.5] (PENDING, non-overlapping with this plan). Single-position constraint respected -> new registration allowed (flat); once one leg fills the other auto-cancels via position_busy exec-fail.",
+ "answers_14": {
+  "1": "Market state: XAUUSD live mid4321.41 (MT5 probe tick 19:17:22Z UTC bid4321.34/ask4321.49, spread0.15pt=0.35bps). pkg m15_live last_mid4320.02, spread_bps_now0.35, tick_rate201/min, abnormal last6_max15.8bps vs baseline10.1bps z0.55. 4TF: D1 close4400.485<MA20 4464.19 (range er0.147, llish5, RSI42.66, pos54.7, recent+25.0bps); H4 close4340.22<MA20 4397.36&MA50 4405.30 (trend er0.37, pos16.5, RSI31.5, recent-157.7bps); H1 close4358.125<MA20 4396.14&MA50 4393.02&MA200 4412.69 (mixed er0.247, llish8); M15 pkg last_close4365.765 (stale, lags live>40pt) ~MA20 4363.79<MA50 4389.90&MA200 4392.50 (range er0.03, exp_cont expanding1.59). data_quality ok (live_days=4, live_ticks=765288, gaps=[], context_days=28).",
+  "2": "Agreement: D1/H4/H1 (and live M15 ~4321) all below their key MAs -> HTF bearish shared, H4 in trend (er0.37, pos16.5) with M15 exp_cont expanding1.59 = continuation regime; no bullish TF opposition. Net aligned bearish = SHORT. Bias SHORT-lean 0.62.",
+  "3": "M15 change vs 19:02Z: price flushed to a fresh session low 4313.66 then bounced. MT5 M15 bars (server=UTC+3, last five: 21:30 O4338.77 H4339.05 L4331.75 C4333.79; 21:45 O4333.69 H4338.50 L4329.84 C4332.88; 22:00 O4332.69 H4332.81 L4313.66 C4322.38; 22:15 O4322.45 H4323.81 L4319.34 C4321.34). Live moved 4320.17->4321.41 (+1.24pt) since 19:02Z. Resistance above: 4323.99/4324.06 (broken day-low/HTF support), 4329.84 (21:45 low), 4332.81 (22:00 high); support below: 4319.34 (22:15 low), 4313.66 (session low), 4300.0.",
+  "4": "Tradeable now? Yes -- flat slot. Two-sided: (A) in-book fade TP-1902Z covers a bounce into [4322.5,4326.5] (+1.1pt away, auto-fills); (B) register the continuation leg: SHORT breakdown below the fresh flush low 4313.66 via entry_zone{4308.5,4313.0} trigger{\"price_cross_down\":4313.0}, stop4321.0, T4300.0/4288.0/4276.0, qty0.01, EV+0.50R. Not chasing; selling a clean structural break. Confidence 0.57.",
+  "5": "Mechanism: flush_low_break_continuation_v2 -- KEY day-low/HTF support 4323.99-4324.06 just broke (22:00 srv L4313.66); in-book fade banks the first retest, this plan banks the continuation break of the flush low 4313.66 into an aligned 4TF downtrend. Same broken-structure->continuation mechanism that produced today's 14:34Z TP+7.20 / 17:03Z TP+19.55(+1.86R).",
+  "6": "Trigger [specific price]: SHORT entry_zone{4308.5,4313.0}, trigger {\"price_cross_down\":4313.0} (mid<=4313.0 -> auto-fill at market on the break of the 4313.66 fresh low). Pre-entry invalidation {\"price_cross_up\":4327.0}. Existing in-book plan TP-1902Z: zone_touch[4322.5,4326.5]. No close-confirmation required -- touch/cross is enough.",
+  "7": "Invalidation [specific price]: plan invalid = {\"price_cross_up\":4327.0} (reclaim above the 22:00 high 4332.81 / top of retest zone -> break leg failed, engine auto-cancels). Post-entry hard stop = 4321.0 (-1R, 9.0pt above ref4312.0). If price instead rallies into 4322.5-4326.5 first, the in-book fade fills and this leg auto-cancels via position_busy.",
+  "8": "Expected return R: entry ref ~4312.0 (fill just at/below cross4313.0), risk 9.0pt to stop4321.0 (1R). T1 4300.0(-12.0pt=1.33R, frac0.40)/T2 4288.0(-24.0pt=2.67R, frac0.35)/T3 4276.0(-36.0pt=4.00R, frac0.25) -> weighted expected_R = 0.40*1.33 + 0.35*2.67 + 0.25*4.00 = 2.47R.",
+  "9": "Expected loss R: -1.0R bounded (stop4321.0, risk 9.0pt ~20.9bps@4312.0). No averaging down, no counter LONG in a bearish regime. Single position: if a trade is open no new plans.",
+  "10": "Cost numbers: spread now 0.15pt=0.35bps (probe) + slippage 0.30bps = one-way ~0.65bps, round-trip ~1.30bps ~0.56pt ~0.062R (1R=9.0pt). Demo execution cost negligible, not a barrier.",
+  "11": "Net EV formula: EV_R = p*expected_R - (1-p)*1.0 - cost = 0.45*2.47 - 0.55*1.0 - 0.062 = 1.1115 - 0.550 - 0.062 = +0.50R (>0; breakeven p~0.43). Positive -> register SHORT.",
+  "12": "Reproducibility: today's broken-structure continuation/fade chain worked repeatedly -- 12:33Z fade@4391.68 -> 13:03Z SL -5.82; 14:34Z fade@4386.83 -> 14:50Z TP +7.20; 17:03Z fade@4371.51 -> 17:57Z TP +19.55(+1.86R). Same mechanism, now expressing as a flush-low break continuation at 4313.0.",
+  "13": "Decision: SHORT, stance SHORT-lean 0.62, confidence 0.57. Register breakdown-continuation SHORT zone{4308.5,4313.0} trigger price_cross_down4313.0, stop4321.0, targets 4300.0/4288.0/4276.0, qty0.01, EV+0.50R; invalid>4327.0. In-book fade TP-1902Z covers the bounce leg. Slot free (positions=0, pending=0).",
+  "14": "HTF 4TF bearish shared; slot free. Day-low/HTF support 4324 broke, fresh flush low 4313.66. Register SHORT continuation zone{4308.5,4313.0} cross4313.0, stop4321.0, T4300/4288/4276, qty0.01, EV+0.50R; invalid>4327.0. In-book fade TP-1902Z covers 4322.5-4326.5 bounce."
+ },
+ "plan": {
+  "plan_id": "TP-20260910T1917Z",
+  "direction": "SHORT",
+  "entry_zone": {
+   "low": 4308.5,
+   "high": 4313.0
+  },
+  "trigger_condition": {
+   "price_cross_down": 4313.0
+  },
+  "invalidation_condition": {
+   "price_cross_up": 4327.0
+  },
+  "stop_logic": {
+   "type": "structure",
+   "level_price": 4321.0
+  },
+  "target_logic": {
+   "levels": [
+    {
+     "price": 4300.0,
+     "frac": 0.4
+    },
+    {
+     "price": 4288.0,
+     "frac": 0.35
+    },
+    {
+     "price": 4276.0,
+     "frac": 0.25
+    }
+   ]
+  },
+  "expected_R": 2.47,
+  "expected_win_probability": 0.45,
+  "probability_source": "flush-low break continuation at the freshly broken key day-low/HTF support (4323.99/4324.06) inside an aligned 4TF downtrend; today's broken-structure continuation recurrence (2 TP wins) + structural continuation base p~0.45",
+  "estimated_cost": {
+   "one_way_bps": 0.65,
+   "round_trip_bps": 1.3
+  },
+  "spread_bps": 0.35,
+  "slippage_bps": 0.3,
+  "expected_net_EV": {
+   "value": 0.5,
+   "units": "R",
+   "note": "0.45*2.47 - 0.55*1.0 - 0.062 = +0.50R"
+  },
+  "maximum_holding_time": "M15*8",
+  "qty_lots": 0.01
+ },
+ "model": "deepseek/deepseek-v4-flash",
+ "data_quality_note": "data_quality ok (live_days=4, live_ticks=765288, gaps=[], context_days=28). MT5 probe tick 19:17:22Z UTC bid4321.34/ask4321.49 mid4321.41 spread0.15pt=0.35bps. pkg m15_live last_mid4320.02 (used by engine for trigger ctx). MT5 demo positions=0, pending=0. Note: pkg M15 last_close4365.765 is stale (lags live by ~45pt) and candle_latest.json frozen at 09-07 12:15 -> live tick + MT5 M15 bars (server=UTC+3) used for structure. In-book plan TP-20260910T1902Z zone[4322.5,4326.5] left armed (non-overlapping)."
+}

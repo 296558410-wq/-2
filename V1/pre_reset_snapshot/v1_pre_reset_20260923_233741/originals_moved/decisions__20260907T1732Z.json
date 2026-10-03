@@ -1,0 +1,225 @@
+{
+ "schema": "hermes_decision_v1",
+ "decision_id": "DEC-2026-09-07T17:32Z",
+ "utc_ts": "2026-09-07T17:32:03+00:00",
+ "symbol": "XAUUSD",
+ "cycle": "2026-09-07T17:32Z",
+ "market_state": {
+  "d1": {
+   "tf": "D1",
+   "last_close": 4399.05,
+   "last_bar": "2026-09-04 00:00:00+00:00",
+   "ma20": 4464.43,
+   "price_vs_ma20": -146.4,
+   "rsi14": 49.14,
+   "structure": {
+    "hhish": 4,
+    "llish": 5,
+    "last_vs_5ago": "down"
+   },
+   "trend_range": {
+    "cat": "range",
+    "er": 0.017
+   },
+   "s_r": {
+    "high60": 4696.87,
+    "low60": 4042.58,
+    "pos_in_range": 54.5
+   }
+  },
+  "h4": {
+   "tf": "H4",
+   "last_close": 4396.76,
+   "last_bar": "2026-09-07 12:00:00+00:00",
+   "ma20": 4410.17,
+   "ma50": 4475.37,
+   "price_vs_ma20": -30.4,
+   "rsi14": 51.24,
+   "structure": {
+    "hhish": 4,
+    "llish": 5,
+    "last_vs_5ago": "down"
+   },
+   "trend_range": {
+    "cat": "range",
+    "er": 0.025
+   },
+   "s_r": {
+    "high60": 4696.87,
+    "low60": 4282.53,
+    "pos_in_range": 27.6
+   }
+  },
+  "h1": {
+   "tf": "H1",
+   "last_close": 4402.87,
+   "last_bar": "2026-09-07 16:00:00+00:00",
+   "ma20": 4413.93,
+   "ma50": 4443.16,
+   "ma200": 4485.41,
+   "price_vs_ma20": -25.1,
+   "rsi14": 38.9,
+   "structure": {
+    "hhish": 4,
+    "llish": 5,
+    "last_vs_5ago": "down"
+   },
+   "trend_range": {
+    "cat": "mixed",
+    "er": 0.222
+   },
+   "s_r": {
+    "high60": 4511.01,
+    "low60": 4364.47,
+    "pos_in_range": 26.2
+   }
+  },
+  "m15": {
+   "tf": "M15",
+   "last_close": 4407.09,
+   "last_bar": "2026-09-07 17:00:00+00:00",
+   "ma20": 4398.45,
+   "ma50": 4402.06,
+   "ma200": 4443.58,
+   "price_vs_ma20": 19.7,
+   "rsi14": 59.86,
+   "structure": {
+    "hhish": 5,
+    "llish": 4,
+    "last_vs_5ago": "up"
+   },
+   "trend_range": {
+    "cat": "mixed",
+    "er": 0.197
+   },
+   "s_r": {
+    "high60": 4434.23,
+    "low60": 4381.09,
+    "pos_in_range": 48.9
+   },
+   "recent_move_bps": 23.5
+  },
+  "m15_live": {
+   "last_mid": 4411.32,
+   "spread_bps_now": 0.34,
+   "tick_rate_per_min_15m": 151,
+   "quote_source": "quote_latest",
+   "abnormal": {
+    "last6_max_move_bps": 17.2,
+    "z_vs_baseline": 0.65,
+    "baseline_mean_move_bps": 10.23
+   }
+  }
+ },
+ "data_quality": {
+  "live_days": 1,
+  "live_ticks": 140969,
+  "context_days": 25,
+  "gaps": [],
+  "notes": "M15缓存bar补至17:00收4407.09 vs live 4411.32(低~4.2pt, 偏移自~10pt收窄未消, 以live为准); candle_latest.json stale于12:15(~5.3h)无新鲜K佐证不采信; H1 last bar满16:00 MA20降至4413.93贴压现价(距2.6pt); engine已清理在册三旧book(1517Z/1525Z超龄>120min, 1617Z mid 4411.32<stale floor 4412.0), 当前book空, 本轮重建"
+ },
+ "mtf_agreement": "medium_lean_short",
+ "state_summary": "XAUUSD live 4411.32(较17:17的4412.76 -1.44pt, 三连低4414.6→4412.8→4411.3): cap 4414.7-4415第8次poke失败后回摆第2轮, 距2h磨顶floor 4411仅0.3pt; H1下行MA20墙4413.93贴压上方2.6pt, RSI38.9空排; M15缓存补至17:00收4407.09(低~4.2pt以live为准)RSI59.86系缓存回升非突破动能; D1/H4 range中性; engine本轮已清空在册三旧book(1517Z/1525Z超龄、1617Z价格离场), 书空 → 重建破floor动量SHORT TP-20260907T1732Z[4409.0,4411.0]止4416 目标4402/4394/4385.5; 无持仓",
+ "m15_change": "较17:17(4412.76): mid再-1.44pt至4411.32, cap第8次poke失败后自4414.7-4415撤离~3.4pt回摆第2轮, 连创新低濒破2h磨顶floor 4411(距0.3pt); M15缓存bar补至17:00收4407.09(较live低~4.2pt以live为准)RSI59.86/hhish5系缓存低基回升非突破动能; H1 MA20墙4417.7→4413.9持续下移贴现价; tick159→151/min平稳, abnormal z0.65正常; 无收盘级方向变化, 磨顶失败回摆动量延续偏空",
+ "opportunity": "short_grind_floor_break_rollover_r2",
+ "opportunity_mechanism": "现价4411.32距2h磨顶(4411-4416, ~130min)下沿floor仅0.3pt, 三连低(4414.6→4412.8→4411.3)显示回摆动量延续; 破4411=磨顶floor失守确认rollover → zone_touch[4409.0,4411.0]自动市价空(engine逐tick判定不等收盘, 贴近边界即计划); 下行路径: 4402 M15 MA簇(ma20 4398.5/ma50 4402.1, 缓存低偏live上修)→4394前低→4385.5挤仓起点(趋M15 low60 4381); H1空排(MA20 4413.9下行)+cap八连压背书; 上行失效mid≥4416.0=cap+墙双破fade逻辑毁, 由后续轮于4419-4424重建高级fade(止4433)。engine本轮已清空三旧book(超龄/离场), 本单为独立重建无叠单; 追多逆H1空排仍拒; 4443双MAfade距31.7pt/4381追空距30.3pt超2×band(13.7pt)须到价后下轮注册",
+ "decision": "SHORT",
+ "confidence": 0.55,
+ "plan_id": "TP-20260907T1732Z",
+ "plan": {
+  "plan_id": "TP-20260907T1732Z",
+  "direction": "SHORT",
+  "opportunity_type": "short_grind_floor_break_rollover_r2",
+  "entry_style": "zone_touch_limit",
+  "entry_zone": {
+   "low": 4409.0,
+   "high": 4411.0
+  },
+  "trigger_condition": {
+   "and": [
+    {
+     "zone_touch": [
+      4409.0,
+      4411.0
+     ]
+    },
+    {
+     "spread_under_bps": 0.6
+    }
+   ]
+  },
+  "invalidation_condition": {
+   "price_cross_up": 4416.0
+  },
+  "stop_logic": {
+   "type": "structure",
+   "level": 4416.0,
+   "level_price": 4416.0,
+   "reason": "cap 4414.7-4415 第8次压制上沿+0.8pt缓冲; 升破4416=磨顶失败反转/墙破, floor-break fade逻辑失效, 让位后续轮4419-4424高级fade(止4433)"
+  },
+  "target_logic": {
+   "type": "price_levels",
+   "levels": [
+    {
+     "price": 4402.0,
+     "frac": 0.4
+    },
+    {
+     "price": 4394.0,
+     "frac": 0.35
+    },
+    {
+     "price": 4385.5,
+     "frac": 0.25
+    }
+   ],
+   "reason": "TP1=M15 MA簇(ma20 4398.5/ma50 4402.1, 缓存低偏live上修)回补首要目标; TP2=4394前低区; TP3=4385.5挤仓起点/趋M15 low60 4381"
+  },
+  "expected_R": 2.49,
+  "expected_win_probability": 0.45,
+  "probability_source": "2h磨顶(4411-4416)cap第8次失败后三连低破floor动量延续+H1空排(MA20 4413.9下行)+H1 RSI38.9背景; D1/H4中性range限幅不给趋势高分 → 保守0.45; 距触发0.3-2.3pt, ~30min内见分晓",
+  "expected_loss": {
+   "units": "R",
+   "value": 1.0
+  },
+  "estimated_cost": {
+   "spread_bps": 0.34,
+   "slippage_bps": 0.05,
+   "total_roundtrip_bps": 0.78,
+   "cost_in_R": 0.06,
+   "note": "绝对成本0.34pt@4411.3仍极低; 相对6.0pt止损基数占比0.06R, 非EV障碍"
+  },
+  "expected_net_EV": {
+   "value": 0.51,
+   "units": "R",
+   "note": "0.45×2.49 − 0.55×1.0 − 0.06 = +0.51R (中位成交4410.0/止损4416.0风险6.0pt, 加权目标14.9pt); p=0.35→+0.26R, p=0.55→+0.81R, 对胜率假设稳健"
+  },
+  "maximum_holding_time": "M15*8",
+  "cancel_conditions": [
+   "expire after 8 M15 bars (120min)",
+   "mid>=4416.0 invalidated (cap+wall double break)",
+   "mid<4405.0 stale (price left setup below zone_lo-2band)"
+  ],
+  "qty_lots": 0.01
+ },
+ "answers_14": {
+  "1": "live 4411.32(较17:17的4412.76 -1.44pt, cap第8次poke失败回摆第2轮, 三连低), spread0.34bps, tick151/min平稳, abnormal z0.65正常; M15缓存补至17:00收4407.09(低~4.2pt以live为准)RSI59.86系缓存回升; H1 MA20墙4413.93贴压(距2.6pt)RSI38.9; D1/H4 range中性; candle_latest stale@12:15; engine已清空三旧book, 无持仓",
+  "2": "SHORT与H1空排(MA20 4413.9下行自4422)+cap八连压+M15三连低破floor动量一致; D1/H4中性range不背书向上反转 → medium_lean_short; 旧三档book本轮由engine到期清理(1517Z/1525Z超龄、1617Z离场), 重建单独立成档无叠单",
+  "3": "较17:17(4412.76): mid-1.44pt回摆第2轮, 自cap 4414.7-4415撤离~3.4pt, 2h磨顶floor 4411.3濒破(距0.3pt); M15缓存RSI59.86系低基回升非突破动能; H1 MA20墙4417.7→4413.9持续下移; tick159→151平稳; 无收盘级方向变化, 回摆延续偏空",
+  "4": "short_grind_floor_break_rollover_r2: 磨顶cap第8次失败已回摆2轮, 现价4411.32距floor触发带[4409,4411]上沿仅0.3pt → 贴近边界即计划, 破floor自动成交不等收盘; 目标4402 MA簇/4394/4385.5; 旧三档book engine已清空(超龄/离场), 本单重建覆盖rollover主支路; 无新追多/远区fade机会(4443距31.7pt超半径)",
+  "5": "磨顶(4411-4416, ~130min)cap 4414.7-15八连压失败, 回摆三连低(4414.6→4412.8→4411.3); 现价再破4411 floor(磨顶下沿)即确认rollover延续 → zone_touch[4409.0,4411.0]自动市价空; 下行: 4402 M15 MA簇→4394前低→4385.5挤仓起点; 上行失效mid≥4416(cap+墙双破)撤单/止损, 由后续轮于4419-4424重建高级fade; engine逐tick判定不等M15收盘",
+  "6": "触发: mid∈[4409.0,4411.0]且spread<0.6bps → 自动市价空(现价4411.32距0.3pt, 微跌即触发); 失效: mid≥4416.0撤单(成交后即止损4416.0); 未触发而mid<4405.0(stale)engine自动作废防僵尸; 升破4416未成交→本单过期(M15*8)后下轮于4419-4424重建fade",
+  "7": "失效价4416.0=cap 4414.7-15上沿+0.8pt: 升破=磨顶失败反转/墙破, fade逻辑毁 → 撤单或成交后止损; 中位成交4410.0风险6.0pt≈1R封顶; 下沿4409成交最差7.0pt略>1R, zone已收窄至2.0pt控险; 若续跌破4405未触发engine按stale取消; 成交后破4385.5不追, 由下轮4381追空注册",
+  "8": "TP1 4402.0: +8.0pt≈1.33R(frac0.4, M15 MA簇回补); TP2 4394.0: +16.0pt≈2.67R(0.35); TP3 4385.5: +24.5pt≈4.08R(0.25); 加权Σ14.9pt≈2.49R; TP1半仓达成即+0.53R; 成本0.06R已含",
+  "9": "1.0R=6.0pt(中位4410.0→4416.0); 结构止损封顶; 本轮仅此一档(旧book已清)无叠单风险; 亏损不加仓纪律不破; 插针误杀(6pt<1根M15 ATR 6.9pt)损失1R可接受, 下轮重建",
+  "10": "成本: spread0.34bps+滑点~0.05bps≈往返0.78bps≈0.34pt@4411.3≈0.06R(止损6.0pt基数); 绝对成本极低, 非EV障碍; 无需为省成本降触发质量",
+  "11": "净EV = 0.45×2.49 − 0.55×1.0 − 0.06 = +0.51R > 0 → SHORT; 稳健性: p=0.35→+0.26R, p=0.55→+0.81R; 旧三档(+0.43/+0.72/+0.35R)engine已清理不计入; 本单独立EV为正可注册",
+  "12": "再现: cap失败→破floor动量延续已现三连低可验证; 破4402 MA簇后续4394/4385.5路径与旧1517Z/1525Z目标设计一致(历史同区多次回补); 每轮回摆至floor触本类setup, 有具体价+止损, 机械可重复",
+  "13": "SHORT",
+  "14": "cap第8次失败回摆第2轮, 现价4411.32距2h磨顶floor仅0.3pt; zone_touch[4409,4411]破floor自动空, 止4416, 目标4402/4394/4385.5, 加权R2.49 EV+0.51R; 旧book超龄清空, 重建独立无叠单"
+ },
+ "cost_note": "spread_bps_now=0.34; slippage_bps~0.05(paper); total_roundtrip_bps~0.78≈0.34pt@4411.3≈0.06R(相对6.0pt止损); 本轮单档重建无叠单",
+ "ev_note": "SHORT: EV=0.45×2.49−0.55×1.0−0.06=+0.51R; 触发zone_touch[4409.0,4411.0](现价4411.32距0.3pt, 破floor即成交), 失效mid≥4416.0; engine本轮已清空旧三档book(超龄/离场), 本单TP-20260907T1732Z独立重建覆盖rollover主支路",
+ "model": "deepseek/deepseek-v4-flash",
+ "prompt_version": "hermes-trader-v1-p0-m15-14Q 2026-09-07"
+}

@@ -1,0 +1,36 @@
+{
+ "audit_id": "POST_20260822",
+ "timestamp": "2026-09-27T14:52:00+00:00",
+ "correct_calls": [
+  "Third scenario (extended compression without resolution) covered the actual outcome: state stayed COMPRESSION, transition 0 — this was hermes_scenario_covered_actual=true.",
+  "Direction bias UP matched the actual direction (actual_direction=UP) within the unresolved compression.",
+  "The 4601.875 level held: no breakdown occurred (no M15 close below with follow-through), consistent with the primary scenario's level-hold premise.",
+  "NEUTRAL bias / genuine decision point framing was honest given L6 CONFLICT and no cross-market data."
+ ],
+ "wrong_calls": [
+  "Primary scenario (confidence 0.5) predicted COMPRESSION -> TREND recovery/continuation on the intraday horizon; no state transition occurred, so the headline scenario's resolution never materialised.",
+  "The recovery trigger (M5/M15 reclaim of 4604-4606 with expanding bodies) did not produce the predicted transition; the forecast over-weighted the resolution outcome versus persistence.",
+  "The scenario actually realised (extended compression) was assigned the lowest confidence (0.15), i.e. the outcome was the least-expected branch despite direction being right."
+ ],
+ "right_but_wrong_reason": [
+  "Direction UP was correct, but the operative reasoning was 'compression resolves upward as HTF continuation'; in fact price stayed inside the compressed range with no expansion, so being 'up' was chop within compression, not the predicted base/recovery breakout-retest continuation."
+ ],
+ "direction_ok_state_wrong": "Direction was UP as the primary scenario expected, but the state stayed COMPRESSION instead of transitioning to TREND; the forecast explicitly tied UP to a state resolution that did not happen.",
+ "state_ok_direction_wrong": "Not applicable: the observed state (COMPRESSION) matched the baseline-persistence state and the forecast's third scenario had no direction commitment, so state was not wrong.",
+ "should_have_abstained": false,
+ "invalidation_occurred": false,
+ "prior_concerns_materialised": null,
+ "hindsight_detected": false,
+ "hindsight_evidence": [],
+ "outcome_alignment_verdict": "PARTIALLY_CORRECT",
+ "reasoning_trace": [
+  "Read the PIT context (as_of 2026-08-22 12:00 UTC), Hermes-A's forecast, and the actual outcome. Forecast ID HERMES_FULL_CTX_20260822T120000Z.",
+  "Actual outcome: next state COMPRESSION, transition 0, direction UP, baseline persistence COMPRESSION, hermes_scenario_covered_actual=true.",
+  "Checked which forecast branch covers the outcome: only the third scenario (extended compression, analog A21233) covers a state with no transition; it was given confidence 0.15 — the lowest of the three.",
+  "Direction check: actual_direction=UP matches the primary scenario's recovery direction, but the primary scenario's defined trigger (reclaim with range expansion) and expected transition (COMPRESSION -> TREND) did not occur — direction right for the wrong reason (chop, not breakout retest).",
+  "Invalidation check: primary invalidation (two consecutive M15 closes below 4601.875) did not occur — the level held; therefore the primary scenario was not invalidated, it simply failed to resolve.",
+  "Hindsight check: Hermes-A's reasoning cites only pre-outcome PIT data, quality tags respected (DIRECT/DERIVED/UNKNOWN), cross-market absent not fabricated, no claims that require knowledge of the post-context path; hindsight_detected=false.",
+  "Prior adversarial auditor concerns: no earlier auditor report is present in the payload, so prior_concerns_materialised is null (cannot be assessed).",
+  "Verdict: PARTIALLY_CORRECT — direction right and the no-resolution branch (correctly enumerated) covered the actual, but the highest-confidence branch predicted a resolution that did not occur and the realised branch carried the lowest probability."
+ ]
+}

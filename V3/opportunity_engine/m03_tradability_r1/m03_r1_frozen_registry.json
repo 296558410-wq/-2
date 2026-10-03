@@ -1,0 +1,155 @@
+{
+ "version": "M03-R1.0.0",
+ "task": "V3_M03_CROSSMARKET_SHOCK_TRADABILITY_VALIDATION_R1",
+ "scope": "M03 independent events only (63); no other mechanism; no opportunity re-discovery",
+ "m03_mechanism_status_in": "UNCERTAIN",
+ "m03_mechanism_status_is_input_fact": true,
+ "shock_definition": {
+  "primary": "abnormal cross-market 60m move",
+  "statistic": "abs(z of source 60m return)",
+  "threshold": 2.0,
+  "baseline_window_bars": 240,
+  "min_periods": 60,
+  "reused_from": "R1/R2 detector threshold (not a new scan)",
+  "shock_source_rule": "source with the largest abs(z); MULTI_SOURCE if >=2 sources >= 2",
+  "shock_direction_rule": "sign of that source 60m move, recorded independently of XAU",
+  "sources": [
+   "DXY",
+   "VIX",
+   "UST10Y_PROXY"
+  ],
+  "ust10y_source": "^TNX_PROXY"
+ },
+ "response_windows": {
+  "R0": 1,
+  "R1": 3,
+  "R2": 6,
+  "R3": 12,
+  "unit": "hours",
+  "frozen": true,
+  "note": "four pre-registered windows; later addition of 10/15/30/60m is forbidden"
+ },
+ "primary_expression": {
+  "window": "R2",
+  "delay_bars": 0,
+  "direction": "opposite",
+  "definition": "after a cross-market shock, take the XAU position against the shock sign and hold 6 hours with no entry delay"
+ },
+ "entry_delay": {
+  "values": [
+   0,
+   1
+  ],
+  "unit": "bars",
+  "frozen": true
+ },
+ "direction_rule": {
+  "both_sides_reported": true,
+  "aligned": "same direction as the shock sign",
+  "opposite": "against the shock sign",
+  "no_direction_presumed": true
+ },
+ "cost_model": {
+  "round_trip_cost_anchor_bp": 0.914,
+  "stress": [
+   0,
+   1,
+   2,
+   3
+  ],
+  "primary_reference": "1x",
+  "slippage": "historical per-event slippage unavailable - cost stress only, never faked"
+ },
+ "bootstrap": {
+  "method": "block bootstrap over events",
+  "block_events": 5,
+  "iterations": 2000,
+  "seed": 20260925,
+  "ci": 95,
+  "iid_bootstrap_forbidden": true
+ },
+ "permutation": {
+  "method": "event times redrawn uniformly inside the M03 span",
+  "iterations": 2000,
+  "seed": 20260925,
+  "statistic": "mean opposite-direction response at R2"
+ },
+ "null_shared_across_family": true,
+ "negative_control": {
+  "method": "random event-time control",
+  "runs": 300,
+  "seed": 20260925,
+  "pass_if": "control mean response <= observed mean response"
+ },
+ "multiple_testing": {
+  "method": "BH-FDR",
+  "q": 0.05,
+  "family": "4 source classes (DXY/VIX/UST10Y_PROXY/MULTI_SOURCE) x 2 directions = 8 tests at R2",
+  "pre_registered": true,
+  "shared_null": true
+ },
+ "walk_forward": {
+  "folds": 3,
+  "split": "chronological on the event sequence",
+  "param_tuning_inside_folds": false,
+  "consistent_rule": "all three folds >= 0 for CONSISTENT"
+ },
+ "episode_grouping": {
+  "rule": "consecutive M03 events within 24h share a macro_episode_id",
+  "window_hours": 24
+ },
+ "execution": {
+  "checks": [
+   "latency feasibility",
+   "entry delay",
+   "spread/cost",
+   "response duration"
+  ],
+  "rule": "an event is feasible if the R1 response magnitude survives 1x cost and the R0 response is not fully reversed; EXECUTION_UNREALISTIC if the feasible fraction < 0.5"
+ },
+ "frequency": {
+  "reported": [
+   "events_per_day",
+   "events_per_week",
+   "events_per_month"
+  ],
+  "research_floor_per_week": 1.0
+ },
+ "status_rule": {
+  "PROMISING": "primary expression holds AND net_edge_1x > 0 AND WF consistent (3/3) AND permutation p <= 0.05 with FDR control AND effective_n >= 8 AND execution feasible AND events_per_week >= 1.0",
+  "NOT_PROMISING": "gross edge weak OR net_edge_1x <= 0 OR WF inconsistent OR execution unrealistic",
+  "INSUFFICIENT": "effective_n < 8 OR data quality insufficient OR timestamp precision insufficient OR source semantics cannot support the conclusion",
+  "no_evasion": "the output must be exactly one of the three; UNCERTAIN is not allowed here"
+ },
+ "sensitivity": {
+  "allowed": [
+   "+/-1 bar timestamp shift",
+   "WITHOUT_TNX recomputation"
+  ],
+  "purpose": "timestamp-precision and proxy dependence only",
+  "not_a_parameter_search": true
+ },
+ "self_correction_policy": {
+  "log_required": true,
+  "refreeze_and_rerun_if_method_affected": true,
+  "patching_results_forbidden": true
+ },
+ "no_sweeps": [
+  "window",
+  "threshold",
+  "magnitude",
+  "holding",
+  "entry delay",
+  "source",
+  "direction"
+ ],
+ "forbidden_identifiers": [
+  "order_send",
+  "order_check",
+  "metatrader5",
+  "broker",
+  "execution_engine"
+ ],
+ "FREEZE_HASH": "2116ec8e812c322a34604e51eaf03b1682f07bbdeae6b8087c94c4f549d75b20",
+ "frozen_at_utc": "2026-09-25T12:11:35.373695+00:00"
+}

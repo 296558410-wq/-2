@@ -1,0 +1,56 @@
+{
+ "audit_id": "HB_BLIND_20260915",
+ "timestamp": "2026-09-15T12:00:00Z",
+ "current_state": "REJECTION (state_v2, dwell 3, event NONE, ambiguity_rate_8=0.5; frozen C1 label at t = TREND)",
+ "structure": "Higher timeframes are in a clear downtrend (H4 trend_20 -81.0, trend_50 -198.2; H1 trend_50 -62.3) with a chain of lower highs 4355.277 -> 4317.245 -> 4300.368. Price bounced off the 4261.105 low (H1 08:00-09:00 selloff) and now sits INSIDE the heavily-tested swing-low level 4283.098 (23 touches in 240 bars, distance_atr 0.049, break_status INSIDE, reclaim NONE). Lower TFs show a short-term bounce (M1 trend_20 +6.39, M5 trend_20 +13.46) that is stalling into contracting, low-volatility ranges (M1 range_percentile 0.16, H1 0.055). MTF agreement: CONFLICT.",
+ "mechanism": "trend_continuation (L4 candidate only, NOT asserted as fact): downside continuation of the HTF downtrend. Supporting evidence: price inside the active DN swing-low level with an 8-bar displacement of +17.86 (the bounce), which is interpreted as a corrective retracement that should be rejected before the downtrend resumes. State history TREND(dwell 4-8) -> REJECTION(3) reads as a trend pausing at a support zone rather than reversing; no reversal event exists at t.",
+ "primary_scenario": {
+  "scenario": "Downside continuation: the bounce off 4261.105 fails at/around the 4283.098 swing-low zone (possibly after brief compression), price breaks below 4261.105 and resumes the HTF downtrend, consistent with H4/H1 trend_20/50 and the trend_continuation mechanism candidate.",
+  "confidence": 0.45,
+  "horizon": "INTRADAY",
+  "trigger": "Rejection at the 4283.098-4286 zone (H1 close back below ~4280 with lower highs under 4300.368), followed by a decisive break of 4261.105 with momentum/range expansion.",
+  "invalidation": "Decisive upside break/reclaim of the active level 4283.098 (H1 close above ~4286) with follow-through above the 4300.368 lower high; the downtrend thesis is negated on a close above 4317.245."
+ },
+ "alternative_scenario": {
+  "scenario": "Level hold and rotation/compression: the 23-touch 4283.098 level holds, volatility stays contracted, price grinds sideways (REJECTION/COMPRESSION per analogs) and rotates back toward 4300-4317 if DXY softness persists or no downside catalyst appears.",
+  "confidence": 0.35,
+  "horizon": "SHORT_TERM",
+  "trigger": "Sustained defence of 4283.098 with contracting ranges and low volatility, then a reclaim of the 4286-4300 zone on M15/H1 closes.",
+  "invalidation": "Loss of 4261.105 with an H1 close below it and range expansion to the downside."
+ },
+ "expected_transition": "REJECTION -> COMPRESSION (or continued REJECTION) in the near term around the 4283.098 level - analogs A27933/A32045 show REJECTION persisting 4-8 steps before COMPRESSION - then resolution into a directional move. The structural lean (HTF downtrend, lower highs, failed-bounce wick) favours a downside TREND resolution, but with no event catalyst at t and 0.5 ambiguity a non-trending ROTATION path (A36324) is live.",
+ "direction": "DOWN",
+ "horizon": "INTRADAY",
+ "confidence": 0.45,
+ "counter_evidence": [
+  "Short-term momentum is still positive at M1/M5 (trend_20 +6.39 / +13.46; consecutive_up streaks 6 and 5) - the bounce may extend instead of rolling over.",
+  "The 4283.098 level has 23 touches in 240 bars: a heavily defended zone that could hold and support a rotation higher.",
+  "ambiguity_rate_8 = 0.5 and MTF agreement = CONFLICT: lower-TF and higher-TF trends disagree; all state labels are DERIVED from a frozen labeler, not DIRECT.",
+  "DXY is flat-to-slightly-down over 32 bars (change_32 -0.069, PROXY) and VIX is falling (17.06, change_32 -0.88): a mild gold tailwind / calm risk backdrop that does not pressure gold lower.",
+  "No event at t and very low current volatility (H1 range_percentile 0.055, volatility 0.00294): low-volatility chop precedes continuation but also produces false breakouts in either direction.",
+  "Analog A32045 ends COMPRESSION->TREND and A36324 ends ROTATION: state-evolution analogs (no returns/labels) do not guarantee a downside resolution."
+ ],
+ "invalidation": "Primary downside thesis is invalidated by a decisive upside reclaim of the 4283.098 level (H1 close above ~4286) with follow-through above the 4300.368 lower high; the downtrend structure is negated on a close above 4317.245.",
+ "data_quality_flags": [
+  "L1 price klines: RAW_GEOMETRY + DERIVED (causal computed features)",
+  "L2 nearest level: DERIVED (pivot swing levels, causal)",
+  "L3/L5 state labels: DERIVED (frozen C1 labeler + min-dwell lifecycle); ambiguity_rate_8 = 0.5",
+  "L4 mechanism: DERIVED candidate only, not asserted",
+  "DXY, VIX: PROXY (Yahoo, instrument definition UNKNOWN) - never upgraded",
+  "UST10Y_PROXY_TNX: UNKNOWN (STALE_OR_NOT_COVERED)",
+  "GLD/GC/CFTC_COT/ETF_FLOWS/NEWS/MACRO_EVENTS: ABSENT - no news/macro/flow context available",
+  "historical_analog: DERIVED state-evolution only; no returns/PnL/labels (per context §18/§72)"
+ ],
+ "reasoning_trace": [
+  "Read only the assigned PIT context; no other analyst forecast seen; no future information used.",
+  "H4 and H1 are unambiguously bearish on trend_20/50 (H4 -81.0/-198.2; H1 t50 -62.3) with a chain of lower highs 4355.28 -> 4317.25 -> 4300.37: the dominant structure is a downtrend.",
+  "The 4261.105 low (H1 08:00-09:00, close 4262.235) is the most recent swing low; the market bounced ~+20 pts into the 4283-4284 zone where it now sits.",
+  "The bounce is stalling: the H4 current bar has a 19.03 upper wick (rejection at 4300.368) and M1/M5/M15 ranges are contracting (range_percentile 0.16/0.135/0.22) - upside momentum is fading into the level.",
+  "Price is INSIDE the 4283.098 swing-low level (23 touches/240 bars, distance_atr 0.049, reclaim NONE): this is the decision zone for the next leg.",
+  "State machine: TREND(8 bars) -> REJECTION(3), event NONE, ambiguity 0.5 - the trend has paused, not reversed; L4's only candidate mechanism is trend_continuation with invalidation = decisive break of the active level.",
+  "Analog state evolutions (all REJECTION at t0) show REJECTION persisting before COMPRESSION/ROTATION - near-term sideways is the modal path before resolution; analogs carry no directional information.",
+  "No news/macro/flow data and no UST10Y (UNKNOWN); DXY/VIX are PROXY only and roughly neutral-to-mildly-gold-supportive.",
+  "Net: lean DOWN on structure (HTF downtrend, failed bounce, rejection wick) but with moderate-low confidence 0.45 because of the heavily-tested support, MTF conflict, 0.5 ambiguity, and absent fundamental context.",
+  "Chose INTRADAY horizon: the resolution (break of 4261 vs reclaim of 4283-4300) is a near-term decision at the level rather than a multi-day directional call."
+ ]
+}

@@ -1,0 +1,84 @@
+{
+  "forecast_id": "HERMES_FULL_CTX_20260831T120000Z",
+  "timestamp": "2026-08-31T12:00:00+00:00",
+  "current_state": "COMPRESSION (dwell 3) with REJECTION event at t; price 4454.8 pinned at/inside the 25-touch swing-high resistance 4453.465, mid-recovery of a larger H4 downtrend",
+  "dominant_structure": "Rebound within a larger H4 downtrend: intraday up-momentum (M1/M5) pressing against a dense swing-high resistance (4453.465, 25 touches/240 bars) with fresh upper-wick rejections at 4457.4 (M15) and 4463.8 (H1); L6 multi-timeframe agreement = CONFLICT",
+  "current_pressure": "Overhead supply at 4453-4463 (dense level + H1/M15 current-bar upper wicks) vs intraday buying pressure (M1/M5 up-drift, 8-bar displacement +10.83); volatility elevated on H1/H4 (ATR 24.5/42.9, range percentiles up to 0.845) but compressed at M1 (range_percentile 0.53 and falling); liquidity-proxy: 25 touches/240 bars at the level, VIX 15.28 edging up (+0.08/+0.11), DXY flat 99.54 — no external impulse",
+  "primary_scenario": {
+    "scenario": "Rejection at the 4453-4463 resistance zone: price fails to sustain above the 4453.465 swing-high and pulls back toward 4440-4445; if 4440 gives way, decline toward 4430 with a possible retest of the 4396.145 low — the H4 downtrend resumes after the rebound stalls",
+    "confidence": 0.42,
+    "horizon": "SHORT_TERM (next 6-12 hours / current session)",
+    "trigger": "M15 or H1 close below 4453.465 (swing-high level)",
+    "invalidation": "Sustained H1 close above 4463.855"
+  },
+  "alternative_scenario": {
+    "scenario": "Upside continuation/breakout: intraday momentum (M5 consecutive_up 8, 8-bar displacement +10.83, range_expanding) carries price through 4463.855 toward 4471.775 and beyond, extending the 4396 recovery into a larger mean-reversion/turn — consistent with analogs A26216 and A32609",
+    "confidence": 0.38,
+    "horizon": "INTRADAY (next 1-6 hours)",
+    "trigger": "H1 close above 4463.855",
+    "invalidation": "H1 closes back below 4453.465 without first clearing 4463.855"
+  },
+  "third_scenario": {
+    "scenario": "Extended compression/rotation around 4453-4445: no near-term directional resolution; state persists as COMPRESSION/ROTATION (ambiguity_rate_8 0.125, calm VIX), price oscillates between ~4453 and ~4440 with shrinking ranges",
+    "confidence": 0.2,
+    "horizon": "INTRADAY (next 1-6 hours)",
+    "trigger": "Repeated M15 closes inside 4445-4455 with contracting ranges",
+    "invalidation": "A directional M15 close above 4457.445 or below 4440"
+  },
+  "direction_bias": "NEUTRAL",
+  "expected_state_transition": "COMPRESSION -> REJECTION (ongoing) -> TREND (down-side expansion if 4453.465 breaks; up-side expansion if 4463.855 breaks) or re-entry into ROTATION; historical analogs split: A19754 stays compressed then REJECTION, A26216/A32609 break to TREND/EXPANSION",
+  "time_horizon": "SHORT_TERM (intraday, next 6-12 hours)",
+  "confidence": 0.42,
+  "supporting_evidence": [
+    "Price at/inside swing-high level 4453.465 (break_status INSIDE, reclaim NONE) with 25 touches in 240 bars — dense overhead supply",
+    "Frozen event at t = REJECTION; state COMPRESSION dwell 3 following ROTATION run (L5)",
+    "H1 12:00 bar: high 4463.855, close 4455.095, upper wick 8.76, body_ratio 0.124 — aggressive intra-hour rejection",
+    "M15 12:00 bar: upper wick 3.79 vs body 0.11 at high 4457.445 — second timeframe rejecting the same zone",
+    "H1/H4 trend_20 deeply negative (-69.0 / -171.2) and H1 trend_50 -143.8 — higher-TF downtrend context",
+    "H4 crash bars: 08-28 16:00 body -119.8 (4582.8 -> 4456.7); 08-31 00:00 low 4396.145",
+    "DXY flat (99.54) and VIX low (15.28) — no macro catalyst to force the level"
+  ],
+  "counter_evidence": [
+    "M1/M5 momentum strongly positive: consecutive_up 6/8, range_expanding, trend_20 +5.27/+16.94",
+    "L4 candidate trend_continuation: price inside level with 8-bar displacement +10.83 — active buyers",
+    "H4 04:00 and 08:00 bars closed up (4439.0, 4453.7), building the recovery off 4396.145",
+    "2 of 3 historical analogs (A26216, A32609) resolve COMPRESSION into TREND/EXPANSION (breakout-leaning); only A19754 stays compressed",
+    "VIX low and DXY flat remove macro headwinds for gold",
+    "H4 12:00 'current' bar (low 4415.575, close 4431.495) contradicts M1/M5/H1 current bars at the same timestamp — flagged as inconsistent, excluded from reasoning rather than read as confirmation"
+  ],
+  "trigger": "M15 or H1 close below 4453.465 (swing-high level); acceleration on H1 close below 4452.255",
+  "invalidation": "Sustained H1 close above 4463.855 voids the rejection thesis; M15 close above 4457.445 with follow-through also weakens it",
+  "change_my_mind": [
+    "Clean H1 close above 4463.855 with follow-through (next H1 holding above 4463) -> flip to the breakout scenario",
+    "M5 trend_20 turning negative while price breaks below 4453.465 -> raise confidence in the rejection/pullback scenario",
+    "Decisive M15 close below 4440 (then 4430) -> confirm H4 downtrend resumption, raise confidence",
+    "VIX spike above ~17 or DXY move >0.3% -> macro catalyst changes the setup",
+    "M1/M5 trend_20 continuing to expand while price re-tests 4453.465 from above -> momentum wins, flip to breakout"
+  ],
+  "abstain": false,
+  "abstain_reason": "",
+  "reasoning_trace": [
+    "Read prompt and CTX_20260831T120000Z.json only; no external data used",
+    "Multi-TF scan (L6): M1/M5 up (trend_20 +5.27/+16.94), M15 +17.98/-7.3 mixed, H1 -69.0/-143.8, H4 -171.2/-63.4 -> agreement CONFLICT, timeframes never merged",
+    "Level check (L2): price 4454.795 INSIDE swing high 4453.465, 25 touches/240 bars, age 4 bars",
+    "Event check (L3/L5): frozen REJECTION at t; state COMPRESSION dwell 3; ambiguity_rate_8 0.125",
+    "Rejection evidence: H1 12:00 upper wick 8.76 at 4463.855; M15 12:00 upper wick 3.79 at 4457.445",
+    "Momentum evidence: M5 consecutive_up 8, range_expanding, 8-bar displacement +10.83 (L4), recovery from 4396.145 (03:00 H1) to 4463.855 (12:00 H1)",
+    "Cross-market (L7, all PROXY): DXY 99.542 flat, VIX 15.28 low but rising slightly; UST10Y absent; no news/macro/flows available",
+    "Analog split (state evolution only, no returns): A19754 stays COMPRESSION->REJECTION; A26216/A32609 break to TREND/EXPANSION -> no resolution signal",
+    "Data caveat: H4 12:00 current bar OHLC contradicts M1/M5/H1 current bars at the same timestamp; excluded as inconsistent",
+    "Primary = rejection/pullback (0.42); alternative = breakout (0.38); third = range (0.20); direction_bias NEUTRAL given conflicting intraday momentum vs higher-TF trend; abstain=false"
+  ],
+  "questions": {
+    "A": "XAUUSD trades ~4454-4455, mid-recovery after a violent H4 selloff (4630 -> 4396 over 08-28/08-31). Intraday M1/M5 show steady up-drift (M5 close 4455.865, trend_20 +16.94, consecutive_up 8), but the 12:00 hour printed upper-wick rejections at 4463.855 (H1) and 4457.445 (M15), leaving price pinned at the 4453.465 swing-high level (break_status INSIDE, 25 touches/240 bars). State machine: COMPRESSION dwell 3 with REJECTION event; DXY flat 99.542; VIX 15.28 low; UST10Y unavailable.",
+    "B": "Dominant structure: rebound within a larger H4 downtrend. H4 trend_20 -171.2 and H1 trend_20 -69.0 define the higher-TF down structure; the 4396 -> 4463 recovery is counter-trend. The micro-structure is COMPRESSION at a heavy swing-high resistance (4453.465, 25 touches/240 bars) — an equilibrium where up-momentum meets overhead supply. L6 explicitly reports CONFLICT across timeframes.",
+    "C": "Pressures: (directional) intraday buying pressure — M5 trend_20 +16.94, 8-bar displacement +10.83, M1/M5 range_expanding — against overhead supply at 4453-4463 (dense level, plus H1/M15 current-bar upper wicks); (volatility) elevated on H1/H4 (ATR 24.5/42.9, range percentiles 0.18-0.845) but compressing at M1 (current range_percentile 0.53, recent 0.05-0.08) — compression at a decision level; (liquidity-proxy) 25 touches in 240 bars at 4453.465 signals large resting interest, VIX 15.28 edging up (+0.08/+0.11) hints mild caution, DXY flat gives no FX impulse.",
+    "D": "Candidate mechanisms: (1) intraday recovery continuation (L4 candidate trend_continuation) — SUPPORTED: price inside level, 8-bar displacement 10.83, M1/M5 up-drift; (2) rejection / H4 downtrend resumption — SUPPORTED: REJECTION event at t, H1/M15 upper wicks in the current hour, dense level, negative H1/H4 trend_20; (3) extended compression/rotation — SUPPORTED: COMPRESSION dwell 3, ambiguity_rate_8 0.125, calm VIX, analog A19754. Mechanisms 1 and 2 are simultaneously active at the same level; the freshest signal (H1 12:00 upper wick) favors 2.",
+    "E": "Strongest evidence: price exactly at/inside the 25-touch swing high 4453.465 (INSIDE, reclaim NONE); H1 12:00 bar upper wick 8.76 (high 4463.855, close 4455.095, body_ratio 0.124); M15 12:00 bar upper wick 3.79 (high 4457.445, body 0.11); frozen event REJECTION with state COMPRESSION dwell 3; H4 crash context (08-28 16:00 body -119.8; 08-31 00:00 low 4396.145) with negative H1/H4 trend_20; intraday recovery momentum on M1/M5 (consecutive_up 6/8, range_expanding).",
+    "F": "Counter-evidence against the rejection/pullback primary: M1/M5 momentum is strongly positive (consecutive_up 6/8, trend_20 +5.27/+16.94, range_expanding); the L4 candidate cites an 8-bar displacement of +10.83 showing active buyers; H4 04:00 and 08:00 bars closed up building the recovery; 2 of 3 historical analogs (A26216, A32609) resolve COMPRESSION into TREND/EXPANSION (breakout-leaning); VIX low and DXY flat remove macro headwinds; the H4 12:00 'current' bar (low 4415.575, close 4431.495) contradicts the M1/M5/H1 current bars at the same timestamp and is excluded as inconsistent rather than treated as confirmation of a drop.",
+    "G": "PRIMARY scenario: rejection at the 4453-4463 zone — price cannot sustain above the 4453.465 swing-high; pullback toward 4440-4445, then 4430 if 4440 gives way, with a possible retest of the 4396.145 low; the H4 downtrend resumes after the rebound stalls. Confidence 0.42, horizon SHORT_TERM (next 6-12 hours).",
+    "H": "ALTERNATIVE scenario: upside breakout — intraday momentum carries price through 4463.855 toward 4471.775 and beyond, extending the recovery from 4396 into a larger reversal; supported by analogs A26216/A32609. Confidence 0.38, horizon INTRADAY. SECONDARY alternative: extended compression/rotation around 4453-4445 with no near-term resolution (confidence 0.20, horizon INTRADAY).",
+    "I": "Invalidation of the primary: a sustained H1 close above 4463.855 (or an M15 close above 4457.445 followed by higher closes) voids the rejection thesis. Trigger of the primary: an M15 or H1 close below 4453.465. The primary is strengthened if H1 closes below 4452.255 and then 4440.",
+    "J": "I would flip to the breakout scenario on: a clean H1 close above 4463.855 with follow-through (next H1 holding above 4463); M1/M5 trend_20 continuing to expand while price re-tests 4453.465 from above; VIX dropping below ~15 or DXY weakening >0.3%. I would raise confidence in the rejection scenario if: M5 trend_20 turns negative, a decisive M15 close below 4440 prints, or VIX ticks up through ~17."
+  }
+}

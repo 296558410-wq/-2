@@ -1,0 +1,107 @@
+{
+ "schema": "hermes_decision_v1",
+ "cycle": "2026-09-15T13:47Z",
+ "symbol": "XAUUSD",
+ "decision_id": "DEC-2026-09-15T13:47Z",
+ "utc_ts": "2026-09-15T13:47Z",
+ "generated_utc": "2026-09-15T13:47Z",
+ "decision": "SHORT",
+ "confidence": 0.44,
+ "bias": "SHORT-lean 0.62. Slot FREE / position FLAT. The intraday bounce that rolled over at 13:32Z has RESUMED UP and re-entered the 4289-4296 broken-MA band: live 4286.72 (13:32Z) -> 4293.31 (quote 13:47:22Z), pkg m15_live last_mid 4294.87 - price is now TAGGING the band top (H1 MA20 4290.55 / M15 MA50 4290.94 / prior 4295.85 spike). HTF ladder intact bearish (D1 4297.93 << MA20 4455.32 RSI 28.4; H4 4262.80 < MA20 4333.15 < MA50 4384.50 lo60 4253.62 pos 3.6; H1 4268.50 < MA20 4290.55 < MA50 4321.32 range pos 10.0), so tagging the broken-MA band from below = with-trend SHORT location. This re-arms the retest short (the still-pending TP-20260915T1317Z, zone [4289,4296], will fill at ~4294.9 this cycle) and VOIDS the 13:32Z break-down plan (reclaim of 4291.5). Caution (why qty 0.01 + modest p_win): D1 oversold (RSI 28.4) and the 4253.62 multi-TF floor has held repeatedly, so targets sit AT 4270 / 4253.6, not through them.",
+ "opportunity": "SHORT the 4289-4296 broken-MA band retest, now that the failed roll-over has flipped back up and price is tagging the band top (live ~4294.9). In a 3/4-TF bearish ladder (D1/H4/H1 all at/below their MA stacks, H4 lo60 4253.62 lower third) a bounce that stalls at the broken MA band resumes the down-leg toward 4270.0 (prior higher-low shelf / M15 support) then 4253.6 (multi-TF floor). Entry zone [4292,4298] trigger zone_touch -> auto-fills on the touch (~4294.9), no next-bar close required. Stop 4303.0 above the band high / 4295.85 spike. This is the 9th consecutive action cycle with a concrete triggerable setup, not a passive WAIT; it is the current-cycle expression of the same band-retest family already armed as TP-20260915T1317Z (position_busy guard blocks any double-fill).",
+ "opportunity_mechanism": "failed_bounce_continuation_short_at_broken_MA_band: the D1/H4/H1 downtrend drove price to the 4253.62 floor; an oversold bounce ran 4261.5 -> 4295.85, stalled and briefly rolled over (13:02 4293.44 -> 13:32 4286.72), but has now RESUMED and re-entered the 4289-4296 broken M15 MA50 / H1 MA20 band. Tagging a broken-MA band from below inside a bearish stack is a with-trend short: take the touch, structural stop just above the band high + spike (4303.0), targets back to 4270.0 / the 4253.6 floor. No averaging down; single-position guard (position_busy) blocks a double-fill against the armed TP-1317Z.",
+ "mtf_agreement": "3/4 TF bearish HTF + bounce now stalling AT the broken band -> continuation SHORT (band-retest leg): D1 close 4297.93 << MA20 4455.32 (-3.53%) RSI14 28.44 er0.431 recent -246.6bps pos 39.0 (oversold, trend down); H4 close 4262.80 < MA20 4333.15 < MA50 4384.50 RSI38.78 er0.224 pos 3.6 llish7 (lower third); H1 close 4268.50 < MA20 4290.55 < MA50 4321.32 < MA200 4381.77 RSI43.95 range er0.121 pos 10.0; M15 close 4274.55 < MA20 4281.18 < MA50 4290.94 < MA200 4321.04 RSI35.18 er0.296 mixed pos 23.2 (bounce re-tagging the band). Net: HTF bearish + bounce tagging broken band -> SHORT the touch; caution = D1 oversold + 4253.62 floor held repeatedly (why qty 0.01, targets AT the floor).",
+ "state_summary": "XAUUSD live mid 4293.31 (quote_latest 13:47:22Z bid 4293.24/ask 4293.37, spread 0.13usd=0.31bps; pkg m15_live last_mid 4294.87, spread 0.33bps). Session OPEN (gate armed=true exit0). Slot FREE / position FLAT. Pending: TP-20260915T1317Z SHORT zone_touch [4289,4296] stop 4302 (will FILL now at ~4294.9) + TP-20260915T1302Z SHORT zone_touch [4305,4318] stop 4327 (untriggered) + TP-20260915T1332Z (invalidated by the reclaim of 4291.5). Levels (pkg + live cross-check): resistance 4289-4296 (H1 MA20 4290.55 / M15 MA50 4290.94 / 4295.85 spike) / 4305 (wall) / 4314.73 (H1 MA50) / 4317.69 (M15 hi60) / 4321.04 (M15 MA200) / 4333.15 (H4 MA20); support 4282-4284 (M15 MA20 4281.18 / 12:47Z higher-low 4282.14) / 4270.0 (prior higher-low shelf) / 4261.53 (M15 lo60) / 4253.62 (multi-TF floor) / 4042.58 (D1 lo60).",
+ "m15_change": "Real-time vs last cycle: 13:32Z live 4286.72 -> 13:47Z live 4293.31 = +6.6pt (pkg last_mid 4294.87 = +8.2pt). The bounce resumed and re-entered the 4289-4296 band from below, so price is now TAGGING the band top rather than failing under it. This flips the prior read: the 13:32Z 'short the break-down of the 4282 shelf' thesis is VOID (price reclaimed 4291.5) and the band flips back to RESISTANCE -> short the retest. pkg M15 context (built from the ~3h-stale parquet 'time' column): last_close 4274.55, MA20 4281.18, MA50 4290.94, RSI14 35.18, er0.296 mixed, pos_in_range 23.2, hi60 4317.69 / lo60 4261.53. CAUTION: run_state/candle_latest.json (last ts 2026-09-07 12:15, engulfing_bear) and bars_cache.json are STALE and ignored; all actionable levels cross-checked vs the live quote series (feed lag ~3h).",
+ "data_note": "Levels/quote from pkg run_state/state_package_latest.json (cycle 2026-09-15T13:47Z, regenerated this cycle; m15_live last_mid 4294.87, spread 0.33bps, tick_rate 118/min, abnormal last6_max 11.4bps z0.12 vs base 10.11 = normal tape) cross-checked against data/live_fxtm/quote_latest.json (13:47:22Z mid 4293.31, bid 4293.24/ask 4293.37, spread 0.13=0.31bps). data_quality live_days 7, live_ticks 1,335,025, context_days 31, gaps[]. NOTE: the tick parquet 'time' column lags real UTC by ~3h -> pkg bar/MAs are ~3h stale, so all decision levels are cross-checked in real time vs the live quote. run_state/candle_latest.json (2026-09-07) and bars_cache.json STALE -> ignored.",
+ "position_note": "Slot FREE, position FLAT (last close POS-20260915T0917Z SHORT stopped -12.81USD at 13:05:57Z). The armed TP-20260915T1317Z (zone [4289,4296], stop 4302, T1 4270/T2 4253.6) will auto-FILL at ~4294.9 this cycle as the engine consumes the ledger. This cycle's new plan TP-20260915T1347Z is the current-cycle expression of the same band-retest short; the engine's position_busy guard prevents any double-fill (if 1317Z fills first, this plan is cancelled exec_fail:position_busy - exactly as TP-1032Z/TP-1047Z were earlier today). No averaging down anywhere.",
+ "answers_14": {
+  "1": "Market state: XAUUSD live mid 4293.31 (quote_latest 13:47:22Z bid 4293.24/ask 4293.37 spread 0.13usd=0.31bps; pkg m15_live last_mid 4294.87 spread 0.33bps tick_rate 118/min abnormal last6_max 11.4bps z0.12 vs base 10.11 = normal tape). Session OPEN (gate armed=true exit0). Data ok (live_days 7 ticks 1,335,025 context 31 gaps[]); parquet bars ~3h stale -> levels cross-checked vs live quote. Position FLAT. Pending TP-20260915T1317Z SHORT [4289,4296] stop 4302 (fills now) + TP-20260915T1302Z SHORT [4305,4318] stop 4327 + TP-1332Z (invalidated). MAs: M15 MA20 4281.18/MA50 4290.94/MA200 4321.04; H1 MA20 4290.55/MA50 4321.32/MA200 4381.77; H4 MA20 4333.15/MA50 4384.50; D1 MA20 4455.32. Resistance 4289-4296 (H1 MA20/M15 MA50 + 4295.85 spike)/4305/4314.73/4317.69(M15 hi60)/4321.04(M15 MA200)/4333.15(H4 MA20); support 4282-4284(M15 MA20 4281.18 + 12:47Z higher-low 4282.14)/4270/4261.53(M15 lo60)/4253.62(multi-TF floor).",
+  "2": "MTF agreement: 3/4 TF bearish HTF (D1 4297.93<<MA20 4455.32 RSI28.44 er0.431 pos39.0; H4 4262.80<MA20 4333.15<MA50 4384.50 RSI38.78 pos3.6 llish7; H1 4268.50<MA20 4290.55<MA50 4321.32 RSI43.95 range pos10.0) vs M15 bounce RE-TAGGING the broken band (4274.55<MA20 4281.18<MA50 4290.94, RSI35.18, er0.296). Net: HTF bearish + bounce stalling at the broken MA band -> with-trend band-retest SHORT. Caution: D1 oversold + 4253.62 floor held repeatedly -> qty 0.01, targets AT the floor not through it.",
+  "3": "M15 change: 13:32Z live 4286.72 -> 13:47Z live 4293.31 = +6.6pt (pkg last_mid 4294.87 = +8.2pt). The bounce RESUMED and re-entered the 4289-4296 band from below, so price now TAGS the band top instead of failing under it. This voids the 13:32Z break-down-of-4282 thesis (reclaim of 4291.5) and flips the band back to RESISTANCE -> short the retest. pkg M15 context (stale ~3h): last_close 4274.55, MA20 4281.18, MA50 4290.94, RSI14 35.18, er0.296 mixed, pos_in_range 23.2, hi60 4317.69 / lo60 4261.53.",
+  "4": "Opportunity / gap-to-tradable: slot FREE -> entry allowed. Price is ALREADY at the level (live ~4293-4295 vs zone [4292,4298]), so the gap-to-tradable = the touch itself. Register the SHORT now with zone_touch [4292,4298]: the touch auto-fills (trigger+risk -> instant order), no close needed. What is missing = nothing structural; tagging the broken-MA band from below in a bearish ladder IS the confirmation. (Same family already armed as TP-1317Z; position_busy blocks a double-fill.)",
+  "5": "Mechanism: failed_bounce_continuation_short_at_broken_MA_band - downtrend to the 4253.6 floor, oversold bounce ran to 4295.85, briefly rolled over then RESUMED and re-entered the 4289-4296 broken M15 MA50 / H1 MA20 band; taking the touch with a structural stop above the band high + spike resumes the down-leg toward 4270.0 / 4253.6. No averaging down; guarded by position_busy against the armed TP-1317Z.",
+  "6": "Trigger condition [specific price]: zone_touch [4292.0,4298.0] on live mid -> auto-fill at market (~4294.9). I.e. the touch of the 4289-4296 broken-MA band top (H1 MA20 4290.55 / M15 MA50 4290.94 / 4295.85 spike) arms the entry. If instead price rallies >= 4303.0 the plan self-cancels (band high + spike reclaimed = retest-short thesis dead).",
+  "7": "Invalidation [specific price]: price_cross_up 4303.0 (reclaim of the band high 4296 / 4295.85 spike / M15 MA50 4290.94) = the band-retest short thesis is void -> stand down (also the hard stop). Downside confirmation after fill: price_cross_down 4282.0 (12:47Z higher-low / M15 MA20) then 4270.0 then 4261.53 then 4253.62 (multi-TF floor).",
+  "8": "Expected reward R (SHORT, entry ~4295.0, 1R=8.0pt to stop 4303.0): T1 4270.0 = -25.0pt = 3.13R x0.50; T2 4253.6 = -41.4pt = 5.18R x0.50; weighted = +4.15R (breakeven p ~0.194).",
+  "9": "Expected loss R: hard stop 4303.0 = +8.0pt = -1.0R (~-8.0USD on 0.01 lot). No averaging down, no add. (Reference: the just-closed POS-0917Z lost -12.81USD = -1.0R.)",
+  "10": "Cost value: spread 0.31-0.33bps + slippage 0.30bps = 0.63bps roundtrip ~= 0.27pt ~= 0.034R (vs 1R=8.0pt). Extremely low, not a barrier.",
+  "11": "Net EV formula: 0.42 x (0.50x3.13 + 0.50x5.18) - 0.58 x 1.00 - 0.034 = 0.42x4.155 - 0.614 = 1.745 - 0.614 = +1.13R. Positive -> valid SHORT.",
+  "12": "Reproducibility: family 'band-retest continuation short - tag the broken M15 MA50 / H1 MA20 band from below inside a 3/4-TF bearish ladder'. Rules: zone_touch fill (no close requirement), structural stop above the band high + prior spike, no averaging down, single-position constraint (position_busy guard vs armed TP-1317Z), qty 0.01-0.05, ignore stale candle_latest.json/bars_cache.json, cross-check levels vs live quote (parquet ~3h stale). Same-family priors: with-trend closes POS-20260915T0217Z +20.24USD / POS-20260915T0632Z +8.52USD; counter-fade loss POS-20260915T0917Z -12.81USD (stopped by the 4253.6-floor bounce).",
+  "13": "SHORT (new plan TP-20260915T1347Z, same family as the armed TP-1317Z): entry zone [4292,4298], trigger zone_touch, stop 4303.0, T1 4270.0/T2 4253.6, 0.01 lot, EV +1.13R.",
+  "14": "Bounce re-tagged the 4289-4296 broken-MA band in a bearish ladder; short the touch (zone_touch 4292-4298), stop 4303, TP 4270/4253.6, 0.01, EV +1.13R; same family as armed TP-1317Z (position_busy blocks double-fill)."
+ },
+ "plan": {
+  "plan_id": "TP-20260915T1347Z",
+  "direction": "SHORT",
+  "opportunity_type": "failed_bounce_continuation_short_at_broken_MA_band",
+  "entry_style": "market_on_trigger",
+  "entry_zone": {
+   "low": 4292.0,
+   "high": 4298.0
+  },
+  "trigger_condition": {
+   "zone_touch": [
+    4292.0,
+    4298.0
+   ]
+  },
+  "invalidation_condition": {
+   "price_cross_up": 4303.0
+  },
+  "stop_logic": {
+   "type": "structure",
+   "level": "above the 4289-4296 broken-MA band high / 4295.85 prior spike (H1 MA20 4290.55 / M15 MA50 4290.94) - reclaim of the band+spike = retest short dead",
+   "level_price": 4303.0
+  },
+  "target_logic": {
+   "type": "price_levels",
+   "levels": [
+    {
+     "price": 4270.0,
+     "frac": 0.5
+    },
+    {
+     "price": 4253.6,
+     "frac": 0.5
+    }
+   ],
+   "reason": "T1 4270.0 = prior higher-low shelf / M15 support (entry ~4295.0 -25.0pt = 3.13R) x0.50; T2 4253.6 = multi-TF floor (entry -41.4pt = 5.18R) x0.50 (targets AT the floor, not through it - the floor has held repeatedly)"
+  },
+  "expected_R": 4.15,
+  "expected_win_probability": 0.42,
+  "probability_source": "subjective: intact 3/4-TF bearish ladder (D1/H4/H1 all at/below their MA stacks, H4 lo60 4253.62 lower third) + the intraday bounce re-tagging the 4289-4296 broken M15 MA50 / H1 MA20 band from below (a with-trend short location) + normal tape (abnormal z 0.12); haircut below 0.50 for D1 oversold (RSI 28.4) and the multi-TF floor 4253.62 having held repeatedly (band-retest shorts into a proven floor get bought, and the stop is only ~1x M15 ATR so noise risk is real); breakeven p ~0.194 at 4.15R",
+  "expected_loss": {
+   "units": "R",
+   "value": 1.0
+  },
+  "estimated_cost": {
+   "spread_bps": 0.33,
+   "slippage_bps": 0.3,
+   "total_roundtrip_bps": 0.63,
+   "cost_in_R": 0.034
+  },
+  "spread_bps": 0.33,
+  "slippage_bps": 0.3,
+  "expected_net_EV": {
+   "value": 1.13,
+   "units": "R",
+   "note": "0.42 x (0.50x3.13 + 0.50x5.18) - 0.58 x 1.00 - 0.034 = 0.42x4.155 - 0.614 = +1.13R (1R=8.0pt, entry ~4295.0, stop 4303.0; breakeven p ~0.194)"
+  },
+  "maximum_holding_time": "M15*16",
+  "qty_lots": 0.01,
+  "cancel_conditions": [
+   "age > M15*16 (240min) untriggered",
+   "price_left_setup: mid < 4284.0 -> price fell away below the band before the touch (band rejected again without retest)",
+   "price_cross_up 4303.0 (invalidation) = 4289-4296 band high / 4295.85 spike reclaimed decisively"
+  ],
+  "validation": {
+   "ok": true,
+   "issues": []
+  }
+ },
+ "cost_note": "spread 0.33bps + slip 0.30bps = 0.63bps roundtrip ~0.27pt ~0.034R on 0.01 lot (1R=8.0pt). Not a barrier.",
+ "ev_note": "EV_R = 0.42 x 4.155 - 0.58 - 0.034 = +1.13R (breakeven p 0.194). Positive -> SHORT registered.",
+ "model": "deepseek/deepseek-v4-flash",
+ "prompt_version": "hermes-trader-m15-cycle"
+}

@@ -1,0 +1,40 @@
+{
+  "audit_id": "HB_POST_20260723",
+  "timestamp": "2026-09-27T14:44:00+00:00",
+  "correct_calls": [
+    "Near-term down momentum: H1 8 consecutive down bars with expanding range and trend_20 -73.58 was correctly read as unambiguous downward pressure; the actual outcome direction is DOWN.",
+    "Alternative scenario (0.30) 'downside continuation / level breakdown' was directionally correct: actual_direction DOWN means the 4086.785 swing-low defense failed and the impulse extended.",
+    "L4 trend_continuation candidate (8-bar displacement -7.15, price inside level) was flagged as the mechanism consistent with a break; the breakdown is what actually materialised.",
+    "The stated invalidation condition for the primary scenario (decisive close below 4086.785, especially below 4072.755, with expanding ranges and no reclaim) is precisely the condition that occurred.",
+    "NEUTRAL direction_bias honestly reflected the L6 CONFLICT rather than over-asserting a single direction."
+  ],
+  "wrong_calls": [
+    "Primary scenario (confidence 0.55) 'support-defense at 4086.785 / rotation in 4086-4095 band' did NOT occur: price moved DOWN and the level failed instead of holding.",
+    "Expected state transition ACCEPTANCE -> ROTATION (per analogs A310/A12220) did not occur; actual_next_state is DECELERATION, a state absent from the forecast's discussed branches.",
+    "Third scenario (0.15) upside rejection-bounce through 4095.185-4099.315 did not occur (minor, low confidence).",
+    "Confidence 0.55 was placed on the wrong (non-occurring) primary branch while the realised branch was only weighted 0.30.",
+    "The reasoning that 19 touches/240 bars plus fresh ACCEPTANCE plus long lower wicks implied the level would hold was refuted by the outcome."
+  ],
+  "right_but_wrong_reason": [
+    "Direction DOWN was correctly carried by the alternative scenario, but Hermes-A's overall stance (NEUTRAL with primary support-hold at 0.55) treated the breakdown as the tail branch despite the same evidence set (expanding H1/H4 ranges, reclaim_status NONE, L4 trend_continuation candidate, ambiguity_rate_8 0.625) already supporting it - the DOWN call was right but arrived via the under-weighted branch, and the headline rationale (defense at a high-touch level) argued the opposite way.",
+    "The long lower wicks (H1 12.78, H4 18.03) were cited as evidence buyers defend the lows; they were real observations but were interpreted as support-hold evidence when in fact price continued DOWN - the wick reading was directionally consistent with the eventual DECELERATION (absorption) but was used to justify the wrong primary scenario."
+  ],
+  "direction_ok_state_wrong": true,
+  "state_ok_direction_wrong": false,
+  "should_have_abstained": false,
+  "invalidation_occurred": true,
+  "prior_concerns_materialised": true,
+  "hindsight_detected": false,
+  "hindsight_evidence": [],
+  "outcome_alignment_verdict": "PARTIALLY_CORRECT",
+  "reasoning_trace": [
+    "Read only the prompt and PAYLOAD_POST_20260723.json; no other files.",
+    "Actual outcome: direction DOWN, next state DECELERATION, hermes_scenario_covered_actual = false - no forecast scenario exactly matched the realised path.",
+    "Direction: Hermes-A was NEUTRAL overall, but the 0.30 alternative (breakdown below 4086.785 toward 4072.755, then the 4039.7-4057.7 H4 zone) carried the correct DOWN direction, so the direction was captured, not missed.",
+    "State: the forecast's expected transition ACCEPTANCE -> ROTATION (and its breakdown branch REJECTION) did not occur; DECELERATION was never considered - state forecast wrong, hence direction_ok_state_wrong = true and state_ok_direction_wrong = false.",
+    "Invalidation: the primary scenario's stated invalidation (decisive expanding-range close below 4086.785 with no reclaim, flagged as flipping to DOWN) is exactly what the outcome shows, so invalidation_occurred = true and the model's own change_my_mind logic would have flipped it correctly.",
+    "Prior concerns: the counter-evidence Hermes-A itself listed (L4 trend_continuation candidate, expanding ranges, ambiguity_rate_8 0.625, analogs none-of-which-supported-TREND) materialised - the contested breakdown branch won - so prior_concerns_materialised = true.",
+    "Hindsight check: all cited bars (12:00 H1/H4 with long lower wicks, sequence flags) are within the PIT context as of 12:00 UTC and were available at forecast time; no claim depends on post-12:00 information, so hindsight_detected = false.",
+    "Verdict: PARTIALLY_CORRECT - invalidation logic and the alternative direction branch were sound and honest, but the primary scenario (0.55), the confidence weighting, and the state forecast were wrong."
+  ]
+}

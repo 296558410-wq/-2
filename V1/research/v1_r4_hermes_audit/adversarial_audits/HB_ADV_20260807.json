@@ -1,0 +1,116 @@
+{
+ "audit_id": "HB_ADV_20260807",
+ "timestamp": "2026-08-07T12:30:00+00:00",
+ "overall_verdict": "PARTIAL_AGREE",
+ "dimension_verdicts": {
+  "CURRENT_STATE": "AGREE",
+  "STRUCTURE": "PARTIAL_AGREE",
+  "MECHANISM": "PARTIAL_AGREE",
+  "PRIMARY_SCENARIO": "DISAGREE",
+  "ALTERNATIVE_SCENARIO": "PARTIAL_AGREE",
+  "EXPECTED_TRANSITION": "PARTIAL_AGREE",
+  "DIRECTION": "PARTIAL_AGREE",
+  "HORIZON": "INSUFFICIENT_EVIDENCE",
+  "CONFIDENCE": "DISAGREE",
+  "INVALIDATION": "PARTIAL_AGREE",
+  "ABSTENTION": "PARTIAL_AGREE"
+ },
+ "factual_errors": [
+  "A20151 is cited as supporting 'EXPANSION->TREND by step 16' continuation, but its actual state_evolution is EXPANSION(0,4,8) -> REJECTION(12) -> TREND(16): the analog reaches REJECTION at step 12 before TREND, so it does NOT support a clean uninterrupted continuation path.",
+  "'H1 8-bar displacement 14.12' attributes a timeframe to the L4 displacement figure; L4 records only '8-bar displacement 14.12' with no timeframe field, so the H1 attribution is unsupported by the context.",
+  "The forecast's target band '4341-4372 supply band seen on H4' treats H4 high 4371.695 as a closed-bar supply reference although Hermes-A itself flags the H4 current bar as internally anomalous; no closed H1/M15 bar exceeds 4327.645."
+ ],
+ "insufficient_evidence": [
+  "No evidence distinguishes momentum-bar buying from absorption at the 4-touch level; order-flow/positioning series (GC, GLD, COT, ETF_FLOWS) are absent, so 'acceptance holds' is asserted without flow evidence.",
+  "Analog step-to-clock-time mapping is absent; steps 4/8/12/16 are not anchored to any time unit, so claims that analogs inform an INTRADAY path are ungrounded.",
+  "Confidence 0.55 for the UP primary rests on no distributional or historical-hit-rate basis; the context provides state evolution only, with no returns (note 18/72).",
+  "DXY/VIX are PROXY with UNKNOWN instrument definition; the tiny changes (-0.069/-0.02) provide no measurable support magnitude."
+ ],
+ "missed_counter_evidence": [
+  "H4 current bar being non-observable at PIT (timestamped 12:00 but spanning 12:00-16:00) is used as BOTH support (body +24.56, trend_20 +287.69) and counter-evidence (wick 30.39); the correct treatment is exclusion from both sides.",
+  "4 touches with break_status INSIDE / reclaim_status NONE is a stronger argument for defended supply than for 'breakout territory'; the forecast leads with the bullish reading.",
+  "H1 current bar range_percentile 0.295 with range_contracting=true is the highest-timeframe energy signal and points to low conviction at highs; it is acknowledged once but not allowed to temper the 0.55 UP confidence.",
+  "VIX at 15.2 (low, flat) is not interpreted at all despite being the only volatility-sentiment series available."
+ ],
+ "mechanism_jumps": [
+  "M1/M5 high-percentile bullish bodies -> 'acceptance holds and the level is reclaimed/cleared': momentum INTO a resistance level is also the signature of absorption; the jump from bar geometry to continuation outcome is not supported without flow data.",
+  "L4 candidate trend_continuation (counter_evidence: []) is a CANDIDATE only (note 13); the forecast elevates it into the primary scenario's engine while the level's INSIDE status and H1 compression support the competing rejection mechanism equally.",
+  "DXY drift -0.069 (PROXY, UNKNOWN definition) -> 'mildly supportive backdrop' asserts a correlation mechanism for a proxy instrument."
+ ],
+ "over_inference": [
+  "n=3 analogs with similarity method 'exact_state + dwell_bucket' (all similarity 1.0 by construction) are used to argue both directions; the 2-of-3 rejection majority is a trivially small sample.",
+  "'4 touches in 240 bars = resting supply pool' converts a level-touch count into a liquidity claim; the forecast admits it is level-based only, yet the primary scenario treats the supply read as dispositive for a target band.",
+  "Attributing 'INTRADAY' horizon to the primary/alternative scenarios without any clock-time anchor for analog steps or bar counts.",
+  "State machine ACCEPTANCE at t is a label of the current bar, not a predictor; using it as evidence for continuation direction over-reads a descriptive label."
+ ],
+ "time_window_issues": [
+  "H4 current bar is timestamped 2026-08-07 12:00:00+00:00 but a 12:00 H4 bar spans 12:00-16:00; its high 4371.695, low 4300.825, close 4341.305, and H4 trend_20 (+287.69) embed prices after the PIT moment — the forecast uses these as evidence, as the target band (4371.695), and as an invalidation level (4300.825).",
+  "H1 current bar (12:00, spans 12:00-13:00) high 4327.645 is used as the alternative scenario's invalidation threshold; this high is not observable at 12:00.",
+  "M15 current bar (12:00, spans 12:00-12:15) high 4326.085 likewise post-dates PIT."
+ ],
+ "data_quality_issues": [
+  "Contradictory handling of the anomalous H4 current bar: flagged as 'internally anomalous ... no fabrication' in reasoning, yet its geometry (wick 30.39, body +24.56) and trend_20 are then used as primary evidence for both scenarios.",
+  "PROXY series (DXY, VIX) used as directional support despite 'instrument definition UNKNOWN'; the forecast itself notes PROXY is never upgraded (legend), but still weights DXY drift as supportive.",
+  "UST10Y correctly excluded (UNKNOWN); however the absence of NEWS/MACRO/positioning data is noted but does not reduce confidence — the confidence budget ignores the data-gap it documents."
+ ],
+ "hindsight_flags": [
+  "The '4341-4372 supply band' target is derived from the H4 current bar's high of 4371.695 — a level that exists only inside the non-PIT bar; forecasting a move toward a level only observable after the fact is post-hoc construction.",
+  "'H4 bullish body +24.56 despite wide range - expansion momentum dominant' reads the unclosed H4 bar's outcome as a present fact."
+ ],
+ "explanation_not_prediction_flags": [
+  "Primary trigger 'sustained trade/close above 4320.585 with M5/M15 range expansion' restates the scenario outcome as its own trigger — the forecast says the rise happens if the price rises above the level.",
+  "Large parts of PRIMARY_SCENARIO support ('buying pressure at the level', 'expansion momentum dominant', 'price at the level = breakout territory') describe the current bar geometry rather than a falsifiable future condition."
+ ],
+ "kline_overreliance_flags": [
+  "Direction, target, and invalidation are built exclusively from K-line geometry and derived state labels; the only non-K-line series (DXY, VIX) are PROXY of unknown definition, and the forecast itself notes all positioning/flow/news series are absent — the structural read has no independent corroboration.",
+  "Liquidity story (supply pool, absorption) is inferred purely from wicks and touch counts with no order-flow data; flagged by the forecast but still used to justify the 0.55 directional bet."
+ ],
+ "mtf_conflict_ignored_flags": [
+  "L6 agreement AGREE refers to trend_20 alignment only; range/volatility signals conflict — H1 range_contracting=true vs M1/M5/M15/H4 range_expanding=true, and H1 range_percentile 0.295 vs M5 0.94. The forecast mentions H1 coiling once but otherwise treats volatility as uniformly 'elevated and expanding'.",
+  "Energy conflict at the level (H1 low-energy bar at highs) is acknowledged in counter_evidence but never reflected in the primary/alternative confidence split."
+ ],
+ "evidence": [
+  {
+   "claim": "H4 upper wick 30.39 from 4371.695 proves supply rejection overhead (counter-evidence item 2)",
+   "contradicting_or_absent": "Same bar flagged by Hermes-A as internally anomalous (open 4316.745 matches the 12:00 M1 open while high 4371.695 far exceeds H1 constituents' max 4327.645); an H4 bar timestamped 12:00 spans 12:00-16:00 and is unobservable at PIT — evidence cannot be both trusted for support and cited as counter-evidence."
+  },
+  {
+   "claim": "Analog A20151 supports continuation EXPANSION->TREND",
+   "contradicting_or_absent": "A20151 path: EXPANSION(0,4,8) -> REJECTION(12) -> TREND(16). It rejects at step 12 before trending; A11710 and A28608 end REJECTION by steps 12-16. Majority analog evidence favors the rejection path, not continuation."
+  },
+  {
+   "claim": "Target supply band 4341-4372 'seen on H4'",
+   "contradicting_or_absent": "No closed bar in M1/M5/M15/H1 exceeds 4327.645; 4371.695 exists only inside the anomalous non-PIT H4 current bar."
+  },
+  {
+   "claim": "H4 trend_20 +287.69 and bullish body +24.56 = dominant expansion momentum",
+   "contradicting_or_absent": "Both derive from bars including the anomalous 12:00 H4 bar; H4 current bar geometry (open matching M1 open, high/low far outside H1 range) indicates the value is not a clean PIT observation."
+  },
+  {
+   "claim": "4 touches with INSIDE status = breakout territory / resting supply",
+   "contradicting_or_absent": "touch_count_240 4 with break_status INSIDE and reclaim_status NONE equally supports well-defended supply; no flow data exists to decide, so the bullish framing over-reads the same fact."
+  },
+  {
+   "claim": "Confidence 0.55 UP",
+   "contradicting_or_absent": "ambiguity_rate_8 0.5, H1 range_contracting + range_percentile 0.295, 2/3 analogs to REJECTION, no macro/news/positioning data — the evidentiary base supports a lower-confidence or INSUFFICIENT_EVIDENCE verdict on direction."
+  },
+  {
+   "claim": "INTRADAY horizon for both scenarios",
+   "contradicting_or_absent": "No mapping of analog steps 4/8/12/16 to clock time or bars; nothing in the context ties the transition timing to intraday."
+  },
+  {
+   "claim": "DXY drift is 'mildly supportive'",
+   "contradicting_or_absent": "change_8 -0.069 / change_32 -0.048 on a PROXY with UNKNOWN instrument definition; magnitude is within noise and the instrument is not confirmed as DXY."
+  }
+ ],
+ "strongest_objection": "The forecast is built on a data point it itself declares anomalous: the H4 'current' bar (timestamped 12:00, spanning 12:00-16:00) embeds prices after the PIT moment, and its high 4371.695 / low 4300.825 / close 4341.305 plus H4 trend_20 are used simultaneously as the primary scenario's target band, the alternative's rejection evidence (wick 30.39), and the invalidation levels — while being internally inconsistent with every H1/M15 constituent. Evidence that cannot be trusted cannot support a 0.55 UP directional bet; coupled with the cherry-picked A20151 analog (which actually rejects at step 12 before trending), the primary scenario's evidentiary basis collapses to geometry already visible at t, leaving the 2-of-3 analog rejection path and the defended INSIDE level as the more defensible reading.",
+ "reasoning_trace": [
+  "Verified CURRENT_STATE claims against L3/L5/L2: EXPANSION, ACCEPTANCE, dwell 4, REJECTION(4)->EXPANSION, ambiguity 0.5, price INSIDE 4320.585 with 4 touches — all accurate; no factual error here.",
+  "Checked every cited number against the payload: M1/M5 percentiles (0.915/0.94), M5 body 6.54, H4 range_percentile 0.945, DXY 99.853/-0.069, H1 08:00 low 4282.735, A11710/A28608 REJECTION at steps 12/16 — all present; A20151's intermediate REJECTION at step 12 is the key misread.",
+  "Identified the H4 current-bar problem: Hermes-A flagged the anomaly in reasoning_trace[5] but then used the same bar's wick/body/high as evidence in both scenarios and as the target/invalidation anchors — internally contradictory treatment.",
+  "Assessed the UP bias: defensible only through MTF trend_20 alignment, which itself is computed on bars including the non-PIT H4 bar; momentum-into-resistance can be absorption; no flow data to confirm 'acceptance holds'.",
+  "Assessed confidence: 0.55 is not earned given ambiguity 0.5, H1 compression at highs, 2/3 analogs to REJECTION, and the documented absence of NEWS/MACRO/COT/ETF/GLD/GC — the forecast's own counter_evidence list argues against its own confidence level.",
+  "Assessed horizon: no clock-time anchor exists for analog steps or scenario timing; 'INTRADAY' is asserted, not evidenced -> INSUFFICIENT_EVIDENCE.",
+  "Conclusion: structure and state description are accurate (AGREE), the adversarial effort is real (counter_evidence and change_my_mind present), but primary scenario, confidence, and horizon rest on contaminated data and a misread analog -> overall PARTIAL_AGREE, with PRIMARY_SCENARIO and CONFIDENCE at DISAGREE."
+ ]
+}

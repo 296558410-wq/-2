@@ -1,0 +1,39 @@
+{
+ "audit_id": "HB_POST_20260915",
+ "timestamp": "2026-09-27T23:02:00+08:00",
+ "correct_calls": [
+  "Identified the bear-trap / reclaim scenario (alternative, 0.30) as a live possibility — this is the scenario that actually materialized (direction UP, state TREND).",
+  "Anticipated REJECTION -> TREND as one of the possible state resolutions from the REJECTION (dwell 3) state, and TREND is exactly the realized state.",
+  "Called the structure genuinely two-sided (ambiguity_rate_8 = 0.5, multi-TF agreement CONFLICT, L6 never merged) — the outcome resolved along the direction that was explicitly flagged as counter-evidence.",
+  "Counter-evidence that M1/M5 short-term momentum was still UP (consecutive_up 6/5, trend_20 positive) and that the 4261.105 flush could be a failed-breakdown proved to be the operative side of the market."
+ ],
+ "wrong_calls": [
+  "direction_bias DOWN — the realized direction was UP.",
+  "Primary scenario (retest-rejection): price did NOT hold 4283.098 as resistance, did NOT print a lower high, and did NOT resume down toward 4278.485 / 4261.105 / 4253.438.",
+  "Confidence allocation: DOWN primary at 0.45 was wrong while the UP alternative at 0.30 was right — conviction was placed on the wrong branch.",
+  "Third scenario (COMPRESSION range 4261-4317) did not occur; the state went TREND, not COMPRESSION.",
+  "Expected transition wording 'REJECTION -> TREND (down-resumption) if the 4283.098 zone holds as resistance' — the zone did not hold as resistance in the manner asserted; the realized TREND was upward."
+ ],
+ "right_but_wrong_reason": [
+  "The REJECTION -> TREND state transition was anticipated but attributed to down-resumption via 4283.098 holding as resistance; it actually materialized as an upward TREND (reclaim), so the state was right for the wrong directional reason.",
+  "The 'range contraction precedes a resolve' call was directionally true (a resolve did occur) but Hermes-A attached the resolve to the DOWN side when the evidence (short-TF up-drift, flat DXY, falling VIX) was at least as consistent with an upward resolve."
+ ],
+ "direction_ok_state_wrong": "none — no call got the direction right while missing the state; the correct branch (bear-trap) matched both UP and TREND.",
+ "state_ok_direction_wrong": "REJECTION -> TREND was the right state transition, but Hermes-A's primary attached it to the DOWN resumption; the state resolved to TREND in the opposite (UP) direction.",
+ "should_have_abstained": false,
+ "invalidation_occurred": true,
+ "prior_concerns_materialised": null,
+ "hindsight_detected": false,
+ "hindsight_evidence": [],
+ "outcome_alignment_verdict": "PARTIALLY_CORRECT",
+ "reasoning_trace": [
+  "1. Hermes-A's primary (DOWN retest-rejection, 0.45) did not occur: realized next_state=TREND, direction=UP. The 4283.098-as-resistance premise failed and no down-resumption to 4261.105/4253.438 happened.",
+  "2. The actual outcome (UP, TREND) is covered by Hermes-A's OWN alternative 'bear-trap reclaim' scenario (REJECTION -> TREND up on reclaim), confirmed by payload field hermes_scenario_covered_actual=true — so the outcome was inside the enumerated scenario space.",
+  "3. Correct in structure: it refused to merge conflicting timeframes (L6 CONFLICT), flagged ambiguity 0.5, and explicitly listed M1/M5 up-drift and the failed-breakdown reclaim as counter-evidence — precisely the side that won.",
+  "4. Wrong in emphasis: direction_bias was asserted as DOWN and the DOWN branch carried the highest confidence (0.45), yet the evidence base was two-sided and the analog modal path was COMPRESSION (2/3), which argued against any high-conviction single directional primary at t.",
+  "5. Invalidation: the payload does not supply post-12:00 H1 closes, so the literal threshold 'H1 close above 4300.368' cannot be verified; however the primary scenario's outcome premise was manifestly invalidated (no down-resumption, realized UP/TREND), so invalidation_occurred=true with that caveat.",
+  "6. No hindsight detected: all Hermes-A reasoning derives from the pre-12:00 PIT context; DXY/VIX kept as PROXY, UST10Y UNKNOWN, absent series never fabricated, and no future information referenced.",
+  "7. prior_concerns_materialised cannot be assessed: no earlier adversarial auditor concerns were supplied in this payload, so the field is null.",
+  "8. Verdict: PARTIALLY_CORRECT — the realized outcome was correctly contained in the scenario set and the REJECTION->TREND transition was anticipated, but the primary branch, direction bias, and confidence ordering were wrong and the correctly-realized branch was the lower-probability alternative."
+ ]
+}

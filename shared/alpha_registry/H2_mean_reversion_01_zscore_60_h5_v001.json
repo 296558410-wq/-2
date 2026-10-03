@@ -1,0 +1,75 @@
+{
+  "hypothesis": "短期极端偏离是否预测回归？",
+  "features": "zscore_60",
+  "parameters": {
+    "holding": 5,
+    "feature_params": {}
+  },
+  "dataset": "XAUUSD_M1_Dukascopy-HTTP_20260904_v001",
+  "train_period": "2023-09-01 00:00:00+00:00→2024-01-07 09:36:00+00:00",
+  "test_period": "2024-01-07 09:36:00+00:00→2024-03-16 23:59:00+00:00",
+  "OOS": {
+    "ic": -0.02667194606668068,
+    "p": 0.0
+  },
+  "FDR": {
+    "q": 0.0,
+    "reject": true
+  },
+  "WF": {
+    "folds_ic": [
+      -0.0401,
+      0.0195,
+      -0.0505,
+      -0.0286,
+      -0.0264
+    ],
+    "positive_frac": 0.2,
+    "n_folds": 5
+  },
+  "cost_stress": {
+    "1x": -24.4698,
+    "2x": -46.3057,
+    "3x": -63.2934,
+    "net_total": -0.7808387805295882,
+    "n_trades": 5223,
+    "subperiod": {
+      "n_parts": 4,
+      "parts": [
+        {
+          "segment": 1,
+          "n": 54761,
+          "sharpe": -0.609,
+          "mean": -7.610083537652479e-06
+        },
+        {
+          "segment": 2,
+          "n": 54762,
+          "sharpe": -0.438,
+          "mean": -5.475738805606747e-06
+        },
+        {
+          "segment": 3,
+          "n": 54761,
+          "sharpe": -0.732,
+          "mean": -6.676546231911706e-06
+        },
+        {
+          "segment": 4,
+          "n": 54762,
+          "sharpe": -0.479,
+          "mean": -7.872976618709462e-06
+        }
+      ],
+      "sharpe_positive_frac": 0.0,
+      "sharpe_min": -0.732,
+      "sharpe_max": -0.438,
+      "note": "子段 Sharpe 一致性低 → 结果可能依赖特定时期"
+    }
+  },
+  "subperiod": null,
+  "status": "REJECTED",
+  "git_commit": "47602de",
+  "alpha_id": "H2_mean_reversion_01_zscore_60_h5_v001",
+  "created_at": "2026-09-04T12:42:15.151345+00:00"
+}

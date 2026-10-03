@@ -1,0 +1,47 @@
+{
+ "schema": "v3_l1_feature_registry/1",
+ "task": "V3-HFT-L1-EXECUTION-EDGE-DISCOVERY-001",
+ "frozen_utc": "2026-09-22T03:15:00Z",
+ "rule": "7 families x max 2 features = 14 features; every window frozen BEFORE computation; no mining",
+ "pit_causal": true,
+ "timestamp_unit": "ms (declared via microstructure/timestamp_unit_guard.py)",
+ "families": [
+  {"family": "PRICE", "features": [
+    {"name": "mid_return_1s", "definition": "mid[t]/mid[t-1s] - 1, in bp", "window": "1 s",
+     "status": "AVAILABLE", "note": "1-second trailing return"},
+    {"name": "displacement_5s", "definition": "mid[t]/mid[t-5s] - 1, in bp", "window": "5 s",
+     "status": "AVAILABLE", "note": "short displacement"}]},
+  {"family": "MOMENTUM", "features": [
+    {"name": "mom_3t", "definition": "mid[t]/mid[t-3 ticks] - 1, in bp", "window": "3 ticks",
+     "status": "AVAILABLE"},
+    {"name": "mom_10t", "definition": "mid[t]/mid[t-10 ticks] - 1, in bp", "window": "10 ticks",
+     "status": "AVAILABLE"}]},
+  {"family": "REVERSAL", "features": [
+    {"name": "rev_5t", "definition": "-1 * (mid[t]/mid[t-5 ticks] - 1), in bp", "window": "5 ticks",
+     "status": "AVAILABLE", "note": "sign-flip / overshoot reversal"},
+    {"name": "overshoot_z", "definition": "(displacement_5s - mean_50t(displacement_5s)) / std_50t(...)",
+     "window": "5 s vs 50 ticks", "status": "AVAILABLE"}]},
+  {"family": "SPREAD", "features": [
+    {"name": "spread_bp", "definition": "(ask-bid)/mid * 1e4", "window": "instant", "status": "AVAILABLE"},
+    {"name": "spread_pctile_200t", "definition": "percentile rank of spread_bp within trailing 200 ticks",
+     "window": "200 ticks", "status": "AVAILABLE"}]},
+  {"family": "VOLATILITY", "features": [
+    {"name": "rv_50t", "definition": "rolling std of 1-tick returns over 50 ticks, in bp", "window": "50 ticks",
+     "status": "AVAILABLE"},
+    {"name": "absret_10t", "definition": "mean |1-tick return| over 10 ticks, in bp", "window": "10 ticks",
+     "status": "AVAILABLE"}]},
+  {"family": "QUOTE", "features": [
+    {"name": "quote_update_rate_1s", "definition": "number of quote updates in the trailing 1 s", "window": "1 s",
+     "status": "AVAILABLE"},
+    {"name": "time_since_last_quote_s", "definition": "seconds since the previous tick", "window": "instant",
+     "status": "AVAILABLE"}]},
+  {"family": "TICKFLOW_PROXY", "features": [
+    {"name": "tick_rule_proxy_20t", "definition": "sum(sign(dmid)) / 20 over trailing 20 ticks",
+     "window": "20 ticks", "status": "PROXY", "must_be_named": "tick_rule_proxy (never OFI/TRADE_FLOW)"},
+    {"name": "tick_rule_proxy_50t", "definition": "sum(sign(dmid)) / 50 over trailing 50 ticks",
+     "window": "50 ticks", "status": "PROXY", "must_be_named": "tick_rule_proxy (never OFI/TRADE_FLOW)"}]}
+ ],
+ "forbidden_features": ["TRUE_OFI", "QUEUE_IMBALANCE", "REAL_MICROPICE", "ORDER_CANCEL_FLOW",
+                         "TRUE_TRADE_FLOW", "QUEUE_POSITION", "FILL_PROBABILITY"],
+ "frozen_decision": "no window is added or removed after this file is hashed"
+}

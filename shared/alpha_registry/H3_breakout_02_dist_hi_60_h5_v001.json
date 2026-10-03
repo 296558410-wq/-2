@@ -1,0 +1,75 @@
+{
+  "hypothesis": "突破过去高低点是否有 drift？",
+  "features": "dist_hi_60",
+  "parameters": {
+    "holding": 5,
+    "feature_params": {}
+  },
+  "dataset": "XAUUSD_M1_Dukascopy-HTTP_20260904_v001",
+  "train_period": "2023-09-01 00:00:00+00:00→2024-01-07 09:36:00+00:00",
+  "test_period": "2024-01-07 09:36:00+00:00→2024-03-16 23:59:00+00:00",
+  "OOS": {
+    "ic": -0.02810514897542293,
+    "p": 0.0
+  },
+  "FDR": {
+    "q": 0.0,
+    "reject": true
+  },
+  "WF": {
+    "folds_ic": [
+      -0.0248,
+      -0.0042,
+      -0.0211,
+      -0.0323,
+      -0.0406
+    ],
+    "positive_frac": 0.0,
+    "n_folds": 5
+  },
+  "cost_stress": {
+    "1x": -13.977,
+    "2x": -23.8552,
+    "3x": -32.546,
+    "net_total": -0.5816375732948116,
+    "n_trades": 2252,
+    "subperiod": {
+      "n_parts": 4,
+      "parts": [
+        {
+          "segment": 1,
+          "n": 57225,
+          "sharpe": -0.279,
+          "mean": -3.2948208357935624e-06
+        },
+        {
+          "segment": 2,
+          "n": 57225,
+          "sharpe": -0.28,
+          "mean": -3.378579462899906e-06
+        },
+        {
+          "segment": 3,
+          "n": 57225,
+          "sharpe": -0.373,
+          "mean": -3.296738397850523e-06
+        },
+        {
+          "segment": 4,
+          "n": 57225,
+          "sharpe": -0.328,
+          "mean": -5.180364721138898e-06
+        }
+      ],
+      "sharpe_positive_frac": 0.0,
+      "sharpe_min": -0.373,
+      "sharpe_max": -0.279,
+      "note": "子段 Sharpe 一致性低 → 结果可能依赖特定时期"
+    }
+  },
+  "subperiod": null,
+  "status": "REJECTED",
+  "git_commit": "47602de",
+  "alpha_id": "H3_breakout_02_dist_hi_60_h5_v001",
+  "created_at": "2026-09-04T12:42:15.403776+00:00"
+}

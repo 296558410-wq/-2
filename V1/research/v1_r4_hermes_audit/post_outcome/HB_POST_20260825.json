@@ -1,0 +1,34 @@
+{
+ "audit_id": "POST_20260825",
+ "timestamp": "2026-09-27T22:52:00+08:00",
+ "correct_calls": [
+  "Direction bias UP was correct: actual_outcome.actual_direction is UP, matching Hermes-A's direction_bias UP.",
+  "The actual outcome was covered by Hermes-A's stated scenario set (hermes_scenario_covered_actual true): actual_next_state COMPRESSION maps to the third scenario 'protracted compression inside the 4624-4645 range' (confidence 0.20).",
+  "Hermes-A explicitly carried COMPRESSION/range absorption as a live candidate (third scenario, and mechanism candidate range/compression absorption), so the realized state was not outside his contingency set.",
+  "Confidence discipline: capped primary at 0.45 citing multi-timeframe CONFLICT and heavy two-sided level interaction; this prevented overcommitting to the expansion outcome."
+ ],
+ "wrong_calls": [
+  "Primary scenario (ACCEPTANCE -> EXPANSION via upward break of 4642.315 with range expansion toward 4656-4667/4680) did not occur: actual_next_state is COMPRESSION, not EXPANSION.",
+  "The expected state transition 'ACCEPTANCE -> EXPANSION' was wrong; the lifecycle instead stayed/returned to COMPRESSION, which was Hermes-A's lowest-confidence branch (0.20)."
+ ],
+ "right_but_wrong_reason": [
+  "Direction UP was right, but for the wrong stated reason: Hermes-A argued compression at the pivotal 4642.315 level 'typically precedes directional expansion' (breakout with range expansion). The realized path was an upward move that resolved into COMPRESSION, not EXPANSION - no level break/expansion mechanism was confirmed by the outcome."
+ ],
+ "direction_ok_state_wrong": true,
+ "state_ok_direction_wrong": false,
+ "should_have_abstained": false,
+ "invalidation_occurred": false,
+ "prior_concerns_materialised": null,
+ "hindsight_detected": false,
+ "hindsight_evidence": [],
+ "outcome_alignment_verdict": "PARTIALLY_CORRECT",
+ "reasoning_trace": [
+  "Read PIT context (v1r3-r1, as_of 2026-08-25 12:00:00+00:00), Hermes-A forecast HERMES_FULL_CTX_20260825T120000Z, and actual_outcome; outcome used for audit only, never written back.",
+  "Compared actual_direction UP against Hermes-A direction_bias UP: directional call correct.",
+  "Compared actual_next_state COMPRESSION against expected_state_transition ACCEPTANCE -> EXPANSION: state call wrong; the realized state fell in the third (protracted compression, 0.20) scenario, which Hermes-A did enumerate and which the outcome flags as covered.",
+  "Checked invalidation: primary-scenario invalidation required M15 close below 4636.195 plus loss of 4630, or decisive 15m close below 4604.815; actual_direction UP and no breakdown recorded, so the downside invalidation did not occur (false).",
+  "Checked for hindsight: all supporting/counter evidence cited in the forecast are present in the PIT context (H4 trend, lower wicks, 65-touch level, M5 momentum, DXY/VIX, lifecycle labels, analogs state-paths only); no claim depends on knowledge of the outcome (false).",
+  "No prior adversarial auditor concerns were supplied in the payload, so prior_concerns_materialised set to null.",
+  "Verdict: direction correct, state transition wrong, outcome covered only by the lowest-confidence scenario - PARTIALLY_CORRECT."
+ ]
+}

@@ -1,0 +1,105 @@
+{
+  "forecast_id": "R8B_A_20260917",
+  "sample_id": "A_20260917",
+  "timestamp": "2026-09-17T00:00:00Z",
+  "horizon": 4,
+  "scenario_family": "RANGE",
+  "scenario_alternative": "DIRECTIONAL",
+  "scenario_abstain": false,
+  "observations": [
+    "H1 19:00 crash ~99 pts, 4355 to 4260",
+    "H4 upper wick 41.2, rejection near 4318",
+    "Nearest level SWING_LOW 4257.115, 16 touches, INSIDE",
+    "State EXPANSION, VOL_EXPANSION, dwell 10 bars"
+  ],
+  "what_i_know": [
+    "Price 4264-4271, MTF trend CONFLICT",
+    "EXPANSION with high range percentiles across timeframes",
+    "DXY 100.24, change_8 -0.075 (PROXY)",
+    "No VIX, UST10Y, NEWS, MACRO data"
+  ],
+  "what_i_do_not_know": [
+    "Crash cause unknown, NEWS absent",
+    "Post-crash 4h path unobservable",
+    "DXY proxy quality degraded",
+    "Break 4257 or 4318 direction unknown"
+  ],
+  "evidence": [
+    "Level 4257 touched 16 times, holding",
+    "H4 long upper wick signals supply",
+    "Post-crash consolidation 4257-4318 zone",
+    "Analogs step4 all EXPANSION, high vol"
+  ],
+  "counter_evidence": [
+    "M5 range expanding, not contracting",
+    "8-bar displacement -2.2 favors downside",
+    "H4 consecutive_up 7 after crash",
+    "EXPANSION usually precedes breakouts"
+  ],
+  "possible_mechanisms": [
+    {
+      "mechanism": "range_consolidation_after_crash",
+      "status": "POSSIBLE",
+      "why": "level holds, price oscillates between 4257 and 4318"
+    },
+    {
+      "mechanism": "trend_continuation_down",
+      "status": "POSSIBLE",
+      "why": "8-bar displacement -2.2, inside level"
+    },
+    {
+      "mechanism": "volatility_persistence",
+      "status": "SUPPORTED",
+      "why": "EXPANSION state and high range percentiles"
+    },
+    {
+      "mechanism": "news_driven_crash_extension",
+      "status": "UNKNOWN",
+      "why": "NEWS absent, cause cannot be asserted"
+    }
+  ],
+  "primary_scenario": {
+    "scenario": "RANGE",
+    "horizon": 4,
+    "trigger": "price holds 4257, oscillates within 4257-4318",
+    "invalidation": "decisive break below 4257 or above 4318"
+  },
+  "alternative_scenario": {
+    "scenario": "DIRECTIONAL",
+    "horizon": 4,
+    "trigger": "level break resumes crash momentum",
+    "invalidation": "reversion inside 4257-4318 without follow-through"
+  },
+  "expected_transition": "EXPANSION high-volatility range, directional trigger on break",
+  "direction_bias": "NO_DIRECTIONAL_EDGE",
+  "time_horizon": "H4",
+  "evidence_strength": 0.3,
+  "confidence": 0.35,
+  "uncertainty": 0.65,
+  "confidence_reason": "Level integrity and post-crash structure support range",
+  "uncertainty_reason": "MTF conflict, absent news, EXPANSION favors breakout",
+  "invalidation": "close beyond 4257 or 4318",
+  "change_my_mind": [
+    "M1 range contracting reverses to expanding",
+    "4257 decisive close below",
+    "News or macro data appears",
+    "MTF trend agreement emerges"
+  ],
+  "abstain": false,
+  "abstain_reason": "context sufficient for probabilistic family forecast",
+  "questions": {
+    "Q1": "Context states EXPANSION, crash, level 4257, MTF conflict",
+    "Q2": "Crash cause, next 4h path, real DXY quality unknown",
+    "Q3": "Level 4257 integrity and post-crash consolidation",
+    "Q4": "Expanding M5 and downside displacement contradict range",
+    "Q5": "News-driven crash extension unassertable, NEWS absent",
+    "Q6": "Decisive 4257 or 4318 break flips family",
+    "Q7": "No abstain; family forecast still meaningful"
+  },
+  "reasoning_trace": [
+    "Identified EXPANSION post-crash regime",
+    "Level 4257 holds with 16 touches",
+    "Weighed breakout risk against consolidation",
+    "RANGE primary, DIRECTIONAL alternative, low confidence"
+  ]
+}

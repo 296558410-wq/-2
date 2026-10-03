@@ -1,0 +1,117 @@
+--- V0_20260928_baseline
++++ V2_20261001_1433_pre_fix
+@@ -16,5 +16,5 @@
+ import subprocess
+ import sys
+-from datetime import datetime, timezone
++from datetime import datetime, timedelta, timezone
+ 
+ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+@@ -26,5 +26,4 @@
+ LEDGER = os.path.join(ROOT, "ledger", "v1_upgrade_ledger.jsonl")
+ ENV = os.path.join(REPO, ".env.mt5_demo")
+-STATE_OUT = os.path.join(ROOT, "state", "state_package_latest.json")
+ MAPPING = os.path.join(ROOT, "registry", "baseline_transition_mapping.json")
+ REPORT = os.path.join(ROOT, "reports", "last_cycle.json")
+@@ -155,4 +154,88 @@
+ 
+ 
++def _ledger_rows(path):
++    rows = []
++    if os.path.exists(path):
++        for line in open(path, encoding="utf-8"):
++            line = line.strip()
++            if line:
++                try:
++                    rows.append(json.loads(line))
++                except Exception:  # noqa: BLE001
++                    pass
++    return rows
++
++
++def reconcile_broker_closes(mt5, lg, days=120):
++    """Reconcile broker-side (SL/TP) exits into the ledger as CLOSE + PNL events.
++
++    The broker owns the exits (SL/TP), so the engine must OBSERVE them; otherwise every
++    close/PnL-derived statistic (closed count, realized pnl, win/loss, drawdown, streak,
++    replay) stays pinned at zero while real trades have closed.  Read-only w.r.t. trading
++    decisions (never sends an order, never changes a risk verdict); idempotent (dedup by
++    broker position_id); append-only (the SHA256 chain stays verifiable).
++    """
++    known = set()
++    for e in _ledger_rows(lg.path):
++        if e.get("event") == "CLOSE":
++            pid = e.get("position_id") or e.get("order_id")
++            if pid is not None:
++                known.add(str(pid))
++    sl_map = {}
++    for e in _ledger_rows(lg.path):
++        if e.get("event") == "POSITION" and e.get("order_id") is not None:
++            sl_map[str(e.get("order_id"))] = (e.get("sl"), e.get("tp"))
++    now = datetime.now(timezone.utc)
++    deals = mt5.history_deals_get(now - timedelta(days=days), now + timedelta(days=1)) or []
++    by_pos = {}
++    for x in deals:
++        try:
++            mg = int(getattr(x, "magic", 0) or 0)
++        except Exception:  # noqa: BLE001
++            mg = 0
++        if mg != MAGIC:
++            continue
++        pid = str(x.position_id)
++        rec = by_pos.setdefault(pid, {"open": None, "close": None})
++        if x.entry == 0:
++            rec["open"] = x
++        elif x.entry == 1:
++            rec["close"] = x
++
++    def _ctime(rec):
++        c = rec.get("close")
++        return int(getattr(c, "time", 0) or 0) if c is not None else 0
++
++    out = []
++    for pid, rec in sorted(by_pos.items(), key=lambda kv: _ctime(kv[1])):
++        o, c = rec.get("open"), rec.get("close")
++        if o is None or c is None or pid in known:
++            continue
++        profit = round(float(getattr(c, "profit", 0.0) or 0.0), 2)
++        entry_px = float(getattr(o, "price", 0.0) or 0.0)
++        exit_px = float(getattr(c, "price", 0.0) or 0.0)
++        qty = float(getattr(c, "volume", getattr(o, "volume", 0.0)) or 0.0)
++        side = "LONG" if int(getattr(o, "type", 0)) == 0 else "SHORT"
++        cmt = str(getattr(c, "comment", "") or "")
++        low = cmt.strip().lower()
++        reason = "SL" if low.startswith("[sl") else ("TP" if low.startswith("[tp") else "MANUAL")
++        sl, tp = sl_map.get(pid, (None, None))
++        rr = None
++        try:
++            if sl is not None and entry_px:
++                risk = abs(entry_px - float(sl))
++                if risk > 0:
++                    rr = round(profit / risk, 3)
++        except Exception:  # noqa: BLE001
++            rr = None
++        close_ts = datetime.fromtimestamp(int(getattr(c, "time", 0)), timezone.utc).isoformat()
++        lg.append("CLOSE", order_id=pid, position_id=pid, side=side, qty=qty, price=exit_px,
++                  reason=reason, broker_comment=cmt, broker_time_utc=close_ts)
++        lg.append("PNL", order_id=pid, position_id=pid, pnl=profit, entry=entry_px, exit=exit_px,
++                  qty=qty, side=side, reason=reason, realized_R=rr, sl=sl, tp=tp, broker_time_utc=close_ts)
++        out.append({"position_id": pid, "side": side, "reason": reason, "pnl": profit, "realized_R": rr})
++    return out
++
++
+ def main():
+     ap = argparse.ArgumentParser()
+@@ -192,4 +275,12 @@
+             mt5.shutdown(); lg.append("DECISION", action="HALT", reason=f"DEMO_GATE:{why}")
+             print(json.dumps({**res, "action": "HALT", "reason": f"DEMO_GATE:{why}"})); return
++        # ---- broker-close reconciliation: the broker owns SL/TP exits, so observe them (CLOSE + PNL) ----
++        try:
++            _closes = reconcile_broker_closes(mt5, lg)
++            res["reconciled_closes"] = len(_closes)
++            if _closes:
++                res["reconciled_detail"] = _closes
++        except Exception as _e:  # noqa: BLE001
++            res["reconcile_error"] = str(_e)[:150]
+         snap = snapshot(mt5)
+         atr = atr_m15(mt5)

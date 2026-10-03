@@ -1,0 +1,290 @@
+{
+ "schema": "v3_m03_r1_tests/1",
+ "total": 26,
+ "pass": 26,
+ "fail": 0,
+ "results": [
+  {
+   "test": "test_m03_input_count_63",
+   "result": "PASS",
+   "detail": {
+    "expected": 63,
+    "loaded": 63,
+    "missing": 0,
+    "duplicate": 0,
+    "unexpected": 0
+   },
+   "sec": 0.0
+  },
+  {
+   "test": "test_input_manifest_hash",
+   "result": "PASS",
+   "detail": {
+    "input_hash": "202db652b9732aa92feb",
+    "rows": 63
+   },
+   "sec": 0.0
+  },
+  {
+   "test": "test_input_immutable",
+   "result": "PASS",
+   "detail": {
+    "four_upstream_inputs_unchanged": true
+   },
+   "sec": 0.14
+  },
+  {
+   "test": "test_r4_method_hash",
+   "result": "PASS",
+   "detail": {
+    "R4_method_hash": "571bad8fd9621780d676",
+    "unchanged": true
+   },
+   "sec": 0.0
+  },
+  {
+   "test": "test_r4_registry_immutable",
+   "result": "PASS",
+   "detail": {
+    "registry_hash": "9913dd6d9860f5e0fb3b",
+    "r2_r3_r4_agree": true
+   },
+   "sec": 0.0
+  },
+  {
+   "test": "test_freeze_hash",
+   "result": "PASS",
+   "detail": {
+    "freeze_hash": "2116ec8e812c322a3460",
+    "matches_frozen_value": true
+   },
+   "sec": 0.0
+  },
+  {
+   "test": "test_no_lookahead",
+   "result": "PASS",
+   "detail": {
+    "events_checked": 63,
+    "pit_policy": "declared in the audit"
+   },
+   "sec": 0.0
+  },
+  {
+   "test": "test_pit_timestamp",
+   "result": "PASS",
+   "detail": {
+    "events": 63,
+    "cross_checked_against_r4": 63,
+    "ordered": true,
+    "baseline_window_bars": 240
+   },
+   "sec": 0.0
+  },
+  {
+   "test": "test_shock_definition_frozen",
+   "result": "PASS",
+   "detail": {
+    "threshold": 2.0,
+    "baseline": 240,
+    "sources": [
+     "DXY",
+     "VIX",
+     "UST10Y_PROXY"
+    ],
+    "proxy": "^TNX_PROXY"
+   },
+   "sec": 0.0
+  },
+  {
+   "test": "test_event_independence",
+   "result": "PASS",
+   "detail": {
+    "events": 63,
+    "unique": true
+   },
+   "sec": 0.0
+  },
+  {
+   "test": "test_episode_dependency",
+   "result": "PASS",
+   "detail": {
+    "raw_n": 63,
+    "effective_n": 21,
+    "note": "63 events are NOT 63 independent return observations"
+   },
+   "sec": 0.01
+  },
+  {
+   "test": "test_response_window_frozen",
+   "result": "PASS",
+   "detail": {
+    "windows": {
+     "R0": 1,
+     "R1": 3,
+     "R2": 6,
+     "R3": 12
+    }
+   },
+   "sec": 0.0
+  },
+  {
+   "test": "test_entry_delay_frozen",
+   "result": "PASS",
+   "detail": {
+    "delays": [
+     0,
+     1
+    ]
+   },
+   "sec": 0.0
+  },
+  {
+   "test": "test_cost_model_frozen",
+   "result": "PASS",
+   "detail": {
+    "anchor": 0.914,
+    "stress": [
+     0,
+     1,
+     2,
+     3
+    ]
+   },
+   "sec": 0.0
+  },
+  {
+   "test": "test_block_bootstrap",
+   "result": "PASS",
+   "detail": {
+    "ci95": [
+     10.5104,
+     49.9205
+    ],
+    "block": 5,
+    "iterations": 2000
+   },
+   "sec": 0.0
+  },
+  {
+   "test": "test_permutation",
+   "result": "PASS",
+   "detail": {
+    "permutation_p": 0.0065,
+    "seed": 20260925,
+    "iterations": 2000
+   },
+   "sec": 0.0
+  },
+  {
+   "test": "test_negative_control",
+   "result": "PASS",
+   "detail": {
+    "status": "PASS_WITH_LIMITATION",
+    "limitation": "the control reuses the permutation null draws, so it is a consistency check, not an independent second-layer control experiment",
+    "control_mean": -2.5663,
+    "observed_mean": 26.7942
+   },
+   "sec": 0.0
+  },
+  {
+   "test": "test_multiple_testing",
+   "result": "PASS",
+   "detail": {
+    "family_size": 8,
+    "status": "PASS",
+    "significant": [
+     "VIX/opposite",
+     "MULTI_SOURCE/opposite"
+    ]
+   },
+   "sec": 0.0
+  },
+  {
+   "test": "test_walk_forward_3fold",
+   "result": "PASS",
+   "detail": {
+    "folds": {
+     "fold1": 8.2659,
+     "fold2": 19.1354,
+     "fold3": 50.2393
+    },
+    "status": "CONSISTENT"
+   },
+   "sec": 0.0
+  },
+  {
+   "test": "test_deterministic",
+   "result": "PASS",
+   "detail": {
+    "output_hash": "43249b90c44ce5f718a3",
+    "artifacts_untampered": true
+   },
+   "sec": 0.01
+  },
+  {
+   "test": "test_replay",
+   "result": "PASS",
+   "detail": {
+    "ledger_rows": 71,
+    "chain_ok": true,
+    "note": "replay here is hash-level attestation: freeze + inputs + outputs + ledger all match"
+   },
+   "sec": 0.0
+  },
+  {
+   "test": "test_tnx_proxy_audit",
+   "result": "PASS",
+   "detail": {
+    "tnx_events": 10,
+    "without_tnx_gross_bp": 30.0493,
+    "without_tnx_net_1x_bp": 29.1353,
+    "limit": "shows only that the result does not depend on the ^TNX leg; no economic causality claimed"
+   },
+   "sec": 0.0
+  },
+  {
+   "test": "test_timestamp_sensitivity",
+   "result": "PASS",
+   "detail": {
+    "shift_-1": 31.7961,
+    "shift_0": 25.8802,
+    "shift_+1": 11.3182,
+    "conclusion": "POSITIVE_BUT_TIMESTAMP_SENSITIVE"
+   },
+   "sec": 0.0
+  },
+  {
+   "test": "test_direction_mirror_arithmetic_identity",
+   "result": "PASS",
+   "detail": {
+    "DIRECTION_MIRROR_TEST": "ARITHMETIC_IDENTITY",
+    "note": "opposite = -aligned by construction; this is NOT independent evidence and NOT asymmetry"
+   },
+   "sec": 0.0
+  },
+  {
+   "test": "test_no_order_send",
+   "result": "PASS",
+   "detail": {
+    "ast_clean": true,
+    "trading_status": {
+     "ORDER_SEND": 0,
+     "V3_FORWARD": "OFF",
+     "V3_SHADOW": "OFF",
+     "V3_LIVE": "OFF"
+    }
+   },
+   "sec": 0.03
+  },
+  {
+   "test": "test_v1_v2_isolation",
+   "result": "PASS",
+   "detail": {
+    "v1_v2_source_modified": 0,
+    "window_start": 1790362221
+   },
+   "sec": 0.27
+  }
+ ],
+ "TEST_STATUS": "PASS"
+}

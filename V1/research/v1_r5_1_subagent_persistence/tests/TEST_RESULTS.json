@@ -1,0 +1,68 @@
+{
+ "tests": {
+  "test_parent_authoritative_write": {
+   "result": "PASS",
+   "detail": "the PARENT performs schema validation, atomic write, read-back and hashing; child file writes are not required"
+  },
+  "test_atomic_write": {
+   "result": "PASS",
+   "detail": ".tmp + fsync + os.replace; read-back verified byte-equal"
+  },
+  "test_chain_20_of_20": {
+   "result": "PASS",
+   "detail": "20/20 samples passed RETURN+SCHEMA+WRITE+READBACK+HASH; longest consecutive run = 20"
+  },
+  "test_no_duplicate_accept": {
+   "result": "PASS",
+   "detail": "no sample_id accepted twice (dupes=[])"
+  },
+  "test_no_silent_drop": {
+   "result": "PASS",
+   "detail": "fault injections all detected; SILENT_DROP=0"
+  },
+  "test_fault_injection": {
+   "result": "PASS",
+   "detail": "8/8 scenarios detected; DUPLICATE_ACCEPTED=0"
+  },
+  "test_replay_determinism": {
+   "result": "PASS",
+   "detail": "same input -> same payload_hash (True), same schema_result (True), idempotent re-write (True)"
+  },
+  "test_ledger_chain": {
+   "result": "PASS",
+   "detail": "sha256 chain verified, 71 entries"
+  },
+  "test_r3_immutable": {
+   "result": "PASS",
+   "detail": "R3 byte-identical (changes=[])"
+  },
+  "test_r4_immutable": {
+   "result": "PASS",
+   "detail": "R4 byte-identical (changes=[])"
+  },
+  "test_r5_immutable": {
+   "result": "PASS",
+   "detail": "R5 byte-identical (changes=[])"
+  },
+  "test_v1_isolation": {
+   "result": "PASS",
+   "detail": "no V1 execution/risk/order reference"
+  },
+  "test_v2_isolation": {
+   "result": "PASS",
+   "detail": "no V2 reference"
+  },
+  "test_v3_isolation": {
+   "result": "PASS",
+   "detail": "no V3 write target"
+  },
+  "test_order_send_disabled": {
+   "result": "PASS",
+   "detail": "no order/broker call"
+  }
+ },
+ "total": 15,
+ "pass": 15,
+ "fail": 0,
+ "ts_utc": "2026-09-27T23:41:09.720141+00:00"
+}

@@ -1,0 +1,62 @@
+{
+ "audit_id": "BA_20260831",
+ "timestamp": "2026-09-28T05:03:00+00:00",
+ "overall_verdict": "PARTIAL_AGREE",
+ "focus_verdicts": {
+  "OBSERVATION_DISCIPLINE": "PARTIAL_AGREE",
+  "MECHANISM_DISCIPLINE": "PARTIAL_AGREE",
+  "COUNTER_EVIDENCE": "PARTIAL_AGREE",
+  "CONFIDENCE": "DISAGREE",
+  "ABSTENTION": "PARTIAL_AGREE",
+  "INVALIDATION": "PARTIAL_AGREE"
+ },
+ "over_inference": [
+  "Evidence claim 'M5/M15 current bars show fading momentum' is contradicted by the same tape Hermes-A quotes as its own counter-evidence ('Current M1 body_ratio 0.78 bullish'; context M5 current body_ratio 0.6637, close 4455.865, M1 current body_ratio 0.7808). The last bars are bullish-bodied, not fading; 'fading' is inferred, not observed.",
+  "Primary scenario 'drift lower toward 4440-4430' (10-25 points) rests on a REJECTION event with evidence_strength 0.35 while 2 of the 3 retrieved historical analogs (A26216: COMPRESSION->TREND->EXPANSION; A32609: COMPRESSION->ROTATION->TREND) resolve opposite to the DOWN bias, and M5 close 4455.865 is already above the swing-high level 4453.465.",
+  "Directional DOWN bias is committed although L2 break_status is 'INSIDE' and reclaim_status 'NONE' - the level is explicitly unresolved, so the direction of resolution is inferred, not supported."
+ ],
+ "mechanism_jump": [
+  "Context L4 provides exactly one frozen candidate mechanism 'trend_continuation' with supporting_evidence ['price inside level, 8-bar displacement 10.83']; Hermes-A never engages it and instead invents 'breakout_continuation' and 'higher_tf_trend_resumption' (both POSSIBLE), which are not mapped to the frozen ontology and have no SUPPORTED/WEAK/UNKNOWN coverage.",
+  "'higher_tf_trend_resumption' is labelled POSSIBLE with reason 'H4 downtrend intact, rejection consistent', but L6 agreement is 'CONFLICT' (M1/M5/M15 trend_20 positive, H1/H4 negative); a rejection wick at a level is not evidence the H4 downtrend is resuming - status is jumped from 'event observed' to 'mechanism plausible' without a testable link.",
+  "'breakout_continuation' ('Short-TF momentum could push through level') uses the same displacement 10.83 that the context lists as SUPPORTING the frozen candidate trend_continuation; Hermes-A reuses it as counter-evidence in one field and as the basis of a competing mechanism in another, without reconciling which mechanism the displacement actually supports."
+ ],
+ "missing_counter_evidence": [
+  "H1 current bar high 4463.855 (context H1 current: open 4453.655, high 4463.855) - price has already printed far above the forecast's own invalidation threshold 4457.445 and above the swing high 4453.465; never used as counter-evidence and never flagged as contradicting the 'rejection at 4453.465' framing. The alternative scenario target 'squeeze toward 4465' matches this printed high, yet invalidation stays at 4457.445 - internally inconsistent.",
+  "M15 current bar high is exactly 4457.445, equal to the primary invalidation threshold; the forecast's invalidation boundary coincides with an already-printed level and is not noted as such.",
+  "M5 close 4455.865 is already above the swing-high level 4453.465 (level_side UP, distance_atr 0.0117) - the 'rejection' setup has price above the level on M5/M1 closes (4454.795), so the level is not defended by the tape; counter-evidence list only says 'Level status INSIDE, not decisively rejected' without noting the closes above it.",
+  "Historical analogs A26216 (COMPRESSION -> COMPRESSION -> TREND -> TREND -> EXPANSION) and A32609 (COMPRESSION -> ROTATION -> TREND -> TREND -> NO_DEFINED_STATE) contradict the DOWN bias; only A19754 (COMPRESSION ... -> REJECTION), the one analog supporting the bias, is cited as evidence.",
+  "Cross-timeframe current-bar inconsistency is never audited: H4 current close 4431.495 vs M15 close 4453.545 vs M1 close 4454.795 at the same timestamp 12:00; M15 high 4457.445 and M5 high 4456.675 are unreconcilable with the M1/M5 prints in the same window (max M1 high 4455.445). Any confident claim built on current-bar values is vulnerable to this artifact.",
+  "Frozen candidate mechanism trend_continuation (supporting 'price inside level, 8-bar displacement 10.83') is ignored entirely - no counter-evidence is offered against the one mechanism the frozen layer actually proposed."
+ ],
+ "unjustified_confidence": [
+  "evidence_strength 0.35 and confidence 0.35 are numerically identical and their reasons overlap ('Higher-TF downtrend plus REJECTION label, but conflicting short-TF momentum'); two distinct constructs are given the same number, so they are not demonstrated as distinct or independently justified.",
+  "direction_bias DOWN is asserted with confidence 0.35 while the level is INSIDE (not decisively rejected), M5/M1 closes are above the level, 2 of 3 analogs resolve upward, and cross-market data is all PROXY/UNKNOWN - the directional commitment is stronger than the evidence permits.",
+  "abstain:false with reason 'Enough coherent structure' understates unresolved inputs: UST10Y UNKNOWN, DXY instrument definition UNKNOWN, NEWS/MACRO/COT/ETF_FLOWS all absent, level unresolved, and the current-bar data artifact unvetted."
+ ],
+ "observation_as_fact": [
+  "Evidence item 'Analog A19754: COMPRESSION then REJECTION' is presented as support for DOWN as if it were a fact, while the retrieval returned 3 analogs and the other 2 evolve to TREND/EXPANSION; a single retrieved path is being treated as confirmatory evidence (state-evolution-only retrieval, §18/§72 note: no returns ever included).",
+  "Evidence item 'M5/M15 current bars show fading momentum' states a judgment as an observation; context M5 current bar is body_ratio 0.6637 (bullish body 2.21) and M1 current body_ratio 0.7808, i.e. the observable last bars are momentum-positive, not fading."
+ ],
+ "strongest_objection": "Hermes-A commits to a DOWN bias ('drift lower toward 4440-4430') on evidence_strength 0.35 while the observable tape contradicts the setup: M5 close 4455.865 and M1 close 4454.795 are already ABOVE the swing-high level 4453.465, the M15 current bar has already printed 4457.445 (equal to its own invalidation threshold), the H1 current bar shows a high of 4463.855 (approximately its own alternative target 4465 already traded), and 2 of 3 historical analogs resolve upward. The rejection narrative rests on an unvetted current-bar artifact (M15 high 4457.445 / H4 close 4431.495 unreconcilable with the M1/M5 prints in the same window) and cherry-picks the single analog supporting its bias; its invalidation threshold is stale relative to already-printed price extremes, so the forecast cannot be meaningfully falsified by the very levels it sets.",
+ "evidence": [
+  "Context L2: level_price 4453.465, break_status 'INSIDE', reclaim_status 'NONE', touch_count_240 25",
+  "Context M5 current: close 4455.865, body_ratio 0.6636636636636891 (already above the level)",
+  "Context M1 current: close 4454.795, body_ratio 0.780821917808424",
+  "Context M15 current: high 4457.445, upper_wick 3.7899999999999636, body_ratio 0.02466367712997123 (high equals forecast invalidation threshold)",
+  "Context H1 current: open 4453.655, high 4463.855, close 4455.095 (high exceeds invalidation threshold and matches alternative target 4465)",
+  "Context H4 current: close 4431.495 vs M15 close 4453.545 vs M1 close 4454.795 - unreconcilable current-bar closes at the same timestamp",
+  "Context L6: agreement 'CONFLICT', M1/M5/M15 trend_20 positive (+5.27/+16.94/+17.98), H1/H4 trend_20 negative (-69.04/-171.17)",
+  "Context L4: frozen candidate mechanism 'trend_continuation' with supporting_evidence ['price inside level, 8-bar displacement 10.83']",
+  "Context analogs: A19754 -> REJECTION at step 16; A26216 -> TREND at 8 then EXPANSION at 16; A32609 -> ROTATION at 4, TREND at 8-12",
+  "Forecast: direction_bias DOWN, evidence_strength 0.35, confidence 0.35, uncertainty 0.6, invalidation 'M15 close above 4457.445', alternative 'squeeze toward 4465', abstain false"
+ ],
+ "reasoning_trace": [
+  "Checked each observation field against context: level, trends, label, dwell all match - OBSERVATION_DISCIPLINE mostly sound, but 'fading momentum' is a judgment placed in evidence.",
+  "Checked mechanism statuses: both POSSIBLE is honest, but the frozen candidate trend_continuation is ignored and mechanism names are not mapped to the frozen ontology - mechanism_jump.",
+  "Checked counter_evidence: a genuine list exists, but the strongest contradicting tape items (H1 high 4463.855, M5 close above level, M15 high equal to invalidation, analogs 2/3, current-bar inconsistency) are missing - COUNTER_EVIDENCE partial.",
+  "Checked confidence: evidence_strength == confidence == 0.35 with overlapping reasons and a DOWN bias against an INSIDE/unresolved level - CONFIDENCE DISAGREE.",
+  "Checked abstention: structure exists so non-abstention is defensible, but committing a directional DOWN bias while 2 of 3 analogs and the M5/M1 closes point up was premature - ABSTENTION partial.",
+  "Checked invalidation: conditions are grammatically checkable, but 4457.445 is an already-printed M15 high and 4463.855 has already traded on H1, making the thresholds stale discriminators - INVALIDATION partial.",
+  "Overall: structurally honest two-sided forecast with real counter-evidence and low stated confidence, but its directional case rests on cherry-picked analog evidence and an unvetted current-bar artifact - PARTIAL_AGREE."
+ ]
+}

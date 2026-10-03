@@ -1,0 +1,95 @@
+{
+ "ts_utc": "2026-09-28T05:27:21.303587+00:00",
+ "pit": {
+  "features_used": [
+   "dwell",
+   "ev_0",
+   "ev_1",
+   "evchg_1",
+   "evchg_2",
+   "evchg_4",
+   "evchg_8",
+   "f_acc",
+   "f_act3",
+   "f_atr_pctl",
+   "f_eff3",
+   "f_er10",
+   "f_rng_exp",
+   "f_slope5",
+   "f_vel4",
+   "mtf_0",
+   "mtf_1",
+   "mtf_2",
+   "mtf_3",
+   "mtf_4",
+   "mtf_5",
+   "nod8",
+   "st_0",
+   "st_1",
+   "st_2",
+   "vol_20",
+   "vol_5",
+   "volr",
+   "xs_DXY",
+   "xs_DXY_d12",
+   "xs_TNX",
+   "xs_TNX_d12",
+   "xs_VIX",
+   "xs_VIX_d12"
+  ],
+  "forbidden_used": [],
+  "shift_direction": "all lags use .shift(+k) (past only) and cross-market uses reindex(method='ffill') as-of t",
+  "available_at_t": true,
+  "status": "PASS"
+ },
+ "crossmarket_source": {
+  "DXY": "OK",
+  "VIX": "OK",
+  "TNX": "OK"
+ },
+ "n_dev": 33114,
+ "n_blind": 7306,
+ "H_bars": 8,
+ "targets": {
+  "STATE": {
+   "PRICE_ONLY": {
+    "balanced_acc": 0.2014,
+    "macro_f1": 0.1629,
+    "n_te": 7306
+   },
+   "classification": "INFORMATION_WEAK"
+  },
+  "TRANSITION": {
+   "PRICE_ONLY": {
+    "balanced_acc": 0.5,
+    "macro_f1": 0.3965,
+    "n_te": 7306
+   },
+   "classification": "INFORMATION_ABSENT"
+  },
+  "DIRECTION": {
+   "PRICE_ONLY": {
+    "balanced_acc": 0.3933,
+    "macro_f1": 0.3552,
+    "n_te": 7306
+   },
+   "classification": "INFORMATION_WEAK"
+  },
+  "SCENARIO": {
+   "PRICE_ONLY": {
+    "balanced_acc": 0.5207,
+    "macro_f1": 0.5199,
+    "n_te": 7306
+   },
+   "classification": "INFORMATION_PRESENT"
+  },
+  "TIMING": {
+   "PRICE_ONLY": {
+    "balanced_acc": 0.25,
+    "macro_f1": 0.1586,
+    "n_te": 7306
+   },
+   "classification": "TARGET_PROBLEM"
+  }
+ }
+}

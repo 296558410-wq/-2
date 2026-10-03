@@ -1,0 +1,131 @@
+# R29 - V1 Run Boundary / Accounting Boundary Design
+
+STATUS: DESIGN ONLY - NOT IMPLEMENTED - NOT APPLIED TO V1
+
+```text
+CURRENT CAPABILITY
+```
+
+| Capability | Current V1 | Required | Gap |
+|---|---|---|---|
+| RUN_IDENTITY | PARTIAL | PROVEN | DESIGN_ONLY_COVERED |
+| COUNTER_BOUNDARY | PARTIAL | PROVEN | DESIGN_ONLY_COVERED |
+| PNL_BOUNDARY | NOT_PROVEN | PROVEN | DESIGN_ONLY_COVERED |
+| BALANCE_BOUNDARY | NOT_PROVEN | PROVEN | DESIGN_ONLY_COVERED |
+| LEDGER_BOUNDARY | PARTIAL | PROVEN | DESIGN_ONLY_COVERED |
+| BROKER_BASELINE | NOT_PROVEN | PROVEN | DESIGN_ONLY_COVERED |
+| REPLAY | NOT_PROVEN | PROVEN | DESIGN_ONLY_COVERED |
+| CROSS_RUN_ISOLATION | NOT_PROVEN | PROVEN | DESIGN_ONLY_COVERED |
+| IMMUTABLE_CLOSEOUT | NOT_PROVEN | PROVEN | DESIGN_ONLY_COVERED |
+
+## Current V1 audit (read-only)
+
+```text
+run_id = V1_RUN_20260924_RESET_01
+run_start_utc = 2026-09-23T23:39:46.457357+00:00
+run_end_utc_present = NO
+runtime_version = trader_v1/engine.py@7d95645678cf
+statistics numeric paths = 56
+statistics top keys = ["counters", "integrity", "last_invariants", "note", "run_id", "run_start_utc", "waits"]
+run_meta keys = ["account", "archive", "config_hash", "execution_mode", "git_branch", "git_commit", "magic", "note", "previous_run", "run_id", "runtime_version", "start_time_utc", "strategy_hash", "symbol"]
+ledger lines = 173
+ledger keys = {"type": 173, "plan_id": 173, "decision_id": 68, "decision": 68, "plan": 68, "validation": 68, "utc_ts": 173, "sha256": 173, "reason": 67, "matched": 27, "risk_pass": 22, "notional_est": 22, "price": 16, "qty": 16, "position_id": 16, "exec_mode": 31, "broker_ticket": 16, "exit_price": 15, "realized_usd": 15, "broker_auto": 15}
+ledger types = {"registered": 68, "cancelled": 52, "triggered": 22, "filled": 16, "closed": 15}
+engine.py run-boundary symbols = {}
+```
+
+## Design schema (see also V1_R29_RUN_BOUNDARY_SCHEMA.json)
+
+```json
+{"run_identity": {"run_id": "string, immutable, unique, never reused", "run_start_utc": "ISO8601 UTC, immutable", "run_end_utc": "ISO8601 UTC or null until close", "run_status": ["CREATED", "OPEN", "CLOSED", "ABORTED"], "runtime_version": "string, immutable", "config_hash": "sha256, immutable", "source_hash": "sha256 of the source snapshot used, immutable", "transitions": {"allowed": ["CREATED->OPEN", "OPEN->CLOSED", "OPEN->ABORTED"], "forbidden": ["CLOSED->OPEN", "run_id reuse across runs"]}}, "run_manifest": {"file": "runs/<run_id>/manifest.json", "fields": ["run_id", "run_start_utc", "run_end_utc", "run_status", "runtime_version", "source_hash", "config_hash", "opening_balance", "opening_equity", "closing_balance", "closing_equity", "parent_run_id", "manifest_hash"], "immutability": "run_id/run_start_utc/runtime_version/source_hash/config_hash are write-once", "manifest_hash": "sha256 over all fields except manifest_hash"}, "opening_accounting_boundary": {"required": ["opening_balance", "opening_equity", "opening_timestamp", "source"], "source_enum": ["BROKER_OBSERVED", "PAPER_LEDGER", "OTHER"], "if_broker": ["observation_timestamp", "account_identifier_hash", "balance", "equity"], "forbidden": "deriving opening state from the previous run's closing PnL"}, "counter_schema": {"file": "runs/<run_id>/counter_schema.json", "per_counter": ["json_path", "semantic_type", "initialization_rule", "run_scope", "aggregation_rule"], "semantic_types": ["RUN_SCOPED", "ACCOUNT_SCOPED", "LIFETIME_SCOPED", "DERIVED"], "rule": "ACCOUNT_LIFETIME counters must never be zeroed into run statistics"}, "pnl_boundary": {"event_schema": {"event_id": "", "run_id": "", "position_id": "", "deal_id": "", "realized_pnl": 0, "commission": 0, "swap": 0, "fee": 0, "net_pnl": 0, "timestamp": ""}, "binding_rule": "explicit run_id on every PnL event; no inference from co-location", "scopes": {"REALIZED_PNL": "RUN_SCOPED", "UNREALIZED_PNL": "ACCOUNT_SCOPED", "COMMISSION": "RUN_SCOPED", "SWAP": "RUN_SCOPED", "FEE": "RUN_SCOPED", "NET_PNL": "RUN_SCOPED_DERIVED"}, "forbidden": "ACCOUNT_BALANCE treated as RUN_PNL"}, "broker_baseline": {"required_before_run_open": ["timestamp", "balance", "equity", "open_positions", "pending_orders"], "if_open_position": {"position_baseline_fields": ["ticket", "symbol", "side", "volume", "open_price", "sl", "tp", "magic"], "default_action": "NEW_RUN_START = BLOCKED"}, "deal_mapping": "broker_deal_id -> exactly one run; same deal must never map to >1 run", "recommended_policy": "block a new run while the previous run has any open position"}, "ledger_boundary": {"mode": "append-only", "record_fields": ["event_id", "run_id", "event_type", "timestamp", "payload_hash", "previous_hash", "record_hash"], "chain_rule": "record[n].previous_hash == record[n-1].record_hash", "closed_run_rule": "no ordinary events may be appended after RUN_CLOSE"}, "run_closeout": {"event": "RUN_CLOSE", "fields": ["run_id", "close_timestamp", "final_counter_snapshot", "final_pnl_snapshot", "final_balance", "final_equity", "ledger_head_hash", "statistics_hash"], "produces": "RUN_CLOSE_HASH", "effect": "run becomes immutable"}, "new_run_open_event": {"event": "RUN_OPEN", "fields": ["run_id", "opening_balance", "opening_equity", "opening_counter_snapshot", "broker_baseline_hash", "previous_run_id"], "note": "previous_run_id is lineage only; it does not imply PnL inheritance"}, "statistics_layout": {"required": "per-run namespace", "example": "runs/<run_id>/{manifest.json, statistics.json, ledger.jsonl, closeout.json}", "forbidden": "a single fixed statistics.json shared by all runs"}, "snapshot_hashes": ["manifest_hash", "statistics_hash", "ledger_head_hash", "RUN_CLOSE_HASH"], "replay_specification": {"steps": ["LOAD RUN", "READ OPENING SNAPSHOT", "REPLAY EVENTS", "RECONSTRUCT COUNTERS", "RECONSTRUCT PNL", "COMPARE CLOSING SNAPSHOT"], "success": "REPLAY_MATCH = TRUE", "failure": "RUN_INVALID"}, "cross_run_isolation": {"requirements": ["RUN_A events intersect RUN_B events = empty", "RUN_A PnL intersect RUN_B PnL = empty"], "exception": "account-lifetime state must be tagged ACCOUNT_SCOPE, not RUN_SCOPE"}, "balance_vs_pnl": {"separate_concepts": ["balance_delta", "realized_pnl"], "reason": "deposits/withdrawals/fees/swaps/commissions/adjustments break the identity"}, "account_events": {"schema": "ACCOUNT_EVENT", "kinds": ["deposit", "withdrawal", "credit", "fee", "adjustment"]}, "reset_safety_gate": {"preconditions": ["OLD_RUN_STATUS = CLOSED", "OLD_RUN_CLOSEOUT = VERIFIED", "OLD_LEDGER_HASH = VERIFIED", "OLD_STATISTICS_HASH = VERIFIED", "OLD_PNL_SNAPSHOT = VERIFIED", "NO_OPEN_POSITION", "NO_PENDING_ORDER", "NEW_RUN_MANIFEST = CREATED", "NEW_RUN_OPENING_SNAPSHOT = VERIFIED"], "otherwise": "RESET_ALLOWED = NO"}, "reset_not_delete": {"model": "CLOSE OLD RUN -> FREEZE OLD RUN -> CREATE NEW RUN", "forbidden": ["delete old ledger", "truncate old ledger", "overwrite old statistics"]}, "automation_boundary": {"allowed": ["START_RUN", "RUN_V1", "CLOSE_RUN"], "forbidden": ["rewrite statistics", "truncate ledger", "change run_id"], "authority": "a deterministic Run Manager performs the accounting operations"}, "hermes_boundary": {"may_read": "run context", "must_not_be": "accounting authority"}, "git_boundary": {"git_role": "version control only", "allowed": ["schema", "code", "configuration", "audit reports"], "forbidden": "git history as the only ledger storage"}, "v1_compatibility": {"requirement": "strategy/execution/risk logic unchanged", "decoupling": "run accounting is a separate layer", "no_change_list": ["entry logic", "exit logic", "risk logic", "order logic", "strategy parameters"]}}
+```
+
+## Counter schema from ACTUAL paths
+
+```text
+source = read from research/hermes/trader_v1/run_state/statistics.json (actual schema; no invented fields)
+paths = ["$.counters.decisions", "$.counters.fail_closed_events", "$.counters.observations", "$.counters.plans_cancelled", "$.counters.plans_registered", "$.counters.reconcile_closed", "$.counters.trades_closed", "$.counters.trades_opened", "$.counters.triggers", "$.integrity.ledger_head.len", "$.waits.consecutive_waits", "$.waits.wait_reasons.", "$.waits.wait_reasons.4/4周期在真MA20下方且缺口加深;M15高点9连递减;破位台阶4252.44/4252.03反抽即卖。唯一+EV结构", "$.waits.wait_reasons.Reason: slot busy - existing LONG 0.01 is still OPEN (and al", "$.waits.wait_reasons.单仓占用不注册; 00:00Z放量2235根冲4270.39均线簇被拒收4266.17; 4264.21两度放量承接; ", "$.waits.wait_reasons.单仓占用不注册; 00:15Z收4270.59站上H1MA20但被M15MA20拦回, 00:30Z当场回挫-2.64p", "$.waits.wait_reasons.单仓占用不注册; 00:30Z收4271.32收复M15+H1双MA20; 帽簇4274.55-4275.97仍零回测;", "$.waits.wait_reasons.单仓占用不注册; 23:45Z 帽上无跟随, 单根 -9.48pt 收 4265.09, 四周期 RSI 同降, 4/4", "$.waits.wait_reasons.单仓占用不注册; 持仓SHORT@4270.29持有(-0.222R); 23:30Z新高4275.97收帽位4274.", "$.waits.wait_reasons.在册3带无重叠铺满4263-4278,现价4270.17在带内,rung1本周期即刻成交;4284上方无结构位,M15翻", "$.waits.wait_reasons.在册rung3[4271,4278]现价4273.6在带内本周期即成交;M15转强且同族今日0.22胜率压p,但D1/H", "$.waits.wait_reasons.持仓 POS-1234Z SHORT@4279.83 浮盈 +0.57R; 4285.08 后高点递减、价贴 M15 真", "$.waits.wait_reasons.持仓 POS-1234Z SHORT@4279.83 浮盈 +0.658R; 4285.08 后高点递减、价贴 M15 ", "$.waits.wait_reasons.持仓中：单仓约束不注册新计划。主仓=第一供给簇 fade，剩余 EV 薄但为正 (+0.69R) 故持有。现价 4294", "$.waits.wait_reasons.持仓中：单仓约束不注册新计划。主仓=第一供给簇fade, 簇位首触遭拒+七连低点链破, 剩余EV+0.52R为正, 故持", "$.waits.wait_reasons.无新计划: 持仓 POS-20260924T1802Z SHORT 0.01 @4270.29 仍开 (现价 4271.", "$.waits.wait_reasons.槽位BUSY持SHORT0.01@4270.29(+0.212R);M15真MA20失守+双下移柱+四周期RSI同降→偏", "$.waits.wait_reasons.槽位BUSY持SHORT0.01@4270.29(+0.262R);MTF回4/4真MA20下方+破4266.8支撑新低", "$.waits.wait_reasons.槽位BUSY持SHORT0.01@4270.29(-0.005R,27分钟零漂移);M15高点三级下移+19:00Z破1", "$.waits.wait_reasons.槽位BUSY持SHORT0.01@4270.29(-0.014R,42分钟零漂移);拒绝高7级下移但19:15Z未续破+", "$.waits.wait_reasons.槽位BUSY持SHORT0.01@4270.29(-0.068R);20:15破位腿4264.26未被跟随,20:30近", "$.waits.wait_reasons.槽位BUSY持SHORT0.01@4270.29(-0.07R),几何最优无新计划可注册;4281.62上影拒绝+H1落", "$.waits.wait_reasons.槽位BUSY持SHORT0.01@4270.29(-0.135R/57分钟);19:15Z更高高4275.94打断三级下", "$.waits.wait_reasons.槽位BUSY持SHORT0.01@4270.29(-0.15R);4276簇三度拒绝+M15高点下移+RSI四周期转降→", "$.waits.wait_reasons.槽位BUSY持SHORT0.01@4270.29(-0.202R);21-22Z休市冻结22:00Z重开(约28分钟);", "$.waits.wait_reasons.槽位BUSY持SHORT0.01@4270.29(-0.202R);21-22Z休市冻结22:00Z重开;H1/M15真", "$.waits.wait_reasons.槽位BUSY持SHORT0.01@4270.29(-0.202R);21-22Z结算休市,报价自20:54:59Z冻结,", "$.waits.wait_reasons.槽位BUSY持SHORT0.01@4270.29(-0.202R);H1MA20(4271.72)被收复→MTF退至2/", "$.waits.wait_reasons.槽位BUSY持SHORT0.01@4270.29(-0.21R);22:05Z报价恢复无跳空;MTF2/4,H1/M15", "$.waits.wait_reasons.槽位BUSY持SHORT0.01@4270.29(-0.41R);四连更高低+收复H1真MA20+RSI破55=偏空降档", "$.waits.wait_reasons.槽位BUSY持SHORT0.01@4270.29(≈平),单仓禁新计划;22:00Z重开无跳空回补,价自4274.62回", "$.waits.wait_reasons.现役TP-1632Z仍是最优(EV+0.245R)且只差+5.80pt反抽触[4279,4285]; 新建方案EV更低(", "$.waits.wait_reasons.现役TP-1632Z仍有效(仅差2.7-3.4pt触[4279,4285]); 新方案EV更低(+0.18R<+0.24", "$.waits.wait_reasons.理由: 持仓 POS-1234Z SHORT @4279.83 浮盈 +2.49, 13:00Z 上影拒绝 (峰 428", "$.waits.wait_reasons.理由: 持仓中(POS-1132Z SHORT@4262.97 浮盈+0.48), 单仓禁新计划; 4/4周期在MA20", "$.waits.wait_reasons.理由: 持仓中(POS-20260924T1132Z SHORT @4262.97, 浮盈+1.71), 单仓约束禁止注", "$.waits.wait_reasons.理由: 既有 LONG 0.01@4299.71 未了结, 单仓约束下不得叠单; H1/H4 超卖(<30)且 M15 ", "$.waits.wait_reasons.理由: 槽位已占用 — SHORT 0.01@4283.91 仍 OPEN(-0.594R), 单仓约束禁止叠加; li", "$.waits.wait_reasons.理由: 槽位已占用 — SHORT 0.01@4283.91 仍 OPEN(-0.71R), 单仓约束禁止叠加; 现价 ", "$.waits.wait_reasons.理由: 槽位已占用 —— SHORT 0.01@4283.91 仍 OPEN(+0.18R), 单仓约束禁止叠加, 顺势", "$.waits.wait_reasons.理由: 槽位已占用 —— SHORT 0.01@4283.91 仍 OPEN(-0.52R), 单仓约束禁止叠加; li", "$.waits.wait_reasons.理由: 现仓 POS-20260924T0202Z LONG 0.01@4275.21 仍 OPEN, 单仓约束下不得叠", "$.waits.wait_reasons.空仓不可注册(单仓约束): 持仓 POS-1802Z SHORT 0.01@4270.29 仍活(现价4271.455 ", "$.waits.wait_reasons.空仓不可注册(单仓约束): 持仓 SHORT 0.01@4270.29 仍活(ask 4272.87 = -0.203R", "$.waits.wait_reasons.空仓不可注册(单仓约束): 持仓 SHORT 0.01@4270.29 仍活(ask 4272.90 = -0.205R", "$.waits.wait_reasons.空仓不可注册(单仓约束): 持仓 SHORT 0.01@4270.29 仍活(现价4272.87 = -0.210R),"]
+```
+
+## Counter-example tests
+
+| Case | Scenario | Requirement | Design clause | Result |
+|---|---|---|---|---|
+| CASE_01 | old run has -21.97 PnL | new run must not inherit it | pnl_boundary.binding_rule + run_closeout.final_pnl_snapshot | DESIGN_HOLDS |
+| CASE_02 | old run counters > 0 | new run must have explicit initial state | counter_schema.initialization_rule + new_run_open_event.opening_counter_snapshot | DESIGN_HOLDS |
+| CASE_03 | old run has an open position | new run must block | broker_baseline.if_open_position.default_action = NEW_RUN_START = BLOCKED | DESIGN_HOLDS |
+| CASE_04 | old ledger already CLOSED | no ordinary event may be appended | ledger_boundary.closed_run_rule | DESIGN_HOLDS |
+| CASE_05 | two runs share one broker deal | must FAIL | broker_baseline.deal_mapping (deal -> exactly one run) | DESIGN_HOLDS |
+| CASE_06 | statistics missing | run must not claim VERIFIED | reset_safety_gate.Old_STATISTICS_HASH = VERIFIED precondition | DESIGN_HOLDS |
+| CASE_07 | ledger hash mismatch | replay FAIL | replay_specification.success = REPLAY_MATCH = TRUE else RUN_INVALID | DESIGN_HOLDS |
+| CASE_08 | opening balance missing | NEW_RUN_START BLOCKED | opening_accounting_boundary.required + reset_safety_gate.NEW_RUN_OPENING_SNAPSHOT | DESIGN_HOLDS |
+| CASE_09 | run_id modified | immutability FAIL | run_identity.immutability + transitions.forbidden | DESIGN_HOLDS |
+| CASE_10 | old run closeout missing | reset BLOCKED | reset_safety_gate.OLD_RUN_CLOSEOUT = VERIFIED precondition | DESIGN_HOLDS |
+
+## Safety properties
+
+```text
+NO_DELETE_HISTORY = SATISFIED_BY_DESIGN  (reset_not_delete.forbidden (delete old ledger))
+NO_OVERWRITE_HISTORY = SATISFIED_BY_DESIGN  (reset_not_delete.forbidden (overwrite old statistics) + closed_run_rule)
+NO_IMPLICIT_PNL_INHERITANCE = SATISFIED_BY_DESIGN  (pnl_boundary.binding_rule + previous_run_id is lineage only)
+NO_IMPLICIT_COUNTER_INHERITANCE = SATISFIED_BY_DESIGN  (counter_schema.initialization_rule + opening_counter_snapshot)
+NO_CROSS_RUN_DEAL_REUSE = SATISFIED_BY_DESIGN  (broker_baseline.deal_mapping)
+NO_UNBOUND_BALANCE = SATISFIED_BY_DESIGN  (opening_accounting_boundary.required + account_events schema)
+NO_UNVERIFIED_CLOSEOUT = SATISFIED_BY_DESIGN  (reset_safety_gate closeout preconditions)
+```
+
+## Acceptance criteria answers
+
+```text
+1_what_is_a_run = an accounting epoch with immutable identity, own namespace, own counters, own PnL, own ledger
+2_how_created = Run Manager writes runs/<run_id>/manifest.json + RUN_OPEN event after preconditions pass
+3_how_closed = RUN_CLOSE event with final snapshots + hashes; status becomes CLOSED
+4_how_frozen = append-only ledger + write-once manifest fields + RUN_CLOSE_HASH
+5_counter_init = per counter_schema.initialization_rule (set_to_zero_at_run_open for RUN_SCOPED)
+6_counter_ownership = explicit run_scope in counter_schema; ACCOUNT_SCOPED never zeroed
+7_pnl_ownership = explicit run_id on every PnL event; no inference
+8_balance_recorded = opening/closing balance and equity in manifest; balance_delta separate from realized_pnl
+9_broker_deal_binding = broker_deal_id -> exactly one run_id
+10_ledger_binding = every record carries run_id + hash chain
+11_run_isolation = per-run namespace + separate counters/PnL/ledger + ACCOUNT_SCOPE tagging
+12_replay = load opening snapshot -> replay events -> reconstruct counters/PnL -> compare closing snapshot
+13_reset_misuse_prevention = reset_safety_gate preconditions; otherwise RESET_ALLOWED = NO
+14_automation_constraint = START_RUN/RUN_V1/CLOSE_RUN only; accounting done by Run Manager
+15_v1_logic_unchanged = Run Boundary is a separate layer; entry/exit/risk/order/parameters untouched
+```
+
+## Safety counters
+
+```text
+RESET=0 NEW_RUN=0 V1_START=0 AUTOMATION_ENABLE=0 MT5_ACCESS=0 ORDER_SEND=0 POSITION_CLOSE=0 POSITION_MODIFY=0 ORDER_CANCEL=0 STATE_WRITE=0 LEDGER_WRITE=0 STATISTICS_WRITE=0 SOURCE_WRITE=0 CONFIG_WRITE=0 GIT_COMMIT=NONE
+```
+
+## Hashes
+
+```text
+before = {"ENGINE": "7d95645678cf0615c77c0d1c91177cf1652ca1fa6b1f509ec99e415dba55c25d", "LEDGER": "0b90493cae0cdf7b73056bc72b1e5752f35c3eb20f9306c098d26f4bec819261", "STATISTICS": "ca42f624fde50df375dc877750e121e8d2d313986ea6d953766d5247ab76ee84", "RUN_META": "597bd76970412c107c96475dfe8d5093ff7840aba73cb4ab65318f2b0f358950"}
+after  = {"ENGINE": "7d95645678cf0615c77c0d1c91177cf1652ca1fa6b1f509ec99e415dba55c25d", "LEDGER": "0b90493cae0cdf7b73056bc72b1e5752f35c3eb20f9306c098d26f4bec819261", "STATISTICS": "ca42f624fde50df375dc877750e121e8d2d313986ea6d953766d5247ab76ee84", "RUN_META": "597bd76970412c107c96475dfe8d5093ff7840aba73cb4ab65318f2b0f358950"}
+hashes_stable = YES
+V1_ISOLATION = PASS
+V2_ISOLATION = PASS
+V3_ISOLATION = PASS
+BOUNDARY_VIOLATION = 0
+```
+
+## Final principle
+
+```text
+Do not create a new run by clearing old state. Close, freeze and hash the old run, then open an
+independent new run with its own identity, opening snapshot, counters, PnL, ledger and replayable history.
+```
+
+## Authorization
+
+```text
+DESIGN_READY = YES
+IMPLEMENTATION_AUTHORIZED = NO
+RESET_AUTHORIZED = NO
+V1_START_AUTHORIZED = NO
+AUTOMATION_ENABLE_AUTHORIZED = NO
+R29_GATE = PASS
+```

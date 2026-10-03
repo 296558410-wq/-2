@@ -1,0 +1,293 @@
+{
+ "generated_utc": "2026-10-02T04:01:54.442902+00:00",
+ "limits": {
+  "max_position": 1,
+  "max_daily_loss": -20.0,
+  "max_consecutive_loss": 3,
+  "spread_limit_bps": 30.0,
+  "slippage_limit_bps": 15.0,
+  "stale_data_seconds": 900
+ },
+ "rules": {
+  "MAX_POSITION": {
+   "A_normal": {
+    "verdict": "PASS",
+    "detail": {
+     "allow": true
+    }
+   },
+   "B_fault": {
+    "verdict": "PASS",
+    "detail": {
+     "reasons": [
+      "MAX_POSITION"
+     ]
+    }
+   },
+   "C_restart": {
+    "verdict": "PASS",
+    "detail": {
+     "stateless_live_input": true,
+     "note": "uses live positions each cycle; no persisted state needed"
+    }
+   },
+   "D_boundary": {
+    "verdict": "PASS",
+    "detail": {
+     "note": "positions=limit=1 -> deny (>=)"
+    }
+   },
+   "E_data_anomaly": {
+    "verdict": "PASS",
+    "detail": {
+     "note": "caller normalizes positions_get()None -> []; None would raise in-guard"
+    }
+   }
+  },
+  "MAX_DAILY_LOSS": {
+   "A_normal": {
+    "verdict": "PASS",
+    "detail": {
+     "note": "daily=-5 -> allow"
+    }
+   },
+   "B_fault": {
+    "verdict": "PASS",
+    "detail": {
+     "note": "rebuilt daily=-21.6 -> deny"
+    }
+   },
+   "C_restart": {
+    "verdict": "PASS",
+    "detail": {
+     "note": "rebuilt from ledger after restart -> deny"
+    }
+   },
+   "D_boundary": {
+    "verdict": "PASS",
+    "detail": {
+     "note": "daily == -20.0 -> deny (<=)"
+    }
+   },
+   "E_data_anomaly": {
+    "verdict": "FAIL",
+    "detail": {
+     "note": "no PNL events (broker query fail) -> daily=0 -> no protection (under-count); reconciliation lag under-counts"
+    }
+   }
+  },
+  "MAX_CONSECUTIVE_LOSS": {
+   "A_normal": {
+    "verdict": "PASS",
+    "detail": {
+     "note": "cons=2 -> allow"
+    }
+   },
+   "B_fault": {
+    "verdict": "PASS",
+    "detail": {
+     "note": "cons=3 -> deny"
+    }
+   },
+   "C_restart": {
+    "verdict": "PASS",
+    "detail": {
+     "note": "rebuilt after restart -> deny"
+    }
+   },
+   "D_boundary": {
+    "verdict": "PASS",
+    "detail": {
+     "note": "cons=3 deny, cons=2 allow"
+    }
+   },
+   "E_data_anomaly": {
+    "verdict": "FAIL",
+    "detail": {
+     "note": "win resets to 0; missing closes under-count streak"
+    }
+   }
+  },
+  "STALE_DATA": {
+   "A_normal": {
+    "verdict": "PASS",
+    "detail": {
+     "note": "age=120 -> allow"
+    }
+   },
+   "B_fault": {
+    "verdict": "PASS",
+    "detail": {
+     "note": "age=1000 -> deny"
+    }
+   },
+   "C_restart": {
+    "verdict": "PASS",
+    "detail": {
+     "stateless_live_input": true
+    }
+   },
+   "D_boundary": {
+    "verdict": "PASS",
+    "detail": {
+     "note": "900 allow, 901 deny (>)"
+    }
+   },
+   "E_data_anomaly": {
+    "verdict": "PASS",
+    "detail": {
+     "note": "age=None -> deny (fail-closed)"
+    }
+   }
+  },
+  "SLIPPAGE_LIMIT": {
+   "A_normal": {
+    "verdict": "PASS",
+    "detail": {
+     "note": "5 bps -> allow"
+    }
+   },
+   "B_fault": {
+    "verdict": "PASS",
+    "detail": {
+     "note": "20 bps -> deny"
+    }
+   },
+   "C_restart": {
+    "verdict": "PASS",
+    "detail": {
+     "stateless_live_input": true,
+     "note": "fed from last realized ORDER_SEND slip in the ledger"
+    }
+   },
+   "D_boundary": {
+    "verdict": "PASS",
+    "detail": {
+     "note": "15.0 allow, 15.1 deny (>)"
+    }
+   },
+   "E_data_anomaly": {
+    "verdict": "FAIL",
+    "detail": {
+     "note": "no fill history -> slippage treated as 0 -> no protection for the first order"
+    }
+   }
+  },
+  "DUPLICATE_ORDER": {
+   "A_normal": {
+    "verdict": "PASS",
+    "detail": {
+     "note": "not in set -> allow"
+    }
+   },
+   "B_fault": {
+    "verdict": "PASS",
+    "detail": {
+     "note": "in set -> deny"
+    }
+   },
+   "C_restart": {
+    "verdict": "FAIL",
+    "detail": {
+     "note": "cycle.py always passes already_sent=set(); order_id=f'{MAGIC}-{NOW}' is unique per cycle => guard can never fire in production"
+    }
+   },
+   "D_boundary": {
+    "verdict": "FAIL",
+    "detail": {
+     "note": "structurally unreachable in the runtime path"
+    }
+   },
+   "E_data_anomaly": {
+    "verdict": "FAIL",
+    "detail": {
+     "note": "no persisted sent-set across restarts"
+    }
+   }
+  },
+  "KILL_SWITCH": {
+   "A_normal": {
+    "verdict": "PASS",
+    "detail": {
+     "note": "off -> allow"
+    }
+   },
+   "B_fault": {
+    "verdict": "PASS",
+    "detail": {
+     "note": "on -> deny"
+    }
+   },
+   "C_restart": {
+    "verdict": "FAIL",
+    "detail": {
+     "note": "kill_switch defaults False every cycle; nothing in cycle.py can set it => inert in production"
+    }
+   },
+   "D_boundary": {
+    "verdict": "FAIL",
+    "detail": {
+     "note": "unreachable in the runtime path"
+    }
+   },
+   "E_data_anomaly": {
+    "verdict": "FAIL",
+    "detail": {
+     "note": "no persisted kill switch"
+    }
+   }
+  }
+ },
+ "rule_verdict": {
+  "MAX_POSITION": {
+   "core_blocking": "PASS",
+   "incl_data_anomaly": "PASS",
+   "failing_paths": []
+  },
+  "MAX_DAILY_LOSS": {
+   "core_blocking": "PASS",
+   "incl_data_anomaly": "FAIL",
+   "failing_paths": [
+    "E_data_anomaly"
+   ]
+  },
+  "MAX_CONSECUTIVE_LOSS": {
+   "core_blocking": "PASS",
+   "incl_data_anomaly": "FAIL",
+   "failing_paths": [
+    "E_data_anomaly"
+   ]
+  },
+  "STALE_DATA": {
+   "core_blocking": "PASS",
+   "incl_data_anomaly": "PASS",
+   "failing_paths": []
+  },
+  "SLIPPAGE_LIMIT": {
+   "core_blocking": "PASS",
+   "incl_data_anomaly": "FAIL",
+   "failing_paths": [
+    "E_data_anomaly"
+   ]
+  },
+  "DUPLICATE_ORDER": {
+   "core_blocking": "FAIL",
+   "incl_data_anomaly": "FAIL",
+   "failing_paths": [
+    "C_restart",
+    "D_boundary",
+    "E_data_anomaly"
+   ]
+  },
+  "KILL_SWITCH": {
+   "core_blocking": "FAIL",
+   "incl_data_anomaly": "FAIL",
+   "failing_paths": [
+    "C_restart",
+    "D_boundary",
+    "E_data_anomaly"
+   ]
+  }
+ },
+ "legend": "A normal / B fault-injection / C restart / D boundary / E data-anomaly"
+}

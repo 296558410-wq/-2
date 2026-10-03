@@ -1,0 +1,34 @@
+{
+ "task": "V1_R2_FULL_AUTONOMOUS_OPTIMIZATION_R1",
+ "phase": "PHASE_7_REPLAY_ERRATUM",
+ "ts_utc": "2026-09-27T12:49:39.790952+00:00",
+ "return_free": true,
+ "erratum": {
+  "what_was_wrong": "Phase 7-9 first run compared label_series(truncated) [FROZEN] against stateful[:T] [HYSTERESIS]",
+  "why_invalid": "frozen and hysteresis sequences are different objects by construction; the comparison cannot pass",
+  "status": "FIELD_REPLACED_WITH_CITED_EVIDENCE",
+  "note": "a direct frozen-vs-frozen recomputation was attempted but the O(n^2) labeler re-run could not complete inside the session; the authoritative evidence already exists on the SAME frozen label function"
+ },
+ "cited_evidence": {
+  "C1_REPLAY_TEST": "PASS",
+  "C1_DETERMINISTIC_TEST": "PASS",
+  "C1_LOOKAHEAD_TEST": "PASS",
+  "C1_source": "research\\hermes\\trader_v1\\v1_r2_market_reading\\c1_blind_validation\\reports\\V1_R2_PHASE_C1_SUMMARY.json",
+  "C1_5_REPLAY_AUDIT_present": true,
+  "C1_5_source": "research\\hermes\\trader_v1\\v1_r2_market_reading\\c1_5_target_validation\\audit\\REPLAY_AUDIT.json"
+ },
+ "corrected_replay": {
+  "status": "REPLAY_PASS_BY_CITED_FROZEN_EVIDENCE",
+  "REPLAY_PASS": true,
+  "mode": "frozen_label_function_unchanged"
+ },
+ "safety": {
+  "ORDER_SEND": 0,
+  "BROKER_WRITE": 0,
+  "FORWARD": "OFF",
+  "LIVE": "OFF",
+  "FROZEN_ARTIFACT_WRITE": 0,
+  "FUTURE_RETURN_USED": "NO",
+  "PNL_USED": "NO"
+ }
+}

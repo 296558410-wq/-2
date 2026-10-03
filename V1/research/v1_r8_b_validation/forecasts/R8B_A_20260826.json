@@ -1,0 +1,89 @@
+{
+ "sample_id": "A_20260826",
+ "forecast_id": "R8B_A_20260826_H4",
+ "timestamp": "2026-08-26T00:00:00Z",
+ "horizon": 4,
+ "scenario_family": "DIRECTIONAL",
+ "scenario_alternative": "RANGE",
+ "scenario_abstain": false,
+ "observations": [
+  "Price 4671.7 M1, 4658.1 H4; strong multi-TF uptrend",
+  "Swing high level 4667.8 UP side, 29 touches, INSIDE",
+  "State COMPRESSION dwell 7, event ACCEPTANCE",
+  "H4 ATR 38.5, range_expanding all timeframes"
+ ],
+ "what_i_know": [
+  "All TF trend_20 positive, H4 +124.7",
+  "Frozen label COMPRESSION at t, ACCEPTANCE event",
+  "Price inside swing high 4667.8, 29 touches",
+  "DXY flat 98.92; VIX, macro, news absent"
+ ],
+ "what_i_do_not_know": [
+  "Direction of next breakout unresolved",
+  "Macro/news/VIX absent, future data unknown",
+  "TF low inconsistency H4 4629 vs H1 4653",
+  "Analogs state-only, no return guidance"
+ ],
+ "evidence": [
+  "Multi-TF uptrend, H4 trend_20 +124.7",
+  "Volatility expansion, H4 ATR 38.5 range 0.775",
+  "Event ACCEPTANCE, price holding near highs",
+  "Two of three analogs exit compression directionally"
+ ],
+ "counter_evidence": [
+  "Frozen label COMPRESSION, dwell 7 bars",
+  "Minute bars tiny ranges, compression signature",
+  "Price pinned under swing high, 29 touches",
+  "H4/H1 low mismatch suggests data quality issue"
+ ],
+ "possible_mechanisms": [
+  {"mechanism": "trend_continuation", "status": "SUPPORTED", "why": "price inside level, 8-bar displacement 2.05"},
+  {"mechanism": "compression_breakout", "status": "POSSIBLE", "why": "state COMPRESSION near pivot level"},
+  {"mechanism": "level_rejection", "status": "POSSIBLE", "why": "swing high 29 touches, break_status INSIDE"},
+  {"mechanism": "data_artifact", "status": "WEAK", "why": "TF low inconsistency H4 vs H1"}
+ ],
+ "primary_scenario": {
+  "scenario": "DIRECTIONAL upside continuation after pullback",
+  "horizon": "H4",
+  "trigger": "Close above swing high 4667.8 sustains",
+  "invalidation": "Close below 4652 or H4 low 4629 breach"
+ },
+ "alternative_scenario": {
+  "scenario": "RANGE consolidation within 4629-4674",
+  "horizon": "H4",
+  "trigger": "Price oscillates between level and lows",
+  "invalidation": "Decisive break beyond either bound"
+ },
+ "expected_transition": "COMPRESSION to EXPANSION or REJECTION",
+ "direction_bias": "UP",
+ "time_horizon": "H4",
+ "evidence_strength": 0.5,
+ "confidence": 0.5,
+ "uncertainty": 0.55,
+ "confidence_reason": "Multi-TF uptrend plus volatility expansion, but compression caps conviction",
+ "uncertainty_reason": "Compression at pivot, absent macro data, direction unresolved",
+ "invalidation": "H4 close below 4629 low or decisive level break up",
+ "change_my_mind": [
+  "Close above 4673.5 high confirms upside breakout",
+  "H4 close below 4629 confirms rejection downward",
+  "Volatility collapse to M1 percentiles 0.2 suggests range",
+  "Macro/news catalyst arrives shifts drivers"
+ ],
+ "abstain": false,
+ "abstain_reason": "Context sufficient for low-confidence family call",
+ "questions": {
+  "Q1": "Only context states prices, levels, states, trends, analogs",
+  "Q2": "Direction unresolved; VIX macro news future data unknown",
+  "Q3": "Multi-TF uptrend, expansion, acceptance support DIRECTIONAL",
+  "Q4": "Compression dwell, pivot touches, data mismatch argue range",
+  "Q5": "Compression breakout mechanism not entitled to assert",
+  "Q6": "Level break both directions or volatility regime shift",
+  "Q7": "False; enough signal for low-confidence forecast"
+ },
+ "reasoning_trace": [
+  "Multi-TF uptrend strong, price recovered sharp dip",
+  "Compression at swing high keeps direction unresolved",
+  "Volatility high rules out QUIET family",
+  "Analog exits mixed; DIRECTIONAL slightly favored"
+ ]
+}

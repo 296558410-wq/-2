@@ -1,0 +1,54 @@
+{
+ "DXY_XAUUSD_PANEL": {
+  "source": "Yahoo Finance chart API",
+  "symbol": "DX-Y.NYB",
+  "interval": "5m",
+  "source_timezone": "UNIX epoch (UTC)",
+  "original_timestamp": "epoch seconds",
+  "normalized_utc": "pd.to_datetime(ts, unit='s', utc=True)",
+  "information_available_at": "bar close time (market data; no external publication lag)",
+  "PIT_STATUS": "OK",
+  "caveat": "^TNX is a yield INDEX proxy for UST10Y (not the official Treasury constant-maturity yield); recorded as its own source, never stitched"
+ },
+ "VIX": {
+  "source": "Yahoo Finance chart API",
+  "symbol": "%5EVIX",
+  "interval": "5m",
+  "source_timezone": "UNIX epoch (UTC)",
+  "original_timestamp": "epoch seconds",
+  "normalized_utc": "pd.to_datetime(ts, unit='s', utc=True)",
+  "information_available_at": "bar close time (market data; no external publication lag)",
+  "PIT_STATUS": "OK",
+  "caveat": "^TNX is a yield INDEX proxy for UST10Y (not the official Treasury constant-maturity yield); recorded as its own source, never stitched"
+ },
+ "UST10Y_PROXY_TNX": {
+  "source": "Yahoo Finance chart API",
+  "symbol": "%5ETNX",
+  "interval": "5m",
+  "source_timezone": "UNIX epoch (UTC)",
+  "original_timestamp": "epoch seconds",
+  "normalized_utc": "pd.to_datetime(ts, unit='s', utc=True)",
+  "information_available_at": "bar close time (market data; no external publication lag)",
+  "PIT_STATUS": "OK",
+  "caveat": "^TNX is a yield INDEX proxy for UST10Y (not the official Treasury constant-maturity yield); recorded as its own source, never stitched"
+ },
+ "XAUUSD": {
+  "source": "HistData.com M1 (BID)",
+  "symbol": "XAUUSD",
+  "interval": "1m",
+  "source_timezone": "EST (UTC-5) FIXED",
+  "original_timestamp": "YYYYMMDD HHMMSS (EST)",
+  "normalized_utc": "stamp + 5h",
+  "information_available_at": "bar close time",
+  "PIT_STATUS": "OK",
+  "caveat": "BAR_OPEN_CLOSE=UNKNOWN -> +/-1 bar sensitivity required"
+ },
+ "JIN10_EVENTS": {
+  "source": "Jin10 MCP list_calendar",
+  "source_timezone": "Asia/Shanghai",
+  "normalized_utc": "pub_time - 8h",
+  "information_available_at": "publication_time",
+  "PIT_STATUS": "BLOCKED",
+  "reason": "available window 2026-09-21..26 does not overlap XAUUSD (ends 09-18)"
+ }
+}

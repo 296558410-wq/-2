@@ -1,0 +1,435 @@
+{
+ "task": "V1_R2_PHASE_B_R7",
+ "status": "COMPLETE",
+ "INPUT_DECISIONS": 142,
+ "VALID_PIT_ALIGNED": 140,
+ "DUPLICATE_TIMESTAMP": 2,
+ "TOTAL_UNKNOWN": 71,
+ "STATE_LEVEL_CONFLICT_COUNT": 49,
+ "DIRECTION_LEVEL_CONFLICT_COUNT": 26,
+ "CONFLICT_SETS": {
+  "LEVEL_BREAK": 49,
+  "MOMENTUM_COUNTER": 27,
+  "REGIME_MOMENTUM": 21
+ },
+ "ENTAILMENT_CHECKS": {
+  "rows": 1328,
+  "BREAK_ELEVATED_WITHOUT_LEVEL": 0,
+  "BREAK_NOT_LOW_WITHOUT_LEVEL": 0,
+  "MOMENTUM_DECELERATING_WITHOUT_COUNTER_DECELERATION": 0,
+  "claim_LEVEL_BREAK_DERIVED": true,
+  "claim_MOM_COUNTER_DERIVED": true
+ },
+ "LEVEL_BREAK": {
+  "classification": {
+   "TRUE_CONFLICT_CANDIDATE": 0,
+   "DERIVATION_CONFLICT": 49,
+   "BOUNDARY_CONFLICT": 0,
+   "PRIORITY_CONFLICT": 0,
+   "UNKNOWN": 0
+  },
+  "group_frequency": {
+   "PENETRATION": 48,
+   "AT_LEVEL": 27,
+   "MOMENTUM_TOWARD": 27,
+   "TOUCH_REPEAT": 13,
+   "ABSORPTION": 2
+  }
+ },
+ "MOMENTUM_COUNTER": {
+  "classification": {
+   "TRUE_INFORMATION_CONFLICT": 19,
+   "DERIVATION_CONFLICT": 8,
+   "BOUNDARY_CONFLICT": 0,
+   "UNKNOWN": 0
+  },
+  "only_deceleration": 8,
+  "composition": [
+   {
+    "counter_set": [
+     "COUNTER_BREAK_RISK",
+     "COUNTER_DECELERATION"
+    ],
+    "n": 15
+   },
+   {
+    "counter_set": [
+     "COUNTER_DECELERATION"
+    ],
+    "n": 8
+   },
+   {
+    "counter_set": [
+     "COUNTER_BREAK_RISK",
+     "COUNTER_DECELERATION",
+     "COUNTER_FAILED_EVENT"
+    ],
+    "n": 3
+   },
+   {
+    "counter_set": [
+     "COUNTER_ABSORPTION",
+     "COUNTER_BREAK_RISK",
+     "COUNTER_DECELERATION"
+    ],
+    "n": 1
+   }
+  ]
+ },
+ "REGIME_MOMENTUM": {
+  "INDEPENDENT": 0,
+  "PARTIALLY_DEPENDENT": 21,
+  "DERIVED": 0,
+  "UNKNOWN": 0
+ },
+ "FEATURE_DEPENDENCY_MATRIX": [
+  {
+   "A": "LEVEL",
+   "B": "BREAK",
+   "relationship": "DERIVED",
+   "evidence": "break groups all inside `if nl:` (R1 L205); LEVEL<->BREAK conjunction is entailed"
+  },
+  {
+   "A": "LEVEL",
+   "B": "TOUCH",
+   "relationship": "DERIVED",
+   "evidence": "touch_state is built from the nearest level object (R1 L180-194)"
+  },
+  {
+   "A": "BREAK",
+   "B": "TOUCH",
+   "relationship": "DERIVED",
+   "evidence": "4/6 break groups read level touch stats (touch_events_240, rec_ok/fail, fail_rate, pen_last, last_touch_i)"
+  },
+  {
+   "A": "MOMENTUM",
+   "B": "COUNTER",
+   "relationship": "PARTIALLY_DEPENDENT",
+   "evidence": "COUNTER_DECELERATION is `momentum==DECELERATING` (R2 L152) -> 1/5 counter groups is a restatement; other 4 are separate axes"
+  },
+  {
+   "A": "REGIME",
+   "B": "MOMENTUM",
+   "relationship": "PARTIALLY_DEPENDENT",
+   "evidence": "shared close+ATR20+vel4; regime adds atr_pctl/er10/slope5, momentum adds acc/rng_exp (R1 L151-166 vs L225-236)"
+  },
+  {
+   "A": "ABSORPTION",
+   "B": "BREAK",
+   "relationship": "PARTIALLY_DEPENDENT",
+   "evidence": "break group ABSORPTION reads absorption.state (R1 L214) - one-way input"
+  },
+  {
+   "A": "ABSORPTION",
+   "B": "COUNTER",
+   "relationship": "DERIVED",
+   "evidence": "COUNTER_ABSORPTION is a restatement of absorption.state (R2 L144)"
+  },
+  {
+   "A": "LIQUIDITY",
+   "B": "BREAK",
+   "relationship": "UNKNOWN",
+   "evidence": "engines_v2 emits no liquidity field; no liquidity input to break (not assessable)"
+  }
+ ],
+ "RECLASSIFICATION": {
+  "LEVEL_BREAK": {
+   "ORIGINAL_CONFLICT": 49,
+   "TRUE_INFORMATION_CONFLICT": 0,
+   "DERIVATION_CONFLICT": 49,
+   "BOUNDARY_CONFLICT": 0,
+   "PRIORITY_CONFLICT": 0,
+   "UNKNOWN_CONFLICT_TYPE": 0
+  },
+  "MOMENTUM_COUNTER": {
+   "ORIGINAL_CONFLICT": 27,
+   "TRUE_INFORMATION_CONFLICT": 19,
+   "DERIVATION_CONFLICT": 8,
+   "BOUNDARY_CONFLICT": 0,
+   "PRIORITY_CONFLICT": 0,
+   "UNKNOWN_CONFLICT_TYPE": 0
+  },
+  "REGIME_MOMENTUM": {
+   "ORIGINAL_CONFLICT": 21,
+   "TRUE_INFORMATION_CONFLICT": 0,
+   "DERIVATION_CONFLICT": 0,
+   "BOUNDARY_CONFLICT": 0,
+   "PRIORITY_CONFLICT": 0,
+   "UNKNOWN_CONFLICT_TYPE": 0,
+   "relationship": "PARTIALLY_DEPENDENT (shared close/ATR/vel, different transforms)"
+  }
+ },
+ "COUNTER_BLOCKER": {
+  "counter_present": 57,
+  "counter_absent": 14,
+  "counter_present + other_blocker": 33,
+  "COUNTER_ONLY_UNKNOWN": 24,
+  "SINGLE_BLOCKER_NOT_COUNTER": 29,
+  "MULTIPLE_BLOCKERS": 4,
+  "counter_only_ids": [
+   "20260923T2347Z.json",
+   "20260923T2349Z.json",
+   "20260924T0402Z.json",
+   "20260924T0447Z.json",
+   "20260924T0938Z.json",
+   "20260924T0947Z.json",
+   "20260924T1747Z.json",
+   "20260924T1932Z.json",
+   "20260924T1947Z.json",
+   "20260924T2002Z.json",
+   "20260924T2017Z.json",
+   "20260924T2032Z.json",
+   "20260924T2047Z.json",
+   "20260924T2132Z.json",
+   "20260924T2147Z.json",
+   "20260924T2332Z.json",
+   "20260925T0532Z.json",
+   "20260925T0547Z.json",
+   "20260925T0632Z.json",
+   "20260925T0847Z.json",
+   "20260925T0902Z.json",
+   "20260925T0917Z.json",
+   "20260925T0932Z.json",
+   "20260925T1517Z.json"
+  ],
+  "single_blocker_not_counter_ids": [
+   "20260924T0332Z.json",
+   "20260924T0532Z.json",
+   "20260924T1017Z.json",
+   "20260924T1032Z.json",
+   "20260924T1047Z.json",
+   "20260924T1102Z.json",
+   "20260924T1117Z.json",
+   "20260924T1132Z.json",
+   "20260924T1217Z.json",
+   "20260924T1247Z.json",
+   "20260924T1317Z.json",
+   "20260924T1502Z.json",
+   "20260924T1617Z.json",
+   "20260924T1632Z.json",
+   "20260924T1817Z.json",
+   "20260925T0147Z.json",
+   "20260925T0232Z.json",
+   "20260925T0247Z.json",
+   "20260925T0502Z.json",
+   "20260925T0617Z.json",
+   "20260925T0647Z.json",
+   "20260925T0802Z.json",
+   "20260925T0817Z.json",
+   "20260925T1232Z.json",
+   "20260925T1247Z.json",
+   "20260925T1302Z.json",
+   "20260925T1347Z.json",
+   "20260925T1425Z.json",
+   "20260925T1502Z.json"
+  ]
+ },
+ "COUNTER_BLOCKER_TYPE_B44": {
+  "TYPE_B_TOTAL": 47,
+  "COUNTER_ONLY": 23,
+  "SINGLE_BLOCKER_NOT_COUNTER": 24,
+  "MULTIPLE_BLOCKERS": 0,
+  "COUNTER_PRESENT_UNKNOWN_FULL": 57
+ },
+ "COUNTER_GROUP_FREQUENCY": {
+  "COUNTER_BREAK_RISK": 49,
+  "COUNTER_DECELERATION": 27,
+  "COUNTER_FAILED_EVENT": 6,
+  "COUNTER_ABSORPTION": 2,
+  "COUNTER_EXHAUSTION": 1
+ },
+ "TOP_CONFLICT_MECHANISMS": [
+  {
+   "mechanism": "LEVEL -> BREAK structural derivation (break state != LOW is impossible without a level; code guard L205)",
+   "conflicts": 49,
+   "set": "LEVEL_BREAK"
+  },
+  {
+   "mechanism": "COUNTER_DECELERATION restates MOMENTUM==DECELERATING (self-referential, R2 L152)",
+   "conflicts": 27,
+   "set": "MOMENTUM_COUNTER"
+  },
+  {
+   "mechanism": "COUNTER_BREAK_RISK restates the level-derived BREAK state",
+   "conflicts": 49,
+   "set": "MOMENTUM_COUNTER/other"
+  },
+  {
+   "mechanism": "REGIME<->MOMENTUM share close+ATR20+vel4 (different transforms, partial input overlap)",
+   "conflicts": 21,
+   "set": "REGIME_MOMENTUM"
+  },
+  {
+   "mechanism": "COUNTER_ABSORPTION restates ABSORPTION / COUNTER_EXHAUSTION restates TOUCH",
+   "conflicts": 3,
+   "set": "other"
+  }
+ ],
+ "CANDIDATE": {
+  "distribution": {
+   "1": 8,
+   "2": 48,
+   "3": 15
+  },
+  "single_candidate_but_unknown": 8,
+  "multiple_candidates": 63,
+  "multiple_categories": {
+   "OTHER": 48,
+   "HOLD_vs_REVERSION": 15
+  }
+ },
+ "HOLD_QUIET": {
+  "TOTAL": 32,
+  "BREAK_LOW_NORMAL": 15,
+  "BREAK_ONLY_MISSING": 15,
+  "OTHER": 17
+ },
+ "REVERSION_REVERSAL": 20,
+ "EXHAUSTION_ANY_AT_DECISIONS": 1,
+ "ABSORPTION_STRONG_AT_DECISIONS": 0,
+ "BREAK_PASSTHROUGH": {
+  "TOTAL": 7,
+  "classification": {
+   "TRUE_AMBIGUITY": 0,
+   "RULE_PRIORITY_ARTIFACT": 7,
+   "note": "BREAK_PASSTHROUGH is a 1-condition passthrough of the upstream engine state; when it is the only 1-away gate it reflects the upstream engine NOT producing BREAKOUT/BREAKDOWN, i.e. a specificity artifact rather than an independent ambiguity"
+  }
+ },
+ "NEAR_MISS": {
+  "NEAR_MISS_TOTAL": 71,
+  "TRUE_SINGLE_CONDITION": 67,
+  "MULTIPLE_IMPLICIT_BLOCKERS": 0
+ },
+ "INFORMATION_GROUPS": {
+  "distribution": {
+   "0": 0,
+   "1": 0,
+   "2": 0,
+   "3+": 71
+  },
+  "frequency": {
+   "ABSORPTION_GROUP": 71,
+   "EVENT_GROUP": 71,
+   "MOMENTUM_GROUP": 71,
+   "PRICE_STRUCTURE_GROUP": 71,
+   "VOLATILITY_GROUP": 60
+  },
+  "top3": [
+   "ABSORPTION_GROUP",
+   "EVENT_GROUP",
+   "MOMENTUM_GROUP"
+  ]
+ },
+ "SHUFFLE_DEPENDENCY_SANITY": {
+  "baseline": 0.5346,
+  "after_permutation": {
+   "regime": 0.5836,
+   "momentum": 0.5346,
+   "touch_state": 0.5309,
+   "break_risk": 0.5715,
+   "level": 0.5354
+  },
+  "note": "dependency sanity only; never used to choose rules or thresholds"
+ },
+ "TEN_QUESTIONS": {
+  "Q1_LEVEL_BREAK": {
+   "TRUE_INFORMATION_CONFLICT": 0,
+   "DERIVATION_CONFLICT": 49,
+   "BOUNDARY_CONFLICT": 0,
+   "PRIORITY_CONFLICT": 0,
+   "UNKNOWN": 0
+  },
+  "Q2_MOMENTUM_COUNTER": {
+   "TRUE_INFORMATION_CONFLICT": 19,
+   "DERIVATION_CONFLICT": 8,
+   "BOUNDARY_CONFLICT": 0,
+   "UNKNOWN": 0
+  },
+  "Q3_REGIME_MOMENTUM": {
+   "INDEPENDENT": 0,
+   "PARTIALLY_DEPENDENT": 21,
+   "DERIVED": 0,
+   "UNKNOWN": 0
+  },
+  "Q4_TYPE_B_COMPOSITION": {
+   "COUNTER_ONLY": 24,
+   "MULTIPLE_BLOCKERS": 4,
+   "SINGLE_CANDIDATE_BUT_UNKNOWN": 8,
+   "MULTIPLE_CANDIDATES": 63
+  },
+  "Q5_NEAR_MISS": {
+   "NEAR_MISS_TOTAL": 71,
+   "TRUE_SINGLE_CONDITION": 67,
+   "MULTIPLE_IMPLICIT_BLOCKERS": 0
+  },
+  "Q6_HOLD_QUIET": {
+   "HOLD_QUIET_TOTAL": 32,
+   "BREAK_LOW_NORMAL": 15,
+   "OTHER_BLOCKER": 17,
+   "BREAK_ONLY_MISSING": 15
+  },
+  "Q7_COMMON_STRUCTURE_15": "YES",
+  "Q7_INVARIANTS": {
+   "break_state": "ELEVATED",
+   "touch": "FIRST_TOUCH",
+   "regime_values": [
+    "COMPRESSION",
+    "RANGE"
+   ],
+   "distinct_structures": 2
+  },
+  "Q7_EVIDENCE": {
+   "note": "all 15 break-only rows share break=ELEVATED + touch=FIRST_TOUCH and sit in a quiet regime (RANGE/COMPRESSION); the HOLD gate is blocked only by its break in {LOW,NORMAL} clause",
+   "top_structures": [
+    {
+     "regime": "RANGE",
+     "break": "ELEVATED",
+     "touch": "FIRST_TOUCH",
+     "n": 10
+    },
+    {
+     "regime": "COMPRESSION",
+     "break": "ELEVATED",
+     "touch": "FIRST_TOUCH",
+     "n": 5
+    }
+   ]
+  },
+  "Q8_LARGEST_UNKNOWN_SOURCE": "FEATURE_DEPENDENCY",
+  "Q9_NEXT_RESEARCH_CANDIDATE": "RESEARCH_CANDIDATE: separate the PRICE_STRUCTURE cluster (LEVEL/TOUCH/BREAK) into an explicit one-axis evidence object before any counter/priority study",
+  "Q10_PREDICTION_CAPABILITY_IMPROVED": "INSUFFICIENT_EVIDENCE"
+ },
+ "REGISTRY_VERSION": "v1r2-r3",
+ "RULES_VERSION": "v1r2-r1-rules-v3",
+ "REGISTRY_HASH": "014de1664566613f8038884a71e34e41bb0a2ce89315f0682cebfe4a2c51b7ed",
+ "REGISTRY_HASH_RECOMPUTED": "014de1664566613f8038884a71e34e41bb0a2ce89315f0682cebfe4a2c51b7ed",
+ "REGISTRY_INTEGRITY": "PASS",
+ "RULE_CHANGE": 0,
+ "PARAMETER_CHANGE": 0,
+ "DIFFERENCE_MAPPING_CHANGE": 0,
+ "DIRECTION_MAPPING_CHANGE": 0,
+ "safety": {
+  "ORDER_SEND": 0,
+  "ORDER_CHECK": 0,
+  "BROKER_WRITE": 0,
+  "FORWARD": "OFF",
+  "SHADOW": "OFF",
+  "LIVE": "OFF",
+  "V1_STOP": 0,
+  "V1_RESTART": 0,
+  "AUTOMATION_RUN": 0,
+  "V2_WRITE": 0,
+  "V3_WRITE": 0,
+  "BOUNDARY_VIOLATION": 0
+ },
+ "PRESERVED": {
+  "B_R4_SOURCE_DATA_CONFLICT": "SOURCE_DATA_CONFLICT",
+  "FORMAL_AXIS_RULE_FROZEN": "NO"
+ },
+ "run_dir": "research/hermes/trader_v1/v1_r2_prediction_upgrade/v1_r2_research_runs/V1_R2_RUN_B7_20260926T161136",
+ "ts_utc": "2026-09-26T16:11:36.149262+00:00",
+ "PROVENANCE": {
+  "_v1r2_phaseB_R1.py_sha256": "15bd162bd8de7baa59cf2999a3921ad09615f05c3dbf46d929b251ed1d7bbf5c",
+  "_v1r2_phaseB_R2.py_sha256": "be8d0cb1c57e8555df50167da1c9e6fe6305314dc063bcf6be6ad30c86735f17"
+ }
+}

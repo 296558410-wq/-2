@@ -1,0 +1,2816 @@
+{
+ "REVERSION_REVERSAL_TOTAL": 20,
+ "EXHAUSTION_ANY_AT_DECISIONS": 1,
+ "ABSORPTION_STRONG_AT_DECISIONS": 0,
+ "dataset_base": {
+  "EXHAUSTION_BUILDING": 0.00678,
+  "EXHAUSTION_CONFIRMED": 0.0,
+  "ABSORPTION_STRONG": 0.02334
+ },
+ "missing_condition_frequency": {
+  "touch in {REPEATED_TOUCH,EXHAUSTION_BUILDING}": 4,
+  "regime==REVERSAL": 16
+ },
+ "rows": [
+  {
+   "decision_id": "20260924T0232Z.json",
+   "timestamp": "2026-09-24 02:32:00+00:00",
+   "bar_index": 1149,
+   "v1_direction": "WAIT",
+   "final_state": "UNKNOWN",
+   "final_state_v2_engine": "UNKNOWN",
+   "unknown_reason": "EVIDENCE_AMBIGUOUS",
+   "unknown": true,
+   "regime": "REVERSAL",
+   "momentum": "SLOW",
+   "touch": "FIRST_TOUCH",
+   "absorption": "NONE",
+   "break_state": "NORMAL",
+   "break_n_evidence": 1,
+   "break_groups": [
+    "PENETRATION"
+   ],
+   "level_present": true,
+   "level_id": 216,
+   "level_type": "PIVOT_LOW",
+   "level_price": 4282.44,
+   "level_status": "ACTIVE",
+   "level_dist_atr": 0.975,
+   "level_touch_events_240": 1,
+   "level_fail_rate": 0.0,
+   "level_pen_last": 0.527,
+   "level_merged_from": 1,
+   "failed_event": "NONE",
+   "transition": "REGIME_CHANGED",
+   "counter": [],
+   "support": [],
+   "counter_present": false,
+   "mu_value": "NONE",
+   "mu_none_reason": "UNKNOWN_NEXT_STATE",
+   "candidate_states": [
+    "CONTINUATION",
+    "HOLD",
+    "REVERSION"
+   ],
+   "candidate_count": 3,
+   "closest_gate": "REVERSION_REVERSAL",
+   "closest_distance": 1,
+   "missing_conditions": [
+    "touch in {REPEATED_TOUCH,EXHAUSTION_BUILDING}"
+   ],
+   "missing_categories": [
+    "TOUCH"
+   ],
+   "available_evidence": [
+    "LEVEL",
+    "TOUCH",
+    "REGIME",
+    "MOMENTUM",
+    "BREAK",
+    "ABSORPTION",
+    "FAILED_EVENT",
+    "TRANSITION"
+   ],
+   "independent_info_groups": [
+    "ABSORPTION_GROUP",
+    "EVENT_GROUP",
+    "MOMENTUM_GROUP",
+    "PRICE_STRUCTURE_GROUP",
+    "VOLATILITY_GROUP"
+   ],
+   "independent_info_group_count": 5,
+   "gates": [
+    {
+     "node": "BREAK_PASSTHROUGH",
+     "failures": 1,
+     "total": 1,
+     "target": null,
+     "missing": [
+      "old_next_state in {BREAKOUT,BREAKDOWN}"
+     ]
+    },
+    {
+     "node": "REVERSION_EXHAUSTION",
+     "failures": 3,
+     "total": 3,
+     "target": "REVERSION",
+     "missing": [
+      "touch==EXHAUSTION_BUILDING",
+      "absorption==POSSIBLE",
+      "break in {ELEVATED,CRITICAL}"
+     ]
+    },
+    {
+     "node": "REVERSION_REVERSAL",
+     "failures": 1,
+     "total": 3,
+     "target": "REVERSION",
+     "missing": [
+      "touch in {REPEATED_TOUCH,EXHAUSTION_BUILDING}"
+     ]
+    },
+    {
+     "node": "CONTINUATION_PASSTHROUGH",
+     "failures": 1,
+     "total": 1,
+     "target": "CONTINUATION",
+     "missing": [
+      "old_next_state==CONTINUATION"
+     ]
+    },
+    {
+     "node": "HOLD_QUIET",
+     "failures": 1,
+     "total": 3,
+     "target": "HOLD",
+     "missing": [
+      "regime in {COMPRESSION,RANGE}"
+     ]
+    },
+    {
+     "node": "HOLD_EXPANSION",
+     "failures": 1,
+     "total": 3,
+     "target": "HOLD",
+     "missing": [
+      "regime==EXPANSION"
+     ]
+    },
+    {
+     "node": "EVENT_DRIVEN",
+     "failures": 1,
+     "total": 1,
+     "target": null,
+     "missing": [
+      "regime==EVENT_DRIVEN"
+     ]
+    }
+   ],
+   "round1_below": true
+  },
+  {
+   "decision_id": "20260924T0332Z.json",
+   "timestamp": "2026-09-24 03:32:00+00:00",
+   "bar_index": 1153,
+   "v1_direction": "SHORT",
+   "final_state": "UNKNOWN",
+   "final_state_v2_engine": "UNKNOWN",
+   "unknown_reason": "RECENT_TRANSITION",
+   "unknown": true,
+   "regime": "COMPRESSION",
+   "momentum": "NORMAL",
+   "touch": "REPEATED_TOUCH",
+   "absorption": "NONE",
+   "break_state": "ELEVATED",
+   "break_n_evidence": 3,
+   "break_groups": [
+    "TOUCH_REPEAT",
+    "PENETRATION",
+    "AT_LEVEL"
+   ],
+   "level_present": true,
+   "level_id": 215,
+   "level_type": "PIVOT_HIGH",
+   "level_price": 4293.21,
+   "level_status": "ACTIVE",
+   "level_dist_atr": 0.169,
+   "level_touch_events_240": 4,
+   "level_fail_rate": 0.0,
+   "level_pen_last": 1.132,
+   "level_merged_from": 3,
+   "failed_event": "NONE",
+   "transition": "REGIME_CHANGED",
+   "counter": [
+    "COUNTER_BREAK_RISK"
+   ],
+   "support": [
+    "MOMENTUM_GROUP"
+   ],
+   "counter_present": true,
+   "mu_value": "NONE",
+   "mu_none_reason": "UNKNOWN_NEXT_STATE",
+   "candidate_states": [
+    "CONTINUATION",
+    "HOLD",
+    "REVERSION"
+   ],
+   "candidate_count": 3,
+   "closest_gate": "REVERSION_REVERSAL",
+   "closest_distance": 1,
+   "missing_conditions": [
+    "regime==REVERSAL"
+   ],
+   "missing_categories": [
+    "REGIME"
+   ],
+   "available_evidence": [
+    "LEVEL",
+    "TOUCH",
+    "REGIME",
+    "MOMENTUM",
+    "BREAK",
+    "ABSORPTION",
+    "FAILED_EVENT",
+    "TRANSITION"
+   ],
+   "independent_info_groups": [
+    "ABSORPTION_GROUP",
+    "EVENT_GROUP",
+    "MOMENTUM_GROUP",
+    "PRICE_STRUCTURE_GROUP",
+    "VOLATILITY_GROUP"
+   ],
+   "independent_info_group_count": 5,
+   "gates": [
+    {
+     "node": "BREAK_PASSTHROUGH",
+     "failures": 1,
+     "total": 1,
+     "target": null,
+     "missing": [
+      "old_next_state in {BREAKOUT,BREAKDOWN}"
+     ]
+    },
+    {
+     "node": "REVERSION_EXHAUSTION",
+     "failures": 2,
+     "total": 3,
+     "target": "REVERSION",
+     "missing": [
+      "touch==EXHAUSTION_BUILDING",
+      "absorption==POSSIBLE"
+     ]
+    },
+    {
+     "node": "REVERSION_REVERSAL",
+     "failures": 1,
+     "total": 3,
+     "target": "REVERSION",
+     "missing": [
+      "regime==REVERSAL"
+     ]
+    },
+    {
+     "node": "CONTINUATION_PASSTHROUGH",
+     "failures": 1,
+     "total": 1,
+     "target": "CONTINUATION",
+     "missing": [
+      "old_next_state==CONTINUATION"
+     ]
+    },
+    {
+     "node": "HOLD_QUIET",
+     "failures": 1,
+     "total": 3,
+     "target": "HOLD",
+     "missing": [
+      "break in {LOW,NORMAL}"
+     ]
+    },
+    {
+     "node": "HOLD_EXPANSION",
+     "failures": 2,
+     "total": 3,
+     "target": "HOLD",
+     "missing": [
+      "regime==EXPANSION",
+      "break in {LOW,NORMAL}"
+     ]
+    },
+    {
+     "node": "EVENT_DRIVEN",
+     "failures": 1,
+     "total": 1,
+     "target": null,
+     "missing": [
+      "regime==EVENT_DRIVEN"
+     ]
+    }
+   ],
+   "round1_below": true
+  },
+  {
+   "decision_id": "20260924T0532Z.json",
+   "timestamp": "2026-09-24 05:32:00+00:00",
+   "bar_index": 1161,
+   "v1_direction": "SHORT",
+   "final_state": "UNKNOWN",
+   "final_state_v2_engine": "UNKNOWN",
+   "unknown_reason": "RECENT_TRANSITION",
+   "unknown": true,
+   "regime": "RANGE",
+   "momentum": "ACCELERATING",
+   "touch": "REPEATED_TOUCH",
+   "absorption": "NONE",
+   "break_state": "ELEVATED",
+   "break_n_evidence": 3,
+   "break_groups": [
+    "TOUCH_REPEAT",
+    "PENETRATION",
+    "MOMENTUM_TOWARD"
+   ],
+   "level_present": true,
+   "level_id": 134,
+   "level_type": "PIVOT_LOW",
+   "level_price": 4277.3,
+   "level_status": "ACTIVE",
+   "level_dist_atr": 1.273,
+   "level_touch_events_240": 4,
+   "level_fail_rate": 0.0,
+   "level_pen_last": 2.065,
+   "level_merged_from": 2,
+   "failed_event": "NONE",
+   "transition": "REGIME_CHANGED",
+   "counter": [
+    "COUNTER_BREAK_RISK"
+   ],
+   "support": [
+    "MOMENTUM_GROUP"
+   ],
+   "counter_present": true,
+   "mu_value": "NONE",
+   "mu_none_reason": "UNKNOWN_NEXT_STATE",
+   "candidate_states": [
+    "CONTINUATION",
+    "HOLD",
+    "REVERSION"
+   ],
+   "candidate_count": 3,
+   "closest_gate": "REVERSION_REVERSAL",
+   "closest_distance": 1,
+   "missing_conditions": [
+    "regime==REVERSAL"
+   ],
+   "missing_categories": [
+    "REGIME"
+   ],
+   "available_evidence": [
+    "LEVEL",
+    "TOUCH",
+    "REGIME",
+    "MOMENTUM",
+    "BREAK",
+    "ABSORPTION",
+    "FAILED_EVENT",
+    "TRANSITION"
+   ],
+   "independent_info_groups": [
+    "ABSORPTION_GROUP",
+    "EVENT_GROUP",
+    "MOMENTUM_GROUP",
+    "PRICE_STRUCTURE_GROUP",
+    "VOLATILITY_GROUP"
+   ],
+   "independent_info_group_count": 5,
+   "gates": [
+    {
+     "node": "BREAK_PASSTHROUGH",
+     "failures": 1,
+     "total": 1,
+     "target": null,
+     "missing": [
+      "old_next_state in {BREAKOUT,BREAKDOWN}"
+     ]
+    },
+    {
+     "node": "REVERSION_EXHAUSTION",
+     "failures": 2,
+     "total": 3,
+     "target": "REVERSION",
+     "missing": [
+      "touch==EXHAUSTION_BUILDING",
+      "absorption==POSSIBLE"
+     ]
+    },
+    {
+     "node": "REVERSION_REVERSAL",
+     "failures": 1,
+     "total": 3,
+     "target": "REVERSION",
+     "missing": [
+      "regime==REVERSAL"
+     ]
+    },
+    {
+     "node": "CONTINUATION_PASSTHROUGH",
+     "failures": 1,
+     "total": 1,
+     "target": "CONTINUATION",
+     "missing": [
+      "old_next_state==CONTINUATION"
+     ]
+    },
+    {
+     "node": "HOLD_QUIET",
+     "failures": 1,
+     "total": 3,
+     "target": "HOLD",
+     "missing": [
+      "break in {LOW,NORMAL}"
+     ]
+    },
+    {
+     "node": "HOLD_EXPANSION",
+     "failures": 2,
+     "total": 3,
+     "target": "HOLD",
+     "missing": [
+      "regime==EXPANSION",
+      "break in {LOW,NORMAL}"
+     ]
+    },
+    {
+     "node": "EVENT_DRIVEN",
+     "failures": 1,
+     "total": 1,
+     "target": null,
+     "missing": [
+      "regime==EVENT_DRIVEN"
+     ]
+    }
+   ],
+   "round1_below": true
+  },
+  {
+   "decision_id": "20260924T1017Z.json",
+   "timestamp": "2026-09-24 10:17:00+00:00",
+   "bar_index": 1180,
+   "v1_direction": "SHORT",
+   "final_state": "UNKNOWN",
+   "final_state_v2_engine": "UNKNOWN",
+   "unknown_reason": "RECENT_TRANSITION",
+   "unknown": true,
+   "regime": "RANGE",
+   "momentum": "SLOW",
+   "touch": "REPEATED_TOUCH",
+   "absorption": "NONE",
+   "break_state": "ELEVATED",
+   "break_n_evidence": 2,
+   "break_groups": [
+    "TOUCH_REPEAT",
+    "PENETRATION"
+   ],
+   "level_present": true,
+   "level_id": 137,
+   "level_type": "PIVOT_LOW",
+   "level_price": 4273.49,
+   "level_status": "ACTIVE",
+   "level_dist_atr": 1.525,
+   "level_touch_events_240": 4,
+   "level_fail_rate": 0.0,
+   "level_pen_last": 0.719,
+   "level_merged_from": 2,
+   "failed_event": "NONE",
+   "transition": "REGIME_CHANGED",
+   "counter": [
+    "COUNTER_BREAK_RISK"
+   ],
+   "support": [],
+   "counter_present": true,
+   "mu_value": "NONE",
+   "mu_none_reason": "UNKNOWN_NEXT_STATE",
+   "candidate_states": [
+    "CONTINUATION",
+    "HOLD",
+    "REVERSION"
+   ],
+   "candidate_count": 3,
+   "closest_gate": "REVERSION_REVERSAL",
+   "closest_distance": 1,
+   "missing_conditions": [
+    "regime==REVERSAL"
+   ],
+   "missing_categories": [
+    "REGIME"
+   ],
+   "available_evidence": [
+    "LEVEL",
+    "TOUCH",
+    "REGIME",
+    "MOMENTUM",
+    "BREAK",
+    "ABSORPTION",
+    "FAILED_EVENT",
+    "TRANSITION"
+   ],
+   "independent_info_groups": [
+    "ABSORPTION_GROUP",
+    "EVENT_GROUP",
+    "MOMENTUM_GROUP",
+    "PRICE_STRUCTURE_GROUP",
+    "VOLATILITY_GROUP"
+   ],
+   "independent_info_group_count": 5,
+   "gates": [
+    {
+     "node": "BREAK_PASSTHROUGH",
+     "failures": 1,
+     "total": 1,
+     "target": null,
+     "missing": [
+      "old_next_state in {BREAKOUT,BREAKDOWN}"
+     ]
+    },
+    {
+     "node": "REVERSION_EXHAUSTION",
+     "failures": 2,
+     "total": 3,
+     "target": "REVERSION",
+     "missing": [
+      "touch==EXHAUSTION_BUILDING",
+      "absorption==POSSIBLE"
+     ]
+    },
+    {
+     "node": "REVERSION_REVERSAL",
+     "failures": 1,
+     "total": 3,
+     "target": "REVERSION",
+     "missing": [
+      "regime==REVERSAL"
+     ]
+    },
+    {
+     "node": "CONTINUATION_PASSTHROUGH",
+     "failures": 1,
+     "total": 1,
+     "target": "CONTINUATION",
+     "missing": [
+      "old_next_state==CONTINUATION"
+     ]
+    },
+    {
+     "node": "HOLD_QUIET",
+     "failures": 1,
+     "total": 3,
+     "target": "HOLD",
+     "missing": [
+      "break in {LOW,NORMAL}"
+     ]
+    },
+    {
+     "node": "HOLD_EXPANSION",
+     "failures": 2,
+     "total": 3,
+     "target": "HOLD",
+     "missing": [
+      "regime==EXPANSION",
+      "break in {LOW,NORMAL}"
+     ]
+    },
+    {
+     "node": "EVENT_DRIVEN",
+     "failures": 1,
+     "total": 1,
+     "target": null,
+     "missing": [
+      "regime==EVENT_DRIVEN"
+     ]
+    }
+   ],
+   "round1_below": true
+  },
+  {
+   "decision_id": "20260924T1032Z.json",
+   "timestamp": "2026-09-24 10:32:00+00:00",
+   "bar_index": 1181,
+   "v1_direction": "SHORT",
+   "final_state": "UNKNOWN",
+   "final_state_v2_engine": "UNKNOWN",
+   "unknown_reason": "EVIDENCE_AMBIGUOUS",
+   "unknown": true,
+   "regime": "RANGE",
+   "momentum": "NORMAL",
+   "touch": "REPEATED_TOUCH",
+   "absorption": "NONE",
+   "break_state": "ELEVATED",
+   "break_n_evidence": 2,
+   "break_groups": [
+    "TOUCH_REPEAT",
+    "PENETRATION"
+   ],
+   "level_present": true,
+   "level_id": 137,
+   "level_type": "PIVOT_LOW",
+   "level_price": 4274.22,
+   "level_status": "ACTIVE",
+   "level_dist_atr": 1.509,
+   "level_touch_events_240": 4,
+   "level_fail_rate": 0.0,
+   "level_pen_last": 0.719,
+   "level_merged_from": 3,
+   "failed_event": "NONE",
+   "transition": "MOMENTUM_CHANGED",
+   "counter": [
+    "COUNTER_BREAK_RISK"
+   ],
+   "support": [
+    "MOMENTUM_GROUP"
+   ],
+   "counter_present": true,
+   "mu_value": "NONE",
+   "mu_none_reason": "UNKNOWN_NEXT_STATE",
+   "candidate_states": [
+    "CONTINUATION",
+    "HOLD",
+    "REVERSION"
+   ],
+   "candidate_count": 3,
+   "closest_gate": "REVERSION_REVERSAL",
+   "closest_distance": 1,
+   "missing_conditions": [
+    "regime==REVERSAL"
+   ],
+   "missing_categories": [
+    "REGIME"
+   ],
+   "available_evidence": [
+    "LEVEL",
+    "TOUCH",
+    "REGIME",
+    "MOMENTUM",
+    "BREAK",
+    "ABSORPTION",
+    "FAILED_EVENT",
+    "TRANSITION"
+   ],
+   "independent_info_groups": [
+    "ABSORPTION_GROUP",
+    "EVENT_GROUP",
+    "MOMENTUM_GROUP",
+    "PRICE_STRUCTURE_GROUP",
+    "VOLATILITY_GROUP"
+   ],
+   "independent_info_group_count": 5,
+   "gates": [
+    {
+     "node": "BREAK_PASSTHROUGH",
+     "failures": 1,
+     "total": 1,
+     "target": null,
+     "missing": [
+      "old_next_state in {BREAKOUT,BREAKDOWN}"
+     ]
+    },
+    {
+     "node": "REVERSION_EXHAUSTION",
+     "failures": 2,
+     "total": 3,
+     "target": "REVERSION",
+     "missing": [
+      "touch==EXHAUSTION_BUILDING",
+      "absorption==POSSIBLE"
+     ]
+    },
+    {
+     "node": "REVERSION_REVERSAL",
+     "failures": 1,
+     "total": 3,
+     "target": "REVERSION",
+     "missing": [
+      "regime==REVERSAL"
+     ]
+    },
+    {
+     "node": "CONTINUATION_PASSTHROUGH",
+     "failures": 1,
+     "total": 1,
+     "target": "CONTINUATION",
+     "missing": [
+      "old_next_state==CONTINUATION"
+     ]
+    },
+    {
+     "node": "HOLD_QUIET",
+     "failures": 1,
+     "total": 3,
+     "target": "HOLD",
+     "missing": [
+      "break in {LOW,NORMAL}"
+     ]
+    },
+    {
+     "node": "HOLD_EXPANSION",
+     "failures": 2,
+     "total": 3,
+     "target": "HOLD",
+     "missing": [
+      "regime==EXPANSION",
+      "break in {LOW,NORMAL}"
+     ]
+    },
+    {
+     "node": "EVENT_DRIVEN",
+     "failures": 1,
+     "total": 1,
+     "target": null,
+     "missing": [
+      "regime==EVENT_DRIVEN"
+     ]
+    }
+   ],
+   "round1_below": true
+  },
+  {
+   "decision_id": "20260924T1047Z.json",
+   "timestamp": "2026-09-24 10:47:00+00:00",
+   "bar_index": 1182,
+   "v1_direction": "SHORT",
+   "final_state": "UNKNOWN",
+   "final_state_v2_engine": "UNKNOWN",
+   "unknown_reason": "RECENT_TRANSITION",
+   "unknown": true,
+   "regime": "UNKNOWN",
+   "momentum": "NORMAL",
+   "touch": "REPEATED_TOUCH",
+   "absorption": "NONE",
+   "break_state": "ELEVATED",
+   "break_n_evidence": 2,
+   "break_groups": [
+    "TOUCH_REPEAT",
+    "PENETRATION"
+   ],
+   "level_present": true,
+   "level_id": 137,
+   "level_type": "PIVOT_LOW",
+   "level_price": 4274.22,
+   "level_status": "ACTIVE",
+   "level_dist_atr": 1.268,
+   "level_touch_events_240": 4,
+   "level_fail_rate": 0.0,
+   "level_pen_last": 0.719,
+   "level_merged_from": 3,
+   "failed_event": "NONE",
+   "transition": "REGIME_CHANGED",
+   "counter": [
+    "COUNTER_BREAK_RISK"
+   ],
+   "support": [
+    "MOMENTUM_GROUP"
+   ],
+   "counter_present": true,
+   "mu_value": "NONE",
+   "mu_none_reason": "UNKNOWN_NEXT_STATE",
+   "candidate_states": [
+    "CONTINUATION",
+    "REVERSION"
+   ],
+   "candidate_count": 2,
+   "closest_gate": "REVERSION_REVERSAL",
+   "closest_distance": 1,
+   "missing_conditions": [
+    "regime==REVERSAL"
+   ],
+   "missing_categories": [
+    "REGIME"
+   ],
+   "available_evidence": [
+    "LEVEL",
+    "TOUCH",
+    "MOMENTUM",
+    "BREAK",
+    "ABSORPTION",
+    "FAILED_EVENT",
+    "TRANSITION"
+   ],
+   "independent_info_groups": [
+    "ABSORPTION_GROUP",
+    "EVENT_GROUP",
+    "MOMENTUM_GROUP",
+    "PRICE_STRUCTURE_GROUP"
+   ],
+   "independent_info_group_count": 4,
+   "gates": [
+    {
+     "node": "BREAK_PASSTHROUGH",
+     "failures": 1,
+     "total": 1,
+     "target": null,
+     "missing": [
+      "old_next_state in {BREAKOUT,BREAKDOWN}"
+     ]
+    },
+    {
+     "node": "REVERSION_EXHAUSTION",
+     "failures": 2,
+     "total": 3,
+     "target": "REVERSION",
+     "missing": [
+      "touch==EXHAUSTION_BUILDING",
+      "absorption==POSSIBLE"
+     ]
+    },
+    {
+     "node": "REVERSION_REVERSAL",
+     "failures": 1,
+     "total": 3,
+     "target": "REVERSION",
+     "missing": [
+      "regime==REVERSAL"
+     ]
+    },
+    {
+     "node": "CONTINUATION_PASSTHROUGH",
+     "failures": 1,
+     "total": 1,
+     "target": "CONTINUATION",
+     "missing": [
+      "old_next_state==CONTINUATION"
+     ]
+    },
+    {
+     "node": "HOLD_QUIET",
+     "failures": 2,
+     "total": 3,
+     "target": "HOLD",
+     "missing": [
+      "regime in {COMPRESSION,RANGE}",
+      "break in {LOW,NORMAL}"
+     ]
+    },
+    {
+     "node": "HOLD_EXPANSION",
+     "failures": 2,
+     "total": 3,
+     "target": "HOLD",
+     "missing": [
+      "regime==EXPANSION",
+      "break in {LOW,NORMAL}"
+     ]
+    },
+    {
+     "node": "EVENT_DRIVEN",
+     "failures": 1,
+     "total": 1,
+     "target": null,
+     "missing": [
+      "regime==EVENT_DRIVEN"
+     ]
+    }
+   ],
+   "round1_below": true
+  },
+  {
+   "decision_id": "20260924T1102Z.json",
+   "timestamp": "2026-09-24 11:02:00+00:00",
+   "bar_index": 1183,
+   "v1_direction": "SHORT",
+   "final_state": "UNKNOWN",
+   "final_state_v2_engine": "UNKNOWN",
+   "unknown_reason": "RECENT_TRANSITION",
+   "unknown": true,
+   "regime": "TREND",
+   "momentum": "SLOW",
+   "touch": "REPEATED_TOUCH",
+   "absorption": "NONE",
+   "break_state": "ELEVATED",
+   "break_n_evidence": 2,
+   "break_groups": [
+    "TOUCH_REPEAT",
+    "PENETRATION"
+   ],
+   "level_present": true,
+   "level_id": 137,
+   "level_type": "PIVOT_LOW",
+   "level_price": 4274.22,
+   "level_status": "ACTIVE",
+   "level_dist_atr": 0.629,
+   "level_touch_events_240": 4,
+   "level_fail_rate": 0.0,
+   "level_pen_last": 0.719,
+   "level_merged_from": 3,
+   "failed_event": "NONE",
+   "transition": "REGIME_CHANGED",
+   "counter": [
+    "COUNTER_BREAK_RISK"
+   ],
+   "support": [
+    "LEVEL_GROUP",
+    "TREND_GROUP"
+   ],
+   "counter_present": true,
+   "mu_value": "NONE",
+   "mu_none_reason": "UNKNOWN_NEXT_STATE",
+   "candidate_states": [
+    "CONTINUATION",
+    "REVERSION"
+   ],
+   "candidate_count": 2,
+   "closest_gate": "REVERSION_REVERSAL",
+   "closest_distance": 1,
+   "missing_conditions": [
+    "regime==REVERSAL"
+   ],
+   "missing_categories": [
+    "REGIME"
+   ],
+   "available_evidence": [
+    "LEVEL",
+    "TOUCH",
+    "REGIME",
+    "MOMENTUM",
+    "BREAK",
+    "ABSORPTION",
+    "FAILED_EVENT",
+    "TRANSITION"
+   ],
+   "independent_info_groups": [
+    "ABSORPTION_GROUP",
+    "EVENT_GROUP",
+    "MOMENTUM_GROUP",
+    "PRICE_STRUCTURE_GROUP",
+    "VOLATILITY_GROUP"
+   ],
+   "independent_info_group_count": 5,
+   "gates": [
+    {
+     "node": "BREAK_PASSTHROUGH",
+     "failures": 1,
+     "total": 1,
+     "target": null,
+     "missing": [
+      "old_next_state in {BREAKOUT,BREAKDOWN}"
+     ]
+    },
+    {
+     "node": "REVERSION_EXHAUSTION",
+     "failures": 2,
+     "total": 3,
+     "target": "REVERSION",
+     "missing": [
+      "touch==EXHAUSTION_BUILDING",
+      "absorption==POSSIBLE"
+     ]
+    },
+    {
+     "node": "REVERSION_REVERSAL",
+     "failures": 1,
+     "total": 3,
+     "target": "REVERSION",
+     "missing": [
+      "regime==REVERSAL"
+     ]
+    },
+    {
+     "node": "CONTINUATION_PASSTHROUGH",
+     "failures": 1,
+     "total": 1,
+     "target": "CONTINUATION",
+     "missing": [
+      "old_next_state==CONTINUATION"
+     ]
+    },
+    {
+     "node": "HOLD_QUIET",
+     "failures": 2,
+     "total": 3,
+     "target": "HOLD",
+     "missing": [
+      "regime in {COMPRESSION,RANGE}",
+      "break in {LOW,NORMAL}"
+     ]
+    },
+    {
+     "node": "HOLD_EXPANSION",
+     "failures": 2,
+     "total": 3,
+     "target": "HOLD",
+     "missing": [
+      "regime==EXPANSION",
+      "break in {LOW,NORMAL}"
+     ]
+    },
+    {
+     "node": "EVENT_DRIVEN",
+     "failures": 1,
+     "total": 1,
+     "target": null,
+     "missing": [
+      "regime==EVENT_DRIVEN"
+     ]
+    }
+   ],
+   "round1_below": true
+  },
+  {
+   "decision_id": "20260924T1117Z.json",
+   "timestamp": "2026-09-24 11:17:00+00:00",
+   "bar_index": 1184,
+   "v1_direction": "SHORT",
+   "final_state": "UNKNOWN",
+   "final_state_v2_engine": "UNKNOWN",
+   "unknown_reason": "RECENT_TRANSITION",
+   "unknown": true,
+   "regime": "RANGE",
+   "momentum": "DECELERATING",
+   "touch": "REPEATED_TOUCH",
+   "absorption": "NONE",
+   "break_state": "ELEVATED",
+   "break_n_evidence": 3,
+   "break_groups": [
+    "TOUCH_REPEAT",
+    "PENETRATION",
+    "AT_LEVEL"
+   ],
+   "level_present": true,
+   "level_id": 137,
+   "level_type": "PIVOT_LOW",
+   "level_price": 4274.22,
+   "level_status": "ACTIVE",
+   "level_dist_atr": 0.474,
+   "level_touch_events_240": 4,
+   "level_fail_rate": 0.0,
+   "level_pen_last": 0.719,
+   "level_merged_from": 3,
+   "failed_event": "NONE",
+   "transition": "REGIME_CHANGED",
+   "counter": [
+    "COUNTER_BREAK_RISK",
+    "COUNTER_DECELERATION"
+   ],
+   "support": [],
+   "counter_present": true,
+   "mu_value": "NONE",
+   "mu_none_reason": "UNKNOWN_NEXT_STATE",
+   "candidate_states": [
+    "CONTINUATION",
+    "HOLD",
+    "REVERSION"
+   ],
+   "candidate_count": 3,
+   "closest_gate": "REVERSION_REVERSAL",
+   "closest_distance": 1,
+   "missing_conditions": [
+    "regime==REVERSAL"
+   ],
+   "missing_categories": [
+    "REGIME"
+   ],
+   "available_evidence": [
+    "LEVEL",
+    "TOUCH",
+    "REGIME",
+    "MOMENTUM",
+    "BREAK",
+    "ABSORPTION",
+    "FAILED_EVENT",
+    "TRANSITION"
+   ],
+   "independent_info_groups": [
+    "ABSORPTION_GROUP",
+    "EVENT_GROUP",
+    "MOMENTUM_GROUP",
+    "PRICE_STRUCTURE_GROUP",
+    "VOLATILITY_GROUP"
+   ],
+   "independent_info_group_count": 5,
+   "gates": [
+    {
+     "node": "BREAK_PASSTHROUGH",
+     "failures": 1,
+     "total": 1,
+     "target": null,
+     "missing": [
+      "old_next_state in {BREAKOUT,BREAKDOWN}"
+     ]
+    },
+    {
+     "node": "REVERSION_EXHAUSTION",
+     "failures": 2,
+     "total": 3,
+     "target": "REVERSION",
+     "missing": [
+      "touch==EXHAUSTION_BUILDING",
+      "absorption==POSSIBLE"
+     ]
+    },
+    {
+     "node": "REVERSION_REVERSAL",
+     "failures": 1,
+     "total": 3,
+     "target": "REVERSION",
+     "missing": [
+      "regime==REVERSAL"
+     ]
+    },
+    {
+     "node": "CONTINUATION_PASSTHROUGH",
+     "failures": 1,
+     "total": 1,
+     "target": "CONTINUATION",
+     "missing": [
+      "old_next_state==CONTINUATION"
+     ]
+    },
+    {
+     "node": "HOLD_QUIET",
+     "failures": 1,
+     "total": 3,
+     "target": "HOLD",
+     "missing": [
+      "break in {LOW,NORMAL}"
+     ]
+    },
+    {
+     "node": "HOLD_EXPANSION",
+     "failures": 2,
+     "total": 3,
+     "target": "HOLD",
+     "missing": [
+      "regime==EXPANSION",
+      "break in {LOW,NORMAL}"
+     ]
+    },
+    {
+     "node": "EVENT_DRIVEN",
+     "failures": 1,
+     "total": 1,
+     "target": null,
+     "missing": [
+      "regime==EVENT_DRIVEN"
+     ]
+    }
+   ],
+   "round1_below": true
+  },
+  {
+   "decision_id": "20260924T1717Z.json",
+   "timestamp": "2026-09-24 17:17:00+00:00",
+   "bar_index": 1208,
+   "v1_direction": "SHORT",
+   "final_state": "UNKNOWN",
+   "final_state_v2_engine": "UNKNOWN",
+   "unknown_reason": "EVIDENCE_AMBIGUOUS",
+   "unknown": true,
+   "regime": "REVERSAL",
+   "momentum": "ACCELERATING",
+   "touch": "NO_TOUCH",
+   "absorption": "NONE",
+   "break_state": "LOW",
+   "break_n_evidence": 0,
+   "break_groups": [],
+   "level_present": true,
+   "level_id": 226,
+   "level_type": "PIVOT_HIGH",
+   "level_price": 4285.08,
+   "level_status": "ACTIVE",
+   "level_dist_atr": 1.651,
+   "level_touch_events_240": 0,
+   "level_fail_rate": 0.0,
+   "level_pen_last": 0.0,
+   "level_merged_from": 0,
+   "failed_event": "NONE",
+   "transition": "REGIME_CHANGED",
+   "counter": [],
+   "support": [
+    "MOMENTUM_GROUP"
+   ],
+   "counter_present": false,
+   "mu_value": "NONE",
+   "mu_none_reason": "UNKNOWN_NEXT_STATE",
+   "candidate_states": [
+    "CONTINUATION",
+    "HOLD",
+    "REVERSION"
+   ],
+   "candidate_count": 3,
+   "closest_gate": "REVERSION_REVERSAL",
+   "closest_distance": 1,
+   "missing_conditions": [
+    "touch in {REPEATED_TOUCH,EXHAUSTION_BUILDING}"
+   ],
+   "missing_categories": [
+    "TOUCH"
+   ],
+   "available_evidence": [
+    "LEVEL",
+    "TOUCH",
+    "REGIME",
+    "MOMENTUM",
+    "BREAK",
+    "ABSORPTION",
+    "FAILED_EVENT",
+    "TRANSITION"
+   ],
+   "independent_info_groups": [
+    "ABSORPTION_GROUP",
+    "EVENT_GROUP",
+    "MOMENTUM_GROUP",
+    "PRICE_STRUCTURE_GROUP",
+    "VOLATILITY_GROUP"
+   ],
+   "independent_info_group_count": 5,
+   "gates": [
+    {
+     "node": "BREAK_PASSTHROUGH",
+     "failures": 1,
+     "total": 1,
+     "target": null,
+     "missing": [
+      "old_next_state in {BREAKOUT,BREAKDOWN}"
+     ]
+    },
+    {
+     "node": "REVERSION_EXHAUSTION",
+     "failures": 3,
+     "total": 3,
+     "target": "REVERSION",
+     "missing": [
+      "touch==EXHAUSTION_BUILDING",
+      "absorption==POSSIBLE",
+      "break in {ELEVATED,CRITICAL}"
+     ]
+    },
+    {
+     "node": "REVERSION_REVERSAL",
+     "failures": 1,
+     "total": 3,
+     "target": "REVERSION",
+     "missing": [
+      "touch in {REPEATED_TOUCH,EXHAUSTION_BUILDING}"
+     ]
+    },
+    {
+     "node": "CONTINUATION_PASSTHROUGH",
+     "failures": 1,
+     "total": 1,
+     "target": "CONTINUATION",
+     "missing": [
+      "old_next_state==CONTINUATION"
+     ]
+    },
+    {
+     "node": "HOLD_QUIET",
+     "failures": 1,
+     "total": 3,
+     "target": "HOLD",
+     "missing": [
+      "regime in {COMPRESSION,RANGE}"
+     ]
+    },
+    {
+     "node": "HOLD_EXPANSION",
+     "failures": 1,
+     "total": 3,
+     "target": "HOLD",
+     "missing": [
+      "regime==EXPANSION"
+     ]
+    },
+    {
+     "node": "EVENT_DRIVEN",
+     "failures": 1,
+     "total": 1,
+     "target": null,
+     "missing": [
+      "regime==EVENT_DRIVEN"
+     ]
+    }
+   ],
+   "round1_below": true
+  },
+  {
+   "decision_id": "20260924T1747Z.json",
+   "timestamp": "2026-09-24 17:47:00+00:00",
+   "bar_index": 1210,
+   "v1_direction": "SHORT",
+   "final_state": "UNKNOWN",
+   "final_state_v2_engine": "UNKNOWN",
+   "unknown_reason": "EVIDENCE_AMBIGUOUS",
+   "unknown": true,
+   "regime": "REVERSAL",
+   "momentum": "DECELERATING",
+   "touch": "NO_TOUCH",
+   "absorption": "NONE",
+   "break_state": "NORMAL",
+   "break_n_evidence": 1,
+   "break_groups": [
+    "MOMENTUM_TOWARD"
+   ],
+   "level_present": true,
+   "level_id": 224,
+   "level_type": "PIVOT_LOW",
+   "level_price": 4244.36,
+   "level_status": "ACTIVE",
+   "level_dist_atr": 1.281,
+   "level_touch_events_240": 0,
+   "level_fail_rate": 0.0,
+   "level_pen_last": 0.0,
+   "level_merged_from": 0,
+   "failed_event": "NONE",
+   "transition": "REGIME_CHANGED",
+   "counter": [
+    "COUNTER_DECELERATION"
+   ],
+   "support": [],
+   "counter_present": true,
+   "mu_value": "NONE",
+   "mu_none_reason": "UNKNOWN_NEXT_STATE",
+   "candidate_states": [
+    "CONTINUATION",
+    "HOLD",
+    "REVERSION"
+   ],
+   "candidate_count": 3,
+   "closest_gate": "REVERSION_REVERSAL",
+   "closest_distance": 1,
+   "missing_conditions": [
+    "touch in {REPEATED_TOUCH,EXHAUSTION_BUILDING}"
+   ],
+   "missing_categories": [
+    "TOUCH"
+   ],
+   "available_evidence": [
+    "LEVEL",
+    "TOUCH",
+    "REGIME",
+    "MOMENTUM",
+    "BREAK",
+    "ABSORPTION",
+    "FAILED_EVENT",
+    "TRANSITION"
+   ],
+   "independent_info_groups": [
+    "ABSORPTION_GROUP",
+    "EVENT_GROUP",
+    "MOMENTUM_GROUP",
+    "PRICE_STRUCTURE_GROUP",
+    "VOLATILITY_GROUP"
+   ],
+   "independent_info_group_count": 5,
+   "gates": [
+    {
+     "node": "BREAK_PASSTHROUGH",
+     "failures": 1,
+     "total": 1,
+     "target": null,
+     "missing": [
+      "old_next_state in {BREAKOUT,BREAKDOWN}"
+     ]
+    },
+    {
+     "node": "REVERSION_EXHAUSTION",
+     "failures": 3,
+     "total": 3,
+     "target": "REVERSION",
+     "missing": [
+      "touch==EXHAUSTION_BUILDING",
+      "absorption==POSSIBLE",
+      "break in {ELEVATED,CRITICAL}"
+     ]
+    },
+    {
+     "node": "REVERSION_REVERSAL",
+     "failures": 1,
+     "total": 3,
+     "target": "REVERSION",
+     "missing": [
+      "touch in {REPEATED_TOUCH,EXHAUSTION_BUILDING}"
+     ]
+    },
+    {
+     "node": "CONTINUATION_PASSTHROUGH",
+     "failures": 1,
+     "total": 1,
+     "target": "CONTINUATION",
+     "missing": [
+      "old_next_state==CONTINUATION"
+     ]
+    },
+    {
+     "node": "HOLD_QUIET",
+     "failures": 1,
+     "total": 3,
+     "target": "HOLD",
+     "missing": [
+      "regime in {COMPRESSION,RANGE}"
+     ]
+    },
+    {
+     "node": "HOLD_EXPANSION",
+     "failures": 1,
+     "total": 3,
+     "target": "HOLD",
+     "missing": [
+      "regime==EXPANSION"
+     ]
+    },
+    {
+     "node": "EVENT_DRIVEN",
+     "failures": 1,
+     "total": 1,
+     "target": null,
+     "missing": [
+      "regime==EVENT_DRIVEN"
+     ]
+    }
+   ],
+   "round1_below": true
+  },
+  {
+   "decision_id": "20260924T1917Z.json",
+   "timestamp": "2026-09-24 19:17:00+00:00",
+   "bar_index": 1216,
+   "v1_direction": "WAIT",
+   "final_state": "UNKNOWN",
+   "final_state_v2_engine": "UNKNOWN",
+   "unknown_reason": "EVIDENCE_AMBIGUOUS",
+   "unknown": true,
+   "regime": "REVERSAL",
+   "momentum": "ACCELERATING",
+   "touch": "FIRST_TOUCH",
+   "absorption": "NONE",
+   "break_state": "NORMAL",
+   "break_n_evidence": 1,
+   "break_groups": [
+    "PENETRATION"
+   ],
+   "level_present": true,
+   "level_id": 224,
+   "level_type": "PIVOT_LOW",
+   "level_price": 4244.82,
+   "level_status": "ACTIVE",
+   "level_dist_atr": 1.558,
+   "level_touch_events_240": 1,
+   "level_fail_rate": 0.0,
+   "level_pen_last": 1.01,
+   "level_merged_from": 1,
+   "failed_event": "NONE",
+   "transition": "REGIME_CHANGED",
+   "counter": [],
+   "support": [
+    "MOMENTUM_GROUP"
+   ],
+   "counter_present": false,
+   "mu_value": "NONE",
+   "mu_none_reason": "UNKNOWN_NEXT_STATE",
+   "candidate_states": [
+    "CONTINUATION",
+    "HOLD",
+    "REVERSION"
+   ],
+   "candidate_count": 3,
+   "closest_gate": "REVERSION_REVERSAL",
+   "closest_distance": 1,
+   "missing_conditions": [
+    "touch in {REPEATED_TOUCH,EXHAUSTION_BUILDING}"
+   ],
+   "missing_categories": [
+    "TOUCH"
+   ],
+   "available_evidence": [
+    "LEVEL",
+    "TOUCH",
+    "REGIME",
+    "MOMENTUM",
+    "BREAK",
+    "ABSORPTION",
+    "FAILED_EVENT",
+    "TRANSITION"
+   ],
+   "independent_info_groups": [
+    "ABSORPTION_GROUP",
+    "EVENT_GROUP",
+    "MOMENTUM_GROUP",
+    "PRICE_STRUCTURE_GROUP",
+    "VOLATILITY_GROUP"
+   ],
+   "independent_info_group_count": 5,
+   "gates": [
+    {
+     "node": "BREAK_PASSTHROUGH",
+     "failures": 1,
+     "total": 1,
+     "target": null,
+     "missing": [
+      "old_next_state in {BREAKOUT,BREAKDOWN}"
+     ]
+    },
+    {
+     "node": "REVERSION_EXHAUSTION",
+     "failures": 3,
+     "total": 3,
+     "target": "REVERSION",
+     "missing": [
+      "touch==EXHAUSTION_BUILDING",
+      "absorption==POSSIBLE",
+      "break in {ELEVATED,CRITICAL}"
+     ]
+    },
+    {
+     "node": "REVERSION_REVERSAL",
+     "failures": 1,
+     "total": 3,
+     "target": "REVERSION",
+     "missing": [
+      "touch in {REPEATED_TOUCH,EXHAUSTION_BUILDING}"
+     ]
+    },
+    {
+     "node": "CONTINUATION_PASSTHROUGH",
+     "failures": 1,
+     "total": 1,
+     "target": "CONTINUATION",
+     "missing": [
+      "old_next_state==CONTINUATION"
+     ]
+    },
+    {
+     "node": "HOLD_QUIET",
+     "failures": 1,
+     "total": 3,
+     "target": "HOLD",
+     "missing": [
+      "regime in {COMPRESSION,RANGE}"
+     ]
+    },
+    {
+     "node": "HOLD_EXPANSION",
+     "failures": 1,
+     "total": 3,
+     "target": "HOLD",
+     "missing": [
+      "regime==EXPANSION"
+     ]
+    },
+    {
+     "node": "EVENT_DRIVEN",
+     "failures": 1,
+     "total": 1,
+     "target": null,
+     "missing": [
+      "regime==EVENT_DRIVEN"
+     ]
+    }
+   ],
+   "round1_below": true
+  },
+  {
+   "decision_id": "20260925T0147Z.json",
+   "timestamp": "2026-09-25 01:47:00+00:00",
+   "bar_index": 1238,
+   "v1_direction": "WAIT",
+   "final_state": "UNKNOWN",
+   "final_state_v2_engine": "UNKNOWN",
+   "unknown_reason": "RECENT_TRANSITION",
+   "unknown": true,
+   "regime": "RANGE",
+   "momentum": "SLOW",
+   "touch": "REPEATED_TOUCH",
+   "absorption": "NONE",
+   "break_state": "ELEVATED",
+   "break_n_evidence": 2,
+   "break_groups": [
+    "PENETRATION",
+    "AT_LEVEL"
+   ],
+   "level_present": true,
+   "level_id": 230,
+   "level_type": "PIVOT_HIGH",
+   "level_price": 4274.62,
+   "level_status": "ACTIVE",
+   "level_dist_atr": 0.493,
+   "level_touch_events_240": 2,
+   "level_fail_rate": 0.0,
+   "level_pen_last": 0.773,
+   "level_merged_from": 1,
+   "failed_event": "NONE",
+   "transition": "TOUCH_STATE_CHANGED",
+   "counter": [
+    "COUNTER_BREAK_RISK"
+   ],
+   "support": [],
+   "counter_present": true,
+   "mu_value": "NONE",
+   "mu_none_reason": "UNKNOWN_NEXT_STATE",
+   "candidate_states": [
+    "CONTINUATION",
+    "HOLD",
+    "REVERSION"
+   ],
+   "candidate_count": 3,
+   "closest_gate": "REVERSION_REVERSAL",
+   "closest_distance": 1,
+   "missing_conditions": [
+    "regime==REVERSAL"
+   ],
+   "missing_categories": [
+    "REGIME"
+   ],
+   "available_evidence": [
+    "LEVEL",
+    "TOUCH",
+    "REGIME",
+    "MOMENTUM",
+    "BREAK",
+    "ABSORPTION",
+    "FAILED_EVENT",
+    "TRANSITION"
+   ],
+   "independent_info_groups": [
+    "ABSORPTION_GROUP",
+    "EVENT_GROUP",
+    "MOMENTUM_GROUP",
+    "PRICE_STRUCTURE_GROUP",
+    "VOLATILITY_GROUP"
+   ],
+   "independent_info_group_count": 5,
+   "gates": [
+    {
+     "node": "BREAK_PASSTHROUGH",
+     "failures": 1,
+     "total": 1,
+     "target": null,
+     "missing": [
+      "old_next_state in {BREAKOUT,BREAKDOWN}"
+     ]
+    },
+    {
+     "node": "REVERSION_EXHAUSTION",
+     "failures": 2,
+     "total": 3,
+     "target": "REVERSION",
+     "missing": [
+      "touch==EXHAUSTION_BUILDING",
+      "absorption==POSSIBLE"
+     ]
+    },
+    {
+     "node": "REVERSION_REVERSAL",
+     "failures": 1,
+     "total": 3,
+     "target": "REVERSION",
+     "missing": [
+      "regime==REVERSAL"
+     ]
+    },
+    {
+     "node": "CONTINUATION_PASSTHROUGH",
+     "failures": 1,
+     "total": 1,
+     "target": "CONTINUATION",
+     "missing": [
+      "old_next_state==CONTINUATION"
+     ]
+    },
+    {
+     "node": "HOLD_QUIET",
+     "failures": 1,
+     "total": 3,
+     "target": "HOLD",
+     "missing": [
+      "break in {LOW,NORMAL}"
+     ]
+    },
+    {
+     "node": "HOLD_EXPANSION",
+     "failures": 2,
+     "total": 3,
+     "target": "HOLD",
+     "missing": [
+      "regime==EXPANSION",
+      "break in {LOW,NORMAL}"
+     ]
+    },
+    {
+     "node": "EVENT_DRIVEN",
+     "failures": 1,
+     "total": 1,
+     "target": null,
+     "missing": [
+      "regime==EVENT_DRIVEN"
+     ]
+    }
+   ],
+   "round1_below": true
+  },
+  {
+   "decision_id": "20260925T0232Z.json",
+   "timestamp": "2026-09-25 02:32:00+00:00",
+   "bar_index": 1241,
+   "v1_direction": "WAIT",
+   "final_state": "UNKNOWN",
+   "final_state_v2_engine": "UNKNOWN",
+   "unknown_reason": "RECENT_TRANSITION",
+   "unknown": true,
+   "regime": "COMPRESSION",
+   "momentum": "SLOW",
+   "touch": "REPEATED_TOUCH",
+   "absorption": "NONE",
+   "break_state": "ELEVATED",
+   "break_n_evidence": 2,
+   "break_groups": [
+    "PENETRATION",
+    "AT_LEVEL"
+   ],
+   "level_present": true,
+   "level_id": 230,
+   "level_type": "PIVOT_HIGH",
+   "level_price": 4274.62,
+   "level_status": "ACTIVE",
+   "level_dist_atr": 0.412,
+   "level_touch_events_240": 2,
+   "level_fail_rate": 0.0,
+   "level_pen_last": 0.773,
+   "level_merged_from": 1,
+   "failed_event": "NONE",
+   "transition": "REGIME_CHANGED",
+   "counter": [
+    "COUNTER_BREAK_RISK"
+   ],
+   "support": [],
+   "counter_present": true,
+   "mu_value": "NONE",
+   "mu_none_reason": "UNKNOWN_NEXT_STATE",
+   "candidate_states": [
+    "CONTINUATION",
+    "HOLD",
+    "REVERSION"
+   ],
+   "candidate_count": 3,
+   "closest_gate": "REVERSION_REVERSAL",
+   "closest_distance": 1,
+   "missing_conditions": [
+    "regime==REVERSAL"
+   ],
+   "missing_categories": [
+    "REGIME"
+   ],
+   "available_evidence": [
+    "LEVEL",
+    "TOUCH",
+    "REGIME",
+    "MOMENTUM",
+    "BREAK",
+    "ABSORPTION",
+    "FAILED_EVENT",
+    "TRANSITION"
+   ],
+   "independent_info_groups": [
+    "ABSORPTION_GROUP",
+    "EVENT_GROUP",
+    "MOMENTUM_GROUP",
+    "PRICE_STRUCTURE_GROUP",
+    "VOLATILITY_GROUP"
+   ],
+   "independent_info_group_count": 5,
+   "gates": [
+    {
+     "node": "BREAK_PASSTHROUGH",
+     "failures": 1,
+     "total": 1,
+     "target": null,
+     "missing": [
+      "old_next_state in {BREAKOUT,BREAKDOWN}"
+     ]
+    },
+    {
+     "node": "REVERSION_EXHAUSTION",
+     "failures": 2,
+     "total": 3,
+     "target": "REVERSION",
+     "missing": [
+      "touch==EXHAUSTION_BUILDING",
+      "absorption==POSSIBLE"
+     ]
+    },
+    {
+     "node": "REVERSION_REVERSAL",
+     "failures": 1,
+     "total": 3,
+     "target": "REVERSION",
+     "missing": [
+      "regime==REVERSAL"
+     ]
+    },
+    {
+     "node": "CONTINUATION_PASSTHROUGH",
+     "failures": 1,
+     "total": 1,
+     "target": "CONTINUATION",
+     "missing": [
+      "old_next_state==CONTINUATION"
+     ]
+    },
+    {
+     "node": "HOLD_QUIET",
+     "failures": 1,
+     "total": 3,
+     "target": "HOLD",
+     "missing": [
+      "break in {LOW,NORMAL}"
+     ]
+    },
+    {
+     "node": "HOLD_EXPANSION",
+     "failures": 2,
+     "total": 3,
+     "target": "HOLD",
+     "missing": [
+      "regime==EXPANSION",
+      "break in {LOW,NORMAL}"
+     ]
+    },
+    {
+     "node": "EVENT_DRIVEN",
+     "failures": 1,
+     "total": 1,
+     "target": null,
+     "missing": [
+      "regime==EVENT_DRIVEN"
+     ]
+    }
+   ],
+   "round1_below": true
+  },
+  {
+   "decision_id": "20260925T0247Z.json",
+   "timestamp": "2026-09-25 02:47:00+00:00",
+   "bar_index": 1242,
+   "v1_direction": "WAIT",
+   "final_state": "UNKNOWN",
+   "final_state_v2_engine": "UNKNOWN",
+   "unknown_reason": "EVIDENCE_AMBIGUOUS",
+   "unknown": true,
+   "regime": "COMPRESSION",
+   "momentum": "NORMAL",
+   "touch": "REPEATED_TOUCH",
+   "absorption": "NONE",
+   "break_state": "ELEVATED",
+   "break_n_evidence": 2,
+   "break_groups": [
+    "PENETRATION",
+    "AT_LEVEL"
+   ],
+   "level_present": true,
+   "level_id": 230,
+   "level_type": "PIVOT_HIGH",
+   "level_price": 4274.62,
+   "level_status": "ACTIVE",
+   "level_dist_atr": 0.008,
+   "level_touch_events_240": 2,
+   "level_fail_rate": 0.0,
+   "level_pen_last": 0.773,
+   "level_merged_from": 1,
+   "failed_event": "NONE",
+   "transition": "MOMENTUM_CHANGED",
+   "counter": [
+    "COUNTER_BREAK_RISK"
+   ],
+   "support": [
+    "MOMENTUM_GROUP"
+   ],
+   "counter_present": true,
+   "mu_value": "NONE",
+   "mu_none_reason": "UNKNOWN_NEXT_STATE",
+   "candidate_states": [
+    "CONTINUATION",
+    "HOLD",
+    "REVERSION"
+   ],
+   "candidate_count": 3,
+   "closest_gate": "REVERSION_REVERSAL",
+   "closest_distance": 1,
+   "missing_conditions": [
+    "regime==REVERSAL"
+   ],
+   "missing_categories": [
+    "REGIME"
+   ],
+   "available_evidence": [
+    "LEVEL",
+    "TOUCH",
+    "REGIME",
+    "MOMENTUM",
+    "BREAK",
+    "ABSORPTION",
+    "FAILED_EVENT",
+    "TRANSITION"
+   ],
+   "independent_info_groups": [
+    "ABSORPTION_GROUP",
+    "EVENT_GROUP",
+    "MOMENTUM_GROUP",
+    "PRICE_STRUCTURE_GROUP",
+    "VOLATILITY_GROUP"
+   ],
+   "independent_info_group_count": 5,
+   "gates": [
+    {
+     "node": "BREAK_PASSTHROUGH",
+     "failures": 1,
+     "total": 1,
+     "target": null,
+     "missing": [
+      "old_next_state in {BREAKOUT,BREAKDOWN}"
+     ]
+    },
+    {
+     "node": "REVERSION_EXHAUSTION",
+     "failures": 2,
+     "total": 3,
+     "target": "REVERSION",
+     "missing": [
+      "touch==EXHAUSTION_BUILDING",
+      "absorption==POSSIBLE"
+     ]
+    },
+    {
+     "node": "REVERSION_REVERSAL",
+     "failures": 1,
+     "total": 3,
+     "target": "REVERSION",
+     "missing": [
+      "regime==REVERSAL"
+     ]
+    },
+    {
+     "node": "CONTINUATION_PASSTHROUGH",
+     "failures": 1,
+     "total": 1,
+     "target": "CONTINUATION",
+     "missing": [
+      "old_next_state==CONTINUATION"
+     ]
+    },
+    {
+     "node": "HOLD_QUIET",
+     "failures": 1,
+     "total": 3,
+     "target": "HOLD",
+     "missing": [
+      "break in {LOW,NORMAL}"
+     ]
+    },
+    {
+     "node": "HOLD_EXPANSION",
+     "failures": 2,
+     "total": 3,
+     "target": "HOLD",
+     "missing": [
+      "regime==EXPANSION",
+      "break in {LOW,NORMAL}"
+     ]
+    },
+    {
+     "node": "EVENT_DRIVEN",
+     "failures": 1,
+     "total": 1,
+     "target": null,
+     "missing": [
+      "regime==EVENT_DRIVEN"
+     ]
+    }
+   ],
+   "round1_below": true
+  },
+  {
+   "decision_id": "20260925T0502Z.json",
+   "timestamp": "2026-09-25 05:02:00+00:00",
+   "bar_index": 1251,
+   "v1_direction": "SHORT",
+   "final_state": "UNKNOWN",
+   "final_state_v2_engine": "UNKNOWN",
+   "unknown_reason": "RECENT_TRANSITION",
+   "unknown": true,
+   "regime": "COMPRESSION",
+   "momentum": "DECELERATING",
+   "touch": "REPEATED_TOUCH",
+   "absorption": "NONE",
+   "break_state": "ELEVATED",
+   "break_n_evidence": 2,
+   "break_groups": [
+    "PENETRATION",
+    "MOMENTUM_TOWARD"
+   ],
+   "level_present": true,
+   "level_id": 221,
+   "level_type": "PIVOT_HIGH",
+   "level_price": 4296.36,
+   "level_status": "ACTIVE",
+   "level_dist_atr": 1.43,
+   "level_touch_events_240": 2,
+   "level_fail_rate": 0.0,
+   "level_pen_last": 0.879,
+   "level_merged_from": 1,
+   "failed_event": "NONE",
+   "transition": "REGIME_CHANGED",
+   "counter": [
+    "COUNTER_BREAK_RISK",
+    "COUNTER_DECELERATION"
+   ],
+   "support": [],
+   "counter_present": true,
+   "mu_value": "NONE",
+   "mu_none_reason": "UNKNOWN_NEXT_STATE",
+   "candidate_states": [
+    "CONTINUATION",
+    "HOLD",
+    "REVERSION"
+   ],
+   "candidate_count": 3,
+   "closest_gate": "REVERSION_REVERSAL",
+   "closest_distance": 1,
+   "missing_conditions": [
+    "regime==REVERSAL"
+   ],
+   "missing_categories": [
+    "REGIME"
+   ],
+   "available_evidence": [
+    "LEVEL",
+    "TOUCH",
+    "REGIME",
+    "MOMENTUM",
+    "BREAK",
+    "ABSORPTION",
+    "FAILED_EVENT",
+    "TRANSITION"
+   ],
+   "independent_info_groups": [
+    "ABSORPTION_GROUP",
+    "EVENT_GROUP",
+    "MOMENTUM_GROUP",
+    "PRICE_STRUCTURE_GROUP",
+    "VOLATILITY_GROUP"
+   ],
+   "independent_info_group_count": 5,
+   "gates": [
+    {
+     "node": "BREAK_PASSTHROUGH",
+     "failures": 1,
+     "total": 1,
+     "target": null,
+     "missing": [
+      "old_next_state in {BREAKOUT,BREAKDOWN}"
+     ]
+    },
+    {
+     "node": "REVERSION_EXHAUSTION",
+     "failures": 2,
+     "total": 3,
+     "target": "REVERSION",
+     "missing": [
+      "touch==EXHAUSTION_BUILDING",
+      "absorption==POSSIBLE"
+     ]
+    },
+    {
+     "node": "REVERSION_REVERSAL",
+     "failures": 1,
+     "total": 3,
+     "target": "REVERSION",
+     "missing": [
+      "regime==REVERSAL"
+     ]
+    },
+    {
+     "node": "CONTINUATION_PASSTHROUGH",
+     "failures": 1,
+     "total": 1,
+     "target": "CONTINUATION",
+     "missing": [
+      "old_next_state==CONTINUATION"
+     ]
+    },
+    {
+     "node": "HOLD_QUIET",
+     "failures": 1,
+     "total": 3,
+     "target": "HOLD",
+     "missing": [
+      "break in {LOW,NORMAL}"
+     ]
+    },
+    {
+     "node": "HOLD_EXPANSION",
+     "failures": 2,
+     "total": 3,
+     "target": "HOLD",
+     "missing": [
+      "regime==EXPANSION",
+      "break in {LOW,NORMAL}"
+     ]
+    },
+    {
+     "node": "EVENT_DRIVEN",
+     "failures": 1,
+     "total": 1,
+     "target": null,
+     "missing": [
+      "regime==EVENT_DRIVEN"
+     ]
+    }
+   ],
+   "round1_below": true
+  },
+  {
+   "decision_id": "20260925T0617Z.json",
+   "timestamp": "2026-09-25 06:17:00+00:00",
+   "bar_index": 1256,
+   "v1_direction": "SHORT",
+   "final_state": "UNKNOWN",
+   "final_state_v2_engine": "UNKNOWN",
+   "unknown_reason": "EVIDENCE_AMBIGUOUS",
+   "unknown": true,
+   "regime": "UNKNOWN",
+   "momentum": "DECELERATING",
+   "touch": "REPEATED_TOUCH",
+   "absorption": "NONE",
+   "break_state": "NORMAL",
+   "break_n_evidence": 1,
+   "break_groups": [
+    "PENETRATION"
+   ],
+   "level_present": true,
+   "level_id": 221,
+   "level_type": "PIVOT_HIGH",
+   "level_price": 4295.75,
+   "level_status": "ACTIVE",
+   "level_dist_atr": 2.153,
+   "level_touch_events_240": 3,
+   "level_fail_rate": 0.0,
+   "level_pen_last": 1.3,
+   "level_merged_from": 2,
+   "failed_event": "NONE",
+   "transition": "REGIME_CHANGED",
+   "counter": [
+    "COUNTER_DECELERATION"
+   ],
+   "support": [],
+   "counter_present": true,
+   "mu_value": "NONE",
+   "mu_none_reason": "UNKNOWN_NEXT_STATE",
+   "candidate_states": [
+    "CONTINUATION",
+    "HOLD",
+    "REVERSION"
+   ],
+   "candidate_count": 3,
+   "closest_gate": "REVERSION_REVERSAL",
+   "closest_distance": 1,
+   "missing_conditions": [
+    "regime==REVERSAL"
+   ],
+   "missing_categories": [
+    "REGIME"
+   ],
+   "available_evidence": [
+    "LEVEL",
+    "TOUCH",
+    "MOMENTUM",
+    "BREAK",
+    "ABSORPTION",
+    "FAILED_EVENT",
+    "TRANSITION"
+   ],
+   "independent_info_groups": [
+    "ABSORPTION_GROUP",
+    "EVENT_GROUP",
+    "MOMENTUM_GROUP",
+    "PRICE_STRUCTURE_GROUP"
+   ],
+   "independent_info_group_count": 4,
+   "gates": [
+    {
+     "node": "BREAK_PASSTHROUGH",
+     "failures": 1,
+     "total": 1,
+     "target": null,
+     "missing": [
+      "old_next_state in {BREAKOUT,BREAKDOWN}"
+     ]
+    },
+    {
+     "node": "REVERSION_EXHAUSTION",
+     "failures": 3,
+     "total": 3,
+     "target": "REVERSION",
+     "missing": [
+      "touch==EXHAUSTION_BUILDING",
+      "absorption==POSSIBLE",
+      "break in {ELEVATED,CRITICAL}"
+     ]
+    },
+    {
+     "node": "REVERSION_REVERSAL",
+     "failures": 1,
+     "total": 3,
+     "target": "REVERSION",
+     "missing": [
+      "regime==REVERSAL"
+     ]
+    },
+    {
+     "node": "CONTINUATION_PASSTHROUGH",
+     "failures": 1,
+     "total": 1,
+     "target": "CONTINUATION",
+     "missing": [
+      "old_next_state==CONTINUATION"
+     ]
+    },
+    {
+     "node": "HOLD_QUIET",
+     "failures": 1,
+     "total": 3,
+     "target": "HOLD",
+     "missing": [
+      "regime in {COMPRESSION,RANGE}"
+     ]
+    },
+    {
+     "node": "HOLD_EXPANSION",
+     "failures": 1,
+     "total": 3,
+     "target": "HOLD",
+     "missing": [
+      "regime==EXPANSION"
+     ]
+    },
+    {
+     "node": "EVENT_DRIVEN",
+     "failures": 1,
+     "total": 1,
+     "target": null,
+     "missing": [
+      "regime==EVENT_DRIVEN"
+     ]
+    }
+   ],
+   "round1_below": true
+  },
+  {
+   "decision_id": "20260925T0802Z.json",
+   "timestamp": "2026-09-25 08:02:00+00:00",
+   "bar_index": 1263,
+   "v1_direction": "WAIT",
+   "final_state": "UNKNOWN",
+   "final_state_v2_engine": "UNKNOWN",
+   "unknown_reason": "RECENT_TRANSITION",
+   "unknown": true,
+   "regime": "TREND",
+   "momentum": "DECELERATING",
+   "touch": "REPEATED_TOUCH",
+   "absorption": "NONE",
+   "break_state": "ELEVATED",
+   "break_n_evidence": 3,
+   "break_groups": [
+    "PENETRATION",
+    "MOMENTUM_TOWARD",
+    "AT_LEVEL"
+   ],
+   "level_present": true,
+   "level_id": 231,
+   "level_type": "PIVOT_LOW",
+   "level_price": 4264.21,
+   "level_status": "ACTIVE",
+   "level_dist_atr": 0.139,
+   "level_touch_events_240": 2,
+   "level_fail_rate": 0.0,
+   "level_pen_last": 1.419,
+   "level_merged_from": 1,
+   "failed_event": "FAILED_BREAKOUT",
+   "transition": "TOUCH_STATE_CHANGED",
+   "counter": [
+    "COUNTER_BREAK_RISK",
+    "COUNTER_DECELERATION",
+    "COUNTER_FAILED_EVENT"
+   ],
+   "support": [
+    "TREND_GROUP"
+   ],
+   "counter_present": true,
+   "mu_value": "NONE",
+   "mu_none_reason": "UNKNOWN_NEXT_STATE",
+   "candidate_states": [
+    "CONTINUATION",
+    "REVERSION"
+   ],
+   "candidate_count": 2,
+   "closest_gate": "REVERSION_REVERSAL",
+   "closest_distance": 1,
+   "missing_conditions": [
+    "regime==REVERSAL"
+   ],
+   "missing_categories": [
+    "REGIME"
+   ],
+   "available_evidence": [
+    "LEVEL",
+    "TOUCH",
+    "REGIME",
+    "MOMENTUM",
+    "BREAK",
+    "ABSORPTION",
+    "FAILED_EVENT",
+    "TRANSITION"
+   ],
+   "independent_info_groups": [
+    "ABSORPTION_GROUP",
+    "EVENT_GROUP",
+    "MOMENTUM_GROUP",
+    "PRICE_STRUCTURE_GROUP",
+    "VOLATILITY_GROUP"
+   ],
+   "independent_info_group_count": 5,
+   "gates": [
+    {
+     "node": "BREAK_PASSTHROUGH",
+     "failures": 1,
+     "total": 1,
+     "target": null,
+     "missing": [
+      "old_next_state in {BREAKOUT,BREAKDOWN}"
+     ]
+    },
+    {
+     "node": "REVERSION_EXHAUSTION",
+     "failures": 2,
+     "total": 3,
+     "target": "REVERSION",
+     "missing": [
+      "touch==EXHAUSTION_BUILDING",
+      "absorption==POSSIBLE"
+     ]
+    },
+    {
+     "node": "REVERSION_REVERSAL",
+     "failures": 1,
+     "total": 3,
+     "target": "REVERSION",
+     "missing": [
+      "regime==REVERSAL"
+     ]
+    },
+    {
+     "node": "CONTINUATION_PASSTHROUGH",
+     "failures": 1,
+     "total": 1,
+     "target": "CONTINUATION",
+     "missing": [
+      "old_next_state==CONTINUATION"
+     ]
+    },
+    {
+     "node": "HOLD_QUIET",
+     "failures": 2,
+     "total": 3,
+     "target": "HOLD",
+     "missing": [
+      "regime in {COMPRESSION,RANGE}",
+      "break in {LOW,NORMAL}"
+     ]
+    },
+    {
+     "node": "HOLD_EXPANSION",
+     "failures": 2,
+     "total": 3,
+     "target": "HOLD",
+     "missing": [
+      "regime==EXPANSION",
+      "break in {LOW,NORMAL}"
+     ]
+    },
+    {
+     "node": "EVENT_DRIVEN",
+     "failures": 1,
+     "total": 1,
+     "target": null,
+     "missing": [
+      "regime==EVENT_DRIVEN"
+     ]
+    }
+   ],
+   "round1_below": true
+  },
+  {
+   "decision_id": "20260925T1232Z.json",
+   "timestamp": "2026-09-25 12:32:00+00:00",
+   "bar_index": 1281,
+   "v1_direction": "WAIT",
+   "final_state": "UNKNOWN",
+   "final_state_v2_engine": "UNKNOWN",
+   "unknown_reason": "EVIDENCE_AMBIGUOUS",
+   "unknown": true,
+   "regime": "TREND",
+   "momentum": "DECELERATING",
+   "touch": "REPEATED_TOUCH",
+   "absorption": "NONE",
+   "break_state": "ELEVATED",
+   "break_n_evidence": 2,
+   "break_groups": [
+    "TOUCH_REPEAT",
+    "PENETRATION"
+   ],
+   "level_present": true,
+   "level_id": 221,
+   "level_type": "PIVOT_HIGH",
+   "level_price": 4295.75,
+   "level_status": "ACTIVE",
+   "level_dist_atr": 0.682,
+   "level_touch_events_240": 4,
+   "level_fail_rate": 0.0,
+   "level_pen_last": 0.804,
+   "level_merged_from": 2,
+   "failed_event": "NONE",
+   "transition": "MOMENTUM_CHANGED",
+   "counter": [
+    "COUNTER_BREAK_RISK",
+    "COUNTER_DECELERATION"
+   ],
+   "support": [
+    "TREND_GROUP"
+   ],
+   "counter_present": true,
+   "mu_value": "NONE",
+   "mu_none_reason": "UNKNOWN_NEXT_STATE",
+   "candidate_states": [
+    "CONTINUATION",
+    "REVERSION"
+   ],
+   "candidate_count": 2,
+   "closest_gate": "REVERSION_REVERSAL",
+   "closest_distance": 1,
+   "missing_conditions": [
+    "regime==REVERSAL"
+   ],
+   "missing_categories": [
+    "REGIME"
+   ],
+   "available_evidence": [
+    "LEVEL",
+    "TOUCH",
+    "REGIME",
+    "MOMENTUM",
+    "BREAK",
+    "ABSORPTION",
+    "FAILED_EVENT",
+    "TRANSITION"
+   ],
+   "independent_info_groups": [
+    "ABSORPTION_GROUP",
+    "EVENT_GROUP",
+    "MOMENTUM_GROUP",
+    "PRICE_STRUCTURE_GROUP",
+    "VOLATILITY_GROUP"
+   ],
+   "independent_info_group_count": 5,
+   "gates": [
+    {
+     "node": "BREAK_PASSTHROUGH",
+     "failures": 1,
+     "total": 1,
+     "target": null,
+     "missing": [
+      "old_next_state in {BREAKOUT,BREAKDOWN}"
+     ]
+    },
+    {
+     "node": "REVERSION_EXHAUSTION",
+     "failures": 2,
+     "total": 3,
+     "target": "REVERSION",
+     "missing": [
+      "touch==EXHAUSTION_BUILDING",
+      "absorption==POSSIBLE"
+     ]
+    },
+    {
+     "node": "REVERSION_REVERSAL",
+     "failures": 1,
+     "total": 3,
+     "target": "REVERSION",
+     "missing": [
+      "regime==REVERSAL"
+     ]
+    },
+    {
+     "node": "CONTINUATION_PASSTHROUGH",
+     "failures": 1,
+     "total": 1,
+     "target": "CONTINUATION",
+     "missing": [
+      "old_next_state==CONTINUATION"
+     ]
+    },
+    {
+     "node": "HOLD_QUIET",
+     "failures": 2,
+     "total": 3,
+     "target": "HOLD",
+     "missing": [
+      "regime in {COMPRESSION,RANGE}",
+      "break in {LOW,NORMAL}"
+     ]
+    },
+    {
+     "node": "HOLD_EXPANSION",
+     "failures": 2,
+     "total": 3,
+     "target": "HOLD",
+     "missing": [
+      "regime==EXPANSION",
+      "break in {LOW,NORMAL}"
+     ]
+    },
+    {
+     "node": "EVENT_DRIVEN",
+     "failures": 1,
+     "total": 1,
+     "target": null,
+     "missing": [
+      "regime==EVENT_DRIVEN"
+     ]
+    }
+   ],
+   "round1_below": true
+  },
+  {
+   "decision_id": "20260925T1247Z.json",
+   "timestamp": "2026-09-25 12:47:00+00:00",
+   "bar_index": 1282,
+   "v1_direction": "WAIT",
+   "final_state": "UNKNOWN",
+   "final_state_v2_engine": "UNKNOWN",
+   "unknown_reason": "EVIDENCE_AMBIGUOUS",
+   "unknown": true,
+   "regime": "TREND",
+   "momentum": "DECELERATING",
+   "touch": "REPEATED_TOUCH",
+   "absorption": "NONE",
+   "break_state": "ELEVATED",
+   "break_n_evidence": 3,
+   "break_groups": [
+    "TOUCH_REPEAT",
+    "PENETRATION",
+    "AT_LEVEL"
+   ],
+   "level_present": true,
+   "level_id": 221,
+   "level_type": "PIVOT_HIGH",
+   "level_price": 4295.75,
+   "level_status": "ACTIVE",
+   "level_dist_atr": 0.169,
+   "level_touch_events_240": 4,
+   "level_fail_rate": 0.0,
+   "level_pen_last": 0.804,
+   "level_merged_from": 2,
+   "failed_event": "NONE",
+   "transition": "SAME_STATE",
+   "counter": [
+    "COUNTER_BREAK_RISK",
+    "COUNTER_DECELERATION"
+   ],
+   "support": [
+    "TREND_GROUP"
+   ],
+   "counter_present": true,
+   "mu_value": "NONE",
+   "mu_none_reason": "UNKNOWN_NEXT_STATE",
+   "candidate_states": [
+    "CONTINUATION",
+    "REVERSION"
+   ],
+   "candidate_count": 2,
+   "closest_gate": "REVERSION_REVERSAL",
+   "closest_distance": 1,
+   "missing_conditions": [
+    "regime==REVERSAL"
+   ],
+   "missing_categories": [
+    "REGIME"
+   ],
+   "available_evidence": [
+    "LEVEL",
+    "TOUCH",
+    "REGIME",
+    "MOMENTUM",
+    "BREAK",
+    "ABSORPTION",
+    "FAILED_EVENT",
+    "TRANSITION"
+   ],
+   "independent_info_groups": [
+    "ABSORPTION_GROUP",
+    "EVENT_GROUP",
+    "MOMENTUM_GROUP",
+    "PRICE_STRUCTURE_GROUP",
+    "VOLATILITY_GROUP"
+   ],
+   "independent_info_group_count": 5,
+   "gates": [
+    {
+     "node": "BREAK_PASSTHROUGH",
+     "failures": 1,
+     "total": 1,
+     "target": null,
+     "missing": [
+      "old_next_state in {BREAKOUT,BREAKDOWN}"
+     ]
+    },
+    {
+     "node": "REVERSION_EXHAUSTION",
+     "failures": 2,
+     "total": 3,
+     "target": "REVERSION",
+     "missing": [
+      "touch==EXHAUSTION_BUILDING",
+      "absorption==POSSIBLE"
+     ]
+    },
+    {
+     "node": "REVERSION_REVERSAL",
+     "failures": 1,
+     "total": 3,
+     "target": "REVERSION",
+     "missing": [
+      "regime==REVERSAL"
+     ]
+    },
+    {
+     "node": "CONTINUATION_PASSTHROUGH",
+     "failures": 1,
+     "total": 1,
+     "target": "CONTINUATION",
+     "missing": [
+      "old_next_state==CONTINUATION"
+     ]
+    },
+    {
+     "node": "HOLD_QUIET",
+     "failures": 2,
+     "total": 3,
+     "target": "HOLD",
+     "missing": [
+      "regime in {COMPRESSION,RANGE}",
+      "break in {LOW,NORMAL}"
+     ]
+    },
+    {
+     "node": "HOLD_EXPANSION",
+     "failures": 2,
+     "total": 3,
+     "target": "HOLD",
+     "missing": [
+      "regime==EXPANSION",
+      "break in {LOW,NORMAL}"
+     ]
+    },
+    {
+     "node": "EVENT_DRIVEN",
+     "failures": 1,
+     "total": 1,
+     "target": null,
+     "missing": [
+      "regime==EVENT_DRIVEN"
+     ]
+    }
+   ],
+   "round1_below": true
+  },
+  {
+   "decision_id": "20260925T1302Z.json",
+   "timestamp": "2026-09-25 13:02:00+00:00",
+   "bar_index": 1283,
+   "v1_direction": "WAIT",
+   "final_state": "UNKNOWN",
+   "final_state_v2_engine": "UNKNOWN",
+   "unknown_reason": "EVIDENCE_AMBIGUOUS",
+   "unknown": true,
+   "regime": "TREND",
+   "momentum": "SLOW",
+   "touch": "REPEATED_TOUCH",
+   "absorption": "NONE",
+   "break_state": "ELEVATED",
+   "break_n_evidence": 3,
+   "break_groups": [
+    "TOUCH_REPEAT",
+    "PENETRATION",
+    "AT_LEVEL"
+   ],
+   "level_present": true,
+   "level_id": 221,
+   "level_type": "PIVOT_HIGH",
+   "level_price": 4295.75,
+   "level_status": "ACTIVE",
+   "level_dist_atr": 0.096,
+   "level_touch_events_240": 4,
+   "level_fail_rate": 0.0,
+   "level_pen_last": 0.804,
+   "level_merged_from": 2,
+   "failed_event": "NONE",
+   "transition": "MOMENTUM_CHANGED",
+   "counter": [
+    "COUNTER_BREAK_RISK"
+   ],
+   "support": [
+    "TREND_GROUP"
+   ],
+   "counter_present": true,
+   "mu_value": "NONE",
+   "mu_none_reason": "UNKNOWN_NEXT_STATE",
+   "candidate_states": [
+    "CONTINUATION",
+    "REVERSION"
+   ],
+   "candidate_count": 2,
+   "closest_gate": "REVERSION_REVERSAL",
+   "closest_distance": 1,
+   "missing_conditions": [
+    "regime==REVERSAL"
+   ],
+   "missing_categories": [
+    "REGIME"
+   ],
+   "available_evidence": [
+    "LEVEL",
+    "TOUCH",
+    "REGIME",
+    "MOMENTUM",
+    "BREAK",
+    "ABSORPTION",
+    "FAILED_EVENT",
+    "TRANSITION"
+   ],
+   "independent_info_groups": [
+    "ABSORPTION_GROUP",
+    "EVENT_GROUP",
+    "MOMENTUM_GROUP",
+    "PRICE_STRUCTURE_GROUP",
+    "VOLATILITY_GROUP"
+   ],
+   "independent_info_group_count": 5,
+   "gates": [
+    {
+     "node": "BREAK_PASSTHROUGH",
+     "failures": 1,
+     "total": 1,
+     "target": null,
+     "missing": [
+      "old_next_state in {BREAKOUT,BREAKDOWN}"
+     ]
+    },
+    {
+     "node": "REVERSION_EXHAUSTION",
+     "failures": 2,
+     "total": 3,
+     "target": "REVERSION",
+     "missing": [
+      "touch==EXHAUSTION_BUILDING",
+      "absorption==POSSIBLE"
+     ]
+    },
+    {
+     "node": "REVERSION_REVERSAL",
+     "failures": 1,
+     "total": 3,
+     "target": "REVERSION",
+     "missing": [
+      "regime==REVERSAL"
+     ]
+    },
+    {
+     "node": "CONTINUATION_PASSTHROUGH",
+     "failures": 1,
+     "total": 1,
+     "target": "CONTINUATION",
+     "missing": [
+      "old_next_state==CONTINUATION"
+     ]
+    },
+    {
+     "node": "HOLD_QUIET",
+     "failures": 2,
+     "total": 3,
+     "target": "HOLD",
+     "missing": [
+      "regime in {COMPRESSION,RANGE}",
+      "break in {LOW,NORMAL}"
+     ]
+    },
+    {
+     "node": "HOLD_EXPANSION",
+     "failures": 2,
+     "total": 3,
+     "target": "HOLD",
+     "missing": [
+      "regime==EXPANSION",
+      "break in {LOW,NORMAL}"
+     ]
+    },
+    {
+     "node": "EVENT_DRIVEN",
+     "failures": 1,
+     "total": 1,
+     "target": null,
+     "missing": [
+      "regime==EVENT_DRIVEN"
+     ]
+    }
+   ],
+   "round1_below": true
+  }
+ ]
+}

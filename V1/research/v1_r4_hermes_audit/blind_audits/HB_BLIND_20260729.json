@@ -1,0 +1,51 @@
+{
+  "audit_id": "HB_BLIND_20260729",
+  "timestamp": "2026-07-29 12:00:00+00:00",
+  "current_state": "COMPRESSION (L3/L5 frozen label, dwell 13 bars, VOL_CONTRACTION). Price 4028.1 is resting just ~1.3 below the nearest swing-high level 4029.475 (break_status INSIDE, 39 touches/240 bars). Intraday M1/M5/M15 show very low volatility (M1 ATR 0.95, vol 0.00016) with small mixed bodies after a decisive M15 down-impulse at 11:30 (4034.3 -> 4026.1, range_pct 0.795) followed by stabilization and a modest 12:00 bounce with a long lower wick (2.65).",
+  "structure": "Higher timeframes are in a broader downtrend: H1 trend_20 -13.4 / trend_50 -62.4, H4 trend_20 -58.5; price has made successive lower highs from 4047.6 (08:00 H1 high) -> 4034.2 -> 4027.3 and is now compressing at the lower end of that range, just beneath the well-fought swing-high resistance 4029.475. L6 multi-timeframe agreement is AGREE but trend_20 is negative on every timeframe (M1 -0.2, M5 -5.7, M15 -11.3, H1 -13.4, H4 -58.5) while trend_50 is mixed (M15 +11.7 vs H1 -62.4), i.e. short/medium-term bearish alignment with a mild long-term counter-current on M15.",
+  "mechanism": "Primary candidate is trend_continuation (price below the active swing-high level with an 8-bar displacement of -6.7, in a downtrend on H1/H4; the current compression reads as a basing/coiling below resistance that most plausibly resolves lower). Secondary candidate exhaustion (13-bar COMPRESSION dwell) is explicitly weak on its own and offers no confirmed reversal evidence; no higher-timeframe divergence or momentum turn is present in the data.",
+  "primary_scenario": {
+    "scenario": "Bearish continuation from compression: price remains capped below the 4029.475 swing-high, the compression resolves with expansion to the downside and the H1/H4 downtrend resumes, targeting a retest of recent lows (~4010-4013 area, and on the H4 snapshot lower toward 3995-4005).",
+    "confidence": 0.45,
+    "horizon": "SHORT_TERM",
+    "trigger": "Rejection/failure at 4029.475 (price stalls and closes back below it) followed by a decisive break of the intraday support ~4025.8 (M15 11:45 low / M5 11:50 low) and the local M1 low ~4026.1 with expanding range.",
+    "invalidation": "Decisive 15m+ close ABOVE 4029.475 (a reclaim/break of the swing high with range expansion), which converts the level from resistance to support and flips the setup to the alternative."
+  },
+  "alternative_scenario": {
+    "scenario": "Exhaustion / upside resolution: the 13-bar compression and the long lower wick at 12:00 mark seller exhaustion; a decisive break above 4029.475 reopens a retest of the 4040-4047.6 rejection zone, supported by a calm VIX (18.37) and only marginal DXY firmness.",
+    "confidence": 0.3,
+    "horizon": "SHORT_TERM",
+    "trigger": "Break and hold above 4029.475 with expanding momentum (and subsequently above 4034), ideally accompanied by a DXY rollover (currently only +0.099 over 32 bars).",
+    "invalidation": "Failure to hold above 4029.475 / another lower high below the level, or a direct breakdown of 4025.8 without any higher-timeframe reversal signal."
+  },
+  "expected_transition": "COMPRESSION -> EXPANSION/TREND within the next handful of bars; the direction of resolution is unresolved by state alone, but the prevailing downtrend and level placement (price under a heavily-touched swing high) bias the expansion to the downside unless the level is decisively reclaimed. Historical COMPRESSION analogs consistently reach a TREND state (via DECELERATION or REJECTION) rather than staying in compression, so a directional expansion is the base expectation, with direction tilted DOWN.",
+  "direction": "DOWN",
+  "horizon": "SHORT_TERM",
+  "confidence": 0.45,
+  "counter_evidence": [
+    "COMPRESSION is a no-edge state: dwell alone (13 bars) is a weak signal and expansion can occur in either direction; range_expanding=true mildly contradicts a pure compression read.",
+    "Near-term intraday bid: M1 shows consecutive_up 6 and the 12:00 M15/M1 bars closed with buying interest (long lower wick), suggesting support is defended near 4026-4027.",
+    "No bearish catalyst is confirmable: VIX is low (18.37, risk-calm), DXY is only marginally firmer (+0.1 over 32 bars), and NEWS/MACRO_EVENTS are absent; UST10Y is unavailable, so no yield-driven bearish case can be made.",
+    "Historical analogs resolve through REJECTION/ACCEPTANCE dynamics first — several go through REJECTION before TREND, meaning an initial false move (including an upward probe) is plausible before the trend leg.",
+    "The M15 trend_50 is positive (+11.7) — a medium-term counter-current that weakens the clean continuation read."
+  ],
+  "invalidation": "The primary DOWN view is invalidated by a decisive 15-minute+ close above 4029.475 (swing-high reclaim with expansion) that holds on subsequent bars; that removes the resistance-cap thesis and flips priority to the upside alternative. A close below 4025.8 with expanding range confirms (rather than invalidates) the primary view.",
+  "data_quality_flags": [
+    "UST10Y_PROXY_TNX: UNKNOWN (stale/not covered) - no yield or real-rate input available; no direct UST10Y data, only noted as absent.",
+    "DXY and VIX are PROXY series (Yahoo, instrument definition UNKNOWN) - used only as weak corroboration, never as primary evidence.",
+    "NEWS/MACRO_EVENTS/CFTC_COT/ETF_FLOWS are ABSENT - no fundamental or positioning confirmation; catalysts cannot be verified.",
+    "INTERNAL INCONSISTENCY: higher-timeframe 'current' bars do not reconcile with intraday sequences at the same timestamp (H4 current low 3995.655 and H1 current high 4036.0/close 4032.6 vs M15/M5/M1 recent highs/lows ~4024-4030 and M1 close 4028.1 at 12:00). RAW_GEOMETRY + DERIVED labels; treated as an aggregation artifact, lowering confidence in H1/H4 intra-bar levels.",
+    "All L1 data is RAW_GEOMETRY + DERIVED (price/kline geometry and derived flags); L2/L3/L5 levels and states are DERIVED from a frozen C1 ontology and are candidates, not asserted facts."
+  ],
+  "reasoning_trace": [
+    "1. Established context: PIT 2026-07-29 12:00 UTC, XAUUSD ~4028; state COMPRESSION (dwell 13), event VOL_CONTRACTION, ambiguity_rate_8 0.125 (low).",
+    "2. Read trend structure: trend_20 negative on all timeframes; H1 trend_50 -62.4 and H4 trend_20 -58.5 show a pronounced multi-hour downtrend; intraday closes have printed lower highs (4047.6 -> 4034.2 -> 4027.3).",
+    "3. Located the nearest level: swing high 4029.475, price INSIDE and ~1.35 below it with 39 touches/240 bars - a high-traffic, well-known resistance; break_status INSIDE means the level has not been rejected or reclaimed yet.",
+    "4. Assessed mechanism candidates: trend_continuation is the better fit (price under resistance in a downtrend with negative displacement); exhaustion is present but explicitly weak and unsupported by any reversal/divergence evidence.",
+    "5. Weighted cross-market: DXY PROXY mildly up and VIX PROXY low - no confirmable catalyst in either direction; absence of macro/news prevents confirmation, so direction rests on structure.",
+    "6. Noted internal inconsistency between higher-TF current bars and intraday sequences (esp. H4 low 3995.655) and flagged it as a data-quality issue rather than a tradable level.",
+    "7. Built primary (bearish continuation, triggered by rejection at 4029.475 then break of ~4025.8) and alternative (upside exhaustion, triggered by decisive reclaim of 4029.475).",
+    "8. Set direction DOWN with confidence 0.45: the structural lean is bearish, but genuine COMPRESSION no-edge conditions, unverifiable catalysts, and data inconsistency cap confidence well below decisive.",
+    "9. Defined invalidation as a decisive 15m+ close above 4029.475; confirmed support break is 4025.8 (intraday structure lows)."
+  ]
+}

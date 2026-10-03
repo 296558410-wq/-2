@@ -1,0 +1,123 @@
+{
+ "RAW_INPUT_LAYER": {
+  "TICK_BID": {
+   "source": "data/live_fxtm/ticks_*.parquet bid",
+   "role": "sole price source (PRICE_SOURCE=BID)"
+  },
+  "TICK_ASK": {
+   "source": "ticks_*.parquet ask",
+   "role": "spread only; NOT used by the frozen state machine"
+  },
+  "TICK_VOLUME": {
+   "source": "ticks_*.parquet volume",
+   "role": "all-zero -> unusable; NOT a real volume signal"
+  },
+  "TIME": {
+   "source": "utc_ms",
+   "role": "15min UTC floor binning"
+  }
+ },
+ "INTERMEDIATE_LAYER": {
+  "OHLC_15M": {
+   "formula": "per 15min bucket: o=first bid, h=max bid, l=min bid, c=last bid",
+   "raw": [
+    "TICK_BID",
+    "TIME"
+   ],
+   "window": "15min",
+   "line": "R1 recon (B-R3/R4)"
+  },
+  "TR": {
+   "formula": "max(h-l, |h-pc|, |l-pc|)",
+   "raw": [
+    "OHLC_15M"
+   ],
+   "window": "1bar"
+  },
+  "ATR20": {
+   "formula": "TR.rolling(20).mean()",
+   "raw": [
+    "TR"
+   ],
+   "window": 20,
+   "line": "R1.indicators"
+  },
+  "MA20": {
+   "formula": "c.rolling(20).mean()",
+   "raw": [
+    "OHLC_15M"
+   ],
+   "window": 20,
+   "line": "R1.indicators"
+  },
+  "SLOPE5": {
+   "formula": "MA20 - MA20.shift(5)",
+   "raw": [
+    "MA20"
+   ],
+   "window": 5,
+   "line": "R1.indicators"
+  },
+  "ER10": {
+   "formula": "|c-c.shift(10)| / sum(|c.diff()|,10)",
+   "raw": [
+    "OHLC_15M"
+   ],
+   "window": 10,
+   "line": "R1.indicators"
+  },
+  "ATR_PCTL": {
+   "formula": "ATR20.rolling(480).percentile",
+   "raw": [
+    "ATR20"
+   ],
+   "window": 480,
+   "line": "R1.indicators"
+  },
+  "RNG_EXP": {
+   "formula": "TR.rolling(4).mean() / ATR20",
+   "raw": [
+    "TR",
+    "ATR20"
+   ],
+   "window": 4,
+   "line": "R1.indicators"
+  },
+  "VEL4": {
+   "formula": "(c - c.shift(4)) / ATR20",
+   "raw": [
+    "OHLC_15M",
+    "ATR20"
+   ],
+   "window": 4,
+   "line": "R1.indicators"
+  },
+  "ACC": {
+   "formula": "VEL4 - VEL4.shift(1)",
+   "raw": [
+    "VEL4"
+   ],
+   "window": 2,
+   "line": "R1.indicators"
+  },
+  "EFF3": {
+   "formula": "|c-c.shift(3)| / sum(|c.diff()|,3)",
+   "raw": [
+    "OHLC_15M"
+   ],
+   "window": 3,
+   "line": "R1.indicators"
+  },
+  "ACT3": {
+   "formula": "TR.rolling(4).mean() / ATR20",
+   "raw": [
+    "TR",
+    "ATR20"
+   ],
+   "window": 4,
+   "line": "R1.indicators"
+  }
+ },
+ "RAW_SOURCE_COUNT_FOR_STATE_MACHINE": 1,
+ "note": "every emitted feature is a windowed transform of the SAME bid OHLC path (ask/spread exists but is unused by the frozen state machine); raw input overlap is therefore near-total"
+}

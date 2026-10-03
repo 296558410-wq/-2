@@ -1,0 +1,109 @@
+--- V3_20261002_63d5a22
++++ V4_20261002_eceeec2
+@@ -20,5 +20,6 @@
+ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+ from gates import (Ledger, RiskGuard, DemoGate, MAGIC, COMMENT,           # noqa: E402
+-                   rebuild_risk_state, data_age_seconds, last_realized_slippage_bps)
++                   rebuild_risk_state, data_age_seconds, last_realized_slippage_bps,
++                   load_kill_switch, dedup_key, bar_bucket, rebuild_sent_keys, broker_recent_order_dup)
+ import signal_baseline as SB  # noqa: E402
+ 
+@@ -263,4 +264,15 @@
+             "signal_source": src, "ledger_entries_before": n, "ledger_chain_ok": chain_ok,
+             "SIGNAL_TYPE": "BASELINE_CONTROL", "NOT_HERMES_ALPHA": True, "order_sent": False}
++    # ---- watchdog / missed-cycle observability (D008): report the gap since the last DECISION ----
++    _dec = [r for r in _ledger_rows(LEDGER) if r.get("event") == "DECISION"]
++    _gap_min = None
++    if _dec:
++        try:
++            _gap_min = round((datetime.now(timezone.utc) - datetime.fromisoformat(_dec[-1]["ts_utc"])).total_seconds() / 60.0, 1)
++        except Exception:  # noqa: BLE001
++            _gap_min = None
++    res["schedule_gap_minutes"] = _gap_min
++    if _gap_min is not None and _gap_min > 25:
++        res["watchdog"] = f"GAP_DETECTED:{_gap_min}min"
+     if not chain_ok:
+         lg.append("DECISION", action="HALT", reason=f"LEDGER_CHAIN_BROKEN:{bad}")
+@@ -274,9 +286,12 @@
+         is_demo = ai.trade_mode == mt5.ACCOUNT_TRADE_MODE_DEMO
+         okd, why = DemoGate.assert_demo({"trade_mode": "DEMO" if is_demo else "REAL", "real_money": not is_demo})
+-        positions = mt5.positions_get() or []
++        _pos_raw = mt5.positions_get()
++        positions = _pos_raw or []
++        _positions_ok = _pos_raw is not None          # fail-closed: None => unknown position state
+         if not okd:
+             mt5.shutdown(); lg.append("DECISION", action="HALT", reason=f"DEMO_GATE:{why}")
+             print(json.dumps({**res, "action": "HALT", "reason": f"DEMO_GATE:{why}"})); return
+         # ---- broker-close reconciliation: the broker owns SL/TP exits, so observe them (CLOSE + PNL) ----
++        _reconcile_ok = True
+         try:
+             _closes = reconcile_broker_closes(mt5, lg)
+@@ -285,4 +300,5 @@
+                 res["reconciled_detail"] = _closes
+         except Exception as _e:  # noqa: BLE001
++            _reconcile_ok = False                     # fail-closed: PnL counters may under-count
+             res["reconcile_error"] = str(_e)[:150]
+         snap = snapshot(mt5)
+@@ -291,13 +307,35 @@
+         _events = _ledger_rows(LEDGER)
+         rg = rebuild_risk_state(RiskGuard(), _events, NOW[:10])
+-        intent = {"order_id": f"{MAGIC}-{NOW}", "already_sent": set()}
++        # --- FAIL-CLOSED: any safety input we cannot determine => deny (WAIT_RISK) ---
++        if not _reconcile_ok:
++            rg.note_unavailable("PNL_STATE_UNKNOWN")
+         # real inputs: same-source (server frame) staleness + last realised fill slippage
+         _tick = mt5.symbol_info_tick(SYMBOL)
+         _m1 = mt5.copy_rates_from_pos(SYMBOL, mt5.TIMEFRAME_M1, 0, 3)
+         _age = data_age_seconds(getattr(_tick, "time", None), _m1)
+-        _slip = last_realized_slippage_bps(_events)
+-        allow, reasons = rg.evaluate(intent, {"spread_bps": (snap or {}).get("spread_bps") or 0,
+-                                                "slippage_bps": (_slip if _slip is not None else 0),
+-                                                "data_age_seconds": _age}, len(positions))
++        _slip = last_realized_slippage_bps(_events)          # None => SLIPPAGE_UNKNOWN (deny)
++        # kill switch: operator file; missing => OFF, unreadable => ON (fail-closed)
++        _ks_on, _ks_reason = load_kill_switch(os.path.join(ROOT, "registry"))
++        if _ks_on:
++            rg.set_kill_switch(True, _ks_reason)
++        # duplicate-order dedup: one entry per symbol per M15 bucket, persisted via the ledger
++        _bucket = bar_bucket(_m1)
++        _dedup = dedup_key(MAGIC, SYMBOL, _bucket) if _bucket is not None else None
++        _already = rebuild_sent_keys(_events)
++        _broker_orders = []
++        try:
++            _broker_orders = [{"magic": getattr(o, "magic", 0), "symbol": getattr(o, "symbol", ""),
++                               "time_done": getattr(o, "time_done", 0)}
++                              for o in (mt5.history_orders_get(datetime.now(timezone.utc) - timedelta(hours=2),
++                                                               datetime.now(timezone.utc) + timedelta(minutes=1)) or [])]
++        except Exception:  # noqa: BLE001
++            _broker_orders = []
++        if broker_recent_order_dup(_broker_orders, MAGIC, SYMBOL, _bucket):
++            rg.note_unavailable("DUPLICATE_ORDER")        # broker filled but local ledger unconfirmed
++        intent = {"order_id": _dedup, "already_sent": _already}
++        allow, reasons = rg.evaluate(intent, {"spread_bps": (snap or {}).get("spread_bps"),
++                                                "slippage_bps": _slip,
++                                                "data_age_seconds": _age},
++                                      (len(positions) if _positions_ok else None))
+         mapping = SB.load_mapping(MAPPING)
+         if src == "BASELINE_TRANSITION":
+@@ -329,4 +367,6 @@
+                      "risk_daily_loss": rg.daily_loss, "risk_consecutive_losses": rg.consecutive_losses,
+                      "data_age_seconds": _age, "slippage_bps_used": _slip,
++                     "kill_switch": rg.kill_switch, "kill_reason": rg.kill_reason, "dedup_key": _dedup,
++                     "risk_unavailable": rg.unavailable,
+                      "mapping_hash": mapping.get("mapping_hash", "")[:16]})
+         if action == "ENTER" and oi.get("trade"):
+@@ -361,5 +401,6 @@
+             else:
+                 rid = lg.append("ORDER_REQUEST", side=oi["side"], lots=oi["lots"], price=req["price"], sl=req["sl"], tp=req["tp"],
+-                                 magic=MAGIC, comment=COMMENT, mapping_id=SB.MAPPING_ID, filling_name=tf_name)
++                                 magic=MAGIC, comment=COMMENT, mapping_id=SB.MAPPING_ID, filling_name=tf_name,
++                                 dedup_key=_dedup)
+                 import time as _t
+                 _t0 = _t.perf_counter()
+@@ -377,5 +418,5 @@
+                            sl=req["sl"], tp=req["tp"], magic=MAGIC, comment=COMMENT, ok=ok_send,
+                            latency_ms=latency_ms, slippage_bps=slip_bps, filling_name=tf_name,
+-                           broker_comment=getattr(r, "comment", ""))
++                           dedup_key=_dedup, broker_comment=getattr(r, "comment", ""))
+                 if ok_send:
+                     lg.append("FILL", order_id=str(r.order), price=getattr(r, "price", req["price"]), qty=oi["lots"])

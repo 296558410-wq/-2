@@ -1,0 +1,202 @@
+{
+ "schema": "v3_phase2_protocol/1",
+ "task_id": "V3-PHASE2-NEW-MECHANISM-ALPHA-001",
+ "round": "R1",
+ "phase": 2,
+ "ts_utc": "2026-10-01T12:30:00+00:00",
+ "frozen_before_evaluation": true,
+ "boundary": {
+  "V3_EXECUTION_MODE": "RESEARCH_READONLY",
+  "V3_ORDER_SEND_ALLOWED": "NO",
+  "V3_FORWARD_ALLOWED": "NO",
+  "V1_V2": "READ_ONLY"
+ },
+ "data_contract": {
+  "SNAPSHOT_ID": "V3-SNAP-20260922T025312Z",
+  "path": "data/snapshots/V3-SNAP-20260922T025312Z",
+  "FILE_COUNT": 36,
+  "TOTAL_ROWS": 7285000,
+  "coverage_utc": [
+   "2026-08-04T01:05:00Z",
+   "2026-09-22T02:39:05Z"
+  ],
+  "exchange": "FXTM demo (magic 90004) ONLY execution reference",
+  "timestamp_unit": "ms",
+  "timezone": "UTC",
+  "volume_field_status": "DATA_GAP (volume=volume_real=last identically 0) -> any flow feature carries _PROXY suffix",
+  "snapshot_verify": "36/36 sha256 MATCH vs MANIFEST.json"
+ },
+ "cost_model": {
+  "COST_MODEL_VERSION": "CALIBRATION_20RT_20260921",
+  "REAL_RT_COST_BP": 0.914,
+  "stress_multipliers": [
+   0.0,
+   1.0,
+   2.0,
+   3.0
+  ],
+  "slippage_assumption": "SIGNED; only unfavorable leg counts; measured entry/exit slippage from CALIBRATION pilot (19 RT) as distribution, not a scalar"
+ },
+ "statistics": {
+  "IS_OOS_split": "time-ordered by trading day, first 70% IS / last 30% OOS (no shuffle)",
+  "min_effective_n": 30,
+  "significance": "block bootstrap CI (n=2000, block=60s of event time) + permutation test (n=2000, circular event-time shift within segment)",
+  "alpha": 0.05,
+  "direction_policy": "each information source frozen BOTH ways (continuation and reversal) as independent hypotheses",
+  "ladder": [
+   "INSUFFICIENT_SAMPLE",
+   "COST_INSUFFICIENT",
+   "REJECT",
+   "EDGE_UNCERTAIN",
+   "EXECUTION_UNREALISTIC",
+   "CANDIDATE"
+  ],
+  "ladder_note": "INSUFFICIENT_SAMPLE first (eff<30); COST_INSUFFICIENT when gross<cost anchor (NOT REJECT); no promotion because numbers look good"
+ },
+ "frozen_thresholds": {
+  "z_abs_shock": 2.0,
+  "z_trailing_window_ticks": 3000,
+  "spread_regime_quantiles": {
+   "TIGHT_LE": 0.33,
+   "WIDE_GE": 0.67,
+   "baseline": "trailing 3000-tick spread median"
+  },
+  "arrival_rate_quantile": 0.9,
+  "microprice_pos_extreme": 0.7,
+  "horizons_ms": [
+   100,
+   250,
+   500,
+   1000,
+   2000,
+   5000
+  ],
+  "trailing_windows_ticks": [
+   100,
+   500,
+   3000
+  ],
+  "thresholds_are": "A_PRIORI_CONSISTENT_WITH_PRIOR_ROUNDS (|z|>=2 and trailing-quantile conventions reused; NO parameter scan)"
+ },
+ "execution_model": {
+  "entry": "long enters at ask, short enters at bid (never mid)",
+  "exit": "exit at mid after horizon h",
+  "execution_markout_long": "future_mid - entry_ask",
+  "execution_markout_short": "entry_bid - future_mid",
+  "net_bp": "execution_markout_bp - REAL_RT_COST_BP * stress_multiplier",
+  "censoring": "event forward windows crossing a segment break (session gap > 60s or sample end) are HORIZON_CENSORED and EXCLUDED, counted separately"
+ },
+ "families": {
+  "A_microstructure": {
+   "status": "TESTED"
+  },
+  "B_execution_alpha": {
+   "status": "TESTED"
+  },
+  "C_liquidity_spread_regime": {
+   "status": "TESTED"
+  },
+  "D_event_microstructure": {
+   "status": "NOT_TESTABLE",
+   "reason": "no PIT event calendar overlapping the tick window 2026-08-04..2026-09-22; Jin10 window is 2026-09-21..26 (prior round), zero overlap; do not fabricate"
+  },
+  "E_crossmarket_leadlag": {
+   "status": "LIMITED",
+   "reason": "Yahoo 5m DXY/VIX/^TNX overlaps only 2026-08-25..09-18 (~18 trading days); DXY shock already tested in prior round R2/F1-F2; new lead-lag at 5m has thin eff_n; reported as LIMITED/DEFERRED not as alpha"
+  },
+  "F_nondirectional": {
+   "status": "TESTED"
+  }
+ },
+ "hypotheses": [
+  {
+   "hypothesis_id": "A1_TICKIMB_CONT",
+   "family": "A_microstructure",
+   "mechanism": "tick-rule quote imbalance shock -> short-horizon CONTINUATION",
+   "information_source": "FXTM snapshot ticks (bid/ask)",
+   "pit_status": "OK (signal uses only ticks <= t)",
+   "feature": "TI_PROXY = (sum sign(dmid) over trailing 100 ticks) / sqrt(100)",
+   "signal_timestamp": "tick i close",
+   "execution_timestamp": "tick i+1 (next tick after signal)",
+   "direction": "follow sign(TI_PROXY)"
+  },
+  {
+   "hypothesis_id": "A1_TICKIMB_REV",
+   "family": "A_microstructure",
+   "mechanism": "tick-rule quote imbalance shock -> short-horizon REVERSAL",
+   "information_source": "FXTM snapshot ticks (bid/ask)",
+   "pit_status": "OK",
+   "feature": "TI_PROXY (same)",
+   "signal_timestamp": "tick i close",
+   "execution_timestamp": "tick i+1",
+   "direction": "opposite sign(TI_PROXY)"
+  },
+  {
+   "hypothesis_id": "A2_PXSHOCK_CONT",
+   "family": "A_microstructure",
+   "mechanism": "price shock (|z|>=2 vs trailing 3000-tick std of tick returns) -> CONTINUATION",
+   "information_source": "FXTM snapshot ticks",
+   "pit_status": "OK",
+   "feature": "z(dmid over trailing 500 ticks)",
+   "signal_timestamp": "tick i close",
+   "execution_timestamp": "tick i+1",
+   "direction": "follow sign(dmid)"
+  },
+  {
+   "hypothesis_id": "A2_PXSHOCK_REV",
+   "family": "A_microstructure",
+   "mechanism": "price shock -> REVERSAL",
+   "information_source": "FXTM snapshot ticks",
+   "pit_status": "OK",
+   "feature": "z(dmid over trailing 500 ticks)",
+   "signal_timestamp": "tick i close",
+   "execution_timestamp": "tick i+1",
+   "direction": "opposite sign(dmid)"
+  },
+  {
+   "hypothesis_id": "C1_WIDESPREAD_MR",
+   "family": "C_liquidity_spread_regime",
+   "mechanism": "spread regime WIDE (>= trailing q67) -> mean-reversion of mid",
+   "information_source": "FXTM snapshot ticks",
+   "pit_status": "OK",
+   "feature": "spread_bp vs trailing 3000-tick median; regime WIDE_GE q67",
+   "signal_timestamp": "tick i close",
+   "execution_timestamp": "tick i+1",
+   "direction": "opposite sign(dmid over trailing 100 ticks)"
+  },
+  {
+   "hypothesis_id": "C2_ARRIVAL_BURST_CONT",
+   "family": "C_liquidity_spread_regime",
+   "mechanism": "quote arrival-rate burst (>= trailing q90 ticks/sec) -> continuation",
+   "information_source": "FXTM snapshot ticks",
+   "pit_status": "OK",
+   "feature": "ticks-per-second over trailing 5s vs trailing q90",
+   "signal_timestamp": "tick i close",
+   "execution_timestamp": "tick i+1",
+   "direction": "follow sign(dmid over trailing 100 ticks)"
+  },
+  {
+   "hypothesis_id": "B1_MICROPRICE_EDGE",
+   "family": "B_execution_alpha",
+   "mechanism": "microprice position extreme (>=0.70) -> entering at ask/bid is EXECUTION-favorable",
+   "information_source": "FXTM snapshot ticks",
+   "pit_status": "OK",
+   "feature": "mp_pos=(mid-bid)/(ask-bid)",
+   "signal_timestamp": "tick i close",
+   "execution_timestamp": "tick i+1",
+   "direction": "long when mp_pos>=0.70 (else short when <=0.30)"
+  },
+  {
+   "hypothesis_id": "F1_VOL_PERSIST",
+   "family": "F_nondirectional",
+   "mechanism": "realized-vol regime persistence -> forward |move| exceeds cost-adjusted threshold (non-directional)",
+   "information_source": "FXTM snapshot ticks",
+   "pit_status": "OK",
+   "feature": "rv_500 vs trailing 3000-tick rv median (regime HIGH_GE q67)",
+   "signal_timestamp": "tick i close",
+   "execution_timestamp": "tick i+1",
+   "direction": "NON_DIRECTIONAL (metric = P(|future_mid move| > cost-adjusted threshold))"
+  }
+ ],
+ "registry_hash_sha256": "663829a925e87ae1642c512cf3cd5e636f9c8bc975b594cab021fcdf54c1bcaa"
+}

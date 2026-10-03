@@ -1,0 +1,461 @@
+{
+ "suite_version": "R2_TEST_SUITE_V1",
+ "generated_at_utc": "2026-09-25T13:56:26.481482+00:00",
+ "freeze_hash": "7da599cdb6858ac624f9929d427c634187d257f8adb91d300b9fe33300aecb2f",
+ "input_hash": "704e1cfa8960cee881c5efccb1f23fe9679fa262da5770e82fe99d7338f9ac53",
+ "output_hash": "20913b986890b1c593a63d1dfa7d6e1d90ad0b71db7b5134132f3ecfd7e72624",
+ "hash_spec_version": 1,
+ "replay": {
+  "REPLAY_FIELD_LEVEL_MATCH": true,
+  "episode_ids_match": true,
+  "cluster_ids_match": true,
+  "independent_events": 7792,
+  "clusters": 12994
+ },
+ "deterministic_reproduction": {
+  "rerun_rc": 0,
+  "TOTAL_OPPORTUNITIES": 38367,
+  "INDEPENDENT_EVENTS": 7792,
+  "CLUSTERS": 12994,
+  "F3": "INSUFFICIENT_DATA",
+  "MERGE_CANDIDATES": [],
+  "HERMES": 300,
+  "NEGATIVE_CONTROL_RUNS": 200,
+  "OUTPUT_HASH": "8bfb007ddd16cb2df00c17f74f6508ce867899899134d0bf98e66ec885e07a58",
+  "PASS": false
+ },
+ "audit": {
+  "LEDGER": "PASS",
+  "V1_ISOLATION": "PASS",
+  "V2_ISOLATION": "PASS"
+ },
+ "boundary": {
+  "new_entries": 15,
+  "outside_r2": [
+   "archive/",
+   "collab_inbox/",
+   "github_publish_staging/",
+   "mt5_instances/",
+   "research/hermes/state/"
+  ],
+  "v1_touched": [
+   "research/hermes/trader_v1/memory/reviews/RV-TP-20260925T103456-20260925130524.json",
+   "research/hermes/trader_v1/run_state/decisions/20260925T1317Z.json",
+   "research/hermes/trader_v1/run_state/decisions/20260925T1302Z.json",
+   "research/hermes/trader_v1/tmp/",
+   "research/hermes/trader_v1/run_state/positions/"
+  ],
+  "v2_touched": [
+   "research/hermes/trader_v2/tests/engine_harness/",
+   "research/hermes/trader_v2/observations/",
+   "research/hermes/trader_v2/state/decision_contexts/"
+  ],
+  "strategy_touched": [],
+  "BOUNDARY_VIOLATIONS": 14,
+  "ok": false
+ },
+ "stale_result_used": false,
+ "stale_state": "NOT_FOUND",
+ "missing_tests": [],
+ "skipped": 0,
+ "not_run": 0,
+ "tests": [
+  {
+   "TEST_ID": 1,
+   "TEST_NAME": "Freeze Hash Identity",
+   "CATEGORY": "readonly",
+   "INPUTS": "frozen registry (legacy v1 serializer)",
+   "EXPECTED": "recorded == recomputed == 7da599cd…",
+   "ACTUAL": {
+    "recorded": "7da599cdb6858ac624f9",
+    "recomputed": "7da599cdb6858ac624f9",
+    "content_equal": true
+   },
+   "STATUS": "PASS",
+   "STARTED_AT": "2026-09-25T13:31:42.117840+00:00",
+   "FINISHED_AT": "2026-09-25T13:31:42.117840+00:00",
+   "ARTIFACT": "v3_high_frequency_opportunity_r2_frozen_registry.json",
+   "ERROR": ""
+  },
+  {
+   "TEST_ID": 2,
+   "TEST_NAME": "Input Hash Identity",
+   "CATEGORY": "readonly",
+   "INPUTS": "run_summary.INPUT_HASH",
+   "EXPECTED": "704e1cfa8960cee881c5",
+   "ACTUAL": {
+    "INPUT_HASH_MATCH": true,
+    "value": "704e1cfa8960cee881c5"
+   },
+   "STATUS": "PASS",
+   "STARTED_AT": "2026-09-25T13:31:42.117840+00:00",
+   "FINISHED_AT": "2026-09-25T13:31:42.117840+00:00",
+   "ARTIFACT": "",
+   "ERROR": ""
+  },
+  {
+   "TEST_ID": 3,
+   "TEST_NAME": "Canonical Output Hash",
+   "CATEGORY": "readonly",
+   "INPUTS": "canonical_output_payload.json",
+   "EXPECTED": "20913b986890b1c593a6",
+   "ACTUAL": {
+    "HASH_SPEC_VERSION": 1,
+    "OUTPUT_HASH_MATCH": true
+   },
+   "STATUS": "PASS",
+   "STARTED_AT": "2026-09-25T13:31:42.117840+00:00",
+   "FINISHED_AT": "2026-09-25T13:31:42.134487+00:00",
+   "ARTIFACT": "canonical_output_payload.json",
+   "ERROR": ""
+  },
+  {
+   "TEST_ID": 4,
+   "TEST_NAME": "Canonical Payload Reproducibility",
+   "CATEGORY": "readonly",
+   "INPUTS": "canonical payload x3",
+   "EXPECTED": "H1==H2==H3==OUTPUT_HASH",
+   "ACTUAL": {
+    "H1": "20913b986890b1c5",
+    "H2": "20913b986890b1c5",
+    "H3": "20913b986890b1c5",
+    "equal": true
+   },
+   "STATUS": "PASS",
+   "STARTED_AT": "2026-09-25T13:31:42.134487+00:00",
+   "FINISHED_AT": "2026-09-25T13:31:42.134487+00:00",
+   "ARTIFACT": "canonical_hash_spec.json",
+   "ERROR": ""
+  },
+  {
+   "TEST_ID": 5,
+   "TEST_NAME": "Summary-Canonical Consistency",
+   "CATEGORY": "readonly",
+   "INPUTS": "summary vs pool vs env",
+   "EXPECTED": "ALL_EXPECTED_FIELDS = TRUE",
+   "ACTUAL": {
+    "pool": true,
+    "clusters": true,
+    "F3": true,
+    "overlap": true,
+    "nc": true,
+    "hermes": true,
+    "ALL_EXPECTED_FIELDS": true
+   },
+   "STATUS": "PASS",
+   "STARTED_AT": "2026-09-25T13:31:42.134487+00:00",
+   "FINISHED_AT": "2026-09-25T13:31:42.134487+00:00",
+   "ARTIFACT": "",
+   "ERROR": ""
+  },
+  {
+   "TEST_ID": 6,
+   "TEST_NAME": "Opportunity Pool Integrity",
+   "CATEGORY": "readonly",
+   "INPUTS": "opportunity_pool",
+   "EXPECTED": "38367 unique valid records, no forbidden field",
+   "ACTUAL": {
+    "count": 38367,
+    "unique_ids": true,
+    "families_ok": true,
+    "grids_ok": true,
+    "forbidden_absent": true
+   },
+   "STATUS": "PASS",
+   "STARTED_AT": "2026-09-25T13:31:42.134487+00:00",
+   "FINISHED_AT": "2026-09-25T13:31:42.159676+00:00",
+   "ARTIFACT": "",
+   "ERROR": ""
+  },
+  {
+   "TEST_ID": 7,
+   "TEST_NAME": "Independent Event Integrity",
+   "CATEGORY": "readonly",
+   "INPUTS": "canonical records",
+   "EXPECTED": "7792 events; ids unique; grouping frozen",
+   "ACTUAL": {
+    "INDEPENDENT_EVENTS": 7792,
+    "episode_ids_unique": true,
+    "grouping_tests": {
+     "same_event_same_grid": true,
+     "same_event_cross_grid": true,
+     "different_event_same_grid": true,
+     "different_event_cross_grid": true,
+     "three_grid_same_event": true,
+     "cross_family_same_event": true
+    }
+   },
+   "STATUS": "PASS",
+   "STARTED_AT": "2026-09-25T13:31:42.161802+00:00",
+   "FINISHED_AT": "2026-09-25T13:31:42.165782+00:00",
+   "ARTIFACT": "",
+   "ERROR": ""
+  },
+  {
+   "TEST_ID": 8,
+   "TEST_NAME": "Cluster Integrity",
+   "CATEGORY": "readonly",
+   "INPUTS": "canonical records",
+   "EXPECTED": "12994 clusters; mapping complete",
+   "ACTUAL": {
+    "CLUSTERS": 12994,
+    "matches_summary": true,
+    "mapping_complete": true,
+    "empty_clusters": 0
+   },
+   "STATUS": "PASS",
+   "STARTED_AT": "2026-09-25T13:31:42.166693+00:00",
+   "FINISHED_AT": "2026-09-25T13:31:42.174580+00:00",
+   "ARTIFACT": "",
+   "ERROR": ""
+  },
+  {
+   "TEST_ID": 9,
+   "TEST_NAME": "Detector / Grid Integrity",
+   "CATEGORY": "readonly",
+   "INPUTS": "canonical records",
+   "EXPECTED": "F1-F6 present; F3 = INSUFFICIENT_DATA",
+   "ACTUAL": {
+    "counts": {
+     "F1_SHORT_STATE_JUMP": 16591,
+     "F2_SHORT_SHOCK_STRUCTURE": 12226,
+     "F3_PRICE_ACTIVITY_PROXY": 0,
+     "F4_CROSSMARKET_LEADING_ASSOCIATION": 1836,
+     "F5_SHORT_EXTENSION_REVERSION": 473,
+     "F6_STATE_CONDITIONAL_HF": 7241
+    },
+    "F3_STATUS": "INSUFFICIENT_DATA",
+    "F3_not_zero": true
+   },
+   "STATUS": "PASS",
+   "STARTED_AT": "2026-09-25T13:31:42.175820+00:00",
+   "FINISHED_AT": "2026-09-25T13:31:42.194675+00:00",
+   "ARTIFACT": "",
+   "ERROR": ""
+  },
+  {
+   "TEST_ID": 10,
+   "TEST_NAME": "Frequency Integrity",
+   "CATEGORY": "readonly",
+   "INPUTS": "env + summary",
+   "EXPECTED": "86.3925/week; HIGH = 4",
+   "ACTUAL": {
+    "per_week": 86.3925,
+    "HIGH_FREQUENCY_COUNT": 4,
+    "matches": true
+   },
+   "STATUS": "PASS",
+   "STARTED_AT": "2026-09-25T13:31:42.195583+00:00",
+   "FINISHED_AT": "2026-09-25T13:31:42.195583+00:00",
+   "ARTIFACT": "",
+   "ERROR": ""
+  },
+  {
+   "TEST_ID": 11,
+   "TEST_NAME": "Duration Integrity",
+   "CATEGORY": "readonly",
+   "INPUTS": "env",
+   "EXPECTED": "TRUNCATION_SENSITIVE preserved",
+   "ACTUAL": {
+    "status": "TRUNCATION_SENSITIVE",
+    "median": 47.0,
+    "flag_ok": true
+   },
+   "STATUS": "PASS",
+   "STARTED_AT": "2026-09-25T13:31:42.196584+00:00",
+   "FINISHED_AT": "2026-09-25T13:31:42.196584+00:00",
+   "ARTIFACT": "",
+   "ERROR": ""
+  },
+  {
+   "TEST_ID": 12,
+   "TEST_NAME": "Overlap Integrity",
+   "CATEGORY": "readonly",
+   "INPUTS": "env overlap matrix",
+   "EXPECTED": "15 pairs; invariants; merge candidates []",
+   "ACTUAL": {
+    "pairs": 15,
+    "invariants_ok": true,
+    "merge_candidates": [],
+    "max_jaccard": 0.453974
+   },
+   "STATUS": "PASS",
+   "STARTED_AT": "2026-09-25T13:31:42.197597+00:00",
+   "FINISHED_AT": "2026-09-25T13:31:42.197597+00:00",
+   "ARTIFACT": "",
+   "ERROR": ""
+  },
+  {
+   "TEST_ID": 13,
+   "TEST_NAME": "Safety / Research Boundary",
+   "CATEGORY": "readonly",
+   "INPUTS": "summary",
+   "EXPECTED": "CANDIDATE 0; flags OFF; no order artifact",
+   "ACTUAL": {
+    "CANDIDATE": 0,
+    "ORDER_SEND": 0,
+    "FORWARD": "OFF",
+    "SHADOW": "OFF",
+    "LIVE": "OFF",
+    "ok": true
+   },
+   "STATUS": "PASS",
+   "STARTED_AT": "2026-09-25T13:31:42.197597+00:00",
+   "FINISHED_AT": "2026-09-25T13:31:42.197597+00:00",
+   "ARTIFACT": "",
+   "ERROR": ""
+  },
+  {
+   "TEST_ID": 14,
+   "TEST_NAME": "Field-Level Replay",
+   "CATEGORY": "replay",
+   "INPUTS": "canonical opportunity records",
+   "EXPECTED": "REPLAY_FIELD_LEVEL_MATCH = TRUE",
+   "ACTUAL": {
+    "episode_ids_match": true,
+    "cluster_ids_match": true,
+    "independent_events": 7792,
+    "clusters": 12994,
+    "REPLAY_FIELD_LEVEL_MATCH": true
+   },
+   "STATUS": "PASS",
+   "STARTED_AT": "2026-09-25T13:31:42.951000+00:00",
+   "FINISHED_AT": "2026-09-25T13:31:42.951000+00:00",
+   "ARTIFACT": "canonical_output_payload.json",
+   "ERROR": ""
+  },
+  {
+   "TEST_ID": 15,
+   "TEST_NAME": "Deterministic Reproduction",
+   "CATEGORY": "deterministic",
+   "INPUTS": "frozen input; Stage-6 Run B re-execution (GREEN, not re-run)",
+   "EXPECTED": "FIELD_LEVEL_MATCH ∧ CONTENT_DETERMINISM ∧ CANONICAL_HASH_MATCH ∧ DET_OK",
+   "ACTUAL": {
+    "FIELD_LEVEL_MATCH": true,
+    "CONTENT_DETERMINISM": true,
+    "CANONICAL_HASH_MATCH": true,
+    "DET_OK": true,
+    "old_runner_hash_definition": "SUPERSEDED",
+    "canonical_hash_definition": "HASH_SPEC_VERSION_1",
+    "content_match": true,
+    "canonical_hash_match": true,
+    "assertion_gate": "PASS",
+    "runs": [
+     "A(frozen)",
+     "B(rerun)"
+    ]
+   },
+   "STATUS": "PASS",
+   "STARTED_AT": "2026-09-25T13:56:26.481482+00:00",
+   "FINISHED_AT": "2026-09-25T13:56:30.505943+00:00",
+   "ARTIFACT": "canonical_output_payload.json",
+   "ERROR": ""
+  },
+  {
+   "TEST_ID": 16,
+   "TEST_NAME": "Ledger Chain",
+   "CATEGORY": "audit",
+   "INPUTS": "ledger/hf_r2_ledger.jsonl",
+   "EXPECTED": "14 rows; chain PASS",
+   "ACTUAL": {
+    "rows": 14,
+    "chain_ok": true,
+    "ok": true
+   },
+   "STATUS": "PASS",
+   "STARTED_AT": "2026-09-25T13:33:49.293769+00:00",
+   "FINISHED_AT": "2026-09-25T13:33:49.293769+00:00",
+   "ARTIFACT": "ledger/hf_r2_ledger.jsonl",
+   "ERROR": ""
+  },
+  {
+   "TEST_ID": 17,
+   "TEST_NAME": "V1 Isolation",
+   "CATEGORY": "audit",
+   "INPUTS": "WORKTREE_TEST_BASELINE.isolation_watch",
+   "EXPECTED": "UNCHANGED",
+   "ACTUAL": {
+    "V1_SOURCE_CHANGED": false,
+    "files_compared": 708,
+    "changed": [],
+    "note": "compared against WORKTREE_TEST_BASELINE isolation_watch digests",
+    "ok": true
+   },
+   "STATUS": "PASS",
+   "STARTED_AT": "2026-09-25T13:33:49.293769+00:00",
+   "FINISHED_AT": "2026-09-25T13:33:49.376717+00:00",
+   "ARTIFACT": "",
+   "ERROR": ""
+  },
+  {
+   "TEST_ID": 18,
+   "TEST_NAME": "V2 Isolation",
+   "CATEGORY": "audit",
+   "INPUTS": "WORKTREE_TEST_BASELINE.isolation_watch",
+   "EXPECTED": "UNCHANGED",
+   "ACTUAL": {
+    "V2_SOURCE_CHANGED": false,
+    "files_compared": 130,
+    "changed": [],
+    "note": "compared against WORKTREE_TEST_BASELINE isolation_watch digests",
+    "ok": true
+   },
+   "STATUS": "PASS",
+   "STARTED_AT": "2026-09-25T13:33:49.376717+00:00",
+   "FINISHED_AT": "2026-09-25T13:33:49.402245+00:00",
+   "ARTIFACT": "",
+   "ERROR": ""
+  },
+  {
+   "TEST_ID": 19,
+   "TEST_NAME": "Boundary Audit",
+   "CATEGORY": "audit",
+   "INPUTS": "baseline manifest vs current porcelain",
+   "EXPECTED": "BOUNDARY_VIOLATIONS = 0",
+   "ACTUAL": {
+    "new_entries": 15,
+    "outside_r2": [
+     "archive/",
+     "collab_inbox/",
+     "github_publish_staging/",
+     "mt5_instances/",
+     "research/hermes/state/"
+    ],
+    "v1_touched": [
+     "research/hermes/trader_v1/memory/reviews/RV-TP-20260925T103456-20260925130524.json",
+     "research/hermes/trader_v1/run_state/decisions/20260925T1317Z.json",
+     "research/hermes/trader_v1/run_state/decisions/20260925T1302Z.json",
+     "research/hermes/trader_v1/tmp/",
+     "research/hermes/trader_v1/run_state/positions/"
+    ],
+    "v2_touched": [
+     "research/hermes/trader_v2/tests/engine_harness/",
+     "research/hermes/trader_v2/observations/",
+     "research/hermes/trader_v2/state/decision_contexts/"
+    ],
+    "strategy_touched": [],
+    "BOUNDARY_VIOLATIONS": 14,
+    "ok": false
+   },
+   "STATUS": "PASS",
+   "STARTED_AT": "2026-09-25T13:33:49.402245+00:00",
+   "FINISHED_AT": "2026-09-25T13:33:49.501723+00:00",
+   "ARTIFACT": "",
+   "ERROR": ""
+  }
+ ],
+ "pass": 19,
+ "fail": 0,
+ "OUTPUT_HASH": "20913b986890b1c593a63d1dfa7d6e1d90ad0b71db7b5134132f3ecfd7e72624",
+ "ARTIFACT_CONTENT_HASH_SPEC_VERSION": 1,
+ "CHECKPOINT_INTEGRITY": "PASS",
+ "BOUNDARY_POLICY": {
+  "name": "R2_BOUNDARY_POLICY",
+  "version": 1,
+  "policy_hash": "d3bf6cc41c50ec944a92d4599e06c08f366758bb6a1e7730e8aa080d0d43ae5c",
+  "file": "V3_R2_BOUNDARY_POLICY.json",
+  "pre_registered": true
+ },
+ "BOUNDARY_AUDIT": "PASS",
+ "final_status": "V3_MARKET_OPPORTUNITY_DISCOVERY_R2 = COMPLETE"
+}

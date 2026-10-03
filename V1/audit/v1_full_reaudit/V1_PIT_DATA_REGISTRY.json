@@ -1,0 +1,86 @@
+{
+ "generated_utc": "2026-10-02T04:01:54.442902+00:00",
+ "policy": "unknown/PIT-unproven => UNKNOWN/DATA_BLOCKED, never default PASS",
+ "entries": [
+  {
+   "name": "mapping.baseline_transition",
+   "source": "frozen dev transition table",
+   "time_range": "<= 2026-06-01 (dev_end)",
+   "pit_status": "PIT_OK",
+   "coverage": "dev sample 26k+ transitions",
+   "missingness": "n/a",
+   "sha256": "94e08c13c407878f05cdd510e2d9f77f26beca4a2153e9942ee74d839454b797",
+   "validation": "mapping_hash=d59e9e9d489c81c5"
+  },
+  {
+   "name": "labeler.source",
+   "source": "frozen _c1_5_run.label_series + hysteresis(k=2)",
+   "time_range": "static code",
+   "pit_status": "PIT_OK",
+   "coverage": "n/a",
+   "missingness": "n/a",
+   "sha256": "4b4fbc7ef421e82d5f9f2bd133b20cd61f15307ca843aff919191fc53265a0b0",
+   "validation": "label_adapter --replay proven 100% vs state_v2_series.parquet (per prior gate)"
+  },
+  {
+   "name": "state_series.parquet",
+   "source": "frozen 9-state series (replay oracle only)",
+   "time_range": "R2 window",
+   "pit_status": "PIT_OK",
+   "coverage": "used only by --replay",
+   "missingness": "n/a",
+   "sha256": "792356d34ffe6b2c5d0b6c956095e7ddbb1d4bab12b46dca3c70722b79b5c914",
+   "validation": "not used by the live cycle"
+  },
+  {
+   "name": "mt5.tick.live",
+   "source": "MT5 FXTM demo real-time bid/ask",
+   "time_range": "live per cycle",
+   "pit_status": "PIT_OK_BY_CONSTRUCTION",
+   "coverage": "point-in-time at cycle time",
+   "missingness": "no persisted snapshot except ledger.snapshot",
+   "sha256": null,
+   "validation": "ledger records snapshot per DECISION (bid/ask/mid/spread) but NOT data_age for the fix-era rows"
+  },
+  {
+   "name": "mt5.m1_bars.live",
+   "source": "MT5 M1 bars -> M15 -> labeler",
+   "time_range": "live rolling 90000 M1",
+   "pit_status": "PIT_OK_BY_CONSTRUCTION",
+   "coverage": "rolling window",
+   "missingness": "server-frame timestamps (UTC+3)",
+   "sha256": null,
+   "validation": "last_bar_utc carried server frame"
+  },
+  {
+   "name": "atr.m15",
+   "source": "ATR(14) over live M15 bars",
+   "time_range": "live",
+   "pit_status": "PIT_OK_BY_CONSTRUCTION",
+   "coverage": "n/a",
+   "missingness": "n/a",
+   "sha256": null,
+   "validation": "computed from same live bars"
+  },
+  {
+   "name": "broker.deals_history",
+   "source": "MT5 history_deals_get (magic 90011)",
+   "time_range": "2026-09-28..now",
+   "pit_status": "PIT_OK",
+   "coverage": "64 deals",
+   "missingness": "none observed",
+   "sha256": null,
+   "validation": "reconcile_broker_closes; idempotent dedup by position_id"
+  },
+  {
+   "name": "regime/reconciliation-lag",
+   "source": "broker SL/TP close -> ledger observation",
+   "time_range": "up to ~31h lag",
+   "pit_status": "PIT_PARTIAL",
+   "coverage": "delayed",
+   "missingness": "events arrive late",
+   "sha256": null,
+   "validation": "counters in the old build under-counted; lag itself is design"
+  }
+ ]
+}

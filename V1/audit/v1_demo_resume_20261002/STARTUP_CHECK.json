@@ -1,0 +1,115 @@
+{
+ "runtime_config": {
+  "signal_source": "BASELINE_TRANSITION",
+  "set_at_utc": "2026-09-28T12:45Z",
+  "set_by": "operator instruction 2026-09-28 20:41",
+  "order_send_enabled": true,
+  "order_send_note": "fail-closed: order_send requires this flag true; it stays false until the operator authorises resuming demo sending",
+  "order_send_opened_at": "2026-09-28T15:35Z",
+  "order_send_opened_by": "operator taskbook 2026-09-28 23:30"
+ },
+ "kill_switch_file": {
+  "path": "registry/kill_switch.json",
+  "exists": false,
+  "content": null,
+  "interpretation": "missing => OFF (per v1-risk-hardening)"
+ },
+ "registry": {
+  "isolation": {
+   "instance_dir": null,
+   "magic": 90011,
+   "comment": "V1UP_DEMO",
+   "reserved_magic": {
+    "90001": "collect",
+    "90002": "OLD_V1",
+    "90003": "V2"
+   }
+  },
+  "risk_limits": {
+   "max_position": 1,
+   "max_daily_loss": -20.0,
+   "max_consecutive_loss": 3,
+   "spread_limit_bps": 30.0,
+   "slippage_limit_bps": 15.0,
+   "stale_data_seconds": 900
+  },
+  "execution": {
+   "ORDER_SEND": "OFF",
+   "LIVE": false,
+   "REAL_MONEY": false
+  }
+ },
+ "mapping": {
+  "file_sha256": "94e08c13c407878f05cdd510e2d9f77f26beca4a2153e9942ee74d839454b797",
+  "stored_mapping_hash": "d59e9e9d489c81c5af8625213def7006438d9a35e36fb4c1af97ac08433b95fa",
+  "recomputed_mapping_hash": "d59e9e9d489c81c5af8625213def7006438d9a35e36fb4c1af97ac08433b95fa",
+  "match": true,
+  "frozen_expected_d59e9e9d": true
+ },
+ "code_sha256": {
+  "cycle.py": "0ed44fb8fe654ea04904c16ffbfc527bf3b620f2c3a192e94cfb848c6e6f9ef8",
+  "gates.py": "b784999aa3b4517c527ba4087c8db0c7ad4ad5238a25d8bc500efc185f301c06",
+  "signal_baseline.py": "de18e58e3e4cc043fab7c6367ce50cbc9a0d45d56d8fac08f88700046a5034d5",
+  "label_adapter.py": "3e67542e8a2d3730db25d87b5eb3a3a71d52938eb8fda3d833f1350c4d5d4189",
+  "run_gates.py": "c2fc89be0f27bb90f0fe7144e445e310c862418210d487ce483a1127ce7018a7"
+ },
+ "code_sha256_expected": {
+  "cycle.py": "0ed44fb8fe654ea04904c16ffbfc527bf3b620f2c3a192e94cfb848c6e6f9ef8",
+  "gates.py": "b784999aa3b4517c"
+ },
+ "ledger": {
+  "chain_ok": true,
+  "events": 660,
+  "bad": null,
+  "replay": {
+   "open_positions": {
+    "None": {
+     "side": "SHORT",
+     "qty": 0.01,
+     "entry": 4123.39
+    },
+    "0": {
+     "side": "SHORT",
+     "qty": 0.01,
+     "entry": 4114.14
+    }
+   },
+   "realized_pnl": -11.44,
+   "events": 660,
+   "sends": 34
+  },
+  "last_event": {
+   "seq": 660,
+   "ts_utc": "2026-10-02T13:48:04.257276+00:00",
+   "event": "DECISION",
+   "action": "WAIT_RISK:MAX_DAILY_LOSS,MAX_CONSECUTIVE_LOSS",
+   "risk_reasons": [
+    "MAX_DAILY_LOSS",
+    "MAX_CONSECUTIVE_LOSS"
+   ]
+  },
+  "event_counts": {
+   "DECISION": 406,
+   "ORDER_REQUEST": 42,
+   "ORDER_SEND": 42,
+   "ORDER_CHECK": 42,
+   "FILL": 32,
+   "POSITION": 32,
+   "CLOSE": 32,
+   "PNL": 32
+  }
+ },
+ "mt5": {
+  "init_ok": true,
+  "last_error": "(1, 'Success')",
+  "login": 160759434,
+  "server": "ForexTimeFXTM-Demo01",
+  "trade_mode": "DEMO",
+  "currency": "USD",
+  "balance": 1923.39,
+  "equity": 1923.39,
+  "positions": [],
+  "positions_by_magic": {},
+  "pending_orders_by_magic": {}
+ }
+}

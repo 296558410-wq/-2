@@ -1,0 +1,105 @@
+{
+  "forecast_id": "A_20260806",
+  "sample_id": "A_20260806",
+  "timestamp": "2026-08-06T00:00:00Z",
+  "horizon": 4,
+  "scenario_family": "DIRECTIONAL",
+  "scenario_alternative": "RANGE",
+  "scenario_abstain": false,
+  "observations": [
+    "Swing high 4253.795 broken, break_status BEYOND",
+    "Multi-timeframe trend agreement AGREE, all trending up",
+    "State EXPANSION, dwell 23 bars, no event",
+    "H4 current bar shows large upper wick rejection"
+  ],
+  "what_i_know": [
+    "Price above swing high, breakout pressure candidate supported",
+    "EXPANSION state, high volatility, rising ATR",
+    "DXY slightly down, mild USD weakness",
+    "Historical analogs all show EXPANSION at step 4"
+  ],
+  "what_i_do_not_know": [
+    "VIX, UST10Y, news, macro events unavailable",
+    "Order flow, positioning, COT, ETF flows absent",
+    "Higher-timeframe current bars inconsistent with M1 data",
+    "Breakout durability unknown; only 4 bars old"
+  ],
+  "evidence": [
+    "Multi-TF up agreement; H1 trend_20 +150",
+    "Close beyond swing high by 0.35 ATR",
+    "EXPANSION state with expanding ranges on H1/H4",
+    "Analogs A33867: EXPANSION persists at step 4"
+  ],
+  "counter_evidence": [
+    "H4 large upper wick 25.5 suggests supply",
+    "Exhaustion candidate: 23-bar EXPANSION dwell",
+    "M1 range contracting, current bar body zero",
+    "Ambiguity rate 0.5; no event label confirmed"
+  ],
+  "possible_mechanisms": [
+    {
+      "mechanism": "breakout_pressure",
+      "status": "SUPPORTED",
+      "why": "close beyond swing high by 0.35 ATR"
+    },
+    {
+      "mechanism": "momentum_continuation",
+      "status": "POSSIBLE",
+      "why": "all timeframes agree up, consecutive up bars"
+    },
+    {
+      "mechanism": "exhaustion_reversal",
+      "status": "POSSIBLE",
+      "why": "23-bar dwell plus large upper wick"
+    },
+    {
+      "mechanism": "failed_breakout",
+      "status": "WEAK",
+      "why": "no reclaim yet, breakout only 4 bars old"
+    }
+  ],
+  "primary_scenario": {
+    "scenario": "DIRECTIONAL",
+    "horizon": 4,
+    "trigger": "EXPANSION continues with up-trend breakout follow-through",
+    "invalidation": "close back below 4253.795"
+  },
+  "alternative_scenario": {
+    "scenario": "RANGE",
+    "horizon": 4,
+    "trigger": "Upper-wick rejection caps upside, consolidation 4249-4304",
+    "invalidation": "sustained close beyond 4303.745"
+  },
+  "expected_transition": "EXPANSION continues; possible TREND transition later",
+  "direction_bias": "UP",
+  "time_horizon": "H=4",
+  "evidence_strength": 0.45,
+  "confidence": 0.4,
+  "uncertainty": 0.55,
+  "confidence_reason": "Strong up trend and breakout support directional continuation",
+  "uncertainty_reason": "Upper wick rejection, exhaustion risk, no macro confirmation",
+  "invalidation": "close returns below 4253.795 swing high",
+  "change_my_mind": [
+    "H1 closes back below 4253.795",
+    "Volatility collapse, ATR contracting across timeframes",
+    "DXY rallies strongly above 100",
+    "Range compression with declining bars on M15"
+  ],
+  "abstain": false,
+  "abstain_reason": "Context sufficient for family estimate despite gaps",
+  "questions": {
+    "Q1": "Price above swing high; EXPANSION state; all TFs up; DXY down",
+    "Q2": "VIX, yields, news, flows absent; breakout durability unknown",
+    "Q3": "Breakout pressure supported; multi-TF up agreement; analogs persist EXPANSION",
+    "Q4": "Upper wick rejection; exhaustion risk; M1 contracting; no event label",
+    "Q5": "Momentum continuation mechanism unconfirmed beyond breakout evidence",
+    "Q6": "Close below 4253.795 or volatility collapse would flip view",
+    "Q7": "No; data sufficient, abstain not required at family level"
+  },
+  "reasoning_trace": [
+    "Assessed state: EXPANSION with expanding higher-TF ranges",
+    "Breakout beyond swing high supports continuation pressure",
+    "Weighed counter-evidence: wick rejection and exhaustion",
+    "Chose DIRECTIONAL primary, RANGE alternative, QUIET unlikely"
+  ]
+}

@@ -1,0 +1,82 @@
+{
+  "forecast_id": "HERMES_PRICE_ONLY_CTX_20260903T120000Z",
+  "timestamp": "2026-09-03T12:00:00+00:00",
+  "current_state": "XAUUSD is trading around 4426.9-4427.0 at 12:00 UTC, mid-range inside a 4418-4445 consolidation band. The band sits on top of a strong H4 bullish impulse leg (Sep-03 00:00 H4 candle: body +35.93 from 4384 to 4420, body_ratio 0.90, tiny upper wick). Price has been rejected twice at the 4440-4445 zone (H4 04:00 doji with a 19.7 upper wick at high 4440.1; H1 09:00 high 4443.5 and H1 10:00 high 4441.8, both with large upper wicks), then dipped to 4418.9-4419.8 around 11:00-11:15 and was bought back (H1 11:00 doji with an 8.2 lower wick, low 4418.915). The last completed minutes are flat-to-firm near 4427 with a mild local rejection at 4428.9-4430 (M1 12:00 candle: range_percentile 0.795 but body only 0.04 with a 2.06 upper wick). Volatility is contracting: H1 ATR fell from 17.36 to 14.64 across the last hours; recent M5 range percentiles are mostly 0.04-0.26.",
+  "dominant_structure": "H4 bullish impulse (Sep-02 20:00 -> Sep-03 00:00, 4374->4420) followed by a high-level sideways consolidation under a 4440-4445 supply zone, with a tested-and-held higher low at 4418-4420. Structure reads as impulse-then-pause (bullish flag-like coiling) with price currently mid-range and unresolved; the 4440-4445 zone has absorbed three advances.",
+  "current_pressure": {
+    "directional": "Supply pressure at 4440-4445 (three distinct rejections with long upper wicks) caps upside; demand pressure at 4418-4420 (tested twice, both times recovered) supports downside. Residual bid pressure from the H4 impulse shows in the higher-low sequence; near-term offers evident at 4428-4430 from M1/M5 upper wicks.",
+    "volatility": "Compression: H1 ATR declining (17.36 -> 16.98 -> 16.95 -> 14.75 -> 14.64); M5 range percentiles 0.04-0.26 across the last 25 minutes; only the final M1 minute expanded (0.795) on a rejection candle. Compressed volatility implies an eventual expansion, but the as-of data gives no directional edge for it.",
+    "liquidity_proxy": "PRICE_ONLY variant: no order-flow or volume data. The only liquidity-proxies are the repeated wick rejections at 4440-4445 (visible selling) and the two defended lows at 4418-4420 (visible buying), indicating two-sided interest at the range edges."
+  },
+  "primary_scenario": {
+    "scenario": "Intraday range continuation: price keeps oscillating within 4418-4445, mean-reverting from the current ~4427 level; near-term it first probes the 4428-4432 area, then returns toward mid-range unless an edge breaks. Range edges act as fade zones while volatility remains compressed.",
+    "confidence": 0.45,
+    "horizon": "SHORT_TERM",
+    "trigger": "Continued holding of the 4418-4420 support and repeated rejection at 4440-4445, with ATR staying below ~16 on H1 and no hourly close beyond either edge.",
+    "invalidation": "An hourly close below 4418 (especially below 4415.5) or an hourly close above 4445.8 exits the range and invalidates the range-continuation scenario."
+  },
+  "alternative_scenario": {
+    "scenario": "Upside breakout / impulse continuation: a sustained hourly close above the 4445.8 session high clears the twice-tested supply zone and resumes the H4 impulse, targeting a measured extension toward 4470-4490 (impulse length projected from the 4418 low).",
+    "confidence": 0.3,
+    "horizon": "SHORT_TERM",
+    "trigger": "An hourly close above 4445.8, ideally with expanding range percentiles and a body_ratio > 0.6 on the breakout H1 candle; the higher-low structure (4418 > 4364) supports this as the constructive resolution.",
+    "invalidation": "Rejection back below 4430 within two hours of tagging 4445, or a bearish H1 close inside the range (e.g., below 4435) after a false breakout."
+  },
+  "third_scenario": {
+    "scenario": "Downside breakdown: loss of the 4418-4420 support (which held twice) on an hourly close below 4415.5 opens a retest of 4400, then the 4390 area (Sep-02 20:00 close 4384 and the morning low zone), turning the higher-low structure into a lower-high.",
+    "confidence": 0.25,
+    "horizon": "SHORT_TERM",
+    "trigger": "An hourly close below 4418 with an expanding H1 range percentile, especially if the 11:00 lower-wick low (4418.915) is broken on the first attempt without recovery.",
+    "invalidation": "A quick reclaim of 4425+ within one hour of the break, or the support zone absorbing a third test with a long lower wick."
+  },
+  "direction_bias": "NO_DIRECTIONAL_EDGE",
+  "expected_state_transition": "Range-bound consolidation (4418-4445) persists while volatility is compressed, then resolves at an edge: the higher-low structure tilts the eventual resolution toward the upside, but the as-of double rejection at 4440-4445 and the mid-range location of price give no directional edge now.",
+  "time_horizon": "SHORT_TERM",
+  "confidence": 0.45,
+  "supporting_evidence": [
+    "H4 Sep-03 00:00 candle: body +35.93 (4384.165->4420.095), body_ratio 0.904, upper_wick 0.39 - a strong impulsive advance with no meaningful rejection.",
+    "Higher-low structure: H4 16:00 low 4364.165, then 11:00 dip low 4418.915 held above the previous session lows, and the 4418-4420 zone was defended twice.",
+    "H1 11:00 doji: body 0.24 but lower_wick 8.16 (low 4418.915, close 4427.075) - aggressive buying absorbed the dip and restored price to mid-range.",
+    "Three distinct rejections at 4440-4445 (H4 04:00 upper_wick 19.69 at 4440.145; H1 09:00 upper_wick 8.69 at 4443.465; H1 10:00 upper_wick 6.97 at 4441.825) define a concrete supply zone.",
+    "Volatility contraction across timeframes (H1 ATR 17.36->14.64; M5 range percentiles 0.04-0.26) consistent with coiling before a resolution.",
+    "M5 11:50 candle: body 3.48 (4424.245->4427.725), body_ratio 0.851 - the most recent strong completed move was a bullish impulse off support."
+  ],
+  "counter_evidence": [
+    "The supply zone at 4440-4445 has absorbed three advances; as-of price has NOT confirmed any breakout, so the bullish impulse may simply be petering out into a range.",
+    "M1 12:00 candle (range_percentile 0.795) shows fresh selling at 4428.9-4430 with a 2.06 upper wick and near-zero body - immediate momentum is slightly negative at the as-of minute.",
+    "M5 current candle and the 10:00 H1 candle (close 4427.295, down from 4434.855) show pullback pressure after the morning highs.",
+    "Data-quality caution: each timeframe's 'current' candle (M5/M15/H1/H4 at 12:00) carries open/close/range values inconsistent with the aggregated completed lower-timeframe candles (e.g., H4 'current' close 4485.155 vs M1 close 4426.895). I treat those as containing post-as-of information and exclude them from evidence under the PIT rule; this reduces confidence.",
+    "PRICE_ONLY variant: no volume, order flow, macro, or UST10Y proxy is available, so the range interpretation cannot be corroborated by liquidity or fundamental evidence."
+  ],
+  "trigger": "Range-edge resolution: an hourly close beyond 4445.8 (upside) or below 4418/4415.5 (downside), or a third defended test of 4418-4420 accompanied by further ATR compression.",
+  "invalidation": "The range-continuation/neutral reading is invalidated by an hourly close outside the 4418-4445.8 band; the bullish-tilt sub-thesis is invalidated by a confirmed close below 4418 without recovery.",
+  "change_my_mind": [
+    "An hourly (or stronger) close above 4445.8 with expanding range percentile and body_ratio > 0.6 would flip my judgement to UP / breakout-continuation.",
+    "An hourly close below 4418, especially below 4415.5 with expanding ATR, would flip my judgement to DOWN / breakdown toward 4400-4390.",
+    "Any additional data layer (order flow, volume, macro news, UST10Y direction) contradicting the range reading would change my judgement, since the current context is price-geometry only.",
+    "A third successful hold of 4418-4420 with a long lower wick and recovering M5 momentum would raise my confidence in the constructive (eventually higher) resolution."
+  ],
+  "abstain": false,
+  "abstain_reason": "",
+  "reasoning_trace": [
+    "Verified cross-timeframe consistency of all completed trailing candles (M1 11:55-11:59 aggregates into M5 11:55; M5 11:45-11:55 aggregates into M15 11:45; M15 10:45-11:45 aggregates into H1 11:00).",
+    "Detected that every 'current' candle at 12:00 (M5/M15/H1/H4) contains open/close/high values inconsistent with completed lower-TF candles and with the M1 12:00 close; interpreted these as post-as-of (lookahead) artifacts and excluded them from evidence per the PIT rule.",
+    "Established the dominant structure: H4 bullish impulse (Sep-03 00:00) followed by range consolidation 4418-4445.8 with a tested-and-held higher low at 4418-4420.",
+    "Mapped the supply zone 4440-4445 (three upper-wick rejections) and the demand zone 4418-4420 (two defended tests); concluded two-sided balance at range edges.",
+    "Noted volatility contraction (H1 ATR 17.36->14.64) as compression consistent with an imminent range resolution, direction unknown.",
+    "Judged the context sufficient (completed candles are internally consistent) but too balanced to justify a directional edge; chose NO_DIRECTIONAL_EDGE with range-continuation as primary, breakout as first alternative, breakdown as third.",
+    "Assigned subjective confidence 0.45 for the primary scenario, reduced by the lookahead-artifact data-quality caution and the absence of any non-price corroboration."
+  ],
+  "questions": {
+    "A": "Price is at ~4426.9-4427.0, mid-range inside a 4418-4445 band that formed after a strong H4 bullish impulse (4384->4420, +35.9 body on the Sep-03 00:00 candle). The morning saw two failed attempts at 4440-4445 and one dip to 4418.9 that was bought back; the last minutes are flat around 4427 with a small local rejection at 4428.9-4430. Volatility is compressing across timeframes.",
+    "B": "Dominant structure: H4 bullish impulse followed by a high-level consolidation (range 4418-4445) under a 4440-4445 supply zone, with a tested-and-held higher low at 4418-4420. It is an impulse-then-pause (bullish-flag-like) structure, still unresolved as of the as-of time.",
+    "C": "Pressures: (directional) supply at 4440-4445 capping advances, demand at 4418-4420 supporting dips, residual bid from the H4 impulse via the higher-low sequence, local offers at 4428-4430; (volatility) compression with H1 ATR 17.36->14.64 and low M5 range percentiles, implying an eventual expansion; (liquidity-proxy) two-sided interest visible only through wick rejections/defenses at the range edges, as no volume or order-flow data exists in this PRICE_ONLY context.",
+    "D": "Candidate mechanisms: (1) Range-bound mean reversion between 4418 and 4445 - supported by three top rejections and two bottom holds; (2) Bullish flag / impulse continuation - partially supported by the strong H4 impulse and higher low, but no as-of breakout evidence, so it cannot be confirmed; (3) Distribution/topping at 4440-4445 - possible (heavy upper wicks) but not distinguishable from a pause without volume or macro data (UNKNOWN), and the 4418 low held twice against it; (4) Trend exhaustion - unsupported, since the 11:00 dip recovered and no lower-high sequence has formed.",
+    "E": "Strongest evidence: (1) H4 Sep-03 00:00 candle +35.93 body with 0.904 body_ratio and 0.39 upper wick - a clean impulsive advance; (2) H1 11:00 doji with 8.16 lower wick at low 4418.915 - support defended decisively; (3) three upper-wick rejections at 4440-4445 defining a concrete supply zone; (4) cross-timeframe volatility contraction consistent with coiling; (5) M5 11:50 strong bullish body (0.851 body_ratio) as the last significant completed move.",
+    "F": "Counter-evidence: (1) 4440-4445 has absorbed three advances, so the impulse may be stalling rather than pausing; (2) the M1 12:00 candle (range_percentile 0.795, upper_wick 2.06, body 0.04) shows fresh selling at 4428.9-4430 at the as-of minute; (3) the 10:00 H1 closed down (4434.855->4427.295) and the M5 'current' close is below its open, showing pullback pressure; (4) data-quality caution - higher-TF 'current' candles at 12:00 are inconsistent with completed lower-TF candles and appear to contain post-as-of information; excluding them lowers confidence; (5) no volume/macro/order-flow corroboration exists in this PRICE_ONLY variant.",
+    "G": "Primary scenario: intraday range continuation within 4418-4445, with price mean-reverting from ~4427, probing 4428-4432 first, then returning toward mid-range; edges act as fade zones while volatility stays compressed. Confidence 0.45, horizon SHORT_TERM, direction NO_DIRECTIONAL_EDGE.",
+    "H": "Alternatives: (1) Upside breakout - hourly close above 4445.8 clears the supply zone and resumes the H4 impulse toward a measured 4470-4490 (confidence 0.30); (2) Downside breakdown - hourly close below 4418/4415.5 fails the twice-held support and opens 4400-4390 (confidence 0.25).",
+    "I": "Invalidation conditions: primary range scenario is invalidated by an hourly close outside 4418-4445.8; the bullish-tilt sub-thesis is invalidated by a confirmed close below 4418 without a quick reclaim above 4425; the breakout scenario is invalidated by a bearish H1 close back inside the range (below 4435) within two hours of tagging 4445.",
+    "J": "Evidence that would flip my judgement: an hourly close above 4445.8 with expanding range percentile and strong body_ratio flips me to UP; an hourly close below 4418 (especially below 4415.5) with expanding ATR flips me to DOWN; any non-price data layer (volume, order flow, macro, UST10Y direction) that contradicts the two-sided range reading would also flip me, given the current context is price geometry only."
+  }
+}

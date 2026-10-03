@@ -1,0 +1,101 @@
+{
+ "sample_id": "A_20260829",
+ "forecast_id": "R6_A_20260829",
+ "timestamp": "2026-08-29T12:00:00Z",
+ "observations": [
+  "Close 4450.065 below swing low 4452.855; break 0.202 ATR",
+  "H4 selloff 4630 to 4449; huge range percentile 1.0",
+  "All timeframes trend_20 negative; M1 consecutive down 7",
+  "State REJECTION dwell 3; ambiguity rate 0.5"
+ ],
+ "what_i_know": [
+  "Price 4450.065 at Friday close; level 4452.855 broken",
+  "Momentum down across M1-H4; range expanding",
+  "L3 state REJECTION, event NONE, dwell 3",
+  "Cross-market series all absent or stale"
+ ],
+ "what_i_do_not_know": [
+  "Why selloff occurred; no news or macro data",
+  "Weekend gap direction unknown until Monday open",
+  "Order flow, volume, positioning all unavailable",
+  "Reclaim intent of 4452.855 unknown; failure or continuation"
+ ],
+ "evidence": [
+  "Close beyond 4452.855 by 0.202 ATR (breakout pressure)",
+  "Negative trend_20 on M1 M5 M15 H1 H4",
+  "M1 bar range percentile 0.965; expanding ranges",
+  "H4 16:00 bar body -52.3; strong selling"
+ ],
+ "counter_evidence": [
+  "No reclaim yet; failed_breakout still possible",
+  "H4 trend_50 +117; longer uptrend intact",
+  "State ambiguity 0.5; analog paths diverge",
+  "Near 4449.135 low; exhaustion risk high"
+ ],
+ "possible_mechanisms": [
+  {
+   "mechanism": "breakout_pressure",
+   "status": "SUPPORTED",
+   "why": "close beyond level; trends down"
+  },
+  {
+   "mechanism": "failed_breakout",
+   "status": "POSSIBLE",
+   "why": "no reclaim; overshoot may be fakeout"
+  },
+  {
+   "mechanism": "trend_exhaustion",
+   "status": "POSSIBLE",
+   "why": "extreme range percentiles after sharp drop"
+  },
+  {
+   "mechanism": "weekend_gap_reversal",
+   "status": "UNKNOWN",
+   "why": "no overnight data before Monday open"
+  }
+ ],
+ "primary_scenario": {
+  "scenario": "breakout pressure continues; price rejects lower below 4452.855",
+  "horizon": "next 4-8 M15 bars post-weekend",
+  "trigger": "open and hold below 4449.135",
+  "invalidation": "reclaim 4452.855"
+ },
+ "alternative_scenario": {
+  "scenario": "exhaustion bounce; failed breakout reclaims 4452.855",
+  "horizon": "next 2-4 M15 bars",
+  "trigger": "strong recovery close above 4452.855",
+  "invalidation": "new lows below 4449.135"
+ },
+ "expected_transition": "REJECTION to TREND down, else COMPRESSION",
+ "direction_bias": "DOWN",
+ "time_horizon": "4-8 M15 bars (post-weekend session)",
+ "evidence_strength": 0.45,
+ "confidence": 0.4,
+ "uncertainty": 0.6,
+ "confidence_reason": "Level break confirmed; trends aligned down; context thin",
+ "uncertainty_reason": "No cross-market, no news; weekend gap risk",
+ "invalidation": "sustained reclaim above 4452.855",
+ "change_my_mind": [
+  "Reclaim of 4452.855 flips to failed breakout",
+  "Cross-market data showing risk-on shifts bias",
+  "Fresh lows under 4449.135 strengthen downside",
+  "State transition to COMPRESSION suggests range"
+ ],
+ "abstain": false,
+ "abstain_reason": "not abstaining; context coherent though sparse",
+ "questions": {
+  "Q1": "Only price geometry and derived levels; nothing else",
+  "Q2": "Cause of selloff, flows, news, weekend gap",
+  "Q3": "Level break; all timeframe trends negative",
+  "Q4": "No reclaim yet; H4 trend_50 positive; exhaustion",
+  "Q5": "Failed breakout fakeout below 4452.855",
+  "Q6": "Reclaim 4452.855 or fresh new lows",
+  "Q7": "False; context coherent though sparse"
+ },
+ "reasoning_trace": [
+  "Sharp H4 breakdown through swing low 4452.855",
+  "All short timeframes down; momentum down",
+  "No reclaim; breakout pressure supported",
+  "Thin context; low confidence, not abstaining"
+ ]
+}

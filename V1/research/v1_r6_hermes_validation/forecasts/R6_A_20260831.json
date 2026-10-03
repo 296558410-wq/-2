@@ -1,0 +1,91 @@
+{
+  "sample_id": "A_20260831",
+  "forecast_id": "A_20260831",
+  "timestamp": "2026-08-31 12:00:00+00:00",
+  "observations": [
+    "Price inside swing high 4453.465, touch_count 25",
+    "M1/M5 trend_20 positive, consecutive_up 6/8",
+    "H1/H4 trend_20 negative, H4 trend -171.17",
+    "Frozen label REJECTION, state COMPRESSION dwell 3"
+  ],
+  "what_i_know": [
+    "Level SWING_HIGH_39224 at 4453.465, status INSIDE",
+    "M15 bar upper wick 3.79, body_ratio 0.025",
+    "L6 multi-timeframe agreement CONFLICT",
+    "DXY 99.542, VIX 15.28, both PROXY flat"
+  ],
+  "what_i_do_not_know": [
+    "Post-t price path, next bar outcomes",
+    "NEWS, MACRO_EVENTS, COT, ETF flows absent",
+    "UST10Y UNKNOWN, DXY instrument definition UNKNOWN",
+    "Level break outcome: INSIDE not decisive"
+  ],
+  "evidence": [
+    "REJECTION event at swing high, M15 rejection wick",
+    "H1/H4 negative trend_20, H4 -171.17",
+    "Analog A19754: COMPRESSION then REJECTION",
+    "M5/M15 current bars show fading momentum"
+  ],
+  "counter_evidence": [
+    "M1/M5 up momentum, displacement 10.83",
+    "Current M1 body_ratio 0.78 bullish",
+    "DXY flat 0.028 change_8, no dollar tailwind",
+    "Level status INSIDE, not decisively rejected"
+  ],
+  "possible_mechanisms": [
+    {
+      "mechanism": "breakout_continuation",
+      "status": "POSSIBLE",
+      "why": "Short-TF momentum could push through level"
+    },
+    {
+      "mechanism": "higher_tf_trend_resumption",
+      "status": "POSSIBLE",
+      "why": "H4 downtrend intact, rejection consistent"
+    }
+  ],
+  "primary_scenario": {
+    "scenario": "Rejection at swing high, drift lower toward 4440-4430",
+    "horizon": "1-4 hours",
+    "trigger": "M15 close below 4453.465 level",
+    "invalidation": "Decisive M15 close above 4457.445"
+  },
+  "alternative_scenario": {
+    "scenario": "Breakout through 4457.445, squeeze toward 4465",
+    "horizon": "1-4 hours",
+    "trigger": "Close above 4457.445 with range expansion",
+    "invalidation": "Rejection wick below 4453.465 again"
+  },
+  "expected_transition": "COMPRESSION -> ROTATION or TREND after level resolution",
+  "direction_bias": "DOWN",
+  "time_horizon": "1-4 hours",
+  "evidence_strength": 0.35,
+  "confidence": 0.35,
+  "uncertainty": 0.6,
+  "confidence_reason": "Higher-TF downtrend plus REJECTION label, but conflicting short-TF momentum",
+  "uncertainty_reason": "Cross-market proxies only, news absent, level unresolved",
+  "invalidation": "M15 close above 4457.445 or H1 trend_20 turning positive",
+  "change_my_mind": [
+    "M15 close above 4457.445 with expansion",
+    "H1 trend_20 turns positive",
+    "DXY drop below 99 with confirmation",
+    "Macro/news catalyst appears"
+  ],
+  "abstain": false,
+  "abstain_reason": "Enough coherent structure, low confidence acceptable",
+  "questions": {
+    "Q1": "what_do_i_know: level, labels, trends, proxies",
+    "Q2": "what_do_i_not_know: future path, absent macro data",
+    "Q3": "evidence_for_primary: rejection label, higher-TF downtrend",
+    "Q4": "evidence_against_primary: short-TF momentum, INSIDE status",
+    "Q5": "mechanism_that_is_only_possible: breakout continuation through level",
+    "Q6": "what_would_change_my_mind: decisive level break, H1 trend flip",
+    "Q7": "should_i_abstain_now: false, coherent but low confidence"
+  },
+  "reasoning_trace": [
+    "Short-TF rally into swing high within H4 downtrend",
+    "REJECTION event with M15 upper wick supports down",
+    "Conflicting momentum caps confidence, bias DOWN",
+    "Watch level 4453.465 resolution for confirmation"
+  ]
+}

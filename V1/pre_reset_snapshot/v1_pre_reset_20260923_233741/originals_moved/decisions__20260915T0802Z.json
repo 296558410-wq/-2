@@ -1,0 +1,104 @@
+{
+ "cycle": "2026-09-15T08:02Z",
+ "symbol": "XAUUSD",
+ "decision_id": "DEC-2026-09-15T0802Z",
+ "utc_ts": "2026-09-15T08:02Z",
+ "generated_utc": "2026-09-15T08:02Z",
+ "decision": "SHORT",
+ "confidence": 0.56,
+ "bias": "SHORT-lean 0.56 (with-trend retest-fade; slot now FREE). 3/4 TF bearish ladder intact + price has broken DOWN through the intraday shelf (pkg cycle 2026-09-15T08:02Z): D1 4297.935 << MA20 4455.32 (RSI14 28.44 deeply oversold, er 0.431 trend-down, recent -246.6bps, pos_in_range 39.0); H4 4293.26 < MA20 4344.49 < MA50 4387.00 (RSI 38.27, pos 15.4 = near 60-bar low, llish8); H1 4304.4 < MA50 4325.33 < MA200 4382.50 (RSI 53.43, range er 0.069); M15 nominal up-trend fully rolled over. Live mid 4270.37 sits BELOW the broken shelf 4282.0/4287.0 and BELOW the M15 MA20 4296.92/MA50 4293.17 cluster, sliding toward the multi-TF floor 4253.62. FLAT: POS-20260915T0632Z CLOSED broker_tp @4281.94 +8.52USD (07:47:53Z). Slot FREE -> registering a with-trend retest-fade SHORT.",
+ "decision_id_note": "single slot free; new plan registered this cycle",
+ "opportunity": "NEW entry available (slot freed by POS-0632Z broker_tp). Setup = RETEST-FADE of the broken intraday shelf 4282.0 (prior first-TP / price-action shelf) + 4287.0 micro-shelf. Price has broken below 4282 and is grinding toward the multi-TF floor 4253.62; the highest-EV action is to SELL a bounce back into the broken shelf from below, NOT to chase the low (D1 RSI 28.44 oversold, floor 4253.62 only ~17pt below). GAP-TO-TRADABLE: price must rally +6..+12pt (4270.4 -> 4276.5..4282.5) into the zone; then zone_touch auto-fills (no wait for a close). If instead price keeps falling away (below ~4265), this setup is void (engine cancels as price_left_setup) and the next re-arm is a floor reaction at 4253.62. Rails overhead: 4282.0 (broken shelf) -> 4287.0 (micro-shelf) -> 4293.17 (M15 MA50) -> 4296.92 (M15 MA20) -> 4297.82 (H1 MA20) -> 4317.69 (M15 high60) -> 4325.19/4325.33 (M15 MA200/H1 MA50) -> 4344.49 (H4 MA20). Rails below: 4264.0 (T1) -> 4253.62 (multi-TF low60, strong floor).",
+ "opportunity_mechanism": "HTF bearish ladder (D1/H4 below their MAs; H1 below MA50/MA200; M15 below MA200 4325.19) + overbought M15 counter-rally rejected at high60 4317.69 -> broke back below the M15 MA50 4293.17/MA20 4296.92 cluster and then through the 4282.0/4287.0 intraday shelf, now grinding toward the multi-TF floor 4253.62. The prior sibling (TP-0632Z) already worked (+8.52USD at T1 4282). Mechanism to trade = broken-shelf retest-from-below fade: sell a bounce into 4276.5-4282.5 with stop above the 4287 micro-shelf, target the multi-TF floor. No averaging down, no chase at the low.",
+ "mtf_agreement": "agree_down (3/4 TF bearish: D1 4297.9<<MA20 4455.3 RSI 28.4 er 0.431; H4 4293.3<MA20 4344.5<MA50 4387.0 pos 15.4 llish8; H1 4304.4<MA50 4325.3<MA200 4382.5) vs M15 nominal up-trend fully rolled over (bar close 4311.68 but live 4270.37 -41.3pt below, under MA20/MA50). Net SHORT-lean 0.56. Counter-weights capping confidence: D1 RSI 28.44 deeply oversold; strong multi-TF floor 4253.62 just below; a fast slide can mean the shelf retest never comes. A sustained reclaim/hold above 4294.0 flips me neutral and voids the fade.",
+ "state_summary": "XAUUSD live mid 4270.37 (data/live_fxtm/quote_latest.json 08:03:23Z bid 4270.30/ask 4270.44, spread 0.14usd = 0.33bps, source dashboard-live; pkg m15_live last_mid 4272.66 @08:02Z cycle). MARKET OPEN (gate armed=true exit 0). Data quality ok (live_days 7, live_ticks 1,291,877, context_days 31, gaps[]) BUT tick parquet collector is STALE (last tick 2026-09-15 05:54Z; collect_runs.log NO_NEW_TICKS since 06:09Z) -> M15/H1 bars stale; live price = dashboard quote_latest (fresh <2min, used by state_package override). POSITION: FLAT. POS-20260915T0632Z SHORT 0.01@4290.46 CLOSED broker_tp @4281.94 realized +8.52USD (07:47:53Z); broker_ticket 2375911632. MAs (pkg, stale-bar basis): M15 MA20 4296.92/MA50 4293.17/MA200 4325.19; H1 MA20 4297.82/MA50 4325.33/MA200 4382.50; H4 MA20 4344.49/MA50 4387.00; D1 MA20 4455.32. Resistance 4282.0 (broken shelf)/4287.0 (micro-shelf)/4293.17 (M15 MA50)/4296.92 (M15 MA20)/4297.82 (H1 MA20)/4317.69 (M15 high60)/4325.2-4325.3/4344.49; support 4264.0/4253.62 (multi-TF low60, strong floor).",
+ "m15_change": "M15 (pkg) last_close 4311.68 (bar 2026-09-15 05:30Z, stale), live mid now 4270.37 -> price is -41.3pt BELOW the last M15 close and firmly UNDER the M15 MA50 4293.17/MA20 4296.92 cluster AND under the broken 4282.0/4287.0 intraday shelf. vs last cycle read (07:47Z live 4287.16) price is -16.79pt LOWER = the down-leg is still grinding (heartbeat 07:54Z showed 4276.45; now 4270.37). The overbought M15 rally (RSI 76.61 at the 05:30Z bar close) stays rejected at high60 4317.69 and keeps unwinding. M15 state = trend (er 0.532) but exp_cont 1.02 neutral, structure last_vs_5ago up (hhish8/llish1), pos_in_range 90.6 (stale vs the live slide). Immediate overhead = 4282.0 (broken shelf) -> 4287.0 -> 4293.17 -> 4296.92 -> 4297.82 -> 4317.69; immediate floor = 4264.0 -> 4253.62. CAUTION: pkg M15 bars stale (last bar 05:30Z, collector dead) -> all trigger/management levels read in LIVE/quote space.",
+ "data_note": "Levels/quote from pkg run_state/state_package_latest.json (cycle 2026-09-15T08:02Z, regenerated this cycle) + live quote_latest.json mid 4270.37 (bid 4270.30/ask 4270.44, spread 0.14usd/0.33bps, 08:03:23Z, source dashboard-live). live_days 7, live_ticks 1,291,877, context_days 31, gaps[]. WARNING: tick parquet collector STALE (last tick 05:54Z, NO_NEW_TICKS since 06:09Z) -> pkg D1/H4/H1/M15 bars use only up-to-05:30Z history; run_state/candle_latest.json STALE (last ts 2026-09-07 12:15) and bars_cache.json STALE (2026-09-07) - ignored; no close_above/close_below/m15_close_in_zone triggers used (would rely on stale bars). Position state from run_state/positions/POS-20260915T0632Z.json (state=CLOSED).",
+ "position_note": "FLAT (slot FREE). POS-20260915T0632Z SHORT 0.01@4290.46 CLOSED broker_tp @4281.94 realized +8.52USD (exit 07:47:53Z, T1 4282.0 hit). Newest prior closes: POS-20260915T0217Z SHORT@4311.96 broker_tp@4291.72 +20.24USD (05:47Z); earlier same-family stops -6.74/-6.54USD. In-book armed plans TP-20260915T0602Z/0617Z/0647Z/0702Z/0717Z SHORT zone_touch siblings (zones 4291-4303) are far above live 4270.37 -> expected to auto-cancel this cycle as price_left_setup/age. No averaging, no chasing.",
+ "answers_14": {
+  "1": "市场状态: XAUUSD live mid 4270.37 (quote_latest 08:03:23Z bid4270.30/ask4270.44, spread0.14usd=0.33bps, dashboard-live; pkg m15_live 4272.66); 数据 ok (live_days7, ticks1,291,877, context31, gaps[]) 但 tick 采集器 STALE(末 tick 05:54Z, 06:09Z 起 NO_NEW_TICKS) -> M15/H1 bar 陈旧, 价格以 dashboard quote 为准; 时段 OPEN (gate armed=true exit0). 持仓 FLAT (POS-0632Z broker_tp @4281.94 +8.52USD 已于 07:47:53Z 平). MAs(pkg): M15 MA20 4296.92/MA50 4293.17/MA200 4325.19; H1 MA20 4297.82/MA50 4325.33/MA200 4382.50; H4 MA20 4344.49/MA50 4387.00; D1 MA20 4455.32. 阻力 4282.0/4287.0/4293.17/4296.92/4297.82/4317.69/4325.2-4325.3/4344.49; 支撑 4264.0/4253.62(多TF low60).",
+  "2": "一致性: 3/4 TF 空头 (D1 4297.9<<MA20 4455.3 RSI28.44 er0.431; H4 4293.3<MA20 4344.5<MA50 4387.0 pos15.4 llish8; H1 4304.4<MA50 4325.3<MA200 4382.5) vs M15 名义上升趋势已完全 rollover (bar close 4311.68 但 live 4270.37 低 -41.3pt, 在 MA20/MA50 下方). 净 SHORT-lean 0.56. 反向项: D1 RSI28.44 深超卖 + 4253.62 强多TF支撑 + 快跌可能使 shelf 回测不来. 站稳 4294.0 上方转中性并作废 fade.",
+  "3": "M15变化: pkg M15 收 4311.68 (05:30Z bar, 陈旧), live 现 4270.37 -> 低于 M15 收盘 -41.3pt, 已在 M15 MA50 4293.17/MA20 4296.92 簇及破位 shelf 4282.0/4287.0 下方. 较上轮 (07:47Z 读 4287.16) 再跌 -16.79pt = 下行腿仍在磨 (heartbeat 07:54Z 4276.45 -> 现 4270.37). 超买 M15 反弹 (RSI76.61) 在 high60 4317.69 被拒后持续回落. 上方 4282.0->4287.0->4293.17->4296.92->4297.82->4317.69; 下方 4264.0->4253.62. pkg bar 陈旧(采集器停) -> 触发/管理价以 live/quote 为准.",
+  "4": "机会/gap-to-tradable: 有新开仓机会 (slot 因 POS-0632Z broker_tp 释放). Setup = 破位盘中 shelf 4282.0(前首档TP/价格行为 shelf)+4287.0 微-shelf 的 回测-from-below fade. 价格已破 4282 并向多TF底 4253.62 磨; 最高 EV 动作 = 卖反弹回破位 shelf, 不追低 (D1 RSI28.44 超卖, 底 4253.62 仅 ~17pt 下方). 缺口: 价格需反弹 +6..+12pt (4270.4->4276.5..4282.5) 进入 zone, 之后 zone_touch 自动成交(不等收盘). 若价格继续远离 (<~4265) 则作废(engine price_left_setup 取消), 下一档重挂 = 4253.62 底部反应.",
+  "5": "机制: HTF 空头梯队 (D1/H4 在 MA 下方; H1 < MA50/MA200; M15 < MA200 4325.19) + 超买 M15 反弹在 high60 4317.69 被拒 -> 跌回 M15 MA50/MA20 簇下方并穿透 4282.0/4287.0 盘中 shelf, 现向多TF底 4253.62 磨. 可交易机制 = 破位 shelf 回测-from-below fade: 卖反弹入 4276.5-4282.5, 止损设在 4287 微-shelf 上方, 目标多TF底. 不摊平, 不追低.",
+  "6": "触发条件[具体价]: zone_touch [4276.5,4282.5] — 贴近破位 shelf 4282.0/4287.0 即计划, 触价自动成交(demo FOK). (辅助: 若快速破位续跌, 可在下一轮挂 price_cross_down 4262.0 续空向 4253.62.)",
+  "7": "失效[具体价]: 硬止损 price_cross_up 4290.0 = -1R(收回 4287 微-shelf 上方, fade 证伪); 计划作废 invalidation_condition = price_cross_up 4294.0 (收回 M15 MA50 4293.17 上方 -> 回测变反转). 若价格继续下行远离 (<~4265, 即 zone_lo-2band) -> engine 自动 price_left_setup 取消.",
+  "8": "预期收益R: ref=(4276.5+4282.5)/2=4279.5, SL 4290.0 -> 1R=10.5pt; T1 4264.0=15.5pt=1.48R x0.40; T2 4253.62=25.88pt=2.46R x0.60; 加权 = 0.592+1.476 = +2.07R.",
+  "9": "预期损失R: 硬止损 4290.0 = -1.0R (10.5pt ~ -10.5USD on 0.01 lot @ 1oz). 不加仓不加码.",
+  "10": "成本数值: spread 0.33bps + slippage 0.30bps = 往返 ~0.63bps ~ 0.27pt (~0.27USD on 0.01 lot); vs 1R=10.5pt -> 成本 ~0.026R. 极低, 非障碍.",
+  "11": "净EV算式: EV_R = p*R - (1-p)*1 - cost = 0.44*2.07 - 0.56*1.0 - 0.026 = 0.911 - 0.560 - 0.026 = +0.33R (>0).",
+  "12": "再现: 家族 'HTF 空头梯队 + 超买 M15 反弹被拒 -> 破位 shelf 回测 fade'. 规则: 触价成交, 硬止损, 永不摊平, 单仓约束, 亏损不加仓, qty 0.01-0.05, candle_latest.json/bars_cache.json 陈旧(2026-09-07)忽略; 不用基于收盘价的触发; pkg bar 陈旧/采集器停时以 live/quote 定价. 近期同族: POS-0217Z +20.24USD; POS-0632Z +8.52USD; 更早止损 -6.74/-6.54USD.",
+  "13": "SHORT",
+  "14": "Slot 已释放(POS-0632Z +8.52USD 平). 3/4TF 空头梯队 + 价格跌破 4282.0/4287.0 盘中 shelf 向多TF底 4253.62 磨. 顺势回测 fade: 卖反弹入 [4276.5,4282.5], 止损 4290.0, 目标 4264.0/4253.62, 1R10.5pt, expR2.07R, p0.44, EV+0.33R>0. 不追低(仅 +6..+12pt 回测触价成交), 站稳 4294 作废."
+ },
+ "plan": {
+  "plan_id": "TP-20260915T0802Z",
+  "direction": "SHORT",
+  "opportunity_type": "broken_shelf_retest_fade",
+  "entry_style": "market_on_trigger",
+  "entry_zone": {
+   "low": 4276.5,
+   "high": 4282.5
+  },
+  "trigger_condition": {
+   "zone_touch": [
+    4276.5,
+    4282.5
+   ]
+  },
+  "invalidation_condition": {
+   "price_cross_up": 4294.0
+  },
+  "stop_logic": {
+   "type": "structure",
+   "level": "above broken intraday shelf 4282.0/4287.0 micro-shelf; below M15 MA50 4293.17",
+   "level_price": 4290.0
+  },
+  "target_logic": {
+   "type": "price_levels",
+   "levels": [
+    {
+     "price": 4264.0,
+     "frac": 0.4
+    },
+    {
+     "price": 4253.62,
+     "frac": 0.6
+    }
+   ],
+   "reason": "T1 4264.0 = 盘中前低 shelf (ref 4279.5 -15.5pt = 1.48R) x0.40; T2 4253.62 = 多TF low60 强底 (H4/H1/M15 同值, ref -25.88pt = 2.46R) x0.60"
+  },
+  "expected_R": 2.07,
+  "expected_win_probability": 0.44,
+  "probability_source": "家族 hit-rate 'HTF 空头梯队 + 破位 shelf 回测 fade' (近期同族 POS-0217Z +20.24USD / POS-0632Z +8.52USD); 顺势回测 win ~0.44 (breakeven ~0.33 at 2.07R); 反向项 D1 RSI28.44 超卖 + 4253.62 强底压低 p",
+  "expected_loss": {
+   "units": "R",
+   "value": 1.0
+  },
+  "estimated_cost": {
+   "spread_bps": 0.33,
+   "slippage_bps": 0.3,
+   "total_roundtrip_bps": 0.63,
+   "cost_in_R": 0.026
+  },
+  "spread_bps": 0.33,
+  "slippage_bps": 0.3,
+  "expected_net_EV": {
+   "value": 0.33,
+   "units": "R",
+   "note": "0.44 x (0.40x1.48 + 0.60x2.46) - 0.56x1.00 - 0.026 = 0.44x2.07 - 0.586 = +0.33R (1R=10.5pt @ref 4279.5, SL 4290.0; breakeven p ~0.33)"
+  },
+  "maximum_holding_time": "M15*8",
+  "qty_lots": 0.01,
+  "cancel_conditions": [
+   "mid cross_up 4294.0 (invalidation price_cross_up) = 收回 M15 MA50 4293.17 上方",
+   "价格继续下行远离 entry_zone (mid < 4265.0, zone_lo-2band) -> engine price_left_setup 取消",
+   "engine stale/age 超限 (M15*8 = 2h)",
+   "FLAT 前提下 (无 POS 占用); qty 0.01 in [0.01,0.05]"
+  ]
+ },
+ "cost_note": "New plan cost: spread 0.33bps + slip 0.30bps = 0.63bps roundtrip ~ 0.27pt ~ 0.27USD on 0.01 lot; 1R=10.5pt -> cost_in_R ~0.026R. Very low, not a barrier.",
+ "ev_note": "EV_R = 0.44*2.07 - 0.56*1.0 - 0.026 = +0.33R (>0). Positive -> SHORT registered.",
+ "model": "deepseek/deepseek-v4-flash",
+ "prompt_version": "hermes_trader_v1_active_hunter"
+}

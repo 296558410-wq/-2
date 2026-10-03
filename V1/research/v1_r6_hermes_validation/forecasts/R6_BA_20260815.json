@@ -1,0 +1,55 @@
+{
+ "audit_id": "BA_20260815",
+ "timestamp": "2026-08-15T12:00:00Z",
+ "overall_verdict": "PARTIAL_AGREE",
+ "focus_verdicts": {
+  "OBSERVATION_DISCIPLINE": "PARTIAL_AGREE",
+  "MECHANISM_DISCIPLINE": "PARTIAL_AGREE",
+  "COUNTER_EVIDENCE": "PARTIAL_AGREE",
+  "CONFIDENCE": "PARTIAL_AGREE",
+  "ABSTENTION": "AGREE",
+  "INVALIDATION": "PARTIAL_AGREE"
+ },
+ "over_inference": [
+  "expected_transition 'COMPRESSION persists; direction unresolved' is asserted as a near-certain transition even though the forecast simultaneously states 'Data stale fourteen hours; recent action unknown' and abstains; a persistence claim about the 4-8h window is a forecast commitment resting entirely on a 14h-old snapshot.",
+  "evidence item 'M1 21:58 wide bar 95.5 percentile range with recovery lower wick' frames the 1.03 lower wick as a bullish 'recovery'; the same wick is equally consistent with aggressive selling that was merely bought back, i.e. the supportive reading is an inference, not a neutral statement of the bar."
+ ],
+ "mechanism_jump": [
+  "compression_continuation is introduced as a third mechanism with why 'analogs persist COMPRESSION; contraction confirmed', but the context's L4 candidate list contains only breakout_pressure and failed_breakout; analog state evolution (L7.historical_analog) carries no mechanism information, so a jump is made from 'state persisted' to 'a continuation mechanism is plausible'.",
+  "breakout_pressure and failed_breakout are both kept POSSIBLE with mutually exclusive bases (BEYOND status vs thin 0.215 ATR margin / no reclaim) without weighing which is more consistent; noting that thin margin + reclaim_status NONE favors failed_breakout would be honest mechanism adjudication, not merely listing both."
+ ],
+ "missing_counter_evidence": [
+  "The context's own analog A31686 shows COMPRESSION->REJECTION at steps 12/16, i.e. the sampled state history itself contains a contrary branch to 'COMPRESSION persists'; it is never used as counter-evidence against the primary scenario, only to prop up the alternative.",
+  "H1 current bar's large lower wick 3.01 is cited as evidence of recovery but never examined as counter-evidence (rejection/weakness below 4373.115); and the 107-bar-old, 30-touch-240 swing high that finally broke is never probed as the one piece of fresh-ish evidence supporting the breakout side."
+ ],
+ "unjustified_confidence": [
+  "evidence_strength 0.3 is emitted as a precise point value on a data base that ended 14h before as_of; the forecast itself says fresh data is absent and it is 'not entitled to assert', so a numeric evidence_strength/confidence carries false precision.",
+  "confidence 0.25 is reported together with direction_bias NO_DIRECTIONAL_EDGE without specifying its reference class (confidence in the primary scenario? in direction? in transition?), and confidence_reason ('Thin breakout margin, stale data, conflicting timeframes') and uncertainty_reason ('Fourteen-hour data gap and absent cross-market inputs') are near-duplicates, so confidence and uncertainty are not meaningfully distinct quantities."
+ ],
+ "observation_as_fact": [
+  "observations[1] 'State COMPRESSION dwell 3 with ACCEPTANCE event at t' is a frozen-labeler DERIVED classification, not a raw observation; the context itself labels state_v2 and event_at_t as 'DERIVED (min-dwell lifecycle)' and 'DERIVED (mapped from frozen sub-labels)'.",
+  "observations[0] 'Close 4374.205 beyond swing high 4373.145 by 0.215 ATR' presents a derived break computation as an observation; the context tags level/break fields as DERIVED (L2 quality_label: 'DERIVED (pivot swing levels, causal)')."
+ ],
+ "strongest_objection": "The forecast commits to a primary scenario, an expected_transition and numeric evidence_strength/confidence for a 4-8h horizon while the only price data is fourteen hours old (last bar 2026-08-14 21:59 UTC vs as_of 2026-08-15 12:00 UTC). The entire geometry (BEYOND, ACCEPTANCE, COMPRESSION dwell 3) could have been invalidated inside that unseen 14h window, so every scenario is conditional on unobserved data. With this staleness, pure abstention with no scenario/transition commitment is the only defensible output, or the horizon must be explicitly anchored to the last data timestamp rather than as_of; providing a primary scenario plus a numeric confidence therefore overstates the evidential basis even while abstaining on trade execution.",
+ "evidence": [
+  "CTX as_of_utc 2026-08-15 12:00:00+00:00; L1_PRICE_KLINE M1 current bar timestamp 2026-08-14 21:59:00+00:00 -> 14h data gap.",
+  "CTX L2 nearest_level level_price 4373.145, break_status BEYOND, reclaim_status NONE, distance_atr 0.21514, touch_count_240 30, level_age_bars 107.",
+  "CTX L4 candidates only breakout_pressure and failed_breakout, note: 'mechanism CANDIDATES only; NOT asserted as fact'.",
+  "CTX L7 historical_analog A31686 evolves COMPRESSION x3 -> REJECTION at steps 12/16.",
+  "CTX L6 agreement CONFLICT; M15 trend_20 -15.33 vs H1 trend_20 +56.32.",
+  "FORECAST abstain true, abstain_reason 'Data stale 14h; MTF conflict; thin breakout basis'.",
+  "FORECAST primary_scenario 'Compression persists around level; breakout unconfirmed' horizon 4-8 hours.",
+  "FORECAST evidence_strength 0.3, confidence 0.25, uncertainty 0.8.",
+  "FORECAST invalidation 'Close reverts inside level or acceptance extends materially'.",
+  "FORECAST observations[0..1] and evidence 'M1 21:58 wide bar 95.5 percentile range with recovery lower wick'."
+ ],
+ "reasoning_trace": [
+  "Verified forecast abstains and keeps all mechanisms POSSIBLE -> mechanism statuses are honest, abstention is correct.",
+  "Found observations list mixes raw prices with DERIVED frozen-labeler classifications (COMPRESSION/ACCEPTANCE, beyond-level) -> observation discipline partially breached.",
+  "Found compression_continuation invented as a third mechanism not in the frozen L4 candidate set, justified only by state-persistence analogs -> mechanism_jump.",
+  "Found primary-scenario counter-evidence (analog A31686 REJECTION branch, lower-wick-as-rejection, 30-touch level break) unexamined -> missing_counter_evidence.",
+  "Found numeric evidence_strength/confidence on a 14h-stale base and ambiguous confidence reference class with duplicated justification -> unjustified_confidence.",
+  "Found top-level invalidation uses undefined 'materially' and no time bound -> invalidation only partially checkable.",
+  "Overall: conservative and largely disciplined, but scenario/transition commitment and point confidences exceed what a 14h-stale snapshot supports -> PARTIAL_AGREE."
+ ]
+}

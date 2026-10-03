@@ -1,0 +1,81 @@
+{
+ "registry": "V1_EVIDENCE_REGISTRY",
+ "generated_utc": "2026-10-02T04:26:56.150490+00:00",
+ "protocol_version": "v1-truth-1",
+ "stores": [
+  {
+   "name": "trading_ledger",
+   "path": "v1_upgrade/ledger/v1_upgrade_ledger.jsonl",
+   "kind": "raw+derived",
+   "append_only": true,
+   "integrity": {
+    "ok": true,
+    "entries": 622,
+    "bad": null
+   }
+  },
+  {
+   "name": "decision_snapshots",
+   "path": "v1_upgrade/truth/evidence/decision_snapshots.jsonl",
+   "kind": "raw(evidence)",
+   "append_only": true,
+   "integrity": {
+    "ok": true,
+    "entries": 0
+   }
+  },
+  {
+   "name": "incidents",
+   "path": "v1_upgrade/truth/evidence/incidents.jsonl",
+   "kind": "derived",
+   "append_only": true,
+   "integrity": {
+    "ok": true,
+    "entries": 21
+   }
+  },
+  {
+   "name": "broker_facts_cache",
+   "path": "v1_upgrade/truth/evidence/broker_facts.json",
+   "kind": "raw(snapshot)",
+   "append_only": false,
+   "note": "refreshed per cycle; latest state only"
+  },
+  {
+   "name": "cases",
+   "path": "v1_upgrade/truth/evidence/cases/",
+   "kind": "derived",
+   "append_only": false
+  }
+ ],
+ "inventory": [
+  {
+   "path": "ledger/v1_upgrade_ledger.jsonl",
+   "exists": true,
+   "sha256": "3b10322994e67ddd175789a71c955acf80e8b5f8a155ecf6f1381b760e5a68ac",
+   "records": 622,
+   "bytes": 503193
+  },
+  {
+   "path": "truth/evidence/decision_snapshots.jsonl",
+   "exists": false,
+   "sha256": null,
+   "records": 0,
+   "bytes": null
+  },
+  {
+   "path": "truth/evidence/incidents.jsonl",
+   "exists": true,
+   "sha256": "43b097a1c658ae4826ba9de7ce61d2ce893d52241d52a868e7e07af4aaaad4c7",
+   "records": 21,
+   "bytes": 14888
+  },
+  {
+   "path": "truth/evidence/broker_facts.json",
+   "exists": true,
+   "sha256": "e5c2b64e21d551e3a10322c1fd8d4d91fb3e5f4737573fc663d12f773b6b7a6d",
+   "records": null,
+   "bytes": 74667
+  }
+ ]
+}

@@ -1,0 +1,24 @@
+{
+ "schema": "v3_histdata_fxtm_crosscheck/1",
+ "ts_utc": "2026-09-25T10:01:01.105602+00:00",
+ "prior_measurement": {
+  "common_minutes": 45482,
+  "return_corr": 0.96566,
+  "mean_diff_usd": -0.3359,
+  "median_diff_usd": -0.335,
+  "std_diff_usd": 0.3423,
+  "best_offset_hours": 7
+ },
+ "question": "can the now-documented HistData semantics explain the +7h alignment?",
+ "reasoning": "HistData is EST (UTC-5) => +5h to reach UTC. The measured +7h therefore implies the local FXTM series sits 2h ahead of UTC, i.e. a broker server-time frame - a standard convention for FXTM.",
+ "residual_uncertainty": "the FXTM local series' own timezone frame was NOT independently verified in this task",
+ "SEMANTIC_CROSSCHECK": "PASS_WITH_NOTED_RESIDUAL",
+ "forbidden_logic_avoided": [
+  "correlation != instrument definition",
+  "+7h != UTC-4",
+  "webpage mentions EST != no DST (we used the explicit FAQ statement)",
+  "first CSV row != timestamp is open",
+  "free != licensed",
+  "downloadable != licensed"
+ ]
+}

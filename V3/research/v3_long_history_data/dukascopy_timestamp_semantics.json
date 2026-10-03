@@ -1,0 +1,194 @@
+{
+ "schema": "v3_dukascopy_timestamp_semantics/1",
+ "ts_utc": "2026-09-25T09:29:43.831903+00:00",
+ "source": "DUKASCOPY_XAUUSD (local asset data/staging_duka, READ-ONLY)",
+ "symbol": "XAUUSD (Dukascopy feed)",
+ "frequency": "M1 candles (BID/ASK per side)",
+ "scale": {
+  "value": 1000.0,
+  "evidence": "scripts/dukascopy.py + scripts/duka_download.py ('SCALE = 1000.0  # XAUUSD x1000')",
+  "parser_applies_it": true,
+  "note": "duka_assemble.py divides by SCALE for mid/open/high/low/close and for bid_close/ask_close/spread_close"
+ },
+ "parser_files": [
+  "scripts/dukascopy.py (decode_candles: >iiiiii = t,open,close,low,high,vol per 24B record)",
+  "scripts/duka_download.py (writes columns sec,open,close,low,high,vol,side,day)",
+  "scripts/duka_assemble.py (ts = to_datetime(day, utc=True) + to_timedelta(sec,'s'))"
+ ],
+ "evidence_commits": {
+  "introducing_commit": "04dfc40",
+  "message": "feat: autonomous alpha research phase 3 (dukascopy data pipeline, ...)",
+  "files_first_seen": [
+   "scripts/dukascopy.py",
+   "scripts/duka_download.py",
+   "scripts/duka_assemble.py"
+  ],
+  "note": "single introducing commit; no later commit changes the timestamp construction"
+ },
+ "timezone": {
+  "A_status": "CODE_ASSERTS_UTC_BUT_NOT_INDEPENDENTLY_CONFIRMED",
+  "code_evidence": [
+   "duka_assemble.py: pd.to_datetime(day, utc=True)",
+   "run_d1r.py: 'DUKA staging 1-min candles -> UTC-day O/C'",
+   "scale_audit.py / adversarial_gvz.py: same day+sec-as-UTC construction",
+   "core_gvz_analysis: 'GVZ_d close 21:15 UTC; decision 22:00 UTC d' (prior research treated the panel as UTC)"
+  ],
+  "independent_verification": "FAILED",
+  "cross_validation_detail": {
+   "method": "2025 DUKA real M1 -> hourly returns vs FXTM MT5 H1 returns; MT5 index relabelled by offset k to convert server time to UTC; offsets -6..+7 h",
+   "result": {
+    "-6": {
+     "n": 3082,
+     "corr": -0.03231
+    },
+    "-5": {
+     "n": 3086,
+     "corr": -0.00598
+    },
+    "-4": {
+     "n": 3090,
+     "corr": -0.00561
+    },
+    "-3": {
+     "n": 3094,
+     "corr": -0.00945
+    },
+    "-2": {
+     "n": 3098,
+     "corr": -0.00464
+    },
+    "-1": {
+     "n": 3103,
+     "corr": 0.00191
+    },
+    "0": {
+     "n": 3109,
+     "corr": 0.0193
+    },
+    "1": {
+     "n": 3121,
+     "corr": 0.0133
+    },
+    "2": {
+     "n": 3170,
+     "corr": -0.02113
+    },
+    "3": {
+     "n": 3218,
+     "corr": 0.0224
+    },
+    "4": {
+     "n": 3129,
+     "corr": 0.00079
+    },
+    "5": {
+     "n": 3142,
+     "corr": -0.00544
+    },
+    "6": {
+     "n": 3152,
+     "corr": 0.00836
+    },
+    "7": {
+     "n": 3164,
+     "corr": -0.00283
+    }
+   },
+   "best": {
+    "server_offset_hours_to_utc": 3,
+    "n": 3218,
+    "corr": 0.0224
+   },
+   "attempts_made": 3,
+   "attempt_notes": [
+    "try1: pct_change after index subsetting (method defect -> invalid)",
+    "try2: value shift (produced NaN for positive shifts -> invalid)",
+    "try3: index relabel, per-series returns (sound) -> still ~0 at every offset"
+   ]
+  }
+ },
+ "minute_identity": {
+  "B_status": "RESOLVED",
+  "evidence": {
+   "sec_range": [
+    0,
+    86340
+   ],
+   "unique_offsets": 1440,
+   "per_day_bars": "exactly 1440 (min=max=median in 2010-01, 2018-03, 2026-07)",
+   "all_multiples_of_60": true,
+   "contiguous_60s": true,
+   "contains_86400": false,
+   "contains_86340": true,
+   "rows_checked": 187200
+  },
+  "conclusion": "each calendar day carries exactly 1440 bars stamped at 00:00..23:59; a `sec` value is the minute-offset of the bar inside its calendar day"
+ },
+ "bar_timestamp_type": "minute-offset within a calendar day (day + sec)",
+ "bar_close_definition": {
+  "C_status": "UNKNOWN",
+  "why": "no provider documentation is available offline; the in-repo parser never states open vs close; downloading the provider spec is forbidden by this task",
+  "structural_evidence": "stamps run 00:00..23:59 with exactly 1440 per day and no 24:00/86400 stamp, which is consistent with an INTERVAL-START (open) label, but this is an inference and NOT a proof",
+  "independent_minute_validation": "IMPOSSIBLE with available data: DUKA candles end 2026-08-03, FXTM M1 starts 2026-08-04 (no overlap); the tick semantics of the 9same provider are already UNRESOLVED and are out of scope"
+ },
+ "sample_dates": {
+  "epochs_checked": [
+   "2010-01-01",
+   "2018-03-25",
+   "2026-07-01"
+  ],
+  "per_epoch": {
+   "early_2010-01": {
+    "bars_per_day": {
+     "min": 1440,
+     "max": 1440,
+     "median": 1440.0
+    },
+    "sec_min": 0,
+    "sec_max": 86340,
+    "contiguous": true
+   },
+   "middle_2018-03": {
+    "bars_per_day": {
+     "min": 1440,
+     "max": 1440,
+     "median": 1440.0
+    },
+    "sec_min": 0,
+    "sec_max": 86340,
+    "contiguous": true
+   },
+   "recent_2026-07": {
+    "bars_per_day": {
+     "min": 1440,
+     "max": 1440,
+     "median": 1440.0
+    },
+    "sec_min": 0,
+    "sec_max": 86340,
+    "contiguous": true
+   }
+  }
+ },
+ "data_integrity_findings": {
+  "flat_placeholder_bars": {
+   "rows": 1272960,
+   "flat_rows": 413512,
+   "flat_pct": 32.484,
+   "real_rows": 859448,
+   "days_total": 320,
+   "days_with_real_bars": 274,
+   "fully_flat_days": 46
+  },
+  "meaning": "about a third of 2025 rows are flat placeholder bars (O=H=L=C, vol=0); 46 of 320 calendar days are fully flat. Any consumer must filter these or every summary statistic is diluted.",
+  "cross_validation_failure": "hourly returns of DUKA-2025 and FXTM-2025 show ~0 correlation at every offset tested (-6..+7 h). Per task section 12 this is NOT interpreted as 'the timestamps are wrong'; it is reported as 'independent verification did not succeed'."
+ },
+ "final_status": "DUKASCOPY_CANDLE_TIMESTAMP_SEMANTICS = UNRESOLVED",
+ "asset_status": "REFERENCE_ONLY",
+ "must_not": [
+  "enter V3 event research",
+  "be merged with FXTM/GC series",
+  "be treated as UTC-confirmed for minute-level work"
+ ],
+ "git_head": "1a0290a"
+}

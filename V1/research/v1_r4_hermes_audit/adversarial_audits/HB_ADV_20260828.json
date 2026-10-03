@@ -1,0 +1,81 @@
+{
+ "audit_id": "HB_ADV_20260828",
+ "timestamp": "2026-09-27T22:49:00+08:00",
+ "overall_verdict": "PARTIAL_AGREE",
+ "dimension_verdicts": {
+  "CURRENT_STATE": "PARTIAL_AGREE",
+  "STRUCTURE": "PARTIAL_AGREE",
+  "MECHANISM": "PARTIAL_AGREE",
+  "PRIMARY_SCENARIO": "PARTIAL_AGREE",
+  "ALTERNATIVE_SCENARIO": "PARTIAL_AGREE",
+  "EXPECTED_TRANSITION": "AGREE",
+  "DIRECTION": "PARTIAL_AGREE",
+  "HORIZON": "AGREE",
+  "CONFIDENCE": "PARTIAL_AGREE",
+  "INVALIDATION": "AGREE",
+  "ABSTENTION": "PARTIAL_AGREE"
+ },
+ "factual_errors": [],
+ "insufficient_evidence": [
+  "The downside-continuation case beyond the level rests on momentum geometry only; with GLD/GC/COT/ETF_FLOWS/NEWS/MACRO_EVENTS all absent (recorded UNKNOWN) and UST10Y UNKNOWN, there is no flow/news/macro evidence that a 59-touch swing low will actually give way.",
+  "The 'aggressive buying / absorption near 4529.465' reading of the lower wick is asserted without any volume, order-flow or L2/L3 flow data in the context; geometry alone cannot establish it.",
+  "The primary scenario price objectives 4576.665 and 4529.465 are anchored to H4 bar values that are uncorroborated by any lower-timeframe bar in the same snapshot (see data_quality_issues); the target chain is therefore under-evidenced."
+ ],
+ "missed_counter_evidence": [
+  "H1 07:00 bar is a +39.32-pt bullish body (open 4573.115, close 4612.435, range 40.81, range_percentile 0.97) just 5 hours before as-of — a strong recent bullish impulse that the forecast omits entirely and that sits above the swing-low test.",
+  "H1 08:00 bar carries a 15.25-pt lower wick (open 4612.315, low 4596.345, close 4611.595) — additional demand-side geometry at levels above 4599 that the forecast ignores while highlighting only the H4 lower wick.",
+  "The analog set contradicts the forecast's analog usage: A12004 evolves to EXPANSION at steps 12-16 (supports the downside-break/continuation outcome), A26393 ends in ROTATION; Hermes-A cites only A1365 (REJECTION/COMPRESSION oscillation) to support the third scenario — cherry-picking the single analog that fits.",
+  "The cross-timeframe price reconciliation failure (H4 12:00 close 4576.665 vs H1 4593.165 / M15 4598.685 / M5 4598.605 / M1 4599.585; H4 extremes 4630.835/4529.465 absent from all H1 08:00-12:00 bars, which stay within 4591.065-4614.375) was neither noticed nor flagged."
+ ],
+ "mechanism_jumps": [
+  "'47.2-pt lower wick shows aggressive demand / absorption' — a candle-wick geometry is asserted as an order-flow fact; no flow data supports the interpretation, and it is then reused in the opposite direction ('consistent with a bull-trap') in the primary scenario.",
+  "'59 touches in 240 bars indicate stop/liquidation clustering' — a touch count on K-line is inferred as positioning/liquidity fact.",
+  "L4 'trend_continuation' is supported only by 'price inside level, 8-bar displacement -2.68' — 'price inside level' is exactly the undecided REJECTION state; the forecast treats it as evidence FOR continuation while the level could equally hold (the exhaustion candidate was discarded as weak purely on dwell)."
+ ],
+ "over_inference": [
+  "A firm DOWN bias (0.45) is committed on momentum geometry while the forecast itself concedes ambiguity_rate_8 0.75 and L6 agreement CONFLICT; the 59-touch defense probability, the REJECTION label and M15 trend_20 +13.95 are underweighted in the balance.",
+  "'The level is the only thing between price and air to the downside' overstates: M15 trend_20 +13.95, H4 trend_50 +210.37 and the H1 07:00 +39.32 bullish impulse all sit below/at the level as counter-support.",
+  "'A well-tested liquidity/support zone' is asserted from touch_count_240 = 59 as if it were a flow/positioning fact rather than a geometry count on an unspecified base timeframe."
+ ],
+ "time_window_issues": [
+  "H4 trend_50 +210.37 is leaned on as 'higher-timeframe uptrend intact' while the same series shows H4 trend_20 -62.38; the 50-bar window (~200h) is longer than the verified window and the two metrics from the same series are used selectively (one for DOWN momentum, one for UP context).",
+  "touch_count_240 = 59 is quoted as 'heavily defended' without stating the base timeframe of the 240-bar window; 'heavily defended' is a stronger claim than the raw count supports."
+ ],
+ "data_quality_issues": [
+  "The H4 'current' bar at 12:00 (high 4630.835, low 4529.465, close 4576.665) is inconsistent with every lower-timeframe bar in the same snapshot: H1 08:00-12:00 bars range within 4591.065-4614.375 (highs 4614.195/4614.375/4607.315/4609.725/4601.125; lows 4596.345/4600.735/4600.195/4597.295/4591.065), H1 12:00 closes 4593.165, M15 4598.685, M5 4598.605, M1 4599.585. A single 12:00 print cannot be both 4576.665 and 4599.585, and a 08:00-12:00 H4 low of 4529.465 cannot coexist with H1 lows all above 4591. The forecast builds its central volatility-expansion narrative, the '47.2-pt lower wick', both scenarios' targets and the 4591.065 break reference on these uncorroborated H4 values without flagging the reconciliation failure.",
+  "DXY and VIX are PROXY (Yahoo, instrument definition UNKNOWN) yet 'DXY flat, no fresh dollar weakness to rescue gold' is listed in supporting_evidence as directional input — a PROXY is being used as directional evidence (it is caveated but still deployed).",
+  "M1/M5/H1/H4 trend_20/50 are DERIVED from the same price series and are quoted as if independently corroborating, when they are not independent observations."
+ ],
+ "hindsight_flags": [],
+ "explanation_not_prediction_flags": [
+  "'Current H4 bar closes 23.31 pts below open after a 101-pt range (99th percentile) — bearish resolution of a volatility expansion' describes the just-printed bar but is presented inside supporting_evidence as if it predicts continuation.",
+  "'Price INSIDE swing-low level at 4599.305 ... with no reclaim_status' is a state description placed inside supporting_evidence for a directional DOWN call."
+ ],
+ "kline_overreliance_flags": [
+  "Lower-wick 'absorption / aggressive buying / bull-trap' readings (both scenarios) are raw candle geometry used as order-flow inference with no flow data.",
+  "'Stop/liquidation clustering is plausible' inferred from 59 K-line touches.",
+  "Two of six supporting_evidence items are pure candle geometry (H4 body/wick, M5 consecutive bars) and the 'level magnet' liquidity claim is touch-count geometry."
+ ],
+ "mtf_conflict_ignored_flags": [
+  "L6 agreement = CONFLICT is acknowledged in counter_evidence but is then effectively resolved in favor of DOWN by weighting H1/H4 20-bar momentum while deferring M15 trend_20 +13.95 and H4 trend_50 +210.37 to the alternative scenario — the conflict is managed, not weighed.",
+  "The deeper cross-timeframe conflict (the H4 bar's extremes/close contradicting all lower-timeframe bars) went entirely unnoticed despite being the largest inconsistency in the snapshot."
+ ],
+ "evidence": [
+  "Claim: 'A massive current H4 bar (range 101.37, 99th percentile) shows a spike to 4630.835, a flush to 4529.465, and a close at 4576.665.' Contradicting/absent evidence: no H1/M15/M5/M1 bar in the same snapshot reaches near 4630 or 4529; H1 08:00-12:00 bars stay within 4591.065-4614.375; H1 12:00 close 4593.165 ≠ H4 close 4576.665 ≠ M15 close 4598.685. The extremes/close fail cross-timeframe reconciliation.",
+  "Claim: 'primary scenario targets 4576.665, then 4564.225, ultimately retest of 4529.465.' Basis: 4576.665 and 4529.465 come from the uncorroborated H4 bar; only 4564.225 is corroborated (H4 2026-08-27 12:00 low 4564.225).",
+  "Claim: '47.2-pt lower wick ... aggressive demand near 4529.465.' Contradiction: no flow/volume data in the context distinguishes absorption from stop-sweep/distribution; the reading is asserted from geometry alone.",
+  "Claim: 'M5 shows 7 consecutive down bars' as continuation support. Context: M5 also shows consecutive_up 4 and trend_20 only -3.04 with M5 ATR 3.10 — the run is short-horizon, noise-scale evidence, not displacement evidence for a 100+ pt move.",
+  "Claim: 'H4 trend_50 +210.37 — higher-timeframe uptrend context still intact.' Contradiction: the same H4 series shows trend_20 -62.38; the pullback has already erased a large share of that 50-bar rally, so 'uptrend intact' overstates the residual bullish context.",
+  "Claim: 'the level is the only thing between price and air to the downside.' Contradiction: M15 trend_20 +13.95, H1 07:00 bullish body +39.32 to 4612.435, H4 trend_50 +210.37 and H1 08:00's 15.25-pt lower wick all constitute counter-support that is omitted here.",
+  "Claim: 'DXY flat at 99.195 ... no fresh dollar weakness to rescue gold intraday.' Evidence quality: DXY is PROXY (Yahoo, UNKNOWN instrument), change_8 0.016 / change_32 -0.012 — a 1-hour-scale flat PROXY is weak directional evidence."
+ ],
+ "strongest_objection": "The forecast's entire volatility-expansion narrative and both scenario target chains are anchored to the H4 bar's uncorroborated values (spike high 4630.835, flush low 4529.465, close 4576.665): those extremes appear in no lower-timeframe bar of the same snapshot (H1 08:00-12:00 stays within 4591.065-4614.375) and a single 12:00 price cannot be both 4576.665 (H4) and 4599.585 (M1). Hermes-A treats this H4 print as the highest-information item in the context, builds the 0.45 primary scenario and its 4591.065 trigger on it, and never flags the reconciliation failure — while also leaning a firm DOWN bias on momentum alone against a 59-touch defended level, a REJECTION label, 0.75 ambiguity, an unremarked H1 07:00 +39.32 bullish impulse, and PROXY-only cross-market data. The forecast is internally coherent but its evidentiary core fails data-quality scrutiny.",
+ "reasoning_trace": [
+  "Verified Hermes-A's snapshot readings against the context: level 4599.305 INSIDE, distance_atr 0.084, touch_count_240 59, dwell 16, REJECTION, ambiguity_rate_8 0.75, DXY 99.195 / VIX 14.47 (PROXY), UST10Y UNKNOWN — all accurately quoted.",
+  "Cross-checked the H4 current bar (4630.835/4529.465/4576.665) against every lower-timeframe bar and found the extremes and close uncorroborated; flagged as the decisive data-quality failure.",
+  "Assessed direction: negative 20-bar displacement on M1/M5/H1/H4 is real and internally consistent, but M15 +13.95, H4 50-bar +210.37, the 59-touch defense and the H1 07:00 bullish body give the alternative more weight than the 0.45/0.35 split admits.",
+  "Assessed mechanism: L4 candidates were correctly labelled non-asserted, but the lower-wick-as-demand and touch-count-as-liquidity readings are geometry-to-order-flow jumps, and the same wick evidence is flexibly used for both scenarios.",
+  "Assessed scenarios: primary (break below 4591.065 → 4576.665/4564.225/4529.465) is coherent in momentum terms but its targets and trigger inherit the H4 reconciliation problem; alternative and third scenario likewise lean on uncorroborated H4 values (4630.835 bounce target) and a cherry-picked analog.",
+  "Concluded PARTIAL_AGREE: the forecast reads the snapshot correctly and its invalidation/transition logic is sound, but the central evidence base (H4 extremes) fails data reconciliation and the DOWN bias is overweighted given the genuine mixed signals."
+ ]
+}

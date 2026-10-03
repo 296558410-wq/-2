@@ -1,0 +1,88 @@
+{
+ "schema": "hermes_decision_v1",
+ "utc_ts": "2026-09-18T13:32:00Z",
+ "cycle": "2026-09-18T13:32Z",
+ "decision_id": "DEC-2026-09-18T13:32Z",
+ "symbol": "XAUUSD",
+ "decision": "LONG",
+ "plan_id": "TP-20260918T1332Z",
+ "confidence": 0.42,
+ "bias": "neutral-LEAN-LONG 0.42 - with-trend PULLBACK-BUY into the 4345-4351 confluence (H4 MA50 4345.19 + H1 MA200 4350.23), NOT a chase. After the 13:17Z MA50-reclaim thesis failed, price slid ~19pt from 4379 to the live 4360.6 and is now probing the H4/H1 support cluster. H4 remains up (live 4360.6 > H4 MA20 4321.17 > H4 MA50 4345.19), H1 sits just under its MA20 4363.86 and above MA200 4350.23 -> buying the deeper confluence has better geometry than shorting into an intact H4 up-leg. M15 is the drag (llish 6, RSI 32.5, below MA20 4386.79/MA50 4365.12) and D1 is under its MA20 4431.29 = background caution -> qty 0.01, p 0.42, EV +0.46R.",
+ "mtf_agreement": "mixed-lean-long (~2.5/4): H4 up (live 4360.6 > H4 MA20 4321.17 / MA50 4345.19) and H1 constructive-above MA200 4350.23 support the dip-buy; M15 DOWN (llish 6, RSI 32.5, under MA20/MA50) is the near-term drag; D1 below its MA20 4431.29 is the standing bear. Net: higher-TF up-legs intact into a real confluence -> buy the support test, cap conviction.",
+ "state_summary": "pkg 2026-09-18T13:32Z: live_days 10, live_ticks 1,964,256, gaps []. m15_live last_mid 4361.05, spread 0.32bps, tick 137/min, last6_max_move 24.9bps vs base 10.17 (z 1.38) = vol mildly elevated. Broker (execution truth): bid 4360.50 / ask 4360.64 mid 4360.57 spread 0.14pt (0.32bps); positions [] margin_free 1992.78 = slot FREE. Broker MAs (live feed): D1 4360.6 < MA20 4431.29 (RSI 42.3, pos_in_range 45.7) mixed-below / H4 4360.6 > MA20 4321.17 > MA50 4345.19 (RSI 66.5, pos 61.6) up / H1 4360.6 < MA20 4363.86 > MA50 4334.89 > MA200 4350.23 (RSI 57.4, pos 85.9, high60 4399.77) easing / M15 4360.6 < MA20 4386.79 < MA50 4365.12 > MA200 4334.68 (RSI 32.5, low60 4339.76) down. Day low 4334.35, triple-top 4399.70, 12:15Z sweep low 4353.80, 12:30Z recovery high 4373.17. Data caveat: candle_latest.json stale (2026-09-07) -> ignored; levels from live feed. ENV BLOCKER: terminal trade_allowed=False -> the 13:17Z trigger was rejected retcode 10027 'AutoTrading disabled by client'.",
+ "m15_change": "vs 13:17Z (broker mid 4373.8): re-failure-down. The 13:17Z flag-reclaim broke DOWN instead of continuing - price fell ~13pt to the live 4360.6, back below the reclaimed M15 MA50 4365.12 and below the H1 MA20 4363.86. The 12:30Z recovery high 4373.17 held as a lower high under the triple-top 4399.70; M15 RSI slid to 32.5 (oversold) with structure llish 6. Net: the micro-uptrend is broken; the actionable read rotates from 'reclaim-continuation' to 'buy the next support cluster' (H4 MA50 4345.19 / H1 MA200 4350.23 / M15 low60 4339.76), with the day low 4334.35 as the structural line that must hold.",
+ "opportunity": "actionable with-trend PULLBACK-BUY on the 4343.0-4351.0 confluence (H4 MA50 4345.19 + H1 MA200 4350.23, just above M15 low60 4339.76), trigger {zone_touch [4343.0,4351.0]} fires intra-bar at market (live mid 4361.05 is only ~10pt above zone_hi 4351.0 = under 1.5 M15-ATR). SL 4333.5 (below the day low 4334.35 -> H4 up-leg break). T1 4365.0 (M15 MA50 / H1 MA20 4363.86), T2 4397.4 (triple-top). R 2.53 at entry-mid 4347.0. Sibling plans armed lower/at the same shelf (TP-1234Z/1247Z/1302Z at 4358.5-4365) will self-cancel under single-position enforcement - the first fill takes.",
+ "opportunity_mechanism": "The 12:15Z flush swept 4360-4370 and the 4353.80 low was bought back, but the rebound stalled at 4373.17 (lower high) and has now been given back to 4360.6. Price is rotating down into the real demand shelf that capped the whole day's downside: H4 MA50 4345.19 + H1 MA200 4350.23, with M15 low60 4339.76 and the day low 4334.35 beneath. While H4 stays up, a test of that confluence is where buyers step back in; a close back above M15 MA50 4365.12 then targets the 4373/4399 liquidity. Invalidation = losing the day low 4334.35 -> the H4 up-leg is broken, stand down.",
+ "answers_14": {
+  "1_market_state": "Gate: Fri 13:32Z / 21:32 CST, armed=true open=true reason=open (exit 0). pkg 13:32Z: live_days 10, live_ticks 1,964,256, gaps []. m15_live mid 4361.05, spread 0.32bps, tick 137/min, last6_max 24.9bps z 1.38 vs base 10.17 = vol mildly elevated. Broker tick bid 4360.50/ask 4360.64 mid 4360.57 spread 0.32bps; positions [] margin_free 1992.78 = slot FREE. Broker MAs (live): D1 4360.6 < MA20 4431.29 (RSI 42.3) mixed-below / H4 4360.6 > MA20 4321.17 > MA50 4345.19 (RSI 66.5) up / H1 4360.6 < MA20 4363.86 > MA200 4350.23 (RSI 57.4, pos 85.9) easing / M15 4360.6 < MA20 4386.79 < MA50 4365.12 > MA200 4334.68 (RSI 32.5, low60 4339.76) down. Day low 4334.35, triple-top 4399.70, 12:15Z sweep low 4353.80, 12:30Z recovery high 4373.17. Caveat: candle_latest stale ignored. ENV: terminal trade_allowed=False -> 13:17Z fill rejected (retcode 10027).",
+  "2_consistency": "mixed-lean-long (~2.5/4): H4 up + H1 holding above MA200 4350.23 support the pullback-buy; M15 down (llish 6, RSI 32.5, below MA20/MA50) and D1 below MA20 4431.29 are the drags. Net: buy the confluence test, not a chase; conviction capped.",
+  "3_m15_change": "vs 13:17Z (mid 4373.8): re-failure-down ~13pt to 4360.6, back under M15 MA50 4365.12 / H1 MA20 4363.86; 4373.17 held as a lower high under the triple-top; M15 RSI 32.5 oversold, llish 6. Read rotates from reclaim-continuation to support-cluster dip-buy (4345-4351), day low 4334.35 the line to hold.",
+  "4_opportunity": "with-trend PULLBACK-BUY on 4343.0-4351.0 (H4 MA50 4345.19 + H1 MA200 4350.23), trigger zone_touch [4343.0,4351.0] intra-bar market fill; SL 4333.5; T1 4365.0 / T2 4397.4; R 2.53.",
+  "5_mechanism": "12:15Z sweep low 4353.80 was bought but the rebound stalled at 4373.17 (lower high) and was given back to 4360.6 -> price rotating into the day's demand shelf H4 MA50 4345.19 / H1 MA200 4350.23 (M15 low60 4339.76 beneath). H4 up-leg intact -> buyers defend the confluence; reclaim of M15 MA50 4365.12 opens 4373/4399. Invalidation = lose day low 4334.35.",
+  "6_trigger_condition": "{\"zone_touch\": [4343.0,4351.0]} - live mid 4361.05 sits ~10pt ABOVE zone_hi 4351.0 (under 1.5 M15-ATR), so PENDING until price walks into the confluence, then fills at market intra-bar (no close-wait). Staleness/cancel line (LONG): mid > zone_hi + 4 = 4355.0 with no fill, or 2-band price_left_setup > 4367 -> plan expires unfilled, no chasing.",
+  "7_invalidation": "{\"price_cross_down\": 4333.5} (hard SL; below the day low 4334.35 -> the H4 up-leg is broken and the dip-buy thesis is void). The fill zone 4343-4351 sits above it, so a normal walk-down fills first.",
+  "8_expected_return_R": "entry-mid 4347.0, blended target (4365.0 0.5 / 4397.4 0.5) = 4381.2 -> +34.2pt; SL 4333.5 -> risk 13.5pt; expected_R = 34.2/13.5 = 2.53R.",
+  "9_expected_loss_R": "1R = 13.5pt (4347.0 -> 4333.5). Max loss on 0.01 lot = 13.5pt * 0.01 * 100oz = 13.5USD ~ 0.68% of the 1992.78USD demo equity.",
+  "10_cost_value": "spread 0.32bps (~0.14pt @4347) + slippage 0.30bps (~0.13pt) = 0.62bps roundtrip ~ 0.27pt ~ 0.020R on the 13.5pt 1R.",
+  "11_net_EV_formula": "EV = p*R - (1-p)*1.0 - cost = 0.42*2.53 - 0.58*1.0 - 0.020 = 1.063 - 0.580 - 0.020 = +0.463R ~ +0.46R. Positive -> LONG authorised (cost 0.6bps is not the constraint).",
+  "12_recurrence": "Continuation of the with-trend dip-buy family on this shelf; earlier today 0347Z LONG banked broker TP, 0647Z/1102Z stopped -1R, and the 12:15Z sweep stopped the tight-SL cohort. This cycle drops the entry to the real confluence 4343-4351 (below the 4358.5-4365 shelf of TP-1234Z/1247Z/1302Z) with a day-low-based SL 4333.5 so the fill is not inside a repeat stop-run; single-position enforcement means only the first fill takes, the rest self-cancel.",
+  "13_decision": "LONG - with-trend pullback-buy into the 4343.0-4351.0 confluence (H4 MA50 4345.19 + H1 MA200 4350.23) after the 13:17Z reclaim failed and price slid to 4360.6. Entry zone 4343.0-4351.0, trigger zone_touch, SL 4333.5 (below day low 4334.35), T1 4365.0 (0.5) / T2 4397.4 (0.5), qty 0.01, EV +0.46R, bias neutral-lean-long 0.42.",
+  "14_reason": "13:17Z鍥炴敹MA50澶辫触, 浠?379婊戣惤鑷?360.6鍥炲埌M15 MA50涓嬫柟; H4浠嶅潥鎸?4360>MA20 4321>MA50 4345)涓擧1鎸佷綇MA200 4350, 鏃ヤ綆4334.35鏈牬; 鍥炶俯4343-4351姹囧悎(H4 MA50+H1 MA200)鎸傚, SL4333.5, T4365/4397.4, R2.53, EV+0.46R; 涓嶈拷浣? 瑙︿环鑷姩鎴愪氦. 娉? 缁堢trade_allowed=False鍒?3:17Z琚嫆(10027), 闇€閲嶅惎鑷姩浜ゆ槗鎵嶈兘鎴愪氦."
+ },
+ "plan": {
+  "plan_id": "TP-20260918T1332Z",
+  "direction": "LONG",
+  "entry_zone": {
+   "low": 4343.0,
+   "high": 4351.0
+  },
+  "trigger_condition": {
+   "zone_touch": [
+    4343.0,
+    4351.0
+   ]
+  },
+  "invalidation_condition": {
+   "price_cross_down": 4333.5
+  },
+  "stop_logic": {
+   "type": "structure",
+   "level_price": 4333.5
+  },
+  "target_logic": {
+   "levels": [
+    {
+     "price": 4365.0,
+     "frac": 0.5
+    },
+    {
+     "price": 4397.4,
+     "frac": 0.5
+    }
+   ]
+  },
+  "expected_R": 2.53,
+  "expected_win_probability": 0.42,
+  "probability_source": "empirical: with-trend dip-buy / pullback-retest family on the 10 live-days sample; held at 0.42 (below the prior 0.45) because the 13:17Z reclaim just failed, M15 is under its MA20/MA50 (llish 6, RSI 32.5) and D1 remains below its MA20 - only ~2.5/4 TFs aligned; offset by the H4 up-leg intact into a real H4 MA50 + H1 MA200 confluence.",
+  "estimated_cost": {
+   "spread_bps": 0.32,
+   "slippage_bps": 0.3,
+   "total_bps": 0.62,
+   "note": "0.62bps roundtrip ~ 0.27pt ~ 0.020R on the 13.5pt 1R"
+  },
+  "spread_bps": 0.32,
+  "slippage_bps": 0.3,
+  "expected_net_EV": {
+   "value": 0.46,
+   "units": "R",
+   "note": "0.42*2.53 - 0.58*1.0 - 0.020 = +0.463R"
+  },
+  "maximum_holding_time": "M15*8",
+  "qty_lots": 0.01
+ },
+ "gap_to_tradable": "LOCAL: live mid 4361.05 sits ~10pt ABOVE zone_hi 4351.0 (< 1.5 M15-ATR) -> the plan is PENDING and fires {zone_touch [4343.0,4351.0]} intra-bar when price walks into the H4 MA50 4345.19 / H1 MA200 4350.23 confluence, auto-filling at market; slot is FREE (broker positions [], equity 1992.78). What is missing right now: only the ~10pt dip into the confluence. ENVIRONMENTAL (BLOCKER): the MT5 terminal reports trade_allowed=False -> the prior 13:17Z trigger was rejected retcode 10027 'AutoTrading disabled by client'; until AutoTrading is re-enabled in the terminal, any fill will fail. Cannot change the terminal toggle from here (GUI setting, out of scope).",
+ "cost_note": "spread 0.32bps (0.14pt @4347) + slippage 0.30bps (0.13pt) = 0.62bps roundtrip (~0.27pt ~ 0.020R on the 13.5pt 1R)",
+ "ev_note": "EV = 0.42*2.53 - 0.58*1.0 - 0.020 = +0.463R. Positive -> LONG authorised.",
+ "model": "deepseek/deepseek-v4-flash",
+ "prompt_version": "hermes-trader-m15-cycle/2026-09-12"
+}

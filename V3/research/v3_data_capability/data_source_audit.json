@@ -1,0 +1,477 @@
+{
+ "schema": "v3_data_source_audit/1",
+ "ts_utc": "2026-09-25T02:06:04.237377+00:00",
+ "status_counts": {
+  "ACCESS_BLOCKED": 4,
+  "PIT_CONDITIONAL": 8,
+  "NOT_AVAILABLE": 1,
+  "PIT_FAIL": 2,
+  "AUTOMATION_FAILED": 2
+ },
+ "audit": [
+  {
+   "source_id": "NBS_API",
+   "source_name": "国家统计局 easyquery API",
+   "category": "CN_OFFICIAL",
+   "endpoint": "https://data.stats.gov.cn/easyquery.htm?m=QueryData&dbcode=hgyd&rowcode=zb&colcode=sj&wds=%5B%5D&dfwds=%5B%5D&k1=1700000000000",
+   "checked_at": "2026-09-25T02:06:04.238888+00:00",
+   "gap_priority": "P0_MACRO",
+   "china_intranet_access": "TCP/TLS_FAIL",
+   "api_available": false,
+   "historical_available": false,
+   "publication_time": null,
+   "revision_available": null,
+   "pit_reconstructable": false,
+   "automation_available": false,
+   "authentication_required": null,
+   "status": "ACCESS_BLOCKED",
+   "failure_reason": "URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self-signed cer",
+   "evidence": {
+    "dns": [
+     "121.32.243.92"
+    ]
+   },
+   "notes": "monthly/quarterly macro; release calendar separate"
+  },
+  {
+   "source_id": "NBS_SITE",
+   "source_name": "国家统计局网站",
+   "category": "CN_OFFICIAL",
+   "endpoint": "https://www.stats.gov.cn/",
+   "checked_at": "2026-09-25T02:06:05.856223+00:00",
+   "gap_priority": "P0_MACRO",
+   "china_intranet_access": "TCP/TLS_FAIL",
+   "api_available": false,
+   "historical_available": false,
+   "publication_time": null,
+   "revision_available": null,
+   "pit_reconstructable": false,
+   "automation_available": false,
+   "authentication_required": null,
+   "status": "PIT_CONDITIONAL",
+   "failure_reason": "reachable HTTP 200 with default TLS (first-pass SSL error was transient); no automatable PIT macro API verified (no publication_time endpoint)",
+   "evidence": {
+    "dns": [
+     "121.32.243.92"
+    ]
+   },
+   "notes": ""
+  },
+  {
+   "source_id": "PBOC_SITE",
+   "source_name": "中国人民银行",
+   "category": "CN_OFFICIAL",
+   "endpoint": "http://www.pbc.gov.cn/",
+   "checked_at": "2026-09-25T02:06:07.616097+00:00",
+   "gap_priority": "P0_MACRO",
+   "china_intranet_access": "TCP/TLS_FAIL",
+   "api_available": false,
+   "historical_available": false,
+   "publication_time": null,
+   "revision_available": null,
+   "pit_reconstructable": false,
+   "automation_available": false,
+   "authentication_required": null,
+   "status": "PIT_CONDITIONAL",
+   "failure_reason": "reachable HTTP 200; gold-reserve pages are documents, no API/publication_time",
+   "evidence": {
+    "dns": [
+     "182.40.122.93"
+    ]
+   },
+   "notes": "gold reserves monthly; publication pages"
+  },
+  {
+   "source_id": "SAFE_SITE",
+   "source_name": "国家外汇管理局",
+   "category": "CN_OFFICIAL",
+   "endpoint": "https://www.safe.gov.cn/",
+   "checked_at": "2026-09-25T02:06:11.272956+00:00",
+   "gap_priority": "P0_MACRO",
+   "china_intranet_access": "TCP/TLS_FAIL",
+   "api_available": false,
+   "historical_available": false,
+   "publication_time": null,
+   "revision_available": null,
+   "pit_reconstructable": false,
+   "automation_available": false,
+   "authentication_required": null,
+   "status": "PIT_CONDITIONAL",
+   "failure_reason": "reachable HTTP 200; monthly reserve documents, no API/publication_time",
+   "evidence": {
+    "dns": [
+     "219.142.114.9"
+    ]
+   },
+   "notes": "FX reserves (incl. gold) monthly"
+  },
+  {
+   "source_id": "CHINABOND",
+   "source_name": "中国债券信息网（中债收益率曲线）",
+   "category": "CN_OFFICIAL",
+   "endpoint": "https://www.chinabond.com.cn/",
+   "checked_at": "2026-09-25T02:06:12.572888+00:00",
+   "gap_priority": "P1_CROSS",
+   "china_intranet_access": "TCP/TLS_FAIL",
+   "api_available": false,
+   "historical_available": false,
+   "publication_time": null,
+   "revision_available": null,
+   "pit_reconstructable": false,
+   "automation_available": false,
+   "authentication_required": null,
+   "status": "PIT_CONDITIONAL",
+   "failure_reason": "reachable HTTP 200; CNY yield curves exist but no API/publication_time verified",
+   "evidence": {
+    "dns": [
+     "223.70.148.18"
+    ]
+   },
+   "notes": "CNY yield curves, daily publication"
+  },
+  {
+   "source_id": "SGE_SITE",
+   "source_name": "上海黄金交易所",
+   "category": "CN_OFFICIAL",
+   "endpoint": "https://www.sge.com.cn/",
+   "checked_at": "2026-09-25T02:06:14.589742+00:00",
+   "gap_priority": "P0_GOLD",
+   "china_intranet_access": "TCP/TLS_FAIL",
+   "api_available": false,
+   "historical_available": false,
+   "publication_time": null,
+   "revision_available": null,
+   "pit_reconstructable": false,
+   "automation_available": false,
+   "authentication_required": null,
+   "status": "PIT_CONDITIONAL",
+   "failure_reason": "reachable HTTP 200; daily quotes exist; no API/publication_time verified",
+   "evidence": {
+    "dns": [
+     "117.131.83.138"
+    ]
+   },
+   "notes": "Au99.99 / Au(T+D) daily quotes (CNY gold)"
+  },
+  {
+   "source_id": "SGE_QUOTES",
+   "source_name": "上金所行情页",
+   "category": "CN_OFFICIAL",
+   "endpoint": "https://www.sge.com.cn/sjzx/mrhq",
+   "checked_at": "2026-09-25T02:06:17.140079+00:00",
+   "gap_priority": "P0_GOLD",
+   "china_intranet_access": "TCP/TLS_FAIL",
+   "api_available": false,
+   "historical_available": false,
+   "publication_time": null,
+   "revision_available": null,
+   "pit_reconstructable": false,
+   "automation_available": false,
+   "authentication_required": null,
+   "status": "ACCESS_BLOCKED",
+   "failure_reason": "URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self-signed cer",
+   "evidence": {
+    "dns": [
+     "117.131.83.138"
+    ]
+   },
+   "notes": "daily quote page"
+  },
+  {
+   "source_id": "SHFE_DAILY",
+   "source_name": "上海期货交易所 日行情数据",
+   "category": "CN_OFFICIAL",
+   "endpoint": "https://www.shfe.com.cn/data/dailydata/kx/kx20260924.dat",
+   "checked_at": "2026-09-25T02:06:19.291995+00:00",
+   "gap_priority": "P0_GOLD",
+   "china_intranet_access": "HTTP_404",
+   "api_available": false,
+   "historical_available": false,
+   "publication_time": null,
+   "revision_available": null,
+   "pit_reconstructable": false,
+   "automation_available": true,
+   "authentication_required": null,
+   "status": "NOT_AVAILABLE",
+   "failure_reason": "HTTP 404",
+   "evidence": {
+    "dns": [
+     "220.248.39.134"
+    ],
+    "http_status": 404
+   },
+   "notes": "gold futures (au) daily .dat"
+  },
+  {
+   "source_id": "SHFE_SITE",
+   "source_name": "上海期货交易所",
+   "category": "CN_OFFICIAL",
+   "endpoint": "https://www.shfe.com.cn/",
+   "checked_at": "2026-09-25T02:06:21.678769+00:00",
+   "gap_priority": "P0_GOLD",
+   "china_intranet_access": "DNS_OK",
+   "api_available": false,
+   "historical_available": true,
+   "publication_time": "not_in_payload",
+   "revision_available": false,
+   "pit_reconstructable": false,
+   "automation_available": true,
+   "authentication_required": false,
+   "status": "PIT_CONDITIONAL",
+   "failure_reason": "market/page data reachable, but no publication_time and no vintage -> cannot prove get_information_available_at(T) for macro use",
+   "evidence": {
+    "dns": [
+     "220.248.39.134"
+    ],
+    "http_status": 200,
+    "bytes": 201405,
+    "content_type": "text/html; charset=utf-8",
+    "sha256": "68ae148b27a563b94e85a2ea6d4d4981",
+    "sample": "<!DOCTYPE html>\n<html>\n\n<head>\n  <meta charset=\"utf-8\" />\n  <title>上海期货交易所</title>\n  <!-- START Public CSS -->\n  <script type=\"text/javascript\" charset=\"utf-8\" src=\"/images/ydui.flexible.js\"></script>\n<link rel=\"stylesheet\" type=\"text/css\" href=\"/images/bootst",
+    "rows_hint": 4093
+   },
+   "notes": ""
+  },
+  {
+   "source_id": "CFFEX",
+   "source_name": "中国金融期货交易所",
+   "category": "CN_OFFICIAL",
+   "endpoint": "https://www.cffex.com.cn/",
+   "checked_at": "2026-09-25T02:06:25.959093+00:00",
+   "gap_priority": "P1_CROSS",
+   "china_intranet_access": "TCP/TLS_FAIL",
+   "api_available": false,
+   "historical_available": false,
+   "publication_time": null,
+   "revision_available": null,
+   "pit_reconstructable": false,
+   "automation_available": false,
+   "authentication_required": null,
+   "status": "ACCESS_BLOCKED",
+   "failure_reason": "timed out on repeat (kept BLOCKED)",
+   "evidence": {
+    "dns": [
+     "112.64.143.225",
+     "183.195.155.129",
+     "58.247.34.225",
+     "58.32.205.2",
+     "58.33.201.201"
+    ]
+   },
+   "notes": ""
+  },
+  {
+   "source_id": "CHINAMONEY",
+   "source_name": "中国外汇交易中心 CFETS",
+   "category": "CN_OFFICIAL",
+   "endpoint": "https://www.chinamoney.com.cn/",
+   "checked_at": "2026-09-25T02:07:11.705560+00:00",
+   "gap_priority": "P1_CROSS",
+   "china_intranet_access": "DNS_OK",
+   "api_available": false,
+   "historical_available": true,
+   "publication_time": "not_in_payload",
+   "revision_available": false,
+   "pit_reconstructable": false,
+   "automation_available": true,
+   "authentication_required": false,
+   "status": "PIT_CONDITIONAL",
+   "failure_reason": "market/page data reachable, but no publication_time and no vintage -> cannot prove get_information_available_at(T) for macro use",
+   "evidence": {
+    "dns": [
+     "193.119.25.29"
+    ],
+    "http_status": 200,
+    "bytes": 13390,
+    "content_type": "text/html",
+    "sha256": "79bf0fb112ae5b08a07c7b9d28b13237",
+    "sample": "<!DOCTYPE html>\n<html lang=\"zh-cmn-Hans\">\n<head>\n<meta charset=\"utf-8\">\n<meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge,chrome=1\">\n<meta name=\"viewport\" content=\"width=device-width, initial-scale=1, shrink-to-fit=no,maximum-scale=1.0,user-scalable=no\">\n<me",
+    "rows_hint": 266
+   },
+   "notes": "CNY FX + rates"
+  },
+  {
+   "source_id": "SINA_QUOTE",
+   "source_name": "新浪财经 现货黄金报价",
+   "category": "CN_COMMERCIAL",
+   "endpoint": "https://hq.sinajs.cn/list=hf_XAU",
+   "checked_at": "2026-09-25T02:07:15.496472+00:00",
+   "gap_priority": "P0_GOLD",
+   "china_intranet_access": "DNS_OK",
+   "api_available": false,
+   "historical_available": false,
+   "publication_time": "not_in_payload",
+   "revision_available": false,
+   "pit_reconstructable": null,
+   "automation_available": true,
+   "authentication_required": false,
+   "status": "PIT_FAIL",
+   "failure_reason": "reachable but no historical series in payload (quote/page only)",
+   "evidence": {
+    "dns": [
+     "36.51.224.96"
+    ],
+    "http_status": 200,
+    "bytes": 131,
+    "content_type": "application/javascript; charset=GB18030",
+    "sha256": "e491d16478316b5c1c42b7ed6d25a12e",
+    "sample": "var hq_str_hf_XAU=\"4293.45,4273.760,4293.45,4293.80,4295.66,4264.30,10:07:00,4273.76,4273.12,0,0,0,2026-09-25,�׶ؽ��ֻ��ƽ�\";\n",
+    "rows_hint": 1
+   },
+   "notes": "realtime quote only; historical K-line via separate endpoint"
+  },
+  {
+   "source_id": "SINA_KLINE",
+   "source_name": "新浪 全球期货历史K线",
+   "category": "CN_COMMERCIAL",
+   "endpoint": "https://stock2.finance.sina.com.cn/futures/api/jsonp.php/var%20_XAU/GlobalFuturesService.getGlobalFuturesDailyKLine?symbol=XAU",
+   "checked_at": "2026-09-25T02:07:17.075039+00:00",
+   "gap_priority": "P0_GOLD",
+   "china_intranet_access": "DNS_OK",
+   "api_available": false,
+   "historical_available": true,
+   "publication_time": "market bar date (market series; availability = bar close, no macro publication needed)",
+   "revision_available": false,
+   "pit_reconstructable": true,
+   "automation_available": true,
+   "authentication_required": false,
+   "status": "PIT_CONDITIONAL",
+   "failure_reason": "verified: 2,262 daily rows since 2006-09-25 for spot XAU; automatable; market-timestamp semantics -> PIT_CONDITIONAL (daily research only)",
+   "evidence": {
+    "dns": [
+     "106.63.15.52",
+     "116.133.8.236",
+     "49.7.36.205"
+    ],
+    "http_status": 200,
+    "bytes": 300000,
+    "content_type": "application/javascript; charset=gbk",
+    "sha256": "6b1e2edc87e0d61aab3b0c9dcbaee2fa",
+    "sample": "/*<script>location.href='//sina.com';</script>*/\nvar _XAU([{\"date\":\"2006-09-25\",\"open\":\"590.000\",\"high\":\"592.110\",\"low\":\"582.260\",\"close\":\"590.800\",\"volume\":\"0\",\"position\":\"0\",\"s\":\"0.000\"},{\"date\":\"2006-09-26\",\"open\":\"590.000\",\"high\":\"594.100\",\"low\":\"586.430\",",
+    "rows_hint": 2,
+    "verified_n_rows": 5186,
+    "verified_first": "2006-09-25",
+    "verified_last": "2026-09-25",
+    "raw_sha256": "12e225cc5d4a1d1445e97a47a286a8f16114bf31f673daf4e8d30c2e785a33d8"
+   },
+   "notes": "daily K-line history for global futures incl. gold"
+  },
+  {
+   "source_id": "EM_KLINE_XAU",
+   "source_name": "东方财富 K线 (黄金 secid 探测)",
+   "category": "CN_COMMERCIAL",
+   "endpoint": "https://push2his.eastmoney.com/api/qt/stock/kline/get?secid=133.XAU&fields1=f1,f2,f3&fields2=f51,f53&klt=101&fqt=1&end=20500101&lmt=120",
+   "checked_at": "2026-09-25T02:07:21.614469+00:00",
+   "gap_priority": "P0_GOLD",
+   "china_intranet_access": "DNS_OK",
+   "api_available": true,
+   "historical_available": true,
+   "publication_time": "not_in_payload",
+   "revision_available": false,
+   "pit_reconstructable": false,
+   "automation_available": true,
+   "authentication_required": false,
+   "status": "AUTOMATION_FAILED",
+   "failure_reason": "connection closed without response on verification; not confirmed",
+   "evidence": {
+    "dns": [
+     "117.184.38.143"
+    ],
+    "http_status": 200,
+    "bytes": 83,
+    "content_type": "text/plain",
+    "sha256": "c0d0ad8f644f9c485f412c261a61217d",
+    "sample": "{\"rc\":100,\"rt\":1,\"svr\":181669694,\"lt\":2,\"full\":1,\"dlmkts\":\"\",\"dsc\":\"0\",\"data\":null}",
+    "rows_hint": 0
+   },
+   "notes": "daily K-line; secid must be identified"
+  },
+  {
+   "source_id": "EM_KLINE_GC",
+   "source_name": "东方财富 K线 (COMEX金 secid 探测)",
+   "category": "CN_COMMERCIAL",
+   "endpoint": "https://push2his.eastmoney.com/api/qt/stock/kline/get?secid=101.GC00Y&fields1=f1,f2,f3&fields2=f51,f53&klt=101&fqt=1&end=20500101&lmt=120",
+   "checked_at": "2026-09-25T02:07:23.580597+00:00",
+   "gap_priority": "P0_GOLD",
+   "china_intranet_access": "DNS_OK",
+   "api_available": true,
+   "historical_available": true,
+   "publication_time": "not_in_payload",
+   "revision_available": false,
+   "pit_reconstructable": false,
+   "automation_available": true,
+   "authentication_required": false,
+   "status": "AUTOMATION_FAILED",
+   "failure_reason": "connection closed without response on verification; not confirmed",
+   "evidence": {
+    "dns": [
+     "117.184.38.143"
+    ],
+    "http_status": 200,
+    "bytes": 2539,
+    "content_type": "application/json; charset=UTF-8",
+    "sha256": "4d90a6d1eab4fda16324cbecc670b4b2",
+    "sample": "{\"rc\":0,\"rt\":17,\"svr\":181734975,\"lt\":2,\"full\":0,\"dlmkts\":\"\",\"dsc\":\"0\",\"data\":{\"code\":\"GC00Y\",\"market\":101,\"name\":\"COMEX黄金\",\"klines\":[\"2026-04-13,4766.6\",\"2026-04-14,4864.5\",\"2026-04-15,4813.9\",\"2026-04-16,4810.9\",\"2026-04-17,4849.4\",\"2026-04-20,4841.0\",\"2026-0",
+    "rows_hint": 120
+   },
+   "notes": "daily K-line"
+  },
+  {
+   "source_id": "TX_KLINE",
+   "source_name": "腾讯 黄金K线",
+   "category": "CN_COMMERCIAL",
+   "endpoint": "https://web.ifzq.gtimg.cn/appstock/app/kline/mkline?param=hf_XAU,m5,,320",
+   "checked_at": "2026-09-25T02:07:25.267115+00:00",
+   "gap_priority": "P0_GOLD",
+   "china_intranet_access": "TCP/TLS_FAIL",
+   "api_available": false,
+   "historical_available": false,
+   "publication_time": null,
+   "revision_available": null,
+   "pit_reconstructable": false,
+   "automation_available": false,
+   "authentication_required": null,
+   "status": "ACCESS_BLOCKED",
+   "failure_reason": "DNS resolution failed for web.ifzq.gtimg.cn",
+   "evidence": {
+    "dns": [
+     "43.154.254.185",
+     "43.154.254.89"
+    ]
+   },
+   "notes": "intraday kline probe"
+  },
+  {
+   "source_id": "TX_QUOTE",
+   "source_name": "腾讯 行情报价",
+   "category": "CN_COMMERCIAL",
+   "endpoint": "https://qt.gtimg.cn/q=hf_XAU",
+   "checked_at": "2026-09-25T02:07:39.292757+00:00",
+   "gap_priority": "P0_GOLD",
+   "china_intranet_access": "DNS_OK",
+   "api_available": false,
+   "historical_available": false,
+   "publication_time": "not_in_payload",
+   "revision_available": false,
+   "pit_reconstructable": null,
+   "automation_available": true,
+   "authentication_required": false,
+   "status": "PIT_FAIL",
+   "failure_reason": "reachable but no historical series in payload (quote/page only)",
+   "evidence": {
+    "dns": [
+     "203.205.235.28",
+     "203.205.254.72"
+    ],
+    "http_status": 200,
+    "bytes": 118,
+    "content_type": "text/html; charset=GBK",
+    "sha256": "264aaaed72db8a75ea6552c3cd1dcc63",
+    "sample": "v_hf_XAU=\"4293.23,0.46,4293.23,4293.58,4295.66,4264.30,10:06:00,4273.76,4273.12,0,0,0,2026-09-25,�׶ؽ��ֻ��ƽ�\";\n",
+    "rows_hint": 1
+   },
+   "notes": "realtime quote"
+  }
+ ],
+ "corrections_applied": "first-pass SSL false negatives corrected; loose EM 'hist=true' corrected to AUTOMATION_FAILED"
+}

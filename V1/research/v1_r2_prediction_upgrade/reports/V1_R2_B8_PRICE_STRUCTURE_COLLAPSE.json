@@ -1,0 +1,58 @@
+{
+ "PRICE_STRUCTURE_FEATURES": [
+  "LEVEL",
+  "TOUCH",
+  "BREAK",
+  "COUNTER_BREAK_RISK",
+  "FAILED_EVENT"
+ ],
+ "PRICE_STRUCTURE_INFORMATION_AXES": 1,
+ "verification": {
+  "LEVEL": {
+   "level_conditioned": true,
+   "evidence": "level object itself"
+  },
+  "TOUCH": {
+   "level_conditioned": true,
+   "evidence": "touch_state built only from rec['level'] fields (R1 L180-194)"
+  },
+  "BREAK": {
+   "level_conditioned": true,
+   "evidence": "all 6 break groups inside `if nl:` (R1 L205); break!=LOW without level = 0 rows"
+  },
+  "COUNTER_BREAK_RISK": {
+   "level_conditioned": true,
+   "evidence": "restates break_risk (R2 L148) -> transitively level-conditioned"
+  },
+  "FAILED_EVENT": {
+   "level_conditioned": true,
+   "evidence": "failed_event block requires `if nl` -> break-attempt+reclaim at the level"
+  },
+  "NOT_STRUCTURE": {
+   "members": [
+    "REGIME",
+    "MOMENTUM",
+    "ABSORPTION"
+   ],
+   "evidence": "no level dependency in their code paths"
+  }
+ },
+ "dataset_rows_without_level": 21,
+ "price_structure_state_distribution_decisions": {
+  "PENETRATION": 79,
+  "FAILED_BREAK": 16,
+  "BREAK_CONFIRMED": 7,
+  "APPROACH": 37,
+  "BREAK_ATTEMPT": 1
+ },
+ "price_structure_state_distribution_tick_only": {
+  "NO_STRUCTURE": 21,
+  "APPROACH": 368,
+  "FAILED_BREAK": 136,
+  "BREAK_CONFIRMED": 31,
+  "PENETRATION": 760,
+  "BREAK_ATTEMPT": 12
+ },
+ "DIAGNOSTIC_ONLY": true,
+ "registry_write": 0
+}

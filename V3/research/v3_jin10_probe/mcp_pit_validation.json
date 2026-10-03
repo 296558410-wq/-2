@@ -1,0 +1,284 @@
+{
+ "ts_utc": "2026-09-25T08:37:35.675061+00:00",
+ "endpoint": "https://mcp.jin10.com/mcp",
+ "protocol": "2025-11-25",
+ "calls": {
+  "kline_1000": {
+   "tool": "get_kline",
+   "args": {
+    "code": "XAUUSD",
+    "count": "1000"
+   },
+   "ok": true,
+   "http": 200,
+   "isError": null
+  },
+  "kline_historical_window": {
+   "tool": "get_kline",
+   "args": {
+    "code": "XAUUSD",
+    "time": "1788220800",
+    "count": "3"
+   },
+   "ok": true,
+   "http": 200,
+   "isError": null
+  },
+  "flash_page_1": {
+   "tool": "list_flash",
+   "args": {},
+   "ok": true,
+   "http": 200,
+   "isError": null
+  },
+  "flash_page_2": {
+   "tool": "list_flash",
+   "args": {
+    "cursor": "1790321576511"
+   },
+   "ok": true,
+   "http": 200,
+   "isError": null
+  },
+  "flash_page_3": {
+   "tool": "list_flash",
+   "args": {
+    "cursor": "1790319694081"
+   },
+   "ok": true,
+   "http": 200,
+   "isError": null
+  },
+  "search_flash_gold": {
+   "tool": "search_flash",
+   "args": {
+    "keyword": "黄金"
+   },
+   "ok": true,
+   "http": 200,
+   "isError": null
+  },
+  "calendar": {
+   "tool": "list_calendar",
+   "args": {},
+   "ok": true,
+   "http": 200,
+   "isError": null
+  },
+  "news_list": {
+   "tool": "list_news",
+   "args": {},
+   "ok": true,
+   "http": 200,
+   "isError": null
+  },
+  "news_detail": {
+   "tool": "get_news",
+   "args": {
+    "id": "231050"
+   },
+   "ok": true,
+   "http": 200,
+   "isError": null
+  }
+ },
+ "findings": {
+  "kline_deep": {
+   "rows": 100,
+   "first": "2026-09-25T08:37:00+00:00",
+   "last": "2026-09-25T06:58:00+00:00",
+   "span_hours": -1.65
+  },
+  "kline_time_param": {
+   "rows": 0,
+   "returned_times": [],
+   "honored_requested_time": false,
+   "note": "tests whether a historical window can be requested"
+  },
+  "flash_pagination": {
+   "pages": [
+    {
+     "page": 1,
+     "items": 20,
+     "oldest": null,
+     "newest": null,
+     "oldest_iso": null,
+     "newest_iso": null,
+     "raw_time_sample": "2026-09-25T16:22:23+08:00",
+     "has_more": true,
+     "next_cursor": "1790321576511"
+    },
+    {
+     "page": 2,
+     "items": 20,
+     "oldest": null,
+     "newest": null,
+     "oldest_iso": null,
+     "newest_iso": null,
+     "raw_time_sample": "2026-09-25T15:27:33+08:00",
+     "has_more": true,
+     "next_cursor": "1790319694081"
+    },
+    {
+     "page": 3,
+     "items": 20,
+     "oldest": null,
+     "newest": null,
+     "oldest_iso": null,
+     "newest_iso": null,
+     "raw_time_sample": "2026-09-25T15:00:02+08:00",
+     "has_more": true,
+     "next_cursor": "1790316902845"
+    }
+   ],
+   "depth_minutes_covered": null
+  },
+  "search_flash": {
+   "items": 150,
+   "has_more": null,
+   "oldest": null,
+   "newest": null,
+   "fields": [
+    "content",
+    "time",
+    "title",
+    "url"
+   ]
+  },
+  "calendar": {
+   "rows": 158,
+   "fields": [
+    "actual",
+    "affect_txt",
+    "consensus",
+    "previous",
+    "pub_time",
+    "revised",
+    "star",
+    "title"
+   ],
+   "pub_time_min": "2026-09-21 07:01",
+   "pub_time_max": "2026-09-26 01:00",
+   "revised_non_null": 14,
+   "actual_non_null": 146,
+   "consensus_non_null": 66,
+   "previous_non_null": 158,
+   "has_star": 158
+  },
+  "news_list": {
+   "items": 20,
+   "fields": [
+    "id",
+    "introduction",
+    "time",
+    "title",
+    "url"
+   ],
+   "oldest": null,
+   "has_more": true
+  },
+  "news_detail": {
+   "fields": [
+    "content",
+    "id",
+    "introduction",
+    "time",
+    "title",
+    "url"
+   ],
+   "has_content": true,
+   "time": "2026-09-25T16:27:32+08:00"
+  }
+ },
+ "pit_status": {
+  "MARKET_PIT_STATUS": "JIN10_PIT_CONDITIONAL",
+  "MARKET_detail": {
+   "intraday_1m_available": true,
+   "max_rows_observed": 100,
+   "span_hours_observed": -1.65,
+   "historical_window_param": {
+    "rows": 0,
+    "returned_times": [],
+    "honored_requested_time": false,
+    "note": "tests whether a historical window can be requested"
+   }
+  },
+  "NEWS_PIT_STATUS": "JIN10_PIT_FAIL",
+  "NEWS_detail": {
+   "flash_has_time": true,
+   "paginated_history": {
+    "pages": [
+     {
+      "page": 1,
+      "items": 20,
+      "oldest": null,
+      "newest": null,
+      "oldest_iso": null,
+      "newest_iso": null,
+      "raw_time_sample": "2026-09-25T16:22:23+08:00",
+      "has_more": true,
+      "next_cursor": "1790321576511"
+     },
+     {
+      "page": 2,
+      "items": 20,
+      "oldest": null,
+      "newest": null,
+      "oldest_iso": null,
+      "newest_iso": null,
+      "raw_time_sample": "2026-09-25T15:27:33+08:00",
+      "has_more": true,
+      "next_cursor": "1790319694081"
+     },
+     {
+      "page": 3,
+      "items": 20,
+      "oldest": null,
+      "newest": null,
+      "oldest_iso": null,
+      "newest_iso": null,
+      "raw_time_sample": "2026-09-25T15:00:02+08:00",
+      "has_more": true,
+      "next_cursor": "1790316902845"
+     }
+    ],
+    "depth_minutes_covered": null
+   },
+   "searchable_history": {
+    "items": 150,
+    "has_more": null,
+    "oldest": null,
+    "newest": null,
+    "fields": [
+     "content",
+     "time",
+     "title",
+     "url"
+    ]
+   }
+  },
+  "CALENDAR_PIT_STATUS": "JIN10_PIT_CONDITIONAL",
+  "CALENDAR_detail": {
+   "pub_time_present": true,
+   "pub_time_range": [
+    "2026-09-21 07:01",
+    "2026-09-26 01:00"
+   ],
+   "revised_populated": 14
+  },
+  "MACRO_PIT_STATUS": "JIN10_PIT_CONDITIONAL",
+  "MACRO_detail": {
+   "actual": 146,
+   "consensus": 66,
+   "previous": 158,
+   "revised": 14,
+   "publication_time_field": "pub_time"
+  }
+ },
+ "overall": "MIXED",
+ "rate_limit": {
+  "calls_made": 9,
+  "cap_per_tool_per_day": 1500,
+  "compliant": true
+ }
+}

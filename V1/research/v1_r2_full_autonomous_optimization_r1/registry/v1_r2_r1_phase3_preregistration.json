@@ -1,0 +1,28 @@
+{
+ "task": "V1_R2_FULL_AUTONOMOUS_OPTIMIZATION_R1",
+ "phase": "PHASE_3_STATEFUL_V2_BLIND_ABLATION",
+ "frozen_before_analysis": true,
+ "frozen_at_utc": "2026-09-27T20:35:00+08:00",
+ "question": "Once a lifecycle is attached (min-dwell k=2), does STATE v2 survive a STRICT single-split blind test, an ablation ladder, 4-block stability, and does MTF context add incremental value?",
+ "carried": {
+  "phase1": "frozen label is memoryless (churn 0.6292@M15, duration median 1 bar); no lifecycle constraint",
+  "phase2": "T1 frozen DeltaLL=0.19786 (p=0.0); T2 stateful k=2 DeltaLL=0.27661 (p=0.0); geometry fails floor; event fails majority"
+ },
+ "state_v2_definition": "STATE_V2(t) = frozen MARKET_BEHAVIOR with minimum dwell k=2 (a new label is only accepted after it persists >= 2 consecutive bars; otherwise the previous accepted label carries forward). k=2 pre-registered from Phase 1 (not tuned here).",
+ "protocol": {
+  "blind_split": "single split at 60% of bars; model fit ONCE on first 60%, evaluated ONCE on last 40% (no refit, no peeking)",
+  "model": "multinomial logistic, C=1.0, lbfgs, TRAIN-only StandardScaler",
+  "effect_floor_bits": 0.01,
+  "ablation_ladder": {
+   "A0_VOL_ONLY": ["atr_pctl", "rng_exp"],
+   "A1_VOL_MOM": ["atr_pctl", "rng_exp", "vel4", "acc"],
+   "A2_VOL_MOM_STRUCT": ["atr_pctl", "rng_exp", "vel4", "acc", "er10", "eff3", "act3"],
+   "A3_ALL_PLUS_SLOPE": ["atr_pctl", "er10", "slope5", "rng_exp", "vel4", "acc", "eff3", "act3"]
+  },
+  "stability": "4 equal sub-blocks of the blind test region; require all DeltaLL > 0",
+  "mtf_increment": "add H1 context (h1_ret, h1_rng, h1_slope, causal ffill) to A3; MTF_ADDS_VALUE if delta DeltaLL >= floor",
+  "acceptance": "best blind variant has DeltaLL >= floor AND beats majority accuracy AND all 4 stability blocks positive",
+  "no_tuning": true, "no_future_returns": true
+ },
+ "write_scope": "research/hermes/trader_v1/v1_r2_full_autonomous_optimization_r1/** ONLY"
+}

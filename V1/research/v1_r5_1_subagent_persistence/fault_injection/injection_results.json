@@ -1,0 +1,64 @@
+{
+ "scenarios": {
+  "empty_response": {
+   "detected": true,
+   "error_type": "SUBAGENT_PERSISTENCE_FAILURE",
+   "detail": "RETURN_FAILED",
+   "accepted": false
+  },
+  "malformed_response": {
+   "detected": true,
+   "error_type": "SUBAGENT_PERSISTENCE_FAILURE",
+   "detail": "MALFORMED_JSON:no_object",
+   "accepted": false
+  },
+  "write_failure": {
+   "detected": true,
+   "error_type": "SUBAGENT_PERSISTENCE_FAILURE",
+   "detail": "WRITE_FAILED:injected write failure",
+   "accepted": false
+  },
+  "partial_write": {
+   "detected": true,
+   "error_type": "SUBAGENT_PERSISTENCE_FAILURE",
+   "detail": "CHECKS_FAILED:READBACK,HASH",
+   "accepted": false
+  },
+  "duplicate_response": {
+   "detected": true,
+   "first_accepted": true,
+   "second_error": null,
+   "third_error": "DUPLICATE_REJECTED"
+  },
+  "timeout": {
+   "detected": true,
+   "error_type": "SUBAGENT_PERSISTENCE_FAILURE",
+   "detail": "RETURN_FAILED",
+   "accepted": false
+  },
+  "retry": {
+   "detected": true,
+   "attempt1_accepted": false,
+   "attempt1_error": "SUBAGENT_PERSISTENCE_FAILURE",
+   "attempt2_accepted": true,
+   "exactly_one_accepted": true
+  },
+  "late_response": {
+   "detected": true,
+   "error_type": "DUPLICATE_REJECTED"
+  }
+ },
+ "all_detected": true,
+ "DUPLICATE_ACCEPTED": 0,
+ "SILENT_DROP": 0,
+ "CORRUPTED_PAYLOAD": 0,
+ "injection_accepted_samples": [
+  "I5_DUP",
+  "I5_DUP_1790552445",
+  "I7_RETRY",
+  "I7_RETRY_1790552445"
+ ],
+ "ledger_entries": 71,
+ "ledger_chain_ok": true,
+ "note": "only I5_DUP and I7_RETRY are legitimately accepted; the rest must remain failures"
+}

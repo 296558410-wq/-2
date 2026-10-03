@@ -1,0 +1,35 @@
+{
+ "COUNTER_EVIDENCE_LINEAGE": {
+  "source_file": "research/hermes/trader_v1/v1_r2_prediction_upgrade/_v1r2_phaseB_R2.py",
+  "anchor": "groups_of() counter block",
+  "lines": {
+   "COUNTER_ABSORPTION": 144,
+   "COUNTER_EXHAUSTION": 146,
+   "COUNTER_BREAK_RISK": 148,
+   "COUNTER_FAILED_EVENT": 150,
+   "COUNTER_DECELERATION": 152
+  },
+  "groups": {
+   "COUNTER_ABSORPTION": {
+    "input": "absorption.state in (POSSIBLE,STRONG)",
+    "restates": "ABSORPTION"
+   },
+   "COUNTER_EXHAUSTION": {
+    "input": "touch_state startswith EXHAUSTION",
+    "restates": "TOUCH"
+   },
+   "COUNTER_BREAK_RISK": {
+    "input": "break_risk.state in (ELEVATED,CRITICAL)",
+    "restates": "BREAK"
+   },
+   "COUNTER_FAILED_EVENT": {
+    "input": "failed_event not in (None,NONE)",
+    "restates": "FAILED_EVENT"
+   },
+   "COUNTER_DECELERATION": {
+    "input": "momentum == DECELERATING",
+    "restates": "MOMENTUM (self-referential)"
+   }
+  }
+ }
+}

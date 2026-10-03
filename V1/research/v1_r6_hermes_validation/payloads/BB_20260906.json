@@ -1,0 +1,49 @@
+{
+ "audit_id": "BB_20260906",
+ "timestamp": "2026-09-28T05:13:00Z",
+ "current_state": "DECELERATION (dwell 3) with REJECTION event at t; price 4430.455 sits below the just-broken swing low 4431.915 (break BEYOND by 0.22 ATR, no reclaim). Post-crash V-recovery has compressed into a narrow band; M5 and H1 show range contraction while M1 shows late expansion. Note: latest bars are 2026-09-04 21:59Z vs as_of 2026-09-06 12:00Z, so state labels describe a ~38h-old tape.",
+ "structure": "Large crash-and-recovery: H4 range 110 (4472->4365 low) then aggressive dip-buying back to 4448.5 high; price has since fallen into 4422-4438 compression. 4431.915 (former swing low, touch_count_240=41) now acts as overhead supply after the downside break. Support cluster 4422.3-4422.4 (session lows) then 4411.9 (post-crash pivot). MTF agreement is CONFLICT: M1 +1.09 up, M5 -0.24/-5.28 down, M15 -8.03 down, H1 -48.06 down (50-bar +53.67), H4 +98.91 up (50-bar -240.77). The conflict is itself the signature of a V-shaped swing: H1 reflects the failed rally, H4 reflects the recovery leg.",
+ "mechanism": "Downside break of swing low 4431.915 that has stalled: price closed beyond the level by only 0.22 ATR and has produced no follow-through (breakout_pressure candidate has no confirming evidence) and no reclaim (failed_breakout candidate unconfirmed). Operative near-term mechanism is level-engagement/rejection at a broken level turned resistance, inside a decelerating post-crash range. No cross-market series available to confirm any macro driver.",
+ "primary_scenario": {
+  "scenario": "Rejection grind: price fails to reclaim 4431.915, continues low-volatility drift within 4422-4438, probing the 4422.3-4411.9 support shelf; resolution comes only on a decisive reclaim or a range-expanding break.",
+  "confidence": 0.38,
+  "horizon": "INTRADAY",
+  "trigger": "Continued rejection under 4431.915 with M5/M15 trends still negative and range contracting further",
+  "invalidation": "A close back above 4431.915 (reclaim) flips the structure to recovery-continuation"
+ },
+ "alternative_scenario": {
+  "scenario": "Reclaim-and-extend: a close above 4431.915 with expanding M1/M5 range confirms the recovery leg, targeting 4438.2 then 4448.5, and if H4 up-trend resumes, the 4470s pre-crash zone.",
+  "confidence": 0.3,
+  "horizon": "SHORT_TERM",
+  "trigger": "Close above 4431.915 with rising M1/M5 momentum and range_expanding on M5",
+  "invalidation": "Failure below 4422.3 opens a retest of 4411.9-4400 instead"
+ },
+ "expected_transition": "DECELERATION -> either BREAKOUT_ATTEMPT (on reclaim of 4431.915) or continued REJECTION/ROTATION (on failure). Historical analogs (state-evolution only) split: A968 -> BREAKOUT_ATTEMPT, A12862 -> TREND, A27169 -> TREND->REJECTION->EXPANSION; no consistent directional resolution.",
+ "direction": "NEUTRAL",
+ "horizon": "INTRADAY",
+ "confidence": 0.35,
+ "counter_evidence": [
+  "M1 trend_20 +1.09 with 8 consecutive up minutes and range expanding - late-session bid",
+  "H4 trend_20 +98.91 reflects a strong recovery leg; prior crash was aggressively bought (4365 -> 4448)",
+  "H1 trend_50 +53.67 suggests the crash may be a spike within a higher up-context",
+  "M5/H1 range contracting - compression often precedes expansion, direction unresolved",
+  "Two of three historical analogs resolve to upward states (TREND / BREAKOUT_ATTEMPT)"
+ ],
+ "invalidation": "Close above 4431.915 (reclaim) invalidates the downside-lean/neutral read and activates the recovery scenario; alternatively a break below 4422.3 with expanding range invalidates the range thesis and signals downside extension toward 4411.9/4400.",
+ "data_quality_flags": [
+  "STALE_FRESHNESS: latest L1 bars are 2026-09-04 21:59Z vs as_of 2026-09-06 12:00Z (~38h gap); DECELERATION/REJECTION labels describe the stale tape, not necessarily t0",
+  "CROSS_MARKET_UNKNOWN: DXY, VIX, UST10Y(TNX) all STALE_OR_NOT_COVERED; no NEWS/MACRO/CFTC/ETF - no external confirmation possible",
+  "MTF_AGREEMENT_CONFLICT: H1 vs H4 trends oppose; timeframes never merged",
+  "L2_LEVEL_DERIVED: swing level is DERIVED (pivot, causal), not DIRECT",
+  "ANALOGS_STATE_ONLY: historical analogs carry state evolution only, no returns (per rules)"
+ ],
+ "reasoning_trace": [
+  "Read only PIT context; no other analyst forecast seen.",
+  "Price 4430.455 is 0.22 ATR beyond broken swing low 4431.915 with reclaim_status NONE -> level now resistance; rejection event consistent.",
+  "M5/M15/H1 20-bar trends negative but H4 positive and M1 turning up -> net NETURAL near-term, not a clean directional setup.",
+  "Range contraction on M5/H1 + DECELERATION dwell 3 -> low-conviction chop rather than directional impulse; compression could precede expansion either way.",
+  "~38h staleness of price bars relative to as_of and fully absent cross-market data materially cap confidence.",
+  "State history NO_DEFINED_STATE->ROTATION->DECELERATION shows a coherent deceleration path; analogs disagree on outcome -> no forced edge.",
+  "Chose NEUTRAL/INTRADAY/0.35 as the honest judgement: insufficient fresh information to claim a directional edge at t0."
+ ]
+}

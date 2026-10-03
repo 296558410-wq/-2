@@ -1,0 +1,52 @@
+{
+  "audit_id": "HB_BLIND_20260801",
+  "timestamp": "2026-08-01 12:00:00+00:00",
+  "current_state": "ROTATION (frozen label ACCEPTANCE at t, dwell 4 bars, ambiguity_rate_8 = 0.75). Price 4042.025 sits ~0.17 ATR above swing-low level 4041.035 (break_status INSIDE, reclaim NONE, 35 touches/240 bars). Short-timeframe downtrend (M1/M5/M15/H1 trend_20 all negative) pressing on that support while H4 trend_20 is positive.",
+  "structure": "Selloff from ~4051-4055 into 4035.085 (H1 21:00 low), with long lower wicks (6.94 on M1/M5/M15 current bars, 100th-percentile ranges) showing aggressive bids at 4035-4041. Active level is swing low 4041.035 (side DN, INSIDE, age 17 bars, distance 0.17 ATR). Multi-timeframe agreement CONFLICT: M1/H1 trend_20 -8.7/-42.2 (down), H4 trend_20 +19.2 (up). Ranges expanding, no contraction. Historical analogs (exact state+dwell, similarity 1.0) show ROTATION typically resolving to REJECTION/NO_DEFINED_STATE, one path to COMPRESSION; state-evolution only, no returns.",
+  "mechanism": "Only mechanism candidate: trend_continuation (supporting: price inside level, 8-bar displacement -8.54; invalidation: decisive break of the active level). Interpretation: the short-term downtrend is grinding toward the 4041 swing low; the level is the pivot — orderly continuation means taking out the level and extending toward the prior H1 lows near 4020-4025, while holding the level with acceptance/reclaim would flip structure to a rejection bounce. ROTATION + 75% ambiguity means the level decision dominates the near-term path.",
+  "primary_scenario": {
+    "scenario": "Downside continuation: price presses through and closes decisively below the 4041.035 swing low, extending the H1 downtrend toward the 4020-4025 zone (H1 lows 4021.985/4020.545 from 14:00-15:00 UTC).",
+    "confidence": 0.48,
+    "horizon": "SHORT_TERM",
+    "trigger": "Sustained M5/M15 closes below 4041.035 with expanding range and negative body dominance (momentum acceptance of the break, break_status flips to BROKEN).",
+    "invalidation": "Price reclaims and holds above ~4048-4051 (breakdown origin / recent swing highs), turning the structure into range or bounce."
+  },
+  "alternative_scenario": {
+    "scenario": "Rejection/bounce: the 4041 swing-low level holds (large lower wicks confirm bids), price snaps back into the 4048-4055 zone; ROTATION persists or transitions to REJECTION, with a possible retest of 4055.535 before any new downside.",
+    "confidence": 0.38,
+    "horizon": "INTRADAY",
+    "trigger": "Bullish M1/M5 close back above 4044-4045 (recent supply) or a rejection candle at the level (ACCEPTANCE→REJECTION event), reclaiming the swing low.",
+    "invalidation": "A decisive hourly close below 4041.035 confirms the breakdown and negates the bounce."
+  },
+  "expected_transition": "ROTATION/ACCEPTANCE → TREND (level breaks decisively, downside acceleration) OR → REJECTION / sustained ROTATION (level holds, price bounces). Analog A4173/A14240 show ROTATION→(NO_DEFINED_STATE)→REJECTION within ~8-12 steps; A25116 shows COMPRESSION. No return data in analogs; treat as regime-path only.",
+  "direction": "DOWN",
+  "horizon": "SHORT_TERM",
+  "confidence": 0.42,
+  "counter_evidence": [
+    "Long lower wicks (6.94 on M1/M5/M15 current bars) with small bodies show strong buying at 4035-4041 near the close — the swing low may hold",
+    "Price is INSIDE (above) the 4041.035 level, not yet broken; reclaim_status NONE leaves the bounce door open",
+    "H4 trend_20 is positive (+19.16) while lower timeframes are negative — higher-timeframe context conflicts, capping conviction",
+    "State ambiguity_rate_8 = 0.75 and ROTATION dwell of only 4 bars make the regime read inherently uncertain",
+    "All cross-market series (DXY, VIX, UST10Y/^TNX PROXY) are UNKNOWN/STALE — no macro confirmation of a gold breakdown"
+  ],
+  "invalidation": "Sustained reclaim and hold above ~4048-4051 (breakdown origin) invalidates the downside-continuation view; equivalently, a decisive close below 4041.035 invalidates the bounce alternative. Given ambiguity 0.75 and absent cross-market data, directional edge is modest.",
+  "data_quality_flags": [
+    "PRICE KLINE: RAW_GEOMETRY + DERIVED (M1/M5/M15/H1/H4)",
+    "L2 swing level: DERIVED (causal pivot levels, break_status INSIDE)",
+    "State/event labels: DERIVED (frozen C1 ontology + min-dwell lifecycle)",
+    "Historical analogs: DERIVED similarity (exact state + dwell bucket); state-evolution only, no returns",
+    "DXY/VIX/UST10Y_PROXY_TNX: UNKNOWN (STALE_OR_NOT_COVERED) — UST10Y is a PROXY (^TNX), never DIRECT",
+    "GLD/GC/CFTC_COT/ETF_FLOWS/NEWS/MACRO_EVENTS: ABSENT, recorded as absent not fabricated",
+    "MTF agreement: CONFLICT — timeframes reported separately, never merged"
+  ],
+  "reasoning_trace": [
+    "Price 4042.025 is ~0.17 ATR above swing-low level 4041.035 (INSIDE, 35 touches/240 bars) — the level is the single most decision-relevant object",
+    "M1/M5/M15/H1 trend_20 all negative (-8.73/-6.86/-4.11/-42.22) with expanding ranges and consecutive-down flags — the short-term downtrend is real and H1 is decisively bearish",
+    "H4 trend_20 +19.16 (trend_50 -37.13) conflicts with the lower timeframes, so I do not merge timeframes into one clean direction",
+    "The final M1 bar (100th-percentile range 9.05, lower wick 6.94, small bearish body) reads as a rejection of the 4035 lows near the close — the reason the bounce alternative gets 0.38 despite the bearish tape",
+    "State ROTATION/ACCEPTANCE with 0.75 ambiguity; analogs resolve to REJECTION/NO_DEFINED_STATE/COMPRESSION, none indicating immediate trend — this caps confidence",
+    "The only mechanism candidate is trend_continuation with the level as its invalidation point, which supports a modest bearish tilt rather than a strong one",
+    "No cross-market or macro data available to confirm or refute — per rules, absent data is not fabricated, and confidence is reduced accordingly",
+    "Net: DOWN bias, SHORT_TERM horizon, confidence 0.42 — the tradeable question is the fate of the 4041.035 level"
+  ]
+}

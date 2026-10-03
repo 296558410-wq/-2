@@ -1,0 +1,48 @@
+{
+ "schema": "v3_crossmarket_r3_recommendation/1",
+ "ts_utc": "2026-09-25T10:38:52.763780+00:00",
+ "recommended_for_R3": [
+  {
+   "rank": 1,
+   "combo": "XAUUSD + DXY + VIX",
+   "timeframe": "1h",
+   "overlap_days": 624,
+   "bars": 5997,
+   "why": "largest clean 3-market overlap; all three series are free, automatable and China-accessible",
+   "gaps": [
+    "Yahoo bar open/close semantics UNKNOWN",
+    "Yahoo history may be revised"
+   ]
+  },
+  {
+   "rank": 2,
+   "combo": "XAUUSD + DXY + UST10Y(proxy) + VIX",
+   "timeframe": "5m",
+   "overlap_days": 63,
+   "bars": 3600,
+   "why": "four-market 5m overlap, 2.6x the R2 window",
+   "gaps": [
+    "^TNX is a proxy"
+   ]
+  },
+  {
+   "rank": 3,
+   "combo": "XAUUSD + DXY + VIX + UST10Y(proxy)",
+   "timeframe": "1h",
+   "overlap_days": 624,
+   "bars": 2992,
+   "why": "four-market long overlap under grid normalization",
+   "gaps": [
+    "UST10Y is a proxy",
+    "grid normalization required for ^TNX (:20 offset)"
+   ]
+  }
+ ],
+ "NOT_recommended": {
+  "GC=F": "wrong instrument (futures)",
+  "stooq": "challenge-blocked",
+  "FRED": "unreachable now",
+  "yahoo_daily": "series appears broken"
+ },
+ "basis": "coverage, quality, semantics, PIT, reproducibility, accessibility, cost - NOT any alpha result"
+}

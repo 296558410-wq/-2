@@ -1,0 +1,57 @@
+{
+ "audit_id": "BA_20260802",
+ "timestamp": "2026-09-28T11:25:00+00:00",
+ "overall_verdict": "PARTIAL_AGREE",
+ "focus_verdicts": {
+  "OBSERVATION_DISCIPLINE": "PARTIAL_AGREE",
+  "MECHANISM_DISCIPLINE": "PARTIAL_AGREE",
+  "COUNTER_EVIDENCE": "PARTIAL_AGREE",
+  "CONFIDENCE": "PARTIAL_AGREE",
+  "ABSTENTION": "DISAGREE",
+  "INVALIDATION": "PARTIAL_AGREE"
+ },
+ "over_inference": [
+  "Primary scenario trigger 'price holds above 4041.035, bounce toward 4050' — the target 4050 is unanchored: no structure in the context sits at 4050 (nearest level 4041.035; 4055.535 is only cited as the alternative's reclaim line). A round-number pull target is inferred, not derived.",
+  "Observation 'Price 4042.025 pinned just above swing low 4041.035, level INSIDE' — 'pinned' overstates a 1.0-point gap (distance_atr 0.16655) into a deliberate rest posture.",
+  "Evidence 'H4 trend_20 positive, conflicting with lower timeframe down' is used to support RANGE, but H4 trend_20 (+19.16) over 20 H4-bars is a coarse, single-series proxy; treating it as a genuine bullish pull toward RANGE overreads one number against four down timeframes."
+ ],
+ "mechanism_jump": [
+  "support_rejection labelled 'POSSIBLE: absorption wicks at swing low' is promoted to the primary RANGE scenario with an upward trigger/bounce, even though the frozen candidate set (L4) contains ONLY trend_continuation and the H1 momentum is strongly down — a POSSIBLE mechanism becomes the operative bet without better support than its rival.",
+  "range_pin 'POSSIBLE: price pinned inside level, acceptance' — 'ACCEPTANCE' is a frozen event label, not evidence of a range-pin mechanism; citing the label as mechanism support conflates taxonomy with mechanism."
+ ],
+ "missing_counter_evidence": [
+  "ambiguity_rate_8 = 0.75 (75% of recent labels ambiguous) is only cited under uncertainty_reason, never weighed as counter-evidence against the RANGE call itself.",
+  "Most-similar analog A4173 (similarity 1.0) evolves ROTATION -> NO_DEFINED_STATE -> REJECTION -> TREND -> REJECTION, and A14240 also reaches REJECTION by step 8 — both are consistent with continued downside / rejection of the level, not with a RANGE bounce; the forecast acknowledges analogs show 'only state evolution, no returns' but never uses their bearish lean against RANGE.",
+  "M15 trend_50 = -17.05 (deepest 50-bar drawdown of all timeframes) is absent from counter_evidence; the deepest trend is ignored.",
+  "Level wear: 35 touches in 240 bars and distance_atr 0.16655 mean the 'strong support' is trivially close and heavily retested; repeated-touch degradation of the level is not in counter_evidence."
+ ],
+ "unjustified_confidence": [
+  "abstain_reason 'Context sufficient though ambiguous; RANGE best-supported' — with ambiguity 0.75, no cross-market series, MTF conflict and confidence only 0.35, 'best-supported' overstates the basis for not abstaining.",
+  "evidence_strength 0.4 vs confidence 0.35 are numerically distinct but the reasoning never separates what each measures; the 4050 target and support-strength basis for a 0.4 evidence_strength are not decomposed."
+ ],
+ "observation_as_fact": [
+  "Observation 'Last H1 bar large down candle, long lower wick 6.94 absorption' — the context reports only geometry (lower_wick 6.94); 'absorption' is a directional interpretation asserted inside an observation.",
+  "Evidence 'Long lower wicks signal absorption near 4041 support' — stated as an established signal, not as a hypothesis; a long lower wick can equally be stop-run or failed rally, and A itself later flags the ambiguity in what_i_do_not_know."
+ ],
+ "strongest_objection": "Hermes-A commits to a RANGE bounce toward 4050 on the strength of a swing low that sits only 0.17 ATR below price and has been touched 35 times in 240 bars, while the frozen mechanism set contains only trend_continuation, recent state labels are 75% ambiguous, and all cross-market/news data is absent — this is a near-abstention profile (NO_DIRECTIONAL_EDGE, confidence 0.35) dressed as a scenario pick; with no directional edge and no independent confirmation, abstention was the more honest output, and the unanchored 4050 target adds inference beyond the evidence.",
+ "evidence": [
+  "Context distance_atr 0.16655: level 4041.035 is ~0.17 ATR below close 4042.025",
+  "Context touch_count_240 35, level_age_bars 17, break_status INSIDE",
+  "Context ambiguity_rate_8 0.75; L5 current_event ACCEPTANCE, current_state ROTATION",
+  "Context L4 candidates: only trend_continuation (supporting 'price inside level, 8-bar displacement -8.54'; counter_evidence [])",
+  "Context H1 trend_20 -42.2199999999998, consecutive_down 8; M15 trend_50 -17.049999999999727",
+  "Context analogs A4173/A14240 reach REJECTION by step 8; A25116 stays COMPRESSION",
+  "Forecast confidence 0.35, uncertainty 0.65, evidence_strength 0.4, direction_bias NO_DIRECTIONAL_EDGE, abstain false",
+  "Forecast counter_evidence lists H1 downtrend, expanding down bars, trend_continuation candidate, sequential new lows"
+ ],
+ "reasoning_trace": [
+  "Read PIT context and Hermes-A forecast; outcome never consulted.",
+  "Checked observation stream: located 'absorption' asserted inside observation and evidence lines while context reports only geometry.",
+  "Checked mechanism section: support_rejection/range_pin invented beyond frozen L4 set and elevated to primary scenario despite trend_continuation being the only frozen candidate.",
+  "Checked counter_evidence: confirmed H1/momentum listed, but ambiguity 0.75, bearish analog paths, M15 trend_50 -17.05 and level wear (35 touches, 0.17 ATR) omitted.",
+  "Checked confidence: 0.35/0.65 honest for the ambiguity, but evidence_strength vs confidence separation and 'RANGE best-supported' overstated.",
+  "Checked abstention: NO_DIRECTIONAL_EDGE + 75% ambiguity + absent cross-market makes abstain=false debatable — flagged as DISAGREE.",
+  "Checked invalidation: 'decisive break below 4041.035' and 'clear close' are not operationally defined; RANGE invalidation nearly coincides with the DIRECTIONAL trigger, so the two scenarios are weakly separable.",
+  "Assigned verdicts and quoted concrete instances from both files."
+ ]
+}

@@ -1,0 +1,55 @@
+{
+ "schema": "v1_restart_state_diff/1",
+ "generated_utc": "2026-10-02T13:45:40.438393+00:00",
+ "restart_utc": "2026-10-01T13:52:15+00:00",
+ "label_hysteresis": {
+  "persisted": false,
+  "note": "hysteresis k=2 is path-dependent; recomputed each cycle from MT5 M1 bars; warm-up ~90000 M1 (~6000 M15) >> 5000-M15 convergence threshold; nothing persisted across restart"
+ },
+ "risk_guard": {
+  "persisted": false,
+  "note": "RiskGuard() constructed fresh each cycle in the 09-28/10-01 code; daily_loss/consecutive_losses never written back -> identical before and after restart (no state to lose)"
+ },
+ "position_state": {
+  "persisted": "broker(MT5) holds positions; engine reads mt5.positions_get()",
+  "note": "not engine-persisted; restart does not drop positions"
+ },
+ "time_base": {
+  "persisted": false,
+  "note": "NOW = module import time; roll_day(NOW[:10]) uses import-time UTC date"
+ },
+ "mt5_terminal_cache": {
+  "persisted": false,
+  "note": "terminal data cache/history refreshed on process restart; connection reopened each cycle with explicit path"
+ },
+ "ledger": {
+  "persisted": true,
+  "recovered": "Ledger.verify() on every cycle; chain continues across restart"
+ },
+ "snapshot_fields_drift": [
+  {
+   "first_seen": "2026-09-28T12:33:29.751274+00:00",
+   "n": 7,
+   "keys": [
+    "ask",
+    "bid",
+    "data_age_seconds",
+    "digits",
+    "m15_last_close",
+    "mid",
+    "spread_bps"
+   ]
+  },
+  {
+   "first_seen": "2026-09-28T12:43:31.750352+00:00",
+   "n": 5,
+   "keys": [
+    "ask",
+    "bid",
+    "digits",
+    "mid",
+    "spread_bps"
+   ]
+  }
+ ]
+}

@@ -1,0 +1,76 @@
+{
+ "layer": "L2_MARKET_READING",
+ "version": "v1r2-mr-ontology-r1",
+ "principle": "these describe WHAT the market is doing; they never emit BUY/SELL (task §9/§17)",
+ "behaviours": [
+  "TREND",
+  "RANGE",
+  "COMPRESSION",
+  "EXPANSION",
+  "ACCELERATION",
+  "DECELERATION",
+  "EXHAUSTION",
+  "REJECTION",
+  "ACCEPTANCE",
+  "ROTATION",
+  "BREAKOUT_ATTEMPT",
+  "BREAKOUT_CONFIRMATION",
+  "BREAKOUT_FAILURE",
+  "RETEST",
+  "REVERSAL_ATTEMPT"
+ ],
+ "acceptance_rejection": {
+  "definition": "ACCEPTANCE = price moves beyond a level, closes beyond it, and does NOT promptly return; REJECTION = price moves beyond a level and promptly returns into the prior range",
+  "directions": [
+   "UPWARD_ACCEPTANCE",
+   "UPWARD_REJECTION",
+   "DOWNWARD_ACCEPTANCE",
+   "DOWNWARD_REJECTION"
+  ],
+  "evidence_chain_required": true,
+  "horizon_bars_pre_registered": [
+   1,
+   2,
+   3,
+   5,
+   8
+  ],
+  "not_a_direction_call": true
+ },
+ "momentum_as_behaviour": {
+  "states": [
+   "ACCELERATING",
+   "NORMAL",
+   "DECELERATING",
+   "EXHAUSTING",
+   "TRANSITION"
+  ],
+  "forbidden_mapping": "ACCELERATING -> BUY is forbidden (task §17)"
+ },
+ "defense_strength": {
+  "name": "SUPPORT_DEFENSE_STRENGTH / RESISTANCE_DEFENSE_STRENGTH",
+  "inputs": [
+   "touch_count",
+   "rebound_amplitude",
+   "rebound_speed_bars",
+   "rebound_duration_bars",
+   "retrace_depth",
+   "candle_rejection_degree",
+   "close_position",
+   "momentum_change",
+   "volatility_change"
+  ],
+  "output": "WEAKENING / STABLE / STRENGTHENING",
+  "observational_only": true,
+  "not_a_signal": true,
+  "forbidden": "touch_count >= X = break is forbidden (task §12)"
+ },
+ "unknown_taxonomy": [
+  "INSUFFICIENT_DATA",
+  "CONFLICTING_EVIDENCE",
+  "AMBIGUOUS_STATE",
+  "UNOBSERVABLE_PREREQUISITE",
+  "NO_DEFINED_STATE",
+  "LOW_CONFIDENCE"
+ ]
+}

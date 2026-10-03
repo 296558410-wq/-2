@@ -1,0 +1,60 @@
+{
+  "audit_id": "BA_20260721",
+  "timestamp": "2026-07-21T00:00:00Z",
+  "overall_verdict": "DISAGREE",
+  "focus_verdicts": {
+    "OBSERVATION_DISCIPLINE": "PARTIAL_AGREE",
+    "MECHANISM_DISCIPLINE": "DISAGREE",
+    "COUNTER_EVIDENCE": "PARTIAL_AGREE",
+    "CONFIDENCE": "DISAGREE",
+    "ABSTENTION": "PARTIAL_AGREE",
+    "INVALIDATION": "PARTIAL_AGREE"
+  },
+  "over_inference": [
+    "Primary scenario RANGE trigger 'Price oscillates 3999-4045, swing low respected' simply re-describes the current H4 bar's already-realized range (context H4 current: low 3999.535, high 4044.655, close 4037.715). The forecast extrapolates the range the market just traversed as the future 4h range instead of forecasting a new state.",
+    "Evidence '3/3 analogs COMPRESSION at step 4' is used to support RANGE persistence over a 4h horizon, but the analog state_evolution shows all three analogs exit COMPRESSION by steps 12-16 (A32834 -> REJECTION at 12/16; A34210 -> ROTATION at 8, TREND at 16; A35143 -> REJECTION at 12, TREND at 16). The step-to-time mapping is never established, so citing step-4 consensus for a 4h forecast cherry-picks the one step where all analogs agree.",
+    "expected_transition 'COMPRESSION persists, bounded oscillation' projects a 6-bar dwell regime (state history max dwell 6, single transition REJECTION->COMPRESSION) over a 4h horizon with no dwell-history evidence that compression lasts that long; the L5 sequence shows no precedent of compression persisting beyond 6 bars."
+  ],
+  "mechanism_jump": [
+    "level_rejection_range marked SUPPORTED from '45 touches, REJECTION, COMPRESSION' — but the close (4000.245) is 2.76 pts BELOW the swing low (4003.005), so 'rejection holds' is contradicted at t0; 45 touches in 240 bars is equally consistent with level erosion; and context L4 lists only trend_continuation as a candidate with the note 'mechanism CANDIDATES only; NOT asserted as fact (§13)'. A asserted SUPPORTED for a mechanism built on DERIVED labels and not even listed as a candidate.",
+    "compression_continuation marked SUPPORTED from 'dwell 6, analogs 3/3' — the 3/3 consensus holds only at step 4; it decays to 2/3 at step 8 and 0/3 at step 12. A SUPPORTED status requires evidence that persists over the forecast horizon, not a single-step snapshot."
+  ],
+  "missing_counter_evidence": [
+    "Price is already below the anchor: context L2 level_price 4003.005 (SWING_LOW) vs M1 current close 4000.245 — the forecast's own trigger 'swing low respected' is contradicted at t0, yet this is never listed as counter-evidence; the observation is spun as 'near swing low'.",
+    "Both range boundaries are effectively already tested: H4 high 4044.655 is 0.345 pts below the invalidation 4045, and M1 low 3999.535 is 0.465 pts above the invalidation 3999. The RANGE band is pre-resolved; not cited.",
+    "Analog divergence at later steps (A34210 and A35143 both reach TREND by step 16) directly contradicts 'COMPRESSION persists' over a 4h horizon; not cited as counter-evidence.",
+    "High touch count (45/240) on a support level is consistent with the level wearing out and breaking, not only with it holding; the weakening interpretation is absent from the forecast."
+  ],
+  "unjustified_confidence": [
+    "confidence 0.45 is set ABOVE evidence_strength 0.4 with no stated reconciliation, and uncertainty 0.55 is mechanically 1 - confidence rather than independently derived.",
+    "confidence_reason 'Frozen state, analog consensus, level touches align' — the analog consensus decays to 0/3 by step 12, and 'level touches align' is false in the direction claimed: the close is below the level, not aligned with it as support. The stated reasons do not support 0.45 confidence on a band whose both edges were already touched within the current H4 bar."
+  ],
+  "observation_as_fact": [
+    "Observation list item 'M1 close 4000.245 near swing low 4003' presents 'near' (an interpretation of support proximity) as an observation; 4000.245 is 2.76 pts / ~1.4 M1-ATR (ATR 1.9195) BELOW 4003.005 — below the level, not merely near it.",
+    "what_i_know item 'H4/H1 last bars strongly bullish' is stated as settled knowledge while the freshest closes (M5 4003.725, M15 4002.845) and M5/M15 range_expanding show the most recent action reversing down; the bullish read is a time-aggregated interpretation presented as fact without the intra-hour reversal."
+  ],
+  "strongest_objection": "The primary RANGE scenario band 3999-4045 is the range the market just completed inside the current H4 bar (low 3999.535, high 4044.655): both invalidation boundaries sit within ~0.5 pts of already-printed extremes, price (4000.245) trades below the 'respected' swing low (4003.005), and the analogs A itself cites diverge from COMPRESSION to REJECTION/TREND by steps 12-16. The forecast does not predict a future state — it re-describes the past bar and then assigns 0.45 confidence and SUPPORTED mechanism statuses to it.",
+  "evidence": [
+    "Context H4 current bar: open 3999.945, high 4044.655, low 3999.535, close 4037.715, body 37.77, body_ratio 0.837",
+    "Context L2 nearest_level: level_price 4003.005, touch_count_240 45, break_status INSIDE; M1 current close 4000.245",
+    "Context L5 state history: current_state COMPRESSION, current_dwell_bars 6, single transition REJECTION->COMPRESSION",
+    "Context historical_analog: A32834 steps 12/16 REJECTION; A34210 step 8 ROTATION, step 16 TREND; A35143 step 12 REJECTION, step 16 TREND — 0/3 COMPRESSION at step 12",
+    "Context L4 candidates: only trend_continuation listed; note 'mechanism CANDIDATES only; NOT asserted as fact (§13)'",
+    "Context L6 multi-TF: agreement CONFLICT; M1/M5/M15 trend_20 all negative; H4 trend_50 -69.86; H1 current body_ratio 0.912",
+    "Forecast R8B_A_20260721: primary_scenario trigger 'Price oscillates 3999-4045, swing low respected', invalidation 'Close below 3999 or above 4045 breaks range'",
+    "Forecast R8B_A_20260721: possible_mechanisms level_rejection_range SUPPORTED '45 touches, REJECTION, COMPRESSION'; compression_continuation SUPPORTED 'dwell 6, analogs 3/3'",
+    "Forecast R8B_A_20260721: evidence_strength 0.4, confidence 0.45, uncertainty 0.55, confidence_reason 'Frozen state, analog consensus, level touches align'",
+    "Forecast R8B_A_20260721: observations 'M1 close 4000.245 near swing low 4003'"
+  ],
+  "reasoning_trace": [
+    "Read PIT context and Hermes-A forecast; no outcome data consulted.",
+    "Checked observation list against context: H4 close/body figures correct; flagged 'near swing low 4003' as framed (close is below the level by 2.76 pts / ~1.4 M1-ATR).",
+    "Compared RANGE band (3999-4045) against realized H4 range (3999.535-4044.655): boundaries coincide with already-tested extremes -> scenario re-describes the past.",
+    "Checked analog consensus claim against state_evolution: 3/3 COMPRESSION only at step 4; decays 2/3 at step 8, 0/3 at step 12; step-to-time mapping for the 4h horizon never established -> evidence cherry-picked.",
+    "Checked mechanism statuses against L4 candidates and L2 data: SUPPORTED asserted for mechanisms not listed as candidates, built on DERIVED labels, with t0 price below the anchor level -> overstated.",
+    "Checked confidence vs evidence_strength: 0.45 > 0.4 with no reconciliation; uncertainty mechanically 1 - confidence; stated reasons (analog consensus, level alignment) contradicted by the same data A cites.",
+    "Assessed abstention: low ambiguity (0.25) and checkable invalidation make a low-confidence call defensible, but given CONFLICT, absent macro/VIX/news, PROXY DXY, price below anchor, and a pre-resolved band, abstention was the more honest choice; verdict PARTIAL_AGREE.",
+    "Assessed invalidation: 'Decisive H1 close below 3999 or above 4045' is checkable in principle but 'decisive' is undefined, boundaries nearly coincide with printed extremes, and the alternative invalidation 'Rejection at 4003' is already in effect at t0; verdict PARTIAL_AGREE.",
+    "Synthesized findings into overall DISAGREE: the forecast's central RANGE claim and its SUPPORTED/confidence markings are not justified by the PIT evidence."
+  ]
+}

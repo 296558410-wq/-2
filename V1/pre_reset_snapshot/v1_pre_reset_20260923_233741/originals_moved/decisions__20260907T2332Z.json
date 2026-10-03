@@ -1,0 +1,152 @@
+{
+ "schema": "hermes_decision_v1",
+ "decision_id": "DEC-2026-09-07T23:32Z",
+ "utc_ts": "2026-09-07T23:32:00+00:00",
+ "symbol": "XAUUSD",
+ "cycle": "2026-09-07T23:32Z",
+ "market_state": {
+  "d1": {
+   "tf": "D1",
+   "last_close": 4399.05,
+   "last_bar": "2026-09-04",
+   "ma20": 4464.43,
+   "price_vs_ma20": -146.4,
+   "rsi14": 49.14,
+   "structure": {
+    "hhish": 4,
+    "llish": 5,
+    "last_vs_5ago": "down"
+   },
+   "trend_range": {
+    "cat": "range",
+    "er": 0.017
+   },
+   "s_r": {
+    "high60": 4696.87,
+    "low60": 4042.58,
+    "pos_in_range": 54.5
+   },
+   "recent_move_bps": -125.0
+  },
+  "h4": {
+   "tf": "H4",
+   "last_close": 4414.385,
+   "last_bar": "2026-09-07 16:00",
+   "ma20": 4415.09,
+   "ma50": 4470.91,
+   "price_vs_ma20": -1.6,
+   "rsi14": 53.07,
+   "structure": {
+    "hhish": 5,
+    "llish": 4,
+    "last_vs_5ago": "up"
+   },
+   "trend_range": {
+    "cat": "range",
+    "er": 0.061
+   },
+   "s_r": {
+    "high60": 4696.87,
+    "low60": 4282.53,
+    "pos_in_range": 31.8
+   },
+   "recent_move_bps": 34.9
+  },
+  "h1": {
+   "tf": "H1",
+   "last_close": 4406.99,
+   "last_bar": "2026-09-07 20:00",
+   "ma20": 4406.28,
+   "ma50": 4441.79,
+   "ma200": 4480.93,
+   "price_vs_ma20": 1.6,
+   "rsi14": 51.37,
+   "structure": {
+    "hhish": 4,
+    "llish": 5,
+    "last_vs_5ago": "up"
+   },
+   "trend_range": {
+    "cat": "range",
+    "er": 0.027
+   },
+   "s_r": {
+    "high60": 4511.01,
+    "low60": 4371.78,
+    "pos_in_range": 25.3
+   },
+   "recent_move_bps": 23.3
+  },
+  "m15": {
+   "tf": "M15",
+   "last_close": 4404.825,
+   "last_bar": "2026-09-07 21:00",
+   "ma20": 4410.61,
+   "ma50": 4404.16,
+   "ma200": 4442.3,
+   "price_vs_ma20": -13.1,
+   "rsi14": 34.87,
+   "structure": {
+    "hhish": 4,
+    "llish": 5,
+    "last_vs_5ago": "down"
+   },
+   "trend_range": {
+    "cat": "mixed",
+    "er": 0.303
+   },
+   "s_r": {
+    "high60": 4423.96,
+    "low60": 4381.09,
+    "pos_in_range": 55.4
+   },
+   "recent_move_bps": -21.7
+  },
+  "m15_live": {
+   "last_mid": 4412.03,
+   "spread_bps_now": 0.41,
+   "tick_rate_per_min_15m": 93,
+   "quote_source": "quote_latest",
+   "abnormal": {
+    "last6_max_move_bps": 9.5,
+    "z_vs_baseline": -0.06,
+    "baseline_mean_move_bps": 10.2
+   }
+  }
+ },
+ "data_quality": {
+  "live_days": 1,
+  "live_ticks": 165477,
+  "context_days": 25,
+  "gaps": [],
+  "notes": "半解冻第10轮: quote mid 4410.85→4412.03(+1.18pt, 23:17→23:32Z), 已上穿墙底4411(+1.03pt)=第10次墙测试进行中(quote层); tick 165477→165477零增第10轮(自21:47Z~105min), M15 bar止21:00收4404.825陈旧~152min(22:00-23:30十二根未推), candle_latest.json stale@12:15Z不采信; spread0.41bps持平; z-0.06/tick93正常; 无gaps"
+ },
+ "mtf_agreement": "neutral_lean_short_10th_wall_test_live_books_in_zone",
+ "state_summary": "XAUUSD第四leg回弹登墙: mid 4410.85→4412.03(+1.18pt), 23:32Z首度站上墙底4411(+1.03pt)=21:00 rollover后第10次墙测试live(前9次叩4411-4416全拒, 4416双头); bar/tick仍冻(tick165477第10轮零增~105min, M15止21:00陈旧~152min, candle stale@12:15Z); D1收4399.05<MA20 4464.43 RSI49.1 range pos54.5; H4收4414.385贴MA20 4415.09 pos31.8; H1收4406.99贴MA20 4406.28 pos25.3; M15(21:00)收4404.825<MA20 4410.61贴MA50 4404.16 RSI34.9结构down; spread0.41bps; 在册三空书: floor TP-182005R[4398.5,4401.5]止4406(~00:21Z到期, 距-10.5pt)+墙fade TP-1947Z[4411,4415.5]止4418(~01:52Z到期, 现mid已在带内=本轮TRIGGER将fire)+TP-210349R[4409,4416]止4426(~03:05Z到期, mid已在带内将fire); 无持仓; 差什么=第10测结果: quote触≥4413-4416后是否再拒(盘中tick回落<4411=拒)→fade双书fire, 或≥4417墙破证伪→撤fade转多评估; 执行层risk notional机械拦截在册书零成交实录(已报人工, 不改policy/registry)",
+ "m15_change": "从23:17Z: 唯一实质变化=quote mid 4410.85→4412.03(+1.18pt), 上穿墙底4411(+1.03pt)=第10次墙测试从'距0.15pt即临'推进至'live进行中'(首度站上墙底); spread0.41bps持平; tick165477→165477零增第10轮(~105min), M15 bar止21:00收4404.825不变(未推十二根, stale~152min); 其余指标21:00口径不变. 定性: 半解冻持续(quote动bar冻), 裁决面=墙底单点已破入带, 现处墙带[4411,4416]内上行受测段; 方向信息=多方第四leg三连升(4407.57→4408.82→4410.85→4412.03)登墙、空方尚未给出第10次拒绝的tick级确认; 无close confirm; 增量未达注册阈值(在册fade双书现mid已在带内将自动fire, 同区重建=叠单否决), 未触失效线(mid≥4417/4425); 风险=quote伪值判位±1pt级(现距4416顶3.97pt/距4417线4.97pt, 引擎以实时mid判触发不受影响)",
+ "opportunity": "no_new_setup_wall_10th_test_live_books_in_zone_auto_fire",
+ "opportunity_mechanism": "本cycle新注册=零, 理由分述: ①墙fade重注册: mid 4412.03已在fade双书带内(TP-1947Z[4411,4415.5] 01:52Z到期/TP-210349R[4409,4416] 03:05Z到期), 本轮engine TRIGGER将fire(risk拦预期), 同区重建=叠单否决; ②破位空: floor书[4398.5,4401.5]在册(距-10.5pt, 00:21Z到期)全覆盖, break叠单否决; ③承接多: entry 4404.5-4406.5/stop~4401(4.5pt)对target 4411-4416(5-10pt)名义R1.2-2.3, 但触发前置=第10次墙拒后回落, 现价还在墙带内上行(未拒), p_win~0.35→EV≈0.35×1.6-0.65×1-0.1≈-0.19R否决(与前轮同构); ④多breakout: 需mid≥4417, 现距4.97pt且21:00刚收破墙底/MA20 rollover, D1/H4<MA20空排, bar冻无close佐证, 0.38×1.5-0.62×1-0.1≈-0.15R否决; 机制主轴: 17:00Z起8-9叩4411-4416墙全拒→21:00收破墙底+MA20(RSI50→34.9)→4404.8-4406支撑两度承接→三轮lower-high(4412.66→4409.09→4407.57)→第四leg三连升(4407.57→4412.03)登墙=第10测live; 两结局引擎全覆盖: ①墙带内再拒(tick回落<4411)→TP-1947Z/TP-210349R自动fire(risk层拦→零成交, 报人工) ②破4404.5前哨→floor书≤4401.5接空续跌4394/4385.5/4364.5; 执行注意: fade双书现mid均在带内, 本轮engine TRIGGER将触发再risk拦(notional 33k-93k>max5000机械拦截, 非风控本意, 已报人工, Hermes不改risk policy/registry)",
+ "decision": "WAIT",
+ "confidence": 0.5,
+ "plan_id": null,
+ "answers_14": {
+  "1": "市场状态: XAUUSD第四leg回弹登墙: mid 4410.85→4412.03(+1.18pt, 23:17→23:32Z), 首度上穿墙底4411(+1.03pt)=21:00 rollover后第10次墙测试live(前9次叩4411-4416全拒, 4416双头); bar/tick仍冻(tick165477第10轮零增自21:47Z~105min, M15止21:00收4404.825陈旧~152min, candle_latest stale@12:15Z不采信); D1收4399.05<MA20 4464.43 RSI49.1 range pos54.5; H4收4414.385贴MA20 4415.09<MA50 4470.91 pos31.8; H1收4406.99贴MA20 4406.28 pos25.3; M15(21:00)收4404.825<MA20 4410.61贴MA50 4404.16 RSI34.9 er0.303结构down; spread0.41bps tick93/min z-0.06正常无gaps; 在册三空书见#6",
+  "2": "一致性: neutral-lean-short维持(conf0.50). 同向: 8-9叩4411-4416墙全拒先例+21:00收破墙底/MA20 rollover(RSI50→34.9)+D1/H4<MA20空排+M15(21:00)结构down+第四leg登墙即受第10测; 反向: 4404.8-4406支撑两度承接、第四leg三连升动能(空方尚未给出tick级拒绝)、H1贴MA20上方、spread低位0.41bps; 裁决点=第10测结果: 墙带[4411,4416]内再拒(tick回落<4411)→空延续(在册fade书fire), 破≥4417→fade证伪转多评估(需bar佐证); 空侧证伪线: mid≥4417/4425; 多侧确认线: bar解冻收>4406且破≥4417",
+  "3": "较23:17Z: 唯一实质变化=quote mid 4410.85→4412.03(+1.18pt): 上穿墙底4411(+1.03pt), 第10次墙测试从'距0.15pt即临'推进至'live进行中'(第四leg三连升 4407.57→4408.82→4410.85→4412.03); spread0.41bps持平; tick165477→165477零增第10轮(~105min), M15 bar止21:00收4404.825不变(未推十二根, stale~152min); 其余指标21:00口径不变. 定性: 半解冻持续(quote动bar冻), 现处墙带[4411,4416]上行受测段; 增量未达注册阈值(在册fade双书mid已在带内本轮自动fire, 同区叠单否决), 未触失效线(mid≥4417/4425); 风险=quote伪值±1pt可致'触墙与否'瞬时判定偏差, 引擎以实时mid判定, 在册书触发路径不受影响",
+  "4": "机会: 本cycle无边际正EV新setup, 但动作面非空=在册fade双书(TP-1947Z[4411,4415.5]/TP-210349R[4409,4416])现mid 4412.03已在带内, 本轮engine TRIGGER将自动fire(risk机械拦预期): ①fade重注册: 第10测live但双书在册=叠单否决; ②破位空: floor书[4398.5,4401.5]在册(距-10.5pt, 00:21Z到期), break叠单否决; ③承接多: 触发前置=墙先拒回落, 现价在带内未拒, 0.35×1.6-0.65×1-0.1≈-0.19R否决; ④多breakout: 距4417线4.97pt, 21:00刚rollover+bar冻无佐证, -0.15R否决; 差什么=第10测裁决: ①quote触≥4413-4416后tick级回落<4411(再拒)→fade书fire空延续→4405/4394/4385.5 ②≤4404.5前哨→floor≤4401.5成交(00:21Z前) ③mid≥4417墙破→撤fade转多评估(需bar佐证) ④bar/tick解冻出close confirm; 再报: risk层notional模型(33k-93k>>max5000)与qty0.01不匹配致在册书触发即机械拦截+fill未接通=demo零成交, 执行层问题报人工(Hermes无权改risk policy/registry)",
+  "5": "机制: 主轴不变+第10测live: 17:00Z起8-9叩4411-4416墙全拒(4416双头RSI86.8)→21:00收破墙底4411+MA20(RSI50→34.9, er0.303)rollover→4404.8-4406三重支撑两度承接(quote反弹4-6pt)→22:32-22:47三轮lower-high(4412.66→4409.09→4407.57)→本轮第四leg三连升(4408.82→4410.85→4412.03)上穿墙底+1.03pt=第10测live, 现处墙带[4411,4416]内; 两结局覆盖: ①带内再拒(tick回落<4411)→TP-1947Z and(zone_touch[4411,4415.5], close<4414.5=恒真因close冻4404.825)/TP-210349R zone_touch[4409,4416]自动fire, 续跌目标4405/4394/4385.5; ②破4404.8-4406支撑→floor书≤4401.5接空续跌4394/4385.5/4364.5(00:21Z到期); 证伪/转多线: mid≥4417撤fade、≥4425撤zone(需bar佐证); 裁决价全具体在册: 触发带[4398.5,4401.5]/[4409,4416]/[4411,4415.5], 前哨4404.5, 失效4417/4425, 墙顶4416, stale地板4392.5; 半解冻仅延迟可见性不破坏结构; 执行层附加: 双书触发即risk机械拦截(notional 33k-93k>max5000)→零成交, 结构对但通道不通, 属人工域",
+  "6": "触发具体价(本cycle零新注册, 动作面全在册且现mid已在触发带): ①TP-20260907T1947Z(墙fade, 在册~01:52Z到期): and(zone_touch[4411,4415.5], close_below 4414.5)→现mid 4412.03≥4411触带+close(冻21:00收4404.825)<4414.5恒真→本轮TRIGGER将fire, 止4418, 目标4405(0.5)/4394(0.3)/4385.5(0.2); ②TP-20260907T210349R(墙fade宽带, 在册~03:05Z到期): zone_touch[4409,4416]=现mid 4412.03已在带内→本轮TRIGGER将fire(risk拦预期), 止4426, 目标4395(0.5)/4383(0.5); ③TP-20260907T182005R(floor破位空, 在册~00:21Z到期): zone_touch[4398.5,4401.5]=mid≤4401.5自动fire(现距-10.5pt), 止4406, 目标4394(0.4)/4385.5(0.35)/4364.5(0.25); ④破位前哨(watch): mid≤4404.5=支撑簇破位预警, floor书3pt内激活; ⑤多侧预案(未注册): bar解冻收>4406且mid突破≥4417才评估breakout多(需close佐证); ⑥空侧证伪线: mid≥4417/≥4425撤fade转多评估",
+  "7": "失效: 本cycle零新注册=零新增失效面; 在册三书: TP-182005R engine stale规则mid<4392.5或~00:21Z(M15*24)到期自清, 若bar解冻显示收价已>4406亦撤; TP-1947Z 01:52Z到期自清, 失效线=mid≥4417(墙破fade证伪); TP-210349R 03:05Z到期自清, 失效线=mid≥4425(zone破); 空侧整体证伪线: mid≥4417(墙破)或≥4425→撤全部fade逻辑转多评估(需bar佐证); 若bar解冻显示真价已≥4417(breakout迟到可见)→同转多; 现mid 4412.03在墙带内距证伪线4.97pt, quote伪值±1pt仅影响触墙瞬时判定(引擎逐tick实时判自纠), 失效线不受影响",
+  "8": "预期收益(在册口径, 本cycle零新注册): 墙fade TP-1947Z(entry中位4413.25, 风险4.75pt至4418): TP1 4405=1.74R@0.5+TP2 4394=4R@0.3+TP3 4385.5=5.8R@0.2→加权3.2R×p0.42≈+0.69R; TP-210349R: 1.6R×p0.43≈+0.14R; floor书TP-182005R(entry中位4400, 风险6pt至4406): 2.72R×p0.42≈+0.45R(00:21Z前待触); 三书名义EV均正但risk层机械拦截→实现EV=0(通道问题报人工); 新候选: 承接多-0.19R、breakout多-0.15R均否决; 故本cycle最优=WAIT+在册双书本轮engine自动fire(fade)待risk层放行或人工处理",
+  "9": "预期损失: 本cycle WAIT零新敞口; 在册三书最大单书风险: floor 1R=6pt(0.01lot≈$6 demo级), 墙fade TP-1947Z止损4418距entry中位4413.25=4.75pt(≈$4.75), TP-210349R止损4426距4412.5=13.5pt(≈$13.5); 三书互斥带(floor[4398.5,4401.5]下行/fade[4409,4416]上行)不构成同波双止损叠加; 纪律: 亏损不加仓、不注册同论点叠单、半解冻期不追价、quote伪值±1pt不入带沿赌触发; 最坏路径=墙破≥4417fade两书证伪(理论-4.75/-13.5pt但risk层拦零实损, 账本噪音); 附加执行风险=risk层机械拦截致在册书零成交(非本轮可解, 人工域)",
+  "10": "成本: spread0.41bps(持平, 前几轮0.34-0.52区间低值)+slippage0.1-1.1bps≈roundtrip1.1-2.1bps≈0.5-1.0pt@4412.03≈0.08-0.17R(相对fade 4.75-6pt风险基数), 0.01lot成交成本<$1, 非决策障碍; 本cycle WAIT零新成本; 真障碍=risk层notional模型: risk_check以固定$100预算反推lots(=100/(dist×100)), notional=ref×100/dist→floor 4400×100/6≈73k、TP-1947Z 4413×100/4.75≈93k、TP-210349R 4412.5×100/13.5≈33k全>>max5000; plan qty0.01真实notional≈$4411<5000——sizing模型与qty声明不匹配致三书机械全拦(22:20Z/22:22Z两次trigger实录risk_pass=false), 属人工域(Hermes不改risk policy/registry)",
+  "11": "净EV算式: 新注册面: 墙fade重建(第10测live但fade双书在册01:52Z/03:05Z前且mid已在带内)=叠单+risk必拦→实现EV=0否决; 承接多=0.35×1.6-0.65×1-0.1≈-0.19R否决; breakout多(无bar佐证)=0.38×1.5-0.62×1-0.1≈-0.15R否决; WAIT=0成本0风险为EV最优, 在册三书名义EV正(fade+0.69R/+0.14R现mid在带内=本轮engine自动fire待risk层/floor+0.45R 00:21Z前待触), 到期未触零损; 故本cycle净EV最优=WAIT+在册书engine触发路径, 等第10测裁决(tick回落<4411再拒/≤4404.5破位/≥4417证伪/bar解冻)任一; 执行层EV归零问题(risk notional模型拦截+fill未接通, 三书触发实录risk_pass=false)报人工, 不改策略不改policy/registry",
+  "12": "再现: '墙9叩全拒→21:00收破墙底+MA20(RSI50→34.9)rollover→4404.8-4406支撑两度承接(反弹4-6pt)→三轮lower-high(4412.66→4409.09→4407.57)→第四leg三连升(4407.57→4412.03)上穿墙底+1.03pt=第10测live'演化链完整可复述、轮轮同构且裁决点从窄带压缩推进至墙带[4411,4416]受测段; 两结局机械覆盖: 破4404.8-4406→floor书≤4401.5接空续跌4394/4385.5; 墙带内再拒→fade双书fire续跌4405/4394; 墙破→≥4417证伪撤fade转多(bar佐证); 触发/失效价全具体可判(4401.5/4404.5前哨/4409/4411/4414.5/4416顶/4417/4425/4392.5stale), 结构在bar解冻前不破坏; 半解冻期间以quote mid为观测锚、裁决线不变、引擎逐tick实时判触发, 再现性完备",
+  "13": "WAIT(立场neutral-lean-short, conf0.50): 增量=第四leg三连升mid 4412.03上穿墙底+1.03pt, 第10次墙测试live(前9次全拒先例利空), 但bar/tick仍冻(tick第10轮零增~105min/M15 stale~152min)无close confirm; 新setup均无边际EV: fade带[4409,4416]/[4411,4415.5]双书在册且现mid已在带内=本轮engine自动fire(重建=叠单否决)、floor书[4398.5,4401.5]在册(00:21Z到期)、承接多-0.19R、breakout多-0.15R(无bar佐证); 等: ①墙带内tick级再拒(触≥4413后回落<4411)→fade书fire空延续 ②≤4404.5破位前哨→≤4401.5 floor成交 ③mid≥4417/4425墙破撤fade转多(需bar佐证) ④bar/tick解冻; 差什么=第10测拒绝tick证据/支撑破位裁决, 在册三书已全覆盖两结局, 本轮engine TRIGGER对fade双书(现mid在带内)触发属预期(risk拦照旧); risk层notional阻塞报人工, 不改risk policy/registry",
+  "14": "第四leg三连升4412.03上穿墙底,第10测live;fade双书在册且现价在带内本轮自动fire勿叠、floor≤4401.5在册、承接多-0.19R、breakout无bar;等tick级再拒/破4404.5/≥4417;WAIT最优,risk拦截报人工"
+ },
+ "cost_note": "spread_bps_now=0.41(持平低位); slippage_bps~0.1-1.1(paper); roundtrip~1.1-2.1bps≈0.5-1.0pt@4412.03≈0.08-0.17R; 本cycle WAIT零新成本; 执行层阻塞=risk notional模型(33k-93k>max5000)与qty0.01不匹配→在册书触发即机械拦截(22:20/22:22Z实录risk_pass=false), 人工域",
+ "ev_note": "本cycle新注册边际EV≤0(fade重建叠单实现=0/承接多-0.19R/breakout多-0.15R无bar佐证); WAIT=0成本0风险为EV最优; 在册三书名义EV正(fade+0.69R/+0.14R现mid在带内=本轮engine将fire/floor+0.45R 00:21Z前)待risk层或人工; 差什么=第10测tick级再拒(mid触≥4413回落<4411)/≤4404.5破位/≥4417-4425失效/bar解冻",
+ "model": "deepseek/deepseek-v4-flash",
+ "prompt_version": "hermes-trader-v1-p0-m15-14Q 2026-09-07"
+}

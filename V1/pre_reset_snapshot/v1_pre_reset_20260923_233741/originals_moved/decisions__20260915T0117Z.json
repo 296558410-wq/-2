@@ -1,0 +1,102 @@
+{
+ "cycle": "2026-09-15T01:17Z",
+ "symbol": "XAUUSD",
+ "decision_id": "DEC-2026-09-15T01:17Z",
+ "utc_ts": "2026-09-15T01:17Z",
+ "generated_utc": "2026-09-15T01:17Z",
+ "decision": "SHORT",
+ "confidence": 0.52,
+ "bias": "SHORT-lean 0.52 (with-trend). HTF bearish ladder intact (pkg cycle 2026-09-15T01:17Z): D1 close 4297.935 << MA20 4455.32 (RSI 28.4 deeply oversold, er 0.431 trend-down, pos_in_range 39, recent -246.6bps); H4 4297.935 < MA20 4350.31 < MA50 4387.40 (RSI 43.4, range pos 17.2); H1 4297.935 < MA20 4305.96 < MA50 4328.24 < MA200 4383.25 (RSI 42.4, mixed pos 25.8); M15 4297.935 ~ MA20 4299.49 / MA50 4293.01 < MA200 4329.23 (RSI 43.2, range pos 52.0, exp_cont 0.64 CONTRACTING). LIVE mid 4301.91 (spread 0.42bps) has rallied into the M15 MA20 / H1 MA20 supply cluster = sell the retest back toward the range floor. Never chase, never average down.",
+ "opportunity": "Slot FREE (broker FLAT: demo positions=0, account 2095.48; local POS-20260915T0032Z SHORT@4292.6 was stopped at broker SL 4299.0 -> engine reconcile closes the phantom this cycle). Nearest already-armed plan TP-20260915T0002Z SHORT zone_touch[4297.0,4306.0] is MID-TRIGGER (live mid 4301.91 inside) and fires this cycle; this fresh plan re-arms the SAME with-trend fade one notch tighter on the current MA cluster. Setup = SHALLOW retest-fade of M15 MA20 4299.49 + H1 MA20 4305.96 supply in HTF-bearish tape. Gap-to-tradable: ZERO structural gap - live mid 4301.91 is already INSIDE entry_zone [4298.0,4305.5]; the very next tick inside auto-fills (zone_touch, no close-wait). What is missing = nothing but the tick that confirms the touch. Overhead rails: 4299.49 (M15 MA20) -> 4305.96 (H1 MA20) -> 4315.63 (H4 close) -> 4328.24/4329.23 (H1 MA50 / M15 MA200) -> 4338.86 (M15 high60) -> 4350.31 (H4 MA20). Downside structure: 4293.01 (M15 MA50) -> 4282.15 (range floor) -> 4272.5 -> 4263.99 -> 4253.62 (day low / mult-TF low60).",
+ "opportunity_mechanism": "zone_touch live-fill at the MA-cluster: price is mid-rally into the M15 MA20 / H1 MA20 confluence (HTF bearish 3/4 TF below their MAs, er trend-down D1). With-trend continuation fade from supply, stop just above H1 MA20, target the range floor. Deterministic engine: trigger auto-fills on tick, risk passes (qty 0.01, notional ~4301 < 25000, spread 0.42 < 1.0), SL/TP ride the order.",
+ "mtf_agreement": "3/4 bearish (D1 trend-down; H4 below MA20/MA50 pos 17.2; H1 below MA20/MA50/MA200 pos 25.8) vs M15 neutral/contracting coil (er 0.135, pos 52). Partial-to-strong agreement with the short side; M15 neutrality is the counter-weight (capped confidence 0.52).",
+ "answers_14": {
+  "1": "Market state: HTF bearish ladder with a deeply-oversold D1 (RSI 28.4, price -157pt below MA20 4455) sitting on a multi-TF range floor 4253.62; H4/H1 range, M15 tight contracting coil (exp_cont 0.64) around the MA cluster 4293-4306.",
+  "2": "Consistency: 3/4 TF bearish (D1 down / H4 below MAs / H1 below MAs); M15 neutral coil. Net partial agreement -> SHORT-lean.",
+  "3": "M15 change: last_vs_5ago UP, price reclaimed M15 MA20 4299.49/MA50 4293.01; volatility CONTRACTING (0.64); live mid 4301.91 poked into the H1 MA20 4305.96 supply band.",
+  "4": "Opportunity: fade the rally into the MA cluster [4298.0,4305.5] (M15 MA20 4299.49 / H1 MA20 4305.96) in a bearish HTF tape; target the range floor 4272.5/4263.99/4253.62.",
+  "5": "Mechanism: zone_touch live-fill at the cluster + HTF bearish continuation; with-trend supply rejection; stop above H1 MA20; deterministic engine trigger->risk->fill.",
+  "6": "Trigger condition: mid in [4298.0,4305.5] (LIVE mid 4301.91 already inside -> fills next tick).",
+  "7": "Invalidation: price_cross_up 4309.8 (H1 MA20 4305.96 + ~3.8pt buffer) -> reclaim of the cluster kills the fade.",
+  "8": "Expected return: ~2.6R weighted (TP1 4272.5 alone = 3.6R from ~4301.9; blended R for partial exits 2.6).",
+  "9": "Expected loss: 1.0R = 8.05pt (entry ~4301.75 -> stop 4309.8).",
+  "10": "Cost: spread 0.42bps + slippage 0.3bps ~ 0.31pt round-trip ~ 0.04R (negligible).",
+  "11": "Net EV: EV = p*R - (1-p)*1 - cost = 0.45*2.6 - 0.55*1.0 - 0.04 = +0.58R (>0).",
+  "12": "Reproducibility: MA-cluster + HTF ladder structural conditions persist; same fade family has fired repeatedly today (FILLED POS-0032Z short@4292.6; armed 0002Z [4297,4306] mid-trigger).",
+  "13": "Decision: SHORT.",
+  "14": "Broker flat (old short stopped @SL); HTF bearish 3/4 TF; live mid 4301.91 rallied into M15 MA20/H1 MA20 cluster = with-trend retest-fade. Trigger already satisfied (in zone), stop above H1 MA20 4309.8, target range floor. EV +0.58R. Light 0.01 lot, no chase."
+ },
+ "plan": {
+  "plan_id": "TP-20260915T0117Z",
+  "direction": "SHORT",
+  "opportunity_type": "htf_bearish_ma_cluster_retest_fade_m15ma20_h1ma20",
+  "entry_style": "market_on_trigger",
+  "entry_zone": {
+   "low": 4298.0,
+   "high": 4305.5
+  },
+  "trigger_condition": {
+   "zone_touch": [
+    4298.0,
+    4305.5
+   ]
+  },
+  "invalidation_condition": {
+   "price_cross_up": 4309.8
+  },
+  "stop_logic": {
+   "type": "fixed",
+   "level_price": 4309.8,
+   "reason": "H1 MA20 4305.96 上方 ~3.8pt(亦低于 M15 high60 4338.86); 升破 4309.8 = 收复 MA 簇/retest 演变为上行突破, fade 逻辑证伪, 让位不硬扛"
+  },
+  "target_logic": {
+   "type": "price_levels",
+   "levels": [
+    {
+     "price": 4272.5,
+     "frac": 0.4
+    },
+    {
+     "price": 4263.99,
+     "frac": 0.35
+    },
+    {
+     "price": 4253.62,
+     "frac": 0.25
+    }
+   ],
+   "reason": "TP1=4272.5 区间下沿/前低区; TP2=4263.99 下方结构; TP3=4253.62 日低/多TF low60(强支撑, 保守止盈)"
+  },
+  "expected_R": 2.6,
+  "expected_win_probability": 0.45,
+  "probability_source": "顺 HTF(3/4 TF bearish)+ M15 收缩 coil 的 MA 簇 retest-fade 家族基准 p~0.45-0.50; 但 D1 RSI 28.4 深超卖 + 下方 4253.62 多TF强支撑 + M15 er 0.135 中性 -> 取 0.45, 不取高; 盈亏平衡 p~0.28",
+  "expected_loss": {
+   "units": "R",
+   "value": 1.0
+  },
+  "estimated_cost": {
+   "spread_bps": 0.42,
+   "slippage_bps": 0.3,
+   "round_trip_bps": 0.72,
+   "round_trip_pt": 0.31,
+   "cost_in_R": 0.04,
+   "note": "~0.31USD on 0.01 lot; 1R=8.05pt -> 0.04R, 非 EV 障碍"
+  },
+  "spread_bps": 0.42,
+  "slippage_bps": 0.3,
+  "expected_net_EV": {
+   "value": 0.58,
+   "units": "R",
+   "note": "0.45*2.6 - 0.55*1.0 - 0.04 = +0.58R (>0); p=0.38 -> +0.17R, p=0.30 -> -0.01R, 平衡 p~0.30; 触发前置=mid 实时 in [4298.0,4305.5] 本轮已满足"
+  },
+  "maximum_holding_time": "M15*8",
+  "qty_lots": 0.01,
+  "cancel_conditions": [
+   "mid>=4309.8 (收复 MA 簇=上行突破, fade 证伪, 取消免成交零成本)",
+   "M15*8 到期(≈2026-09-15T03:17Z)未触发自清",
+   "若同轮 TP-20260915T0002Z(更早注册, 同向)先成交 -> 单仓约束令本计划 exec_fail:position_busy 即时终态, 不留僵尸",
+   "成交后随单止损 4309.8 ≈ 1R 执行"
+  ]
+ },
+ "model": "deepseek/deepseek-v4-flash"
+}

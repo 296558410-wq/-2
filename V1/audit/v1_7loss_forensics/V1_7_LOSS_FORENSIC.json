@@ -1,0 +1,1481 @@
+{
+ "schema": "v1_7loss_forensic/1",
+ "generated_utc": "2026-10-02T11:16:07.412374+00:00",
+ "restart": {
+  "restart_utc": "2026-10-01T13:52:15+00:00",
+  "old_semantics_state": {
+   "daily_loss": 0.0,
+   "consecutive_losses": 0,
+   "note": "fresh RiskGuard per cycle; note_close never called (V1-D001)"
+  },
+  "correct_semantics_state": {
+   "day": "2026-10-01",
+   "daily_loss": 39.33,
+   "consecutive_losses": 0
+  },
+  "realized_pnl_price_component_before_restart": 54.28,
+  "ledger_open_positions_at_restart": {},
+  "last_decision_before_restart": {
+   "seq": 515,
+   "ts_utc": "2026-10-01T13:48:03.541495+00:00",
+   "action": "WAIT_SIGNAL:FAMILY_RANGE_NO_TRADE",
+   "risk_reasons": []
+  },
+  "first_decision_after_restart": {
+   "seq": 516,
+   "ts_utc": "2026-10-01T14:18:02.922492+00:00",
+   "action": "WAIT_SIGNAL:FAMILY_RANGE_NO_TRADE",
+   "risk_reasons": []
+  }
+ },
+ "trades": [
+  {
+   "trade_id": "V1T-2378322488",
+   "position_id": "2378322488",
+   "events": {
+    "decision": {
+     "seq": 517,
+     "ts_utc": "2026-10-01T14:33:03.469176+00:00",
+     "event": "DECISION",
+     "previous_hash": "909619a2b7d3d58b59d70fe265444fb51e0ae327e7b249510b591e0419c15aca",
+     "action": "ENTER",
+     "signal_source": "BASELINE_TRANSITION",
+     "signal": {
+      "family_now": "DIRECTIONAL",
+      "signal_family": "DIRECTIONAL",
+      "known": true
+     },
+     "order_intent": {
+      "trade": true,
+      "side": "SHORT",
+      "lots": 0.01,
+      "sl": 4174.09,
+      "tp": 4151.68,
+      "atr": 8.9647,
+      "m15_trend20": -4.969000000000051,
+      "mapping_id": "v1up-baseline-transition-order-map-v1"
+     },
+     "live_state": {
+      "state": "EXPANSION",
+      "family": "DIRECTIONAL",
+      "trend_20": -4.969000000000051,
+      "atr": 8.964666666666684,
+      "last_bar_utc": "2026-10-01 17:30:00+00:00",
+      "source": "label_adapter",
+      "MARKET_BEHAVIOR": "EXPANSION",
+      "ma20": 4169.959
+     },
+     "risk_allow": true,
+     "risk_reasons": [],
+     "snapshot": {
+      "bid": 4164.99,
+      "ask": 4165.13,
+      "mid": 4165.06,
+      "spread_bps": 0.336,
+      "digits": 2
+     },
+     "atr": 9.082857142857197,
+     "account_positions": 0,
+     "account_login": 160759434,
+     "signal_type": "BASELINE_CONTROL",
+     "not_hermes_alpha": true,
+     "current_hash": "8503971afeb94cd025e3da72b45940ba806d19b0f924be9a7deff49fd15bf929"
+    },
+    "order_check": {
+     "seq": 29,
+     "ts_utc": "2026-09-28T15:31:14.598544+00:00",
+     "event": "ORDER_CHECK",
+     "previous_hash": "a998e08110fc91e0a90a3c4090b9ba036e1b6995769fb35b39e41de7e2483afe",
+     "order_id": null,
+     "side": "SHORT",
+     "lots": 0.01,
+     "price": 4122.86,
+     "sl": 4135.46,
+     "tp": 4104.3,
+     "magic": 90011,
+     "symbol": "XAUUSD",
+     "filling_bitmask": 0,
+     "filling_name": "RETURN",
+     "type_filling_value": 2,
+     "retcode": null,
+     "comment": null,
+     "ok": false,
+     "last_error": "(-10004, 'No IPC connection')",
+     "current_hash": "64a551adccd3daaaa07b9699453e5b9510e42f43dcef4e8b266b059a1c29c19b"
+    },
+    "order_request": {
+     "seq": 519,
+     "ts_utc": "2026-10-01T14:33:03.485989+00:00",
+     "event": "ORDER_REQUEST",
+     "previous_hash": "8cd57307a0dd2bc5109e172e5484a0131d97151e541dd5f71b177e9fb4a8558b",
+     "side": "SHORT",
+     "lots": 0.01,
+     "price": 4164.99,
+     "sl": 4174.09,
+     "tp": 4151.68,
+     "magic": 90011,
+     "comment": "V1UP_DEMO",
+     "mapping_id": "v1up-baseline-transition-order-map-v1",
+     "filling_name": "FOK",
+     "current_hash": "b383cd2d6160eec75e8771f6d3deb480bae5f16bcdb6590a99b281c53dec1976"
+    },
+    "order_send": {
+     "seq": 520,
+     "ts_utc": "2026-10-01T14:33:03.769163+00:00",
+     "event": "ORDER_SEND",
+     "previous_hash": "b383cd2d6160eec75e8771f6d3deb480bae5f16bcdb6590a99b281c53dec1976",
+     "order_id": "2378322488",
+     "retcode": 10009,
+     "side": "SHORT",
+     "qty": 0.01,
+     "price": 4164.99,
+     "fill_price": 4164.94,
+     "sl": 4174.09,
+     "tp": 4151.68,
+     "magic": 90011,
+     "comment": "V1UP_DEMO",
+     "ok": true,
+     "latency_ms": 274.88,
+     "slippage_bps": -0.12,
+     "filling_name": "FOK",
+     "broker_comment": "Request executed",
+     "current_hash": "c9ef673beee6b730d2f9cb2a8698372005b8ab5afbd27ca8381a2b824a2a7b8b"
+    },
+    "close": {
+     "seq": 523,
+     "ts_utc": "2026-10-01T14:48:01.655110+00:00",
+     "event": "CLOSE",
+     "previous_hash": "2e30ca6cfaa0c805fc77fd8842801cd530824bdd4ba6c9340f464665a3957054",
+     "order_id": "2378322488",
+     "position_id": "2378322488",
+     "side": "SHORT",
+     "qty": 0.01,
+     "price": 4174.25,
+     "reason": "SL",
+     "broker_comment": "[sl 4174.09]",
+     "broker_time_utc": "2026-10-01T17:39:16+00:00",
+     "current_hash": "8c06041c0dc3e29e7a5f7884b577b437338385a51c4d615c382de97ebad3f6b0"
+    },
+    "pnl": {
+     "seq": 524,
+     "ts_utc": "2026-10-01T14:48:01.661122+00:00",
+     "event": "PNL",
+     "previous_hash": "8c06041c0dc3e29e7a5f7884b577b437338385a51c4d615c382de97ebad3f6b0",
+     "order_id": "2378322488",
+     "position_id": "2378322488",
+     "pnl": -9.31,
+     "entry": 4164.94,
+     "exit": 4174.25,
+     "qty": 0.01,
+     "side": "SHORT",
+     "reason": "SL",
+     "realized_R": -1.017,
+     "sl": 4174.09,
+     "tp": 4151.68,
+     "broker_time_utc": "2026-10-01T17:39:16+00:00",
+     "current_hash": "8d79e616514dfccacc887095fe2da7549fdd51c2e8955d40fb0c61dab47b930e"
+    }
+   },
+   "guard_counterfactual": {
+    "state": {
+     "day": "2026-10-01",
+     "daily_loss": 39.33,
+     "consecutive_losses": 0
+    },
+    "reasons_with_full_inputs": [
+     "SLIPPAGE_UNKNOWN",
+     "STALE_DATA"
+    ],
+    "would_block_daily_or_consecutive": false,
+    "note": "data_age not recorded in this era (guard consumed hardcoded 0); slippage = last realised before this decision"
+   },
+   "broker": {
+    "open_deal": {
+     "ticket": 2364982205,
+     "order": 2378322488,
+     "time": 1790875983,
+     "type": 1,
+     "entry": 0,
+     "magic": 90011,
+     "position_id": 2378322488,
+     "volume": 0.01,
+     "price": 4164.94,
+     "commission": -0.1,
+     "swap": 0.0,
+     "profit": 0.0,
+     "comment": "V1UP_DEMO"
+    },
+    "close_deal": {
+     "ticket": 2364984323,
+     "order": 2378324784,
+     "time": 1790876356,
+     "type": 0,
+     "entry": 1,
+     "magic": 90011,
+     "position_id": 2378322488,
+     "volume": 0.01,
+     "price": 4174.25,
+     "commission": -0.1,
+     "swap": 0.0,
+     "profit": -9.31,
+     "comment": "[sl 4174.09]"
+    },
+    "net": -9.51,
+    "close_comment": "[sl 4174.09]"
+   },
+   "classification": {
+    "primary_cause": "SIGNAL_LOSS",
+    "contributing_factors": [],
+    "basis": "no declared gate (correct semantics) would have blocked this entry"
+   },
+   "anomalies": {
+    "execution_anomaly": false,
+    "broker_anomaly": false,
+    "data_anomaly_recorded": false
+   }
+  },
+  {
+   "trade_id": "V1T-2378333628",
+   "position_id": "2378333628",
+   "events": {
+    "decision": {
+     "seq": 526,
+     "ts_utc": "2026-10-01T15:03:04.288212+00:00",
+     "event": "DECISION",
+     "previous_hash": "d4c236e72d5a44526b48dafd737db9f113cb571395abf7697d53cdceb7e4b021",
+     "action": "ENTER",
+     "signal_source": "BASELINE_TRANSITION",
+     "signal": {
+      "family_now": "DIRECTIONAL",
+      "signal_family": "DIRECTIONAL",
+      "known": true
+     },
+     "order_intent": {
+      "trade": true,
+      "side": "SHORT",
+      "lots": 0.01,
+      "sl": 4164.26,
+      "tp": 4139.66,
+      "atr": 9.8427,
+      "m15_trend20": -15.904999999999745,
+      "mapping_id": "v1up-baseline-transition-order-map-v1"
+     },
+     "live_state": {
+      "state": "EXPANSION",
+      "family": "DIRECTIONAL",
+      "trend_20": -15.904999999999745,
+      "atr": 9.84266666666675,
+      "last_bar_utc": "2026-10-01 18:00:00+00:00",
+      "source": "label_adapter",
+      "MARKET_BEHAVIOR": "EXPANSION",
+      "ma20": 4170.1849999999995
+     },
+     "risk_allow": true,
+     "risk_reasons": [],
+     "snapshot": {
+      "bid": 4154.28,
+      "ask": 4154.42,
+      "mid": 4154.35,
+      "spread_bps": 0.337,
+      "digits": 2
+     },
+     "atr": 9.823571428571475,
+     "account_positions": 0,
+     "account_login": 160759434,
+     "signal_type": "BASELINE_CONTROL",
+     "not_hermes_alpha": true,
+     "current_hash": "010f51c38694e91aee902c91ad132990439182e45559ad34a842db208618c7ff"
+    },
+    "order_check": {
+     "seq": 29,
+     "ts_utc": "2026-09-28T15:31:14.598544+00:00",
+     "event": "ORDER_CHECK",
+     "previous_hash": "a998e08110fc91e0a90a3c4090b9ba036e1b6995769fb35b39e41de7e2483afe",
+     "order_id": null,
+     "side": "SHORT",
+     "lots": 0.01,
+     "price": 4122.86,
+     "sl": 4135.46,
+     "tp": 4104.3,
+     "magic": 90011,
+     "symbol": "XAUUSD",
+     "filling_bitmask": 0,
+     "filling_name": "RETURN",
+     "type_filling_value": 2,
+     "retcode": null,
+     "comment": null,
+     "ok": false,
+     "last_error": "(-10004, 'No IPC connection')",
+     "current_hash": "64a551adccd3daaaa07b9699453e5b9510e42f43dcef4e8b266b059a1c29c19b"
+    },
+    "order_request": {
+     "seq": 528,
+     "ts_utc": "2026-10-01T15:03:04.318259+00:00",
+     "event": "ORDER_REQUEST",
+     "previous_hash": "fcf4467b83984b1f9f1834150aa18769a88a9236dadc07d36b3930c134cd98c4",
+     "side": "SHORT",
+     "lots": 0.01,
+     "price": 4154.28,
+     "sl": 4164.26,
+     "tp": 4139.66,
+     "magic": 90011,
+     "comment": "V1UP_DEMO",
+     "mapping_id": "v1up-baseline-transition-order-map-v1",
+     "filling_name": "FOK",
+     "current_hash": "900374070500b744cdcedb8a83b4e85e54ce71555b402a2ea8422a5d097d968b"
+    },
+    "order_send": {
+     "seq": 529,
+     "ts_utc": "2026-10-01T15:03:04.711555+00:00",
+     "event": "ORDER_SEND",
+     "previous_hash": "900374070500b744cdcedb8a83b4e85e54ce71555b402a2ea8422a5d097d968b",
+     "order_id": "2378333628",
+     "retcode": 10009,
+     "side": "SHORT",
+     "qty": 0.01,
+     "price": 4154.28,
+     "fill_price": 4155.69,
+     "sl": 4164.26,
+     "tp": 4139.66,
+     "magic": 90011,
+     "comment": "V1UP_DEMO",
+     "ok": true,
+     "latency_ms": 382.45,
+     "slippage_bps": 3.3941,
+     "filling_name": "FOK",
+     "broker_comment": "Request executed",
+     "current_hash": "f7ad56ea9b2076607fff986d1077efc3965281820b529e1ee4522a165db2e7a4"
+    },
+    "close": {
+     "seq": 533,
+     "ts_utc": "2026-10-01T15:33:01.355130+00:00",
+     "event": "CLOSE",
+     "previous_hash": "98873d432d289fd3272c14b3d175fb775bd152b4ae77cd9470ea9153cb582648",
+     "order_id": "2378333628",
+     "position_id": "2378333628",
+     "side": "SHORT",
+     "qty": 0.01,
+     "price": 4164.27,
+     "reason": "SL",
+     "broker_comment": "[sl 4164.26]",
+     "broker_time_utc": "2026-10-01T18:20:03+00:00",
+     "current_hash": "3a3cbbca8308751bdf3bec1bbf685206ae9016ef7525132c011f156225dd888c"
+    },
+    "pnl": {
+     "seq": 534,
+     "ts_utc": "2026-10-01T15:33:01.361144+00:00",
+     "event": "PNL",
+     "previous_hash": "3a3cbbca8308751bdf3bec1bbf685206ae9016ef7525132c011f156225dd888c",
+     "order_id": "2378333628",
+     "position_id": "2378333628",
+     "pnl": -8.58,
+     "entry": 4155.69,
+     "exit": 4164.27,
+     "qty": 0.01,
+     "side": "SHORT",
+     "reason": "SL",
+     "realized_R": -1.001,
+     "sl": 4164.26,
+     "tp": 4139.66,
+     "broker_time_utc": "2026-10-01T18:20:03+00:00",
+     "current_hash": "ce4ba4c2ee3f4aa67725c77be43a3163b2c273e79a26015268196242da350d83"
+    }
+   },
+   "guard_counterfactual": {
+    "state": {
+     "day": "2026-10-01",
+     "daily_loss": 30.02,
+     "consecutive_losses": 1
+    },
+    "reasons_with_full_inputs": [
+     "STALE_DATA"
+    ],
+    "would_block_daily_or_consecutive": false,
+    "note": "data_age not recorded in this era (guard consumed hardcoded 0); slippage = last realised before this decision"
+   },
+   "broker": {
+    "open_deal": {
+     "ticket": 2364992433,
+     "order": 2378333628,
+     "time": 1790877784,
+     "type": 1,
+     "entry": 0,
+     "magic": 90011,
+     "position_id": 2378333628,
+     "volume": 0.01,
+     "price": 4155.69,
+     "commission": -0.1,
+     "swap": 0.0,
+     "profit": 0.0,
+     "comment": "V1UP_DEMO"
+    },
+    "close_deal": {
+     "ticket": 2364997483,
+     "order": 2378339028,
+     "time": 1790878803,
+     "type": 0,
+     "entry": 1,
+     "magic": 90011,
+     "position_id": 2378333628,
+     "volume": 0.01,
+     "price": 4164.27,
+     "commission": -0.1,
+     "swap": 0.0,
+     "profit": -8.58,
+     "comment": "[sl 4164.26]"
+    },
+    "net": -8.78,
+    "close_comment": "[sl 4164.26]"
+   },
+   "classification": {
+    "primary_cause": "SIGNAL_LOSS",
+    "contributing_factors": [],
+    "basis": "no declared gate (correct semantics) would have blocked this entry"
+   },
+   "anomalies": {
+    "execution_anomaly": false,
+    "broker_anomaly": false,
+    "data_anomaly_recorded": false
+   }
+  },
+  {
+   "trade_id": "V1T-2378343004",
+   "position_id": "2378343004",
+   "events": {
+    "decision": {
+     "seq": 535,
+     "ts_utc": "2026-10-01T15:33:03.852470+00:00",
+     "event": "DECISION",
+     "previous_hash": "ce4ba4c2ee3f4aa67725c77be43a3163b2c273e79a26015268196242da350d83",
+     "action": "ENTER",
+     "signal_source": "BASELINE_TRANSITION",
+     "signal": {
+      "family_now": "DIRECTIONAL",
+      "signal_family": "DIRECTIONAL",
+      "known": true
+     },
+     "order_intent": {
+      "trade": true,
+      "side": "SHORT",
+      "lots": 0.01,
+      "sl": 4170.72,
+      "tp": 4144.69,
+      "atr": 10.412,
+      "m15_trend20": -9.506000000000313,
+      "mapping_id": "v1up-baseline-transition-order-map-v1"
+     },
+     "live_state": {
+      "state": "EXPANSION",
+      "family": "DIRECTIONAL",
+      "trend_20": -9.506000000000313,
+      "atr": 10.412000000000019,
+      "last_bar_utc": "2026-10-01 18:30:00+00:00",
+      "source": "label_adapter",
+      "MARKET_BEHAVIOR": "EXPANSION",
+      "ma20": 4169.676
+     },
+     "risk_allow": true,
+     "risk_reasons": [],
+     "snapshot": {
+      "bid": 4160.17,
+      "ask": 4160.31,
+      "mid": 4160.24,
+      "spread_bps": 0.337,
+      "digits": 2
+     },
+     "atr": 10.466428571428553,
+     "account_positions": 0,
+     "account_login": 160759434,
+     "signal_type": "BASELINE_CONTROL",
+     "not_hermes_alpha": true,
+     "current_hash": "b4d98657c60ec44313d9c6a60651877e790512a32916e76efab5f55f3162e450"
+    },
+    "order_check": {
+     "seq": 29,
+     "ts_utc": "2026-09-28T15:31:14.598544+00:00",
+     "event": "ORDER_CHECK",
+     "previous_hash": "a998e08110fc91e0a90a3c4090b9ba036e1b6995769fb35b39e41de7e2483afe",
+     "order_id": null,
+     "side": "SHORT",
+     "lots": 0.01,
+     "price": 4122.86,
+     "sl": 4135.46,
+     "tp": 4104.3,
+     "magic": 90011,
+     "symbol": "XAUUSD",
+     "filling_bitmask": 0,
+     "filling_name": "RETURN",
+     "type_filling_value": 2,
+     "retcode": null,
+     "comment": null,
+     "ok": false,
+     "last_error": "(-10004, 'No IPC connection')",
+     "current_hash": "64a551adccd3daaaa07b9699453e5b9510e42f43dcef4e8b266b059a1c29c19b"
+    },
+    "order_request": {
+     "seq": 537,
+     "ts_utc": "2026-10-01T15:33:03.874686+00:00",
+     "event": "ORDER_REQUEST",
+     "previous_hash": "800a4d7a3dec27b35232ff043d9fc545fb7d6d95a8ef91f1ba67f84895d004e8",
+     "side": "SHORT",
+     "lots": 0.01,
+     "price": 4160.17,
+     "sl": 4170.72,
+     "tp": 4144.69,
+     "magic": 90011,
+     "comment": "V1UP_DEMO",
+     "mapping_id": "v1up-baseline-transition-order-map-v1",
+     "filling_name": "FOK",
+     "current_hash": "2279a49ba3812b9486a3e735a6824f36e86a75ce2b75bd8c656bae7f6d6f7a1d"
+    },
+    "order_send": {
+     "seq": 538,
+     "ts_utc": "2026-10-01T15:33:04.187273+00:00",
+     "event": "ORDER_SEND",
+     "previous_hash": "2279a49ba3812b9486a3e735a6824f36e86a75ce2b75bd8c656bae7f6d6f7a1d",
+     "order_id": "2378343004",
+     "retcode": 10009,
+     "side": "SHORT",
+     "qty": 0.01,
+     "price": 4160.17,
+     "fill_price": 4160.17,
+     "sl": 4170.72,
+     "tp": 4144.69,
+     "magic": 90011,
+     "comment": "V1UP_DEMO",
+     "ok": true,
+     "latency_ms": 303.43,
+     "slippage_bps": 0.0,
+     "filling_name": "FOK",
+     "broker_comment": "Request executed",
+     "current_hash": "f0d7186667d1e4eeed8362d688edc1d88ae1f993dbf11bac6167209711582342"
+    },
+    "close": {
+     "seq": 541,
+     "ts_utc": "2026-10-01T15:48:02.309472+00:00",
+     "event": "CLOSE",
+     "previous_hash": "ac9d218a7a22127a05bc56e942e803d8780ba49f7815cce701866e2e424816a7",
+     "order_id": "2378343004",
+     "position_id": "2378343004",
+     "side": "SHORT",
+     "qty": 0.01,
+     "price": 4170.98,
+     "reason": "SL",
+     "broker_comment": "[sl 4170.72]",
+     "broker_time_utc": "2026-10-01T18:38:26+00:00",
+     "current_hash": "0efa0daf182ac09c307cf4ad9158d7fc3ef66c47207d8a43b77bcd37238eacc8"
+    },
+    "pnl": {
+     "seq": 542,
+     "ts_utc": "2026-10-01T15:48:02.317473+00:00",
+     "event": "PNL",
+     "previous_hash": "0efa0daf182ac09c307cf4ad9158d7fc3ef66c47207d8a43b77bcd37238eacc8",
+     "order_id": "2378343004",
+     "position_id": "2378343004",
+     "pnl": -10.81,
+     "entry": 4160.17,
+     "exit": 4170.98,
+     "qty": 0.01,
+     "side": "SHORT",
+     "reason": "SL",
+     "realized_R": -1.025,
+     "sl": 4170.72,
+     "tp": 4144.69,
+     "broker_time_utc": "2026-10-01T18:38:26+00:00",
+     "current_hash": "e2c28594dbe96b6f631983dec6c05ce676eff568188a4cb48df17776281f8fbe"
+    }
+   },
+   "guard_counterfactual": {
+    "state": {
+     "day": "2026-10-01",
+     "daily_loss": 21.44,
+     "consecutive_losses": 2
+    },
+    "reasons_with_full_inputs": [
+     "STALE_DATA"
+    ],
+    "would_block_daily_or_consecutive": false,
+    "note": "data_age not recorded in this era (guard consumed hardcoded 0); slippage = last realised before this decision"
+   },
+   "broker": {
+    "open_deal": {
+     "ticket": 2365001106,
+     "order": 2378343004,
+     "time": 1790879584,
+     "type": 1,
+     "entry": 0,
+     "magic": 90011,
+     "position_id": 2378343004,
+     "volume": 0.01,
+     "price": 4160.17,
+     "commission": -0.1,
+     "swap": 0.0,
+     "profit": 0.0,
+     "comment": "V1UP_DEMO"
+    },
+    "close_deal": {
+     "ticket": 2365003384,
+     "order": 2378345459,
+     "time": 1790879906,
+     "type": 0,
+     "entry": 1,
+     "magic": 90011,
+     "position_id": 2378343004,
+     "volume": 0.01,
+     "price": 4170.98,
+     "commission": -0.1,
+     "swap": 0.0,
+     "profit": -10.81,
+     "comment": "[sl 4170.72]"
+    },
+    "net": -11.01,
+    "close_comment": "[sl 4170.72]"
+   },
+   "classification": {
+    "primary_cause": "SIGNAL_LOSS",
+    "contributing_factors": [],
+    "basis": "no declared gate (correct semantics) would have blocked this entry"
+   },
+   "anomalies": {
+    "execution_anomaly": false,
+    "broker_anomaly": false,
+    "data_anomaly_recorded": false
+   }
+  },
+  {
+   "trade_id": "V1T-2378348994",
+   "position_id": "2378348994",
+   "events": {
+    "decision": {
+     "seq": 543,
+     "ts_utc": "2026-10-01T15:48:04.462022+00:00",
+     "event": "DECISION",
+     "previous_hash": "e2c28594dbe96b6f631983dec6c05ce676eff568188a4cb48df17776281f8fbe",
+     "action": "ENTER",
+     "signal_source": "BASELINE_TRANSITION",
+     "signal": {
+      "family_now": "DIRECTIONAL",
+      "signal_family": "DIRECTIONAL",
+      "known": true
+     },
+     "order_intent": {
+      "trade": true,
+      "side": "SHORT",
+      "lots": 0.01,
+      "sl": 4178.18,
+      "tp": 4151.18,
+      "atr": 10.8013,
+      "m15_trend20": -2.444499999999607,
+      "mapping_id": "v1up-baseline-transition-order-map-v1"
+     },
+     "live_state": {
+      "state": "EXPANSION",
+      "family": "DIRECTIONAL",
+      "trend_20": -2.444499999999607,
+      "atr": 10.801333333333362,
+      "last_bar_utc": "2026-10-01 18:45:00+00:00",
+      "source": "label_adapter",
+      "MARKET_BEHAVIOR": "EXPANSION",
+      "ma20": 4169.6945
+     },
+     "risk_allow": true,
+     "risk_reasons": [],
+     "snapshot": {
+      "bid": 4167.25,
+      "ask": 4167.38,
+      "mid": 4167.315,
+      "spread_bps": 0.312,
+      "digits": 2
+     },
+     "atr": 11.182857142857172,
+     "account_positions": 0,
+     "account_login": 160759434,
+     "signal_type": "BASELINE_CONTROL",
+     "not_hermes_alpha": true,
+     "current_hash": "a0b6ea5201cc5c067e2a32a5c015417af05dbb9ecb0620f3c10e06c90e306db3"
+    },
+    "order_check": {
+     "seq": 29,
+     "ts_utc": "2026-09-28T15:31:14.598544+00:00",
+     "event": "ORDER_CHECK",
+     "previous_hash": "a998e08110fc91e0a90a3c4090b9ba036e1b6995769fb35b39e41de7e2483afe",
+     "order_id": null,
+     "side": "SHORT",
+     "lots": 0.01,
+     "price": 4122.86,
+     "sl": 4135.46,
+     "tp": 4104.3,
+     "magic": 90011,
+     "symbol": "XAUUSD",
+     "filling_bitmask": 0,
+     "filling_name": "RETURN",
+     "type_filling_value": 2,
+     "retcode": null,
+     "comment": null,
+     "ok": false,
+     "last_error": "(-10004, 'No IPC connection')",
+     "current_hash": "64a551adccd3daaaa07b9699453e5b9510e42f43dcef4e8b266b059a1c29c19b"
+    },
+    "order_request": {
+     "seq": 545,
+     "ts_utc": "2026-10-01T15:48:04.474156+00:00",
+     "event": "ORDER_REQUEST",
+     "previous_hash": "5ffc6ab4ba0e85790ed852cb5950ebbc6eb4a568a3c88a4867725af5d4d1d37e",
+     "side": "SHORT",
+     "lots": 0.01,
+     "price": 4167.25,
+     "sl": 4178.18,
+     "tp": 4151.18,
+     "magic": 90011,
+     "comment": "V1UP_DEMO",
+     "mapping_id": "v1up-baseline-transition-order-map-v1",
+     "filling_name": "FOK",
+     "current_hash": "7b1e31011456b27762b5f72de2ae98839c61fcee8c055859678faf0cfe89fe76"
+    },
+    "order_send": {
+     "seq": 546,
+     "ts_utc": "2026-10-01T15:48:04.781664+00:00",
+     "event": "ORDER_SEND",
+     "previous_hash": "7b1e31011456b27762b5f72de2ae98839c61fcee8c055859678faf0cfe89fe76",
+     "order_id": "2378348994",
+     "retcode": 10009,
+     "side": "SHORT",
+     "qty": 0.01,
+     "price": 4167.25,
+     "fill_price": 4167.09,
+     "sl": 4178.18,
+     "tp": 4151.18,
+     "magic": 90011,
+     "comment": "V1UP_DEMO",
+     "ok": true,
+     "latency_ms": 301.45,
+     "slippage_bps": -0.3839,
+     "filling_name": "FOK",
+     "broker_comment": "Request executed",
+     "current_hash": "07d34dff7fb5d77b5f179a2f5527305cc41b7e654a54559140f7daea272cf80e"
+    },
+    "close": {
+     "seq": 555,
+     "ts_utc": "2026-10-01T17:33:00.895693+00:00",
+     "event": "CLOSE",
+     "previous_hash": "a21bb2198266d237dcd17cd9c683affcd39298fb911185f93b89065c72374f86",
+     "order_id": "2378348994",
+     "position_id": "2378348994",
+     "side": "SHORT",
+     "qty": 0.01,
+     "price": 4178.7,
+     "reason": "SL",
+     "broker_comment": "[sl 4178.18]",
+     "broker_time_utc": "2026-10-01T20:30:00+00:00",
+     "current_hash": "58e69a61ed6e56076817e2645e346f081e71198be4a01d42f72b7739b356d096"
+    },
+    "pnl": {
+     "seq": 556,
+     "ts_utc": "2026-10-01T17:33:00.900784+00:00",
+     "event": "PNL",
+     "previous_hash": "58e69a61ed6e56076817e2645e346f081e71198be4a01d42f72b7739b356d096",
+     "order_id": "2378348994",
+     "position_id": "2378348994",
+     "pnl": -11.61,
+     "entry": 4167.09,
+     "exit": 4178.7,
+     "qty": 0.01,
+     "side": "SHORT",
+     "reason": "SL",
+     "realized_R": -1.047,
+     "sl": 4178.18,
+     "tp": 4151.18,
+     "broker_time_utc": "2026-10-01T20:30:00+00:00",
+     "current_hash": "e8c77e536b24cc943ee890ef17a7b13dd5d30734383bb779949ae286d189d79a"
+    }
+   },
+   "guard_counterfactual": {
+    "state": {
+     "day": "2026-10-01",
+     "daily_loss": 10.63,
+     "consecutive_losses": 3
+    },
+    "reasons_with_full_inputs": [
+     "MAX_CONSECUTIVE_LOSS",
+     "STALE_DATA"
+    ],
+    "would_block_daily_or_consecutive": true,
+    "note": "data_age not recorded in this era (guard consumed hardcoded 0); slippage = last realised before this decision"
+   },
+   "broker": {
+    "open_deal": {
+     "ticket": 2365006833,
+     "order": 2378348994,
+     "time": 1790880484,
+     "type": 1,
+     "entry": 0,
+     "magic": 90011,
+     "position_id": 2378348994,
+     "volume": 0.01,
+     "price": 4167.09,
+     "commission": -0.1,
+     "swap": 0.0,
+     "profit": 0.0,
+     "comment": "V1UP_DEMO"
+    },
+    "close_deal": {
+     "ticket": 2365023027,
+     "order": 2378366719,
+     "time": 1790886600,
+     "type": 0,
+     "entry": 1,
+     "magic": 90011,
+     "position_id": 2378348994,
+     "volume": 0.01,
+     "price": 4178.7,
+     "commission": -0.1,
+     "swap": 0.0,
+     "profit": -11.61,
+     "comment": "[sl 4178.18]"
+    },
+    "net": -11.81,
+    "close_comment": "[sl 4178.18]"
+   },
+   "classification": {
+    "primary_cause": "RISK_GUARD_FAILURE",
+    "contributing_factors": [
+     "SIGNAL_LOSS"
+    ],
+    "basis": "declared MAX_CONSECUTIVE_LOSS (state>=3) would have blocked this entry; executed because the guard was inert (V1-D001)"
+   },
+   "anomalies": {
+    "execution_anomaly": false,
+    "broker_anomaly": false,
+    "data_anomaly_recorded": false
+   }
+  },
+  {
+   "trade_id": "V1T-2378382127",
+   "position_id": "2378382127",
+   "events": {
+    "decision": {
+     "seq": 562,
+     "ts_utc": "2026-10-01T18:48:02.641574+00:00",
+     "event": "DECISION",
+     "previous_hash": "93efd1c891065d11df4f01b03180802433596b0577177c1768e7b98256974111",
+     "action": "ENTER",
+     "signal_source": "BASELINE_TRANSITION",
+     "signal": {
+      "family_now": "DIRECTIONAL",
+      "signal_family": "DIRECTIONAL",
+      "known": true
+     },
+     "order_intent": {
+      "trade": true,
+      "side": "LONG",
+      "lots": 0.01,
+      "sl": 4167.67,
+      "tp": 4193.99,
+      "atr": 10.528,
+      "m15_trend20": 9.828499999999622,
+      "mapping_id": "v1up-baseline-transition-order-map-v1"
+     },
+     "live_state": {
+      "state": "EXPANSION",
+      "family": "DIRECTIONAL",
+      "trend_20": 9.828499999999622,
+      "atr": 10.528000000000004,
+      "last_bar_utc": "2026-10-01 21:45:00+00:00",
+      "source": "label_adapter",
+      "MARKET_BEHAVIOR": "EXPANSION",
+      "ma20": 4168.221500000001
+     },
+     "risk_allow": true,
+     "risk_reasons": [],
+     "snapshot": {
+      "bid": 4178.05,
+      "ask": 4178.2,
+      "mid": 4178.125,
+      "spread_bps": 0.359,
+      "digits": 2
+     },
+     "atr": 10.297142857142912,
+     "account_positions": 0,
+     "account_login": 160759434,
+     "signal_type": "BASELINE_CONTROL",
+     "not_hermes_alpha": true,
+     "current_hash": "348fbcdcf085aa6b49da66ec7240c75b7fb0d1075ece6035e4c649c7658aca5c"
+    },
+    "order_check": {
+     "seq": 29,
+     "ts_utc": "2026-09-28T15:31:14.598544+00:00",
+     "event": "ORDER_CHECK",
+     "previous_hash": "a998e08110fc91e0a90a3c4090b9ba036e1b6995769fb35b39e41de7e2483afe",
+     "order_id": null,
+     "side": "SHORT",
+     "lots": 0.01,
+     "price": 4122.86,
+     "sl": 4135.46,
+     "tp": 4104.3,
+     "magic": 90011,
+     "symbol": "XAUUSD",
+     "filling_bitmask": 0,
+     "filling_name": "RETURN",
+     "type_filling_value": 2,
+     "retcode": null,
+     "comment": null,
+     "ok": false,
+     "last_error": "(-10004, 'No IPC connection')",
+     "current_hash": "64a551adccd3daaaa07b9699453e5b9510e42f43dcef4e8b266b059a1c29c19b"
+    },
+    "order_request": {
+     "seq": 564,
+     "ts_utc": "2026-10-01T18:48:02.660993+00:00",
+     "event": "ORDER_REQUEST",
+     "previous_hash": "4ac34b8f9173b0429ebb313b7e80d572bee4258e62487dcb544d9a78e43cc69e",
+     "side": "LONG",
+     "lots": 0.01,
+     "price": 4178.2,
+     "sl": 4167.67,
+     "tp": 4193.99,
+     "magic": 90011,
+     "comment": "V1UP_DEMO",
+     "mapping_id": "v1up-baseline-transition-order-map-v1",
+     "filling_name": "FOK",
+     "current_hash": "cd5e7452e9627aca91a00368ac8ddaeee6d8a762b6a069b407f606e045608a34"
+    },
+    "order_send": {
+     "seq": 565,
+     "ts_utc": "2026-10-01T18:48:02.959111+00:00",
+     "event": "ORDER_SEND",
+     "previous_hash": "cd5e7452e9627aca91a00368ac8ddaeee6d8a762b6a069b407f606e045608a34",
+     "order_id": "2378382127",
+     "retcode": 10009,
+     "side": "LONG",
+     "qty": 0.01,
+     "price": 4178.2,
+     "fill_price": 4178.53,
+     "sl": 4167.67,
+     "tp": 4193.99,
+     "magic": 90011,
+     "comment": "V1UP_DEMO",
+     "ok": true,
+     "latency_ms": 291.97,
+     "slippage_bps": 0.7898,
+     "filling_name": "FOK",
+     "broker_comment": "Request executed",
+     "current_hash": "36def98c0fac7d75bc577f1cad4323ec3234555a9a4ed9880be5fc74373e0d87"
+    },
+    "close": {
+     "seq": 590,
+     "ts_utc": "2026-10-02T00:33:00.850379+00:00",
+     "event": "CLOSE",
+     "previous_hash": "42d4609ee30284b581a5fdf150cca5d30aa3d1c97c69640cd777841a73ff96f6",
+     "order_id": "2378382127",
+     "position_id": "2378382127",
+     "side": "LONG",
+     "qty": 0.01,
+     "price": 4167.59,
+     "reason": "SL",
+     "broker_comment": "[sl 4167.67]",
+     "broker_time_utc": "2026-10-02T03:21:31+00:00",
+     "current_hash": "ac9ae33b2b4c801bcf70933a12df51d018aac4e70d9581ca5215929cd59d2404"
+    },
+    "pnl": {
+     "seq": 591,
+     "ts_utc": "2026-10-02T00:33:00.862091+00:00",
+     "event": "PNL",
+     "previous_hash": "ac9ae33b2b4c801bcf70933a12df51d018aac4e70d9581ca5215929cd59d2404",
+     "order_id": "2378382127",
+     "position_id": "2378382127",
+     "pnl": -10.94,
+     "entry": 4178.53,
+     "exit": 4167.59,
+     "qty": 0.01,
+     "side": "LONG",
+     "reason": "SL",
+     "realized_R": -1.007,
+     "sl": 4167.67,
+     "tp": 4193.99,
+     "broker_time_utc": "2026-10-02T03:21:31+00:00",
+     "current_hash": "c35b21c6c33aa978f6d79c61d0b97124148c998312a7d409324dcde2d4c2371a"
+    }
+   },
+   "guard_counterfactual": {
+    "state": {
+     "day": "2026-10-01",
+     "daily_loss": -0.98,
+     "consecutive_losses": 4
+    },
+    "reasons_with_full_inputs": [
+     "MAX_CONSECUTIVE_LOSS",
+     "STALE_DATA"
+    ],
+    "would_block_daily_or_consecutive": true,
+    "note": "data_age not recorded in this era (guard consumed hardcoded 0); slippage = last realised before this decision"
+   },
+   "broker": {
+    "open_deal": {
+     "ticket": 2365036936,
+     "order": 2378382127,
+     "time": 1790891283,
+     "type": 0,
+     "entry": 0,
+     "magic": 90011,
+     "position_id": 2378382127,
+     "volume": 0.01,
+     "price": 4178.53,
+     "commission": -0.1,
+     "swap": 0.0,
+     "profit": 0.0,
+     "comment": "V1UP_DEMO"
+    },
+    "close_deal": {
+     "ticket": 2365051814,
+     "order": 2378398971,
+     "time": 1790911291,
+     "type": 1,
+     "entry": 1,
+     "magic": 90011,
+     "position_id": 2378382127,
+     "volume": 0.01,
+     "price": 4167.59,
+     "commission": -0.1,
+     "swap": -0.63,
+     "profit": -10.94,
+     "comment": "[sl 4167.67]"
+    },
+    "net": -11.77,
+    "close_comment": "[sl 4167.67]"
+   },
+   "classification": {
+    "primary_cause": "RISK_GUARD_FAILURE",
+    "contributing_factors": [
+     "SIGNAL_LOSS"
+    ],
+    "basis": "declared MAX_CONSECUTIVE_LOSS (state>=3) would have blocked this entry; executed because the guard was inert (V1-D001)"
+   },
+   "anomalies": {
+    "execution_anomaly": false,
+    "broker_anomaly": false,
+    "data_anomaly_recorded": false
+   }
+  },
+  {
+   "trade_id": "V1T-2378409328",
+   "position_id": "2378409328",
+   "events": {
+    "decision": {
+     "seq": 595,
+     "ts_utc": "2026-10-02T01:18:02.410018+00:00",
+     "event": "DECISION",
+     "previous_hash": "01e7c2a64723cd5141362357701ade9e22426e13e856a50b052e6883a2583b5b",
+     "action": "ENTER",
+     "signal_source": "BASELINE_TRANSITION",
+     "signal": {
+      "family_now": "DIRECTIONAL",
+      "signal_family": "DIRECTIONAL",
+      "known": true
+     },
+     "order_intent": {
+      "trade": true,
+      "side": "SHORT",
+      "lots": 0.01,
+      "sl": 4150.84,
+      "tp": 4133.54,
+      "atr": 6.922,
+      "m15_trend20": -26.847499999999854,
+      "mapping_id": "v1up-baseline-transition-order-map-v1"
+     },
+     "live_state": {
+      "state": "TREND",
+      "family": "DIRECTIONAL",
+      "trend_20": -26.847499999999854,
+      "atr": 6.921999999999935,
+      "last_bar_utc": "2026-10-02 04:15:00+00:00",
+      "source": "label_adapter",
+      "MARKET_BEHAVIOR": "TREND",
+      "ma20": 4170.5875
+     },
+     "risk_allow": true,
+     "risk_reasons": [],
+     "snapshot": {
+      "bid": 4143.74,
+      "ask": 4143.92,
+      "mid": 4143.83,
+      "spread_bps": 0.434,
+      "digits": 2
+     },
+     "atr": 7.052142857142761,
+     "account_positions": 0,
+     "account_login": 160759434,
+     "signal_type": "BASELINE_CONTROL",
+     "not_hermes_alpha": true,
+     "current_hash": "31f47a6ef773530054f502dc6ef8f3a82f0b3915722723bf9ed816a4cf4e7373"
+    },
+    "order_check": {
+     "seq": 29,
+     "ts_utc": "2026-09-28T15:31:14.598544+00:00",
+     "event": "ORDER_CHECK",
+     "previous_hash": "a998e08110fc91e0a90a3c4090b9ba036e1b6995769fb35b39e41de7e2483afe",
+     "order_id": null,
+     "side": "SHORT",
+     "lots": 0.01,
+     "price": 4122.86,
+     "sl": 4135.46,
+     "tp": 4104.3,
+     "magic": 90011,
+     "symbol": "XAUUSD",
+     "filling_bitmask": 0,
+     "filling_name": "RETURN",
+     "type_filling_value": 2,
+     "retcode": null,
+     "comment": null,
+     "ok": false,
+     "last_error": "(-10004, 'No IPC connection')",
+     "current_hash": "64a551adccd3daaaa07b9699453e5b9510e42f43dcef4e8b266b059a1c29c19b"
+    },
+    "order_request": {
+     "seq": 597,
+     "ts_utc": "2026-10-02T01:18:02.427410+00:00",
+     "event": "ORDER_REQUEST",
+     "previous_hash": "f57df9879df3c8c2ceab0c3a024d1dff9cb1c0f863be8143498616a543a8a76d",
+     "side": "SHORT",
+     "lots": 0.01,
+     "price": 4143.74,
+     "sl": 4150.84,
+     "tp": 4133.54,
+     "magic": 90011,
+     "comment": "V1UP_DEMO",
+     "mapping_id": "v1up-baseline-transition-order-map-v1",
+     "filling_name": "FOK",
+     "current_hash": "3c299a2dda006be3b2c6c5d3529baf75cedd96285d94232c80ab5aa3c22a8cb6"
+    },
+    "order_send": {
+     "seq": 598,
+     "ts_utc": "2026-10-02T01:18:02.713411+00:00",
+     "event": "ORDER_SEND",
+     "previous_hash": "3c299a2dda006be3b2c6c5d3529baf75cedd96285d94232c80ab5aa3c22a8cb6",
+     "order_id": "2378409328",
+     "retcode": 10009,
+     "side": "SHORT",
+     "qty": 0.01,
+     "price": 4143.74,
+     "fill_price": 4143.39,
+     "sl": 4150.84,
+     "tp": 4133.54,
+     "magic": 90011,
+     "comment": "V1UP_DEMO",
+     "ok": true,
+     "latency_ms": 280.78,
+     "slippage_bps": -0.8446,
+     "filling_name": "FOK",
+     "broker_comment": "Request executed",
+     "current_hash": "b30b69129de6c43267c14c7cf1f652bcef24f045f1b2da8a776811cbbafc77fe"
+    },
+    "close": {
+     "seq": 602,
+     "ts_utc": "2026-10-02T01:48:00.729416+00:00",
+     "event": "CLOSE",
+     "previous_hash": "7b060f19e223cf3402a39d4931cbced427caaf3dec7ba2820290dabe22e84f37",
+     "order_id": "2378409328",
+     "position_id": "2378409328",
+     "side": "SHORT",
+     "qty": 0.01,
+     "price": 4150.85,
+     "reason": "SL",
+     "broker_comment": "[sl 4150.84]",
+     "broker_time_utc": "2026-10-02T04:38:52+00:00",
+     "current_hash": "259907ee278a4d913c68aabed2b91caf93794bff8bfbf9730553ccf460fb486b"
+    },
+    "pnl": {
+     "seq": 603,
+     "ts_utc": "2026-10-02T01:48:00.734521+00:00",
+     "event": "PNL",
+     "previous_hash": "259907ee278a4d913c68aabed2b91caf93794bff8bfbf9730553ccf460fb486b",
+     "order_id": "2378409328",
+     "position_id": "2378409328",
+     "pnl": -7.46,
+     "entry": 4143.39,
+     "exit": 4150.85,
+     "qty": 0.01,
+     "side": "SHORT",
+     "reason": "SL",
+     "realized_R": -1.001,
+     "sl": 4150.84,
+     "tp": 4133.54,
+     "broker_time_utc": "2026-10-02T04:38:52+00:00",
+     "current_hash": "2e6b428d5afea5ccb4b06e362029c8fd2a02fcd9ec989ae04343c124142622fc"
+    }
+   },
+   "guard_counterfactual": {
+    "state": {
+     "day": "2026-10-02",
+     "daily_loss": -10.94,
+     "consecutive_losses": 1
+    },
+    "reasons_with_full_inputs": [
+     "STALE_DATA"
+    ],
+    "would_block_daily_or_consecutive": false,
+    "note": "data_age not recorded in this era (guard consumed hardcoded 0); slippage = last realised before this decision"
+   },
+   "broker": {
+    "open_deal": {
+     "ticket": 2365060894,
+     "order": 2378409328,
+     "time": 1790914682,
+     "type": 1,
+     "entry": 0,
+     "magic": 90011,
+     "position_id": 2378409328,
+     "volume": 0.01,
+     "price": 4143.39,
+     "commission": -0.1,
+     "swap": 0.0,
+     "profit": 0.0,
+     "comment": "V1UP_DEMO"
+    },
+    "close_deal": {
+     "ticket": 2365062964,
+     "order": 2378412182,
+     "time": 1790915932,
+     "type": 0,
+     "entry": 1,
+     "magic": 90011,
+     "position_id": 2378409328,
+     "volume": 0.01,
+     "price": 4150.85,
+     "commission": -0.1,
+     "swap": 0.0,
+     "profit": -7.46,
+     "comment": "[sl 4150.84]"
+    },
+    "net": -7.66,
+    "close_comment": "[sl 4150.84]"
+   },
+   "classification": {
+    "primary_cause": "SIGNAL_LOSS",
+    "contributing_factors": [],
+    "basis": "no declared gate (correct semantics) would have blocked this entry"
+   },
+   "anomalies": {
+    "execution_anomaly": false,
+    "broker_anomaly": false,
+    "data_anomaly_recorded": false
+   }
+  },
+  {
+   "trade_id": "V1T-2378413449",
+   "position_id": "2378413449",
+   "events": {
+    "decision": {
+     "seq": 604,
+     "ts_utc": "2026-10-02T01:48:02.429623+00:00",
+     "event": "DECISION",
+     "previous_hash": "2e6b428d5afea5ccb4b06e362029c8fd2a02fcd9ec989ae04343c124142622fc",
+     "action": "ENTER",
+     "signal_source": "BASELINE_TRANSITION",
+     "signal": {
+      "family_now": "DIRECTIONAL",
+      "signal_family": "DIRECTIONAL",
+      "known": true
+     },
+     "order_intent": {
+      "trade": true,
+      "side": "SHORT",
+      "lots": 0.01,
+      "sl": 4155.66,
+      "tp": 4137.24,
+      "atr": 7.366,
+      "m15_trend20": -20.014500000000226,
+      "mapping_id": "v1up-baseline-transition-order-map-v1"
+     },
+     "live_state": {
+      "state": "TREND",
+      "family": "DIRECTIONAL",
+      "trend_20": -20.014500000000226,
+      "atr": 7.3659999999999854,
+      "last_bar_utc": "2026-10-02 04:45:00+00:00",
+      "source": "label_adapter",
+      "MARKET_BEHAVIOR": "TREND",
+      "ma20": 4168.1245
+     },
+     "risk_allow": true,
+     "risk_reasons": [],
+     "snapshot": {
+      "bid": 4148.11,
+      "ask": 4148.29,
+      "mid": 4148.2,
+      "spread_bps": 0.434,
+      "digits": 2
+     },
+     "atr": 7.74714285714286,
+     "account_positions": 0,
+     "account_login": 160759434,
+     "signal_type": "BASELINE_CONTROL",
+     "not_hermes_alpha": true,
+     "current_hash": "f3820ce88486da5fa435eed7e38afe41712aef4049507b0f967c2ca0d9bfa054"
+    },
+    "order_check": {
+     "seq": 29,
+     "ts_utc": "2026-09-28T15:31:14.598544+00:00",
+     "event": "ORDER_CHECK",
+     "previous_hash": "a998e08110fc91e0a90a3c4090b9ba036e1b6995769fb35b39e41de7e2483afe",
+     "order_id": null,
+     "side": "SHORT",
+     "lots": 0.01,
+     "price": 4122.86,
+     "sl": 4135.46,
+     "tp": 4104.3,
+     "magic": 90011,
+     "symbol": "XAUUSD",
+     "filling_bitmask": 0,
+     "filling_name": "RETURN",
+     "type_filling_value": 2,
+     "retcode": null,
+     "comment": null,
+     "ok": false,
+     "last_error": "(-10004, 'No IPC connection')",
+     "current_hash": "64a551adccd3daaaa07b9699453e5b9510e42f43dcef4e8b266b059a1c29c19b"
+    },
+    "order_request": {
+     "seq": 606,
+     "ts_utc": "2026-10-02T01:48:02.447460+00:00",
+     "event": "ORDER_REQUEST",
+     "previous_hash": "b6e1fa6e1877fa04cba0b05e1cef8a29c769b9131a68da971bb78cdcf20c1852",
+     "side": "SHORT",
+     "lots": 0.01,
+     "price": 4148.11,
+     "sl": 4155.66,
+     "tp": 4137.24,
+     "magic": 90011,
+     "comment": "V1UP_DEMO",
+     "mapping_id": "v1up-baseline-transition-order-map-v1",
+     "filling_name": "FOK",
+     "current_hash": "fa6216dcc8bb27ccad057e3239a938b4b143dccbe301c1ca7462c85a3e1c5a97"
+    },
+    "order_send": {
+     "seq": 607,
+     "ts_utc": "2026-10-02T01:48:02.727895+00:00",
+     "event": "ORDER_SEND",
+     "previous_hash": "fa6216dcc8bb27ccad057e3239a938b4b143dccbe301c1ca7462c85a3e1c5a97",
+     "order_id": "2378413449",
+     "retcode": 10009,
+     "side": "SHORT",
+     "qty": 0.01,
+     "price": 4148.11,
+     "fill_price": 4148.71,
+     "sl": 4155.66,
+     "tp": 4137.24,
+     "magic": 90011,
+     "comment": "V1UP_DEMO",
+     "ok": true,
+     "latency_ms": 274.35,
+     "slippage_bps": 1.4464,
+     "filling_name": "FOK",
+     "broker_comment": "Request executed",
+     "current_hash": "f05a03ca87098f4f82d76ca2c20b97c73bbe9dae7024d88103d9b4d28c96785c"
+    },
+    "close": {
+     "seq": 611,
+     "ts_utc": "2026-10-02T02:18:01.239845+00:00",
+     "event": "CLOSE",
+     "previous_hash": "d2149a7da08df10cdcf04620adf364550f7d4ace7281ae2a743e7fa1d7577fa9",
+     "order_id": "2378413449",
+     "position_id": "2378413449",
+     "side": "SHORT",
+     "qty": 0.01,
+     "price": 4155.72,
+     "reason": "SL",
+     "broker_comment": "[sl 4155.66]",
+     "broker_time_utc": "2026-10-02T05:05:01+00:00",
+     "current_hash": "6940f3432d36c3b00e0ca3eb8363d61359aa6abb17a666143f9ff5475c196ed2"
+    },
+    "pnl": {
+     "seq": 612,
+     "ts_utc": "2026-10-02T02:18:01.253942+00:00",
+     "event": "PNL",
+     "previous_hash": "6940f3432d36c3b00e0ca3eb8363d61359aa6abb17a666143f9ff5475c196ed2",
+     "order_id": "2378413449",
+     "position_id": "2378413449",
+     "pnl": -7.01,
+     "entry": 4148.71,
+     "exit": 4155.72,
+     "qty": 0.01,
+     "side": "SHORT",
+     "reason": "SL",
+     "realized_R": -1.009,
+     "sl": 4155.66,
+     "tp": 4137.24,
+     "broker_time_utc": "2026-10-02T05:05:01+00:00",
+     "current_hash": "7384331fbaa80891823eb83944ff03c06dc11d43d4df6dc8e0190d4fb7714e38"
+    }
+   },
+   "guard_counterfactual": {
+    "state": {
+     "day": "2026-10-02",
+     "daily_loss": -18.4,
+     "consecutive_losses": 2
+    },
+    "reasons_with_full_inputs": [
+     "STALE_DATA"
+    ],
+    "would_block_daily_or_consecutive": false,
+    "note": "data_age not recorded in this era (guard consumed hardcoded 0); slippage = last realised before this decision"
+   },
+   "broker": {
+    "open_deal": {
+     "ticket": 2365064100,
+     "order": 2378413449,
+     "time": 1790916482,
+     "type": 1,
+     "entry": 0,
+     "magic": 90011,
+     "position_id": 2378413449,
+     "volume": 0.01,
+     "price": 4148.71,
+     "commission": -0.1,
+     "swap": 0.0,
+     "profit": 0.0,
+     "comment": "V1UP_DEMO"
+    },
+    "close_deal": {
+     "ticket": 2365065592,
+     "order": 2378415314,
+     "time": 1790917501,
+     "type": 0,
+     "entry": 1,
+     "magic": 90011,
+     "position_id": 2378413449,
+     "volume": 0.01,
+     "price": 4155.72,
+     "commission": -0.1,
+     "swap": 0.0,
+     "profit": -7.01,
+     "comment": "[sl 4155.66]"
+    },
+    "net": -7.21,
+    "close_comment": "[sl 4155.66]"
+   },
+   "classification": {
+    "primary_cause": "SIGNAL_LOSS",
+    "contributing_factors": [],
+    "basis": "no declared gate (correct semantics) would have blocked this entry"
+   },
+   "anomalies": {
+    "execution_anomaly": false,
+    "broker_anomaly": false,
+    "data_anomaly_recorded": false
+   }
+  }
+ ],
+ "broker_read": {
+  "ok": true,
+  "error": null,
+  "read_utc": "2026-10-02T11:16:07.412374+00:00",
+  "account": {
+   "login": 160759434,
+   "server": "ForexTimeFXTM-Demo01",
+   "balance": 1923.39
+  }
+ },
+ "input_hashes": {
+  "ledger_sha256": "22b2efb01d104ac019a665177c347c16b0c83022d59f80b9417b9261307319af"
+ }
+}

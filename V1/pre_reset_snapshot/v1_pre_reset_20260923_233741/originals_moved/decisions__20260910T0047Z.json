@@ -1,0 +1,262 @@
+{
+ "cycle": "2026-09-10T00:47Z",
+ "symbol": "XAUUSD",
+ "decision_id": "DEC-2026-09-10T00:47Z",
+ "utc_ts": "2026-09-10T00:47:05Z",
+ "generated_utc": "2026-09-10T00:47:05Z",
+ "decision": "SHORT",
+ "confidence": 0.55,
+ "state_summary": "D1 主空 (close 4353.5 < MA20 4464.6, RSI 39, llish5) 压顶; H1/H4 中性区间 (ER 0.0/0.006), M15 下行结构 (llish7/hhish2, close 4400.415 < MA20/MA50, RSI 30.5) 但现超卖修复反弹至 live 4399.09。价格正贴 M15 MA200 4398.41 回升, 逼近 4402.5-4407 供应带 (M15 MA20 4406.05/MA50 4405.01 + 前 fill 4403.27); FLAT, 在册 TP-20260910T0032Z 破位空腿 (4374.9) 互补。",
+ "m15_change": "00:32Z 4393.2 → 00:47Z 4399.09 反弹 +5.9pt (超卖 RSI 30.5 修复), 上行逼近 4402.5-4407 供应带, 距带上沿仅 ~3.4pt; 未破供应前仍属弱反弹回补, 顺 D1 主空的高空位。",
+ "opportunity": "range_reversal",
+ "opportunity_mechanism": "供应带 fade 再武装 (V3 rearm): 4402.5-4407 = M15 MA20 4406.05/MA50 4405.01 汇合 + 前 fill 4403.27 + 供应起源; D1 主空 + M15 llish7 下做空为顺结构, 反弹进带即高空。破位空腿 (TP-0032Z @4374.9) 覆盖下行另一端, 两腿互补互斥 (先到者生)。",
+ "mtf_agreement": "partial-bearish",
+ "answers_14": {
+  "1": "市场状态: XAUUSD mid 4399.09 (m15_live quote 00:47Z, spread 0.41bps, tick 69/min, z0.19 无异常), 较 00:32Z 4393.2 反弹 +5.9pt; M15 last_close 4400.415 < MA20 4406.05/MA50 4405.01, live 4399.09 贴 MA200 4398.41, RSI 30.5, llish7/hhish2, ER0.39, exp_cont 收缩 0.52; H1 中性 (ER0.0, MA20 4397.3/MA50 4399.1), H4 区间 (pos35.3), D1 主空 (close 4353.5<MA20 4464.6, RSI39); 数据 ok live3d/580k ticks/gaps=[]; candle_latest 停滞 09-07 弃用; FLAT 无持仓。",
+  "2": "一致性: partial-bearish — D1 主空 + M15 下行结构 (llish7/贴 MA200 下) 与做空一致; H1/H4 中性无反向权重; 本腿反弹仅超卖修复, 未重夺 4402.5-4407 供应。",
+  "3": "M15 变化: 00:32Z 4393.2 → 00:47Z 4399.09 反弹 +5.9pt (RSI 30.5 修复), 上行贴 4402.5-4407 供应下沿; 关键 = 反弹进入有利做空区 (距带 +3.4pt), 等待触带即自动成交。",
+  "4": "机会: 供应带 fade 再武装 — 现价 4399.09 距 4402.5 仅 3.4pt; 触带 (zone_touch) 且 spread<0.6bps 即自动 market SHORT; 离可交易就差 = mid 上行入 [4402.5,4407] 这一个盘中动作 (tick 级判定, 无需等收盘)。",
+  "5": "机制: 弱反弹回补供应 — M15 MA20/MA50 汇合 + 前 fill 4403.27 + 供应起源, 在 D1 主空/M15 llish7 下为高空位; 触发失败则价离带自清, 破位空腿 TP-0032Z @4374.9 承接下行端。",
+  "6": "触发条件(具体价): {\"and\":[{\"zone_touch\":[4402.5,4407.0]},{\"spread_under_bps\":0.6}]} — mid 进入 4402.5-4407 即自动 market SHORT (tick 级实时判定, 不等收盘); 现价 4399.09 距带 +3.4pt。",
+  "7": "失效(具体价): mid ≥ 4411.8 (price_cross_up = 站上 trap 带上沿, fade 逻辑作废); 触发前 age>120min (M15*8) 过期零成本清理; 已成交易后 stand-back 4411.8 触发 SL -1R 有界。",
+  "8": "预期收益 R: 条件加权 (1R=7.05pt @ref fill 4404.75, SL 4411.8): T1 4390.0 = 14.75pt=2.09R ×0.40 / T2 4381.5 = 23.25pt=3.30R ×0.35 / T3 4378.5 = 26.25pt=3.72R ×0.25 → 加权 0.40×2.09+0.35×3.30+0.25×3.72 = +2.92R (全阶梯兑现)。",
+  "9": "预期损失 R: -1.0R 有界 (SL 4411.8, ref fill 4404.75 → risk 7.05pt); 未触发零成本零风险 (invalidation/120min 过期清理); 亏损不加仓不反手。",
+  "10": "成本数值: spread 0.41bps (实时) + slippage ~0.3bps → 单边 ~0.71bps, 往返 ~1.42bps ≈ 0.09R (1R=7.05pt @4404.75); demo 无隔夜障碍; 未触发零成本。",
+  "11": "净EV算式: EV = p_win×2.92 − (1−p_win)×1.0 − cost = 0.40×2.92 − 0.60×1.0 − 0.09 = 1.168 − 0.69 = +0.48R (>0, 通过); breakeven p≈0.31, 取 0.40 有边际正 EV; 成本 0.3bps 极低非障碍。",
+  "12": "再现: 同带高频复现 — 今日 TP-0017Z 同区 fade (00:17Z 注册, 价离带后取消) + 同族 POS-1547Z +1.85R / POS-2202Z +13.3USD; D1 主空下高空供应带命中率高; 本腿为同一空头主题再武装 (触带即成交, 不追现价)。",
+  "13": "决策: SHORT (conditional, bias SHORT-lean) — 注册供应带 fade TP-20260910T0047Z: FLAT 满足单仓约束, trigger zone_touch [4402.5,4407.0]+spread<0.6bps, invalidation/SL 4411.8, T1 4390.0×0.40/T2 4381.5×0.35/T3 4378.5×0.25, qty 0.01, EV +0.48R 通过; 与在册 TP-0032Z 破位空腿互补互斥 (先到者生)。",
+  "14": "理由: 00:32Z 反弹自 4393.2 修复至 4399.09, 逼近 4402.5-4407 (M15 MA20/MA50+前fill) 供应带; D1 主空+M15 llish7 下高空顺结构; 注册 zone_touch fade EV +0.48R, SL 4411.8 有界, 未触发零成本; 破位空腿 TP-0032Z 在册互补。"
+ },
+ "cost_note": "spread_bps=0.41 (实时 m15_live) + slippage_bps=0.3 → 单边 ~0.71bps, 往返 total_bps_rt=1.42bps ≈ 0.09R (1R=7.05pt @ref fill 4404.75); 未触发零成本; demo 无隔夜障碍。",
+ "ev_note": "EV_R = 0.40×2.92 − 0.60×1.0 − 0.09 = +0.48R → 正 → 注册 SHORT; breakeven p≈0.31 < 0.40。",
+ "plan_id": "TP-20260910T0047Z",
+ "plan": {
+  "plan_id": "TP-20260910T0047Z",
+  "direction": "SHORT",
+  "opportunity_type": "range_reversal",
+  "mechanism_ref": "supply_retest_fade_v3_rearm_after_bounce_4399",
+  "entry_style": "market_on_trigger",
+  "entry_zone": {
+   "low": 4402.5,
+   "high": 4407.0
+  },
+  "trigger_condition": {
+   "and": [
+    {
+     "zone_touch": [
+      4402.5,
+      4407.0
+     ]
+    },
+    {
+     "spread_under_bps": 0.6
+    }
+   ]
+  },
+  "invalidation_condition": {
+   "price_cross_up": 4411.8
+  },
+  "stop_logic": {
+   "type": "stop_market",
+   "level_price": 4411.8
+  },
+  "target_logic": {
+   "type": "price_levels",
+   "levels": [
+    {
+     "price": 4390.0,
+     "frac": 0.4
+    },
+    {
+     "price": 4381.5,
+     "frac": 0.35
+    },
+    {
+     "price": 4378.5,
+     "frac": 0.25
+    }
+   ]
+  },
+  "expected_R": 2.92,
+  "expected_win_probability": 0.4,
+  "probability_source": "subjective",
+  "expected_loss": {
+   "units": "R",
+   "value": 1.0
+  },
+  "estimated_cost": {
+   "spread_bps": 0.41,
+   "slippage_bps": 0.3,
+   "total_bps_rt": 1.42,
+   "cost_in_R": 0.09
+  },
+  "expected_net_EV": {
+   "value": 0.48,
+   "units": "R",
+   "note": "0.40 x (0.40x2.09 + 0.35x3.30 + 0.25x3.72) - 0.60x1.0 - 0.09 = 0.40x2.92 - 0.69 = +0.48R (1R=7.05pt @ref fill 4404.75, SL 4411.8); 未触发零成本, 120min 自动清理; FLAT 无 position_busy, qty 0.01 合规"
+  },
+  "maximum_holding_time": "M15*8",
+  "cancel_conditions": [
+   "触发前 mid >= 4411.8 (invalidation price_cross_up = 站上 trap 带上沿, fade 逻辑作废) → 引擎零成本取消; 该场景交由破位空腿/下轮评估",
+   "触发前 mid < 4393.5 (price_left_setup, 价格跌离回抽意图带) → 由 TP-0032Z 破位空腿接管 → 自动清理",
+   "未触发 age > 120min (M15*8) 过期清理 → 下轮重评",
+   "与 TP-20260910T0032Z (破位空腿 4374.9) 互斥: 本腿触发→position_busy 拒绝破位腿并清理 (单仓约束); 反之亦然",
+   "已成交 → SL 4411.8 broker 随单 -1R 有界; 亏损不加仓不反手; 持仓中不注册新开仓 (单仓约束)"
+  ],
+  "risk_level": "medium",
+  "reason": "弱反弹回补 4402.5-4407 供应带 (M15 MA20/MA50+前fill 4403.27), D1 主空+M15 llish7 顺结构高空; zone_touch 触带即自动成交, SL 4411.8 有界, EV +0.48R; 与在册破位空腿互补互斥。",
+  "qty_lots": 0.01
+ },
+ "market_state": {
+  "d1": {
+   "tf": "D1",
+   "bars": 26,
+   "state": "ok",
+   "last_close": 4353.505,
+   "last_bar": "2026-09-08 00:00:00+00:00",
+   "ma": {
+    "ma20": 4464.5525,
+    "ma50": null,
+    "ma200": null
+   },
+   "price_vs_ma20": -248.7,
+   "rsi14": 38.96587933314319,
+   "atr_pct_last": 2.408,
+   "structure": {
+    "hhish": 4,
+    "llish": 5,
+    "last_vs_5ago": "down"
+   },
+   "trend_range": {
+    "cat": "mixed",
+    "er": 0.221
+   },
+   "exp_cont": {
+    "state": "neutral",
+    "ratio": 1.01
+   },
+   "s_r": {
+    "high60": 4696.87,
+    "low60": 4042.58,
+    "pos_in_range": 47.5
+   },
+   "recent_move_bps": 56.7
+  },
+  "h4": {
+   "tf": "H4",
+   "bars": 159,
+   "state": "ok",
+   "last_close": 4409.75,
+   "last_bar": "2026-09-09 16:00:00+00:00",
+   "ma": {
+    "ma20": 4408.1357499999995,
+    "ma50": 4420.848999999999,
+    "ma200": null
+   },
+   "price_vs_ma20": 3.7,
+   "rsi14": 49.693188369986046,
+   "atr_pct_last": 0.744,
+   "structure": {
+    "hhish": 5,
+    "llish": 4,
+    "last_vs_5ago": "up"
+   },
+   "trend_range": {
+    "cat": "range",
+    "er": 0.006
+   },
+   "exp_cont": {
+    "state": "neutral",
+    "ratio": 0.85
+   },
+   "s_r": {
+    "high60": 4643.23,
+    "low60": 4282.53,
+    "pos_in_range": 35.3
+   },
+   "recent_move_bps": 129.2
+  },
+  "h1": {
+   "tf": "H1",
+   "bars": 609,
+   "state": "ok",
+   "last_close": 4399.07,
+   "last_bar": "2026-09-09 22:00:00+00:00",
+   "ma": {
+    "ma20": 4397.3035,
+    "ma50": 4399.0858,
+    "ma200": 4430.936125
+   },
+   "price_vs_ma20": 4.0,
+   "rsi14": 50.02170738445728,
+   "atr_pct_last": 0.447,
+   "structure": {
+    "hhish": 5,
+    "llish": 4,
+    "last_vs_5ago": "up"
+   },
+   "trend_range": {
+    "cat": "range",
+    "er": 0.0
+   },
+   "exp_cont": {
+    "state": "neutral",
+    "ratio": 1.02
+   },
+   "s_r": {
+    "high60": 4440.96,
+    "low60": 4341.45,
+    "pos_in_range": 57.9
+   },
+   "recent_move_bps": -45.1
+  },
+  "m15": {
+   "tf": "M15",
+   "bars": 2435,
+   "state": "ok",
+   "last_close": 4400.415,
+   "last_bar": "2026-09-09 23:30:00+00:00",
+   "ma": {
+    "ma20": 4406.04975,
+    "ma50": 4405.0061,
+    "ma200": 4398.40625
+   },
+   "price_vs_ma20": -12.8,
+   "rsi14": 30.506846024501044,
+   "atr_pct_last": 0.134,
+   "structure": {
+    "hhish": 2,
+    "llish": 7,
+    "last_vs_5ago": "up"
+   },
+   "trend_range": {
+    "cat": "trend",
+    "er": 0.39
+   },
+   "exp_cont": {
+    "state": "contracting",
+    "ratio": 0.52
+   },
+   "s_r": {
+    "high60": 4434.23,
+    "low60": 4375.19,
+    "pos_in_range": 42.7
+   },
+   "recent_move_bps": 2.0
+  },
+  "m15_live": {
+   "last_mid": 4399.09,
+   "spread_bps_now": 0.41,
+   "tick_rate_per_min_15m": 69,
+   "quote_source": "quote_latest",
+   "abnormal": {
+    "last6_max_move_bps": 12.1,
+    "z_vs_baseline": 0.19,
+    "baseline_mean_move_bps": 10.14
+   }
+  }
+ },
+ "model": "deepseek/deepseek-v4-flash",
+ "prompt_version": "hermes_trader_v1/m15/active-hunter-2026-09-08",
+ "data_quality_note": "data_quality ok (live_days=3, ticks=580203, gaps=[]); m15_live quote 新鲜 mid 4399.09 spread 0.41bps tick 69/min z0.19; candle_latest.json 停滞于 09-07 弃用; FLAT (POS-20260909T2202Z 已于 00:03:22Z broker_tp 全平); 在册 TP-20260910T0032Z 破位空腿 pending (trigger 4374.9, inv 4402.4); 本 cycle 注册互补供应带 fade TP-20260910T0047Z"
+}

@@ -1,0 +1,86 @@
+{
+ "schema": "v3_r2_dataset_report/1",
+ "ts_utc": "2026-09-25T10:28:19.619518+00:00",
+ "xauusd": {
+  "source": "HistData M1 BID",
+  "rows_overlap": 607992,
+  "first_utc": "2025-01-01 23:00:00+00:00",
+  "last_utc": "2026-09-18 21:58:00+00:00"
+ },
+ "panel_5m": {
+  "rows": 1440,
+  "first": "2026-08-25 12:20:00+00:00",
+  "last": "2026-09-18 18:55:00+00:00",
+  "columns": [
+   "DXY_XAUUSD_PANEL",
+   "VIX",
+   "UST10Y_PROXY_TNX",
+   "XAUUSD",
+   "DXY_XAUUSD_PANEL_chg_5m_bp",
+   "DXY_XAUUSD_PANEL_z_5m",
+   "DXY_XAUUSD_PANEL_pct_5m",
+   "DXY_XAUUSD_PANEL_chg_10m_bp",
+   "DXY_XAUUSD_PANEL_z_10m",
+   "DXY_XAUUSD_PANEL_pct_10m",
+   "DXY_XAUUSD_PANEL_chg_15m_bp",
+   "DXY_XAUUSD_PANEL_z_15m",
+   "DXY_XAUUSD_PANEL_pct_15m",
+   "VIX_chg_5m_bp",
+   "VIX_z_5m",
+   "VIX_pct_5m",
+   "VIX_chg_10m_bp",
+   "VIX_z_10m",
+   "VIX_pct_10m",
+   "VIX_chg_15m_bp",
+   "VIX_z_15m",
+   "VIX_pct_15m",
+   "UST10Y_PROXY_TNX_chg_5m_bp",
+   "UST10Y_PROXY_TNX_z_5m",
+   "UST10Y_PROXY_TNX_pct_5m",
+   "UST10Y_PROXY_TNX_chg_10m_bp",
+   "UST10Y_PROXY_TNX_z_10m",
+   "UST10Y_PROXY_TNX_pct_10m",
+   "UST10Y_PROXY_TNX_chg_15m_bp",
+   "UST10Y_PROXY_TNX_z_15m",
+   "UST10Y_PROXY_TNX_pct_15m"
+  ]
+ },
+ "external_sources": {
+  "DXY_XAUUSD_PANEL": {
+   "url": "https://query1.finance.yahoo.com/v8/finance/chart/DX-Y.NYB?range=1mo&interval=5m",
+   "sha256": "8ba21bfcb83f5296d8406b9e4e5353e5fc8c63ad3935dbee33272b148267ebeb",
+   "rows_raw": 5934,
+   "rows_in_overlap": 4711,
+   "first_utc": "2026-08-25 10:25:00+00:00",
+   "last_utc": "2026-09-18 20:55:00+00:00"
+  },
+  "VIX": {
+   "url": "https://query1.finance.yahoo.com/v8/finance/chart/%5EVIX?range=1mo&interval=5m",
+   "sha256": "a8d550fa3011d1c5e84277425a1b90d0733f36450122ad4b7297b51dd43adbb3",
+   "rows_raw": 3531,
+   "rows_in_overlap": 2870,
+   "first_utc": "2026-08-25 10:25:00+00:00",
+   "last_utc": "2026-09-18 20:10:00+00:00"
+  },
+  "UST10Y_PROXY_TNX": {
+   "url": "https://query1.finance.yahoo.com/v8/finance/chart/%5ETNX?range=1mo&interval=5m",
+   "sha256": "193dec243e5595df612f2429a2cb534979343ce61d83925d15a6d9154c441f19",
+   "rows_raw": 1760,
+   "rows_in_overlap": 1440,
+   "first_utc": "2026-08-25 12:20:00+00:00",
+   "last_utc": "2026-09-18 18:55:00+00:00"
+  }
+ },
+ "overlap_window": {
+  "from": "2026-08-25 12:20:00+00:00",
+  "to": "2026-09-18 18:55:00+00:00",
+  "calendar_days": 24
+ },
+ "branch_status": {
+  "E_event": "NOT_TESTABLE (no overlap with the event layer)",
+  "F_crossmarket": "TESTABLE at 5m granularity over the overlap window",
+  "F_1m_granularity": "NOT_TESTABLE (Yahoo 1m covers only the last 5 days: 09-21 onward)"
+ },
+ "cost_anchor_bp": 0.914,
+ "source_separation": "each external source is a separate column; no stitching, no synthetic DXY"
+}

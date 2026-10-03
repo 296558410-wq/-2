@@ -1,0 +1,41 @@
+{
+ "task": "V1_R2_FULL_AUTONOMOUS_OPTIMIZATION_R1",
+ "phase": "PHASE_2_STATE_VS_EVENT_LIFE_DEATH",
+ "frozen_before_analysis": true,
+ "frozen_at_utc": "2026-09-27T12:25:00+00:00",
+ "question": "Does a STATE survive as a predictive object once it is given a lifecycle (dwell/hysteresis), and does an EVENT target beat it? Or is neither predictable from price geometry alone?",
+ "carried_from_phase1": {
+  "instrument_gate": "PASS (abs diff 0.0)",
+  "root_cause": "frozen MARKET_BEHAVIOR is a memoryless per-bar classifier: churn 0.6292@M15/0.6194@H1 on 20 months, duration median 1 bar at all timeframes, surrogate churn 0.62 ~ observed => churn is definitional, not market structure",
+  "implication": "any target derived from the frozen per-bar label inherits memorylessness; a stateful redefinition must be tested explicitly"
+ },
+ "data": {"source": "research/v3_alpha_discovery_r1/xauusd_m1_histdata.parquet", "tf": "M15", "bars": 40546, "range": ["2025-01-01T23:00Z", "2026-09-18T21:45Z"]},
+ "feature_rule": "features are PURE OHLC-derived indicators (atr_pctl, er10, slope5, rng_exp, vel4, acc, eff3, act3). Labeler outputs are STRICTLY EXCLUDED from features to avoid circularity.",
+ "targets": {
+  "T1_FROZEN_STATE": "frozen MARKET_BEHAVIOR(t) -> MARKET_BEHAVIOR(t+8)  [h=8 bars ~2h]",
+  "T2_STATEFUL_STATE": "hysteresis(k=2) applied to the frozen label sequence, then t -> t+8",
+  "T3_GEOMETRY": "next-bar geometry {UP_BREAK, INSIDE, DOWN_BREAK} (t -> t+1)",
+  "T4_EVENT_BREAKOUT": "causal event: within t+1..t+8, close beyond the prior 96-bar range {UP_BREAK, DOWN_BREAK, NONE}"
+ },
+ "protocol": {
+  "model": "multinomial logistic regression, C=1.0, lbfgs, deterministic; NO complexity change across targets",
+  "walk_forward": "expanding, 5 folds covering the last 40% of bars",
+  "purge_bars": 480,
+  "embargo_bars": 1,
+  "primary_metric": "out-of-sample log-loss gain in bits vs unconditional class-prior baseline (DeltaLL)",
+  "effect_floor_bits": 0.01,
+  "secondary_metrics": ["persistence baseline accuracy", "majority baseline accuracy", "model accuracy"],
+  "null": "block-shuffled target (block=48), full protocol re-run, NPERM=30, empirical p = share(null DeltaLL >= observed)",
+  "acceptance": "a target SURVIVES only if DeltaLL >= effect_floor AND empirical p <= 0.05 AND it beats the persistence baseline accuracy"
+ },
+ "decision_rules": {
+  "STATE_SURVIVES": "T1 or T2 passes acceptance",
+  "EVENT_DOMINATES": "T4 passes and (T1,T2) fail",
+  "NEITHER": "all targets fail => price geometry alone does not support state/event prediction at this sample",
+  "no_tuning": "no threshold change; k=2 chosen a priori from Phase 1 (k=2 gave churn 0.1507)",
+  "instrument_check": "Phase 1 instrument gate already PASS"
+ },
+ "seeds": [20260927],
+ "forbidden": ["editing frozen artifacts", "changing frozen ontology/params", "future returns/PnL/win-rate", "orders/broker", "live/shadow/forward"],
+ "write_scope": "research/hermes/trader_v1/v1_r2_full_autonomous_optimization_r1/** ONLY"
+}

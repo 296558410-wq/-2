@@ -1,0 +1,222 @@
+{
+ "schema": "v3_r2_19_tests/1",
+ "ts_utc": "2026-09-25T13:11:19.461966+00:00",
+ "total": 19,
+ "pass": 14,
+ "fail": 5,
+ "TESTS": "14/19",
+ "categories": {
+  "1": "input_integrity",
+  "2": "timestamp_integrity",
+  "3": "PIT_integrity",
+  "4": "no_lookahead",
+  "5": "event_dedup",
+  "6": "cross_grid_dedup",
+  "7": "episode_grouping",
+  "8": "frequency_calculation",
+  "9": "priority_determinism",
+  "10": "Hermes_budget",
+  "11": "detector_ablation",
+  "12": "detector_overlap",
+  "13": "negative_control",
+  "14": "replay",
+  "15": "deterministic_reproduction",
+  "16": "ledger_chain",
+  "17": "V1_isolation",
+  "18": "V2_isolation",
+  "19": "boundary_audit"
+ },
+ "results": [
+  {
+   "category": 1,
+   "test": "input_integrity",
+   "result": "PASS",
+   "detail": {
+    "INPUT_HASH": "704e1cfa8960cee8",
+    "FREEZE_HASH": "7da599cdb6858ac6"
+   },
+   "sec": 0.0
+  },
+  {
+   "category": 2,
+   "test": "timestamp_integrity",
+   "result": "PASS",
+   "detail": {
+    "opportunities": 38367,
+    "tz": "UTC"
+   },
+   "sec": 0.9
+  },
+  {
+   "category": 3,
+   "test": "PIT_integrity",
+   "result": "PASS",
+   "detail": {
+    "detections_using_future": 0
+   },
+   "sec": 0.2
+  },
+  {
+   "category": 4,
+   "test": "no_lookahead",
+   "result": "PASS",
+   "detail": {
+    "duration_separated": true,
+    "duration_in_priority_weight": 0.0
+   },
+   "sec": 0.2
+  },
+  {
+   "category": 5,
+   "test": "event_dedup",
+   "result": "PASS",
+   "detail": {
+    "raw": 38367,
+    "independent": 7792
+   },
+   "sec": 0.0
+  },
+  {
+   "category": 6,
+   "test": "cross_grid_dedup",
+   "result": "PASS",
+   "detail": {
+    "clusters": 12994,
+    "grouping_unit_tests": {
+     "same_event_same_grid": true,
+     "same_event_cross_grid": true,
+     "different_event_same_grid": true,
+     "different_event_cross_grid": true,
+     "three_grid_same_event": true,
+     "cross_family_same_event": true
+    }
+   },
+   "sec": 0.0
+  },
+  {
+   "category": 7,
+   "test": "episode_grouping",
+   "result": "PASS",
+   "detail": {
+    "independent_events": 7792,
+    "rule": "same-family same-grid 30 bars; cross-grid/cross-family 30 min (frozen)"
+   },
+   "sec": 0.0
+  },
+  {
+   "category": 8,
+   "test": "frequency_calculation",
+   "result": "PASS",
+   "detail": {
+    "per_week": 86.3925,
+    "F4": "MEDIUM_FREQUENCY",
+    "F3": "NOT_COMPUTABLE"
+   },
+   "sec": 0.0
+  },
+  {
+   "category": 9,
+   "test": "priority_determinism",
+   "result": "PASS",
+   "detail": {
+    "priority_hash": "6edb9418b6e5ccb8",
+    "duration_weight": 0.0
+   },
+   "sec": 0.0
+  },
+  {
+   "category": 10,
+   "test": "Hermes_budget",
+   "result": "PASS",
+   "detail": {
+    "selected": 300,
+    "budget": 300
+   },
+   "sec": 0.0
+  },
+  {
+   "category": 11,
+   "test": "detector_ablation",
+   "result": "PASS",
+   "detail": {
+    "ablations": 6,
+    "F3_marked": "INSUFFICIENT_DATA"
+   },
+   "sec": 0.0
+  },
+  {
+   "category": 12,
+   "test": "detector_overlap",
+   "result": "PASS",
+   "detail": {
+    "pairs": 15,
+    "violations": 0,
+    "status": "PASS",
+    "max_jaccard": 0.453974,
+    "merge_candidates": []
+   },
+   "sec": 0.0
+  },
+  {
+   "category": 13,
+   "test": "negative_control",
+   "result": "PASS",
+   "detail": {
+    "runs": 200,
+    "mean": 10131.59,
+    "status": "PASS"
+   },
+   "sec": 0.0
+  },
+  {
+   "category": 14,
+   "test": "replay",
+   "result": "FAIL",
+   "detail": "core results differ",
+   "sec": 0.2
+  },
+  {
+   "category": 15,
+   "test": "deterministic_reproduction",
+   "result": "FAIL",
+   "detail": "core results changed between identical runs",
+   "sec": 114.8
+  },
+  {
+   "category": 16,
+   "test": "ledger_chain",
+   "result": "PASS",
+   "detail": {
+    "rows": 14,
+    "chain_ok": true
+   },
+   "sec": 0.0
+  },
+  {
+   "category": 17,
+   "test": "V1_isolation",
+   "result": "FAIL",
+   "detail": "V1 source/config modified: ['research\\\\hermes\\\\trader_v1\\\\run_state\\\\tmp\\\\append_summary_0302.py', 'research\\\\hermes\\\\trader_v1\\\\run_state\\\\tmp\\\\append_summary_1017Z.py', 'research\\\\hermes\\\\trader_v1\\\\run_state\\\\tmp\\\\append_summary_1217Z.py']",
+   "sec": 34.8
+  },
+  {
+   "category": 18,
+   "test": "V2_isolation",
+   "result": "FAIL",
+   "detail": "V2 source/config modified: ['research\\\\hermes\\\\trader_v2\\\\dashboard\\\\acc_probe.py', 'research\\\\hermes\\\\trader_v2\\\\dashboard\\\\datasource.py', 'research\\\\hermes\\\\trader_v2\\\\data_sources\\\\mt5_market.py']",
+   "sec": 6.3
+  },
+  {
+   "category": 19,
+   "test": "boundary_audit",
+   "result": "FAIL",
+   "detail": "V1/V2 new dirty: ['research/hermes/trader_v1/memory/reviews/RV-TP-20260925T103456-20260925130524.json', 'research/hermes/trader_v1/run_state/decisions/20260925T1302Z.json'] ['research/hermes/trader_v2/observations/', 'research/hermes/trader_v2/state/decision_contexts/']",
+   "sec": 0.1
+  }
+ ],
+ "OVERLAP_INVARIANTS": {
+  "violations": 0,
+  "status": "PASS"
+ },
+ "elapsed_s": 267.3
+}

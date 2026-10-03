@@ -1,0 +1,103 @@
+{
+ "cycle": "2026-09-10T02:17Z",
+ "decision_id": "DEC-2026-09-10T02:17Z",
+ "utc_ts": "2026-09-10T02:18:30+00:00",
+ "decision": "SHORT",
+ "confidence": 0.45,
+ "opportunity": "区间上沿 fade 做空(续 0202Z 同题, 价由 4414.47 回落至 4409.11 再证上沿卖压): 价反弹进 4416.0-4421.0 阻力墙(H4 MA50 4417.2 + 今日前高群 4417.4/4420.7/4421.74)受阻回落; 现价 4409.11 距触发带下沿 4416.0 仅 +6.9pt = 贴近边界即计划, 触价自动成交, SL 4425.0, 分批止盈 4406.0/4399.5/4393.5",
+ "opportunity_mechanism": "range_fade_short_v1: H4/H1 er≈0(0.016/0.083) = 纯区间震荡, D1 偏空(close 4400.49 < MA20 4464.19, RSI42.7)提供方向顺风, M15 高点递降(4421.74→4420.7→4414.47)佐证上沿卖压; 价格于 4390-4422 区间内反弹至上沿, 4417-4422 为 H4 MA50(4417.2)+今日两次触及回落的前高群 = 阻力墙; 触价即市价空, SL 于阻力墙上方 4425.0(结构失效), 分批 T1 4406.0(M15 MA20 一带)/T2 4399.5(M15 MA200 4398.4+H1 MA20 4400.4)/T3 4393.5(区间低)",
+ "mtf_agreement": "neutral_bearish_lean",
+ "answers_14": {
+  "1": "市场状态: D1 range 偏空 (close 4400.49 < MA20 4464.19 差-142.7pt, RSI 42.7, pos 54.7, structure llish5>hhish4, last_vs_5ago down); H4 range er0.016 极低=纯震荡 (close 4400.5 < MA20 4404.5/MA50 4417.2, RSI 50.8, pos 32.7, last_vs_5ago up); H1 range er0.083 (close 4399.57 贴 MA20 4400.4/MA50 4398.7, <MA200 4428.8, RSI 45.9, pos 58.4); M15 短线偏空/收敛 (er0.516, close 4399.57, MA20 4405.6/MA50 4405.2/MA200 4398.4, RSI 24.2 末bar超卖已随 live 修复, pos 41.3, exp_cont contracting 0.54, high60 4434.2/low60 4375.2). live mid 4409.11(quote_latest 02:17Z, spread 0.41bps, tick 98/min, z 0.19 正常). 综合 = 4390-4422 区间震荡, 价自 4414.47 回落至 4409 中上区; 上方 4417-4422(H4 MA50+前高群)为主要阻力墙. [数据质量] live_days 4 / live_ticks 586254 / gaps [] / context 28d",
+  "2": "一致性: 部分→neutral-bearish lean. D1 在 MA20 下方(偏空) + H4 在 MA20/MA50 下方(上方压制) 与 M15 短线偏空(er0.516/last_vs_5ago down) 同向; 仅 H4 last_vs_5ago up 与 H1 贴 MA 无方向构成噪声 → 不给高 confidence(0.45), 按区间上沿 fade 处理, 非趋势追空",
+  "3": "M15变化: 自 4393.41(23:15 低)逐级抬高至 4414.47(02:02 高)后回落, 现 4409.11 = 高点递降(4414.47 低于 4420.7/4421.74 前高) = 上沿卖压再证; M15 RSI 24.2 末bar超卖已随 live 反弹修复; exp_cont contracting 0.54 = 动量收敛待方向; 高60 4434.2 / 低60 4375.2",
+  "4": "机会: 区间上沿 fade 做空 — 价反弹进 4416.0-4421.0(H4 MA50 4417.2 + 今日前高群 4417.4/4420.7/4421.74 阻力墙)受阻回落; 现价 4409.11 距触发带下沿 4416.0 仅 +6.9pt = 贴近边界即计划, 触价自动成交; 不追空、只于阻力墙 fade",
+  "5": "机制: range_fade_short_v1 — H4/H1 纯区间(er≈0.016/0.083)内价格运行至上沿阻力墙(H4 MA50+前高群), D1 偏空提供方向顺风, M15 高点递降佐证卖压; 触价即市价空, SL 置墙上方(结构失效), 分批止盈回落至 M15 MA20 / MA200 / 区间低",
+  "6": "触发条件[具体价]: {\"and\":[{\"zone_touch\":[4416.0,4421.0]},{\"spread_under_bps\":1.0}]} — 现价 4409.11 仅需 +6.9pt 入带即自动成交",
+  "7": "失效[具体价]: {\"price_cross_up\":4422.5} (上破前高 4421.74 → 上沿阻力被破, fade 论据失效, 引擎自动取消)",
+  "8": "预期收益R: 2.48R (加权; ref fill 4418.0, R=7.0pt: T1 4406.0=1.71R / T2 4399.5=2.64R / T3 4393.5=3.50R @ frac 0.40/0.35/0.25)",
+  "9": "预期损失R: -1.0R (SL 4425.0, 风险 ~7.0pt)",
+  "10": "成本数值: spread 0.41bps + slippage 0.3bps = 往返 1.42bps ≈ 0.62pt ≈ 0.09R (成本极低, 非障碍)",
+  "11": "净EV算式: 0.46×2.48 − 0.54×1.0 − 0.09 = 1.141 − 0.63 = +0.51R (>0 可执行)",
+  "12": "再现: 中高 — 今日 4390-4422 区间反复, 4420-4422 上沿已于 21:00/21:15 两次触及后回落, 02:02 次高 4414.47 再证上沿卖压, 属经典 range top fade",
+  "13": "决策: SHORT (上沿 fade 4416.0-4421.0, 触价自动成交)",
+  "14": "理由: D1偏空且H4处MA20/MA50下方, H4/H1纯区间, M15高点递降, 上沿4417-4422(H4 MA50+前高群)为阻力墙; 现价4409.1距触发6.9pt触价即空, SL4425, T4406/4399.5/4393.5, EV+0.51R; 上破4422.5自动取消。离可交易只差+6.9pt触价(spread 0.41<<1.0)"
+ },
+ "plan": {
+  "plan_id": "TP-20260910T0217Z",
+  "direction": "SHORT",
+  "opportunity_type": "range_fade_short_v1",
+  "entry_style": "market_on_trigger",
+  "entry_zone": {
+   "low": 4416.0,
+   "high": 4421.0
+  },
+  "trigger_condition": {
+   "and": [
+    {
+     "zone_touch": [
+      4416.0,
+      4421.0
+     ]
+    },
+    {
+     "spread_under_bps": 1.0
+    }
+   ]
+  },
+  "invalidation_condition": {
+   "price_cross_up": 4422.5
+  },
+  "stop_logic": {
+   "type": "stop_market",
+   "level_price": 4425.0
+  },
+  "target_logic": {
+   "type": "price_levels",
+   "levels": [
+    {
+     "price": 4406.0,
+     "frac": 0.4
+    },
+    {
+     "price": 4399.5,
+     "frac": 0.35
+    },
+    {
+     "price": 4393.5,
+     "frac": 0.25
+    }
+   ]
+  },
+  "expected_R": 2.48,
+  "expected_win_probability": 0.46,
+  "probability_source": "subjective",
+  "expected_loss": {
+   "units": "R",
+   "value": 1.0
+  },
+  "estimated_cost": {
+   "spread_bps": 0.41,
+   "slippage_bps": 0.3,
+   "total_bps_rt": 1.42,
+   "cost_in_R": 0.09
+  },
+  "expected_net_EV": {
+   "value": 0.51,
+   "units": "R",
+   "note": "0.46×(0.40×1.71+0.35×2.64+0.25×3.50) − 0.54×1.0 − 0.09 = 0.46×2.48 − 0.63 = +0.51R (1R=7.0pt @ref fill 4418.0, SL 4425.0); 未触发零成本, 120min 自动清理; FLAT 时成立; qty 0.01 合规"
+  },
+  "maximum_holding_time": "M15*8",
+  "cancel_conditions": [
+   "触发前 mid >= 4422.5 (price_cross_up = 上破前高 4421.74, 阻力墙被破, fade 结构失效) → 引擎零成本取消",
+   "触发前 mid < 4407.0 (price_left_setup, 价格下破远离上沿 fade 带 2×band, 机会已走) → 由新轮重评",
+   "未触发 age > 120min (M15*8) 过期清理 → 下轮重评",
+   "成交失败(仓位忙/broker 拒绝/SL 距过近 retcode10016) → 计划即时作废不留痕, 不追单",
+   "已成交 → SL 4425.0 broker 随单 -1R 有界; 亏损不加仓不反手; 持仓中不注册新开仓计划(单仓约束)"
+  ],
+  "risk_level": "medium",
+  "reason": "H4/H1 纯区间(er≈0) + D1 偏空, 价反弹至上沿 4417-4422 阻力墙(H4 MA50 4417.2 + 前高群); 现价 4409.11 距触发带下沿 4416.0 仅 ~6.9pt, 触价即市价空; SL 4425.0 于阻力墙上方结构有界, 分批 T 4406.0/4399.5/4393.5, 净 EV +0.51R; 不追空, 只于阻力墙 fade; 上破 4422.5 自动取消; 与在册 TP-0117Z/0132Z/0147Z(LONG 4404-4409 回踩) 为反向对称(引擎触发时单仓约束/幂等保护, 先到先得)",
+  "qty_lots": 0.01
+ },
+ "model": "deepseek/deepseek-v4-flash"
+}

@@ -1,0 +1,104 @@
+{
+  "forecast_id": "R6_A_20260720",
+  "sample_id": "A_20260720",
+  "timestamp": "2026-07-20 12:00:00+00:00",
+  "observations": [
+    {"fact": "M1 close 4025.185 at t; price ~4.1 above nearest level 4021.065 (SWING_LOW, side DN), break_status INSIDE, distance_atr 0.121", "status": "DIRECT/DERIVED"},
+    {"fact": "L3 state COMPRESSION, event ACCEPTANCE at t, dwell 1 (frozen C1 labeler)", "status": "DERIVED"},
+    {"fact": "L5 recent lifecycle: REJECTION(3)->TREND(2)->REJECTION(3)->COMPRESSION(1); ambiguity_rate_8 0.375", "status": "DERIVED"},
+    {"fact": "L6 agreement CONFLICT: trend_20 positive on M1 +3.25, M5 +7.95, M15 +17.21, H1 +6.21; negative on H4 -54.13; trend_50 negative on H1 -10.12 and H4 -78.13", "status": "DERIVED"},
+    {"fact": "H1 current bar: range 20.86, upper_wick 15.39, body 1.10, body_ratio 0.053 — rejection at high 4040.435", "status": "RAW/DERIVED"},
+    {"fact": "M1 current bar: range 2.61 vs ATR 1.313, range_percentile 0.925, range_expanding true, consecutive_up 6", "status": "RAW/DERIVED"},
+    {"fact": "L4 single mechanism candidate trend_continuation (8-bar displacement 2.57), data_quality DERIVED, explicitly NOT asserted", "status": "DERIVED"},
+    {"fact": "DXY 100.815 (change_8 +0.025), VIX 18.26 (change_8 +0.03, change_32 -0.19); both PROXY, instrument definition UNKNOWN", "status": "PROXY"},
+    {"fact": "Absent: GLD, GC, CFTC_COT, ETF_FLOWS, NEWS, MACRO_EVENTS; UST10Y_PROXY_TNX unavailable (STALE_OR_NOT_COVERED)", "status": "UNKNOWN/ABSENT"},
+    {"fact": "3 historical analogs all start COMPRESSION; A19210 -> TREND at step 12; A24698/A30701 remain COMPRESSION through step 16; state evolution only, no returns", "status": "DERIVED"}
+  ],
+  "what_i_know": [
+    "Price is in a frozen-labelled COMPRESSION state with an ACCEPTANCE event at t (dwell 1).",
+    "Nearest structure is a swing low at 4021.065 (side DN); price sits just above it (distance ~0.12 ATR), break_status INSIDE.",
+    "Short-timeframe trends (M1/M5/M15/H1 trend_20) are positive; the dominant H4 timeframe trend_20/50 is clearly negative; L6 explicitly flags CONFLICT.",
+    "The H1 bar at t rejected 4040.435 with a 15.39 upper wick; M1 range is expanding (percentile 0.925).",
+    "The only mechanism candidate provided is trend_continuation, labelled candidate-not-fact.",
+    "DXY and VIX are present but PROXY quality with unknown instrument definitions; both moved trivially in the last 8 bars.",
+    "State history shows a REJECTION-dominated regime before compression, with ambiguity_rate_8 = 0.375."
+  ],
+  "what_i_do_not_know": [
+    "Direction of compression resolution — the state machine does not encode direction.",
+    "Fundamental drivers: NEWS, MACRO_EVENTS, CFTC_COT, ETF_FLOWS, GLD/GC are all absent; UST10Y unavailable.",
+    "True definition of the DXY/VIX proxies (instrument mismatch possible), so their signal weight is unknowable.",
+    "Whether ACCEPTANCE at the swing low will hold; level is DERIVED swing geometry, not an order-flow fact.",
+    "Order flow / liquidity depth: no L2 book or trade-flow data.",
+    "Why the H4 downtrend stalled today (00:00 H4 bar was strongly bullish, then 04:00 H4 reversed down) — no narrative available."
+  ],
+  "evidence": [
+    "COMPRESSION + ACCEPTANCE at t with price holding above the swing low 4021.065 (inside-zone acceptance).",
+    "M1/M5/M15/H1 trend_20 all positive; M1 consecutive_up 6; M1 range expanding at 0.925 percentile — energy building near support.",
+    "Provided mechanism candidate trend_continuation with 8-bar displacement 2.57 off the level.",
+    "Analog A19210 shows COMPRESSION persisting then transitioning to TREND by step 12 (state-only)."
+  ],
+  "counter_evidence": [
+    "H4 trend_20 -54.13 and trend_50 -78.13: the dominant timeframe is still bearish.",
+    "H1 bar at t is a large rejection (15.39 upper wick, body_ratio 0.053) — supply at 4040.435.",
+    "L6 agreement is explicitly CONFLICT; H1 trend_50 (-10.12) is also negative.",
+    "Recent lifecycle is REJECTION-dominated; ambiguity_rate_8 0.375 is non-trivial.",
+    "2 of 3 exact-state analogs stay in COMPRESSION through step 16 — persistence is the modal outcome, not breakout.",
+    "DXY ticking up (+0.025 change_8) is a mild gold-negative (PROXY quality)."
+  ],
+  "possible_mechanisms": [
+    {"mechanism": "trend_continuation (up-drift off swing low)", "status": "POSSIBLE", "why": "L4 lists it as a candidate only; short-TF trends positive but H4 conflicts and I am not entitled to assert it."},
+    {"mechanism": "compression breakout/expansion", "status": "POSSIBLE", "why": "Compression states resolve by expansion, but the direction is unknowable from state alone."},
+    {"mechanism": "H4 downtrend mean-reversion reassertion", "status": "POSSIBLE", "why": "H4 trend_20/50 strongly negative and H1 shows rejection; short-TF strength could be a retracement."},
+    {"mechanism": "liquidity sweep / stop hunt below 4021.065", "status": "WEAK", "why": "Plausible in compression, but no order-flow or L2 data exists in context to support it."},
+    {"mechanism": "news/macro-driven directional move", "status": "UNKNOWN", "why": "No news or macro data is present; cannot assess probability or direction."}
+  ],
+  "primary_scenario": {
+    "scenario": "Range persistence with mild up-drift: price holds above swing low 4021.065, oscillates within roughly 4021-4030, short-TF trends grind toward the 4030-4040 supply zone while H4 remains the conflicting bearish anchor.",
+    "horizon": "8-24h (H1-H4 scale)",
+    "trigger": "Continued acceptance above 4025, M5 trend_20 staying positive, 4021.065 not decisively broken.",
+    "invalidation": "Decisive (expanding-range) close below 4021.065, or a strong reclaim/hold above 4040.435."
+  },
+  "alternative_scenario": {
+    "scenario": "H4 downtrend reasserts: the 4040.435 rejection marks a lower high; break of swing low 4021.065 cascades toward 4015 then the 4008-4003 zone (H4 08:00 open area and H4 range low).",
+    "horizon": "8-24h",
+    "trigger": "M5/M15 close below 4021.065 with range_expanding and H1 printing a lower high below 4040.435.",
+    "invalidation": "Reclaim and hold above 4040.435, or H4 trend_20 turning positive."
+  },
+  "expected_transition": "COMPRESSION persists for several more bars (analog modal path), then a TREND transition within ~8-24h; direction unresolved by this context.",
+  "direction_bias": "NEUTRAL",
+  "time_horizon": "8-24h",
+  "evidence_strength": 0.35,
+  "confidence": 0.3,
+  "uncertainty": 0.7,
+  "confidence_reason": "State (COMPRESSION/ACCEPTANCE) and level geometry (swing low 4021.065, INSIDE) are clearly labelled, but L6 agreement is explicitly CONFLICT, the dominant H4 timeframe is bearish, fundamentals are absent, and cross-market series are PROXY/UNKNOWN. A coherent story does not by itself raise confidence.",
+  "uncertainty_reason": "Compression resolution direction is unknowable from state alone; dominant-TF (H4) and short-TF trends point opposite ways; no news/macro/COT/flow data; DXY/VIX are proxies of unknown definition; UST10Y unavailable.",
+  "invalidation": "A decisive close beyond 4021.065 (downside break, break_status -> BROKEN) or a hold above 4040.435; either resolves the compression and invalidates the range-persistence primary.",
+  "change_my_mind": [
+    "M5/H1 close below 4021.065 with expanding range (break_status BROKEN) — flips me to the H4-downtrend-reassertion scenario.",
+    "Reclaim and hold above 4040.435 with H4 trend_20 turning positive — flips me to an up-continuation view.",
+    "H4 trend_20 crossing positive while price holds 4021 — strengthens the up-drift primary.",
+    "Large VIX move (risk regime shift) or DXY move well beyond current proxy noise — would reweight the cross-market signal.",
+    "Any news/macro event data (if it existed) with a directional reading would materially change my confidence."
+  ],
+  "abstain": false,
+  "abstain_reason": "Context is sufficient for a disciplined low-confidence forecast: state, level and timeframe labels are coherent (L6 CONFLICT is an explicit valid label, not corruption), and no future information was accessed. Confidence is capped low because fundamentals and true cross-market instruments are absent, but that is a reason for low confidence, not for abstention.",
+  "questions": {
+    "Q1": "Only what the context states: price 4025.185 in COMPRESSION with ACCEPTANCE event (dwell 1); nearest level swing low 4021.065 (DN, INSIDE, ~0.12 ATR away); short-TF trend_20 positive, H4 trend_20/50 negative (L6 CONFLICT); H1 bar rejected 4040.435 with 15.39 upper wick; M1 range expanding at 0.925 percentile; single mechanism candidate trend_continuation (candidate only); DXY/VIX proxy with trivial moves; 3 COMPRESSION analogs (1 -> TREND at step 12, 2 stay COMPRESSION).",
+    "Q2": "Direction of compression resolution; fundamental drivers (news/macro/COT/ETF/GLD/GC all absent); true definition of DXY/VIX proxies; whether ACCEPTANCE at 4021.065 holds; order flow/liquidity (no L2); why H4 stalled and reversed intraday.",
+    "Q3": "COMPRESSION+ACCEPTANCE above swing low 4021.065; positive short-TF trend_20 with M1 consecutive_up 6 and expanding range; provided trend_continuation candidate (displacement 2.57); analog A19210 shows COMPRESSION->TREND by step 12.",
+    "Q4": "H4 trend_20 -54.13 / trend_50 -78.13; H1 large upper-wick rejection at 4040.435; L6 explicit CONFLICT; REJECTION-dominated recent lifecycle with ambiguity 0.375; 2/3 analogs persist in COMPRESSION; DXY ticking up (weak gold-negative, PROXY).",
+    "Q5": "trend_continuation (POSSIBLE — candidate only), compression breakout (POSSIBLE — direction unknown), H4 downtrend reassertion (POSSIBLE), stop-hunt/sweep below 4021.065 (WEAK — no flow data), news/macro move (UNKNOWN — no data). I assert none of these as fact.",
+    "Q6": "Decisive break below 4021.065 -> flip to downside scenario; hold above 4040.435 with positive H4 trend_20 -> flip to up-continuation; H4 trend_20 turning positive; large VIX/DXY moves; appearance of directional news/macro data.",
+    "Q7": "false — context is coherent and sufficient for a low-confidence forecast; insufficiency is expressed via confidence 0.30 / uncertainty 0.70 rather than abstention."
+  },
+  "reasoning_trace": [
+    "1. Read only the prompt and the PIT context file; no future data accessed.",
+    "2. Classified every observation with DIRECT/DERIVED/PROXY/UNKNOWN per the quality legend; never upgraded a PROXY.",
+    "3. Established the state anchor: COMPRESSION + ACCEPTANCE at swing low 4021.065 (INSIDE, 0.12 ATR).",
+    "4. Checked the multi-timeframe picture: positive short-TF trends vs negative H4 — L6 says CONFLICT, so no single direction is supportable.",
+    "5. Actively sought counter-evidence: H1 rejection wick, H4 downtrend, REJECTION-dominated history, analog persistence.",
+    "6. Kept mechanisms at POSSIBLE/WEAK/UNKNOWN status; treated L4 candidate as candidate only.",
+    "7. Chose NEUTRAL bias with a range-persistence primary and downside-break alternative; confidence 0.30 reflects the conflict and absent fundamentals.",
+    "8. Defined concrete, checkable invalidation and change_my_mind conditions based only on level breaks and trend_20 sign flips."
+  ]
+}

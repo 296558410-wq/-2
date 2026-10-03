@@ -1,0 +1,107 @@
+{
+ "schema": "hermes_decision_v1",
+ "cycle": "2026-09-15T13:02Z",
+ "symbol": "XAUUSD",
+ "decision_id": "DEC-2026-09-15T13:02Z",
+ "utc_ts": "2026-09-15T13:02Z",
+ "generated_utc": "2026-09-15T13:02Z",
+ "decision": "SHORT",
+ "confidence": 0.46,
+ "bias": "SHORT-lean 0.65. Slot now FREE (POS-20260915T0917Z was stopped by the broker SL at 4288.01 for -12.81USD). Price has bounced +31pt off the 4253.56/4261.5 multi-TF floor to 4292.8 and is grinding into the 4305-4322 resistance wall = H1 MA50 4314.73 / M15 hi60 4317.29-4317.38 (session high) / H4 MA20 4321.66. HTF (D1 close 4292.77 << MA20 4454.75; H4 close < MA20 4321.66 < MA50 4380.03; H1 close = MA20 4292.42 < MA50 4314.73) is an intact bearish ladder, so the counter-trend bounce is the fade side; the 4305-4320 band is also the ~38.2% retrace of the D1 down-leg (4310) -> sell the retest with a stop above H4 MA20.",
+ "opportunity": "SHORT the retest of the 4305-4318 resistance cluster (H1 MA50 4314.73 / M15 hi60 4317.29 / H4 MA20 4321.66) as the +31pt oversold bounce (4261.5 -> 4295.85) stalls. Price is only ~12-25pt below the wall; a touch of the band auto-fills (zone_touch), stop 4327.0 above H4 MA20, targets 4277.0 (M15 MA20) then 4261.5 (M15/H1 lo60). With-trend fade of a counter-trend bounce = the highest-quality setup available this cycle.",
+ "opportunity_mechanism": "counter_trend_bounce_fade_at_MA_confluence: the D1/H4 downtrend drove price to the 4253.56 multi-TF floor; a +31pt oversold bounce (higher lows 4271.54 -> 4274.83 -> 4280.97 -> 4289.39) has now carried price back to the H1 MA20 4292.42 and is pressing into the stacked resistance 4305-4322 (H1 MA50 4314.73 / M15 hi60 4317.29 / H4 MA20 4321.66). In a bearish ladder, bounces typically exhaust at the H1/H4 MA stack; selling the retest of that cluster (not the market, not chasing) gives a tight structural stop above H4 MA20 and a large asymmetric target back to the floor.",
+ "mtf_agreement": "3/4 TF bearish HTF, intraday bounce now retracing into HTF MA resistance: D1 close 4292.77 vs MA20 4454.75 (-3.64%), hi60 4696.78/lo60 4253.56 (pos ~mid-low); H4 close 4292.77 < MA20 4321.66 < MA50 4380.03, lo60 4253.56 (lower third); H1 close 4292.77 = MA20 4292.42 < MA50 4314.73, hi60 4402.52/lo60 4253.56; M15 close 4292.77 > MA20 4276.69 > ... M15 MA50 4289.81, hi60 4317.29/lo60 4261.46, micro higher-lows (bounce leg). Net: HTF bearish -> fade the counter-trend bounce at the 4305-4322 MA wall; the only caution is the D1 oversold + 3-TF floor, which is why qty stays 0.01 and the stop sits above H4 MA20.",
+ "state_summary": "XAUUSD live mid 4292.8 (MT5 broker tick bid 4292.29/ask 4292.42, 13:04Z; pkg m15_live last_mid 4293.44, spread 0.30bps, tick_rate 141/min). Session OPEN (gate armed=true). Slot FREE. Levels (real-time, broker-rate cross-check): resistance 4314.73 (H1 MA50) / 4317.29-4317.38 (M15 hi60 / session high) / 4321.66 (H4 MA20); support 4292.42 (H1 MA20) / 4289.81 (M15 MA50) / 4276.69 (M15 MA20) / 4271.5-4274.8 (M15 higher-low shelf) / 4261.5 (M15+H1 lo60) / 4253.56 (multi-TF floor).",
+ "m15_change": "Real-time M15 (broker, last 5 closed+forming): 4284.43 -> 4278.45 -> 4277.60 -> 4281.12 -> 4290.21 -> 4292.77; higher lows 4271.54/4274.83/4280.97/4289.39 and higher highs 4279.48/4285.98/4295.85 (spike+rejection) -> a clean counter-trend bounce leg, now stalling right under the 4305-4322 MA wall. CAUTION: run_state/candle_latest.json (2026-09-07) and bars_cache.json are STALE and ignored.",
+ "data_note": "Levels from live MT5 broker rates (copy_rates_from_pos: D1/H4/H1/M15) + quote_latest.json (13:02Z mid 4291.99, spread 0.14usd=0.30bps) + pkg run_state/state_package_latest.json (cycle 2026-09-15T13:02Z, m15_live last_mid 4293.44). NOTE: the parquet tick feed (data/live_fxtm) is timestamped in broker SERVER time (UTC+3) so its bars lag ~3h vs real time; pkg bar context is therefore stale -> all decision levels cross-checked in REAL time against the MT5 broker rate series (execution truth). live_days 7, live_ticks 1,326,926, context_days 31, gaps[].",
+ "position_note": "Slot FREE. POS-20260915T0917Z SHORT 0.01@4275.2 was closed by the broker SL at 4288.01 (deal 2362830403, real 12:48:55Z) for -12.81USD (~-1.0R on 1R=12.8pt). Broker positions_get() empty, equity=balance=2103.81. No averaging down; this is a NEW independent plan (entry ~35pt above the closed entry, at the HTF MA wall).",
+ "answers_14": {
+  "1": "Market state: XAUUSD live mid 4292.8 (MT5 broker tick 13:04Z bid 4292.29/ask 4292.42; pkg m15_live last_mid 4293.44, spread 0.30bps, tick_rate 141/min, abnormal last6_max 13.2bps z0.3 vs base 10.1 = normal tape). Session OPEN (gate armed=true exit0). Data ok (live_days7, ticks1,326,926, context31, gaps[]); NOTE parquet bars are server-time (UTC+3) -> ~3h stale, cross-checked vs live broker rates. Position FLAT (POS-0917Z stopped at 4288.01, -12.81USD). MAs: M15 MA20 4276.69/MA50 4289.81; H1 MA20 4292.42/MA50 4314.73; H4 MA20 4321.66/MA50 4380.03; D1 MA20 4454.75. Resistance 4295.85(spike high)/4305/4314.73(H1 MA50)/4317.29(M15 hi60 / session high 4317.38)/4321.66(H4 MA20); support 4292.42(H1 MA20)/4289.81(M15 MA50)/4276.69(M15 MA20)/4271.5-4274.8/4261.46(M15+H1 lo60)/4253.56(multi-TF floor).",
+  "2": "MTF agreement: 3/4 TF bearish HTF (D1 4292.77<<MA20 4454.75 -3.64%; H4 4292.77<MA20 4321.66<MA50 4380.03, lo60 4253.56 lower third; H1 4292.77=MA20 4292.42<MA50 4314.73) vs M15 bounce leg (close 4292.77>MA20 4276.69, micro higher lows). Net: the counter-trend bounce is now retracing into the HTF H1/H4 MA wall 4305-4322 -> with-trend SHORT the retest. Caution: D1 oversold + 4253.56 floor held repeatedly = snap-back risk -> qty 0.01, stop above H4 MA20.",
+  "3": "M15 change: real-time bars 4284.43 -> 4278.45 -> 4277.60 -> 4281.12 -> 4290.21 -> 4292.77 (forming) = +31pt bounce off 4261.46 with higher lows (4271.54/4274.83/4280.97/4289.39) and a 4295.85 spike+rejection in the prior bar. Price now stalls right under the 4305-4322 wall. Note pkg last_close 4269.82 (bar 12:30 server = ~09:30 real) is ~3h stale vs live 4292.8 -> use live/broker levels only. CAUTION stale candle_latest.json (2026-09-07)/bars_cache.json ignored.",
+  "4": "Opportunity / gap-to-tradable: slot FREE -> new entry allowed. We are ~12-25pt BELOW the 4305-4322 resistance wall, so the gap-to-tradable = PRICE ARRIVING AT THE WALL. Register a limit-style SHORT now with zone_touch [4305,4318]: a touch auto-fills (trigger+risk -> instant order), no need to wait for a close. What is still missing = a rejection print at the wall; the trigger supplies it by entering on the touch with a stop above H4 MA20 4321.66.",
+  "5": "Mechanism: counter_trend_bounce_fade_at_MA_confluence - the D1/H4 downtrend dropped price to the 4253.56 multi-TF floor; a +31pt oversold bounce has reclaimed H1 MA20 4292.42 and is pressing into the stacked H1 MA50 4314.73 / M15 hi60 4317.29 / H4 MA20 4321.66. Bounces in a bearish ladder exhaust at the H1/H4 MA stack -> sell the retest, stop above H4 MA20, target back to 4277/4261.5. No averaging down; independent from the closed 4275.2 short.",
+  "6": "Trigger condition [specific price]: zone_touch [4305, 4318] on live mid -> auto-fill at market. I.e. buy-side fill when price prints >= 4305 (fills into the H1 MA50 4314.73 / M15 hi60 4317.29 confluence). Entry ~4311.5 (zone mid). If price instead never reaches 4305 and falls back below ~4279, the plan self-cancels (left setup).",
+  "7": "Invalidation [specific price]: price_cross_up 4327.0 = H4 MA20 4321.66 reclaimed decisively -> bounce is no longer a fade, stand down (also the hard stop). Downside confirmation after fill: price_cross_down 4276.69 (M15 MA20) then 4261.46 (M15/H1 lo60).",
+  "8": "Expected reward R (SHORT, entry ~4311.5 zone mid, 1R=15.5pt to stop 4327.0): T1 4277.0 = -34.5pt = 2.23R x0.50; T2 4261.5 = -50.0pt = 3.23R x0.50; weighted = +2.73R (breakeven p ~0.268).",
+  "9": "Expected loss R: hard stop 4327.0 = +15.5pt = -1.0R (~-15.5USD on 0.01 lot). No averaging down, no add. (Reference: the closed POS-0917Z lost -12.81USD = -1.0R.)",
+  "10": "Cost value: spread 0.30bps + slippage 0.30bps = 0.60bps roundtrip ~= 0.26pt ~= 0.017R (vs 1R=15.5pt). Extremely low, not a barrier.",
+  "11": "Net EV formula: 0.44 x (0.50x2.23 + 0.50x3.23) - 0.56 x 1.00 - 0.017 = 0.44x2.73 - 0.577 = 1.201 - 0.577 = +0.62R. Positive -> valid SHORT.",
+  "12": "Reproducibility: family 'counter-trend bounce fade at H1/H4 MA confluence in a bearish HTF ladder'. Rules: limit-style zone_touch entry (touch-fill, no close requirement), hard structural stop above H4 MA20, no averaging down, single-position constraint, qty 0.01-0.05, ignore stale candle_latest.json/bars_cache.json, cross-check levels vs live broker rates (server-time parquet is ~3h stale). Same-family priors: with-trend closes POS-20260915T0217Z +20.24USD / POS-20260915T0632Z +8.52USD; counter-fade losses POS-20260915T0917Z -12.81USD (stopped by the bounce, hence the stop now sits above H4 MA20).",
+  "13": "SHORT (new plan TP-20260915T1302Z): entry zone [4305,4318], trigger zone_touch, stop 4327.0, T1 4277.0/T2 4261.5, 0.01 lot, EV +0.62R.",
+  "14": "Fade the +31pt bounce into the 4305-4322 wall (H1 MA50/M15 hi60/H4 MA20); SHORT zone_touch [4305,4318], stop 4327, TP 4277/4261.5, 0.01 lot, EV +0.62R."
+ },
+ "plan": {
+  "plan_id": "TP-20260915T1302Z",
+  "direction": "SHORT",
+  "opportunity_type": "counter_trend_bounce_fade_at_MA_confluence",
+  "entry_style": "market_on_trigger",
+  "entry_zone": {
+   "low": 4305.0,
+   "high": 4318.0
+  },
+  "trigger_condition": {
+   "zone_touch": [
+    4305.0,
+    4318.0
+   ]
+  },
+  "invalidation_condition": {
+   "price_cross_up": 4327.0
+  },
+  "stop_logic": {
+   "type": "structure",
+   "level": "above the H1 MA50 4314.73 / M15 hi60 4317.29-4317.38 (session high) / H4 MA20 4321.66 confluence (~5.3pt buffer above 4321.66)",
+   "level_price": 4327.0
+  },
+  "target_logic": {
+   "type": "price_levels",
+   "levels": [
+    {
+     "price": 4277.0,
+     "frac": 0.5
+    },
+    {
+     "price": 4261.5,
+     "frac": 0.5
+    }
+   ],
+   "reason": "T1 4277.0 = M15 MA20 / upper support (zone-mid 4311.5 -34.5pt = 2.23R) x0.50; T2 4261.5 = M15/H1 lo60 floor (zone-mid -50.0pt = 3.23R) x0.50"
+  },
+  "expected_R": 2.73,
+  "expected_win_probability": 0.44,
+  "probability_source": "subjective: intact 3/4-TF bearish ladder (D1/H4/H1 all at/below their MA stacks, H4 lo60 4253.56 lower third) + bounce retracing into the H1 MA50/M15 hi60/H4 MA20 wall (~38.2% retrace of the D1 down-leg) + prior 4295.85 rejection + normal tape (abnormal z 0.3); haircut below 0.50 for D1 oversold, the 3-TF floor having held repeatedly, and the live M15 higher-low momentum (bounce risk); breakeven p ~0.268 at 2.73R",
+  "expected_loss": {
+   "units": "R",
+   "value": 1.0
+  },
+  "estimated_cost": {
+   "spread_bps": 0.3,
+   "slippage_bps": 0.3,
+   "total_roundtrip_bps": 0.6,
+   "cost_in_R": 0.017
+  },
+  "spread_bps": 0.3,
+  "slippage_bps": 0.3,
+  "expected_net_EV": {
+   "value": 0.62,
+   "units": "R",
+   "note": "0.44 x (0.50x2.23 + 0.50x3.23) - 0.56 x 1.00 - 0.017 = 0.44x2.73 - 0.577 = +0.62R (1R=15.5pt, entry ~4311.5, stop 4327.0; breakeven p ~0.268)"
+  },
+  "maximum_holding_time": "M15*16",
+  "qty_lots": 0.01,
+  "cancel_conditions": [
+   "age > M15*16 (240min) untriggered",
+   "price_left_setup: mid < zone_lo - 2*band (~4279) -> price fell away below the wall before touching",
+   "price_cross_up 4327.0 (invalidation) = H4 MA20 4321.66 reclaimed decisively"
+  ],
+  "validation": {
+   "ok": true,
+   "issues": []
+  }
+ },
+ "cost_note": "spread 0.30bps + slip 0.30bps = 0.60bps roundtrip ~0.26pt ~0.017R on 0.01 lot (1R=15.5pt). Not a barrier.",
+ "ev_note": "EV_R = 0.44 x 2.73 - 0.56 - 0.017 = +0.62R (breakeven p 0.268). Positive -> SHORT registered.",
+ "model": "deepseek/deepseek-v4-flash",
+ "prompt_version": "hermes-trader-m15-cycle"
+}

@@ -1,0 +1,122 @@
+{
+ "REGISTRY_VERSION": 1,
+ "name": "TRADABILITY_R1_FROZEN_REGISTRY",
+ "upstream": {
+  "R2_COMMIT": "bdd3d7d",
+  "MV_R1_COMMIT": "641c7f1",
+  "R2_FREEZE_HASH": "7da599cdb6858ac624f9929d427c634187d257f8adb91d300b9fe33300aecb2f",
+  "R2_CANONICAL_HASH": "20913b986890b1c593a63d1dfa7d6e1d90ad0b71db7b5134132f3ecfd7e72624",
+  "R2_INPUT_HASH": "704e1cfa8960cee881c5efccb1f23fe9679fa262da5770e82fe99d7338f9ac53",
+  "MV_R1_METHOD_POLICY_HASH": "9ed578dda3331db90e20ddcdb5388d548621cf4e110b57e81548982b9d89334e"
+ },
+ "scope": {
+  "mechanisms": [
+   "M01",
+   "M02",
+   "M07"
+  ],
+  "M03": "EXCLUDED_FROM_TRADABILITY_R1"
+ },
+ "expressions": {
+  "M01": {
+   "entry_direction": "continuation of the pre-event 5-bar move at signal time (ret5 >= 0 -> LONG else SHORT); sides pre-registered as M01_LONG/M01_SHORT and BOTH always reported",
+   "entry_timestamp": "signal_time + 1 grid bar (next executable bar)",
+   "entry_delay": "1 bar",
+   "exit_rule": "TIME_EXIT at entry + 60 min (no TP/SL)",
+   "holding_window_min": 60
+  },
+  "M02": {
+   "entry_direction": "ambiguous by construction -> pre-registered M02_LONG (LONG) and M02_SHORT (SHORT), BOTH always reported",
+   "entry_timestamp": "signal_time + 1 grid bar",
+   "entry_delay": "1 bar",
+   "exit_rule": "TIME_EXIT at entry + 60 min",
+   "holding_window_min": 60
+  },
+  "M07": {
+   "entry_direction": "reversion against the pre-event envelope excursion measured with data <= signal time (extended up -> SHORT, extended down -> LONG)",
+   "entry_timestamp": "signal_time + 1 grid bar",
+   "entry_delay": "1 bar",
+   "exit_rule": "TIME_EXIT at entry + 60 min",
+   "holding_window_min": 60
+  }
+ },
+ "no_same_bar_execution": "signal[t] -> execution[t+1] enforced",
+ "cost_model": {
+  "round_trip_cost_bp": 0.914,
+  "stress": [
+   0,
+   1,
+   2,
+   3
+  ],
+  "primary_metric": "NET_1X",
+  "execution_cost_data_limitation": "no reliable historical spread/slippage series; anchor-only, spread=0/slippage=0 NEVER assumed"
+ },
+ "minimum_sample_rule": {
+  "effective_n_min": 8
+ },
+ "wf": {
+  "folds": 3,
+  "split": "chronological",
+  "tuning_inside_folds": false
+ },
+ "bootstrap": {
+  "method": "block bootstrap over tradability events",
+  "block_events": 5,
+  "resamples": 2000,
+  "seed": 20260925,
+  "ci_level": 95,
+  "iid_t_test_forbidden_as_primary": true
+ },
+ "permutation": {
+  "permutation_count": 500,
+  "seed": 20260925,
+  "alpha": 0.05,
+  "null_definition": "same-count redraw of signal times uniformly inside each mechanism's own span, then the identical frozen expression re-applied",
+  "tail": "one-sided upper on mean net_1x"
+ },
+ "frequency_gate": {
+  "hf_threshold_per_week": 2.0,
+  "below": "LOW_FREQUENCY_FOR_HF",
+  "note": "frequency gate is NOT an alpha gate",
+  "no_event_splitting_to_pass": true
+ },
+ "dependency_units": {
+  "tradability_event": "(mechanism_id, episode_id_v2) -> exactly one event",
+  "cross_grid": "merged inside episode_id_v2 by construction",
+  "cross_family": "merged inside episode_id_v2 by construction",
+  "dependency_group_id": "= episode_id_v2 (shared episodes share a group)"
+ },
+ "primary_mechanism_rule": {
+  "priority": {
+   "M01": 1,
+   "M02": 2,
+   "M07": 3
+  },
+  "basis": "MV-R1 frozen mechanism event counts (no future-return input)",
+  "multi_mechanism_episode": "PRIMARY = highest priority present; others = SECONDARY; if undecidable -> SHARED_EPISODE"
+ },
+ "status_rule": {
+  "SUPPORTED": "NET_1X>0 and CI95 excludes 0 and >=2/3 WF folds net-positive and NET_2X>0 and NET_3X>0 and effective_n>=8 and no lookahead and execution feasible and frequency>=2/week",
+  "UNCERTAIN": "gross positive but net uncertain / WF unstable / CI crosses 0 / frequency insufficient, without being disproven",
+  "REJECTED": "NET_1X<=0 and no reason to retain, or 3x cost negative with unstable baseline, or systematic WF failure, or execution impossible",
+  "INSUFFICIENT_SAMPLE": "effective_n too small to judge",
+  "NOT_TESTABLE": "cannot be evaluated"
+ },
+ "forbidden": [
+  "grid search",
+  "parameter sweep",
+  "threshold hunting",
+  "holding-period hunting",
+  "entry-delay hunting",
+  "TP/SL optimisation",
+  "post-hoc event deletion",
+  "splitting episodes to raise frequency",
+  "changing the cost anchor",
+  "changing the frequency gate",
+  "changing WF folds",
+  "re-running R2",
+  "modifying MV-R1"
+ ],
+ "TRADABILITY_FREEZE_HASH": "e4d9fe592ab3f493e6ef5cbd49198d4ad620479ac0107f74fac905dc63c4acc6"
+}

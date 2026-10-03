@@ -1,0 +1,116 @@
+{
+ "cycle": "2026-09-18T01:17Z",
+ "utc_ts": "2026-09-18T01:17Z",
+ "decision_id": "DEC-2026-09-18T01:17Z",
+ "symbol": "XAUUSD",
+ "decision": "LONG",
+ "plan_id": null,
+ "confidence": 0.57,
+ "bias": "LONG-lean 0.57 - slot is FREE (POS-2232Z closed by broker TP); H4/H1 up-leg intact and live mid 4356.7 sits atop the reclaimed 4347-4354 MA confluence -> register the pullback re-entry long.",
+ "opportunity": "pullback",
+ "opportunity_mechanism": "H4/H1 up-leg intact (H4 +72bps over MA20 4310.71, RSI 58.0; H1 RSI 59.6 above MA20 4331.52/MA50 4319.86) while the M15 dipped onto, then RECLAIMED, the 4347.8-4354.3 confluence (M15 MA50 4347.77 ~= H4 MA50 4347.81 ~= H1 MA200 4352.32 ~= M15 MA20 4354.30). Live mid 4356.7 is parked on that shelf after the 4361.06 range-top kiss. Buy the dip back into the shelf; continuation targets the 4381.51 range high then the 4400.0 round. Invalidation = decisive loss of H1 MA20 4331.5 / M15 MA200 4319.5; bracket SL 4331.0 (1R = 19.5pt from a 4350.5 shelf fill).",
+ "mtf_agreement": "constructive-for-long but not clean: H4 up (above MA20, just under MA50), H1 up (above MA20/MA50, just under MA200), D1 range/mildly-bearish (4341.735 << MA20 4431.29, RSI 42.3, er 0.154 mixed), M15 closed-bar trend-down but oversold (RSI 26.3) and live-recovering. Net = LONG-lean (aligns H4/H1).",
+ "market_state": {
+  "d1": "close 4341.735 < MA20 4431.29, RSI 42.3, pos_in_range 45.7, trend_range mixed er 0.154, structure hhish4/llish5 down",
+  "h4": "close 4341.735 > MA20 4310.712 (+72.0bps) ~ MA50 4347.812, RSI 58.0, pos 38.6, hhish5 up",
+  "h1": "close 4341.735 > MA20 4331.519 > MA50 4319.860 < MA200 4352.318, RSI 59.6, pos 72.8, contracting 0.74, recent_move -65bps",
+  "m15": "close 4341.735 < MA20 4354.296 ~ MA50 4347.769 > MA200 4319.488, RSI 26.3 oversold, pos 58.1, er 0.473 trend-down, contracting 0.69, high60 4381.51/low60 4286.5",
+  "m15_live": "last_mid 4356.7 (quote_latest), spread 0.41bps, tick 64/min, last6_max_move 6.9bps z -0.31 vs base 10.22 = NORMAL",
+  "data_quality": "live_days 10, gaps []; NOTE parquet live bar feed lags ~15pt vs quote/broker (parquet last tick 01:09Z mid 4342.3 vs quote 4356.7; broker-confirmed TP fill @4361.06 validates the quote feed); candle_latest stale (2026-09-07) ignored"
+ },
+ "state_summary": "XAUUSD 4356.7; higher-TF constructive (H4/H1 up), D1 range/bearish, M15 oversold pulling back onto the 4347-4354 MA confluence which live has reclaimed; slot FREE after the 4361.06 TP.",
+ "m15_change": "vs 01:02Z: live mid 4362.12 -> 4356.7 (-5.4pt = coiling just under the 4361.0 TP after the spike, not a reversal). M15 latest CLOSED bar (23:45Z parquet) close 4341.735 vs MA20 4354.296 (-12.56) / MA50 4347.769 (-6.03) / MA200 4319.488 (+22.25); RSI 26.3 (oversold on the closed bar); exp_cont contracting 0.69; er 0.473 trend; tick 64/min, last6_max 6.9bps z -0.31 = calm, no burst. Parquet gap 00:00-01:00Z (collector) -> latest closed bar is stale vs live.",
+ "answers_14": {
+  "1_market_state": "Gate: Fri 01:17Z / 09:17 CST, armed=true open=true reason=open (exit 0). XAUUSD pkg 2026-09-18T01:17Z: live_days 10, live_ticks 1,875,846, gaps []. m15_live last_mid 4356.7, spread 0.41bps, tick 64/min, abnormal last6_max 6.9bps z-0.31 vs base 10.22 = NORMAL. Book: FLAT - POS-20260917T2232Z LONG closed by broker TP @4361.06 (realized +16.83USD, reconcile_closed), broker balance 1994.16, slot FREE. 4TF: D1 4341.735<MA20 4431.29 RSI42.3 pos45.7 range(er0.154) hhish4/llish5 down / H4 4341.735>MA20 4310.71~MA50 4347.81 RSI58.0 +72bps pos38.6 hhish5 / H1 4341.735>MA20 4331.52>MA50 4319.86<MA200 4352.32 RSI59.6 pos72.8 contracting0.74 / M15 4341.735<MA20 4354.30~MA50 4347.77>MA200 4319.49 RSI26.3 pos58.1 er0.473 trend contracting0.69. Live 4356.7 > all three M15 MAs and H1 MA200. Data caveat: parquet bar feed stale vs quote/broker; candle_latest stale(2026-09-07) ignored.",
+  "2_consistency": "mixed-to-constructive: H4/H1 up-trend intact and live mid sits above the 4347-4354 confluence; D1 is range/mildly bearish (below MA20); M15 closed-bar still trend-down/oversold but live is recovering. Net consistent with a with-trend (H4/H1) pullback long; D1 not a live conflict (broad range).",
+  "3_m15_change": "live mid 4362.12 -> 4356.7 (-5.4pt, coiling under the 4361.0 TP); M15 latest closed bar 23:45Z close 4341.735 vs MA20 4354.296/MA50 4347.769/MA200 4319.488, RSI 26.3 oversold, er 0.473 trend, contracting 0.69, pos 58.1 (high60 4381.51/low60 4286.5). Impulse NORMAL (tick 64/min, last6_max 6.9bps z-0.31). Parquet gap 00:00-01:00Z.",
+  "4_opportunity": "pullback - buy the dip back into the reclaimed 4346-4355 confluence (M15 MA20/MA50 + H4 MA50 + H1 MA200); continuation to 4381.51 then 4400.0.",
+  "5_mechanism": "H4/H1 up-leg; M15 dipped onto the 4347.8-4354.3 MA-confluence and live has reclaimed it (mid 4356.7 above the shelf after the 4361.06 range-top kiss) -> with-trend continuation entry; invalidation on decisive loss of H1 MA20 4331.5 / M15 MA200 4319.5.",
+  "6_trigger_condition": "{\"zone_touch\":[4346.0,4355.0]} - fill when live mid re-enters the confluence shelf (currently 4356.7, ~1.7pt above zone hi).",
+  "7_invalidation": "{\"price_cross_down\":4331.0} - decisive loss of H1 MA20 4331.52 (toward M15 MA200 4319.49 / H1 MA50 4319.86) voids the long.",
+  "8_expected_return_R": "expected_R 2.06R on a 4350.5 shelf fill: frac-weighted 0.5*(4381.5-4350.5)+0.5*(4400.0-4350.5) = 20.5+24.75 = 40.25pt / 19.5pt (1R) = 2.06R.",
+  "9_expected_loss_R": "1.0R = 19.5pt (entry 4350.5 -> bracket SL 4331.0).",
+  "10_cost_value": "spread 0.41bps (0.18pt @4356.7) + slippage 0.30bps = 0.71bps roundtrip ~ 0.31pt ~ 0.016R on the 19.5pt 1R.",
+  "11_net_EV_formula": "EV = 2.06*0.47 - 1*0.53 - 0.016 = 0.968 - 0.546 = +0.42R (breakeven p ~ 0.332). Positive -> LONG valid.",
+  "12_recurrence": "Recurrent: gold's H4/H1 up-leg keeps offering pullback-to-MA-confluence longs (the live 22:32Z entry banked +16.83USD at TP 4361.06); same shelf-buy pattern is repeating one level higher at 4347-4355.",
+  "13_decision": "LONG - register pullback re-entry plan (slot FREE).",
+  "14_reason": "Slot free after TP hit; H4/H1 up intact, live 4356.7 reclaimed the 4347-4354 MA confluence. Buy dip 4346-4355, SL 4331 (-1R 19.5pt), T 4381.5/4400; EV +0.42R. Missing only a ~2pt dip for the trigger."
+ },
+ "plan": {
+  "plan_id": null,
+  "utc_ts": "2026-09-18T01:17Z",
+  "decision_id_ref": "DEC-2026-09-18T01:17Z",
+  "direction": "LONG",
+  "opportunity_type": "pullback",
+  "mechanism_ref": "pullback_to_MA_confluence_in_H4-H1_uptrend",
+  "entry_zone": {
+   "low": 4346.0,
+   "high": 4355.0
+  },
+  "entry_style": "market_on_trigger",
+  "trigger_condition": {
+   "zone_touch": [
+    4346.0,
+    4355.0
+   ]
+  },
+  "invalidation_condition": {
+   "price_cross_down": 4331.0
+  },
+  "stop_logic": {
+   "type": "structure",
+   "level_price": 4331.0,
+   "reason": "below H1 MA20 4331.52 / H1 MA50 4319.86 / M15 MA200 4319.49 confluence"
+  },
+  "target_logic": {
+   "type": "price_levels",
+   "levels": [
+    {
+     "price": 4381.5,
+     "frac": 0.5
+    },
+    {
+     "price": 4400.0,
+     "frac": 0.5
+    }
+   ],
+   "reason": "TP1 = 4381.51 range high (M15/H1 high60); TP2 = 4400.0 round extension"
+  },
+  "expected_R": 2.06,
+  "expected_win_probability": 0.47,
+  "probability_source": "forward_run_state/trader_summary.txt - pullback-to-MA-confluence-in-H4/H1-uptrend continuation pattern, last 10 live days (incl. the live 22:32Z shelf-long +16.83USD TP winner); conservative 0.47",
+  "expected_loss": {
+   "units": "R",
+   "value": 1.0
+  },
+  "estimated_cost": {
+   "spread_bps": 0.41,
+   "slippage_bps": 0.3,
+   "total_roundtrip_bps": 0.71,
+   "cost_in_R": 0.016
+  },
+  "spread_bps": 0.41,
+  "slippage_bps": 0.3,
+  "expected_net_EV": {
+   "value": 0.42,
+   "units": "R",
+   "note": "2.06*0.47 - 1*0.53 - 0.016 = +0.42R (breakeven p ~ 0.332)"
+  },
+  "maximum_holding_time": "M15*16",
+  "cancel_conditions": [
+   "plan_expired age>240min",
+   "price_left_setup: live mid > 4373.0 (zone_hi + 2*band)",
+   "slot no longer free"
+  ],
+  "risk_level": "medium",
+  "qty_lots": 0.01,
+  "reason": "With-trend pullback re-entry: H4/H1 up-leg intact, live mid 4356.7 sits on the reclaimed 4347-4355 MA confluence (M15 MA20/MA50 + H4 MA50 + H1 MA200); buy dip zone [4346,4355], SL 4331, T 4381.5/4400.",
+  "model": "deepseek/deepseek-v4-flash",
+  "prompt_version": "hermes-trader-m15-cycle/2026-09-12"
+ },
+ "gap_to_tradable": "Price gap (small, not structural): the slot is FREE now, so the only thing missing is a ~2pt dip from live 4356.7 into the [4346.0,4355.0] confluence for the zone_touch trigger to fire and auto-fill the long. If price instead runs up through 4373.0 the plan self-cancels (price_left_setup) and next cycle rebuilds a breakout-continuation long above 4381.6.",
+ "cost_note": "spread 0.41bps (0.18pt @4356.7) + slippage 0.30bps = 0.71bps roundtrip (~0.31pt ~ 0.016R on the 19.5pt 1R)",
+ "ev_note": "EV = 2.06*0.47 - 1*0.53 - 0.016 = +0.42R (breakeven p ~ 0.332) -> LONG plan registered.",
+ "model": "deepseek/deepseek-v4-flash",
+ "prompt_version": "hermes-trader-m15-cycle/2026-09-12"
+}

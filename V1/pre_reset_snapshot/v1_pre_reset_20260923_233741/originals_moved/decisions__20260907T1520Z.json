@@ -1,0 +1,182 @@
+{
+ "schema": "hermes_decision_v1",
+ "utc_ts": "2026-09-07T15:20:40+00:00",
+ "symbol": "XAUUSD",
+ "cycle": "2026-09-07T15:20Z",
+ "market_state": {
+  "d1": {
+   "tf": "D1",
+   "bars": 24,
+   "state": "ok",
+   "last_close": 4399.05,
+   "last_bar": "2026-09-04 00:00:00+00:00",
+   "ma": {"ma20": 4464.43},
+   "price_vs_ma20": -146.4,
+   "rsi14": 49.14,
+   "atr_pct_last": 2.638,
+   "structure": {"hhish": 4, "llish": 5, "last_vs_5ago": "down"},
+   "trend_range": {"cat": "range", "er": 0.017},
+   "s_r": {"high60": 4696.87, "low60": 4042.58, "pos_in_range": 54.5},
+   "recent_move_bps": -125.0
+  },
+  "h4": {
+   "tf": "H4",
+   "bars": 145,
+   "state": "ok",
+   "last_close": 4411.24,
+   "last_bar": "2026-09-07 08:00:00+00:00",
+   "ma": {"ma20": 4406.78, "ma50": 4480.63},
+   "price_vs_ma20": 10.1,
+   "rsi14": 57.19,
+   "atr_pct_last": 0.87,
+   "structure": {"hhish": 4, "llish": 5, "last_vs_5ago": "down"},
+   "trend_range": {"cat": "range", "er": 0.144},
+   "s_r": {"high60": 4696.87, "low60": 4282.53, "pos_in_range": 31.1},
+   "recent_move_bps": -140.0
+  },
+  "h1": {
+   "tf": "H1",
+   "bars": 558,
+   "state": "ok",
+   "last_close": 4385.5,
+   "last_bar": "2026-09-07 14:00:00+00:00",
+   "ma": {"ma20": 4422.02, "ma50": 4443.29, "ma200": 4487.83},
+   "price_vs_ma20": -82.6,
+   "rsi14": 43.93,
+   "atr_pct_last": 0.363,
+   "structure": {"hhish": 2, "llish": 7, "last_vs_5ago": "down"},
+   "trend_range": {"cat": "range", "er": 0.121},
+   "s_r": {"high60": 4511.01, "low60": 4330.62, "pos_in_range": 30.4},
+   "recent_move_bps": -16.7
+  },
+  "m15": {
+   "tf": "M15",
+   "bars": 2232,
+   "state": "ok",
+   "last_close": 4385.5,
+   "last_bar": "2026-09-07 14:45:00+00:00",
+   "ma": {"ma20": 4402.04, "ma50": 4405.01, "ma200": 4443.5},
+   "price_vs_ma20": -37.6,
+   "rsi14": 16.98,
+   "atr_pct_last": 0.162,
+   "structure": {"hhish": 2, "llish": 7, "last_vs_5ago": "down"},
+   "trend_range": {"cat": "trend", "er": 0.66},
+   "s_r": {"high60": 4476.68, "low60": 4378.4, "pos_in_range": 7.2},
+   "recent_move_bps": -29.8
+  },
+  "m15_live": {
+   "last_mid": 4414.28,
+   "spread_bps_now": 0.29,
+   "tick_rate_per_min_15m": 128,
+   "abnormal": {"last6_max_move_bps": 15.6, "z_vs_baseline": 0.5, "baseline_mean_move_bps": 10.24}
+  }
+ },
+ "data_quality": {
+  "live_days": 1,
+  "live_ticks": 119803,
+  "context_days": 25,
+  "gaps": []
+ },
+ "mtf_agreement": "medium_lean_short",
+ "state_summary": "XAUUSD live 4414.28: 15:17后5分钟内+22pt(~50bps)放量急拉, 从4385.5/4392直冲4414, 升破M15 MA20 4402/MA50 4405/H4 MA20 4407簇; 现价正处今日两次压制的4411-4415供给带, H1 MA20 4422贴头上方~8pt; D1/H4中性range未变, H1空头排列背景; M15/H1 bar缓存滞后(14:45, 以live tick为准); spread0.29bps, tick128/min。TP-1510Z区间底多单(4378.4-4385)现价已远离30pt, 大概率过期作废。",
+ "m15_change": "较上轮(live4392.07): 剧烈拉升+22pt至4414.28, 属超卖(RSI17)后的暴力挤压反弹, 连续升破M15双均线与H4 MA20; 但4411-4415为今日两次压制位(引擎历史: 上沿4411-4415两度拒绝), 现价正处于该供给带内, 上攻动能直面H1 MA20 4422墙。",
+ "opportunity": "fade_squeeze_into_supply_short",
+ "opportunity_mechanism": "超卖急拉(+22pt/~50bps)一步到位进入4411-4415双重供给带(今日两度压制), 上方H1 MA20 4422空头排列活压; D1/H4中性range不背书趋势多, 尖峰脉冲在区间顶遇供给 → 均值回归向下回补, 目标先看M15 MA簇4402-4405回踩, 再看4394/4385; 触价自动成交不追高。",
+ "decision": "SHORT",
+ "confidence": 0.5,
+ "plan_id": "TP-20260907T1520Z",
+ "plan": {
+  "plan_id": "TP-20260907T1520Z",
+  "direction": "SHORT",
+  "opportunity_type": "fade_squeeze_resistance",
+  "entry_style": "zone_touch_limit",
+  "entry_zone": {
+   "low": 4411.0,
+   "high": 4416.0
+  },
+  "trigger_condition": {
+   "and": [
+    {
+     "zone_touch": [
+      4411.0,
+      4416.0
+     ]
+    },
+    {
+     "spread_under_bps": 0.6
+    }
+   ]
+  },
+  "invalidation_condition": {
+   "price_cross_up": 4426.0
+  },
+  "stop_logic": {
+   "type": "structure",
+   "level": 4426.0,
+   "level_price": 4426.0,
+   "reason": "H1 MA20 4422上方~4pt; 升破=空头排列被收复, 挤压转趋势多"
+  },
+  "target_logic": {
+   "type": "price_levels",
+   "levels": [
+    {
+     "price": 4402.5,
+     "frac": 0.5
+    },
+    {
+     "price": 4394.0,
+     "frac": 0.3
+    },
+    {
+     "price": 4386.0,
+     "frac": 0.2
+    }
+   ],
+   "reason": "TP1=M15 MA20 4402.04/M15 MA50 4405簇回踩, TP2=4390-4394前低区, TP3=4385反弹起点/趋向4378.4区间底"
+  },
+  "expected_R": 1.5,
+  "expected_win_probability": 0.5,
+  "probability_source": "4411-4415供给带今日两度压制(引擎wait史实证) + 50bps急拉入区间顶的超买脉冲均值回归; D1/H4 range + H1空排背景 主观综合",
+  "expected_loss": {
+   "units": "R",
+   "value": 1.0
+  },
+  "estimated_cost": {
+   "spread_bps": 0.29,
+   "slippage_bps": 0.05,
+   "total_roundtrip_bps": 0.7,
+   "cost_in_R": 0.04
+  },
+  "expected_net_EV": {
+   "value": 0.21,
+   "units": "R",
+   "note": "0.50*1.5 - 0.50*1.0 - 0.04 = +0.21R (成交~4414, 止损4426风险12pt)"
+  },
+  "maximum_holding_time": "M15*6",
+  "cancel_conditions": [
+   "expire after 6 M15 bars",
+   "mid>=4426.0 invalidated"
+  ],
+  "qty_lots": 0.01
+ },
+ "answers_14": {
+  "1": "live 4414.28: 15:17→15:22五分钟急拉+22pt(~50bps), 升破M15 MA20 4402/MA50 4405/H4 MA20 4407, 现处4411-4415供给带(今日两度压制), H1 MA20 4422贴头上方; D1/H4中性range, H1空排背景; spread0.29bps。",
+  "2": "H1空头排列(MA20 4422/50 4443/200 4488全在上方)+M15原下行结构: 中期空头一致; D1/H4 range中性不背书趋势多; 此急拉为超卖脉冲而非趋势反转 → 供给带做空与中高周期框架一致, short-lean中等。",
+  "3": "较上轮4392.07: 剧烈+22pt挤压至4414.28, 连续破三道均线, 动能极强但已冲入4411-4415双顶供给带且逼近H1 MA20 4422墙; 脉冲性质(超卖修复)而非趋势突破, 量价到达关键供给区。",
+  "4": "fade-squeeze: 急拉一步到位进入今日两度压制的4411-4415供给带, 上触H1 MA20 4422前; 顺D1/H4 range与H1空排背景做空, 目标回踩M15 MA簇4402-4405→4394→4385。",
+  "5": "超卖脉冲在区间顶遇双顶供给+空排MA墙即衰竭; live 4414.28已入[4411,4416]带 → zone_touch即刻自动市价空, 止损4426(MA20上方4pt结构位), 目标4402.5(0.5)/4394(0.3)/4386(0.2); 触价即成交, 不赌更高价。",
+  "6": "触发: mid∈[4411.0, 4416.0] 且 spread<0.6bps → 自动空; 现价4414.28已在带内, 注册即触发; 失效: mid≥4426.0。",
+  "7": "失效价: mid≥4426.0(H1 MA20 4422上方4pt, 收复空排=挤压转趋势多) → 撤单/止损; 成交~4414风险12pt=1R, 结构止损封顶。",
+  "8": "预期收益: TP1 4402.5(+11.8pt≈1.0R@4414, frac0.5), TP2 4394(+20.3pt≈1.7R, frac0.3), TP3 4386(+28.3pt≈2.4R, frac0.2); 阶梯加权~1.5R。",
+  "9": "预期损失: 1.0R=12pt(4414→4426); 最差上沿4416成交风险10pt; 结构止损封顶, 不无限扩大。",
+  "10": "成本: spread 0.29bps + 滑点0.05bps(paper) ≈ 0.7bps往返 ≈ 0.3pt ≈ 0.04R@4414 — 极低, 非EV障碍。",
+  "11": "净EV = 0.50×1.5 − 0.50×1.0 − 0.04 = +0.21R > 0 → SHORT(现价在带内, 立即触发); 保守胜率0.45仍 +0.14R。",
+  "12": "现价已在触发带[4411,4416]内, 注册即成交; 若再上探4418-4422(H1 MA20)则本单已持仓获利或止损离场, 不追高不加仓; TP-1510Z区间底多单距现价30pt, 8根M15后自然过期。",
+  "13": "SHORT",
+  "14": "超卖急拉+22pt直冲4411-4415双顶供给带(今日两度压制), H1 MA20 4422空排墙在上; 现价4414已在带内即市价空, 止损4426, 目标4402.5/4394/4386, R1.5 EV+0.21R; 区间脉冲不追多。"
+ },
+ "cost_note": "spread_bps_now=0.29; slippage_bps~0.05(paper); total_roundtrip_bps~0.7≈0.3pt@4414≈0.04R",
+ "ev_note": "SHORT: EV=0.50×1.5−0.50×1.0−0.04=+0.21R; 触发zone_touch[4411,4416](现价带内立即成交), 失效mid≥4426; TP-1510Z底多单另挂不冲突",
+ "model": "deepseek/deepseek-v4-flash",
+ "prompt_version": "hermes-trader-v1-p0-m15-14Q 2026-09-07"
+}

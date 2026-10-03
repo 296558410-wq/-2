@@ -1,0 +1,75 @@
+{
+  "hypothesis": "H1 状态是否改变 M1 条件分布？",
+  "features": "h1_mom_4",
+  "parameters": {
+    "holding": 60,
+    "feature_params": {}
+  },
+  "dataset": "XAUUSD_M1_Dukascopy-HTTP_20260904_v001",
+  "train_period": "2023-09-01 00:00:00+00:00→2024-01-07 09:36:00+00:00",
+  "test_period": "2024-01-07 09:36:00+00:00→2024-03-16 23:59:00+00:00",
+  "OOS": {
+    "ic": -0.0385828758351617,
+    "p": 0.0
+  },
+  "FDR": {
+    "q": 0.0,
+    "reject": true
+  },
+  "WF": {
+    "folds_ic": [
+      -0.0715,
+      0.0373,
+      0.0131,
+      -0.0824,
+      -0.0761
+    ],
+    "positive_frac": 0.4,
+    "n_folds": 5
+  },
+  "cost_stress": {
+    "1x": -1.5114,
+    "2x": -4.8011,
+    "3x": -7.9667,
+    "net_total": -0.08925896299227809,
+    "n_trades": 686,
+    "subperiod": {
+      "n_parts": 4,
+      "parts": [
+        {
+          "segment": 1,
+          "n": 57165,
+          "sharpe": 0.079,
+          "mean": 9.10051708654715e-07
+        },
+        {
+          "segment": 2,
+          "n": 57165,
+          "sharpe": -0.049,
+          "mean": -5.357102433243455e-07
+        },
+        {
+          "segment": 3,
+          "n": 57165,
+          "sharpe": -0.116,
+          "mean": -9.985124808545523e-07
+        },
+        {
+          "segment": 4,
+          "n": 57165,
+          "sharpe": -0.062,
+          "mean": -9.409453562626216e-07
+        }
+      ],
+      "sharpe_positive_frac": 0.25,
+      "sharpe_min": -0.116,
+      "sharpe_max": 0.079,
+      "note": "子段 Sharpe 一致性低 → 结果可能依赖特定时期"
+    }
+  },
+  "subperiod": null,
+  "status": "REJECTED",
+  "git_commit": "47602de",
+  "alpha_id": "H10_multi_timeframe_01_h1_mom_4_h60_v001",
+  "created_at": "2026-09-04T12:42:16.215155+00:00"
+}

@@ -1,0 +1,171 @@
+{
+ "task": "V1_R6_HERMES_VALIDATION",
+ "ts_utc": "2026-09-28T05:16:10.226839+00:00",
+ "registry_hash": "a71cee6636b851099feabb844cd05b9f77066d899ab1e2d953d344cefca89dca",
+ "declared_sample_n": 31,
+ "A_ACCEPTED": 30,
+ "A_EFFECTIVE_N": 30,
+ "B_ADVERSARIAL_n": 15,
+ "B_BLIND_n": 15,
+ "comparison_table": {
+  "R6_HERMES_A": {
+   "STATE_acc": 0.1667,
+   "n_state": 24,
+   "MAJORITY_ref": "REJECTION",
+   "TRANSITION_acc": 0.4583,
+   "DIRECTION_acc": 0.2381,
+   "ABSTENTION_rate": 0.2,
+   "SCENARIO_COVERAGE": 0.7333
+  },
+  "SIMPLE_MAJORITY_ref": {
+   "state": "REJECTION"
+  },
+  "SIMPLE_PERSISTENCE": {
+   "STATE_acc": 0.375,
+   "n_state": 24,
+   "MAJORITY_ref": "REJECTION",
+   "TRANSITION_acc": null,
+   "DIRECTION_acc": null,
+   "ABSTENTION_rate": 0.0,
+   "SCENARIO_COVERAGE": null
+  },
+  "SIMPLE_PREVIOUS_STATE": {
+   "STATE_acc": 0.4583,
+   "n_state": 24,
+   "MAJORITY_ref": "REJECTION",
+   "TRANSITION_acc": null,
+   "DIRECTION_acc": null,
+   "ABSTENTION_rate": 0.0,
+   "SCENARIO_COVERAGE": null
+  },
+  "SIMPLE_TRANSITION": {
+   "STATE_acc": 0.25,
+   "n_state": 24,
+   "MAJORITY_ref": "REJECTION",
+   "TRANSITION_acc": null,
+   "DIRECTION_acc": null,
+   "ABSTENTION_rate": 0.0,
+   "SCENARIO_COVERAGE": null
+  },
+  "FROZEN_NEXT_STATE_MODEL": {
+   "STATE_acc": 0.2667,
+   "n": 30
+  }
+ },
+ "calibration": {
+  "n": 21,
+  "ECE": 0.181,
+  "mean_confidence": 0.3476,
+  "direction_accuracy": 0.2381
+ },
+ "paired_R5_vs_R6": {
+  "n_overlap": 6,
+  "points": [
+   "20260720",
+   "20260726",
+   "20260801",
+   "20260807",
+   "20260813",
+   "20260912"
+  ],
+  "R5_STATE_acc": 0.0,
+  "R6_STATE_acc": 0.2,
+  "R5_TRANSITION_acc": 0.25,
+  "R6_TRANSITION_acc": 0.4,
+  "R5_SCENARIO_COVERAGE": 0.8333,
+  "R6_SCENARIO_COVERAGE": 0.8333,
+  "R5_ABSTENTION": 0.3333,
+  "R6_ABSTENTION": 0.1667
+ },
+ "hermes_b_audit": {
+  "n": 15,
+  "verdicts": {
+   "PARTIAL_AGREE": 11,
+   "DISAGREE": 4
+  },
+  "agreement_rate": 0.0,
+  "partial_rate": 0.7333,
+  "disagreement_rate": 0.2667,
+  "insufficient_rate": 0.0,
+  "focus": {
+   "OBSERVATION_DISCIPLINE": {
+    "PARTIAL_AGREE": 14,
+    "DISAGREE": 1
+   },
+   "MECHANISM_DISCIPLINE": {
+    "PARTIAL_AGREE": 9,
+    "DISAGREE": 3,
+    "AGREE": 3
+   },
+   "COUNTER_EVIDENCE": {
+    "PARTIAL_AGREE": 13,
+    "DISAGREE": 1,
+    "AGREE": 1
+   },
+   "CONFIDENCE": {
+    "AGREE": 1,
+    "PARTIAL_AGREE": 10,
+    "DISAGREE": 4
+   },
+   "ABSTENTION": {
+    "AGREE": 4,
+    "PARTIAL_AGREE": 6,
+    "DISAGREE": 5
+   },
+   "INVALIDATION": {
+    "PARTIAL_AGREE": 10,
+    "DISAGREE": 3,
+    "AGREE": 2
+   }
+  },
+  "error_counts": {
+   "over_inference": 46,
+   "mechanism_jump": 35,
+   "missing_counter_evidence": 57,
+   "unjustified_confidence": 39,
+   "observation_as_fact": 36
+  },
+  "blind_vs_A_direction_pairs": 9,
+  "blind_vs_A_direction_agreement": 0.8889,
+  "blind_n": 15
+ },
+ "capability": {
+  "STATE": "UNSUPPORTED",
+  "TRANSITION": "UNSUPPORTED",
+  "SCENARIO": "SUPPORTED",
+  "DIRECTION": "UNSUPPORTED",
+  "TIMING": "INCONCLUSIVE"
+ },
+ "baselines_ref": 0.4583,
+ "CAPABILITY_GATE": "CLOSED",
+ "PREDICTION": "UNSUPPORTED",
+ "r3_verdict_unchanged": "UNSUPPORTED",
+ "tests": {
+  "pass": 16,
+  "fail": 0,
+  "total": 16
+ },
+ "ledger_entries": 76,
+ "ledger_chain_ok": true,
+ "immutability": {
+  "R3": true,
+  "R4": true,
+  "R5": true,
+  "R5_1": true
+ },
+ "safety": {
+  "ORDER_SEND": 0,
+  "ORDER_CHECK": 0,
+  "BROKER_WRITE": 0,
+  "FORWARD": "OFF",
+  "SHADOW": "OFF",
+  "LIVE": "OFF",
+  "BOUNDARY_VIOLATION": 0
+ },
+ "git_head": "9e8c4f94089c5700ade3b08ec528e14d83821b2e",
+ "changed_files_by_task": 1,
+ "instrument_errata": [
+  "a6 first persist used 6-char timestamps producing placeholder sample ids A_202608/A_202609; excluded from metrics, ledger kept append-only",
+  "two A samples (0831 first attempt, 0904) failed with LLM timeout / network interruption and are recorded as failures"
+ ]
+}

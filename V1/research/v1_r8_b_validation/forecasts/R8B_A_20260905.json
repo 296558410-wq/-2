@@ -1,0 +1,89 @@
+{
+  "forecast_id": "R8B_A_20260905",
+  "sample_id": "A_20260905",
+  "timestamp": "2026-09-05T00:00:00Z",
+  "horizon": 4,
+  "time_horizon": "H4",
+  "scenario_family": "RANGE",
+  "scenario_alternative": "QUIET",
+  "scenario_abstain": false,
+  "observations": [
+    "Close 4430.455, 0.22 ATR beyond swing low 4431.915, no reclaim",
+    "State DECELERATION dwell 3, event REJECTION, ambiguity 0.25",
+    "H4 trend_20 +98.9, H1 trend_20 -48.1, MTF agreement CONFLICT",
+    "H4 ATR 37.6, H1 range percentile 0.02, M5 contracting"
+  ],
+  "what_i_know": [
+    "Price below swing low 4431.915, 41 touches in 240 bars",
+    "Frozen label REJECTION, lifecycle state DECELERATION dwell 3",
+    "Multi-timeframe trends conflict; cross-market series absent",
+    "Recent 110-point H4 crash then partial recovery to 4430"
+  ],
+  "what_i_do_not_know": [
+    "Whether REJECTION resolves to reclaim or continuation",
+    "Direction after deceleration; breakout timing unknown",
+    "News, macro, DXY, VIX absent, reaction drivers unknown",
+    "Analogs state-only, no return or label guidance"
+  ],
+  "evidence": [
+    "Deceleration plus low H1 range suggests compression, bounded trade",
+    "REJECTION at heavily-tested level implies two-sided churn",
+    "M1 up-leg stalled after 8 consecutive up bars",
+    "A27169 analog shows churn before expansion"
+  ],
+  "counter_evidence": [
+    "H4 ATR 37.6 implies large swings possible within 4h",
+    "Break beyond swing low without reclaim leans bearish continuation",
+    "A12862 analog shows TREND by step 8",
+    "MTF CONFLICT means resolution could be directional"
+  ],
+  "possible_mechanisms": [
+    {"mechanism": "compression_then_range", "status": "POSSIBLE", "why": "Deceleration state with contracting M5 ranges"},
+    {"mechanism": "failed_breakout_continuation", "status": "POSSIBLE", "why": "No reclaim of 4431.915 yet, downside open"},
+    {"mechanism": "reclaim_rebound", "status": "WEAK", "why": "REJECTION may precede reclaim of broken level"},
+    {"mechanism": "post_crash_repair", "status": "POSSIBLE", "why": "Recovery from 4365 lows often consolidates"}
+  ],
+  "primary_scenario": {
+    "scenario": "RANGE",
+    "horizon": 4,
+    "trigger": "Price oscillates 4422-4438 without reclaim or breakdown",
+    "invalidation": "Sustained close below 4422 or above 4440"
+  },
+  "alternative_scenario": {
+    "scenario": "QUIET",
+    "horizon": 4,
+    "trigger": "Continued compression, range under 15 points",
+    "invalidation": "Range expands beyond 30 points"
+  },
+  "expected_transition": "DECELERATION to ROTATION or further DECELERATION",
+  "direction_bias": "NO_DIRECTIONAL_EDGE",
+  "evidence_strength": 0.35,
+  "confidence": 0.38,
+  "uncertainty": 0.55,
+  "confidence_reason": "State and level structure align, but MTF conflict and missing cross-market data",
+  "uncertainty_reason": "High ATR regime, marginal break, no external drivers available",
+  "invalidation": "Sustained close beyond 4422 or 4440 flips family",
+  "change_my_mind": [
+    "Reclaim of 4431.915 on M15 with expansion",
+    "M1/M5 range percentiles above 0.8 for two bars",
+    "New H4 low below 4422 with ATR expansion",
+    "Cross-market data showing risk-on or risk-off impulse"
+  ],
+  "abstain": false,
+  "abstain_reason": "Sufficient structural context; abstention not required",
+  "questions": {
+    "Q1": "Context states price, level, states, analogs only",
+    "Q2": "Direction, timing, drivers, analog returns unknown",
+    "Q3": "Deceleration, low H1 range, stalled M1 up-leg",
+    "Q4": "High H4 ATR, marginal break without reclaim, MTF conflict",
+    "Q5": "breakout_pressure is only candidate, not asserted fact",
+    "Q6": "Reclaim or breakdown with expansion confirms family",
+    "Q7": "false — structure sufficient, abstention unnecessary"
+  },
+  "reasoning_trace": [
+    "DECELERATION implies slowing prior down-move",
+    "Level break marginal; REJECTION suggests churn",
+    "RANGE fits churn; QUIET backup; DIRECTIONAL low odds",
+    "No external data; confidence capped low"
+  ]
+}

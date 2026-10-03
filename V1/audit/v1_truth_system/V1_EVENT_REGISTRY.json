@@ -1,0 +1,146 @@
+{
+ "registry": "V1_EVENT_REGISTRY",
+ "protocol_version": "v1-truth-1",
+ "generated_utc": "2026-10-02T04:26:56.150490+00:00",
+ "note": "schema of the append-only ledger; new events additionally carry cycle_id/decision_id/dedup_key",
+ "events": {
+  "DECISION": {
+   "producer": "cycle.py",
+   "fields_key": [
+    "action",
+    "signal",
+    "risk_allow",
+    "risk_reasons",
+    "snapshot",
+    "cycle_id",
+    "decision_id",
+    "truth_record_ok"
+   ],
+   "links": [
+    "cycle_id",
+    "decision_id"
+   ],
+   "downstream": [
+    "ORDER_CHECK",
+    "ORDER_REQUEST"
+   ]
+  },
+  "ORDER_CHECK": {
+   "producer": "cycle.py",
+   "fields_key": [
+    "side",
+    "lots",
+    "price",
+    "filling_name",
+    "retcode",
+    "ok"
+   ],
+   "links": [
+    "cycle_id"
+   ],
+   "downstream": [
+    "ORDER_REQUEST",
+    "DECISION(BLOCKED)"
+   ]
+  },
+  "ORDER_REQUEST": {
+   "producer": "cycle.py",
+   "fields_key": [
+    "side",
+    "lots",
+    "price",
+    "sl",
+    "tp",
+    "dedup_key"
+   ],
+   "links": [
+    "dedup_key"
+   ],
+   "downstream": [
+    "ORDER_SEND"
+   ]
+  },
+  "ORDER_SEND": {
+   "producer": "cycle.py",
+   "fields_key": [
+    "order_id",
+    "retcode",
+    "ok",
+    "slippage_bps",
+    "latency_ms",
+    "dedup_key",
+    "broker_comment"
+   ],
+   "links": [
+    "order_id",
+    "dedup_key"
+   ],
+   "downstream": [
+    "FILL",
+    "POSITION"
+   ]
+  },
+  "FILL": {
+   "producer": "cycle.py",
+   "fields_key": [
+    "order_id",
+    "price",
+    "qty"
+   ],
+   "links": [
+    "order_id"
+   ],
+   "downstream": [
+    "POSITION"
+   ]
+  },
+  "POSITION": {
+   "producer": "cycle.py",
+   "fields_key": [
+    "order_id",
+    "ticket",
+    "sl",
+    "tp"
+   ],
+   "links": [
+    "order_id"
+   ],
+   "downstream": [
+    "CLOSE"
+   ]
+  },
+  "CLOSE": {
+   "producer": "cycle.py (reconcile from broker deals)",
+   "fields_key": [
+    "position_id",
+    "side",
+    "qty",
+    "price",
+    "reason",
+    "broker_time_utc"
+   ],
+   "links": [
+    "position_id"
+   ],
+   "downstream": [
+    "PNL"
+   ]
+  },
+  "PNL": {
+   "producer": "cycle.py (reconcile)",
+   "fields_key": [
+    "pnl",
+    "commission",
+    "swap",
+    "realized_R",
+    "broker_time_utc"
+   ],
+   "links": [
+    "position_id"
+   ],
+   "downstream": [
+    "risk state rebuild"
+   ]
+  }
+ }
+}

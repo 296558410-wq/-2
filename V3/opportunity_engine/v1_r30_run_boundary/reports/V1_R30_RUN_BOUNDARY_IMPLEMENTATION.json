@@ -1,0 +1,267 @@
+{
+ "task": "V1_R30_RUN_BOUNDARY_IMPLEMENTATION",
+ "ts_utc": "2026-09-25T16:49:28.912398+00:00",
+ "hash_before": {
+  "ENGINE": "7d95645678cf0615c77c0d1c91177cf1652ca1fa6b1f509ec99e415dba55c25d",
+  "LEDGER": "0b90493cae0cdf7b73056bc72b1e5752f35c3eb20f9306c098d26f4bec819261",
+  "STATISTICS": "ca42f624fde50df375dc877750e121e8d2d313986ea6d953766d5247ab76ee84",
+  "RUN_META": "597bd76970412c107c96475dfe8d5093ff7840aba73cb4ab65318f2b0f358950"
+ },
+ "hash_after": {
+  "ENGINE": "7d95645678cf0615c77c0d1c91177cf1652ca1fa6b1f509ec99e415dba55c25d",
+  "LEDGER": "0b90493cae0cdf7b73056bc72b1e5752f35c3eb20f9306c098d26f4bec819261",
+  "STATISTICS": "ca42f624fde50df375dc877750e121e8d2d313986ea6d953766d5247ab76ee84",
+  "RUN_META": "597bd76970412c107c96475dfe8d5093ff7840aba73cb4ab65318f2b0f358950"
+ },
+ "hashes_stable": {
+  "ENGINE": "YES",
+  "LEDGER": "YES",
+  "STATISTICS": "YES",
+  "RUN_META": "YES"
+ },
+ "v2_changes": [],
+ "v3_hashes": {
+  "M01_event": "ca44fd2c02afd867b9c66cb5da463eb0283fef6c31ba4e7c20fc988a1c9e2621",
+  "R1_ledger": "d9cd67757e501c3e550338da4228d67c0132ea293f28bce031b1cf010790f4ed",
+  "M01_audit": "a3bee5375f318ceb8bdd3144a0ac2639b88e2c5932a3e33c563c72b2c0c9f17d",
+  "R2_canonical": "20913b986890b1c593a63d1dfa7d6e1d90ad0b71db7b5134132f3ecfd7e72624"
+ },
+ "v3_ok": true,
+ "test_results": {
+  "TEST_13_open_position_new_run": {
+   "result": "PASS",
+   "expected": "FAIL_DETECTED",
+   "observed": "EXC:RunBoundaryError:OPEN_POSITION_BLOCKS_NEW_RUN"
+  },
+  "TEST_01_duplicate_run_id": {
+   "result": "PASS",
+   "expected": "FAIL_DETECTED",
+   "observed": "EXC:RunBoundaryError:DUPLICATE_RUN_ID"
+  },
+  "TEST_02_modify_manifest": {
+   "result": "PASS",
+   "expected": "DETECTED",
+   "observed": "DETECTED"
+  },
+  "TEST_03_modify_closed_run": {
+   "result": "PASS",
+   "expected": "FAIL_DETECTED",
+   "observed": "EXC:RunBoundaryError:MANIFEST_HASH_MISMATCH"
+  },
+  "TEST_04_delete_ledger_record": {
+   "result": "PASS",
+   "expected": "DETECTED:LEDGER_CHAIN_BROKEN",
+   "observed": "DETECTED:LEDGER_CHAIN_BROKEN"
+  },
+  "TEST_05_alter_ledger_payload": {
+   "result": "PASS",
+   "expected": "DETECTED:LEDGER_CHAIN_BROKEN",
+   "observed": "DETECTED:LEDGER_CHAIN_BROKEN"
+  },
+  "TEST_06_break_previous_hash": {
+   "result": "PASS",
+   "expected": "DETECTED:LEDGER_CHAIN_BROKEN",
+   "observed": "DETECTED:LEDGER_CHAIN_BROKEN"
+  },
+  "TEST_07_cross_run_event_reuse": {
+   "result": "PASS",
+   "expected": "FAIL_DETECTED",
+   "observed": "EXC:RunBoundaryError:EVENT_ID_COLLISION"
+  },
+  "TEST_08_cross_run_deal_reuse": {
+   "result": "PASS",
+   "expected": "FAIL_DETECTED",
+   "observed": "EXC:RunBoundaryError:DEAL_ID_CROSS_RUN_REUSE"
+  },
+  "TEST_09_pnl_without_run_id": {
+   "result": "PASS",
+   "expected": "FAIL_DETECTED",
+   "observed": "EXC:RunBoundaryError:PNL_WITHOUT_RUN_ID"
+  },
+  "TEST_10_balance_as_pnl": {
+   "result": "PASS",
+   "expected": null,
+   "observed": "{'balance_delta': 60.0, 'pnl': -20.0, 'SEPARATED': False}"
+  },
+  "TEST_11_inherited_pnl": {
+   "result": "PASS",
+   "expected": null,
+   "observed": "{'RUN_A': -21.97, 'RUN_B': 10.0, 'NOT_INHERITED': True}"
+  },
+  "TEST_12_inherited_counter": {
+   "result": "PASS",
+   "expected": null,
+   "observed": "{'RUN_B_counters': {'plans_registered': 0, 'run_id': 'RUN_B', 'trades_opened': 0}, 'ZEROED': True}"
+  },
+  "TEST_14_missing_closeout": {
+   "result": "PASS",
+   "expected": null,
+   "observed": "{'conditions': {'OLD_RUN_CLOSED': False, 'OLD_RUN_CLOSEOUT_VERIFIED': False, 'OLD_LEDGER_VERIFIED': True, 'OLD_STATISTICS_VERIFIED': False, 'OLD_PNL_VERIFIED': False, 'NEW_RUN_MANIFEST_CREATED': True, 'NEW_RUN_OPENING_SNAPSHOT_VERIFIED': False, 'NO_OPEN_POSITION': True, 'NO_PENDING_ORDER': True}, 'R"
+  },
+  "TEST_15_missing_opening_snapshot": {
+   "result": "PASS",
+   "expected": "FAIL_DETECTED",
+   "observed": "EXC:RunBoundaryError:MISSING_OPENING_SNAPSHOT"
+  },
+  "TEST_16_replay_mismatch": {
+   "result": "PASS",
+   "expected": "DETECTED",
+   "observed": "DETECTED"
+  },
+  "TEST_17_create_run": {
+   "result": "PASS",
+   "expected": "CREATED",
+   "observed": "CREATED"
+  },
+  "TEST_18_open_run": {
+   "result": "PASS",
+   "expected": "OPEN",
+   "observed": "OPEN"
+  },
+  "TEST_19_append_event": {
+   "result": "PASS",
+   "expected": "NOTE",
+   "observed": "NOTE"
+  },
+  "TEST_20_append_pnl": {
+   "result": "PASS",
+   "expected": "PNL",
+   "observed": "PNL"
+  },
+  "TEST_21_close_run": {
+   "result": "PASS",
+   "expected": "R_P",
+   "observed": "R_P"
+  },
+  "TEST_22_verify_run": {
+   "result": "PASS",
+   "expected": true,
+   "observed": "True"
+  },
+  "TEST_23_replay_run": {
+   "result": "PASS",
+   "expected": "PASS",
+   "observed": "PASS"
+  },
+  "TEST_24_create_independent_run": {
+   "result": "PASS",
+   "expected": "R_Q",
+   "observed": "R_Q"
+  },
+  "TEST_25_cross_run_replay": {
+   "result": "PASS",
+   "expected": null,
+   "observed": "{'A': 'PASS', 'B': 'PASS'}"
+  },
+  "DETERMINISTIC_REPLAY": {
+   "result": "PASS",
+   "expected": null,
+   "observed": "{'HASH_1': '18edef58f60baae29baed9c5fababe4321d97111c7c3fcb9badc70f7b69f1655', 'HASH_2': '18edef58f60baae29baed9c5fababe4321d97111c7c3fcb9badc70f7b69f1655', 'equal': True}"
+  },
+  "BALANCE_PNL_SEPARATION": {
+   "result": "PASS",
+   "expected": null,
+   "observed": "{'balance_delta +80 != pnl -20': True, 'ok': True}"
+  },
+  "TAMPER_TEST": {
+   "result": "PASS",
+   "expected": "DETECTED",
+   "observed": "DETECTED"
+  },
+  "CRASH_RECOVERY": {
+   "result": "PASS",
+   "expected": "DETECTED",
+   "observed": "DETECTED"
+  },
+  "RESET_GATE_SIMULATION": {
+   "result": "PASS",
+   "expected": null,
+   "observed": "{'with_missing_new_manifest': 'NO', 'full': 'NO', 'conditions': {'OLD_RUN_CLOSED': False, 'OLD_RUN_CLOSEOUT_VERIFIED': False, 'OLD_LEDGER_VERIFIED': False, 'OLD_STATISTICS_VERIFIED': False, 'OLD_PNL_VERIFIED': True, 'NEW_RUN_MANIFEST_CREATED': True, 'NEW_RUN_OPENING_SNAPSHOT_VERIFIED': False, 'NO_OP"
+  }
+ },
+ "output62": {
+  "V1_R30_RUN_BOUNDARY_IMPLEMENTATION": "COMPLETE",
+  "IMPLEMENTATION_STATUS": "SPECIFIED_AND_TESTED_OFFLINE",
+  "RUN_MANAGER": "PASS",
+  "RUN_MANIFEST": "PASS",
+  "RUN_NAMESPACE": "PASS",
+  "COUNTER_SCHEMA": "PASS",
+  "PNL_BOUNDARY": "PASS",
+  "BALANCE_BOUNDARY": "PASS",
+  "LEDGER_HASH_CHAIN": "PASS",
+  "RUN_CLOSEOUT": "PASS",
+  "REPLAY": "PASS",
+  "CROSS_RUN_ISOLATION": "PASS",
+  "TAMPER_DETECTION": "PASS",
+  "CRASH_RECOVERY": "PASS",
+  "RESET_GATE_SIMULATION": "PASS",
+  "TEST_01": "PASS",
+  "TEST_02": "PASS",
+  "TEST_03": "PASS",
+  "TEST_04": "PASS",
+  "TEST_05": "PASS",
+  "TEST_06": "PASS",
+  "TEST_07": "PASS",
+  "TEST_08": "PASS",
+  "TEST_09": "PASS",
+  "TEST_10": "PASS",
+  "TEST_11": "PASS",
+  "TEST_12": "PASS",
+  "TEST_13": "PASS",
+  "TEST_14": "PASS",
+  "TEST_15": "PASS",
+  "TEST_16": "PASS",
+  "TEST_17": "PASS",
+  "TEST_18": "PASS",
+  "TEST_19": "PASS",
+  "TEST_20": "PASS",
+  "TEST_21": "PASS",
+  "TEST_22": "PASS",
+  "TEST_23": "PASS",
+  "TEST_24": "PASS",
+  "TEST_25": "PASS",
+  "DETERMINISTIC_REPLAY": "PASS",
+  "BALANCE_PNL_SEPARATION": "PASS",
+  "V1_FILES_MODIFIED": 0,
+  "V1_STATE_FILES_MODIFIED": 0,
+  "V1_LEDGER_MODIFIED": 0,
+  "V1_CONFIG_MODIFIED": 0,
+  "ENGINE_HASH_STABLE": "YES",
+  "LEDGER_HASH_STABLE": "YES",
+  "STATISTICS_HASH_STABLE": "YES",
+  "RUN_META_HASH_STABLE": "YES",
+  "V1_ISOLATION": "PASS",
+  "V2_ISOLATION": "PASS",
+  "V3_ISOLATION": "PASS",
+  "BOUNDARY_VIOLATION": 0,
+  "RESET": 0,
+  "NEW_RUN": 0,
+  "V1_START": 0,
+  "AUTOMATION_ENABLE": 0,
+  "MT5_ACCESS": 0,
+  "ORDER_SEND": 0,
+  "POSITION_CLOSE": 0,
+  "POSITION_MODIFY": 0,
+  "ORDER_CANCEL": 0,
+  "GIT_COMMIT": "NONE",
+  "R30_GATE": "PASS",
+  "IMPLEMENTATION_AUTHORIZED": "NO",
+  "RESET_AUTHORIZED": "NO",
+  "V1_START_AUTHORIZED": "NO",
+  "AUTOMATION_ENABLE_AUTHORIZED": "NO"
+ },
+ "created_files": [
+  "implementation/run_boundary.py",
+  "schemas/manifest.json",
+  "schemas/counter_schema.json",
+  "schemas/pnl_event.json",
+  "schemas/ledger_record.json",
+  "schemas/closeout.json",
+  "schemas/account_event.json",
+  "audit.jsonl",
+  "tests/work/**"
+ ],
+ "changed_files": 0,
+ "modified_files": 0,
+ "deleted_files": 0
+}

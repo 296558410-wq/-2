@@ -1,0 +1,54 @@
+{
+ "audit_id": "BB_20260730",
+ "timestamp": "2026-07-30 12:00:00+00:00",
+ "current_state": "TREND (frozen C1 labeler, min-dwell lifecycle), dwell 4 bars; price ~4078-4079 in a tight M1 consolidation just above a broken swing high, following a strong intraday recovery from ~4028 to ~4083 after an earlier rejection from ~4116.",
+ "structure": "Recent price action is highly volatile and whipsawed: H4 shows a +100pt impulsive rally (4004->4106 on Jul29 16:00), an immediate sharp rejection (4116->4028 by Jul30 04:00-06:00), then a strong rebound that has reclaimed the 4072.675 swing-high (L2 break_status BEYOND, +0.69 ATR) and brought price back to roughly the midpoint of the 4116/4028 range. M1 trend_20 is slightly negative (-0.49) reflecting a micro-pullback off 4081.7; M5 (+11.3), M15 (+46.4) and H1 (+67.97) trend_20 are positive; H4 trend_20 is near zero (+0.52). MTF agreement is CONFLICT (L6), and L5 ambiguity_rate_8 is 0.5 with prior REJECTION states in the sequence.",
+ "mechanism": "breakout_pressure is the leading candidate: close stands beyond the nearest swing-high level 4072.675 by ~0.69 ATR with a high touch count (31), and the failed_breakout candidate shows no supporting evidence (no reclaim of the level by sellers observed). Mechanism is CANDIDATE only, not asserted (L4 note). Cross-market is only mildly supportive: DXY is drifting down (-0.19 over 32 bars, PROXY) and VIX is easing; no UST10Y, news, or macro data available.",
+ "primary_scenario": {
+  "scenario": "Recovery continuation: price holds above the broken 4072.675 level, the stalled M1 pullback resolves upward, a fresh higher high above ~4083 prints on M5/M15, and price extends toward the 4090-4100 zone (prior H4 rejection shelf / round numbers).",
+  "confidence": 0.5,
+  "horizon": "SHORT_TERM",
+  "trigger": "Sustained acceptance above 4077-4078 (current consolidation) followed by an M5/M15 close above 4083.095; DXY weakness persisting.",
+  "invalidation": "An hourly (or H4) close back below 4072.675 without a quick reclaim flips the mechanism to failed_breakout; a break below ~4065 (recent minor support / H1 10:00 low vicinity) confirms the rollback leg."
+ },
+ "alternative_scenario": {
+  "scenario": "Failed breakout / bear retracement: the rebound stalls in the 4082-4085 zone (prior M5/H1 highs), sellers reject price below 4072.675, and price rolls back toward 4050-4045 (prior H1 lows), consistent with the earlier 4116->4028 rejection and analog A28196 (TREND->REJECTION quickly).",
+  "confidence": 0.35,
+  "horizon": "SHORT_TERM",
+  "trigger": "Rejection near 4082-4085 with a lower high on M15/H1, then an hourly close back inside/below 4072.675.",
+  "invalidation": "Price holding above 4072.675 with successive higher lows and a close above 4085, which reasserts breakout_pressure."
+ },
+ "expected_transition": "From the current tight consolidation just above the broken swing high, expect a near-term resolution: either an upside push to a higher high above 4083 with continuation toward 4090-4100 (primary), or a failed-breakout rollback below 4072.675 toward 4050-4045 (alternative). The state machine (L5) shows TREND<->REJECTION churn, so the transition is expected within the next several bars and is genuinely two-sided; confidence in the primary path is only moderate.",
+ "direction": "UP",
+ "horizon": "SHORT_TERM",
+ "confidence": 0.45,
+ "counter_evidence": [
+  "M1 trend_20 is negative (-0.49) with a fresh micro-pullback from 4081.735 to 4077.845, showing immediate upside momentum is stalling.",
+  "L6 multi-timeframe agreement is CONFLICT: H1/M15/M5 lean up but H4 trend_20 is ~0 (+0.52), so higher-timeframe confirmation is absent.",
+  "L5 ambiguity_rate_8 is 0.5 and state history contains multiple REJECTION phases, indicating the 'TREND' label is fragile.",
+  "Historical analogs diverge: A28196 goes TREND->REJECTION quickly, while A17125 goes TREND->COMPRESSION->BREAKOUT_ATTEMPT and A7909 stays TREND then rejects; no consensus forward path.",
+  "No NEWS/MACRO/CFTC/ETF-flow data and UST10Y is unavailable; DXY/VIX are only PROXY quality, so fundamental/flow confirmation is missing.",
+  "The H4 'current' bar (open 4077.715, high 4120.16, low 4064.895, close 4099.865) is internally inconsistent with the simultaneous M1/M5/M15/H1 closes near 4078 and with the visible recent highs (~4083); this raises a data-integrity concern that lowers confidence."
+ ],
+ "invalidation": "An hourly close back below 4072.675 (or a decisive break below ~4065) invalidates the bullish breakout_pressure read and converts the picture to a failed breakout / down-extension toward 4050-4045.",
+ "data_quality_flags": [
+  "DXY: PROXY (Yahoo 5m, instrument definition UNKNOWN) - not DIRECT",
+  "VIX: PROXY (Yahoo 5m, instrument definition UNKNOWN) - not DIRECT",
+  "UST10Y_PROXY_TNX: UNKNOWN/absent (STALE_OR_NOT_COVERED)",
+  "Absent series: GLD, GC, CFTC_COT, ETF_FLOWS, NEWS, MACRO_EVENTS - recorded as absent, not fabricated",
+  "L1 klines: RAW_GEOMETRY + DERIVED",
+  "L2 nearest level: DERIVED (pivot swing levels, causal)",
+  "L3/L4 labels: DERIVED (frozen labeler / candidates, NOT asserted as fact)",
+  "INTERNAL_INCONSISTENCY: H4 current bar (close 4099.865, high 4120.16) disagrees with simultaneous M1/M5/M15/H1 closes (~4078) and with sequence highs (~4083); treated as suspicious, confidence lowered"
+ ],
+ "reasoning_trace": [
+  "1. Read only the provided PIT context (CTX_20260730T120000Z.json) and prompt; no other analyst's forecast consulted; blind audit.",
+  "2. Established current price ~4078-4079 from M1/M5/M15/H1 closes; the H4 current bar is inconsistent with these and with sequence highs, flagged as a data-integrity concern rather than used at face value.",
+  "3. Identified the dominant recent structure: impulsive rally 4004->4116, sharp rejection to 4028, then strong rebound that broke above the 4072.675 swing high (break_status BEYOND, +0.69 ATR, 31 touches).",
+  "4. Weighed L4 mechanism candidates: breakout_pressure has positive evidence; failed_breakout has none yet. Mechanism is candidate-only.",
+  "5. Assessed MTF (L6 CONFLICT: H1 strong up vs H4 flat), L5 state churn (ambiguity 0.5, TREND<->REJECTION), and diverging analogs (A28196 rejects quickly vs A17125/A7909), all of which cap confidence.",
+  "6. Considered cross-market: DXY drifting lower and VIX easing are mildly gold-supportive but only PROXY; UST10Y and news/macro absent, so no flow/fundamental confirmation.",
+  "7. Chose a mildly directional UP read (continuation toward 4090-4100) as primary only on the strength of the structural breakout and positive M5/M15/H1 momentum, with a low-mid confidence (0.45) because the context is internally inconsistent and genuinely two-sided near the midpoint of a violent range.",
+  "8. Set a crisp invalidation: hourly close back below 4072.675 flips the read to failed breakout / rollback to 4050-4045."
+ ]
+}

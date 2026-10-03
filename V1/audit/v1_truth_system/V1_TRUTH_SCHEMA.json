@@ -1,0 +1,92 @@
+{
+ "schema": "V1_TRUTH_SCHEMA",
+ "protocol_version": "v1-truth-1",
+ "schema_version": 1,
+ "generated_utc": "2026-10-02T04:26:56.150490+00:00",
+ "layers": {
+  "Raw Facts": "MT5 broker responses / market data / ledger events (as recorded)",
+  "Derived Facts": "ids / cases / incidents / consistency checks / daily aggregates (recomputable)",
+  "Interpretation": "human/AI reports only; never stored as fact"
+ },
+ "priority": [
+  "Raw Facts",
+  "Derived Facts",
+  "Interpretation"
+ ],
+ "ids": {
+  "event_id": "V1E-<sha12(seq,current_hash,event)> (deterministic, derived)",
+  "cycle_id": "V1C-<YYYYMMDDTHHMMSSZ> (stamped on new events; derived from ts for legacy)",
+  "decision_id": "V1D-<sha10(cycle_id|action)> (stamped on new events)",
+  "order_id": "broker order ticket (string)",
+  "trade_id": "V1T-<broker position_id>",
+  "incident_id": "V1I-<TYPE>-<sha8(key)> (deterministic per fact)",
+  "dedup_key": "MAGIC:SYMBOL:M15_bucket (server frame)"
+ },
+ "decision_snapshot": {
+  "store": "truth/evidence/decision_snapshots.jsonl (append-only, per-line sha256 + prev chain)",
+  "required_fields": [
+   "protocol_version",
+   "schema_version",
+   "cycle_id",
+   "decision_id",
+   "code_version",
+   "config_hash",
+   "timestamp_utc",
+   "server_time",
+   "symbol",
+   "market_snapshot",
+   "data_source",
+   "data_timestamp",
+   "data_age",
+   "PIT_status",
+   "hermes_input_hash",
+   "hermes_output",
+   "signal",
+   "risk_state",
+   "risk_reasons",
+   "daily_loss",
+   "consecutive_loss",
+   "position_state",
+   "slippage_state",
+   "dedup_state",
+   "kill_switch_state",
+   "decision",
+   "risk_inputs_ok"
+  ],
+  "written": "BEFORE any execution path; write failure => no new entry (WAIT_TRUTH)"
+ },
+ "incident": {
+  "fields": [
+   "incident_id",
+   "type",
+   "severity",
+   "first_seen",
+   "last_seen",
+   "root_cause",
+   "affected_ids",
+   "status",
+   "resolution",
+   "validation",
+   "evidence",
+   "cycle_id"
+  ],
+  "root_cause": "UNKNOWN allowed; must never be fabricated",
+  "store": "truth/evidence/incidents.jsonl (append-only; updates appended; latest state wins)"
+ },
+ "case": {
+  "id": "CASE-V1T-<position_id>",
+  "stages": [
+   "signal_and_context",
+   "risk_evaluation",
+   "decision",
+   "order_check",
+   "order_request",
+   "order_send",
+   "fill",
+   "position",
+   "close",
+   "pnl"
+  ],
+  "link_method": "cycle_id (new) / time_adjacency(legacy, marked)"
+ }
+}

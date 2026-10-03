@@ -1,0 +1,33 @@
+{
+ "schema": "v3_source_definition/1",
+ "ts_utc": "2026-09-25T09:05:59.931864+00:00",
+ "source_name": "DUKASCOPY_XAUUSD",
+ "provider": "Dukascopy Bank SA (Swiss)",
+ "acquisition": "HTTP datafeed (bi5), decoded locally",
+ "endpoint_pattern": "http://datafeed.dukascopy.com/datafeed/XAUUSD/<YYYY>/<MM>/<DD>/<HH>h_ticks.bi5",
+ "local_tooling": [
+  "scripts/dukascopy.py",
+  "scripts/duka_download.py",
+  "scripts/duka_assemble.py",
+  "scripts/duka_resume.py",
+  "scripts/duka_candle_range.py"
+ ],
+ "evidence_for_instrument": [
+  "dukascopy.py: SYM=\"XAUUSD\", BASE=datafeed.dukascopy.com/datafeed",
+  "duka_assemble.py: inserts symbol=\"XAUUSD\", source=\"Dukascopy-HTTP\""
+ ],
+ "XAU_DEFINITION": "E_CFD_XAUUSD_DUKASCOPY",
+ "XAU_DEFINITION_NOTE": "this is Dukascopy's own XAUUSD feed (broker/bank CFD-style quote). It is NOT FXTM's venue, NOT COMEX GC futures and NOT an ETF. Per task §8 it must never be merged with FXTM or GC series.",
+ "frequency": {
+  "candles": "1m (raw files are per-side; assemble script builds mid M1 + spread_close)",
+  "ticks": "bid/ask tick (assembled monthly + per-day/hour files)"
+ },
+ "timestamp_fields": {
+  "candles": "day (YYYY-MM-DD) + sec (seconds offset within the day)",
+  "ticks_assembled": "ts_utc in epoch milliseconds",
+  "ticks_daily": "date from filename + hour + ms-within-hour"
+ },
+ "BAR_CLOSE_DEFINITION": "UNKNOWN (raw files expose an offset within the day; whether it labels bar open or close is not documented by the provider in-repo)",
+ "timezone": "UTC (assembled ts_utc verified); raw daily files carry a plain date with no tz",
+ "DST": "UNKNOWN (no DST handling documented in-repo)"
+}

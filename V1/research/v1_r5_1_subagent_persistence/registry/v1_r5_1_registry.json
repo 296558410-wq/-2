@@ -1,0 +1,97 @@
+{
+ "task": "V1_R5_1_SUBAGENT_PERSISTENCE_REPAIR",
+ "registry_id": "v1r5.1-persistence-registry-r1",
+ "frozen": true,
+ "frozen_at_utc": "2026-09-27T23:35:21.217498+00:00",
+ "principle": "A subagent writing a file is NOT the success condition. Success = the PARENT received the payload, validated the schema, wrote atomically, read back, hashed, and chained it.",
+ "flow": [
+  "SUBAGENT",
+  "RETURN_PAYLOAD",
+  "PARENT_VALIDATOR",
+  "SCHEMA_VALIDATION",
+  "ATOMIC_WRITE",
+  "READ_BACK",
+  "SHA256",
+  "LEDGER"
+ ],
+ "required_fields": [
+  "run_id",
+  "sample_id",
+  "agent_role",
+  "prompt_hash",
+  "context_hash",
+  "created_at",
+  "payload",
+  "payload_hash",
+  "write_status",
+  "readback_status"
+ ],
+ "required_checks": [
+  "RETURN",
+  "SCHEMA",
+  "WRITE",
+  "READBACK",
+  "HASH"
+ ],
+ "max_attempts": 3,
+ "atomic_write": {
+  "steps": [
+   ".tmp write",
+   "fsync",
+   "os.replace (atomic rename)",
+   "read-back",
+   "sha256"
+  ],
+  "forbidden": [
+   "direct overwrite of the final file",
+   "silent skip on failure"
+  ]
+ },
+ "failure_record": {
+  "error_type": "SUBAGENT_PERSISTENCE_FAILURE",
+  "must_keep": [
+   "sample_id",
+   "attempt",
+   "error_type",
+   "timestamp"
+  ],
+  "rule": "failed samples stay in the denominator; NEVER silently dropped"
+ },
+ "duplicate_policy": "each sample_id may have at most one ACCEPTED record; later duplicates are recorded as DUPLICATE_REJECTED and never chained twice",
+ "completion_gate": {
+  "consecutive_passes_required": 20,
+  "all_checks": [
+   "RETURN",
+   "SCHEMA",
+   "WRITE",
+   "READBACK",
+   "HASH"
+  ],
+  "must_be_zero": [
+   "DUPLICATE_ACCEPTED",
+   "SILENT_DROP",
+   "CORRUPTED_PAYLOAD"
+  ]
+ },
+ "replay": "same input must reproduce payload_hash, schema_result and persistence_result",
+ "hard_safety": {
+  "ORDER_SEND": 0,
+  "ORDER_CHECK": 0,
+  "BROKER_WRITE": 0,
+  "FORWARD": "OFF",
+  "SHADOW": "OFF",
+  "LIVE": "OFF",
+  "BOUNDARY_VIOLATION": 0,
+  "MT5_CALLS": 0
+ },
+ "forbidden": [
+  "modify R3",
+  "modify R4",
+  "modify R5",
+  "re-evaluate prediction capability",
+  "modify Hermes prompts",
+  "add samples then claim capability",
+  "enter R6"
+ ],
+ "registry_hash": "4f7905f3e627413f8fc37f22b82b2cd49a7af814fa58f0267237d88bdb3bfc2d"
+}

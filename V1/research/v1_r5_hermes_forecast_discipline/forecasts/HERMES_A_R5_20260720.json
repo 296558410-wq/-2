@@ -1,0 +1,127 @@
+{
+  "forecast_id": "HERMES_A_R5_20260720",
+  "timestamp": "2026-07-20 12:00:00+00:00",
+  "observations": [
+    "XAUUSD last price ~4024-4025 at 12:00Z (M1 close 4025.185, M5 close 4024.165, M15 close 4021.805, H1 close 4025.045).",
+    "L3 state machine labels COMPRESSION with event ACCEPTANCE, current_dwell_bars=1; frozen label COMPRESSION.",
+    "L2 nearest level: swing low 4021.065 (side DN, origin SWING_LOW), break_status INSIDE, distance 0.12 ATR, touch_count_240=33, age 295 bars.",
+    "H1 12:00 bar: O 4023.945 H 4040.435 L 4019.575 C 4025.045; upper_wick 15.39 vs body 1.10 -> large rejection from 4040.435.",
+    "M5 12:00 bar: O 4023.945 H 4026.955 L 4022.615 C 4024.165; upper_wick 2.79, body 0.22 -> rejection near 4027.",
+    "M1 sequence: range_expanding true, current bar range_percentile 0.925, consecutive_up 6; up-drift from ~4020.9 to ~4025.2 over last 12 bars.",
+    "L6 multi-timeframe agreement = CONFLICT: M1/M5/M15 trend_20 positive (3.25 / 7.95 / 17.21); H1 trend_20 +6.21 but trend_50 -10.12; H4 trend_20 -54.13, trend_50 -78.13.",
+    "H4 current bar (as provided) is internally inconsistent with sub-hourly frames: it shows L 3998.035 / C 4005.915 while M1/M5/M15/H1 all show ~4021-4025 at 12:00Z.",
+    "L7 cross-market: DXY 100.815 (+0.025/8, +0.041/32) quality PROXY; VIX 18.26 (+0.03/8, -0.19/32) quality PROXY; UST10Y_PROXY_TNX UNKNOWN/STALE; GLD, GC, CFTC_COT, ETF_FLOWS, NEWS, MACRO_EVENTS all absent.",
+    "Historical analogs (state evolution only): 3 exact-state COMPRESSION analogs; A19210 -> TREND at step 12 then REJECTION; A24698 and A30701 stay COMPRESSION through step 16.",
+    "L5 recent state cycle: REJECTION(4,5,1,2,3) -> TREND(1,2) -> COMPRESSION(1); transitions REJECTION->TREND, TREND->REJECTION, REJECTION->COMPRESSION; ambiguity_rate_8 0.375.",
+    "L4 candidate mechanism trend_continuation (candidate only, NOT asserted), supporting evidence 'price inside level, 8-bar displacement 2.57', invalidation 'decisive break of the active level'.",
+    "Data quality: L1 RAW_GEOMETRY+DERIVED; L2 DERIVED; L3 frozen/OBSERVED+DERIVED; L7 PROXY/UNKNOWN; forbidden_included=false."
+  ],
+  "what_i_know": [
+    "Price is ~4024-4025 at 12:00Z and is inside (break_status INSIDE) a swing-low level at 4021.065, about 0.12 ATR away.",
+    "The state machine labels the market COMPRESSION with ACCEPTANCE, dwell 1 bar, after a REJECTION->TREND->REJECTION->COMPRESSION cycle.",
+    "Short timeframes (M1/M5/M15) show positive trend_20 and recent up-drift; H4 shows strongly negative trend_20/trend_50; H1 is mixed (trend_20 +, trend_50 -). Agreement is explicitly CONFLICT.",
+    "H1 shows a large upper-wick rejection from 4040.435, and M5 shows a rejection near 4027.",
+    "Cross-market data are PROXY or absent: DXY (firm, +) and VIX (~18, - over 32 bars) are Yahoo PROXY with UNKNOWN instrument definitions; UST10Y, GLD, GC, COT, ETF flows, NEWS, MACRO are absent.",
+    "2 of 3 exact-state analogs remain COMPRESSION through step 16; 1 exits to TREND at step 12.",
+    "Everything beyond raw price bars is DERIVED or PROXY; nothing is DIRECT except the price klines themselves."
+  ],
+  "what_i_do_not_know": [
+    "The actual direction price will resolve to: compression by definition gives no directional edge until a decisive break.",
+    "The true H4 reading: the provided H4 current bar (L 3998.035, C 4005.915) conflicts with H1/M15/M5/M1 at 12:00Z, so the H4 close/trend must be treated as UNKNOWN/possibly contaminated.",
+    "Any fundamentals, macro, or news (all absent by rule; never fabricated).",
+    "The real instrument definitions behind the DXY/VIX Yahoo proxies (UNKNOWN).",
+    "Order flow, volume, positioning (COT), and ETF flows (all absent).",
+    "Which timeframe dominates: agreement is CONFLICT, and that is not resolved by the data.",
+    "The true significance of the swing-low level beyond derived geometry (touch_count_240 and 8-bar displacement are DERIVED, not volume/flow evidence)."
+  ],
+  "evidence": [
+    "Frozen label COMPRESSION with ACCEPTANCE event and dwell 1 bar is the most direct state-machine reading (L3/L5).",
+    "2 of 3 exact-state COMPRESSION analogs stay COMPRESSION through step 16 (state evolution only, no returns).",
+    "Price sits inside the 4021.065 swing-low level (INSIDE) that has 33 touches in 240 bars; the level region has repeatedly attracted price.",
+    "Recent cycle just left REJECTION; COMPRESSION is the natural equilibrium after rejection per the state history.",
+    "Short-frame bars show low body_ratios and churn (M5 body 0.22, M15 body 2.14 vs 7.38 range) despite range_expanding - characteristic of compression, not committed direction."
+  ],
+  "counter_evidence": [
+    "H1 has a 15.39 upper wick against a 1.10 body: strong rejection near 4040.435, sellers are active at the highs.",
+    "H4 trend_20 -54.13 / trend_50 -78.13: the larger frame is in a downtrend context (noted with the H4-data inconsistency caveat).",
+    "M1 current bar range_percentile 0.925 with range_expanding true: expansion is already underway, which could be the start of a TREND rather than continued compression.",
+    "1 of 3 analogs (A19210) exits COMPRESSION to TREND at step 12 - not all compressions persist.",
+    "DXY is firm and rising over both windows (PROXY): a headwind for gold, weakly favoring downside.",
+    "M5 12:00 upper wick 2.79 (rejection near 4027) argues the immediate up-drift is being sold."
+  ],
+  "possible_mechanisms": [
+    {
+      "mechanism": "trend_continuation",
+      "status": "POSSIBLE",
+      "why": "L4 lists it as a candidate ('price inside level, 8-bar displacement 2.57'), but it is explicitly NOT asserted as fact; direction of any continuation is not established by the context."
+    },
+    {
+      "mechanism": "compression_breakout",
+      "status": "POSSIBLE",
+      "why": "range_expanding true on all frames and an elevated M1 range_percentile could precede an expansion, but the direction of the breakout is not knowable from the data."
+    },
+    {
+      "mechanism": "rejection_at_resistance",
+      "status": "POSSIBLE",
+      "why": "H1 and M5 upper-wick rejections near 4040/4027 are observed geometry, but inferring a durable top would be over-claiming from price shape alone."
+    },
+    {
+      "mechanism": "downtrend_continuation",
+      "status": "POSSIBLE",
+      "why": "H4 trend_20/trend_50 are strongly negative, but the H4 current bar is internally inconsistent with the other frames, so this mechanism cannot be raised to SUPPORTED."
+    },
+    {
+      "mechanism": "support_hold / accumulation",
+      "status": "WEAK",
+      "why": "The swing-low level has many touches (DERIVED), but without volume/order-flow confirmation this is weak evidence, not accumulation."
+    }
+  ],
+  "primary_scenario": {
+    "scenario": "XAUUSD remains in COMPRESSION around the 4021.065 swing-low zone, range-bound roughly between ~4014 and ~4040 (H1 band): price keeps closing inside the level region, churning with low-body bars and upper-wick rejections near 4027-4040.",
+    "horizon": "2-8 hours (intraday)",
+    "trigger": "Price continues to close inside the level region (above ~4014/level break thresholds, below ~4040) with continued ACCEPTANCE and no decisive close beyond the H1 band.",
+    "invalidation": "A decisive close below the swing-low level (~4021.065, toward the 4014/3998 support zone) or a decisive reclaim above 4040.435 (H1 rejection high) - either would end compression."
+  },
+  "alternative_scenario": {
+    "scenario": "Downside resolution: a decisive break below the 4021.065 swing low resumes the larger-frame downtrend (H4 trend_20/50 negative) toward the H4 low zone ~3998, consistent with the H1 rejection and firm DXY.",
+    "horizon": "1-6 hours (intraday)",
+    "trigger": "A close below ~4019-4021 with range expansion downward on M15/H1.",
+    "invalidation": "Price holds 4021 and reclaims 4027+/4040, negating the downside continuation."
+  },
+  "expected_transition": "COMPRESSION -> TREND upon a decisive level break (direction set by the break); alternatively -> REJECTION if the move fails near 4040. Until a break, the state read is COMPRESSION with no directional edge.",
+  "direction_bias": "NO_DIRECTIONAL_EDGE",
+  "time_horizon": "intraday (1-8 hours)",
+  "evidence_strength": 0.35,
+  "confidence": 0.45,
+  "uncertainty": 0.7,
+  "confidence_reason": "The primary scenario only asserts persistence of the labeled COMPRESSION state, which is the most direct and least assuming reading of L3/L5 and the analogs. However, the state carries no directional edge, multi-timeframe agreement is CONFLICT, the H4 current bar is internally inconsistent, and cross-market inputs are PROXY or absent - so confidence is capped at 'compression persists', not any direction.",
+  "uncertainty_reason": "No fundamentals/macro/news, no volume/order-flow/positioning, cross-market only PROXY with UNKNOWN instrument definitions, an internally inconsistent H4 current bar, and DERIVED-only L2/L4/L6 all leave the timing and direction of compression resolution highly uncertain.",
+  "invalidation": "A decisive close below ~4019 (swing-low 4021.065) or above ~4040.435 (H1 rejection high) invalidates the compression primary scenario and sets direction.",
+  "change_my_mind": [
+    "A decisive close below 4021.065 / 4019 with downward range expansion -> flip to the downside-continuation scenario.",
+    "A decisive reclaim and close above 4040.435 -> flip to an upside-expansion view.",
+    "DIRECT (non-PROXY) cross-market or volume/flow data confirming or refuting the current reading would materially move confidence.",
+    "A clean, internally consistent H4 bar that resolves the current-bar inconsistency (L 3998.035 / C 4005.915 vs sub-hourly ~4021-4025) would allow the H4 trend to be used instead of being treated as UNKNOWN."
+  ],
+  "abstain": false,
+  "abstain_reason": "The context is sufficient to issue a disciplined low-information forecast: the state read (COMPRESSION persists, no directional edge) is directly supported by L3/L5 and the analogs, and all limitations are explicitly flagged. The H4 current-bar inconsistency is recorded as UNKNOWN/contaminated rather than forcing abstention. I abstain on DIRECTION, not on the state read.",
+  "questions": {
+    "Q1_what_do_i_know": "Price ~4024-4025 at 12:00Z inside swing-low level 4021.065 (INSIDE, 0.12 ATR); state COMPRESSION/ACCEPTANCE dwell 1; H1 rejection at 4040.435 and M5 rejection near 4027; M1/M5/M15 trend_20 positive, H4 trend_20/50 strongly negative (agreement CONFLICT); DXY firm and VIX ~18 as PROXY; 2/3 exact-state analogs remain COMPRESSION.",
+    "Q2_what_do_i_not_know": "The direction of any resolution until a decisive break; the true H4 reading (current bar internally inconsistent - UNKNOWN/contaminated); all fundamentals/macro/news; real definitions of DXY/VIX proxies; volume/order-flow/COT/ETF flows; which timeframe dominates given CONFLICT.",
+    "Q3_evidence_for_primary": "Frozen COMPRESSION+ACCEPTANCE label and dwell; 2/3 exact-state analogs stay COMPRESSION; price inside a level with 33 touches/240 bars; post-REJECTION equilibrium in state history; churning low-body bars despite range expansion.",
+    "Q4_evidence_against_primary": "H1 upper wick 15.39 (sellers at 4040); H4 downtrend context; M1 range_percentile 0.925 and range_expanding (expansion may already be starting a TREND); 1/3 analog exits to TREND; firm DXY (PROXY); M5 upper-wick rejection near 4027.",
+    "Q5_mechanism_that_is_only_possible": "trend_continuation (L4 candidate) and compression_breakout: the 8-bar displacement and touch count are DERIVED and I am not entitled to assert any direction from them - they are only POSSIBLE mechanisms.",
+    "Q6_what_would_change_my_mind": "A decisive close below 4019 or above 4040.4 (sets direction and invalidates compression); DIRECT (non-PROXY) cross-market/volume data; a clean H4 bar resolving the current-bar inconsistency so the H4 trend can be trusted.",
+    "Q7_should_i_abstain_now": "false - the state read (compression persists, no directional edge) is directly supported and all data limitations are flagged; the H4 anomaly is handled as UNKNOWN rather than blocking a disciplined forecast. I do abstain on direction."
+  },
+  "reasoning_trace": [
+    "1. Read only the prompt and PIT context; no future files consulted.",
+    "2. Extracted raw observations from L1-L7; refused to upgrade PROXY/DERIVED to fact.",
+    "3. Noticed the H4 current bar (L 3998.035, C 4005.915) conflicts with all sub-hourly frames at 12:00Z; recorded it as an internal inconsistency and treated H4 close/trend as UNKNOWN/contaminated.",
+    "4. State machine (L3/L5) says COMPRESSION+ACCEPTANCE dwell 1; multi-TF agreement is CONFLICT; therefore no directional edge is assertable.",
+    "5. Selected 'compression persists' as primary because it is the least-assuming reading and is supported by 2/3 analogs and the level-inside condition.",
+    "6. Built counter-evidence actively (H1 rejection, H4 downtrend, expansion already underway, 1/3 analog exit, firm DXY).",
+    "7. Marked all mechanisms POSSIBLE/WEAK - none SUPPORTED - since evidence is DERIVED/PROXY only.",
+    "8. Set confidence 0.45 / evidence_strength 0.35 / uncertainty 0.7 with explicit reasons; abstain=false with the caveat that direction is abstained on."
+  ]
+}

@@ -1,0 +1,52 @@
+{
+  "audit_id": "BB_20260726",
+  "timestamp": "2026-07-26 12:00:00+00:00",
+  "current_state": "COMPRESSION (frozen C1 label, dwell 1) with ACCEPTANCE event; price 4049.125 pressing directly onto SWING_LOW_36869 at 4048.995 (distance 0.027 ATR, break_status INSIDE). Prevailing H4 downtrend from 4140.895 with a rebound rejected at 4081.895; fresh downside acceleration into the level.",
+  "structure": "Established H4 downtrend: 4140.895 (2026-07-23 00:00) down to 4022.755 (2026-07-24 00:00), then a rebound that was rejected at 4081.895 (long upper wick on the H4 16:00 bar). Price has since fallen back and now sits at the lower boundary of the recent range: heavily-tested swing-low support at 4048.995 (54 touches over 240 bars). Microstructure is aggressively bearish into the level: M1 8 consecutive down bars, M5/M15 7 consecutive down bars with expanding range, last M5 bar body_ratio 0.94 closing at its low with zero lower wick. Multi-timeframe agreement = CONFLICT; timeframes are not merged.",
+  "mechanism": "Momentum-driven displacement pressing into a high-quality support level inside a prevailing downtrend. The frozen machine proposes trend_continuation (8-bar displacement -5.06, price inside level) but simultaneously labels the state COMPRESSION/ACCEPTANCE — an internal tension; I treat the mechanism as a candidate, not fact. The outcome is a fork: aggressive selling either overwhelms the heavily-tested demand level (break) or the level holds and produces a rejection snap-back (bounce). No cross-market confirmation available to tilt the balance.",
+  "primary_scenario": {
+    "scenario": "DOWN continuation: unbroken downside momentum overwhelms the 4048.995 swing low; price breaks decisively below and extends toward the prior H4 structure 4035 / 4022.755 (2026-07-24 00:00 zone).",
+    "confidence": 0.45,
+    "horizon": "INTRADAY",
+    "trigger": "M1/M5 sustained close below ~4048.5 with expanding range and no lower-wick rejection; follow-through selling past the level.",
+    "invalidation": "Strong bullish reversal bar at the level (M5/H1 close back above 4055) or an upside reclaim of the level; the rejection-bounce scenario then becomes primary."
+  },
+  "alternative_scenario": {
+    "scenario": "REJECTION bounce: the heavily-tested level (54 touches/240) holds within the compression/acceptance state; price snaps back into the 4055-4065 zone and potentially retests 4070-4082 (the prior rejected high).",
+    "confidence": 0.35,
+    "horizon": "INTRADAY",
+    "trigger": "Lower-wick rejection at the level with M1 turning up above ~4052 and compression/acceptance persisting without downside follow-through.",
+    "invalidation": "Decisive close below the level (approx 4047-4045) — scenario converts to downside continuation."
+  },
+  "expected_transition": "Two-sided fork at the level: either a decisive break of SWING_LOW_36869 opening 4035/4022, or a snap-back rejection into 4055-4065. Frozen state is COMPRESSION with ACCEPTANCE event; historical analogs skew to a REJECTION step, but the prevailing H4 trend remains down. Expect an intraday resolution rather than prolonged compression given the fresh accelerating displacement.",
+  "direction": "DOWN",
+  "horizon": "INTRADAY",
+  "confidence": 0.45,
+  "counter_evidence": [
+    "Level SWING_LOW_36869 (4048.995) is heavily tested: 54 touches over 240 bars — high probability of a reaction rather than a clean break.",
+    "Frozen state is COMPRESSION with ACCEPTANCE event (consolidation signal), and the L4 mechanism candidate is explicitly not asserted as fact.",
+    "Historical analogs A19573 and A25757 both show REJECTION within 4-8 steps of a COMPRESSION t0 (bounce-skewed); only A31035 reaches TREND, and only by step 12.",
+    "H1 trend_20 is +5.75 and H4 trend_50 is +4.84 — shorter-window H1 and longer-window H4 are not uniformly down.",
+    "Price sits exactly at the level (0.027 ATR), so downside extension requires an immediate break; buyer density is likely at this touch count.",
+    "All cross-market/macro context is absent (DXY, VIX, UST10Y_PROXY_TNX all UNKNOWN; NEWS/MACRO/CFTC/GLD absent) — no confirmation of any downside tailwind."
+  ],
+  "invalidation": "The downside continuation view is invalidated by a decisive upside reversal at the level: M5/H1 close back above 4055 with expanding range and bullish bodies, which promotes the rejection-bounce scenario to primary.",
+  "data_quality_flags": [
+    "L1 price klines RAW_GEOMETRY + DERIVED (DIRECT prices; DERIVED trend/ATR/percentiles)",
+    "L2 swing level DERIVED (causal), not direct order-book data",
+    "L3/L4/L5 state, event, mechanism all DERIVED (frozen labeler); mechanism is only a CANDIDATE",
+    "L6 multi-timeframe agreement CONFLICT — timeframes never merged into one direction",
+    "DXY UNKNOWN (absent), VIX UNKNOWN (absent), UST10Y_PROXY_TNX UNKNOWN (absent)",
+    "absent_series: GLD, GC, CFTC_COT, ETF_FLOWS, NEWS, MACRO_EVENTS — recorded absent, never fabricated",
+    "historical_analog: state-evolution only; no returns/PnL/labels included"
+  ],
+  "reasoning_trace": [
+    "Established H4 downtrend: 4140.895 to 4022.755; rebound rejected at 4081.895 (long upper wick on H4 16:00 bar) — context favours sellers.",
+    "Immediate microstructure is aggressively bearish: M1 8 consecutive down bars, M5/M15 7 consecutive down bars with expanding range, last M5 bar body_ratio 0.94 closing at its low with no lower wick — sellers are in control at this instant.",
+    "Price is pressing directly into SWING_LOW_36869 (4048.995), distance 0.027 ATR, break_status INSIDE — this level is the immediate decision point.",
+    "The frozen machine proposes trend_continuation (8-bar displacement -5.06) yet labels the state COMPRESSION/ACCEPTANCE; I treat the mechanism as one candidate, not a fact, and note the tension.",
+    "Downside bias rests on unbroken momentum inside an established downtrend plus the rejected rebound; this is the basis for a DOWN primary with modest confidence.",
+    "The counterweight is exceptional level quality (54 touches/240 bars) plus bounce-skewed analogs (A19573, A25757 to REJECTION) and the total absence of cross-market confirmation; this caps confidence near 0.45 and keeps the bounce alternative live.",
+    "I do not merge timeframes into a single direction (L6 CONFLICT); the judgement is made on the immediate level interaction within the prevailing H4 downtrend."
+  ]
+}

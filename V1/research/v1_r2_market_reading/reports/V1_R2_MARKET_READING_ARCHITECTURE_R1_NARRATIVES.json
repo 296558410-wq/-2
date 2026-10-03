@@ -1,0 +1,67 @@
+{
+ "N1_trend_to_rejection": {
+  "M15": {
+   "candle_events": [
+    "DOJI",
+    "LONG_WICK",
+    "OUTSIDE_BAR",
+    "SPINNING_TOP"
+   ],
+   "price_structure": "FIRST_TEST",
+   "behavior": "REJECTION",
+   "momentum": "NORMAL"
+  },
+  "mechanism": "MEAN_REVERSION",
+  "mechanism_status": "UNCERTAIN",
+  "next_state_candidates": [
+   "EXHAUSTION",
+   "LIQUIDITY_WITHDRAWAL",
+   "MEAN_REVERSION",
+   "ROTATION"
+  ],
+  "invalidation": "acceptance beyond the boundary",
+  "confidence": "UNCERTAIN"
+ },
+ "N2_multi_timeframe_conflict": {
+  "H4": "UNAVAILABLE_SLICE",
+  "H1": "see multi_timeframe_block",
+  "M15": {
+   "M15": {
+    "candle_events": [
+     "DOJI",
+     "LONG_WICK",
+     "OUTSIDE_BAR",
+     "SPINNING_TOP"
+    ],
+    "price_structure": "FIRST_TEST",
+    "behavior": "REJECTION",
+    "momentum": "NORMAL"
+   },
+   "mechanism": "MEAN_REVERSION",
+   "mechanism_status": "UNCERTAIN",
+   "next_state_candidates": [
+    "EXHAUSTION",
+    "LIQUIDITY_WITHDRAWAL",
+    "MEAN_REVERSION",
+    "ROTATION"
+   ],
+   "invalidation": "acceptance beyond the boundary",
+   "confidence": "UNCERTAIN"
+  },
+  "M5": "built_from_ticks",
+  "statement": "higher-timeframe trend context can coexist with a lower-timeframe rejection state; the system does NOT compress them into one direction"
+ },
+ "N3_support_defense_weakening": {
+  "example_bar": 1143,
+  "reading": "SUPPORT_DEFENSE_WEAKENING (observational, NOT a sell signal)"
+ },
+ "N4_downward_rejection": {
+  "reading": "DOWNWARD_REJECTION + REVERSAL_ATTEMPT (NOT a buy signal)"
+ },
+ "N5_breakout_acceptance": {
+  "reading": "BREAKOUT_ACCEPTANCE (NOT a buy signal)"
+ },
+ "N6_ambiguity": {
+  "reading": "AMBIGUOUS with explicit 'what to observe next'"
+ }
+}

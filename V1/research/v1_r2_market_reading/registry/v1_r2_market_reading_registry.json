@@ -1,0 +1,648 @@
+{
+ "registry_name": "v1_r2_market_reading_registry",
+ "version": "v1r2-mr-registry-r1",
+ "status": "FROZEN",
+ "frozen_at_utc": "2026-09-27T02:32:52.191455+00:00",
+ "ontology_version": "v1r2-mr-ontology-r1",
+ "ontology_files": {
+  "market_reading_ontology.json": "d3c02e1f97d3c8e3e4d36988db1bb31b493746a9025112ed65f87d34d8a65a42",
+  "candle_ontology.json": "cfaf8072dc23324263a0600e51d3cea863ea56821ce84c3fe714a9654cf8c452",
+  "price_structure_ontology.json": "344bf401d31f44cb2898780a3e4368db94e9a1cc595ccec237ec5acbaebb1edb",
+  "market_behavior_ontology.json": "5d065c31c1d9a62b7ad40cdd5cc8b701c85ca1540fc7d195f06d15b056ef9bda",
+  "market_mechanism_ontology.json": "1667070dfa940533a7ca1f111cf2a1fefb61687c53e4b77f320cefd6544ef9b7",
+  "market_state_ontology.json": "98d47e8609fd5c2174e5a97e67a2913882f35ae824a0afef656bde8836bc0797",
+  "forecast_ontology.json": "eba0113bff6a19dcb6f39d4552be65b3e1d1dd0b6418bd70c2a35fee8947d15c"
+ },
+ "ontology_hash": "8436866dfe71030ba7be036b2d73904ed2f817aa52673a5e27d583e931c354d8",
+ "candle_definitions": {
+  "layer": "L1_MARKET_PERCEPTION",
+  "name": "JAPANESE_CANDLESTICK",
+  "version": "v1r2-mr-ontology-r1",
+  "principle": "a candle pattern emits a CANDLE_EVENT (an OBSERVATION), never a TRADE_SIGNAL (task §4/§8)",
+  "thresholds_preregistered": {
+   "DOJI_BODY_MAX_RANGE": 0.1,
+   "MARUBOZU_BODY_MIN_RANGE": 0.95,
+   "LONG_BODY_MIN_RANGE": 0.7,
+   "LONG_WICK_WICK_OVER_BODY": 2.0,
+   "HAMMER_WICK_OVER_BODY": 2.0,
+   "HAMMER_OPPOSITE_WICK_MAX_BODY": 0.5,
+   "SPINNING_TOP_BODY_MAX_RANGE": 0.3,
+   "ENGULF_MIN_PREV_BODY_RANGE": 0.1,
+   "STAR_MID_RETRACE": 0.5,
+   "CONTEXT_TREND_BARS": 20
+  },
+  "geometry_fields": [
+   "open",
+   "high",
+   "low",
+   "close",
+   "body_size",
+   "body_direction",
+   "upper_wick",
+   "lower_wick",
+   "wick_body_ratio",
+   "close_location",
+   "range",
+   "true_range",
+   "body_to_range"
+  ],
+  "single_bar_events": {
+   "DOJI": {
+    "rule": "body <= DOJI_BODY_MAX_RANGE * range"
+   },
+   "MARUBOZU": {
+    "rule": "body >= MARUBOZU_BODY_MIN_RANGE * range"
+   },
+   "LONG_BODY": {
+    "rule": "body >= LONG_BODY_MIN_RANGE * range"
+   },
+   "LONG_WICK": {
+    "rule": "max(upper_wick, lower_wick) >= LONG_WICK_WICK_OVER_BODY * body"
+   },
+   "SPINNING_TOP": {
+    "rule": "body <= SPINNING_TOP_BODY_MAX_RANGE * range and upper_wick > body and lower_wick > body"
+   },
+   "HAMMER_GEOMETRY": {
+    "rule": "lower_wick >= HAMMER_WICK_OVER_BODY*body and upper_wick <= HAMMER_OPPOSITE_WICK_MAX_BODY*body and close_location >= 0.66"
+   },
+   "INVERTED_HAMMER_GEOMETRY": {
+    "rule": "upper_wick >= HAMMER_WICK_OVER_BODY*body and lower_wick <= HAMMER_OPPOSITE_WICK_MAX_BODY*body and close_location <= 0.34"
+   }
+  },
+  "two_bar_events": {
+   "BULLISH_ENGULFING": {
+    "rule": "prev bearish and cur bullish and cur body engulfs prev body"
+   },
+   "BEARISH_ENGULFING": {
+    "rule": "prev bullish and cur bearish and cur body engulfs prev body"
+   },
+   "INSIDE_BAR": {
+    "rule": "high <= prev_high and low >= prev_low"
+   },
+   "OUTSIDE_BAR": {
+    "rule": "high > prev_high and low < prev_low"
+   },
+   "HARAMI": {
+    "rule": "inside bar and prev body contains cur body and prev body >= ENGULF_MIN_PREV_BODY_RANGE*prev_range"
+   }
+  },
+  "three_bar_events": {
+   "MORNING_STAR": {
+    "rule": "bar1 bearish long, bar2 small body, bar3 bullish closing above midpoint of bar1 body"
+   },
+   "EVENING_STAR": {
+    "rule": "bar1 bullish long, bar2 small body, bar3 bearish closing below midpoint of bar1 body"
+   }
+  },
+  "context_labels_require_context": {
+   "SHOOTING_STAR": {
+    "geometry": "INVERTED_HAMMER_GEOMETRY",
+    "required_context": "ADVANCE_CONTEXT"
+   },
+   "HANGING_MAN": {
+    "geometry": "HAMMER_GEOMETRY",
+    "required_context": "ADVANCE_CONTEXT"
+   },
+   "HAMMER": {
+    "geometry": "HAMMER_GEOMETRY",
+    "required_context": "DECLINE_CONTEXT"
+   }
+  },
+  "REUSE_OF_GEOMETRY_FORBIDDEN_AS_SIGNAL": true,
+  "sequence_events": [
+   "CONSECUTIVE_UP",
+   "CONSECUTIVE_DOWN",
+   "BODY_EXPANDING",
+   "BODY_CONTRACTING",
+   "RANGE_EXPANDING",
+   "RANGE_CONTRACTING",
+   "OVERLAP_INCREASING",
+   "OVERLAP_DECREASING",
+   "HH_SERIES",
+   "HL_SERIES",
+   "LH_SERIES",
+   "LL_SERIES"
+  ],
+  "sequence_window_pre_registered": 5
+ },
+ "price_structure_definitions": {
+  "layer": "L2_MARKET_READING",
+  "version": "v1r2-mr-ontology-r1",
+  "note": "REWORKED from the old state machine; NOT inherited as-is (task §10)",
+  "level_lifecycle": [
+   "UNTESTED",
+   "APPROACH",
+   "FIRST_TEST",
+   "REPEATED_TEST",
+   "BREAK_ATTEMPT",
+   "ACCEPTANCE",
+   "REJECTION",
+   "BREAK_CONFIRMED",
+   "FAILED_BREAK",
+   "RETEST",
+   "RESOLVED"
+  ],
+  "touch_classes": [
+   "FIRST_TOUCH",
+   "REPEATED_TOUCH",
+   "DEEP_TEST",
+   "SHALLOW_TEST",
+   "REJECTION_AFTER_TOUCH",
+   "ACCEPTANCE_AFTER_TOUCH"
+  ],
+  "forbidden": "touch_count += 1 as the whole model (task §11)",
+  "information_lineage": {
+   "PRICE_STRUCTURE": [
+    "LEVEL",
+    "TOUCH",
+    "BREAK",
+    "PENETRATION",
+    "FAILED_EVENT"
+   ],
+   "raw_source": "TICK_BID -> OHLC -> level geometry"
+  },
+  "penetration_status": "STATUS_UNRESOLVED (B-R11: state justification INCONCLUSIVE, threshold justification INCONCLUSIVE) -> retained as an OBSERVATION, not promoted",
+  "break_lifecycle": [
+   "BREAK_ATTEMPT",
+   "BREAK_ACCEPTANCE",
+   "BREAK_CONFIRMATION",
+   "BREAK_FAILURE",
+   "RECLAIM",
+   "RETEST"
+  ],
+  "break_forbidden": "close > level == breakout is forbidden (task §15)",
+  "carried_dependency_findings": {
+   "LEVEL_TOUCH_BREAK": "DERIVED (one PRICE_STRUCTURE axis)",
+   "COUNTER_BREAK_RISK": "DERIVED (restates BREAK)",
+   "COUNTER_DECELERATION": "DERIVED (restates MOMENTUM)"
+  }
+ },
+ "behaviour_definitions": {
+  "layer": "L2_MARKET_READING",
+  "version": "v1r2-mr-ontology-r1",
+  "principle": "these describe WHAT the market is doing; they never emit BUY/SELL (task §9/§17)",
+  "behaviours": [
+   "TREND",
+   "RANGE",
+   "COMPRESSION",
+   "EXPANSION",
+   "ACCELERATION",
+   "DECELERATION",
+   "EXHAUSTION",
+   "REJECTION",
+   "ACCEPTANCE",
+   "ROTATION",
+   "BREAKOUT_ATTEMPT",
+   "BREAKOUT_CONFIRMATION",
+   "BREAKOUT_FAILURE",
+   "RETEST",
+   "REVERSAL_ATTEMPT"
+  ],
+  "acceptance_rejection": {
+   "definition": "ACCEPTANCE = price moves beyond a level, closes beyond it, and does NOT promptly return; REJECTION = price moves beyond a level and promptly returns into the prior range",
+   "directions": [
+    "UPWARD_ACCEPTANCE",
+    "UPWARD_REJECTION",
+    "DOWNWARD_ACCEPTANCE",
+    "DOWNWARD_REJECTION"
+   ],
+   "evidence_chain_required": true,
+   "horizon_bars_pre_registered": [
+    1,
+    2,
+    3,
+    5,
+    8
+   ],
+   "not_a_direction_call": true
+  },
+  "momentum_as_behaviour": {
+   "states": [
+    "ACCELERATING",
+    "NORMAL",
+    "DECELERATING",
+    "EXHAUSTING",
+    "TRANSITION"
+   ],
+   "forbidden_mapping": "ACCELERATING -> BUY is forbidden (task §17)"
+  },
+  "defense_strength": {
+   "name": "SUPPORT_DEFENSE_STRENGTH / RESISTANCE_DEFENSE_STRENGTH",
+   "inputs": [
+    "touch_count",
+    "rebound_amplitude",
+    "rebound_speed_bars",
+    "rebound_duration_bars",
+    "retrace_depth",
+    "candle_rejection_degree",
+    "close_position",
+    "momentum_change",
+    "volatility_change"
+   ],
+   "output": "WEAKENING / STABLE / STRENGTHENING",
+   "observational_only": true,
+   "not_a_signal": true,
+   "forbidden": "touch_count >= X = break is forbidden (task §12)"
+  },
+  "unknown_taxonomy": [
+   "INSUFFICIENT_DATA",
+   "CONFLICTING_EVIDENCE",
+   "AMBIGUOUS_STATE",
+   "UNOBSERVABLE_PREREQUISITE",
+   "NO_DEFINED_STATE",
+   "LOW_CONFIDENCE"
+  ]
+ },
+ "mechanism_definitions": {
+  "layer": "L3_MARKET_MECHANISM",
+  "version": "v1r2-mr-ontology-r1",
+  "principle": "mechanisms are HYPOTHESES, not facts (task §19); each carries SUPPORTING_EVIDENCE, COUNTER_EVIDENCE and INVALIDATION_CONDITION (task §20)",
+  "mechanisms": {
+   "TREND_CONTINUATION": {
+    "support": [
+     "regime TREND",
+     "momentum ACCELERATING/NORMAL",
+     "state persistence"
+    ],
+    "counter": [
+     "momentum DECELERATING",
+     "touch EXHAUSTION_*"
+    ],
+    "invalidation": "regime leaves TREND or momentum turns EXHAUSTING with counter evidence"
+   },
+   "BREAKOUT_ACCEPTANCE": {
+    "support": [
+     "close beyond level",
+     "no prompt return",
+     "momentum not DECELERATING"
+    ],
+    "counter": [
+     "rising opposing wick",
+     "prompt return"
+    ],
+    "invalidation": "close returns into the prior range"
+   },
+   "BREAKOUT_FAILURE": {
+    "support": [
+     "break attempt then close back inside",
+     "opposing wick rejection"
+    ],
+    "counter": [
+     "sustained close beyond",
+     "momentum accelerating with the break"
+    ],
+    "invalidation": "price re-accepts beyond the level"
+   },
+   "MEAN_REVERSION": {
+    "support": [
+     "range regime",
+     "touch at a boundary",
+     "momentum decelerating"
+    ],
+    "counter": [
+     "regime expansion",
+     "acceptance beyond the boundary"
+    ],
+    "invalidation": "acceptance beyond the boundary"
+   },
+   "EXHAUSTION": {
+    "support": [
+     "repeated touches",
+     "decreasing rebound amplitude",
+     "decelerating momentum"
+    ],
+    "counter": [
+     "fresh acceleration",
+     "break confirmation"
+    ],
+    "invalidation": "break confirmation or momentum re-acceleration"
+   },
+   "LIQUIDITY_WITHDRAWAL": {
+    "support": [
+     "spread widening proxy"
+    ],
+    "counter": [
+     "spread stable/below median"
+    ],
+    "invalidation": "spread back to median while structure holds",
+    "evidence_level": "PROXY"
+   },
+   "ABSORPTION": {
+    "support": [
+     "efficiency decline with activity rise (PROXY_BAR)"
+    ],
+    "counter": [
+     "efficiency rising"
+    ],
+    "invalidation": "efficiency and activity both fall",
+    "evidence_level": "PROXY"
+   },
+   "ROTATION": {
+    "support": [
+     "range regime",
+     "alternating boundary tests"
+    ],
+    "counter": [
+     "one-sided acceptance"
+    ],
+    "invalidation": "acceptance outside the range"
+   },
+   "ACCUMULATION_PROXY": {
+    "support": [
+     "range after decline",
+     "absorption proxy present"
+    ],
+    "counter": [
+     "new lows with acceleration"
+    ],
+    "invalidation": "decisive breakdown",
+    "evidence_level": "PROXY"
+   },
+   "DISTRIBUTION_PROXY": {
+    "support": [
+     "range after advance",
+     "absorption proxy among resistance tests"
+    ],
+    "counter": [
+     "new highs with acceleration"
+    ],
+    "invalidation": "decisive breakout",
+    "evidence_level": "PROXY"
+   }
+  },
+  "competition": {
+   "multiple_hypotheses_allowed": true,
+   "first_match_wins": false,
+   "output_scale": [
+    "DOMINANT",
+    "SECONDARY",
+    "UNCERTAIN"
+   ],
+   "probabilities_forbidden_until_calibrated": true,
+   "calibration_status": "NO_PROBABILITY_CALIBRATION -> categorical only"
+  },
+  "evidence_hierarchy": [
+   "DIRECT",
+   "DERIVED",
+   "PROXY",
+   "UNKNOWN"
+  ],
+  "evidence_record_fields": [
+   "source",
+   "calculation",
+   "timestamp",
+   "context"
+  ],
+  "evidence_upgrade_forbidden": true,
+  "circularity_guard": "a mechanism may not use its own output as supporting evidence"
+ },
+ "state_definitions": {
+  "layer": "L4_MARKET_STATE",
+  "version": "v1r2-mr-ontology-r1",
+  "STATE_VECTOR": [
+   "REGIME",
+   "TREND",
+   "MOMENTUM",
+   "PRICE_STRUCTURE",
+   "VOLATILITY",
+   "CANDLE_STRUCTURE",
+   "MARKET_BEHAVIOR",
+   "MECHANISM",
+   "CONFIDENCE"
+  ],
+  "single_label_forbidden": true,
+  "unknown_separation": [
+   "INSUFFICIENT_DATA",
+   "CONFLICTING_EVIDENCE",
+   "AMBIGUOUS_STATE",
+   "UNOBSERVABLE_PREREQUISITE",
+   "NO_DEFINED_STATE",
+   "LOW_CONFIDENCE"
+  ],
+  "unknown_black_hole_forbidden": true,
+  "transition": {
+   "model": "CURRENT_STATE -> TRANSITION -> NEXT_STATE",
+   "label_only_on_future_state": true,
+   "future_returns_forbidden": true
+  }
+ },
+ "forecast_definitions": {
+  "layer": "L4_MARKET_FORECAST",
+  "version": "v1r2-mr-ontology-r1",
+  "predict_first": "NEXT_MARKET_STATE (not BUY/SELL) (task §27)",
+  "fields": [
+   "NEXT_STATE",
+   "FORECAST_HORIZON",
+   "DIRECTION",
+   "CONFIDENCE",
+   "INVALIDATION"
+  ],
+  "horizons": [
+   "M5",
+   "M15",
+   "H1",
+   "H4"
+  ],
+  "confidence_scale": [
+   "HIGH",
+   "MEDIUM",
+   "LOW",
+   "UNCERTAIN"
+  ],
+  "invalidation_is_first_class": true,
+  "evaluation_stage1_only": [
+   "STATE_PREDICTION",
+   "TRANSITION_PREDICTION",
+   "DIRECTION",
+   "TIMING"
+  ],
+  "evaluation_forbidden_stage1": [
+   "PnL",
+   "Sharpe",
+   "Profit Factor",
+   "Win Rate"
+  ],
+  "prediction_journal": {
+   "file": "ledger/v1_r2_market_reading_ledger.jsonl",
+   "fields": [
+    "timestamp",
+    "context_hash",
+    "state_vector",
+    "mechanism_hypotheses",
+    "supporting_evidence",
+    "counter_evidence",
+    "forecast",
+    "horizon",
+    "confidence",
+    "invalidation",
+    "data_quality",
+    "registry_hash"
+   ],
+   "outcome_field": "OBSERVED_OUTCOME",
+   "outcome_after_prediction_only": true
+  }
+ },
+ "transition_definitions": {
+  "model": "CURRENT_STATE -> TRANSITION -> NEXT_STATE",
+  "label_only_on_future_state": true,
+  "future_returns_forbidden": true
+ },
+ "evidence_hierarchy": [
+  "DIRECT",
+  "DERIVED",
+  "PROXY",
+  "UNKNOWN"
+ ],
+ "data_quality_rules": {
+  "DOM": "UNAVAILABLE",
+  "TRADE_DIRECTION": "UNAVAILABLE",
+  "SPREAD": "DIRECT",
+  "TICK_VOLUME": "DIRECT_BUT_ALL_ZERO_NOT_REAL_VOLUME",
+  "ABSORPTION": "PROXY",
+  "LIQUIDITY": "PROXY",
+  "NO_DATA_PURCHASE": true
+ },
+ "invalidation_rules": {
+  "TREND_CONTINUATION": {
+   "support": [
+    "regime TREND",
+    "momentum ACCELERATING/NORMAL",
+    "state persistence"
+   ],
+   "counter": [
+    "momentum DECELERATING",
+    "touch EXHAUSTION_*"
+   ],
+   "invalidation": "regime leaves TREND or momentum turns EXHAUSTING with counter evidence"
+  },
+  "BREAKOUT_ACCEPTANCE": {
+   "support": [
+    "close beyond level",
+    "no prompt return",
+    "momentum not DECELERATING"
+   ],
+   "counter": [
+    "rising opposing wick",
+    "prompt return"
+   ],
+   "invalidation": "close returns into the prior range"
+  },
+  "BREAKOUT_FAILURE": {
+   "support": [
+    "break attempt then close back inside",
+    "opposing wick rejection"
+   ],
+   "counter": [
+    "sustained close beyond",
+    "momentum accelerating with the break"
+   ],
+   "invalidation": "price re-accepts beyond the level"
+  },
+  "MEAN_REVERSION": {
+   "support": [
+    "range regime",
+    "touch at a boundary",
+    "momentum decelerating"
+   ],
+   "counter": [
+    "regime expansion",
+    "acceptance beyond the boundary"
+   ],
+   "invalidation": "acceptance beyond the boundary"
+  },
+  "EXHAUSTION": {
+   "support": [
+    "repeated touches",
+    "decreasing rebound amplitude",
+    "decelerating momentum"
+   ],
+   "counter": [
+    "fresh acceleration",
+    "break confirmation"
+   ],
+   "invalidation": "break confirmation or momentum re-acceleration"
+  },
+  "LIQUIDITY_WITHDRAWAL": {
+   "support": [
+    "spread widening proxy"
+   ],
+   "counter": [
+    "spread stable/below median"
+   ],
+   "invalidation": "spread back to median while structure holds",
+   "evidence_level": "PROXY"
+  },
+  "ABSORPTION": {
+   "support": [
+    "efficiency decline with activity rise (PROXY_BAR)"
+   ],
+   "counter": [
+    "efficiency rising"
+   ],
+   "invalidation": "efficiency and activity both fall",
+   "evidence_level": "PROXY"
+  },
+  "ROTATION": {
+   "support": [
+    "range regime",
+    "alternating boundary tests"
+   ],
+   "counter": [
+    "one-sided acceptance"
+   ],
+   "invalidation": "acceptance outside the range"
+  },
+  "ACCUMULATION_PROXY": {
+   "support": [
+    "range after decline",
+    "absorption proxy present"
+   ],
+   "counter": [
+    "new lows with acceleration"
+   ],
+   "invalidation": "decisive breakdown",
+   "evidence_level": "PROXY"
+  },
+  "DISTRIBUTION_PROXY": {
+   "support": [
+    "range after advance",
+    "absorption proxy among resistance tests"
+   ],
+   "counter": [
+    "new highs with acceleration"
+   ],
+   "invalidation": "decisive breakout",
+   "evidence_level": "PROXY"
+  }
+ },
+ "frozen_before_run": true,
+ "no_rule_change_after_run": true,
+ "no_data_purchase": true,
+ "L5_STRATEGY_ADAPTER": {
+  "interface_only": true,
+  "input": [
+   "market_state",
+   "forecast",
+   "horizon",
+   "confidence",
+   "invalidation",
+   "market_condition"
+  ],
+  "output": [
+   "strategy_type"
+  ],
+  "allowed": [
+   "GRID",
+   "TREND",
+   "MEAN_REVERSION",
+   "BREAKOUT",
+   "REVERSAL",
+   "EVENT",
+   "NO_TRADE",
+   "OTHER"
+  ],
+  "implemented": false,
+  "decoupling_rule": "market judgement never redefined by a chosen strategy"
+ },
+ "registry_hash": "752bf2273f6a509d343dca633860605f927850d85fc491e402f40318df168f68"
+}

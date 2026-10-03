@@ -1,0 +1,108 @@
+{
+ "audit_id": "HB_ADV_20260801",
+ "audited_forecast_id": "HERMES_FULL_CTX_20260801T120000Z",
+ "timestamp": "2026-09-27T22:44:00+08:00",
+ "overall_verdict": "DISAGREE",
+ "dimension_verdicts": {
+  "CURRENT_STATE": "AGREE",
+  "STRUCTURE": "PARTIAL_AGREE",
+  "MECHANISM": "DISAGREE",
+  "PRIMARY_SCENARIO": "DISAGREE",
+  "ALTERNATIVE_SCENARIO": "PARTIAL_AGREE",
+  "EXPECTED_TRANSITION": "DISAGREE",
+  "DIRECTION": "DISAGREE",
+  "HORIZON": "PARTIAL_AGREE",
+  "CONFIDENCE": "DISAGREE",
+  "INVALIDATION": "AGREE",
+  "ABSTENTION": "DISAGREE"
+ },
+ "factual_errors": [
+  "Claimed dominant 'rotation range ~4035-4055' excludes the same-day low 4020.545 (H4 12:00 bar, 2026-07-31, low 4020.545, range 40.32) which occurred ~6h before the last bar, and the 4119.105 high (H4 07-30 16:00) ~36h earlier; the 'range' is a narrow recent-window claim presented as the dominant structure.",
+  "Claimed downside target '4020-4026 zone (2026-07-31 low 4020.545)' as an extension target, but the context gives no mechanism connecting a break of 4041.035 to that exact zone; the level is a single observed low, not a causally-derived target."
+ ],
+ "insufficient_evidence": [
+  "Primary scenario confidence 0.5 rests on H1 trend_20 -42.22 and 8 consecutive down bars; H1 trend_50 is -0.60 (flat) in the same context (L6), which is not addressed and materially weakens the 'strong near-term downtrend' claim.",
+  "The 'stop/order flow around 4035-4041' inference is drawn from a single M1 wick sweep (low 4035.085) with no order-flow data; the forecast itself admits this, so it should not feed a 0.5-weighted primary.",
+  "The forecast is timestamped 2026-08-01 12:00:00Z but the newest bar is 2026-07-31 21:58Z (~14h stale); no adjustment of horizon or confidence is made for this gap, and a 1-4h forecast is issued on 14h-old data."
+ ],
+ "missed_counter_evidence": [
+  "H1 trend_50 -0.60 (L6) contradicts the reading of a strong sustained downtrend; the -42.22 trend_20 is a short burst, not a regime, and is never acknowledged.",
+  "M15 trend_50 -17.05 vs M15 trend_20 -4.11: the 50-bar M15 trend is much more negative than the 20-bar, meaning recent 20 bars are actually a recovery off a deeper decline - the opposite of 'fresh downside impulse'; ignored.",
+  "H4 trend_20 +19.16 is used to support the bounce, but H4 trend_50 -37.13 in the same row of L6 is ignored; the same cherry-picking cuts both ways and is never reconciled.",
+  "Frozen event label ACCEPTANCE at t is the context's own verdict on how price is behaving at the level; the forecast uses it to justify the 0.35 bounce yet still biases DOWN 0.5, never resolving the contradiction.",
+  "level_age_bars 17 with break_status INSIDE and reclaim_status NONE means the level is young and untested by a close below; 'historically well defended' is overstated from touch_count_240 35 alone."
+ ],
+ "mechanism_jumps": [
+  "Momentum-to-outcome jump: H1 trend_20 -42.22 + price at the level -> 'downside continuation' 0.5. The L4 note explicitly states mechanism candidates are 'NOT asserted as fact (S13)', yet the primary scenario is built on that exact unverified candidate.",
+  "Analog-to-direction jump: analog A4173 path ROTATION->NO_DEFINED_STATE->REJECTION->TREND is used to support a DOWN move and a price target, but the context states analogs are 'STATE EVOLUTION ONLY; no returns/PnL/labels ever included (S18/S72)'. A TREND state carries no direction, so it cannot support 'TREND down' or the 4020-4026 zone.",
+  "Label contradiction jump: the expected transition ROTATION->REJECTION at 4041.035 is asserted even though the frozen event at t is ACCEPTANCE; no justification is given for why the labeler's reading should flip."
+ ],
+ "over_inference": [
+  "Attaching 0.5 probability to a specific 4020-4026 extension derived from one historical low (4020.545) is over-inference absent any measured distribution.",
+  "Calling the sweep-and-recover (lower wick 6.94) both evidence of bids AND ignoring it in the 0.5 primary weights the same bar inconsistently.",
+  "Direction_bias DOWN is inferred from near-term momentum while the forecast's own strongest evidence list (item 4 ACCEPTANCE, item 5 H4 +19.16) points the other way."
+ ],
+ "time_window_issues": [
+  "Rotation range 4035-4055 omits the 4020.545 low from ~6h earlier and the 4119.105 high from ~36h earlier; the structure claim needs a wider window than used.",
+  "Horizon is 1-4h but the evidence mix uses H4 trend_20 (an ~80-hour window); short-horizon conclusions are drawn from mixed, much-longer-horizon trends.",
+  "The forecast is made 14h after the last available bar (last bar 07-31 21:58Z, as_of 08-01 12:00Z) - a short-horizon forecast on stale data without discounting.",
+  "Single-window reading: 20-bar trends at every timeframe are taken at face value while the parallel trend_50 values (H1 -0.60, M15 -17.05, H4 -37.13) are ignored, so the trend story is window-selected."
+ ],
+ "data_quality_issues": [
+  "Using the L4 trend_continuation candidate (labelled DERIVED and explicitly 'NOT asserted as fact') as the load-bearing support of the primary scenario upgrades a candidate to a fact.",
+  "Using state-evolution-only analogs (no returns/PnL/labels, S18/S72) to support a directional forecast and price target is treating a restricted dataset as if it carried outcome information.",
+  "Cross-market UNKNOWN series are correctly left absent (no fabrication) - noted as a positive.",
+  "The staleness gap (last bar 14h before as_of) is a data-timeliness quality issue that is not folded into confidence."
+ ],
+ "hindsight_flags": [
+  "No explicit hindsight violation detected; the forecast reads PIT context only and does not reference the outcome."
+ ],
+ "explanation_not_prediction_flags": [
+  "The primary scenario is largely a re-description of current momentum (H1 trend_20 -42.22, 8 down bars, displacement -8.54) extrapolated forward, i.e. describing the present state as if it were a forecast, without a stated forward mechanism beyond the unverified candidate."
+ ],
+ "kline_overreliance_flags": [
+  "The DOWN bias derives almost entirely from K-line geometry (trend_20 values, consecutive_down counts, 8-bar displacement, wick shapes) with no order-flow, no volume, and no cross-market confirmation; both the momentum case and the sweep/bid case are K-line-only inferences.",
+  "The 'stop/order flow around 4035-4041' reading is pure candle-shape inference labelled as liquidity evidence."
+ ],
+ "mtf_conflict_ignored_flags": [
+  "L6 states agreement CONFLICT and that timeframes are 'NEVER merged into one direction (S15)'; the forecast acknowledges the conflict but then resolves it by overweighting H1 over H4 without a principled rule, effectively merging them into DOWN.",
+  "The conflict is acknowledged verbally but not reflected in the confidence (0.5) or direction choice."
+ ],
+ "evidence": [
+  {
+   "claim": "Rotation range ~4035-4055 is the dominant structure.",
+   "contradicting_or_absent": "H4 12:00 bar (2026-07-31) low 4020.545 and H4 16:00 (07-30) high 4119.105 exist in the same context window; range claim omits them, so the structure statement is incomplete."
+  },
+  {
+   "claim": "H1 momentum (trend_20 -42.22, 8 consecutive down) supports a strong near-term downtrend.",
+   "contradicting_or_absent": "H1 trend_50 -0.60 (L6) shows the medium-term H1 trend is flat; the -42.22 is a short burst, not sustained. Also the final bars show long lower wicks (6.94) buying the sweep, contradicting a clean continuation."
+  },
+  {
+   "claim": "Primary downside continuation to 4020-4026 consistent with analog A4173 ROTATION->...->TREND.",
+   "contradicting_or_absent": "Analogs are STATE EVOLUTION ONLY (S18/S72) with no returns/PnL/labels; TREND carries no direction, so it cannot support a DOWN target or magnitude."
+  },
+  {
+   "claim": "Expected transition ROTATION->REJECTION at 4041.035.",
+   "contradicting_or_absent": "Frozen event at t is ACCEPTANCE and current state ROTATION (dwell 4); nothing in the context justifies flipping ACCEPTANCE to REJECTION at the same level within the horizon."
+  },
+  {
+   "claim": "Frozen label ACCEPTANCE + 35-touch level + lower wicks are used only for the 0.35 alternative.",
+   "contradicting_or_absent": "These are the forecast's own strongest counter-evidence items yet the primary (0.5) is placed against them; weighting is inconsistent with the cited evidence."
+  },
+  {
+   "claim": "Long lower wicks show aggressive buying into the sweep (bids at 4035-4041).",
+   "contradicting_or_absent": "True as a K-line shape reading, but there is no order-flow/volume data in context (only L1 bars), so it remains a proxy inference and is used both as counter-evidence and as a support for the bounce without resolution."
+  }
+ ],
+ "strongest_objection": "The forecast's central directional claim (direction_bias DOWN, primary downside continuation, confidence 0.5) is built on an L4 mechanism explicitly labelled 'NOT asserted as fact (S13)' and on an analog that carries state-evolution only (S18/S72, no direction), while simultaneously contradicting its own strongest evidence: the frozen event label ACCEPTANCE at the 4041.035 level, the close (4042.025) above that level, H4 trend_20 +19.16, and 0.75 ambiguity with MTF CONFLICT. With the labeler itself at 75% uncertainty, all cross-market series UNKNOWN, and the newest bar 14 hours stale, committing to a directional bet at 0.5 is over-confidence; the defensible output is at most a neutral/rotation read with materially lower confidence, or an abstention.",
+ "reasoning_trace": [
+  "Read PIT context (v1r3-r1, as_of 2026-08-01 12:00Z) and Hermes-A forecast HERMES_FULL_CTX_20260801T120000Z.",
+  "Verified quoted facts against context: H1 trend_20 -42.22 and consecutive_down 8 (correct); nearest level 4041.035 SWING_LOW_37318 35 touches/240, INSIDE, distance_atr 0.17 (correct); close 4042.025 above level (correct); H4 trend_20 +19.16 (correct); final M1 low 4035.085 with lower wick 6.94 (correct); 4020.545 historical low (correct, exists in H4 12:00 bar). No fabricated numbers found.",
+  "Identified window-selection: trend_20 used everywhere, trend_50 ignored (H1 -0.60, M15 -17.05, H4 -37.13); rotation range 4035-4055 omits the 4020.545 and 4119.105 extremes.",
+  "Flagged mechanism/candidate over-reach: L4 candidate 'NOT asserted as fact (S13)' used as primary load; analogs restricted to state evolution (S18/S72) used to claim DOWN direction and a price target.",
+  "Flagged the ACCEPTANCE-vs-REJECTION contradiction between the frozen label at t and the forecast's expected transition and DOWN bias.",
+  "Flagged the ~14h staleness gap (last bar 07-31 21:58Z vs as_of 08-01 12:00Z) not discounted in a 1-4h horizon call.",
+  "Credited the forecast for correct handling of UNKNOWN cross-market series, explicit testable invalidation triggers, and honest listing of its own counter-evidence.",
+  "Because the core output (direction + primary scenario + confidence) is contradicted by the forecast's own best evidence and rests on unverified mechanisms, overall verdict DISAGREE while CURRENT_STATE and INVALIDATION are agreed."
+ ]
+}

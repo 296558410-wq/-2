@@ -1,0 +1,66 @@
+{
+  "audit_id": "BA_20260717",
+  "timestamp": "2026-07-17T00:00:00Z",
+  "overall_verdict": "PARTIAL_AGREE",
+  "focus_verdicts": {
+    "OBSERVATION_DISCIPLINE": "PARTIAL_AGREE",
+    "MECHANISM_DISCIPLINE": "PARTIAL_AGREE",
+    "COUNTER_EVIDENCE": "PARTIAL_AGREE",
+    "CONFIDENCE": "PARTIAL_AGREE",
+    "ABSTENTION": "PARTIAL_AGREE",
+    "INVALIDATION": "DISAGREE"
+  },
+  "over_inference": [
+    "Forecast evidence #1: \"Expansion bar then contraction typically follows\" — an unquantified regularity asserted as if established; no base rate or statistic in the context supports it.",
+    "Forecast evidence #2: \"Overhead swing-low level caps upside at 3979.8\" — 'caps' asserts a causal ceiling; the context only shows a swing-low level (level_side DN) with 12 touches and break_status INSIDE, which is as consistent with a break as with a cap.",
+    "Forecast evidence #4: \"Dwell 7 in REJECTION suggests range persistence\" — dwell in a derived lifecycle state is not independent evidence of persistence; the same dwell is consistent with imminent transition (analog A32708 exits REJECTION at step 4).",
+    "expected_transition \"REJECTION continues with range rotation\" states continuation as expected while direction_bias is NEUTRAL and ambiguity_rate_8 is 0.5."
+  ],
+  "mechanism_jump": [
+    "range_rotation_around_level marked SUPPORTED (\"State REJECTION dwell 7, price inside level\") although CTX L4_MARKET_MECHANISM lists ONLY trend_continuation as a CANDIDATE with the note \"mechanism CANDIDATES only; NOT asserted as fact (§13)\" — a derived state label plus level proximity is not independent supporting evidence; POSSIBLE is the honest ceiling.",
+    "The RANGE scenario is built on the unstated mean-reversion mechanism of evidence #1 (\"expansion then contraction\"); the mechanism is smuggled in via the scenario trigger without being declared as a candidate with a status.",
+    "rejection_extension_down rated POSSIBLE largely on H4/H1 data whose 'current' bars contradict M1/M5 (see strongest_objection) — the mechanism is rated on internally inconsistent inputs."
+  ],
+  "missing_counter_evidence": [
+    "Forecast invalidation says \"Close above 3980.3 or below 3974.5 within 4 bars\", yet the CTX H1 current bar closed 3985.835 — already above 3980.3. Hermes-A never reconciles this: either the scenario was already invalidated at t=0 or its H1 data cannot be trusted; neither was examined.",
+    "H1 current close (3985.835) and H4 current close (3978.805) diverge from M1 close (3976.895) by ~9 and ~2 points at the same timestamp; A cites \"MTF conflict\" but never identifies or investigates this concrete contradiction.",
+    "The 00:00 M1 bar CLOSED DOWN (3976.895 < open 3977.755 and < prior close 3977.745) with a 2.34 lower wick at range_percentile 0.97 — the expansion bar resolved down at t=0; this directly undercuts the momentum counter-evidence and favors rejection/downside, and is absent from counter_evidence.",
+    "Only analog A34888 (REJECTION -> EXPANSION) was cited as counter-evidence; A31156 (REJECTION x16 -> DECELERATION) and A32708 (REJECTION -> COMPRESSION -> ROTATION -> REJECTION) both argue against range persistence/rotation and were not weighed.",
+    "M1 sequence_flags \"consecutive_up\": 8 conflicts with the raw closes in the same file (23:54 close 3974.835 < 3975.145; 23:56 close 3975.915 < 3976.145; 00:00 close 3976.895 < 3977.745) — the derived flag was copied without checking raw bars, and no caveat was given."
+  ],
+  "unjustified_confidence": [
+    "confidence 0.4 with confidence_reason \"Structure coherent but MTF conflict and ambiguity 0.5\" — 'coherent' is contradicted by the same sentence; with a ~9-point H1/M1 close divergence unexamined, 0.4 is not demonstrably justified.",
+    "evidence_strength 0.35 is BELOW confidence 0.4 with no defined relationship/calibration between the two axes, so the ordering is unexplained.",
+    "abstain=false with reason \"Sufficient PIT structure despite MTF conflict\" ignores that part of the structure is self-contradictory (H1 close already above the invalidation bound; derived flag vs raw bars)."
+  ],
+  "observation_as_fact": [
+    "Forecast observation \"8 consecutive up bars M1, range expanding\" — raw M1 closes in CTX show the 00:00 bar closed DOWN (3976.895 < 3977.745) and the cleanest up-run is 4 closes (23:50-23:53); the derived flag was stated as fact.",
+    "Forecast evidence \"H4 upper wick 17.07 shows supply overhead\" — a long wick is geometry; 'supply' is an interpretation asserted as fact, and the H4 current bar (high 3995.875) is itself inconsistent with M1/M5 highs (3978.115/3978.265).",
+    "Forecast evidence \"Overhead swing-low level caps upside at 3979.8\" — the level's cap role is treated as fact although break_status is INSIDE (neither confirmed rejection nor break).",
+    "primary_scenario trigger \"Price oscillates between 3974.5 and 3980.0\" is phrased as an observed state in what_i_know/evidence but is only a hypothesis; the observed M1 close (3976.895) is a single point, not an oscillation."
+  ],
+  "strongest_objection": "Hermes-A's own invalidation condition (\"Close above 3980.3 ... within 4 bars\") is already satisfied at t=0 by the H1 current close of 3985.835 that Hermes-A itself cites, while the M1 close is 3976.895 — a ~9-point divergence between timeframes at the same timestamp that the forecast never reconciles. The forecast is therefore either already invalidated on its own terms or built on internally inconsistent data, so the RANGE scenario and its invalidation are not checkable as stated.",
+  "evidence": [
+    "CTX M1 current bar: \"close\": 3976.895, prior close 3977.745, \"range_percentile\": 0.97, \"lower_wick\": 2.34, \"body\": 0.86 (down bar)",
+    "CTX M1 sequence_flags: \"consecutive_up\": 8",
+    "CTX H1 current: \"close\": 3985.835, \"high\": 3986.365 vs M1 current \"high\": 3978.115",
+    "CTX H4 current: \"upper_wick\": 17.07, \"high\": 3995.875, \"close\": 3978.805",
+    "CTX L2 nearest_level: \"level_price\": 3979.775, \"level_side\": \"DN\", \"break_status\": \"INSIDE\", \"touch_count_240\": 12",
+    "CTX L4: \"candidates\": [{\"mechanism\": \"trend_continuation\"}], \"note\": \"mechanism CANDIDATES only; NOT asserted as fact (§13)\"",
+    "CTX L5: \"ambiguity_rate_8\": 0.5, \"current_dwell_bars\": 7, \"transitions_last_8\": [\"ACCEPTANCE->REJECTION\"]",
+    "CTX L6: \"agreement\": \"CONFLICT\"",
+    "CTX L7: DXY/VIX/TNX all unavailable; absent_series includes NEWS, MACRO_EVENTS",
+    "CTX analogs: A31156 REJECTION x16 -> DECELERATION; A32708 REJECTION -> COMPRESSION -> ROTATION -> REJECTION; A34888 REJECTION -> EXPANSION x4",
+    "FORECAST primary_scenario.invalidation: \"Decisive break of level 3979.775 or 3974.5\"; top-level invalidation: \"Close above 3980.3 or below 3974.5 within 4 bars\"",
+    "FORECAST possible_mechanisms: range_rotation_around_level \"status\": \"SUPPORTED\"",
+    "FORECAST: \"evidence_strength\": 0.35, \"confidence\": 0.4, \"uncertainty\": 0.6, \"abstain\": false, \"time_horizon\": \"4 bars\" (timeframe unspecified)"
+  ],
+  "reasoning_trace": [
+    "Checked Hermes-A observations against raw context numbers: '8 consecutive up bars' contradicts raw M1 closes (00:00 bar closed down 3976.895 < 3977.745; max clean up-run is 4 closes 23:50-23:53).",
+    "Checked mechanism statuses against L4: context lists only trend_continuation as CANDIDATE and states candidates are NOT asserted as fact; A's SUPPORTED rating for range_rotation_around_level exceeds what the evidence permits.",
+    "Cross-checked invalidation against context prices: H1 close 3985.835 already exceeds the 3980.3 invalidation bound; H1/M1 closes diverge ~9 points at the same timestamp — unreconciled, and '4 bars' lacks a timeframe.",
+    "Checked counter-evidence completeness: A's list omits the t=0 down close of the expansion bar, the H1/H4-vs-M1 price contradiction, and 2 of 3 analogs (A31156, A32708) that argue against range persistence.",
+    "Checked confidence: 'structure coherent' is contradicted by the cited MTF conflict and ambiguity 0.5; evidence_strength (0.35) < confidence (0.4) without a defined relationship.",
+    "Concluded: the forecast has honest uncertainty handling and a falsifiable structure, but a self-violating invalidation and an unexamined cross-timeframe data contradiction make the RANGE call only partially sound; it should have either flagged the H1-vs-M1 inconsistency or abstained."
+  ]
+}

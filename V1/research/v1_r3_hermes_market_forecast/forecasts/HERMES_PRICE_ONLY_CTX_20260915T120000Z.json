@@ -1,0 +1,114 @@
+{
+  "forecast_id": "HERMES_PRICE_ONLY_CTX_20260915T120000Z",
+  "timestamp": "2026-09-15 12:00:00+00:00",
+  "current_state": "XAUUSD at 4281.11 (M1 close) as of 2026-09-15 12:00 UTC. Price traded down from 4293.30 at 07:00 to a low of 4261.105 at 09:00, then recovered to 4284.45 (H1 close). The latest M5 (11:55-12:00) closed down 1.06 at 4280.28, and the current M1 shows a small down candle (body 0.23) with a slight lower wick, range_percentile 0.16 (low activity). M15/H1 show positive closes into 12:00 with lower wicks, but H4 (last 4h) closed down 4.43 at 4276.91 with a very large upper wick (19.03), indicating intra-period rejection of highs near 4300.38.",
+  "dominant_structure": "Corrective/choppy consolidation after an impulsive down move. H1 sequence: a strong bearish impulse (4293.30 -> 4261.11, with the 09:00 candle a near-full-body down candle, body_ratio 0.94) followed by a two-hour recovery (4262.20 -> 4284.45). The H4 structure shows repeated rejection of the 4300-4317 zone (upper wicks of 19.03 and prior 4317.67 high rejection), consistent with a lower-highs / bearish-retracement structure within a broader downtrend from 4317.67. M1 range_percentile 0.16 and shrinking ATR on lower timeframes suggest the recovery is stalling into a narrow band.",
+  "current_pressure": "Directional pressure: DOWN-biased from the H4 structure (rejected highs at 4300.37/4317.67, bearish body sequence 08:00-09:00); the last M5/M1 candles show mild down pressure into 12:00. Volatility pressure: contracting (H1 ATR 15.26 vs 17.06 at 07:00; M5 ATR 3.71; M1 range_percentile 0.16) - volatility compression suggests an imminent expansion but the direction is unresolved. Liquidity-proxy pressure: no volume/liquidity data provided (PRICE_ONLY variant); inferred only from range/wick geometry - lower wicks on M15/H1 12:00 candles suggest bid support near 4278-4280.",
+  "mechanisms": [
+    "Mean-reversion bounce within a downtrend (supported: the 4261.11 low was defended, recovery into 4284.45, lower wicks on M15/H1).",
+    "Bearish continuation after retracement (supported: H4 upper-wick rejection at 4300.37, M5 11:55-12:00 down close, no confirmed higher high above 4283.67).",
+    "Volatility squeeze / range contraction before breakout (partially supported: falling ATR across timeframes, low range_percentiles; direction of breakout unknown).",
+    "Uptrend resumption (weakly supported: M15 and H1 12:00 closes are up with lower wicks, but H4 is still down and highs keep being rejected)."
+  ],
+  "primary_scenario": {
+    "scenario": "Bearish continuation: the retracement stalls below the 4283.7-4286.5 zone and price rolls over to retest 4261-4267, with the H4 upper-wick rejection at 4300.37 capping upside.",
+    "confidence": 0.52,
+    "horizon": "SHORT_TERM",
+    "trigger": "M5/M1 fail to print a higher high above 4283.7 and close back below 4280; M15 closes below 4278.5.",
+    "invalidation": "A sustained M15/H1 close above 4300.37 (prior rejection high) would invalidate the bearish continuation."
+  },
+  "alternative_scenario": {
+    "scenario": "Upside resolution: the lower wicks near 4278-4280 hold, a higher high above 4283.7 forms, and the recovery extends toward 4300-4317 as the volatility squeeze resolves upward.",
+    "confidence": 0.35,
+    "horizon": "SHORT_TERM",
+    "trigger": "M5 closes above 4283.7 and holds; M1 range expands with upside momentum into 4286.5.",
+    "invalidation": "A fresh low below 4271.19 (current H4 low) would invalidate this upside scenario."
+  },
+  "third_scenario": {
+    "scenario": "Extended range/consolidation: price remains trapped between roughly 4271 and 4287 with continued contraction, no directional resolution within the near term.",
+    "confidence": 0.13,
+    "horizon": "INTRADAY",
+    "trigger": "Range_percentile stays below ~0.2 across M1/M5 and neither 4271 nor 4287 is broken.",
+    "invalidation": "A break beyond 4287/4300 or below 4271 with follow-through closes."
+  },
+  "direction_bias": "DOWN",
+  "expected_state_transition": "Retracement stall below 4283.7-4286.5 followed by re-test of the 4261-4271 support zone; volatility expansion downward.",
+  "time_horizon": "SHORT_TERM",
+  "confidence": 0.52,
+  "supporting_evidence": [
+    "H4 12:00 candle: large upper wick 19.03 with body only 4.43 (body_ratio 0.15), price rejected from 4300.37 and closed at 4276.91.",
+    "H4 14-Sep 16:00-20:00: rejection from 4317.67 down to 4282.09 (upper wick 10.33), establishing lower highs.",
+    "H1 09:00 candle: near-full-body bearish candle (body_ratio 0.94) from 4280.75 down to 4262.24 - the dominant impulse.",
+    "M5 11:55-12:00: down close 4281.31 -> 4280.28 into 12:00, first down M5 after the recovery.",
+    "Volatility compression: H1 ATR fell from 17.06 to 15.26, M5 ATR 3.71; M1 range_percentile 0.16 - squeeze often precedes directional continuation.",
+    "M15/H1 12:00 lower wicks (2.85 on M15) show only shallow bid defense, not aggressive buying."
+  ],
+  "counter_evidence": [
+    "H1 12:00 and M15 12:00 closed UP (4281.34 -> 4284.45 / 4283.48) with lower wicks - the immediate momentum into 12:00 was positive, not negative.",
+    "M5 11:45-11:50 showed a strong up candle (range_percentile 0.855, body_ratio 0.89) from 4276.98 to 4281.84, evidence of active buying near 4277.",
+    "H4 12:00 low of 4271.19 held above the 09:00 low of 4261.11 - higher low at H4 level, which is constructive for bulls.",
+    "H4 00:00 candle closed up at 4314.06 (body 18.77) - the uptrend leg is recent and the 4300-4317 zone has been tested twice, so a third test could break through.",
+    "No volume/liquidity data (PRICE_ONLY): absence of confirmation data raises uncertainty in both directions."
+  ],
+  "trigger": "M5/M1 fail below 4283.7 and price closes below 4280; alternatively M15 close below 4278.5 to confirm rollover.",
+  "invalidation": "Sustained M15/H1 close above 4300.37 invalidates the bearish primary scenario.",
+  "change_my_mind": [
+    "M15 or H1 close above 4300.37 (prior rejection high) would flip the bias toward UP.",
+    "A sustained break below 4261.11 with momentum would confirm DOWN with higher confidence.",
+    "M5 range_percentile rising above ~0.7 with an up close and a higher high above 4283.7 would flip toward the upside scenario.",
+    "Visible volume/liquidity data showing strong bid absorption near 4271-4278 would shift weight to the upside scenario."
+  ],
+  "abstain": false,
+  "abstain_reason": "",
+  "reasoning_trace": [
+    "Read M1/M5/M15/H1/H4 last-N sequences only from the provided PIT context (PRICE_ONLY, Layer 1 geometry only).",
+    "Identified dominant impulse: H1 09:00 bearish candle 4280.75->4262.24 (body_ratio 0.94), preceded by H4 rejection at 4317.67.",
+    "Identified recovery leg: 4261.11 -> 4284.45 into 12:00 with lower-wick support near 4278-4280.",
+    "Noted H4 12:00 rejection at 4300.37 (upper wick 19.03) as the key cap on the retracement.",
+    "Observed volatility compression (falling ATR, M1 range_percentile 0.16) and a down M5 close into 12:00.",
+    "Weighed counter-evidence (positive M15/H1 12:00 closes, higher H4 low, strong 11:50 up candle) and reduced confidence to 0.52.",
+    "Emitted DOWN bias with SHORT_TERM horizon, explicit triggers, invalidation at 4300.37, and a 3-scenario structure."
+  ],
+  "questions": {
+    "A": {
+      "question": "What is happening?",
+      "answer": "Gold (XAUUSD) is in a recovery after an impulsive drop: from 4293.30 (07:00) it fell to 4261.11 (09:00) and has since bounced to 4284.45 (H1 12:00 close). The last M5 (11:55-12:00) turned down to 4280.28 and the current M1 is a small down candle, while the H4 shows a rejection from 4300.37 (upper wick 19.03). Activity is compressing: M1 range_percentile 0.16 and ATRs are falling across timeframes. The market is consolidating just below the 4283.7-4286.5 zone after the bounce, with bearish H4 structure overhead."
+    },
+    "B": {
+      "question": "What is the dominant structure?",
+      "answer": "Corrective retracement within a bearish impulse structure. The H1 sequence shows a strong down impulse (4293.30 -> 4261.11, 09:00 candle body_ratio 0.94) followed by a two-hour up retracement (to 4284.45). The H4 series displays declining highs (4317.67 -> 4300.37) and the 12:00 H4 candle closed down with a large upper wick, i.e., selling into rallies. This is best read as a lower-highs bearish structure with the bounce being a retracement, not a reversal, until 4300+ is reclaimed."
+    },
+    "C": {
+      "question": "What pressures are building?",
+      "answer": "Directional pressure: down - the H4 rejected 4300.37 and the 11:55-12:00 M5 closed down; the recovery appears to be stalling. Volatility pressure: contraction - M1 range_percentile 0.16, M5 0.135, H1 ATR down from 17.06 to 15.26; compressed vol often precedes an expansion, direction unknown. Liquidity-proxy pressure: no volume data (PRICE_ONLY); only geometry suggests shallow bid support around 4278-4280 (lower wicks) and overhead supply at 4283.7-4286.5 / 4300.4."
+    },
+    "D": {
+      "question": "What mechanisms could explain it?",
+      "answer": "1) Mean-reversion bounce inside a downtrend - supported: 4261.11 low defended, recovery into 4284.45, lower wicks on M15/H1. 2) Bearish continuation after retracement - supported: H4 upper-wick rejection at 4300.37, down M5 close into 12:00, no higher high yet. 3) Volatility squeeze before breakout - partially supported by falling ATR and low range_percentiles, but breakout direction is unknowable from geometry alone. 4) Trend resumption up - weakly supported by positive M15/H1 closes and a higher H4 low (4271.19 > 4261.11), but contradicted by the H4 rejection."
+    },
+    "E": {
+      "question": "What is the strongest evidence?",
+      "answer": "1) H4 12:00: upper wick 19.03 vs body 4.43 (body_ratio 0.15), rejection at 4300.37, close 4276.91. 2) H4 declining highs 4317.67 -> 4300.37 (14-Sep 20:00 and 15-Sep 12:00 rejections). 3) H1 09:00 near-full-body bearish candle (body_ratio 0.94) driving 4261.11. 4) The down M5 close into 12:00 (4281.31 -> 4280.28) right as the bounce reaches resistance. 5) Volatility compression (M1 range_percentile 0.16) consistent with a pause before continuation."
+    },
+    "F": {
+      "question": "What is the strongest counter-evidence?",
+      "answer": "1) The 12:00 H1 and M15 candles closed UP (4284.45 / 4283.48) with lower wicks - immediate momentum was positive, not negative. 2) The M5 11:45-11:50 candle was strongly bullish (range_percentile 0.855, body 4.86) showing real buying near 4277. 3) The H4 low at 4271.19 held above the 4261.11 low - a higher low at the H4 level, which is structurally bullish. 4) 4300-4317 has now been tested twice; repeated tests can eventually break. 5) This is PRICE_ONLY data: no volume, order flow, or fundamentals, so directional inference is weaker than it appears."
+    },
+    "G": {
+      "question": "What could happen next?",
+      "answer": "PRIMARY: the retracement stalls below 4283.7-4286.5 (no higher high), the down M5 close extends, and price rolls over to re-test 4261-4271, consistent with the H4 upper-wick rejection at 4300.37. Confidence 0.52, SHORT_TERM. Trigger: M5/M1 close back below 4280; confirmation: M15 close below 4278.5."
+    },
+    "H": {
+      "question": "What is the alternative?",
+      "answer": "ALTERNATIVE 1 (upside, 0.35): lower-wick support near 4278-4280 holds, a higher high above 4283.7 prints, and the squeeze resolves upward toward 4300-4317. ALTERNATIVE 2 (range, 0.13): neither 4271 nor 4287 breaks and price chops between them with continued volatility compression."
+    },
+    "I": {
+      "question": "What would invalidate the forecast?",
+      "answer": "A sustained M15/H1 close above 4300.37 (the H4 rejection high) invalidates the bearish-continuation forecast. Additionally, a failure to break below 4280 on M5/M15 within the near term would weaken the immediate rollover call."
+    },
+    "J": {
+      "question": "What would change your mind?",
+      "answer": "1) M15 or H1 close above 4300.37 -> flip to UP. 2) A confirmed break below 4261.11 with expansion -> raise DOWN confidence. 3) A high-range (range_percentile > 0.7) up close on M5 with a higher high above 4283.7 -> shift to the upside scenario. 4) Any volume/liquidity data showing strong bid absorption at 4271-4278 -> shift weight to the upside scenario."
+    }
+  }
+}

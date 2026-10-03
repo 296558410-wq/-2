@@ -1,0 +1,88 @@
+{
+ "schema": "hermes_decision_v1",
+ "utc_ts": "2026-09-18T19:02:00Z",
+ "cycle": "2026-09-18T19:02Z",
+ "decision_id": "DEC-2026-09-18T19:02Z",
+ "symbol": "XAUUSD",
+ "decision": "LONG",
+ "plan_id": "TP-20260918T1902Z",
+ "confidence": 0.44,
+ "bias": "LONG-lean 0.53. Slot FREE (prev POS-20260918T1747Z LONG hit broker SL 4384.39 @18:49Z, -5.74 USD). Live quote mid 4380.03 (bid 4379.95/ask 4380.11, spread 0.16usd=0.37bps), tick 182/min, abnormality z 1.34 vs base 10.18 (mildly elevated). Price has eased from the 4390.22 (18:17Z) / 4382.56 (18:47Z) drift down INTO the with-trend retest band [4376.5,4381.0]; a pre-existing pending plan (TP-20260918T1847Z LONG zone[4377.5,4382.0]) is mid-trigger. H4/H1/M15 above short MAs = up; D1 below MA20 4431.29 caps conviction.",
+ "mtf_agreement": "long-lean (~3/4). Live-frame (quote_latest) vs pkg MTF bar feed (offset/stale ~4355 frame, DO NOT use for levels): D1 last_close 4341.735 < MA20 4431.29 (RSI 42.3, mixed, pos 45.7) = DRAG. H4 4368.835 > MA20 4324.00 > MA50 4343.84 < MA200 4401.23 (RSI 57.2, range, exp_cont 1.16) = UP. H1 4353.305 < MA20 4364.25 > MA50 4338.42 > MA200 4349.44 (RSI 52.8, range, last_vs_5ago down) = soft/mixed. M15 bar 4355.095 < MA20 4364.15 < MA50 4372.91 > MA200 4338.62 (RSI 38.5, exp_cont expanding 1.40) = stale/capped. Net: continuation-higher is the path of least resistance on M15/H1/H4; D1 below its MA20 + the 4399.70 day-high cap hold conviction at 0.44.",
+ "state_summary": "Gate 19:02Z: armed=true open=true reason=open (exit 0; UTC Fri inside Sun20:00Z->Fri21:00Z armed window; cash close ~21:00Z -> ~1h56m left). pkg 2026-09-18T19:02Z: live_days 10, live_ticks 2,027,288, gaps []. BOOK: FLAT (POS-20260918T1747Z closed broker_sl 4384.39 @18:49Z, -5.74usd) -> single-position slot FREE. ACTIVE PLAN: exactly 1 = TP-20260918T1847Z LONG zone_touch[4377.5,4382.0] SL 4373.5 T 4392.8/4399.7 qty0.01 (registered 18:49Z; live mid 4380.03 sits INSIDE -> will auto-fill this cycle). Live quote mid 4380.03, spread 0.37bps, tick 182/min, abnormal z1.34=mildly elevated. Level map (live frame): upside 4389.29 -> 4392.85 -> 4394.33 -> 4397.07 -> 4399.70 (day high = TP2 cap) -> 4408.08 (H4 MA200); downside 4381.52 (higher low) -> 4377.15 (M15 MA50 live) -> 4374.43 (swing low) -> 4373.5 (prior hard SL) -> 4370.69 (H1 MA20 live). Caveats: candle_latest stale (2026-09-07) ignored; tick parquet feed ~4355 frame disagrees with broker frame (~4380, confirmed by broker_sl print 4384.39) -> all levels anchored to live quote.",
+ "m15_change": "vs 18:47Z (live ~4382.56): -2.53pt EASE into the retest band [4376.5,4381.0]; vs 18:17Z (~4390.22): -10.2pt give-back. The +55pt thrust that printed 4397.07 stalled under the 4399.70 day high, then traded a lower staircase 4394.33 -> 4392.85 -> 4383.02 -> 4381.52 -> 4380.03. Live 4380.03 now sits between the 4381.52 higher low and 4377.15 (M15 MA50 live). Structure above 4374.43 (swing low) is still intact = the with-trend higher-low base has NOT broken; the prior held long died on the 4384.5 hard stop, not on structure. Tick volume mildly elevated (z 1.34) on the down-ease = two-way, not capitulation.",
+ "opportunity": "FRESH OPEN AVAILABLE (slot FREE). Setup = with-trend dip-buy / support-retest: live 4380.03 has retraced into the [4376.5,4381.0] confluence (4381.52 higher low + 4377.15 M15 MA50 live) inside an H4/H1 uptrend. Register LONG {zone_touch[4376.5,4381.0]} (live is already IN the band -> fills ~immediately), SL 4373.2 under the 4374.43 swing low, targets 4392.8 x0.50 / 4399.70 x0.50, qty 0.01. Note: pre-existing TP-20260918T1847Z implements the SAME idea on [4377.5,4382.0]; whichever triggers first opens the single position (no stacking beyond one fill).",
+ "opportunity_mechanism": "Day flushed to 4342.62 (H4 MA50 4343.00 tag) and HELD -> V-reclaim of the 4348-4358 shelf -> rotation -> +55pt thrust to 4397.07 reclaiming M15 MA50 plus M15/H1 MA200 -> stall under the 4399.70 day high -> two-step ease 4390 -> 4383 -> 4380 back into the 4381.52 higher-low / 4377.15 confluence. H4/H1 remain up, so path of least resistance is higher; the dip-buy rides the continuation with the stop under 4374.43. Thesis invalidation = decisive break/hold below 4373.2, re-opening 4370.69 (H1 MA20) then 4364 (deeper).",
+ "answers_14": {
+  "1_market_state": "Gate 19:02Z armed=true open=true reason=open (exit 0; UTC Fri inside armed window; cash close ~21:00Z, ~1h56m left). pkg 19:02Z: live_days 10, live_ticks 2,027,288, gaps []. BOOK FLAT (1747Z closed broker_sl 4384.39, -5.74usd) so slot FREE. 1 active plan TP-20260918T1847Z (LONG zone[4377.5,4382.0], SL 4373.5) mid-trigger. Live quote mid 4380.03, spread 0.37bps, tick 182/min, z 1.34 = mildly elevated. Regime RANGE with up-shifting short-term structure: D1 4341.735 < MA20 4431.29 (RSI 42.3, mixed, pos 45.7); H4 4368.835 > MA20 4324.00 > MA50 4343.84 < MA200 4401.23 (RSI 57.2); H1 4353.305 < MA20 4364.25 > MA50 4338.42 > MA200 4349.44 (RSI 52.8); M15 bar 4355.095 < MA20 4364.15 < MA50 4372.91 > MA200 4338.62 (RSI 38.5). Caveat: candle_latest stale (2026-09-07); tick parquet ~4355 vs broker frame ~4380 -> levels anchored to live quote.",
+  "2_consistency": "long-lean (~3/4) but capped. H4 UP (above MA20/MA50), H1 soft-up (above MA200/MA50, below MA20), M15 stale/capped, D1 below MA20 4431.29 = the drag. For a LONG the operative support floor is the 4374.43 swing low / 4377.15 live M15 MA50; structure above it is intact. Conviction 0.44 (single 0.01 lot, no averaging, stop under structure).",
+  "3_m15_change": "vs 18:47Z (live 4382.56): -2.53pt ease INTO the [4376.5,4381.0] band. vs 18:17Z (4390.22): -10.2pt give-back after the 4397.07 stall under the 4399.70 day high. Live 4380.03 sits between the 4381.52 higher low and 4377.15 (M15 MA50 live); 4374.43 swing low still holds -> higher-low base intact. Tick volume mildly elevated (z1.34) = two-way, not capitulation.",
+  "4_opportunity": "FRESH OPEN (slot FREE). With-trend dip-buy: live 4380.03 retraced into the [4376.5,4381.0] confluence (4381.52 higher low + 4377.15 live M15 MA50) inside an H4/H1 uptrend. Register LONG {zone_touch[4376.5,4381.0]}, SL 4373.2 (under 4374.43 swing low), T 4392.8 x0.50 / 4399.70 x0.50, qty 0.01. Same idea as the pending TP-20260918T1847Z on [4377.5,4382.0] -> one fill only.",
+  "5_mechanism": "4342.62 flush held (H4 MA50 4343.00 tag) -> V-reclaim 4348-4358 -> rotation -> +55pt thrust to 4397.07 (reclaimed M15 MA50 + M15/H1 MA200) -> stall under 4399.70 day high -> two-step ease 4390->4383->4380 into the 4381.52/4377.15 confluence. H4/H1 up = continuation stays higher; invalidation = break/hold < 4373.2 opening 4370.69 (H1 MA20) then 4364.",
+  "6_trigger_condition": "LONG trigger = {zone_touch[4376.5,4381.0]} checked on live mid (current mid 4380.03 is ALREADY INSIDE -> fills ~immediately at ask ~4380.1). Stop attach 4373.2, targets 4392.8/4399.70. No close-wait required (intraday touch auto-fills).",
+  "7_invalidation": "Plan invalidation = {price_cross_down 4373.2} (decisive break of the 4374.43 swing low). Thesis death = hold below 4373.2, re-opening 4370.69 (H1 MA20) -> 4364; then next cycle rebuilds a breakdown short.",
+  "8_expected_return_R": "LONG entry ~4380.0 (live mid; zone [4376.5,4381.0]), SL 4373.2 -> risk ~6.8pt; blended target 4396.25 (4392.8 x0.50 / 4399.70 x0.50) -> reward ~16.2pt; R = 16.2/6.8 = 2.39R.",
+  "9_expected_loss_R": "1R ~6.8pt = 6.8 USD on 0.01 lot XAUUSD (1 lot = 100 oz) ~0.34% of the ~1990 USD demo balance. Holds under the hard SL 4373.2, no averaging, one position at a time.",
+  "10_cost_value": "live spread 0.37bps (~0.16pt @4380.0) + slippage 0.30bps (~0.13pt) = 0.67bps roundtrip ~0.29pt ~0.043R on the 6.8pt 1R.",
+  "11_net_EV_formula": "EV = p*R - (1-p)*1.0 - cost = 0.44*2.39 - 0.56*1.0 - 0.043 = 1.052 - 0.560 - 0.043 = +0.449R ~ +0.45R (positive -> LONG). WAIT alternative EV = 0.",
+  "12_recurrence": "With-trend dip-buy / support-retest family (20260918T0347Z/1302Z/1417Z/163513/164838/170346/171816/173344/1747Z/1847Z continuations). Mechanically identical to the pending 1847Z plan; single 0.01 lot; never averaging; one position at a time.",
+  "13_decision": "LONG (fresh open, slot FREE). Bias LONG-lean 0.53. Register TP-20260918T1902Z LONG zone_touch[4376.5,4381.0] SL 4373.2 T 4392.8/4399.70 qty 0.01; live 4380.03 in-band -> auto-fill. Engine also still carries TP-20260918T1847Z (same idea); first to trigger opens the single position, the other cancels position_busy (no stacking).",
+  "14_reason": "空仓+价格回踩至4381.52更高低点/4377.15(实时M15 MA50)汇合带[4376.5,4381.0](现价4380.03已在带内), H4/H1偏多 -> 顺势回踩做多. SL 4373.2落于4374.43摆动低点下方, 目标4392.8/4399.70, R~2.39, p0.44, EV+0.45R>0. D1低于MA20 4431.3+盘口355帧错位为拖累 -> 0.44信心, 0.01手不摊平."
+ },
+ "plan": {
+  "direction": "LONG",
+  "entry_zone": {
+   "low": 4376.5,
+   "high": 4381.0
+  },
+  "trigger_condition": {
+   "zone_touch": [
+    4376.5,
+    4381.0
+   ]
+  },
+  "invalidation_condition": {
+   "price_cross_down": 4373.2
+  },
+  "stop_logic": {
+   "type": "structure",
+   "level_price": 4373.2
+  },
+  "target_logic": {
+   "levels": [
+    {
+     "price": 4392.8,
+     "frac": 0.5
+    },
+    {
+     "price": 4399.7,
+     "frac": 0.5
+    }
+   ]
+  },
+  "expected_R": 2.39,
+  "expected_win_probability": 0.44,
+  "probability_source": "with-trend dip-buy / support-retest family on the 10 live-days sample; realised base rate ~0.42-0.48; held at 0.44 (H4/H1 up support continuation, but D1 below MA20 4431.29 + 4399.70 day-high rejection cap it)",
+  "estimated_cost": {
+   "spread_bps": 0.365,
+   "slippage_bps": 0.3,
+   "roundtrip_pt": 0.29,
+   "note": "0.665bps roundtrip ~0.29pt ~0.043R on the 6.8pt 1R"
+  },
+  "spread_bps": 0.365,
+  "slippage_bps": 0.3,
+  "expected_net_EV": {
+   "value": 0.449,
+   "units": "R",
+   "note": "0.44*2.39 - 0.56*1.0 - 0.043 = +0.449R"
+  },
+  "maximum_holding_time": "M15*6",
+  "qty_lots": 0.01,
+  "plan_id": "TP-20260918T1902Z"
+ },
+ "gap_to_tradable": "NOTHING missing on price: slot FREE and live mid 4380.03 already sits INSIDE the entry band [4376.5,4381.0] -> {zone_touch} fires on this cycle's engine run (fills at ask ~4380.1). Only caveat: the pre-existing pending TP-20260918T1847Z (same-thesis zone [4377.5,4382.0]) will trigger first in the same run and take the single slot, in which case TP-20260918T1902Z cancels position_busy (by design, one position at a time). If price instead breaks/holds < 4373.2 the thesis dies -> next cycle rebuilds a breakdown short toward 4370.69/4364.",
+ "cost_note": "spread 0.37bps (0.16pt @4380.0) + slippage 0.30bps (0.13pt) = 0.67bps roundtrip (~0.29pt).",
+ "ev_note": "EV = 0.44*2.39 - 0.56*1.0 - 0.043 = +0.449R (positive -> LONG; WAIT = 0).",
+ "model": "deepseek/deepseek-v4-flash",
+ "prompt_version": "hermes-trader-m15-cycle/2026-09-12"
+}

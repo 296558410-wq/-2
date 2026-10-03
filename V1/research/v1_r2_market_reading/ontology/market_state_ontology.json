@@ -1,0 +1,30 @@
+{
+ "layer": "L4_MARKET_STATE",
+ "version": "v1r2-mr-ontology-r1",
+ "STATE_VECTOR": [
+  "REGIME",
+  "TREND",
+  "MOMENTUM",
+  "PRICE_STRUCTURE",
+  "VOLATILITY",
+  "CANDLE_STRUCTURE",
+  "MARKET_BEHAVIOR",
+  "MECHANISM",
+  "CONFIDENCE"
+ ],
+ "single_label_forbidden": true,
+ "unknown_separation": [
+  "INSUFFICIENT_DATA",
+  "CONFLICTING_EVIDENCE",
+  "AMBIGUOUS_STATE",
+  "UNOBSERVABLE_PREREQUISITE",
+  "NO_DEFINED_STATE",
+  "LOW_CONFIDENCE"
+ ],
+ "unknown_black_hole_forbidden": true,
+ "transition": {
+  "model": "CURRENT_STATE -> TRANSITION -> NEXT_STATE",
+  "label_only_on_future_state": true,
+  "future_returns_forbidden": true
+ }
+}

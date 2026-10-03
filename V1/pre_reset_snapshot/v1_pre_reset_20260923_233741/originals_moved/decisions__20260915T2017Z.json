@@ -1,0 +1,87 @@
+{
+ "cycle": "2026-09-15T20:17Z",
+ "utc_ts": "2026-09-15T20:17:30Z",
+ "decision_id": "DEC-2026-09-15T20:17Z",
+ "decision": "SHORT",
+ "confidence": 0.44,
+ "bias": "SHORT-lean 0.56",
+ "opportunity": "with-trend fade of the counter-trend bounce into the 4314.1-4317.4 supply confluence (M15 MA200 4314.29 / M15 high60 4317.38 / H1 MA50 4314.10) with the D1/H4 bearish ladder intact; slot is FLAT (POS-20260915T1317Z stopped 18:18Z @4302.14, -8.42USD = -1.01R) so a plan is registrable; live mid 4295.95 (20:17Z) sits ~13.1pt BELOW the zone low 4309, i.e. a limit-into-resistance: entry zone [4309,4318] fills on a +13 to +22pt continuation of the bounce into the cluster",
+ "opportunity_mechanism": "a counter-trend bounce off the 4279.49 session low peaked ~4308.81 at 19:02Z, has folded back and is coiling 4293-4299 just under the 4314.1-4317.4 3-level HTF MA/supply confluence (M15 MA200 + M15 range high + H1 MA50) inside an intact D1/H4 bearish ladder (D1 last_close 4297.93 << MA20 4455.32, RSI 28.44 oversold; H4 4295.505 < MA20 4322.25, pos_in_range 16.3, low60 4253.62); fading the rejection of that cluster is the with-trend location; targets the broken band 4291.7 (H1 MA20) -> 4285.0 (M15 MA20/MA50 shelf) then the repeatedly-held multi-TF floor 4253.62 (H4/H1 low60)",
+ "mtf_agreement": "D1 bearish/oversold (price 4297.93 << MA20 4455.32, RSI 28.44), H4 range-bearish (price 4295.505 < MA20 4322.25, pos 16.3, low60 4253.62), H1 range (price 4295.505 > MA20 4290.74, < MA50 4314.10), M15 range mid-upper (price 4295.505 above MA20 4287.10/MA50 4285.55, MA200 4314.29 = resistance; exp_cont expanding 1.26) - the HTF ladder is bearish (price below MA20 on D1/H4) while the intraday impulse is UP off the 4279.49 low = CONFLICTED; the with-trend expression is to fade the bounce at resistance, so agreement is moderate (SHORT-lean 0.56)",
+ "answers_14": {
+  "1_market_state": "D1 trend-down/oversold (last_close 4297.93, MA20 4455.32, RSI 28.44, ATR% 2.50, pos_in_range 39.0); H4 range lower-third (last_close 4295.505, MA20 4322.25, MA50 4380.51, pos 16.3, low60 4253.62); H1 range (last_close 4295.505, MA20 4290.74, MA50 4314.10, MA200 4380.85, pos 28.1); M15 range mid-upper (last_close 4295.505, MA20 4287.10/MA50 4285.55, MA200 4314.29, pos 60.8, exp_cont expanding 1.26); live mid 4295.95, spread 0.54bps, tick 174/min, abnormal z1.1 vs base 10.09 = normal",
+  "2_mtf_consistency": "HTF ladder bearish (D1/H4 price below MA20; H4 lower-third pos 16.3) vs intraday bounce UP off the 4279.49 low (H1/M15 last_vs_5ago up) = CONFLICTED; with-trend expression is to SELL the bounce into HTF supply, not to chase it",
+  "3_m15_change": "M15 closed 4295.505 (+17.6bps recent move); the bounce that peaked 4308.81 at 19:02Z has folded back and coiled 4293-4299 for ~75min under the 4311-4318 cap; pos_in_range 60.8 upper-half, exp_cont expanding 1.26 = the up-path into the cap stays technically open; no structural break yet",
+  "4_opportunity": "fade the 3-level HTF supply confluence 4314.1-4317.4 (M15 MA200 4314.29 + M15 range-high 4317.38 + H1 MA50 4314.10) with an intact D1/H4 bearish ladder behind it; reward path to H1 MA20 4291.7 -> M15 MA shelf 4285.0 -> multi-TF floor 4253.62",
+  "5_mechanism": "counter-trend bounce exhaustion at stacked HTF resistance: D1 oversold but in downtrend, H4 stuck in lower-third range; liquidity sits above 4317.38 (range-high) and below 4279.49/4253.62; selling the rally into the MA cluster with a stop above H4 MA20 4327.22 is the with-trend, location-based entry; live mid 4295.95 is ~13pt below the zone low 4309 so this fills only on a genuine +13..+22pt push into the cluster (zone_touch auto-fills, no next-close confirmation)",
+  "6_trigger_condition": "zone_touch [4309, 4318] (live mid 4295.95 -> needs a +13 to +22pt continuation of the bounce into the cluster; the engine auto-fills at first touch, no next-close confirmation required)",
+  "7_invalidation": "price_cross_up 4327.5 (a close/hold above H4 MA20 4327.22 invalidates the fade: the HTF resistance is being reclaimed -> stand down)",
+  "8_expected_reward_R": "2.25R (blended: T1 4291.7 = 1.56R frac 0.5 / T2 4285.0 = 2.04R frac 0.3 / T3 4253.62 = 4.28R frac 0.2, entry ref 4313.5, 1R=14.0pt)",
+  "9_expected_loss_R": "1.00R (stop 4327.5, entry ref 4313.5 -> 14.0pt; stop above H4 MA20 4327.22 so a clean reclaim is a real invalidation)",
+  "10_cost": "spread 0.54bps + slippage 0.02bps = ~0.56bps round-trip (= 0.56/32.5bps-per-R = ~0.017R); negligible vs 2.25R reward",
+  "11_net_EV_formula": "EV = p*Rw - (1-p)*1 - cost = 0.44*2.25 - 0.56*1.00 - 0.017 = 0.990 - 0.560 - 0.017 = +0.41R (positive)",
+  "12_recurrence": "setup recurs while price holds below the 4314-4318 cap; note the engine stale-guard cancels a SHORT plan once mid < zone_lo-2*band (=4309-18=4291) -> this cycle the older narrow [4311,4318] cohort (threshold 4297) is swept at mid 4295.95 while the wide zone [4309,4318] (threshold 4291) stays live; each cycle that price stays above 4291 keeps the plan valid, below that the engine cancels it and awaits a fresh tape",
+  "13_decision": "SHORT (limit zone_touch [4309,4318])",
+  "14_reason": "D1/H4空头阶梯完整(价<MA20),M15反弹折返于4314-4318三级供给(MA200/前高/H1 MA50)下方;顺势空该反弹,SL4327.5(H4 MA20上方),T4291.7/4285/4253.62,1R=14pt,blended2.25R,p0.44,EV+0.41R。槽位空仓,qty0.01,触价自动成交。"
+ },
+ "plan": {
+  "direction": "SHORT",
+  "opportunity_type": "supply_cluster_fade_counter_trend_bounce",
+  "entry_style": "limit_zone_touch",
+  "entry_zone": {
+   "low": 4309.0,
+   "high": 4318.0
+  },
+  "trigger_condition": {
+   "zone_touch": [
+    4309.0,
+    4318.0
+   ]
+  },
+  "invalidation_condition": {
+   "price_cross_up": 4327.5
+  },
+  "stop_logic": {
+   "type": "structure",
+   "level_price": 4327.5,
+   "reason": "stop above the 4314.1-4317.4 supply cluster (M15 MA200 4314.29 / M15 high60 4317.38 / H1 MA50 4314.10) AND above H4 MA20 4327.22; a hold above reclaims HTF resistance and kills the fade"
+  },
+  "target_logic": {
+   "levels": [
+    {
+     "price": 4291.7,
+     "frac": 0.5,
+     "reason": "H1 MA20 (broken band retest)"
+    },
+    {
+     "price": 4285.0,
+     "frac": 0.3,
+     "reason": "M15 MA20 4287.10 / MA50 4285.55 shelf"
+    },
+    {
+     "price": 4253.62,
+     "frac": 0.2,
+     "reason": "H4/H1 low60 multi-TF floor"
+    }
+   ]
+  },
+  "expected_R": 2.25,
+  "expected_win_probability": 0.44,
+  "probability_source": "heuristic: with-trend fade of a counter-trend bounce into stacked HTF resistance, but conflicted by D1 RSI 28.44 oversold + live intraday up-impulse -> below-coinflip 0.44",
+  "estimated_cost": {
+   "spread_bps": 0.54,
+   "slippage_bps": 0.02,
+   "total_bps": 0.56
+  },
+  "spread_bps": 0.54,
+  "slippage_bps": 0.02,
+  "expected_net_EV": {
+   "value": 0.41,
+   "units": "R",
+   "note": "0.44*2.25 - 0.56*1 - 0.017 = +0.41R (ref fill 4313.5, SL 4327.5 = 14.0pt = 1R); positive despite conflicted MTF"
+  },
+  "maximum_holding_time": "M15*8",
+  "qty_lots": 0.01
+ },
+ "model": "deepseek/deepseek-v4-flash"
+}

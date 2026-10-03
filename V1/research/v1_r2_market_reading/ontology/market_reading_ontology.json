@@ -1,0 +1,69 @@
+{
+ "layer": "L1..L4",
+ "version": "v1r2-mr-ontology-r1",
+ "task": "V1_R2_MARKET_READING_ARCHITECTURE_R1",
+ "pipeline": [
+  "MARKET_PERCEPTION",
+  "MARKET_READING",
+  "MARKET_BEHAVIOR",
+  "MARKET_MECHANISM",
+  "MARKET_STATE",
+  "MARKET_TRANSITION",
+  "MARKET_FORECAST",
+  "STRATEGY_SELECTION",
+  "TRADING"
+ ],
+ "frozen_principles": [
+  "market decides the trading method, never the reverse",
+  "a candle is one language of the market, not a trade signal",
+  "structure/momentum/volatility/absorption are one vocabulary, not isolated features",
+  "a forecast must carry evidence, counter-evidence and invalidation",
+  "trading is the last layer and must not pollute market reading"
+ ],
+ "layers": {
+  "L1_MARKET_PERCEPTION": "objective observations only; no interpretation",
+  "L2_MARKET_READING": "interpretation of what the price behaviour is doing",
+  "L3_MARKET_MECHANISM": "competing mechanism hypotheses with support/counter/invalidation",
+  "L4_MARKET_STATE": "state vector + transitions + forecast",
+  "L5_STRATEGY_ADAPTER": "INTERFACE ONLY (define, do not implement trading)"
+ },
+ "five_questions_per_decision": [
+  "WHAT_HAPPENED",
+  "WHERE",
+  "WHY",
+  "WHAT_CONTRADICTS_IT",
+  "WHAT_NEXT"
+ ],
+ "multi_timeframe": {
+  "timeframes": [
+   "H4",
+   "H1",
+   "M15",
+   "M5"
+  ],
+  "no_single_direction_compression": true,
+  "must_express": "higher timeframe context + lower timeframe state conflict"
+ },
+ "theory_registry_required_fields": [
+  "theory_id",
+  "name",
+  "definition",
+  "formalization",
+  "required_context",
+  "expected_behavior",
+  "contradicting_behavior",
+  "data_requirements",
+  "evidence_level",
+  "validation_status"
+ ],
+ "data_boundary": {
+  "DOM": "UNAVAILABLE",
+  "TRADE_DIRECTION": "UNAVAILABLE",
+  "SPREAD": "DIRECT",
+  "TICK_VOLUME": "DIRECT_BUT_ALL_ZERO_NOT_REAL_VOLUME",
+  "ABSORPTION": "PROXY",
+  "LIQUIDITY": "PROXY",
+  "NO_DATA_PURCHASE": true
+ },
+ "time_rule": "any candle/state/mechanism/forecast must satisfy timestamp <= decision_time (task §46)"
+}

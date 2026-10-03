@@ -1,0 +1,36 @@
+{
+ "audit_id": "POST_20260810",
+ "timestamp": "2026-09-27T22:45:00+08:00",
+ "correct_calls": [
+  "direction_bias NO_DIRECTIONAL_EDGE was the honest output given L6 agreement=CONFLICT (M1/M5/M15 negative trend_20, only H4 positive); refusing to assert a single merged direction was correct.",
+  "Including the extended-compression scenario (confidence 0.18) was correct: actual_next_state stayed COMPRESSION with actual_transition 0, exactly the 'coiling continues without resolution' branch.",
+  "Identifying the 4331.265 22-touch swing-low as the decision level was correct in substance - the outcome (DOWN within COMPRESSION) confirms the level battle was the relevant focus.",
+  "Stating invalidation conditions checkable against subsequent bars was correct in form; the outcome granularity does not contradict any of them."
+ ],
+ "wrong_calls": [
+  "Primary scenario (confidence 0.44, the highest): compression resolves UPWARD reclaiming 4340-4350 - WRONG; actual_direction is DOWN.",
+  "Expected state transition COMPRESSION -> EXPANSION - WRONG; actual_transition 0, state persisted as COMPRESSION.",
+  "Expected imminent expansion (trigger: M5/M15 high-percentile bar closing outside the range) - did not occur; the compression did not resolve at this horizon.",
+  "Confidence allocation was miscalibrated: the actual outcome (state persistence + DOWN drift) was covered by the LOWEST-confidence branch (0.18), while the 0.44 branch failed."
+ ],
+ "right_but_wrong_reason": [
+  "The downside alternative (0.38) leaned the correct DIRECTION (DOWN), but for the wrong STATE reason: it framed down-move as 'compression resolves downward with expansion toward 4316.305' (i.e., a transition out of COMPRESSION), whereas the actual outcome was DOWN movement WITHIN a persistent COMPRESSION state (transition 0) - direction right, mechanism/state wrong."
+ ],
+ "direction_ok_state_wrong": true,
+ "state_ok_direction_wrong": false,
+ "should_have_abstained": false,
+ "invalidation_occurred": false,
+ "prior_concerns_materialised": null,
+ "hindsight_detected": false,
+ "hindsight_evidence": [],
+ "outcome_alignment_verdict": "PARTIALLY_CORRECT",
+ "reasoning_trace": [
+  "Hermes-A's highest-confidence primary (upward resolution, 0.44) failed: actual_direction DOWN, no EXPANSION transition.",
+  "The actual outcome (next_state COMPRESSION, transition 0) matches the third scenario's state branch (extended compression, 0.18), and hermes_scenario_covered_actual=true confirms coverage - so the forecast was not outright INCORRECT, but the least-likely branch won.",
+  "direction_ok_state_wrong=true: the alternative scenario had the right directional lean (DOWN) but expected a resolution/expansion that never materialized; the market drifted down while staying COMPRESSION.",
+  "invalidation_occurred=false: no decisive M15/H1 close below 4331.265 with follow-through can be confirmed from the outcome fields, and the third scenario's invalidation (expansion bar outside 4331-4345) did not trigger since state stayed COMPRESSION; outcome granularity (state/transition/direction only) cannot prove a decisive break.",
+  "prior_concerns_materialised=null: no adversarial-auditor concerns were provided in this payload to test.",
+  "hindsight_detected=false: the 'lower wick buyers defending' narrative was used ex-ante from the PIT bars (H1/M15/H4 lower wicks were in the context) - it was a wrong read, not hindsight; no claim in the forecast requires knowledge of the present.",
+  "Verdict: PARTIALLY_CORRECT - honest NO_DIRECTIONAL_EDGE framing and the extended-compression branch covered the actual state persistence, but the top-confidence scenario and the expected state transition were wrong."
+ ]
+}

@@ -1,0 +1,58 @@
+{
+  "audit_id": "HB_BLIND_20260804",
+  "timestamp": "2026-08-04T12:00:00Z",
+  "current_state": "State REJECTION (dwell 7 bars) with event MOM_ACCELERATION; frozen C1 label ROTATION. Price in the 4052.7–4056.5 band sits INSIDE the heavily-touched swing-low 4056.825 (SWING_LOW_37456, age 24 bars, 70 touches/240, break_status INSIDE). M1 shows 7 consecutive down bars with expanding range; M5 current bar mildly positive; M15 contracting. Multi-timeframe agreement CONFLICT.",
+  "structure": "Price is pressing against a long-lived swing-low demand shelf at ~4056.8. Recent micro-structure: a sharp 5m momentum flush 4046.9→4060.5 (11:40–11:45) was REJECTED; price fell back to ~4052–4056 over ~11 minutes (M1 7 down bars, range expanding). Below, the next reference is the ~4043.3 H4 pivot zone; above, the rejection zone is ~4058–4060. Trend momentum is conflicting: H1 trend_20 strongly positive (+38.9) vs H4 trend_20 negative (−16.5); M15 slightly negative; M5/M1 slightly positive.",
+  "mechanism": "Supplied mechanism candidate: trend_continuation (price inside level, 8-bar displacement 5.93). My independent read: this is a downside momentum acceleration into a high-touch demand zone — a binary support test. In a ROTATION regime, mean-reversion (level holds → snap-back toward 4058–4064) is the base case; a decisive break flips it to continuation toward 4043–4045. Cross-market is mildly supportive but weak and low-grade: DXY drifting lower (−0.09 over 32 bars), VIX low (15.68), both PROXY; UST10Y proxy unavailable (UNKNOWN).",
+  "primary_scenario": {
+    "scenario": "Support-hold bounce/rotation: price stabilizes on the 4052–4057 swing-low shelf and rotates back up toward 4058–4064, reclaiming part of the rejected ~4060 zone; H1 up-momentum resumes and H4 weakness stalls.",
+    "confidence": 0.48,
+    "horizon": "SHORT_TERM",
+    "trigger": "Decisive M5 close back above ~4058 (reclaim of the rejection zone) with the M1 consecutive-down streak breaking and range contracting from expansion.",
+    "invalidation": "Clean M5 (and M15) close below ~4050 with range expansion — the swing-low shelf breaks decisively and the setup turns into downside continuation."
+  },
+  "alternative_scenario": {
+    "scenario": "Downside continuation: the 4052–4056 demand shelf fails; price breaks lower and targets the 4043–4045 H4 pivot zone, extending the negative H4 momentum (trend_20 −16.5).",
+    "confidence": 0.35,
+    "horizon": "SHORT_TERM",
+    "trigger": "M5 close below ~4050 on expanding range with resumption of the 7+ consecutive-down M1 streak and velocity/range confirming the break.",
+    "invalidation": "Immediate reclaim above ~4058 without a sustained close below 4050 — the breakdown fails and the level holds."
+  },
+  "expected_transition": "REJECTION → ROTATION (support holds, choppy base-building near 4052–4060) or REJECTION → ACCEPTANCE (downside acceptance if the shelf breaks). Historical analogs are mixed: A32323 and A34031 both resolve to EXPANSION within 8–16 steps, A36049 persists in REJECTION — mildly favors eventual expansion but is direction-neutral.",
+  "direction": "UP",
+  "horizon": "SHORT_TERM",
+  "confidence": 0.45,
+  "counter_evidence": [
+    "M1 downward acceleration (7 consecutive down bars, range expanding) argues for a breakdown rather than a bounce.",
+    "The supplied mechanism candidate is trend_continuation, which favors continuation through the level.",
+    "H4 trend_20 is negative (−16.5) and M15 trend_20 negative (−3.2); higher-timeframe momentum does not confirm a bounce.",
+    "Multi-timeframe agreement is CONFLICT; timeframes are never merged, so there is no single clear directional signal.",
+    "The H1/H4 'current' bars at 12:00 show closes (4074.8 / 4083.4) inconsistent with the 12:00 M1 close (4052.7) — likely bar-alignment/look-ahead in the snapshot; I excluded them from directional evidence, which removes the strongest bullish inputs.",
+    "70 touches on the swing low cuts both ways: a deeply-tested level can give way under sustained pressure.",
+    "Cross-market support is low-grade: DXY/VIX are PROXY with UNKNOWN instrument definitions, and the UST10Y proxy is UNKNOWN (unavailable)."
+  ],
+  "invalidation": "A clean, range-expanding M5 (and M15) close below ~4050 decisively breaks the swing-low shelf and invalidates the bounce/rotation view, flipping the read to downside continuation toward 4043–4045. A failure to reclaim ~4058 within a short window also materially weakens the rotation case.",
+  "data_quality_flags": [
+    "L1 M1/M5/M15 internally consistent (RAW_GEOMETRY + DERIVED) — used as primary evidence",
+    "H1/H4 current-bar closes appear forward-inconsistent with the 12:00Z snapshot (possible bar alignment/look-ahead) — quarantined, excluded from directional evidence",
+    "L2 swing level DERIVED (causal pivot swings), not DIRECT",
+    "L3 frozen behavior label OBSERVED; state_v2/event DERIVED",
+    "L4 mechanism DERIVED candidates only, not asserted as fact",
+    "L5 state history DERIVED (frozen C1 ontology + min-dwell lifecycle)",
+    "L6 multi-timeframe CONFLICT; timeframes never merged into one direction",
+    "L7 DXY/VIX PROXY (Yahoo, instrument definition UNKNOWN); UST10Y_TNX UNKNOWN (unavailable)",
+    "Absent series (GLD/GC/CFTC_COT/ETF_FLOWS/NEWS/MACRO) recorded absent, not fabricated",
+    "Historical analogs: state evolution only, no returns/PnL/labels"
+  ],
+  "reasoning_trace": [
+    "PIT snapshot 2026-08-04T12:00Z; internally consistent sub-hour closes M1 4052.7 / M5 4054.9 / M15 4056.5 place price in the 4052–4057 band.",
+    "Detected and quarantined an inconsistency: H1 (close 4074.8) and H4 (close 4083.4) 'current' bars imply forward data relative to 12:00Z; treated as non-causal and excluded from directional evidence.",
+    "Short-term structure: the 11:40–11:45 5m momentum flush to 4060.5 was rejected; M1 printed 7 consecutive down bars with expanding range into the swing-low zone.",
+    "Swing low 4056.8 (24-bar age, 70 touches/240, break_status INSIDE) is the key decision point — a high-touch demand shelf.",
+    "Regime is ROTATION with REJECTION state (dwell 7) and MOM_ACCELERATION event; in a rotation, mean-reversion at support is the base case.",
+    "Cross-market mildly supportive but low-grade: DXY drifting lower (−0.09/32), VIX low 15.68; both PROXY; UST10Y absent.",
+    "Historical analogs: 2/3 resolve to EXPANSION within 8–16 steps, 1/3 persists in REJECTION — mixed and direction-neutral.",
+    "Multi-timeframe CONFLICT (M1/M5 mildly up, M15 mildly down, H1 up, H4 down) → refused a high-conviction directional call.",
+    "Net: base case is a support-hold bounce (UP, SHORT_TERM) at low-moderate confidence ~0.45; the downside-continuation break is a live binary risk and is flagged as the alternative."
+  ]
+}

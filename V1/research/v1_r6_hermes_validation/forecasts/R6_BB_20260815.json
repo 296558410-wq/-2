@@ -1,0 +1,52 @@
+{
+  "audit_id": "BB_20260815",
+  "timestamp": "2026-08-15T12:00:00Z",
+  "current_state": "COMPRESSION (frozen label, dwell=3 bars) with ACCEPTANCE event at t. Price 4374.205 sits just above the heavily-touched swing-high 4373.145 (break_status BEYOND, 0.215 ATR beyond, 30 touches in 240 bars, reclaim NONE). Ranges contracting across M1/M15/H1/H4; M1 ATR ~0.70, H4 current bar a small doji (body 0.89, upper wick 5.64) after a violent V-recovery from 4310 to 4396.",
+  "structure": "Post-crash V-recovery: 4449 -> 4310.375 (Aug 13-14) then strong rebound to 4396.765, now pulling back into a tight coil at 4374, holding above the 4373.145 swing-high which is acting as support (retest of broken resistance). Overhead supply at ~4396-4397 (multiple H1 bars rejected with large upper wicks: 13.16, 12.33, 10.18, 3.97). H4 trend_50 strongly positive (+298.94) indicating a major uptrend context; but M1/M5/M15 trend_20 negative (-1.55 / -1.95 / -15.33) showing short-term drift down; H1 trend_20 +56.32. Multi-timeframe agreement = CONFLICT.",
+  "mechanism": "Breakout_pressure vs failed_breakout at 4373.145: close is beyond the level (supporting evidence for breakout_pressure; failed_breakout has no supporting evidence yet). Compression coil awaiting expansion; structurally a pullback-in-uptrend / bull-flag consolidation above former resistance. M5 current bar shows a long lower wick (1.09) with low 4373.115 defending the level, while the 21:58 M1 bar (range_percentile 0.955) tapped 4373.115 and snapped back - buyers present at the level.",
+  "primary_scenario": {
+    "scenario": "Compression resolves upward: price holds above 4373.145, ACCEPTANCE continues, and the coil breaks toward the 4396-4397 resistance zone, consistent with the H4 uptrend and the V-recovery momentum (bull-flag continuation).",
+    "confidence": 0.38,
+    "horizon": "SHORT_TERM",
+    "trigger": "Sustained acceptance above 4373.145 with M1/M5 momentum turning up and a close above the micro-high ~4375.5; expansion of range on M5-M15.",
+    "invalidation": "Hourly/M15 close back below 4373.145 before upside expansion begins."
+  },
+  "alternative_scenario": {
+    "scenario": "Failed breakout / rejection: sellers defend the 4396 upper supply and push price back below 4373.145, turning the broken swing-high into resistance again and driving price toward 4370 then the 4349-4350 zone, consistent with historical analog A31686 (COMPRESSION -> REJECTION at steps 12-16).",
+    "confidence": 0.32,
+    "horizon": "INTRADAY",
+    "trigger": "M15 close below 4373.145 (reclaim fails), or a fresh rejection off ~4375.5-4376 with increasing down-volume/range.",
+    "invalidation": "Price reclaims and holds above 4373.145 (acceptance re-established) or breaks above 4376.5."
+  },
+  "expected_transition": "COMPRESSION -> TREND (up) marginally favored over REJECTION given acceptance above the level and higher-TF uptrend, but 2 of 3 historical analogs (A19166, A25738) show compression persisting >=16 steps, so a multi-bar continuation of COMPRESSION is the modal near-term outcome. Direction of the eventual expansion is the key unknown.",
+  "direction": "NEUTRAL",
+  "horizon": "SHORT_TERM",
+  "confidence": 0.4,
+  "counter_evidence": [
+    "Multi-timeframe agreement = CONFLICT: M1/M5/M15 trend_20 negative while H1/H4 positive; no clean confluence.",
+    "Overhead supply at 4396-4397 with repeated large upper wicks caps upside (H1 bars 13:00-17:00).",
+    "Historical analogs: 2/3 stay in COMPRESSION through step 16; the one that transitions (A31686) goes to REJECTION, not TREND.",
+    "M1 sequence flags show consecutive_down 7 - near-term micro drift is down toward the level.",
+    "All cross-market series (DXY, VIX, UST10Y_PROXY_TNX) UNKNOWN/unavailable - no external confirmation of dollar or risk sentiment.",
+    "M15 trend_20 -15.33 is a meaningful short-term decline into the level; the level has been touched 30 times in 240 bars, so it is well-worn and prone to give way."
+  ],
+  "invalidation": "Overall read invalidated by an hourly close below 4373.145 (bullish-acceptance thesis dead; downside scenario active) or a strong close above 4396.5 (upside breakout confirmed). Until either occurs, COMPRESSION with no asserted direction.",
+  "data_quality_flags": [
+    "L1 RAW_GEOMETRY + DERIVED (kline geometry only)",
+    "L2 DERIVED (pivot swing levels, causal)",
+    "L3 DERIVED (frozen C1 labeler + min-dwell lifecycle)",
+    "L4 DERIVED (mechanism CANDIDATES, not asserted fact)",
+    "L5 DERIVED (state history, frozen label at t)",
+    "L6 DERIVED (MTF reported separately, agreement CONFLICT - never merged)",
+    "L7 CROSS_MARKET UNKNOWN (DXY/VIX/TNX all STALE_OR_NOT_COVERED; GLD/GC/CFTC/NEWS/MACRO absent)"
+  ],
+  "reasoning_trace": [
+    "State machine says COMPRESSION dwell 3 with ACCEPTANCE; by definition compression carries no established direction - I am not forced to be directional.",
+    "Price closed 0.215 ATR beyond the 4373.145 swing high (breakout_pressure evidence present; failed_breakout has zero supporting evidence at this instant).",
+    "Bigger context is a strong H4 uptrend (trend_50 +298.94) with a violent 4310->4396 V-recovery; the current 4374 level is a pullback consolidation above former resistance - structurally constructive.",
+    "However, M1/M5/M15 trend_20 are negative, M1 flags show 7 consecutive down bars, and 4396-4397 overhead rejected price twice with large upper wicks - short-term drift is down and upside is capped near-term.",
+    "Historical analogs say compression persists (2/3) and, when it breaks, leaned REJECTION (1/3) - a warning against strong upside conviction.",
+    "Cross-market is entirely absent, so I cannot confirm dollar/rates direction; this further lowers confidence.",
+    "Net: no established directional edge; mild upside structural tilt but insufficient evidence to assert UP. Declared NEUTRAL, SHORT_TERM, confidence 0.40."
+  ]
+}

@@ -1,0 +1,79 @@
+{
+ "schema": "v3_alpha_backtest/1",
+ "family": "B3",
+ "family_name": "short_term_momentum",
+ "features": [
+  "mom10_bp",
+  "mom50_bp"
+ ],
+ "cost_anchor_usd_per_rt": 0.4,
+ "note": "screen model = Ridge; extra models only for the best family per horizon",
+ "horizons": {
+  "1000": {
+   "Ridge": {
+    "val": {
+     "n_trades": 26,
+     "gross_edge_bp": -1.466291240596692,
+     "net_edge_bp": -2.3482217516638957,
+     "net_edge_usd": -1.0444230769230423,
+     "hit_rate": 0.38461538461538464,
+     "rank_ic": 0.13891465613759113,
+     "p_value": 0.15763124787538751
+    },
+    "test": {
+     "n_trades": 29,
+     "gross_edge_bp": -0.15259491276514905,
+     "net_edge_bp": -1.0696391777917482,
+     "net_edge_usd": -0.4641379310346451,
+     "hit_rate": 0.5517241379310345,
+     "rank_ic": 0.15902250745458296,
+     "p_value": 0.35242701365256984
+    }
+   }
+  },
+  "30000": {
+   "Ridge": {
+    "val": {
+     "n_trades": 436,
+     "gross_edge_bp": 0.7296683312587612,
+     "net_edge_bp": -0.15547693374013544,
+     "net_edge_usd": -0.06465596330276725,
+     "hit_rate": 0.5344036697247706,
+     "rank_ic": 0.056452860489730035,
+     "p_value": NaN
+    },
+    "test": {
+     "n_trades": 383,
+     "gross_edge_bp": 0.03415177539040557,
+     "net_edge_bp": -0.8878528105131355,
+     "net_edge_usd": -0.38326370757181855,
+     "hit_rate": 0.5117493472584856,
+     "rank_ic": 0.062346219529286,
+     "p_value": NaN
+    }
+   }
+  },
+  "300000": {
+   "Ridge": {
+    "val": {
+     "n_trades": 1321,
+     "gross_edge_bp": -3.2007910978353515,
+     "net_edge_bp": -4.084714870095729,
+     "net_edge_usd": -1.860469341408014,
+     "hit_rate": 0.4988644965934898,
+     "rank_ic": 0.018846303139003283,
+     "p_value": NaN
+    },
+    "test": {
+     "n_trades": 888,
+     "gross_edge_bp": -2.795950878354222,
+     "net_edge_bp": -3.7187884684805406,
+     "net_edge_usd": -1.6319144144144178,
+     "hit_rate": 0.48423423423423423,
+     "rank_ic": 0.019849485345688835,
+     "p_value": NaN
+    }
+   }
+  }
+ }
+}

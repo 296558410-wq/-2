@@ -1,0 +1,216 @@
+{
+ "schema": "hermes_decision_v1",
+ "decision_id": "DEC-2026-09-08T00:19Z",
+ "utc_ts": "2026-09-08T00:21:36+00:00",
+ "symbol": "XAUUSD",
+ "cycle": "2026-09-08T00:19Z",
+ "market_state": {
+  "d1": {
+   "tf": "D1",
+   "last_close": 4399.05,
+   "last_bar": "2026-09-04",
+   "ma20": 4464.43,
+   "price_vs_ma20": -146.4,
+   "rsi14": 49.14,
+   "structure": {
+    "hhish": 4,
+    "llish": 5,
+    "last_vs_5ago": "down"
+   },
+   "trend_range": {
+    "cat": "range",
+    "er": 0.017
+   },
+   "s_r": {
+    "high60": 4696.87,
+    "low60": 4042.58,
+    "pos_in_range": 54.5
+   },
+   "recent_move_bps": -125.0
+  },
+  "h4": {
+   "tf": "H4",
+   "last_close": 4414.385,
+   "last_bar": "2026-09-07 16:00",
+   "ma20": 4415.09,
+   "ma50": 4470.91,
+   "price_vs_ma20": -1.6,
+   "rsi14": 53.07,
+   "structure": {
+    "hhish": 5,
+    "llish": 4,
+    "last_vs_5ago": "up"
+   },
+   "trend_range": {
+    "cat": "range",
+    "er": 0.061
+   },
+   "s_r": {
+    "high60": 4696.87,
+    "low60": 4282.53,
+    "pos_in_range": 31.8
+   },
+   "recent_move_bps": 34.9
+  },
+  "h1": {
+   "tf": "H1",
+   "last_close": 4406.99,
+   "last_bar": "2026-09-07 20:00",
+   "ma20": 4406.28,
+   "ma50": 4441.79,
+   "ma200": 4480.93,
+   "price_vs_ma20": 1.6,
+   "rsi14": 51.37,
+   "structure": {
+    "hhish": 4,
+    "llish": 5,
+    "last_vs_5ago": "up"
+   },
+   "trend_range": {
+    "cat": "range",
+    "er": 0.027
+   },
+   "s_r": {
+    "high60": 4511.01,
+    "low60": 4371.78,
+    "pos_in_range": 25.3
+   },
+   "recent_move_bps": 23.3
+  },
+  "m15": {
+   "tf": "M15",
+   "last_close": 4404.825,
+   "last_bar": "2026-09-07 21:00",
+   "ma20": 4410.61,
+   "ma50": 4404.16,
+   "ma200": 4442.3,
+   "price_vs_ma20": -13.1,
+   "rsi14": 34.87,
+   "structure": {
+    "hhish": 4,
+    "llish": 5,
+    "last_vs_5ago": "down"
+   },
+   "trend_range": {
+    "cat": "mixed",
+    "er": 0.303
+   },
+   "s_r": {
+    "high60": 4423.96,
+    "low60": 4381.09,
+    "pos_in_range": 55.4
+   },
+   "recent_move_bps": -21.7
+  },
+  "m15_live": {
+   "last_mid": 4426.57,
+   "spread_bps_now": 0.41,
+   "tick_rate_per_min_15m": 93,
+   "quote_source": "quote_latest",
+   "abnormal": {
+    "last6_max_move_bps": 9.5,
+    "z_vs_baseline": -0.06,
+    "baseline_mean_move_bps": 10.2
+   }
+  }
+ },
+ "data_quality": {
+  "live_days": 1,
+  "live_ticks": 165477,
+  "context_days": 25,
+  "gaps": [],
+  "notes": "半冻结第13轮(quote动/bar·tick冻): quote实时mid 4419.8→4426.57(+6.77pt/+15.3bps, 00:02→00:19Z)已上穿armed触发4424.0(+2.57pt, 在entry_zone[4424,4427]内); tick165477零增第13轮(自21:47Z~152min); M15 bar止21:00收4404.825陈旧~199min(13根未接); candle_latest.json stale@12:15Z不采信; spread0.41bps持平; z-0.06/tick93正常; 无gaps; 在册1=TP-20260907T2355Z; 无持仓; 以quote为操作价"
+ },
+ "mtf_agreement": "neutral_lean_long_breakout_trigger_hit_in_zone_frozen_bars_quote_fires",
+ "state_summary": "quote实时mid 4426.57(00:19Z): 较00:02Z 4419.8续升+6.77pt/17min=第4腿动能延续, 已上穿触发价4424.0(+2.57pt)且仍处entry_zone[4424,4427]内=在册TP-20260907T2355Z条件满足, 本cycle引擎将机械TRIGGERED→RISK(notional≈$4.4k≤max)→demo FOK建多; bar/tick仍冻第13轮(tick165477零增~152min, M15 stale~199min, quote为唯一操作价); D1收4399.05<MA20 4464.43 RSI49.1 range pos54.5; H4收4414.385≈MA20结构up; H1收4406.99<MA50 4441.79 pos25.3; 在册1=TP-2355Z(触发4424.0已满足/失效4416.0/止4415.5/TP4440.5-4445.0/到期~06:01Z); 无持仓→本轮成交后持仓1, 后续轮次只管理不开新; 本cycle不注册新计划(同源同向不叠单)",
+ "m15_change": "较00:02Z: quote mid 4419.8→4426.57(+6.77pt/+15.3bps/17min)上穿armed触发4424.0=23:55Z注册的突破计划由PENDING转TRIGGERED(条件mid≥4424.0实时判定, 不依赖bar); 位置含义: 越过noon供给带前沿, 向冻结MA簇4440-4442推进, 仍在[4424,4427]计划买入带内(差4427上沿仅0.43pt); spread0.41bps持平; tick165477零增第13轮(~152min), M15 bar止21:00不变(stale~199min); 定性: 半冻结持续(quote动/bar·tick冻), 突破以quote兑现, 无新增反向证据, 无需新计划——原计划由引擎机械触发成交",
+ "opportunity": "armed_breakout_long_TP2355Z_triggered_in_zone_auto_fill",
+ "opportunity_mechanism": "在册TP-20260907T2355Z(突破多, mid≥4424.0触发, entry_zone[4424,4427], 止4415.5, TP4440.5/4445.0, M15*24≈06:01Z到期)本cycle条件满足: mid 4426.57≥4424.0且在区内→引擎TRIGGERED→risk_pass(0.01手notional≈$4,425≤$5,000)→demo FOK自动建仓@~4426.6; 机制主轴(23:55Z确立)兑现中: 墙[4411,4416]10拒多→21:00破墙底→4404.8-4406承接→第4腿加速上穿整墙与失效线4417→00:19Z续攻越过noon供给4424→真空至冻结MA簇4440-4442(M15 MA200 4442.3/H1 MA50 4441.79/round 4440); 成交后转持仓管理(止4415.5/TP1 4440.5 0.6/TP2 4445 0.4); 单仓约束: 建仓后不再注册新开仓计划; 反向守卫: 若4424-4427供给区假突破回落, 止损4415.5限损1R余, 无叠单无加仓; bar冻结仅延迟可见性, quote触发/止损/止盈路径不受阻",
+ "decision": "LONG",
+ "confidence": 0.5,
+ "plan_id": "TP-20260907T2355Z",
+ "plan": {
+  "plan_id": "TP-20260907T2355Z",
+  "direction": "LONG",
+  "opportunity_type": "breakout_4th_leg_wall_break_high60_reclaim",
+  "entry_style": "price_cross_market",
+  "entry_zone": {
+   "low": 4424.0,
+   "high": 4427.0
+  },
+  "trigger_condition": {
+   "price_cross_up": 4424.0
+  },
+  "invalidation_condition": {
+   "price_cross_down": 4416.0
+  },
+  "stop_logic": {
+   "type": "fixed",
+   "level": 4415.5,
+   "level_price": 4415.5,
+   "reason": "墙顶4416(前10轮供给/4416双头)下方0.5pt缓冲; 破4416=上破意图失败, 止损让位不硬扛"
+  },
+  "target_logic": {
+   "type": "price_levels",
+   "levels": [
+    {
+     "price": 4440.5,
+     "frac": 0.6
+    },
+    {
+     "price": 4445.0,
+     "frac": 0.4
+    }
+   ],
+   "reason": "TP1=冻结MA簇下缘(M15 MA200 4442.3/H1 MA50 4441.79/round 4440); TP2=4445簇上沿确认延续"
+  },
+  "expected_R": 2.0,
+  "expected_win_probability": 0.45,
+  "probability_source": "23:55Z注册时评估, 本cycle兑现复核: 第4腿三连升加速上穿整墙[4411,4416]与失效线4417=空头10轮证据链作废; 00:19Z mid 4426.57续攻越过noon供给4424且无拒绝佐证=上破意图兑现中, 动能+墙上方真空至4440-4442; 反向: range regime折价、当日noon供给4424先例(rejection/engulfing)、bar/tick冻结无close佐证、quote-vs-bar差~22pt执行偏移→p维持0.45(区内成交R被压缩但p不降); 若出现触4440-4442快速拒绝或回落≤4416则证据更新, 由后续轮处理",
+  "expected_loss": {
+   "units": "R",
+   "value": 1.0
+  },
+  "estimated_cost": {
+   "spread_bps": 0.41,
+   "slippage_bps": 0.5,
+   "pt": 0.62,
+   "usd_per_001lot": 0.62
+  },
+  "spread_bps": 0.41,
+  "slippage_bps": 0.5,
+  "expected_net_EV": {
+   "value": 0.28,
+   "units": "R",
+   "note": "注册口径(触发价4424.0成交): 0.45×2.0R−0.55×1.0R−0.07R≈+0.28R; 本cycle实际区内成交价~4426.6(≤zone_high4427): 风险11.1pt, 加权目标1.42R(见Q8), EV=0.45×1.42−0.55×1.0−0.06R≈+0.03R仍>0(盈亏平衡p≈0.44); 计划已注册于23:55Z轮, 本cycle重复注册将被引擎幂等跳过(dup_plan), 无新增暴露; 成交由引擎对在册计划机械触发, 触发前置已满足(mid4426.57≥4424.0)"
+  },
+  "maximum_holding_time": "M15*24",
+  "cancel_conditions": [
+   "mid≤4416.0(回落墙顶下方=上破失败, 自动取消零成本)",
+   "M15*24到期(≈2026-09-08T06:01Z)未触发自清",
+   "成交后止损4415.5=1R随单执行",
+   "若bar解冻显示真价已远离4424-4427带(quote伪值)则引擎主动cancel规则清理"
+  ],
+  "qty_lots": 0.01
+ },
+ "answers_14": {
+  "1": "XAUUSD quote层实时mid 4426.57(00:19Z, 较00:02Z 4419.8 +6.77pt/+15.3bps/17min): 已上穿armed触发4424.0(+2.57pt)处entry_zone[4424,4427]内, 向冻结MA簇4440-4442推进; bar/tick冻: M15止21:00收4404.825陈旧~199min(13根未接), tick165477零增~152min(自21:47Z第13轮), candle_latest stale@12:15Z不采信; spread0.41bps; D1收4399.05<MA20 4464.43 RSI49.1 range pos54.5; H4收4414.385≈MA20结构up; H1收4406.99<MA50 4441.79 pos25.3; 在册1=TP-20260907T2355Z(本cycle触发成交); 无持仓→成交后1仓",
+  "2": "一致性: neutral-lean-long维持(conf0.50)且由armed转兑现: D1 range pos54.5 / H4 range结构up近MA20 / H1 range last up / M15陈旧RSI34.9但quote已突破其上沿=quote层与bar层方向一致(突破意图兑现); 23:55Z注册计划的条件(mid≥4424.0)本cycle满足, 引擎机械执行不掺主观; 反向证据(noon供给4424拒绝)当前未现——价格直接越过而非拒绝, 若后续回落≤4416才构成证伪并由止损/失效线承接; 无立场分歧",
+  "3": "较00:02Z实质变化: quote mid 4419.8→4426.57(+6.77pt/+15.3bps/17min)=第4腿动能延续, 完成对触发价4424.0的上穿=在册突破计划TRIGGERED(23:55Z→00:02Z PENDING, 本cycle条件满足); 位置: 4426.57在计划买入带[4424,4427]内(距上沿0.43pt), 已进入noon供给带前沿之上, 未见拒绝佐证(无bearish反扑, 移动平稳tick93/min, z-0.06); tick165477零增第13轮, M15 bar止21:00不变(stale~199min); spread0.41持平; 定性: 突破以quote兑现, 半冻结只延迟bar可见性, 触发路径完整; 无新增setup, 不需新计划",
+  "4": "机会: 在册TP-20260907T2355Z突破多的触发条件已满足(mid 4426.57≥4424.0, 区内[≤4427])→本cycle引擎机械TRIGGERED→risk pass→demo自动建多@~4426.6, 止4415.5随单; 无持仓→本轮为首仓(0.01手); 差什么: 什么都不差——触发价已到, 唯一悬念是引擎demo FOK成交与随后持仓管理(止4415.5/TP1 4440.5/TP2 4445); 不注册新计划: 同源同向叠单=变相加仓违背单仓纪律; 若成交后回撤, 后续轮只做持仓管理与止盈止损, 不再开新仓; 反向下轮候选(仅当持仓了结后): 触4440-4442拒绝回落或≤4416破位才评估fade",
+  "5": "机制: 主轴(23:55Z确立)兑现: 17:00Z起墙[4411,4416]拒多8-9次(4416双头)→21:00破墙底+MA20 rollover→4404.8-4406三重承接→三轮lower-high→第4腿三连升加速上穿整墙与失效线4417=空头证据链作废→00:02Z蓄势(夹层回吐1.2pt)→00:19Z续攻越过noon供给4424(=第5腿/突破兑现), 现价4426.57正处[4424,4427]买入带, 上方真空至冻结MA簇4440-4442(M15 MA200 4442.3/H1 MA50 4441.79/round 4440); 供给反击需先见拒绝K或跌破4416(止损位)方激活; 成交后由引擎manage_positions按止4415.5/TP层级机械执行, quote为操作价; 半冻结不破坏路径",
+  "6": "触发条件(在册TP-2355Z, 已满足): mid实时≥4424.0(price_cross_up, 冻结M15 high60 4423.96+noon供给带上沿), 现mid 4426.57超+2.57pt且在entry_zone[4424,4427]内→本cycle引擎将TRIGGERED并以市价成交@~4426.6(不等收盘, quote判定); 成交后止损4415.5随单; 本cycle不新增触发(单仓纪律, 同setup叠单排除); 后续动作价: 止盈1 4440.5(减0.6)/止盈2 4445.0(减0.4)由持仓管理机械执行; 反向下轮候选(持仓了结后): 仅当触4440-4442现拒绝回落或跌破4416才评估, 需盘中佐证再立",
+  "7": "失效具体价: 成交前失效=mid≤4416.0(回落墙顶下方=上破失败自动取消, 已不适用——触发已满足); 成交后硬止损4415.5=1R随单(现fill~4426.6对应风险~11.1pt); 计划M15*24到期≈2026-09-08T06:01Z(触发前有效, 成交后由持仓周期接管); 若bar解冻显示真价偏离4424-4427带(quote伪值)由引擎主动cancel规则清理; 大周期转强需站上4443(M15 MA200), 与TP区重叠; 若价格触4440-4442快速拒绝回落, 盈利保护由持仓管理(移动止盈/保本逻辑, 若有)执行, 最差回吐部分浮盈不至扫损",
+  "8": "预期收益: 计划注册口径R2.0(fill@4424.3/风险8.8pt); 本cycle区内成交口径(fill~4426.6, ≤zone_high 4427): 风险至4415.5=11.1pt=1R; TP1 4440.5=+13.9pt≈1.26R(frac0.6)+TP2 4445.0=+18.4pt≈1.66R(frac0.4)→加权目标≈1.42R; p0.45→收益侧期望≈+0.64R(扣成本前); 若动能延续至D1 MA20 4464则超额(不设限, 由TP2减仓后余仓处置逻辑决定, 无则按4445全清); 上破确认后顺延目标4440-4442簇是本轮最可能落点; 未触发前零成本, 现已触发, 收益结构按上述成交口径生效",
+  "9": "预期损失: 1.0R=11.1pt≈$11.1@0.01lot(fill~4426.6至止4415.5); 假突破最坏情形=止损扫掉1R余, demo可控; 无持仓浮动, 无杠杆风险外溢; 成交后单仓0.01手=notional≈$4,425≤$5,000上限; 主要执行风险=quote-vs-bar差~22pt下demo成交滑点/拒绝(FOK), 若FOK失败计划即终态不留僵尸, 下轮重评; 无叠单无加仓, 亏损不加仓纪律天然满足; 若止损前先触TP1减仓0.6, 余仓0.4风险敞口降至~0.4R",
+  "10": "成本: spread_bps 0.41(持平低位)+slippage~0.5bps≈roundtrip~1.4bps≈0.62pt≈0.06R(对11.1pt风险基数); 0.01lot成交成本<$1, 非决策障碍; 本cycle注册零成本(引擎对同plan_id幂等跳过dup), 成交成本已计入EV; 真实障碍仍在数据层(quote-vs-bar差/bar冻~199min)已用止损4415.5+失效线4416+区内买入带[≤4427]约束; 等待/管理无额外成本",
+  "11": "净EV算式: 本cycle成交口径(fill~4426.6): 0.45×1.42R−0.55×1.0R−0.06R(0.62pt/11.1pt)≈+0.03R>0(盈亏平衡p≈0.44, p0.40→−0.09R, p0.50→+0.15R); 注册口径(fill@4424.3): +0.28R; 两者均正→LONG成立; 本cycle新增注册动作EV=0(幂等跳过, 无新增暴露); 叠单EV为负排除; 反方fade在无拒绝佐证前EV不可估不立; WAIT=放弃已满足的机械触发, 破坏纪律且与'贴边界即计划/触价自动成交'哲学相悖, 非最优",
+  "12": "再现: 触发已机械满足(mid 4426.57≥4424.0且≤4427), 引擎本cycle对在册计划TRIGGERED→risk_pass→demo成交, 全程无人工介入; 成交后持仓周期由engine manage_positions每轮mark+硬止(4415.5)/TP(4440.5/4445.0)机械执行, 规则确定性=可复现; 若FOK失败/被拒, 计划终态, 突破若未延续则等4416-4406带承接重建(需新轮评估); 新开仓仅在持仓了结后允许(单仓约束); 触发/失效/止损/止盈价全部具体数值, 引擎逐轮以quote判定, 复现性完整",
+  "13": "LONG",
+  "14": "LONG兑现:在册TP-2355Z触发已满足(mid4426.57≥4424.0区内);引擎机械成交@~4426.6,止4415.5,TP4440.5/4445;EV+0.03R(成交口径)为正;不叠单,成交后转持仓管理"
+ },
+ "cost_note": "spread_bps_now=0.41(持平低位); slippage_bps~0.5(paper/demo); total_roundtrip~1.4bps≈0.62pt≈0.06R(对11.1pt成交口径风险); 本cycle注册零成本(引擎对同plan_id幂等跳过); 主要不确定=quote-vs-bar差~22pt(bar冻199min)已以区内买入带[≤4427]+止损4415.5+失效线4416约束",
+ "ev_note": "LONG breakout TP-20260907T2355Z(23:55Z已在册, 本cycle触发兑现不注册新计划): 成交口径0.45×1.42R−0.55×1.0R−0.06R≈+0.03R>0(注册口径+0.28R); 触发前置已满足(mid4426.57≥4424.0且≤4427); qty0.01→notional≈$4.4k≤$5,000, risk层应PASS并demo FOK成交@~4426.6; 成交后持仓1, 后续轮只管理不开新仓",
+ "model": "deepseek/deepseek-v4-flash",
+ "prompt_version": "hermes-trader-v1-p0-m15-14Q 2026-09-08"
+}
