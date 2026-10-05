@@ -1,3 +1,11 @@
+# V3 — 高频 Demo 交易机器与研究机器
+
+当前交付：[demo_runtime/](demo_runtime/README.md)。tick 驱动、每秒决策，连接隔离 FXTM MT5 Demo 执行冻结实验策略，同时独立记录五周期前向研究。成交与研究报价代理分别计数，策略价值尚未验证。
+
+运行版包括券商止损、费用对账、未知成交恢复、持久化账本、停止开关、监督进程和中文面板。登录恢复已获用户明确授权并在部署主机配置。凭据、授权文件、模型及交易日志仅留本地。正式 CAND-001 测试窗口与旧研究闸门保持原协议。
+
+## 历史归档（2026-10-03）
+
 # V3 — Hermes Trader V3（研究 / 机会引擎）
 
 > 归档快照。源：`C:\AIQuant\research\hermes\trader_v3` + `C:\AIQuant\research\v3_opportunity_engine` + `research/v3_*`。

@@ -1,0 +1,17 @@
+name: V3 Demo engine offline verification
+on:
+  push:
+    paths: ['V3/demo_runtime/**', '.github/workflows/v3-demo.yml']
+  pull_request:
+    paths: ['V3/demo_runtime/**', '.github/workflows/v3-demo.yml']
+jobs:
+  offline-safety:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Offline safety and recovery tests (no MT5 connection)
+        working-directory: V3/demo_runtime
+        run: python -m unittest discover -s tests -v

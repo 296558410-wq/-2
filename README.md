@@ -1,3 +1,7 @@
+# 当前 V3 交付
+
+V3 同时承担高频 Demo 交易与独立前向研究，新实现见 [V3/demo_runtime/README.md](V3/demo_runtime/README.md)。以下描述 2026-10-03 归档基线。
+
 # AIQuant-XAUUSD-Systems
 
 > XAUUSD 研究/交易系统归档仓库（V1 / V2 / V3）
